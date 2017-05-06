@@ -22,18 +22,17 @@ class StatusMenuController: NSObject {
     }
     
     @IBAction func nsOn(_ sender: NSMenuItem) {
-//        float strength = 0.75;
-//        CBBlueLightClient *client = [[CBBlueLightClient alloc] init];
-//        if (strength != 0.0) { [client setStrength:strength commit:true]; }
-//        [client setEnabled:(strength != 0.0)];
+        let strength = Float(exactly: 0.75)
+        let client = CBBlueLightClient()
+        client.setStrength(strength!, commit: true)
+        client.setEnabled(strength != 0.0)
     }
     
     @IBAction func nsOff(_ sender: NSMenuItem) {
-//        float strength = 0.0;
-//        CBBlueLightClient *client = [[CBBlueLightClient alloc] init];
-//        if (strength != 0.0) { [client setStrength:strength commit:true]; }
-//        [client setEnabled:(strength != 0.0)];
-
+        let strength = Float(exactly: 0.0)
+        let client = CBBlueLightClient()
+        client.setStrength(strength!, commit: true)
+        client.setEnabled(strength != 0.0)
     }
     
     @IBAction func quitClicked(_ sender: NSMenuItem) {

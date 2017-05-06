@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		433EE84E1EBD850D007EA870 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433EE84D1EBD850D007EA870 /* StatusMenuController.swift */; };
+		433EE8521EBD8ECA007EA870 /* CoreBrightness.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433EE8511EBD8ECA007EA870 /* CoreBrightness.framework */; };
 		43CC9E471EBAB19300983528 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CC9E461EBAB19300983528 /* AppDelegate.swift */; };
 		43CC9E4B1EBAB19300983528 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43CC9E4A1EBAB19300983528 /* Assets.xcassets */; };
 		43CC9E561EBAB1E500983528 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43CC9E551EBAB1E500983528 /* MainMenu.xib */; };
@@ -17,6 +18,7 @@
 		433EE8491EBD7E9E007EA870 /* CBBlueLightClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBBlueLightClient.h; sourceTree = "<group>"; };
 		433EE84D1EBD850D007EA870 /* StatusMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
 		433EE84F1EBD8514007EA870 /* Night-Shift-Tool-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Night-Shift-Tool-Bridging-Header.h"; sourceTree = "<group>"; };
+		433EE8511EBD8ECA007EA870 /* CoreBrightness.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBrightness.framework; path = ../../../../../System/Library/PrivateFrameworks/CoreBrightness.framework; sourceTree = "<group>"; };
 		43CC9E431EBAB19300983528 /* Night-Shift-Tool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Night-Shift-Tool.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		43CC9E461EBAB19300983528 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43CC9E4A1EBAB19300983528 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -29,17 +31,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				433EE8521EBD8ECA007EA870 /* CoreBrightness.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		433EE8501EBD8ECA007EA870 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				433EE8511EBD8ECA007EA870 /* CoreBrightness.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		43CC9E3A1EBAB19300983528 = {
 			isa = PBXGroup;
 			children = (
 				43CC9E451EBAB19300983528 /* Night-Shift-Tool */,
 				43CC9E441EBAB19300983528 /* Products */,
+				433EE8501EBD8ECA007EA870 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -242,6 +254,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = YT2C78F725;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
 				INFOPLIST_FILE = "Night-Shift-Tool/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.natethompson.Night-Shift-Tool";
@@ -257,6 +273,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = YT2C78F725;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
 				INFOPLIST_FILE = "Night-Shift-Tool/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.natethompson.Night-Shift-Tool";
