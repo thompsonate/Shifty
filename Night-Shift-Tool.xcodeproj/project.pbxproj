@@ -7,19 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		433EE84E1EBD850D007EA870 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433EE84D1EBD850D007EA870 /* StatusMenuController.swift */; };
 		43CC9E471EBAB19300983528 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CC9E461EBAB19300983528 /* AppDelegate.swift */; };
-		43CC9E491EBAB19300983528 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CC9E481EBAB19300983528 /* ViewController.swift */; };
 		43CC9E4B1EBAB19300983528 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43CC9E4A1EBAB19300983528 /* Assets.xcassets */; };
-		43CC9E4E1EBAB19300983528 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43CC9E4C1EBAB19300983528 /* Main.storyboard */; };
+		43CC9E561EBAB1E500983528 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43CC9E551EBAB1E500983528 /* MainMenu.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		433EE8491EBD7E9E007EA870 /* CBBlueLightClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBBlueLightClient.h; sourceTree = "<group>"; };
+		433EE84D1EBD850D007EA870 /* StatusMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
+		433EE84F1EBD8514007EA870 /* Night-Shift-Tool-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Night-Shift-Tool-Bridging-Header.h"; sourceTree = "<group>"; };
 		43CC9E431EBAB19300983528 /* Night-Shift-Tool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Night-Shift-Tool.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		43CC9E461EBAB19300983528 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		43CC9E481EBAB19300983528 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		43CC9E4A1EBAB19300983528 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		43CC9E4D1EBAB19300983528 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		43CC9E4F1EBAB19300983528 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43CC9E551EBAB1E500983528 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,9 +55,11 @@
 			isa = PBXGroup;
 			children = (
 				43CC9E461EBAB19300983528 /* AppDelegate.swift */,
-				43CC9E481EBAB19300983528 /* ViewController.swift */,
+				433EE84D1EBD850D007EA870 /* StatusMenuController.swift */,
+				433EE8491EBD7E9E007EA870 /* CBBlueLightClient.h */,
+				433EE84F1EBD8514007EA870 /* Night-Shift-Tool-Bridging-Header.h */,
 				43CC9E4A1EBAB19300983528 /* Assets.xcassets */,
-				43CC9E4C1EBAB19300983528 /* Main.storyboard */,
+				43CC9E551EBAB1E500983528 /* MainMenu.xib */,
 				43CC9E4F1EBAB19300983528 /* Info.plist */,
 			);
 			path = "Night-Shift-Tool";
@@ -121,7 +125,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				43CC9E4B1EBAB19300983528 /* Assets.xcassets in Resources */,
-				43CC9E4E1EBAB19300983528 /* Main.storyboard in Resources */,
+				43CC9E561EBAB1E500983528 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,23 +136,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43CC9E491EBAB19300983528 /* ViewController.swift in Sources */,
+				433EE84E1EBD850D007EA870 /* StatusMenuController.swift in Sources */,
 				43CC9E471EBAB19300983528 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		43CC9E4C1EBAB19300983528 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				43CC9E4D1EBAB19300983528 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		43CC9E501EBAB19300983528 /* Debug */ = {
@@ -253,6 +246,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.natethompson.Night-Shift-Tool";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Night-Shift-Tool/Night-Shift-Tool-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -267,6 +261,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.natethompson.Night-Shift-Tool";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Night-Shift-Tool/Night-Shift-Tool-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -290,6 +285,7 @@
 				43CC9E541EBAB19300983528 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

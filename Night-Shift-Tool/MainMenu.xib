@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12118"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
+            <connections>
+                <outlet property="delegate" destination="Ato-dh-ILa" id="GvM-9N-eja"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+        <customObject id="Ato-dh-ILa" userLabel="Delegate" customClass="AppDelegate" customModule="Night_Shift_Tool" customModuleProvider="target"/>
+        <customObject id="YHE-ZD-Fjn" userLabel="StatusMenuController" customClass="StatusMenuController" customModule="Night_Shift_Tool" customModuleProvider="target">
+            <connections>
+                <outlet property="statusMenu" destination="YaK-8p-dol" id="uua-tx-AWw"/>
+            </connections>
+        </customObject>
+        <menu id="YaK-8p-dol" userLabel="StatusMenu">
+            <items>
+                <menuItem title="On" id="3QK-Yf-KEO">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="nsOn:" target="YHE-ZD-Fjn" id="r05-TM-lV7"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Off" id="Khj-G0-Whb">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="nsOff:" target="YHE-ZD-Fjn" id="gI7-JH-CJD"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="W1o-NM-zpi"/>
+                <menuItem title="Quit" id="Xyz-vQ-f3p">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="quitClicked:" target="YHE-ZD-Fjn" id="3re-aa-OwF"/>
+                    </connections>
+                </menuItem>
+            </items>
+        </menu>
+    </objects>
+</document>
