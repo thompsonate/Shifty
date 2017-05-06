@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "43CC9E421EBAB19300983528"
-               BuildableName = "Night-Shift-Tool.app"
-               BlueprintName = "Night-Shift-Tool"
-               ReferencedContainer = "container:Night-Shift-Tool.xcodeproj">
+               BuildableName = "Shifty.app"
+               BlueprintName = "Shifty"
+               ReferencedContainer = "container:Shifty.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "43CC9E421EBAB19300983528"
-            BuildableName = "Night-Shift-Tool.app"
-            BlueprintName = "Night-Shift-Tool"
-            ReferencedContainer = "container:Night-Shift-Tool.xcodeproj">
+            BuildableName = "Shifty.app"
+            BlueprintName = "Shifty"
+            ReferencedContainer = "container:Shifty.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "43CC9E421EBAB19300983528"
-            BuildableName = "Night-Shift-Tool.app"
-            BlueprintName = "Night-Shift-Tool"
-            ReferencedContainer = "container:Night-Shift-Tool.xcodeproj">
+            BuildableName = "Shifty.app"
+            BlueprintName = "Shifty"
+            ReferencedContainer = "container:Shifty.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "43CC9E421EBAB19300983528"
-            BuildableName = "Night-Shift-Tool.app"
-            BlueprintName = "Night-Shift-Tool"
-            ReferencedContainer = "container:Night-Shift-Tool.xcodeproj">
+            BuildableName = "Shifty.app"
+            BlueprintName = "Shifty"
+            ReferencedContainer = "container:Shifty.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

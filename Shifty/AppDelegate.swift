@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  Night-Shift-Tool
+//  Shifty
 //
 //  Created by Nate Thompson on 5/3/17.
 //

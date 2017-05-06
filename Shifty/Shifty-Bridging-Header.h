@@ -1,6 +1,6 @@
 //
-//  Night-Shift-Tool-Bridging-Header.h
-//  Night-Shift-Tool
+//  Shifty-Bridging-Header.h
+//  Shifty
 //
 //  Created by Nate Thompson on 5/5/17.
 //
