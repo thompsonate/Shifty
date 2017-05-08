@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12118"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -16,6 +17,7 @@
         <customObject id="Ato-dh-ILa" userLabel="Delegate" customClass="AppDelegate" customModule="Shifty" customModuleProvider="target"/>
         <customObject id="YHE-ZD-Fjn" userLabel="StatusMenuController" customClass="StatusMenuController" customModule="Shifty" customModuleProvider="target">
             <connections>
+                <outlet property="sliderView" destination="xRd-3s-8Ep" id="5v2-aR-QE3"/>
                 <outlet property="statusMenu" destination="YaK-8p-dol" id="uua-tx-AWw"/>
             </connections>
         </customObject>
@@ -33,7 +35,17 @@
                         <action selector="nsOff:" target="YHE-ZD-Fjn" id="gI7-JH-CJD"/>
                     </connections>
                 </menuItem>
+                <menuItem title="Slider" id="NRb-4W-jcc">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
                 <menuItem isSeparatorItem="YES" id="W1o-NM-zpi"/>
+                <menuItem title="Preferences..." id="GJi-nB-WzR">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="preferencesClicked:" target="YHE-ZD-Fjn" id="TXU-TT-8Qq"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="OE0-tz-FKo"/>
                 <menuItem title="Quit Shifty" id="Xyz-vQ-f3p">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
@@ -43,5 +55,23 @@
             </items>
             <point key="canvasLocation" x="139.5" y="175.5"/>
         </menu>
+        <customView id="xRd-3s-8Ep" customClass="SliderView" customModule="Shifty" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="163" height="24"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="93c-bH-Y61">
+                    <rect key="frame" x="6" y="2" width="150" height="19"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="55.527010658914719" tickMarkPosition="below" sliderType="linear" id="E2Q-YM-AR3"/>
+                    <connections>
+                        <action selector="shiftSliderMoved:" target="xRd-3s-8Ep" id="pCW-7A-jnX"/>
+                    </connections>
+                </slider>
+            </subviews>
+            <connections>
+                <outlet property="shiftSlider" destination="93c-bH-Y61" id="FeQ-Bl-Y4t"/>
+            </connections>
+            <point key="canvasLocation" x="140" y="305"/>
+        </customView>
     </objects>
 </document>
