@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12118"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,28 +17,30 @@
         <customObject id="Ato-dh-ILa" userLabel="Delegate" customClass="AppDelegate" customModule="Shifty" customModuleProvider="target"/>
         <customObject id="YHE-ZD-Fjn" userLabel="StatusMenuController" customClass="StatusMenuController" customModule="Shifty" customModuleProvider="target">
             <connections>
+                <outlet property="powerMenuItem" destination="3QK-Yf-KEO" id="Ndx-D9-T04"/>
                 <outlet property="sliderView" destination="xRd-3s-8Ep" id="5v2-aR-QE3"/>
                 <outlet property="statusMenu" destination="YaK-8p-dol" id="uua-tx-AWw"/>
             </connections>
         </customObject>
         <menu id="YaK-8p-dol" userLabel="StatusMenu">
             <items>
-                <menuItem title="On" id="3QK-Yf-KEO">
+                <menuItem title="Power" tag="1" id="3QK-Yf-KEO">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="nsOn:" target="YHE-ZD-Fjn" id="r05-TM-lV7"/>
+                        <action selector="power:" target="YHE-ZD-Fjn" id="JXj-lp-mVz"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Off" id="Khj-G0-Whb">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="nsOff:" target="YHE-ZD-Fjn" id="gI7-JH-CJD"/>
-                    </connections>
-                </menuItem>
+                <menuItem isSeparatorItem="YES" id="Zh0-ra-bP7"/>
                 <menuItem title="Slider" id="NRb-4W-jcc">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="W1o-NM-zpi"/>
+                <menuItem title="Disable for an hour" id="lLZ-zs-A2J">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="disableHour:" target="YHE-ZD-Fjn" id="TQd-3H-iAK"/>
+                    </connections>
+                </menuItem>
                 <menuItem title="Preferences..." id="GJi-nB-WzR">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
@@ -71,7 +73,7 @@
             <connections>
                 <outlet property="shiftSlider" destination="93c-bH-Y61" id="FeQ-Bl-Y4t"/>
             </connections>
-            <point key="canvasLocation" x="140" y="305"/>
+            <point key="canvasLocation" x="139.5" y="305"/>
         </customView>
     </objects>
 </document>

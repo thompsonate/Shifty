@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "statusIcon1x.png",
+      "filename" : "icons8-Moon Man Filled_18.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "statusIcon2x.png",
+      "filename" : "icons8-Moon Man Filled_36.png",
       "scale" : "2x"
     },
     {

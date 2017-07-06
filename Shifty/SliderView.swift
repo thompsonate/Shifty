@@ -11,8 +11,9 @@ import Cocoa
 class SliderView: NSView {
 
     @IBOutlet weak var shiftSlider: NSSlider!
+    var sliderValueChanged: ((Float) -> Void)?
     
     @IBAction func shiftSliderMoved(_ sender: NSSlider) {
-        StatusMenuController().shift(strength: shiftSlider.floatValue)
+        sliderValueChanged?(sender.floatValue)
     }
 }
