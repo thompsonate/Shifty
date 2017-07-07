@@ -10,8 +10,6 @@ import Cocoa
 
 class PreferencesWindow: NSWindowController {
     
-    @IBOutlet weak var presetsTableView: NSTableView!
-    
         override var windowNibName: String! {
         return "PreferencesWindow"
     }
@@ -24,7 +22,6 @@ class PreferencesWindow: NSWindowController {
         self.window?.styleMask.remove(.resizable)
         self.window?.level = Int(CGWindowLevelForKey(.floatingWindow))
         NSApp.activate(ignoringOtherApps: true)
-
     }
     
 }

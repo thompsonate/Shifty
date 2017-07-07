@@ -16,11 +16,13 @@ class StatusMenuController: NSObject {
     var preferencesWindow: PreferencesWindow!
     
     @IBOutlet weak var powerMenuItem: NSMenuItem!
-    
+    @IBOutlet weak var disableHourMenuItem: NSMenuItem!
     @IBOutlet weak var sliderView: SliderView!
+    
     var sliderMenuItem: NSMenuItem!
-    //var powerMenuItem: NSMenuItem!
-    var activeState = false
+    var activeState = true
+    var isTimerEnabled = false
+    var timer: Timer!
     
     
     override func awakeFromNib() {
@@ -37,8 +39,12 @@ class StatusMenuController: NSObject {
             self.shift(strength: sliderValue)
         }
         
-        //powerMenuItem = statusMenu.item(withTag: 1)
-        shift(isEnabled: false)
+        sliderView.sliderEnabled = { _ in
+            self.shift(isEnabled: true)
+        }
+        
+        shift(strength: 50)
+        sliderView.shiftSlider.floatValue = 50
     }
     
     @IBAction func power(_ sender: NSMenuItem) {
@@ -47,8 +53,29 @@ class StatusMenuController: NSObject {
         } else {
             shift(isEnabled: true)
         }
-            
-        shift(strength: 0.75)
+    }
+    
+    @IBAction func disableHour(_ sender: Any) {
+        if !isTimerEnabled {
+            isTimerEnabled = true
+            shift(isEnabled: false)
+            disableHourMenuItem.state = NSOnState
+            disableHourMenuItem.title = "Disabled for an hour"
+            timer = Timer.scheduledTimer(withTimeInterval: 3600, repeats: false) { _ in
+                self.isTimerEnabled = false
+                self.shift(isEnabled: true)
+                self.disableHourMenuItem.state = NSOffState
+                self.disableHourMenuItem.title = "Disable for an hour"
+            }
+            timer.tolerance = 60
+        } else {
+            timer.invalidate()
+            isTimerEnabled = false
+            shift(isEnabled: true)
+            disableHourMenuItem.state = NSOffState
+            disableHourMenuItem.title = "Disable for an hour"
+
+        }
     }
     
     func shift(strength: Float) {
@@ -56,31 +83,34 @@ class StatusMenuController: NSObject {
             client.setStrength(strength/100, commit: true)
             if activeState == true {
                 activeState = true
-                powerMenuItem.title = "Turn On"
+                powerMenuItem.title = "Turn Off"
             }
         } else {
             activeState = false
-            powerMenuItem.title = "Turn Off"
+            powerMenuItem.title = "Turn On"
         }
         client.setEnabled(strength/100 != 0.0)
     }
     
-    @IBAction func disableHour(_ sender: Any) {
-        shift(isEnabled: false)
-        let timer = Timer.scheduledTimer(withTimeInterval: 60, repeats: false) { _ in
-            self.shift(isEnabled: true)
-        }
-    }
-    
     func shift(isEnabled: Bool) {
         if isEnabled {
+            let sliderValue = sliderView.shiftSlider.floatValue
+            client.setStrength(sliderValue/100, commit: true)
             client.setEnabled(true)
             activeState = true
             powerMenuItem.title = "Turn Off"
+            sliderView.shiftSlider.isEnabled = true
+            
+            if isTimerEnabled {
+                timer.invalidate()
+                disableHourMenuItem.state = NSOffState
+                disableHourMenuItem.title = "Disable for an hour"
+            }
         } else {
             client.setEnabled(false)
             activeState = false
             powerMenuItem.title = "Turn On"
+            sliderView.shiftSlider.isEnabled = false
         }
     }
     

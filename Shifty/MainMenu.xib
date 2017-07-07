@@ -17,6 +17,7 @@
         <customObject id="Ato-dh-ILa" userLabel="Delegate" customClass="AppDelegate" customModule="Shifty" customModuleProvider="target"/>
         <customObject id="YHE-ZD-Fjn" userLabel="StatusMenuController" customClass="StatusMenuController" customModule="Shifty" customModuleProvider="target">
             <connections>
+                <outlet property="disableHourMenuItem" destination="lLZ-zs-A2J" id="JBY-cw-D9b"/>
                 <outlet property="powerMenuItem" destination="3QK-Yf-KEO" id="Ndx-D9-T04"/>
                 <outlet property="sliderView" destination="xRd-3s-8Ep" id="5v2-aR-QE3"/>
                 <outlet property="statusMenu" destination="YaK-8p-dol" id="uua-tx-AWw"/>
@@ -24,7 +25,7 @@
         </customObject>
         <menu id="YaK-8p-dol" userLabel="StatusMenu">
             <items>
-                <menuItem title="Power" tag="1" id="3QK-Yf-KEO">
+                <menuItem title="Turn Off" tag="1" id="3QK-Yf-KEO">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="power:" target="YHE-ZD-Fjn" id="JXj-lp-mVz"/>
@@ -41,13 +42,13 @@
                         <action selector="disableHour:" target="YHE-ZD-Fjn" id="TQd-3H-iAK"/>
                     </connections>
                 </menuItem>
+                <menuItem isSeparatorItem="YES" id="OE0-tz-FKo"/>
                 <menuItem title="Preferences..." id="GJi-nB-WzR">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="preferencesClicked:" target="YHE-ZD-Fjn" id="TXU-TT-8Qq"/>
                     </connections>
                 </menuItem>
-                <menuItem isSeparatorItem="YES" id="OE0-tz-FKo"/>
                 <menuItem title="Quit Shifty" id="Xyz-vQ-f3p">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
@@ -58,22 +59,47 @@
             <point key="canvasLocation" x="139.5" y="175.5"/>
         </menu>
         <customView id="xRd-3s-8Ep" customClass="SliderView" customModule="Shifty" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="163" height="24"/>
+            <rect key="frame" x="0.0" y="0.0" width="230" height="26"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JKy-ed-5KM">
+                    <rect key="frame" x="-6" y="-6" width="192" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" bezelStyle="rounded" alignment="center" borderStyle="border" transparent="YES" imageScaling="proportionallyDown" inset="2" id="Eas-n8-yck">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="clickEnableSlider:" target="xRd-3s-8Ep" id="nyf-aQ-CMP"/>
+                    </connections>
+                </button>
                 <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="93c-bH-Y61">
-                    <rect key="frame" x="6" y="2" width="150" height="19"/>
+                    <rect key="frame" x="40" y="3" width="150" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="55.527010658914719" tickMarkPosition="below" sliderType="linear" id="E2Q-YM-AR3"/>
                     <connections>
                         <action selector="shiftSliderMoved:" target="xRd-3s-8Ep" id="pCW-7A-jnX"/>
                     </connections>
                 </slider>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dky-H2-15i">
+                    <rect key="frame" x="19" y="5" width="15" height="15"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="sun" id="qBk-P2-1HM"/>
+                </imageView>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QFo-Gz-iR8">
+                    <rect key="frame" x="196" y="5" width="15" height="15"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="moon" id="1sP-n7-4O8"/>
+                </imageView>
             </subviews>
             <connections>
                 <outlet property="shiftSlider" destination="93c-bH-Y61" id="FeQ-Bl-Y4t"/>
             </connections>
-            <point key="canvasLocation" x="139.5" y="305"/>
+            <point key="canvasLocation" x="140" y="307"/>
         </customView>
     </objects>
+    <resources>
+        <image name="moon" width="36" height="36"/>
+        <image name="sun" width="36" height="36"/>
+    </resources>
 </document>
