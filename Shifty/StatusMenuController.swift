@@ -8,13 +8,21 @@
 
 import Cocoa
 
+extension CBBlueLightClient {
+    var strength: Float {
+        var strength: Float = 0.0
+        self.getStrength(&strength)
+        return strength
+    }
+}
+
 class StatusMenuController: NSObject {
     
-    @IBOutlet weak var statusMenu: NSMenu!
-    let client = CBBlueLightClient()
     let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
+    let client = CBBlueLightClient()
     var preferencesWindow: PreferencesWindow!
     
+    @IBOutlet weak var statusMenu: NSMenu!
     @IBOutlet weak var powerMenuItem: NSMenuItem!
     @IBOutlet weak var disableHourMenuItem: NSMenuItem!
     @IBOutlet weak var sliderView: SliderView!
@@ -24,14 +32,8 @@ class StatusMenuController: NSObject {
     var isTimerEnabled = false
     var timer: Timer!
     
-    
     override func awakeFromNib() {
-        let icon = NSImage(named: "statusIcon")
-        icon?.isTemplate = true
-        statusItem.image = icon
-        statusItem.menu = statusMenu
         preferencesWindow = PreferencesWindow()
-        
         sliderMenuItem = statusMenu.item(withTitle: "Slider")
         sliderMenuItem.view = sliderView
 
@@ -43,11 +45,15 @@ class StatusMenuController: NSObject {
             self.shift(isEnabled: true)
         }
         
-        shift(strength: 50)
-        sliderView.shiftSlider.floatValue = 50
+        let appDelegate = NSApplication.shared().delegate as! AppDelegate
+        appDelegate.statusItemClicked = { _ in
+            self.power(self)
+        }
+        
+        sliderView.shiftSlider.floatValue = client.strength * 100
     }
     
-    @IBAction func power(_ sender: NSMenuItem) {
+    @IBAction func power(_ sender: Any) {
         if activeState {
             shift(isEnabled: false)
         } else {
@@ -103,6 +109,7 @@ class StatusMenuController: NSObject {
             
             if isTimerEnabled {
                 timer.invalidate()
+                isTimerEnabled = false
                 disableHourMenuItem.state = NSOffState
                 disableHourMenuItem.title = "Disable for an hour"
             }

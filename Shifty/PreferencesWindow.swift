@@ -8,9 +8,17 @@
 
 import Cocoa
 
+struct Keys {
+    static let isStatusToggleEnabled = "isStatusToggleEnabled"
+}
+
 class PreferencesWindow: NSWindowController {
     
-        override var windowNibName: String! {
+    @IBOutlet weak var toggleStatusItem: NSButton!
+    let prefs = UserDefaults.standard
+    var setStatusToggle: ((Void) -> Void)?
+    
+    override var windowNibName: String! {
         return "PreferencesWindow"
     }
 
@@ -24,4 +32,16 @@ class PreferencesWindow: NSWindowController {
         NSApp.activate(ignoringOtherApps: true)
     }
     
+    @IBAction func toggleStatusItem(_ sender: Any) {
+        let appDelegate = NSApplication.shared().delegate as! AppDelegate
+        if toggleStatusItem.state == NSOnState {
+            prefs.setValue(true, forKey: Keys.isStatusToggleEnabled)
+            appDelegate.setStatusToggle()
+        } else if toggleStatusItem.state == NSOffState {
+            prefs.setValue(false, forKey: Keys.isStatusToggleEnabled)
+            appDelegate.setStatusToggle()
+        } else {
+            print("oh no")
+        }
+    }
 }

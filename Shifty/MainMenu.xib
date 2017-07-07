@@ -14,7 +14,11 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
-        <customObject id="Ato-dh-ILa" userLabel="Delegate" customClass="AppDelegate" customModule="Shifty" customModuleProvider="target"/>
+        <customObject id="Ato-dh-ILa" userLabel="Delegate" customClass="AppDelegate" customModule="Shifty" customModuleProvider="target">
+            <connections>
+                <outlet property="statusMenu" destination="YaK-8p-dol" id="920-0j-0vV"/>
+            </connections>
+        </customObject>
         <customObject id="YHE-ZD-Fjn" userLabel="StatusMenuController" customClass="StatusMenuController" customModule="Shifty" customModuleProvider="target">
             <connections>
                 <outlet property="disableHourMenuItem" destination="lLZ-zs-A2J" id="JBY-cw-D9b"/>
@@ -59,7 +63,7 @@
             <point key="canvasLocation" x="139.5" y="175.5"/>
         </menu>
         <customView id="xRd-3s-8Ep" customClass="SliderView" customModule="Shifty" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="230" height="26"/>
+            <rect key="frame" x="0.0" y="0.0" width="238" height="26"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JKy-ed-5KM">
@@ -74,7 +78,7 @@
                     </connections>
                 </button>
                 <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="93c-bH-Y61">
-                    <rect key="frame" x="40" y="3" width="150" height="19"/>
+                    <rect key="frame" x="44" y="3" width="150" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="55.527010658914719" tickMarkPosition="below" sliderType="linear" id="E2Q-YM-AR3"/>
                     <connections>
@@ -82,12 +86,12 @@
                     </connections>
                 </slider>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dky-H2-15i">
-                    <rect key="frame" x="19" y="5" width="15" height="15"/>
+                    <rect key="frame" x="23" y="5" width="15" height="15"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="sun" id="qBk-P2-1HM"/>
                 </imageView>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QFo-Gz-iR8">
-                    <rect key="frame" x="196" y="5" width="15" height="15"/>
+                    <rect key="frame" x="200" y="5" width="15" height="15"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="moon" id="1sP-n7-4O8"/>
                 </imageView>
@@ -95,7 +99,7 @@
             <connections>
                 <outlet property="shiftSlider" destination="93c-bH-Y61" id="FeQ-Bl-Y4t"/>
             </connections>
-            <point key="canvasLocation" x="140" y="307"/>
+            <point key="canvasLocation" x="144" y="307"/>
         </customView>
     </objects>
     <resources>
