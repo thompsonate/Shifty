@@ -7,11 +7,21 @@
 		<key>Shifty.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+		<key>ShiftyHelper.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>43528A4E1F1045830086F086</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>43CC9E421EBAB19300983528</key>
 		<dict>
 			<key>primary</key>

@@ -18,7 +18,6 @@ extension CBBlueLightClient {
 
 class StatusMenuController: NSObject {
     
-    let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
     let client = CBBlueLightClient()
     var preferencesWindow: PreferencesWindow!
     
@@ -51,6 +50,11 @@ class StatusMenuController: NSObject {
         }
         
         sliderView.shiftSlider.floatValue = client.strength * 100
+//        if client is not enabled {
+//            activeState = false
+//            powerMenuItem.title = "Turn On"
+//            sliderView.shiftSlider.isEnabled = false
+//        }
     }
     
     @IBAction func power(_ sender: Any) {
