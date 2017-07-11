@@ -16,11 +16,29 @@ extension CBBlueLightClient {
         self.getStrength(&strength)
         return strength
     }
+    
     var CCT: Float {
         var CCT: Float = 0.0
         self.getCCT(&CCT)
         return CCT
     }
+    
+    var isNightShiftEnabled: Bool {
+        //create an empty mutable OpaquePointer
+        let string = "0000000000"
+        var data = string.data(using: .utf8)!
+        let ints: UnsafeMutablePointer<Int>! = data.withUnsafeMutableBytes{ $0 }
+        let bytes = OpaquePointer(ints)
+        
+        //load the BlueLightStatus struct into the opaque pointer
+        self.getBlueLightStatus(bytes)
+        
+        //get the byes from the BlueLightStatus pointer
+        let intsArray = [UInt8](data)
+        
+        //it looks like the second byte is a boolean representing if Night Shift is enabled
+        return intsArray[1] == 1
+    }
 }
 
 class StatusMenuController: NSObject {
