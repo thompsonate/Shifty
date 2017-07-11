@@ -19,7 +19,8 @@
     pathComponents = [pathComponents subarrayWithRange:NSMakeRange(0, [pathComponents count] - 4)];
     NSString *path = [NSString pathWithComponents:pathComponents];
     [[NSWorkspace sharedWorkspace] launchApplication:path];
-    [NSApp terminate:nil];}
+    [NSApp terminate:nil];
+}
 
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {

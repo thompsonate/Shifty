@@ -37,22 +37,32 @@ class PreferencesWindow: NSWindowController {
     override func keyDown(with theEvent: NSEvent) {
         if theEvent.keyCode == 13 {
             window?.close()
+        } else if theEvent.keyCode == 46 {
+            window?.miniaturize(Any?.self)
+        }
+    }
+    
+    func readLoginItems() {
+        let domain = prefs.persistentDomain(forName: "loginwindow")
+        if let domain = domain {
+            let value: Any? = domain["AutoLaunchedApplicationDictionary"]
+            if let items = value as? Array<Any> {
+                print(items)
+            }
         }
     }
     
     @IBAction func setAutoLaunch(_ sender: Any) {
-        let appBundleIdentifier = "io.natethompson.ShiftyHelper"
-        let autoLaunch = (setAutoLaunch.state == NSOnState)
-        if SMLoginItemSetEnabled(appBundleIdentifier as CFString, autoLaunch) {
-            if autoLaunch {
-                NSLog("Successfully add login item.")
-            } else {
-                NSLog("Successfully remove login item.")
-            }
-        } else {
-            NSLog("Failed to add login item.")
-        }
-        prefs.setValue(autoLaunch, forKey: Keys.isAutoLaunchEnabled)
+        readLoginItems()
+        prefs.setValue(setAutoLaunch.state == NSOnState, forKey: Keys.isAutoLaunchEnabled)
+    }
+    
+    func dialogOK(text: String) {
+        let alert = NSAlert()
+        alert.messageText = text
+        alert.alertStyle = NSAlertStyle.warning
+        alert.addButton(withTitle: "OK")
+        alert.runModal()
     }
     
     @IBAction func toggleStatusItem(_ sender: Any) {

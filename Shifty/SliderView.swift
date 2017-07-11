@@ -9,7 +9,7 @@
 import Cocoa
 
 class SliderView: NSView {
-
+    
     @IBOutlet weak var shiftSlider: NSSlider!
     var sliderValueChanged: ((Float) -> Void)?
     var sliderEnabled: ((Void) -> Void)?
@@ -21,5 +21,6 @@ class SliderView: NSView {
     @IBAction func clickEnableSlider(_ sender: Any) {
         shiftSlider.isEnabled = true
         sliderEnabled?()
+        
     }
 }

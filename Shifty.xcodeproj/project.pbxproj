@@ -196,12 +196,12 @@
 				TargetAttributes = {
 					43528A4E1F1045830086F086 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = YT2C78F725;
+						DevelopmentTeam = 3Q7XKEDZ36;
 						ProvisioningStyle = Automatic;
 					};
 					43CC9E421EBAB19300983528 = {
 						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = YT2C78F725;
+						DevelopmentTeam = 3Q7XKEDZ36;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -291,7 +291,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = YT2C78F725;
+				DEVELOPMENT_TEAM = 3Q7XKEDZ36;
 				INFOPLIST_FILE = ShiftyHelper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.natethompson.ShiftyHelper;
@@ -308,7 +308,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = YT2C78F725;
+				DEVELOPMENT_TEAM = 3Q7XKEDZ36;
 				INFOPLIST_FILE = ShiftyHelper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.natethompson.ShiftyHelper;
@@ -416,7 +416,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = YT2C78F725;
+				DEVELOPMENT_TEAM = 3Q7XKEDZ36;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
@@ -438,7 +438,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = YT2C78F725;
+				DEVELOPMENT_TEAM = 3Q7XKEDZ36;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
@@ -464,6 +464,7 @@
 				43528A611F1045830086F086 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		43CC9E3E1EBAB19300983528 /* Build configuration list for PBXProject "Shifty" */ = {
 			isa = XCConfigurationList;

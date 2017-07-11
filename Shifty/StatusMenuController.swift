@@ -8,17 +8,23 @@
 
 import Cocoa
 
+let BLClient = CBBlueLightClient()
+
 extension CBBlueLightClient {
     var strength: Float {
         var strength: Float = 0.0
         self.getStrength(&strength)
         return strength
     }
+    var CCT: Float {
+        var CCT: Float = 0.0
+        self.getCCT(&CCT)
+        return CCT
+    }
 }
 
 class StatusMenuController: NSObject {
     
-    let client = CBBlueLightClient()
     var preferencesWindow: PreferencesWindow!
     
     @IBOutlet weak var statusMenu: NSMenu!
@@ -49,7 +55,7 @@ class StatusMenuController: NSObject {
             self.power(self)
         }
         
-        sliderView.shiftSlider.floatValue = client.strength * 100
+        sliderView.shiftSlider.floatValue = BLClient.strength * 100
 //        if client is not enabled {
 //            activeState = false
 //            powerMenuItem.title = "Turn On"
@@ -58,11 +64,8 @@ class StatusMenuController: NSObject {
     }
     
     @IBAction func power(_ sender: Any) {
-        if activeState {
-            shift(isEnabled: false)
-        } else {
-            shift(isEnabled: true)
-        }
+        shift(isEnabled: activeState)
+
     }
     
     @IBAction func disableHour(_ sender: Any) {
@@ -90,7 +93,7 @@ class StatusMenuController: NSObject {
     
     func shift(strength: Float) {
         if strength != 0.0 {
-            client.setStrength(strength/100, commit: true)
+            BLClient.setStrength(strength/100, commit: true)
             if activeState == true {
                 activeState = true
                 powerMenuItem.title = "Turn Off"
@@ -99,14 +102,14 @@ class StatusMenuController: NSObject {
             activeState = false
             powerMenuItem.title = "Turn On"
         }
-        client.setEnabled(strength/100 != 0.0)
+        BLClient.setEnabled(strength/100 != 0.0)
     }
     
     func shift(isEnabled: Bool) {
         if isEnabled {
             let sliderValue = sliderView.shiftSlider.floatValue
-            client.setStrength(sliderValue/100, commit: true)
-            client.setEnabled(true)
+            BLClient.setStrength(sliderValue/100, commit: true)
+            BLClient.setEnabled(true)
             activeState = true
             powerMenuItem.title = "Turn Off"
             sliderView.shiftSlider.isEnabled = true
@@ -118,7 +121,7 @@ class StatusMenuController: NSObject {
                 disableHourMenuItem.title = "Disable for an hour"
             }
         } else {
-            client.setEnabled(false)
+            BLClient.setEnabled(false)
             activeState = false
             powerMenuItem.title = "Turn On"
             sliderView.shiftSlider.isEnabled = false
