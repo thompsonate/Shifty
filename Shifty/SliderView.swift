@@ -21,6 +21,5 @@ class SliderView: NSView {
     @IBAction func clickEnableSlider(_ sender: Any) {
         shiftSlider.isEnabled = true
         sliderEnabled?()
-        
     }
 }

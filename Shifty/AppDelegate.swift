@@ -39,7 +39,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func statusBarButtonClicked(sender: NSStatusBarButton) {
         let event = NSApp.currentEvent!
         
-        if event.type == NSEventType.rightMouseUp {
+        if event.type == NSEventType.rightMouseUp || event.modifierFlags.contains(.control)  {
             statusItem.menu = statusMenu
             statusItem.popUpMenu(statusMenu)
             statusItem.menu = nil

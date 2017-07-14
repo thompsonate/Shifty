@@ -22,14 +22,16 @@
         <customObject id="YHE-ZD-Fjn" userLabel="StatusMenuController" customClass="StatusMenuController" customModule="Shifty" customModuleProvider="target">
             <connections>
                 <outlet property="disableHourMenuItem" destination="lLZ-zs-A2J" id="JBY-cw-D9b"/>
+                <outlet property="moonIcon" destination="QFo-Gz-iR8" id="bkD-8o-fbd"/>
                 <outlet property="powerMenuItem" destination="3QK-Yf-KEO" id="Ndx-D9-T04"/>
                 <outlet property="sliderView" destination="xRd-3s-8Ep" id="5v2-aR-QE3"/>
                 <outlet property="statusMenu" destination="YaK-8p-dol" id="uua-tx-AWw"/>
+                <outlet property="sunIcon" destination="Dky-H2-15i" id="AXj-lL-QbW"/>
             </connections>
         </customObject>
         <menu id="YaK-8p-dol" userLabel="StatusMenu">
             <items>
-                <menuItem title="Turn Off" tag="1" id="3QK-Yf-KEO">
+                <menuItem title="Turn Off Night Shift" tag="1" id="3QK-Yf-KEO">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="power:" target="YHE-ZD-Fjn" id="JXj-lp-mVz"/>
@@ -67,7 +69,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JKy-ed-5KM">
-                    <rect key="frame" x="-6" y="-6" width="192" height="32"/>
+                    <rect key="frame" x="-6" y="-4" width="250" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="push" bezelStyle="rounded" alignment="center" borderStyle="border" transparent="YES" imageScaling="proportionallyDown" inset="2" id="Eas-n8-yck">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -77,27 +79,27 @@
                         <action selector="clickEnableSlider:" target="xRd-3s-8Ep" id="nyf-aQ-CMP"/>
                     </connections>
                 </button>
-                <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="93c-bH-Y61">
-                    <rect key="frame" x="44" y="3" width="150" height="19"/>
+                <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qOz-qT-jic">
+                    <rect key="frame" x="47" y="4" width="149" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="55.527010658914719" tickMarkPosition="below" sliderType="linear" id="E2Q-YM-AR3"/>
+                    <sliderCell key="cell" alignment="left" maxValue="100" doubleValue="20.184326171875" tickMarkPosition="above" sliderType="linear" id="AT9-Xr-w3B"/>
                     <connections>
-                        <action selector="shiftSliderMoved:" target="xRd-3s-8Ep" id="pCW-7A-jnX"/>
+                        <action selector="shiftSliderMoved:" target="xRd-3s-8Ep" id="Ijr-EN-eZS"/>
                     </connections>
                 </slider>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dky-H2-15i">
-                    <rect key="frame" x="23" y="5" width="15" height="15"/>
+                    <rect key="frame" x="22" y="3" width="19" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="sun" id="qBk-P2-1HM"/>
                 </imageView>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QFo-Gz-iR8">
-                    <rect key="frame" x="200" y="5" width="15" height="15"/>
+                    <rect key="frame" x="202" y="5" width="15" height="15"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="moon" id="1sP-n7-4O8"/>
                 </imageView>
             </subviews>
             <connections>
-                <outlet property="shiftSlider" destination="93c-bH-Y61" id="FeQ-Bl-Y4t"/>
+                <outlet property="shiftSlider" destination="qOz-qT-jic" id="RJ9-eC-U59"/>
             </connections>
             <point key="canvasLocation" x="144" y="307"/>
         </customView>
