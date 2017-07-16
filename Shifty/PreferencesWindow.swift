@@ -42,19 +42,11 @@ class PreferencesWindow: NSWindowController {
         }
     }
     
-    func readLoginItems() {
-        let domain = prefs.persistentDomain(forName: "loginwindow")
-        if let domain = domain {
-            let value: Any? = domain["AutoLaunchedApplicationDictionary"]
-            if let items = value as? Array<Any> {
-                print(items)
-            }
-        }
-    }
-    
     @IBAction func setAutoLaunch(_ sender: Any) {
-        readLoginItems()
-        prefs.setValue(setAutoLaunch.state == NSOnState, forKey: Keys.isAutoLaunchEnabled)
+        let autoLaunch = setAutoLaunch.state == NSOnState
+        prefs.setValue(autoLaunch, forKey: Keys.isAutoLaunchEnabled)
+        let launcherAppIdentifier = "io.natethompson.ShiftyHelper"
+        SMLoginItemSetEnabled(launcherAppIdentifier as CFString, autoLaunch)
     }
     
     func dialogOK(text: String) {

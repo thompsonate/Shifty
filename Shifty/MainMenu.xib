@@ -21,6 +21,7 @@
         </customObject>
         <customObject id="YHE-ZD-Fjn" userLabel="StatusMenuController" customClass="StatusMenuController" customModule="Shifty" customModuleProvider="target">
             <connections>
+                <outlet property="descriptionText" destination="zi6-lD-Hd5" id="JUF-9G-FHu"/>
                 <outlet property="disableHourMenuItem" destination="lLZ-zs-A2J" id="JBY-cw-D9b"/>
                 <outlet property="moonIcon" destination="QFo-Gz-iR8" id="bkD-8o-fbd"/>
                 <outlet property="powerMenuItem" destination="3QK-Yf-KEO" id="Ndx-D9-T04"/>
@@ -29,13 +30,16 @@
                 <outlet property="sunIcon" destination="Dky-H2-15i" id="AXj-lL-QbW"/>
             </connections>
         </customObject>
-        <menu id="YaK-8p-dol" userLabel="StatusMenu">
+        <menu autoenablesItems="NO" id="YaK-8p-dol" userLabel="StatusMenu">
             <items>
                 <menuItem title="Turn Off Night Shift" tag="1" id="3QK-Yf-KEO">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="power:" target="YHE-ZD-Fjn" id="JXj-lp-mVz"/>
                     </connections>
+                </menuItem>
+                <menuItem title="Description" id="zi6-lD-Hd5">
+                    <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="Zh0-ra-bP7"/>
                 <menuItem title="Slider" id="NRb-4W-jcc">

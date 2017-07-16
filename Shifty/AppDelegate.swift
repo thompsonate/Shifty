@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import ServiceManagement
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -18,6 +19,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        let launcherAppIdentifier = "io.natethompson.ShiftyHelper"
+        
+        var startedAtLogin = false
+        for app in NSWorkspace.shared().runningApplications {
+            if app.bundleIdentifier == launcherAppIdentifier {
+                startedAtLogin = true
+            }
+        }
+        
+        if startedAtLogin {
+            DistributedNotificationCenter.default().post(name: Notification.Name("killme"), object: Bundle.main.bundleIdentifier!)
+            print("launcher app killed")
+        }
+        
+        
         let icon = NSImage(named: "statusIcon")
         icon?.isTemplate = true
         statusItem.image = icon

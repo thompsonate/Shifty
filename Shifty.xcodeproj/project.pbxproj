@@ -9,12 +9,6 @@
 /* Begin PBXBuildFile section */
 		433EE8521EBD8ECA007EA870 /* CoreBrightness.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433EE8511EBD8ECA007EA870 /* CoreBrightness.framework */; };
 		4346F8EB1EBE827E00687A67 /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4346F8E91EBE827E00687A67 /* PreferencesWindow.xib */; };
-		43528A531F1045830086F086 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 43528A521F1045830086F086 /* AppDelegate.m */; };
-		43528A561F1045830086F086 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 43528A551F1045830086F086 /* main.m */; };
-		43528A591F1045830086F086 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43528A581F1045830086F086 /* ViewController.m */; };
-		43528A5B1F1045830086F086 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43528A5A1F1045830086F086 /* Assets.xcassets */; };
-		43528A5E1F1045830086F086 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43528A5C1F1045830086F086 /* Main.storyboard */; };
-		43528A641F1046950086F086 /* ShiftyHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 43528A4F1F1045830086F086 /* ShiftyHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4368E3031EBEBA6C00D53310 /* PreferencesWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4368E3021EBEBA6C00D53310 /* PreferencesWindow.swift */; };
 		437D7E161EC015CB00544FC8 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437D7E151EC015CB00544FC8 /* SliderView.swift */; };
 		4394DDA91EBE376F00F22908 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4394DDA21EBE376F00F22908 /* AppDelegate.swift */; };
@@ -22,16 +16,21 @@
 		4394DDAB1EBE376F00F22908 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4394DDA51EBE376F00F22908 /* Info.plist */; };
 		4394DDAC1EBE376F00F22908 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4394DDA61EBE376F00F22908 /* MainMenu.xib */; };
 		4394DDAD1EBE376F00F22908 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4394DDA81EBE376F00F22908 /* StatusMenuController.swift */; };
+		43C0838C1F19AEF900E73B84 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43C0838B1F19AEF900E73B84 /* ServiceManagement.framework */; };
+		43C0838F1F19BE1000E73B84 /* CBBlueLightClient+Shifty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C0838E1F19BE1000E73B84 /* CBBlueLightClient+Shifty.swift */; };
+		43C7A4881F19F2CB00A697C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C7A4871F19F2CB00A697C0 /* AppDelegate.swift */; };
+		43C7A48C1F19F2CB00A697C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43C7A48B1F19F2CB00A697C0 /* Assets.xcassets */; };
+		43C7A4941F19FA9600A697C0 /* ShiftyHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 43C7A4851F19F2CB00A697C0 /* ShiftyHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		43528A631F10465E0086F086 /* CopyFiles */ = {
+		43C083891F19AEA600E73B84 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = Contents/Library/LoginItems;
 			dstSubfolderSpec = 1;
 			files = (
-				43528A641F1046950086F086 /* ShiftyHelper.app in CopyFiles */,
+				43C7A4941F19FA9600A697C0 /* ShiftyHelper.app in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,15 +39,6 @@
 /* Begin PBXFileReference section */
 		433EE8511EBD8ECA007EA870 /* CoreBrightness.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBrightness.framework; path = ../../../../../System/Library/PrivateFrameworks/CoreBrightness.framework; sourceTree = "<group>"; };
 		4346F8E91EBE827E00687A67 /* PreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PreferencesWindow.xib; path = Shifty/PreferencesWindow.xib; sourceTree = "<group>"; };
-		43528A4F1F1045830086F086 /* ShiftyHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShiftyHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		43528A511F1045830086F086 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		43528A521F1045830086F086 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		43528A551F1045830086F086 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		43528A571F1045830086F086 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		43528A581F1045830086F086 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		43528A5A1F1045830086F086 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		43528A5D1F1045830086F086 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		43528A5F1F1045830086F086 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4368E3021EBEBA6C00D53310 /* PreferencesWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreferencesWindow.swift; path = Shifty/PreferencesWindow.swift; sourceTree = "<group>"; };
 		437D7E151EC015CB00544FC8 /* SliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SliderView.swift; path = Shifty/SliderView.swift; sourceTree = "<group>"; };
 		4394DDA21EBE376F00F22908 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Shifty/AppDelegate.swift; sourceTree = "<group>"; };
@@ -58,11 +48,19 @@
 		4394DDA61EBE376F00F22908 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = Shifty/MainMenu.xib; sourceTree = "<group>"; };
 		4394DDA81EBE376F00F22908 /* StatusMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatusMenuController.swift; path = Shifty/StatusMenuController.swift; sourceTree = "<group>"; };
 		4394DDAE1EBE379900F22908 /* Shifty-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Shifty-Bridging-Header.h"; path = "Shifty/Shifty-Bridging-Header.h"; sourceTree = "<group>"; };
+		43C0838B1F19AEF900E73B84 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		43C0838D1F19BA6900E73B84 /* Shifty.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Shifty.entitlements; path = Shifty/Shifty.entitlements; sourceTree = "<group>"; };
+		43C0838E1F19BE1000E73B84 /* CBBlueLightClient+Shifty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CBBlueLightClient+Shifty.swift"; sourceTree = "<group>"; };
+		43C7A4851F19F2CB00A697C0 /* ShiftyHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShiftyHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		43C7A4871F19F2CB00A697C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		43C7A48B1F19F2CB00A697C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		43C7A4901F19F2CB00A697C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43C7A4951F19FE1A00A697C0 /* ShiftyHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShiftyHelper.entitlements; sourceTree = "<group>"; };
 		43CC9E431EBAB19300983528 /* Shifty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shifty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		43528A4C1F1045830086F086 /* Frameworks */ = {
+		43C7A4821F19F2CB00A697C0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -73,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43C0838C1F19AEF900E73B84 /* ServiceManagement.framework in Frameworks */,
 				433EE8521EBD8ECA007EA870 /* CoreBrightness.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -83,41 +82,21 @@
 		433EE8501EBD8ECA007EA870 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				43C0838B1F19AEF900E73B84 /* ServiceManagement.framework */,
 				433EE8511EBD8ECA007EA870 /* CoreBrightness.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		43528A501F1045830086F086 /* ShiftyHelper */ = {
-			isa = PBXGroup;
-			children = (
-				43528A511F1045830086F086 /* AppDelegate.h */,
-				43528A521F1045830086F086 /* AppDelegate.m */,
-				43528A571F1045830086F086 /* ViewController.h */,
-				43528A581F1045830086F086 /* ViewController.m */,
-				43528A5A1F1045830086F086 /* Assets.xcassets */,
-				43528A5C1F1045830086F086 /* Main.storyboard */,
-				43528A5F1F1045830086F086 /* Info.plist */,
-				43528A541F1045830086F086 /* Supporting Files */,
-			);
-			path = ShiftyHelper;
-			sourceTree = "<group>";
-		};
-		43528A541F1045830086F086 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				43528A551F1045830086F086 /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		4394DDA11EBE375300F22908 /* Shifty */ = {
 			isa = PBXGroup;
 			children = (
+				43C0838D1F19BA6900E73B84 /* Shifty.entitlements */,
 				4394DDAE1EBE379900F22908 /* Shifty-Bridging-Header.h */,
 				4394DDA41EBE376F00F22908 /* CBBlueLightClient.h */,
 				4394DDA21EBE376F00F22908 /* AppDelegate.swift */,
 				4394DDA81EBE376F00F22908 /* StatusMenuController.swift */,
+				43C0838E1F19BE1000E73B84 /* CBBlueLightClient+Shifty.swift */,
 				4368E3021EBEBA6C00D53310 /* PreferencesWindow.swift */,
 				437D7E151EC015CB00544FC8 /* SliderView.swift */,
 				4394DDA61EBE376F00F22908 /* MainMenu.xib */,
@@ -128,11 +107,22 @@
 			name = Shifty;
 			sourceTree = "<group>";
 		};
+		43C7A4861F19F2CB00A697C0 /* ShiftyHelper */ = {
+			isa = PBXGroup;
+			children = (
+				43C7A4951F19FE1A00A697C0 /* ShiftyHelper.entitlements */,
+				43C7A4871F19F2CB00A697C0 /* AppDelegate.swift */,
+				43C7A48B1F19F2CB00A697C0 /* Assets.xcassets */,
+				43C7A4901F19F2CB00A697C0 /* Info.plist */,
+			);
+			path = ShiftyHelper;
+			sourceTree = "<group>";
+		};
 		43CC9E3A1EBAB19300983528 = {
 			isa = PBXGroup;
 			children = (
 				4394DDA11EBE375300F22908 /* Shifty */,
-				43528A501F1045830086F086 /* ShiftyHelper */,
+				43C7A4861F19F2CB00A697C0 /* ShiftyHelper */,
 				43CC9E441EBAB19300983528 /* Products */,
 				433EE8501EBD8ECA007EA870 /* Frameworks */,
 			);
@@ -142,7 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				43CC9E431EBAB19300983528 /* Shifty.app */,
-				43528A4F1F1045830086F086 /* ShiftyHelper.app */,
+				43C7A4851F19F2CB00A697C0 /* ShiftyHelper.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -150,14 +140,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		43528A4E1F1045830086F086 /* ShiftyHelper */ = {
+		43C7A4841F19F2CB00A697C0 /* ShiftyHelper */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 43528A621F1045830086F086 /* Build configuration list for PBXNativeTarget "ShiftyHelper" */;
+			buildConfigurationList = 43C7A4911F19F2CB00A697C0 /* Build configuration list for PBXNativeTarget "ShiftyHelper" */;
 			buildPhases = (
-				43528A4B1F1045830086F086 /* Sources */,
-				43528A4C1F1045830086F086 /* Frameworks */,
-				43528A4D1F1045830086F086 /* Resources */,
-				43528A631F10465E0086F086 /* CopyFiles */,
+				43C7A4811F19F2CB00A697C0 /* Sources */,
+				43C7A4821F19F2CB00A697C0 /* Frameworks */,
+				43C7A4831F19F2CB00A697C0 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -165,7 +154,7 @@
 			);
 			name = ShiftyHelper;
 			productName = ShiftyHelper;
-			productReference = 43528A4F1F1045830086F086 /* ShiftyHelper.app */;
+			productReference = 43C7A4851F19F2CB00A697C0 /* ShiftyHelper.app */;
 			productType = "com.apple.product-type.application";
 		};
 		43CC9E421EBAB19300983528 /* Shifty */ = {
@@ -175,6 +164,7 @@
 				43CC9E3F1EBAB19300983528 /* Sources */,
 				43CC9E401EBAB19300983528 /* Frameworks */,
 				43CC9E411EBAB19300983528 /* Resources */,
+				43C083891F19AEA600E73B84 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -194,15 +184,25 @@
 				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0830;
 				TargetAttributes = {
-					43528A4E1F1045830086F086 = {
+					43C7A4841F19F2CB00A697C0 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 3Q7XKEDZ36;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
 					};
 					43CC9E421EBAB19300983528 = {
 						CreatedOnToolsVersion = 8.3.1;
 						DevelopmentTeam = 3Q7XKEDZ36;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -220,18 +220,17 @@
 			projectRoot = "";
 			targets = (
 				43CC9E421EBAB19300983528 /* Shifty */,
-				43528A4E1F1045830086F086 /* ShiftyHelper */,
+				43C7A4841F19F2CB00A697C0 /* ShiftyHelper */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		43528A4D1F1045830086F086 /* Resources */ = {
+		43C7A4831F19F2CB00A697C0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43528A5B1F1045830086F086 /* Assets.xcassets in Resources */,
-				43528A5E1F1045830086F086 /* Main.storyboard in Resources */,
+				43C7A48C1F19F2CB00A697C0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,13 +248,11 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		43528A4B1F1045830086F086 /* Sources */ = {
+		43C7A4811F19F2CB00A697C0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43528A591F1045830086F086 /* ViewController.m in Sources */,
-				43528A561F1045830086F086 /* main.m in Sources */,
-				43528A531F1045830086F086 /* AppDelegate.m in Sources */,
+				43C7A4881F19F2CB00A697C0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,30 +264,20 @@
 				437D7E161EC015CB00544FC8 /* SliderView.swift in Sources */,
 				4394DDAD1EBE376F00F22908 /* StatusMenuController.swift in Sources */,
 				4394DDA91EBE376F00F22908 /* AppDelegate.swift in Sources */,
+				43C0838F1F19BE1000E73B84 /* CBBlueLightClient+Shifty.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		43528A5C1F1045830086F086 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				43528A5D1F1045830086F086 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
-		43528A601F1045830086F086 /* Debug */ = {
+		43C7A4921F19F2CB00A697C0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ShiftyHelper/ShiftyHelper.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = 3Q7XKEDZ36;
 				INFOPLIST_FILE = ShiftyHelper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -298,16 +285,17 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
-		43528A611F1045830086F086 /* Release */ = {
+		43C7A4931F19F2CB00A697C0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ShiftyHelper/ShiftyHelper.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = 3Q7XKEDZ36;
 				INFOPLIST_FILE = ShiftyHelper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -315,6 +303,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -414,6 +403,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Shifty/Shifty.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 3Q7XKEDZ36;
@@ -436,6 +426,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Shifty/Shifty.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 3Q7XKEDZ36;
@@ -457,11 +448,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		43528A621F1045830086F086 /* Build configuration list for PBXNativeTarget "ShiftyHelper" */ = {
+		43C7A4911F19F2CB00A697C0 /* Build configuration list for PBXNativeTarget "ShiftyHelper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				43528A601F1045830086F086 /* Debug */,
-				43528A611F1045830086F086 /* Release */,
+				43C7A4921F19F2CB00A697C0 /* Debug */,
+				43C7A4931F19F2CB00A697C0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
