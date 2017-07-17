@@ -13,11 +13,10 @@
 		437D7E161EC015CB00544FC8 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437D7E151EC015CB00544FC8 /* SliderView.swift */; };
 		4394DDA91EBE376F00F22908 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4394DDA21EBE376F00F22908 /* AppDelegate.swift */; };
 		4394DDAA1EBE376F00F22908 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4394DDA31EBE376F00F22908 /* Assets.xcassets */; };
-		4394DDAB1EBE376F00F22908 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4394DDA51EBE376F00F22908 /* Info.plist */; };
 		4394DDAC1EBE376F00F22908 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4394DDA61EBE376F00F22908 /* MainMenu.xib */; };
 		4394DDAD1EBE376F00F22908 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4394DDA81EBE376F00F22908 /* StatusMenuController.swift */; };
+		43C039DA1F1BD178009B1B70 /* CBBlueLightClient+Shifty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C039D91F1BD178009B1B70 /* CBBlueLightClient+Shifty.swift */; };
 		43C0838C1F19AEF900E73B84 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43C0838B1F19AEF900E73B84 /* ServiceManagement.framework */; };
-		43C0838F1F19BE1000E73B84 /* CBBlueLightClient+Shifty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C0838E1F19BE1000E73B84 /* CBBlueLightClient+Shifty.swift */; };
 		43C7A4881F19F2CB00A697C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C7A4871F19F2CB00A697C0 /* AppDelegate.swift */; };
 		43C7A48C1F19F2CB00A697C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43C7A48B1F19F2CB00A697C0 /* Assets.xcassets */; };
 		43C7A4941F19FA9600A697C0 /* ShiftyHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 43C7A4851F19F2CB00A697C0 /* ShiftyHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -48,9 +47,9 @@
 		4394DDA61EBE376F00F22908 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = Shifty/MainMenu.xib; sourceTree = "<group>"; };
 		4394DDA81EBE376F00F22908 /* StatusMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatusMenuController.swift; path = Shifty/StatusMenuController.swift; sourceTree = "<group>"; };
 		4394DDAE1EBE379900F22908 /* Shifty-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Shifty-Bridging-Header.h"; path = "Shifty/Shifty-Bridging-Header.h"; sourceTree = "<group>"; };
+		43C039D91F1BD178009B1B70 /* CBBlueLightClient+Shifty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CBBlueLightClient+Shifty.swift"; path = "Shifty/CBBlueLightClient+Shifty.swift"; sourceTree = "<group>"; };
 		43C0838B1F19AEF900E73B84 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		43C0838D1F19BA6900E73B84 /* Shifty.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Shifty.entitlements; path = Shifty/Shifty.entitlements; sourceTree = "<group>"; };
-		43C0838E1F19BE1000E73B84 /* CBBlueLightClient+Shifty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CBBlueLightClient+Shifty.swift"; sourceTree = "<group>"; };
 		43C7A4851F19F2CB00A697C0 /* ShiftyHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShiftyHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43C7A4871F19F2CB00A697C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43C7A48B1F19F2CB00A697C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -96,7 +95,7 @@
 				4394DDA41EBE376F00F22908 /* CBBlueLightClient.h */,
 				4394DDA21EBE376F00F22908 /* AppDelegate.swift */,
 				4394DDA81EBE376F00F22908 /* StatusMenuController.swift */,
-				43C0838E1F19BE1000E73B84 /* CBBlueLightClient+Shifty.swift */,
+				43C039D91F1BD178009B1B70 /* CBBlueLightClient+Shifty.swift */,
 				4368E3021EBEBA6C00D53310 /* PreferencesWindow.swift */,
 				437D7E151EC015CB00544FC8 /* SliderView.swift */,
 				4394DDA61EBE376F00F22908 /* MainMenu.xib */,
@@ -239,7 +238,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4346F8EB1EBE827E00687A67 /* PreferencesWindow.xib in Resources */,
-				4394DDAB1EBE376F00F22908 /* Info.plist in Resources */,
 				4394DDAA1EBE376F00F22908 /* Assets.xcassets in Resources */,
 				4394DDAC1EBE376F00F22908 /* MainMenu.xib in Resources */,
 			);
@@ -264,7 +262,7 @@
 				437D7E161EC015CB00544FC8 /* SliderView.swift in Sources */,
 				4394DDAD1EBE376F00F22908 /* StatusMenuController.swift in Sources */,
 				4394DDA91EBE376F00F22908 /* AppDelegate.swift in Sources */,
-				43C0838F1F19BE1000E73B84 /* CBBlueLightClient+Shifty.swift in Sources */,
+				43C039DA1F1BD178009B1B70 /* CBBlueLightClient+Shifty.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

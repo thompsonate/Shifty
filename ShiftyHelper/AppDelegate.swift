@@ -8,10 +8,22 @@
 
 import Cocoa
 
+
+class ShiftyHelperApplication: NSApplication {
+    let strongDelegate = AppDelegate()
+    
+    override init() {
+        super.init()
+        self.delegate = strongDelegate
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
-
 
     public func applicationDidFinishLaunching(_ notification: Notification) {
         let mainAppIdentifier = "io.natethompson.Shifty"

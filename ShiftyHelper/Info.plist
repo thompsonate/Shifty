@@ -9,7 +9,7 @@
 	<key>CFBundleIconFile</key>
 	<string></string>
 	<key>CFBundleIdentifier</key>
-	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<string>io.natethompson.ShiftyHelper</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -19,16 +19,14 @@
 	<key>CFBundleShortVersionString</key>
 	<string>0.1</string>
 	<key>CFBundleVersion</key>
-	<string>12</string>
-	<key>LSApplicationCategoryType</key>
-	<string>public.app-category.utilities</string>
+	<string>2</string>
+	<key>LSBackgroundOnly</key>
+	<true/>
 	<key>LSMinimumSystemVersion</key>
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
 	<key>LSUIElement</key>
 	<true/>
-	<key>NSMainNibFile</key>
-	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
-	<string>NSApplication</string>
+	<string>ShiftyHelper.ShiftyHelperApplication</string>
 </dict>
 </plist>

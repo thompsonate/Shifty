@@ -26,7 +26,9 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     var activeState = true
     var isDisableSelected = false
     var disableTimer: Timer!
-    var updateInterfaceTimer: Timer!
+    var disabledUntilDate: Date!
+    
+    let calendar = NSCalendar(identifier: .gregorian)!
     
     override func awakeFromNib() {
         statusMenu.delegate = self
@@ -49,6 +51,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             self.shift(isEnabled: true)
             self.disableHourMenuItem.isEnabled = true
             self.disableDisableTimer()
+            self.setDescriptionText(keepVisible: true)
         }
         
         let appDelegate = NSApplication.shared().delegate as! AppDelegate
@@ -70,7 +73,6 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             setActiveState(state: BLClient.isNightShiftEnabled)
         }
         setDescriptionText()
-        descriptionMenuItem.isHidden = !activeState
     }
     
     
@@ -99,6 +101,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
                 self.disableHourMenuItem.title = "Disable for an hour"
             }
             disableTimer.tolerance = 60
+            
+            let currentDate = Date()
+            var addComponents = DateComponents()
+            addComponents.hour = 1
+            disabledUntilDate = calendar.date(byAdding: addComponents, to: currentDate, options: [])!
         } else {
             disableDisableTimer()
             shift(isEnabled: true)
@@ -115,7 +122,13 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     func setActiveState(state: Bool) {
         activeState = state
         sliderView.shiftSlider.isEnabled = state
-
+        
+        if isDisableSelected {
+            disableHourMenuItem.isEnabled = true
+        } else {
+            disableHourMenuItem.isEnabled = state
+        }
+        
         if state {
             powerMenuItem.title = "Turn Off Night Shift"
         } else {
@@ -135,7 +148,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             disableHourMenuItem.isEnabled = false
         }
         if !descriptionMenuItem.isHidden {
-            setDescriptionText()
+            setDescriptionText(keepVisible: true)
         }
         BLClient.setEnabled(strength/100 != 0.0)
     }
@@ -156,33 +169,66 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         }
     }
     
-    func setDescriptionText() {
-        if activeState {
-            switch BLClient.schedule {
-            case .off:
+    func setDescriptionText(keepVisible: Bool = false) {
+        if isDisableSelected {
+            let nowDate = Date()
+            let dateComponentsFormatter = DateComponentsFormatter()
+            dateComponentsFormatter.allowedUnits = [NSCalendar.Unit.second]
+            let disabledTimeLeftComponents = calendar.components([.second], from: nowDate, to: disabledUntilDate, options: [])
+            var disabledTimeLeft = Double(disabledTimeLeftComponents.second!) / 60.0
+            disabledTimeLeft.round()
+            
+            if disabledTimeLeft > 1 {
+                descriptionMenuItem.title = "Disabled for \(Int(disabledTimeLeft)) more minutes"
+            } else {
+                descriptionMenuItem.title = "Disabled for 1 more minute"
+            }
+            descriptionMenuItem.isHidden = false
+            return
+        }
+        
+        switch BLClient.schedule {
+        case .off:
+            if keepVisible {
+                descriptionText.title = "Enabled"
+            } else {
                 descriptionText.isHidden = true
-            case .sunSchedule:
-                descriptionText.isHidden = false
+            }
+        case .sunSchedule:
+            if !keepVisible {
+                descriptionText.isHidden = !activeState
+            }
+            if activeState {
                 descriptionText.title = "Enabled until sunrise"
-            case .timedSchedule(_, let endTime):
+            } else {
+                descriptionText.title = "Disabled"
+            }
+        case .timedSchedule(_, let endTime):
+            if !keepVisible {
+                descriptionText.isHidden = !activeState
+            }
+            if activeState {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateStyle = .none
                 dateFormatter.timeStyle = .short
                 let date = dateFormatter.string(from: endTime)
                 
                 descriptionText.title = "Enabled until \(date)"
-                descriptionText.isHidden = false
+            } else {
+                descriptionText.title = "Disabled"
             }
-        } else {
-            descriptionText.title = "–"
         }
     }
     
     @IBAction func preferencesClicked(_ sender: NSMenuItem) {
         preferencesWindow.showWindow(nil)
+        preferencesWindow.window?.orderFrontRegardless()
     }
     
     @IBAction func quitClicked(_ sender: NSMenuItem) {
+        if isDisableSelected {
+            shift(isEnabled: true)
+        }
         NSApplication.shared().terminate(self)
     }
 }
