@@ -19,6 +19,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        
+        if !ProcessInfo().isOperatingSystemAtLeast(OperatingSystemVersion(majorVersion: 10, minorVersion: 12, patchVersion: 4)) {
+            let alert: NSAlert = NSAlert()
+            alert.messageText = "This version of macOS does not support Night Shift"
+            alert.informativeText = "Update your Mac to version 10.12.4 or higher to use Shifty."
+            alert.alertStyle = NSAlertStyle.warning
+            alert.addButton(withTitle: "OK")
+            alert.runModal()
+            
+            NSApplication.shared().terminate(self)
+        }
+        
         let launcherAppIdentifier = "io.natethompson.ShiftyHelper"
         
         var startedAtLogin = false
@@ -30,7 +42,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         if startedAtLogin {
             DistributedNotificationCenter.default().post(name: Notification.Name("killme"), object: Bundle.main.bundleIdentifier!)
-            print("launcher app killed")
         }
         
         

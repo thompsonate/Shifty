@@ -3,61 +3,61 @@
     {
       "size" : "16x16",
       "idiom" : "mac",
-      "filename" : "shifty-16.png",
+      "filename" : "shifty-color-16.png",
       "scale" : "1x"
     },
     {
       "size" : "16x16",
       "idiom" : "mac",
-      "filename" : "shifty-33.png",
+      "filename" : "shifty-color-32.png",
       "scale" : "2x"
     },
     {
       "size" : "32x32",
       "idiom" : "mac",
-      "filename" : "shifty-32.png",
+      "filename" : "shifty-color-33.png",
       "scale" : "1x"
     },
     {
       "size" : "32x32",
       "idiom" : "mac",
-      "filename" : "shifty-64.png",
+      "filename" : "shifty-color-64.png",
       "scale" : "2x"
     },
     {
       "size" : "128x128",
       "idiom" : "mac",
-      "filename" : "shifty-128.png",
+      "filename" : "shifty-color-128.png",
       "scale" : "1x"
     },
     {
       "size" : "128x128",
       "idiom" : "mac",
-      "filename" : "shifty-257.png",
+      "filename" : "shifty-color-256.png",
       "scale" : "2x"
     },
     {
       "size" : "256x256",
       "idiom" : "mac",
-      "filename" : "shifty-256.png",
+      "filename" : "shifty-color-257.png",
       "scale" : "1x"
     },
     {
       "size" : "256x256",
       "idiom" : "mac",
-      "filename" : "shifty-513.png",
+      "filename" : "shifty-color-512.png",
       "scale" : "2x"
     },
     {
       "size" : "512x512",
       "idiom" : "mac",
-      "filename" : "shifty-512.png",
+      "filename" : "shifty-color-513.png",
       "scale" : "1x"
     },
     {
       "size" : "512x512",
       "idiom" : "mac",
-      "filename" : "shifty-1024.png",
+      "filename" : "shifty-color-1024.png",
       "scale" : "2x"
     }
   ],
