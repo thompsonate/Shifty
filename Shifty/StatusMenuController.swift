@@ -16,24 +16,27 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     @IBOutlet weak var powerMenuItem: NSMenuItem!
     @IBOutlet weak var sliderMenuItem: NSMenuItem!
     @IBOutlet weak var descriptionMenuItem: NSMenuItem!
-    @IBOutlet weak var disableHourMenuItem: NSMenuItem!
     @IBOutlet weak var disableAppMenuItem: NSMenuItem!
+    @IBOutlet weak var disableHourMenuItem: NSMenuItem!
+    @IBOutlet weak var disableCustomMenuItem: NSMenuItem!
     @IBOutlet weak var sliderView: SliderView!
     @IBOutlet weak var sunIcon: NSImageView!
     @IBOutlet weak var moonIcon: NSImageView!
     
     var preferencesWindow: PreferencesWindow!
+    var customTimeWindow: CustomTimeWindow!
     var currentAppName = ""
     var currentAppBundleId = ""
     var disabledApps = [String]()
     var activeState = true
     
-    //Whether or not Night Shift should be toggled based on current app. False if NS is disabled across the board.
+    ///Whether or not Night Shift should be toggled based on current app. False if NS is disabled across the board.
     var isShiftForAppEnabled = false
-    //True if NS is disabled for app currently owning Menu Bar.
+    ///True if NS is disabled for app currently owning Menu Bar.
     var isDisabledForApp = false
     
     var isDisableHourSelected = false
+    var isDisableCustomSelected = false
     var disableTimer: Timer!
     var disabledUntilDate: Date!
     
@@ -42,6 +45,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     override func awakeFromNib() {
         statusMenu.delegate = self
         preferencesWindow = PreferencesWindow()
+        customTimeWindow = CustomTimeWindow()
         
         descriptionMenuItem.isEnabled = false
         sliderMenuItem.view = sliderView
@@ -63,6 +67,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         }
         
         isShiftForAppEnabled = BLClient.isNightShiftEnabled
+        disabledApps = PreferencesManager.sharedInstance.userDefaults.value(forKey: Keys.disabledApps) as? [String] ?? []
         
         let appDelegate = NSApplication.shared().delegate as! AppDelegate
         appDelegate.statusItemClicked = { _ in
@@ -84,14 +89,6 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             }
         } else if sliderView.shiftSlider.floatValue != 0.0 {
             setActiveState(state: BLClient.isNightShiftEnabled)
-        }
-        
-        if disabledApps.contains(currentAppBundleId) {
-            disableAppMenuItem.state = NSOnState
-            disableAppMenuItem.title = "Disabled for \(currentAppName)"
-        } else {
-            disableAppMenuItem.state = NSOffState
-            disableAppMenuItem.title = "Disable for \(currentAppName)"
         }
         
         setDescriptionText()
@@ -118,12 +115,14 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             shift(isEnabled: false)
             disableHourMenuItem.state = NSOnState
             disableHourMenuItem.title = "Disabled for an hour"
+            disableCustomMenuItem.isEnabled = false
             
-            disableTimer = Timer.scheduledTimer(withTimeInterval: 120, repeats: false) { _ in
+            disableTimer = Timer.scheduledTimer(withTimeInterval: 3600, repeats: false) { _ in
                 self.isDisableHourSelected = false
                 self.shift(isEnabled: true)
                 self.disableHourMenuItem.state = NSOffState
                 self.disableHourMenuItem.title = "Disable for an hour"
+                self.disableCustomMenuItem.isEnabled = true
             }
             disableTimer.tolerance = 60
             
@@ -134,15 +133,61 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         } else {
             disableDisableTimer()
             shift(isEnabled: true)
+            disableCustomMenuItem.isEnabled = true
         }
         isShiftForAppEnabled = activeState
     }
     
+    @IBAction func disableCustomTime(_ sender: NSMenuItem) {
+        if !isDisableCustomSelected {
+            customTimeWindow.showWindow(nil)
+            customTimeWindow.window?.orderFrontRegardless()
+        }
+        
+        customTimeWindow.disableCustomTime = { (timeIntervalInSeconds) in
+            self.isDisableCustomSelected = true
+            self.shift(isEnabled: false)
+            self.disableCustomMenuItem.state = NSOnState
+            self.disableCustomMenuItem.title = "Disabled for custom time"
+            self.disableHourMenuItem.isEnabled = false
+            
+            self.disableTimer = Timer.scheduledTimer(withTimeInterval: TimeInterval(timeIntervalInSeconds), repeats: false) { _ in
+                self.isDisableCustomSelected = false
+                self.shift(isEnabled: true)
+                self.disableCustomMenuItem.state = NSOffState
+                self.disableCustomMenuItem.title = "Disable for custom time..."
+                self.disableHourMenuItem.isEnabled = true
+            }
+            self.disableTimer.tolerance = 60
+            
+            let currentDate = Date()
+            var addComponents = DateComponents()
+            addComponents.second = timeIntervalInSeconds
+            self.disabledUntilDate = self.calendar.date(byAdding: addComponents, to: currentDate, options: [])!
+            
+            self.isShiftForAppEnabled = self.activeState
+        }
+        
+        if isDisableCustomSelected {
+            disableDisableTimer()
+            shift(isEnabled: true)
+            disableCustomMenuItem.isEnabled = true
+            isShiftForAppEnabled = activeState
+        }
+    }
+    
     func disableDisableTimer() {
         disableTimer?.invalidate()
-        isDisableHourSelected = false
-        disableHourMenuItem.state = NSOffState
-        disableHourMenuItem.title = "Disable for an hour"
+        
+        if isDisableHourSelected {
+            isDisableHourSelected = false
+            disableHourMenuItem.state = NSOffState
+            disableHourMenuItem.title = "Disable for an hour"
+        } else if isDisableCustomSelected {
+            isDisableCustomSelected = false
+            disableCustomMenuItem.state = NSOffState
+            disableCustomMenuItem.title = "Disable for custom time..."
+        }
     }
     
     @IBAction func disableForApp(_ sender: Any) {
@@ -152,6 +197,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             disabledApps.remove(at: disabledApps.index(of: currentAppBundleId)!)
         }
         updateCurrentApp()
+        PreferencesManager.sharedInstance.userDefaults.set(disabledApps, forKey: Keys.disabledApps)
     }
     
     func updateCurrentApp() {
@@ -159,6 +205,14 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         currentAppBundleId = NSWorkspace.shared().menuBarOwningApplication?.bundleIdentifier ?? ""
         
         isDisabledForApp = disabledApps.contains(currentAppBundleId)
+        
+        if disabledApps.contains(currentAppBundleId) {
+            disableAppMenuItem.state = NSOnState
+            disableAppMenuItem.title = "Disabled for \(currentAppName)"
+        } else {
+            disableAppMenuItem.state = NSOffState
+            disableAppMenuItem.title = "Disable for \(currentAppName)"
+        }
         
         if isShiftForAppEnabled && BLClient.isNightShiftEnabled == isDisabledForApp {
             shift(isEnabled: !isDisabledForApp)
@@ -181,6 +235,12 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             disableHourMenuItem.isEnabled = true
         } else {
             disableHourMenuItem.isEnabled = state
+        }
+        
+        if isDisableCustomSelected || isDisabledForApp {
+            disableCustomMenuItem.isEnabled = true
+        } else {
+            disableCustomMenuItem.isEnabled = state
         }
         
         if state {
@@ -224,16 +284,20 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     }
     
     func setDescriptionText(keepVisible: Bool = false) {
-        if isDisableHourSelected {
+        if isDisableHourSelected || isDisableCustomSelected {
             let nowDate = Date()
             let dateComponentsFormatter = DateComponentsFormatter()
             dateComponentsFormatter.allowedUnits = [NSCalendar.Unit.second]
             let disabledTimeLeftComponents = calendar.components([.second], from: nowDate, to: disabledUntilDate, options: [])
-            var disabledTimeLeft = Double(disabledTimeLeftComponents.second!) / 60.0
-            disabledTimeLeft.round()
+            let disabledHoursLeft = disabledTimeLeftComponents.second! / 3600
+            let disabledMinutesLeft = disabledTimeLeftComponents.second! / 60 % 60
             
-            if disabledTimeLeft > 1 {
-                descriptionMenuItem.title = "Disabled for \(Int(disabledTimeLeft)) more minutes"
+            if disabledMinutesLeft > 1 {
+                if disabledHoursLeft == 0 {
+                    descriptionMenuItem.title = "Disabled for \(Int(disabledMinutesLeft)) more minutes"
+                } else {
+                    descriptionMenuItem.title = "Disabled for \(Int(disabledHoursLeft))h \(Int(disabledMinutesLeft))m"
+                }
             } else {
                 descriptionMenuItem.title = "Disabled for 1 more minute"
             }

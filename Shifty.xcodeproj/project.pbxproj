@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		433EE8521EBD8ECA007EA870 /* CoreBrightness.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433EE8511EBD8ECA007EA870 /* CoreBrightness.framework */; };
 		4346F8EB1EBE827E00687A67 /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4346F8E91EBE827E00687A67 /* PreferencesWindow.xib */; };
+		4350191D1F21E99F0001324F /* CustomTimeWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4350191C1F21E99F0001324F /* CustomTimeWindow.swift */; };
+		4350191F1F21ECAF0001324F /* CustomTimeWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4350191E1F21ECAF0001324F /* CustomTimeWindow.xib */; };
 		4368E3031EBEBA6C00D53310 /* PreferencesWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4368E3021EBEBA6C00D53310 /* PreferencesWindow.swift */; };
 		437D7E161EC015CB00544FC8 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437D7E151EC015CB00544FC8 /* SliderView.swift */; };
 		4394DDA91EBE376F00F22908 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4394DDA21EBE376F00F22908 /* AppDelegate.swift */; };
@@ -38,6 +40,8 @@
 /* Begin PBXFileReference section */
 		433EE8511EBD8ECA007EA870 /* CoreBrightness.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBrightness.framework; path = ../../../../../System/Library/PrivateFrameworks/CoreBrightness.framework; sourceTree = "<group>"; };
 		4346F8E91EBE827E00687A67 /* PreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PreferencesWindow.xib; path = Shifty/PreferencesWindow.xib; sourceTree = "<group>"; };
+		4350191C1F21E99F0001324F /* CustomTimeWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTimeWindow.swift; path = Shifty/CustomTimeWindow.swift; sourceTree = "<group>"; };
+		4350191E1F21ECAF0001324F /* CustomTimeWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTimeWindow.xib; sourceTree = "<group>"; };
 		4368E3021EBEBA6C00D53310 /* PreferencesWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreferencesWindow.swift; path = Shifty/PreferencesWindow.swift; sourceTree = "<group>"; };
 		437D7E151EC015CB00544FC8 /* SliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SliderView.swift; path = Shifty/SliderView.swift; sourceTree = "<group>"; };
 		4394DDA21EBE376F00F22908 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Shifty/AppDelegate.swift; sourceTree = "<group>"; };
@@ -95,11 +99,13 @@
 				4394DDA41EBE376F00F22908 /* CBBlueLightClient.h */,
 				4394DDA21EBE376F00F22908 /* AppDelegate.swift */,
 				4394DDA81EBE376F00F22908 /* StatusMenuController.swift */,
-				43C039D91F1BD178009B1B70 /* CBBlueLightClient+Shifty.swift */,
-				4368E3021EBEBA6C00D53310 /* PreferencesWindow.swift */,
 				437D7E151EC015CB00544FC8 /* SliderView.swift */,
+				4368E3021EBEBA6C00D53310 /* PreferencesWindow.swift */,
+				4350191C1F21E99F0001324F /* CustomTimeWindow.swift */,
+				43C039D91F1BD178009B1B70 /* CBBlueLightClient+Shifty.swift */,
 				4394DDA61EBE376F00F22908 /* MainMenu.xib */,
 				4346F8E91EBE827E00687A67 /* PreferencesWindow.xib */,
+				4350191E1F21ECAF0001324F /* CustomTimeWindow.xib */,
 				4394DDA31EBE376F00F22908 /* Assets.xcassets */,
 				4394DDA51EBE376F00F22908 /* Info.plist */,
 			);
@@ -240,6 +246,7 @@
 				4346F8EB1EBE827E00687A67 /* PreferencesWindow.xib in Resources */,
 				4394DDAA1EBE376F00F22908 /* Assets.xcassets in Resources */,
 				4394DDAC1EBE376F00F22908 /* MainMenu.xib in Resources */,
+				4350191F1F21ECAF0001324F /* CustomTimeWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +268,7 @@
 				4368E3031EBEBA6C00D53310 /* PreferencesWindow.swift in Sources */,
 				437D7E161EC015CB00544FC8 /* SliderView.swift in Sources */,
 				4394DDAD1EBE376F00F22908 /* StatusMenuController.swift in Sources */,
+				4350191D1F21E99F0001324F /* CustomTimeWindow.swift in Sources */,
 				4394DDA91EBE376F00F22908 /* AppDelegate.swift in Sources */,
 				43C039DA1F1BD178009B1B70 /* CBBlueLightClient+Shifty.swift in Sources */,
 			);

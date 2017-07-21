@@ -23,6 +23,7 @@
             <connections>
                 <outlet property="descriptionMenuItem" destination="zi6-lD-Hd5" id="DcD-QI-A3k"/>
                 <outlet property="disableAppMenuItem" destination="ycw-C3-JG6" id="w7g-sV-odc"/>
+                <outlet property="disableCustomMenuItem" destination="VMR-D3-M60" id="Seo-8A-F4I"/>
                 <outlet property="disableHourMenuItem" destination="lLZ-zs-A2J" id="JBY-cw-D9b"/>
                 <outlet property="moonIcon" destination="QFo-Gz-iR8" id="bkD-8o-fbd"/>
                 <outlet property="powerMenuItem" destination="3QK-Yf-KEO" id="Ndx-D9-T04"/>
@@ -58,6 +59,12 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="disableHour:" target="YHE-ZD-Fjn" id="TQd-3H-iAK"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Disable for custom time..." id="VMR-D3-M60">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="disableCustomTime:" target="YHE-ZD-Fjn" id="tHA-tu-det"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="OE0-tz-FKo"/>

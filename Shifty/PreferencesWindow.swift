@@ -78,8 +78,8 @@ class PreferencesManager {
         let factoryDefaults = [
             Keys.isAutoLaunchEnabled: NSNumber(value: false),
             Keys.isStatusToggleEnabled: NSNumber(value: false),
-            //Keys.disabledApps: NSArray(array: )
-            ]
+            Keys.disabledApps: [String]()
+            ] as [String : Any]
         
         userDefaults.register(defaults: factoryDefaults)
     }
