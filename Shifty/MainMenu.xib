@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12120" systemVersion="16G29" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
@@ -21,10 +21,12 @@
         </customObject>
         <customObject id="YHE-ZD-Fjn" userLabel="StatusMenuController" customClass="StatusMenuController" customModule="Shifty" customModuleProvider="target">
             <connections>
-                <outlet property="descriptionText" destination="zi6-lD-Hd5" id="JUF-9G-FHu"/>
+                <outlet property="descriptionMenuItem" destination="zi6-lD-Hd5" id="DcD-QI-A3k"/>
+                <outlet property="disableAppMenuItem" destination="ycw-C3-JG6" id="w7g-sV-odc"/>
                 <outlet property="disableHourMenuItem" destination="lLZ-zs-A2J" id="JBY-cw-D9b"/>
                 <outlet property="moonIcon" destination="QFo-Gz-iR8" id="bkD-8o-fbd"/>
                 <outlet property="powerMenuItem" destination="3QK-Yf-KEO" id="Ndx-D9-T04"/>
+                <outlet property="sliderMenuItem" destination="NRb-4W-jcc" id="mJZ-ta-RmX"/>
                 <outlet property="sliderView" destination="xRd-3s-8Ep" id="5v2-aR-QE3"/>
                 <outlet property="statusMenu" destination="YaK-8p-dol" id="uua-tx-AWw"/>
                 <outlet property="sunIcon" destination="Dky-H2-15i" id="AXj-lL-QbW"/>
@@ -46,6 +48,12 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="W1o-NM-zpi"/>
+                <menuItem title="Disable for app" id="ycw-C3-JG6">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="disableForApp:" target="YHE-ZD-Fjn" id="Akx-Tu-eBm"/>
+                    </connections>
+                </menuItem>
                 <menuItem title="Disable for an hour" id="lLZ-zs-A2J">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
@@ -66,7 +74,7 @@
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="139.5" y="175.5"/>
+            <point key="canvasLocation" x="145" y="165"/>
         </menu>
         <customView id="xRd-3s-8Ep" customClass="SliderView" customModule="Shifty" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="238" height="26"/>

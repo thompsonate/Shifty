@@ -12,6 +12,7 @@ import ServiceManagement
 struct Keys {
     static let isStatusToggleEnabled = "isStatusToggleEnabled"
     static let isAutoLaunchEnabled = "isAutoLaunchEnabled"
+    static let disabledApps = "disabledApps"
 }
 
 class PreferencesWindow: NSWindowController {
@@ -76,7 +77,8 @@ class PreferencesManager {
     private func registerFactoryDefaults() {
         let factoryDefaults = [
             Keys.isAutoLaunchEnabled: NSNumber(value: false),
-            Keys.isStatusToggleEnabled: NSNumber(value: false)
+            Keys.isStatusToggleEnabled: NSNumber(value: false),
+            //Keys.disabledApps: NSArray(array: )
             ]
         
         userDefaults.register(defaults: factoryDefaults)
