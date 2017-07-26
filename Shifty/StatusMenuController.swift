@@ -81,6 +81,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     }
     
     func menuWillOpen(_: NSMenu) {
+        
         if BLClient.isNightShiftEnabled {
             sliderView.shiftSlider.floatValue = BLClient.strength * 100
             setActiveState(state: true)
@@ -233,6 +234,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         
         if isDisableHourSelected || isDisabledForApp {
             disableHourMenuItem.isEnabled = true
+        } else if customTimeWindow.window?.isVisible ?? false {
+            disableHourMenuItem.isEnabled = false
         } else {
             disableHourMenuItem.isEnabled = state
         }
