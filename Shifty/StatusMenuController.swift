@@ -24,6 +24,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     @IBOutlet weak var moonIcon: NSImageView!
     
     var preferencesWindow: PreferencesWindow!
+    var aboutWindow: AboutWindow!
     var customTimeWindow: CustomTimeWindow!
     var currentAppName = ""
     var currentAppBundleId = ""
@@ -44,6 +45,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     
     override func awakeFromNib() {
         statusMenu.delegate = self
+        aboutWindow = AboutWindow()
         preferencesWindow = PreferencesWindow()
         customTimeWindow = CustomTimeWindow()
         
@@ -61,6 +63,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         sliderView.sliderEnabled = { _ in
             self.shift(isEnabled: true)
             self.disableHourMenuItem.isEnabled = true
+            self.disableCustomMenuItem.isEnabled = true
             self.disableDisableTimer()
             self.enableForCurrentApp()
             self.setDescriptionText(keepVisible: true)
@@ -81,13 +84,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     }
     
     func menuWillOpen(_: NSMenu) {
-        
         if BLClient.isNightShiftEnabled {
             sliderView.shiftSlider.floatValue = BLClient.strength * 100
             setActiveState(state: true)
-            if isDisableHourSelected {
-                disableDisableTimer()
-            }
+            disableDisableTimer()
+
         } else if sliderView.shiftSlider.floatValue != 0.0 {
             setActiveState(state: BLClient.isNightShiftEnabled)
         }
@@ -234,7 +235,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         
         if isDisableHourSelected || isDisabledForApp {
             disableHourMenuItem.isEnabled = true
-        } else if customTimeWindow.window?.isVisible ?? false {
+        } else if customTimeWindow.isWindowLoaded && customTimeWindow.window?.isVisible ?? false {
             disableHourMenuItem.isEnabled = false
         } else {
             disableHourMenuItem.isEnabled = state
@@ -339,6 +340,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
                 descriptionMenuItem.title = "Disabled"
             }
         }
+    }
+    
+    @IBAction func aboutClicked(_ sender: NSMenuItem) {
+        aboutWindow.showWindow(nil)
+        aboutWindow.window?.orderFrontRegardless()
     }
     
     @IBAction func preferencesClicked(_ sender: NSMenuItem) {

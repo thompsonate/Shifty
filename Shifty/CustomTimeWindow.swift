@@ -46,6 +46,10 @@ class CustomTimeWindow: NSWindowController {
         minutesTextField.formatter = onlyIntValueFormatter
     }
     
+    override func showWindow(_ sender: Any?) {
+        super.showWindow(sender)
+    }
+    
     @IBOutlet weak var hoursTextField: NSTextField!
     @IBOutlet weak var minutesTextField: NSTextField!
     

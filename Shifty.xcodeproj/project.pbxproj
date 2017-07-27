@@ -17,6 +17,8 @@
 		4394DDAA1EBE376F00F22908 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4394DDA31EBE376F00F22908 /* Assets.xcassets */; };
 		4394DDAC1EBE376F00F22908 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4394DDA61EBE376F00F22908 /* MainMenu.xib */; };
 		4394DDAD1EBE376F00F22908 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4394DDA81EBE376F00F22908 /* StatusMenuController.swift */; };
+		43B547E91F2986930034E779 /* AboutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B547E71F2986930034E779 /* AboutWindow.swift */; };
+		43B547EA1F2986930034E779 /* AboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43B547E81F2986930034E779 /* AboutWindow.xib */; };
 		43C039DA1F1BD178009B1B70 /* CBBlueLightClient+Shifty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C039D91F1BD178009B1B70 /* CBBlueLightClient+Shifty.swift */; };
 		43C0838C1F19AEF900E73B84 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43C0838B1F19AEF900E73B84 /* ServiceManagement.framework */; };
 		43C7A4881F19F2CB00A697C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C7A4871F19F2CB00A697C0 /* AppDelegate.swift */; };
@@ -51,6 +53,8 @@
 		4394DDA61EBE376F00F22908 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = Shifty/MainMenu.xib; sourceTree = "<group>"; };
 		4394DDA81EBE376F00F22908 /* StatusMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatusMenuController.swift; path = Shifty/StatusMenuController.swift; sourceTree = "<group>"; };
 		4394DDAE1EBE379900F22908 /* Shifty-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Shifty-Bridging-Header.h"; path = "Shifty/Shifty-Bridging-Header.h"; sourceTree = "<group>"; };
+		43B547E71F2986930034E779 /* AboutWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutWindow.swift; path = Shifty/AboutWindow.swift; sourceTree = "<group>"; };
+		43B547E81F2986930034E779 /* AboutWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AboutWindow.xib; path = Shifty/AboutWindow.xib; sourceTree = "<group>"; };
 		43C039D91F1BD178009B1B70 /* CBBlueLightClient+Shifty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CBBlueLightClient+Shifty.swift"; path = "Shifty/CBBlueLightClient+Shifty.swift"; sourceTree = "<group>"; };
 		43C0838B1F19AEF900E73B84 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		43C0838D1F19BA6900E73B84 /* Shifty.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Shifty.entitlements; path = Shifty/Shifty.entitlements; sourceTree = "<group>"; };
@@ -99,11 +103,13 @@
 				4394DDA41EBE376F00F22908 /* CBBlueLightClient.h */,
 				4394DDA21EBE376F00F22908 /* AppDelegate.swift */,
 				4394DDA81EBE376F00F22908 /* StatusMenuController.swift */,
+				43B547E71F2986930034E779 /* AboutWindow.swift */,
 				437D7E151EC015CB00544FC8 /* SliderView.swift */,
 				4368E3021EBEBA6C00D53310 /* PreferencesWindow.swift */,
 				4350191C1F21E99F0001324F /* CustomTimeWindow.swift */,
 				43C039D91F1BD178009B1B70 /* CBBlueLightClient+Shifty.swift */,
 				4394DDA61EBE376F00F22908 /* MainMenu.xib */,
+				43B547E81F2986930034E779 /* AboutWindow.xib */,
 				4346F8E91EBE827E00687A67 /* PreferencesWindow.xib */,
 				437B3E531F22649A00B281FE /* CustomTimeWindow.xib */,
 				4394DDA31EBE376F00F22908 /* Assets.xcassets */,
@@ -245,6 +251,7 @@
 			files = (
 				4346F8EB1EBE827E00687A67 /* PreferencesWindow.xib in Resources */,
 				4394DDAA1EBE376F00F22908 /* Assets.xcassets in Resources */,
+				43B547EA1F2986930034E779 /* AboutWindow.xib in Resources */,
 				4394DDAC1EBE376F00F22908 /* MainMenu.xib in Resources */,
 				437B3E541F22649A00B281FE /* CustomTimeWindow.xib in Resources */,
 			);
@@ -270,6 +277,7 @@
 				4394DDAD1EBE376F00F22908 /* StatusMenuController.swift in Sources */,
 				4350191D1F21E99F0001324F /* CustomTimeWindow.swift in Sources */,
 				4394DDA91EBE376F00F22908 /* AppDelegate.swift in Sources */,
+				43B547E91F2986930034E779 /* AboutWindow.swift in Sources */,
 				43C039DA1F1BD178009B1B70 /* CBBlueLightClient+Shifty.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

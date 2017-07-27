@@ -19,6 +19,7 @@ class PreferencesWindow: NSWindowController {
     
     @IBOutlet weak var setAutoLaunch: NSButton!
     @IBOutlet weak var toggleStatusItem: NSButton!
+    
     let prefs = UserDefaults.standard
     var setStatusToggle: ((Void) -> Void)?
     
@@ -31,7 +32,6 @@ class PreferencesWindow: NSWindowController {
         
         self.window?.center()
         self.window?.makeKeyAndOrderFront(nil)
-        self.window?.styleMask.remove(.resizable)
         NSApp.activate(ignoringOtherApps: true)
     }
     
