@@ -34,17 +34,21 @@ class AboutWindow: NSWindowController {
             window?.close()
         }
     }
-    
+     
     @IBAction func checkUpdateClicked(_ sender: NSButton) {
+        
+        Event.checkForUpdatesClicked.record()
     }
     
     @IBAction func visitWebsiteClicked(_ sender: NSButton) {
         if let url = URL(string: "http://shifty.natethompson.io"), NSWorkspace.shared().open(url) {
         }
+        Event.websiteButtonClicked.record()
     }
     
     @IBAction func submitFeedbackClicked(_ sender: NSButton) {
         if let url = URL(string: "mailto:feedback@natethompson.io?subject=Shifty%20Feedback"), NSWorkspace.shared().open(url) {
         }
+        Event.feedbackButtonClicked.record()
     }
 }

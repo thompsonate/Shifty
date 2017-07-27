@@ -19,6 +19,9 @@
 		4394DDAD1EBE376F00F22908 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4394DDA81EBE376F00F22908 /* StatusMenuController.swift */; };
 		43B547E91F2986930034E779 /* AboutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B547E71F2986930034E779 /* AboutWindow.swift */; };
 		43B547EA1F2986930034E779 /* AboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43B547E81F2986930034E779 /* AboutWindow.xib */; };
+		43B547EE1F299AB60034E779 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43B547EC1F299AB60034E779 /* Fabric.framework */; };
+		43B547EF1F299AB60034E779 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43B547ED1F299AB60034E779 /* Crashlytics.framework */; };
+		43B547F11F29A77D0034E779 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B547F01F29A77D0034E779 /* Event.swift */; };
 		43C039DA1F1BD178009B1B70 /* CBBlueLightClient+Shifty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C039D91F1BD178009B1B70 /* CBBlueLightClient+Shifty.swift */; };
 		43C0838C1F19AEF900E73B84 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43C0838B1F19AEF900E73B84 /* ServiceManagement.framework */; };
 		43C7A4881F19F2CB00A697C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C7A4871F19F2CB00A697C0 /* AppDelegate.swift */; };
@@ -55,6 +58,9 @@
 		4394DDAE1EBE379900F22908 /* Shifty-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Shifty-Bridging-Header.h"; path = "Shifty/Shifty-Bridging-Header.h"; sourceTree = "<group>"; };
 		43B547E71F2986930034E779 /* AboutWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutWindow.swift; path = Shifty/AboutWindow.swift; sourceTree = "<group>"; };
 		43B547E81F2986930034E779 /* AboutWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AboutWindow.xib; path = Shifty/AboutWindow.xib; sourceTree = "<group>"; };
+		43B547EC1F299AB60034E779 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		43B547ED1F299AB60034E779 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		43B547F01F29A77D0034E779 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = Shifty/Event.swift; sourceTree = "<group>"; };
 		43C039D91F1BD178009B1B70 /* CBBlueLightClient+Shifty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CBBlueLightClient+Shifty.swift"; path = "Shifty/CBBlueLightClient+Shifty.swift"; sourceTree = "<group>"; };
 		43C0838B1F19AEF900E73B84 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		43C0838D1F19BA6900E73B84 /* Shifty.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Shifty.entitlements; path = Shifty/Shifty.entitlements; sourceTree = "<group>"; };
@@ -80,6 +86,8 @@
 			files = (
 				43C0838C1F19AEF900E73B84 /* ServiceManagement.framework in Frameworks */,
 				433EE8521EBD8ECA007EA870 /* CoreBrightness.framework in Frameworks */,
+				43B547EF1F299AB60034E779 /* Crashlytics.framework in Frameworks */,
+				43B547EE1F299AB60034E779 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +110,7 @@
 				4394DDAE1EBE379900F22908 /* Shifty-Bridging-Header.h */,
 				4394DDA41EBE376F00F22908 /* CBBlueLightClient.h */,
 				4394DDA21EBE376F00F22908 /* AppDelegate.swift */,
+				43B547F01F29A77D0034E779 /* Event.swift */,
 				4394DDA81EBE376F00F22908 /* StatusMenuController.swift */,
 				43B547E71F2986930034E779 /* AboutWindow.swift */,
 				437D7E151EC015CB00544FC8 /* SliderView.swift */,
@@ -112,6 +121,8 @@
 				43B547E81F2986930034E779 /* AboutWindow.xib */,
 				4346F8E91EBE827E00687A67 /* PreferencesWindow.xib */,
 				437B3E531F22649A00B281FE /* CustomTimeWindow.xib */,
+				43B547EC1F299AB60034E779 /* Fabric.framework */,
+				43B547ED1F299AB60034E779 /* Crashlytics.framework */,
 				4394DDA31EBE376F00F22908 /* Assets.xcassets */,
 				4394DDA51EBE376F00F22908 /* Info.plist */,
 			);
@@ -176,6 +187,7 @@
 				43CC9E401EBAB19300983528 /* Frameworks */,
 				43CC9E411EBAB19300983528 /* Resources */,
 				43C083891F19AEA600E73B84 /* CopyFiles */,
+				43B547EB1F299A950034E779 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -259,6 +271,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		43B547EB1F299A950034E779 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 57ca2a767468cd93801f5cea46dd15311882575b 5ae8e76d8456bfa8e4d60a077b103e6aca3a565f01f02a9f500d7f1fd0173b96";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		43C7A4811F19F2CB00A697C0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -272,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43B547F11F29A77D0034E779 /* Event.swift in Sources */,
 				4368E3031EBEBA6C00D53310 /* PreferencesWindow.swift in Sources */,
 				437D7E161EC015CB00544FC8 /* SliderView.swift in Sources */,
 				4394DDAD1EBE376F00F22908 /* StatusMenuController.swift in Sources */,
@@ -424,6 +453,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Shifty/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -447,6 +477,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Shifty/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";

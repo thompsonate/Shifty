@@ -76,6 +76,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         appDelegate.statusItemClicked = { _ in
             self.power(self)
             self.sliderView.shiftSlider.floatValue = BLClient.strength * 100
+            Event.toggleNightShift(state: self.activeState).record()
         }
         
         NSWorkspace.shared().notificationCenter.addObserver(forName: .NSWorkspaceDidActivateApplication, object: nil, queue: nil) { notification in
@@ -102,8 +103,10 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     
     @IBAction func power(_ sender: Any) {
         if sliderView.shiftSlider.floatValue == 0.0 {
+            Event.toggleNightShift(state: true).record()
             shift(strength: 50)
         } else {
+            Event.toggleNightShift(state: !activeState).record()
             shift(isEnabled: !activeState)
         }
         disableDisableTimer()
@@ -111,7 +114,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         isShiftForAppEnabled = activeState
     }
     
-    @IBAction func disableHour(_ sender: Any) {
+    @IBAction func disableHour(_ sender: NSMenuItem) {
         if !isDisableHourSelected {
             isDisableHourSelected = true
             shift(isEnabled: false)
@@ -138,9 +141,12 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             disableCustomMenuItem.isEnabled = true
         }
         isShiftForAppEnabled = activeState
+        Event.disableForHour(state: isDisableHourSelected).record()
     }
     
     @IBAction func disableCustomTime(_ sender: NSMenuItem) {
+        var timeIntervalInMinutes: Int!
+        
         if !isDisableCustomSelected {
             customTimeWindow.showWindow(nil)
             customTimeWindow.window?.orderFrontRegardless()
@@ -168,6 +174,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             self.disabledUntilDate = self.calendar.date(byAdding: addComponents, to: currentDate, options: [])!
             
             self.isShiftForAppEnabled = self.activeState
+            timeIntervalInMinutes = timeIntervalInSeconds * 60
         }
         
         if isDisableCustomSelected {
@@ -176,6 +183,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             disableCustomMenuItem.isEnabled = true
             isShiftForAppEnabled = activeState
         }
+        Event.disableForCustomTime(state: isDisableCustomSelected, timeInterval: timeIntervalInMinutes).record()
     }
     
     func disableDisableTimer() {
@@ -192,7 +200,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         }
     }
     
-    @IBAction func disableForApp(_ sender: Any) {
+    @IBAction func disableForApp(_ sender: NSMenuItem) {
         if disableAppMenuItem.state == NSOffState {
             disabledApps.append(currentAppBundleId)
         } else {
@@ -200,6 +208,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         }
         updateCurrentApp()
         PreferencesManager.sharedInstance.userDefaults.set(disabledApps, forKey: Keys.disabledApps)
+        Event.disableForCurrentApp(state: sender.state == NSOnState, app: currentAppBundleId).record()
     }
     
     func updateCurrentApp() {
@@ -345,17 +354,20 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     @IBAction func aboutClicked(_ sender: NSMenuItem) {
         aboutWindow.showWindow(nil)
         aboutWindow.window?.orderFrontRegardless()
+        Event.aboutWindowOpened.record()
     }
     
     @IBAction func preferencesClicked(_ sender: NSMenuItem) {
         preferencesWindow.showWindow(nil)
         preferencesWindow.window?.orderFrontRegardless()
+        Event.preferencesWindowOpened.record()
     }
     
     @IBAction func quitClicked(_ sender: NSMenuItem) {
         if isDisableHourSelected {
             shift(isEnabled: true)
         }
+        Event.quitShifty.record()
         NSApplication.shared().terminate(self)
     }
 }

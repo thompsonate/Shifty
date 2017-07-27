@@ -43,11 +43,12 @@ class PreferencesWindow: NSWindowController {
         }
     }
     
-    @IBAction func setAutoLaunch(_ sender: Any) {
+    @IBAction func setAutoLaunch(_ sender: NSButtonCell) {
         let autoLaunch = setAutoLaunch.state == NSOnState
         prefs.setValue(autoLaunch, forKey: Keys.isAutoLaunchEnabled)
         let launcherAppIdentifier = "io.natethompson.ShiftyHelper"
         SMLoginItemSetEnabled(launcherAppIdentifier as CFString, autoLaunch)
+        Event.autoLaunchOnLogin(isEnabled: autoLaunch).record()
     }
     
     func dialogOK(text: String) {
@@ -58,10 +59,12 @@ class PreferencesWindow: NSWindowController {
         alert.runModal()
     }
     
-    @IBAction func toggleStatusItem(_ sender: Any) {
+    @IBAction func toggleStatusItem(_ sender: NSButtonCell) {
+        let quickToggle = toggleStatusItem.state == NSOnState
         let appDelegate = NSApplication.shared().delegate as! AppDelegate
-        prefs.setValue(toggleStatusItem.state == NSOnState, forKey: Keys.isStatusToggleEnabled)
+        prefs.setValue(quickToggle, forKey: Keys.isStatusToggleEnabled)
         appDelegate.setStatusToggle()
+        Event.quickToggle(isEnabled: quickToggle).record()
     }
 }
 

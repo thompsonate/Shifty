@@ -16,10 +16,15 @@ class SliderView: NSView {
     
     @IBAction func shiftSliderMoved(_ sender: NSSlider) {
         sliderValueChanged?(sender.floatValue)
+        let event = NSApplication.shared().currentEvent
+        if event?.type == NSEventType.leftMouseUp {
+            Event.sliderMoved(value: sender.floatValue).record()
+        }
     }
     
     @IBAction func clickEnableSlider(_ sender: Any) {
         shiftSlider.isEnabled = true
         sliderEnabled?()
+        Event.enableSlider.record()
     }
 }

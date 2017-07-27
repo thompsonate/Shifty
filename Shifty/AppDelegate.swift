@@ -8,6 +8,8 @@
 
 import Cocoa
 import ServiceManagement
+import Fabric
+import Crashlytics
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -19,8 +21,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        
+        UserDefaults.standard.register(defaults: ["NSApplicationCrashOnExceptions": true])
+        Fabric.with([Crashlytics.self])
+        Event.appLaunched.record()
+                
         if !ProcessInfo().isOperatingSystemAtLeast(OperatingSystemVersion(majorVersion: 10, minorVersion: 12, patchVersion: 4)) {
+            Event.oldMacOSVersion(version: ProcessInfo().operatingSystemVersionString).record()
             let alert: NSAlert = NSAlert()
             alert.messageText = "This version of macOS does not support Night Shift"
             alert.informativeText = "Update your Mac to version 10.12.4 or higher to use Shifty."
