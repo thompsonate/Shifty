@@ -449,6 +449,7 @@
 				CODE_SIGN_ENTITLEMENTS = Shifty/Shifty.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 3Q7XKEDZ36;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

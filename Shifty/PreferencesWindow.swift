@@ -15,7 +15,7 @@ struct Keys {
     static let disabledApps = "disabledApps"
 }
 
-class PreferencesWindow: NSWindowController {
+class PreferencesWindow: NSWindowController, NSWindowDelegate {
     
     @IBOutlet weak var setAutoLaunch: NSButton!
     @IBOutlet weak var toggleStatusItem: NSButton!
@@ -29,6 +29,7 @@ class PreferencesWindow: NSWindowController {
 
     override func windowDidLoad() {
         super.windowDidLoad()
+        window?.delegate = self
         
         self.window?.center()
         self.window?.makeKeyAndOrderFront(nil)
@@ -43,20 +44,15 @@ class PreferencesWindow: NSWindowController {
         }
     }
     
+    func windowWillClose(_ notification: Notification) {
+        Event.preferences(autoLaunch: setAutoLaunch.state == NSOnState, quickToggle: toggleStatusItem.state == NSOnState).record()
+    }
+    
     @IBAction func setAutoLaunch(_ sender: NSButtonCell) {
         let autoLaunch = setAutoLaunch.state == NSOnState
         prefs.setValue(autoLaunch, forKey: Keys.isAutoLaunchEnabled)
         let launcherAppIdentifier = "io.natethompson.ShiftyHelper"
         SMLoginItemSetEnabled(launcherAppIdentifier as CFString, autoLaunch)
-        Event.autoLaunchOnLogin(isEnabled: autoLaunch).record()
-    }
-    
-    func dialogOK(text: String) {
-        let alert = NSAlert()
-        alert.messageText = text
-        alert.alertStyle = NSAlertStyle.warning
-        alert.addButton(withTitle: "OK")
-        alert.runModal()
     }
     
     @IBAction func toggleStatusItem(_ sender: NSButtonCell) {
@@ -64,7 +60,6 @@ class PreferencesWindow: NSWindowController {
         let appDelegate = NSApplication.shared().delegate as! AppDelegate
         prefs.setValue(quickToggle, forKey: Keys.isStatusToggleEnabled)
         appDelegate.setStatusToggle()
-        Event.quickToggle(isEnabled: quickToggle).record()
     }
 }
 

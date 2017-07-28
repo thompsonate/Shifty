@@ -33,7 +33,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     
     ///Whether or not Night Shift should be toggled based on current app. False if NS is disabled across the board.
     var isShiftForAppEnabled = false
-    ///True if NS is disabled for app currently owning Menu Bar.
+    ///True if Night Shift is disabled for app currently owning Menu Bar.
     var isDisabledForApp = false
     
     var isDisableHourSelected = false
@@ -208,7 +208,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         }
         updateCurrentApp()
         PreferencesManager.sharedInstance.userDefaults.set(disabledApps, forKey: Keys.disabledApps)
-        Event.disableForCurrentApp(state: sender.state == NSOnState, app: currentAppBundleId).record()
+        Event.disableForCurrentApp(state: sender.state == NSOnState).record()
     }
     
     func updateCurrentApp() {
@@ -242,16 +242,20 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         activeState = state
         sliderView.shiftSlider.isEnabled = state
         
-        if isDisableHourSelected || isDisabledForApp {
+        if isDisableHourSelected {
             disableHourMenuItem.isEnabled = true
         } else if customTimeWindow.isWindowLoaded && customTimeWindow.window?.isVisible ?? false {
+            disableHourMenuItem.isEnabled = false
+        } else if isDisabledForApp {
             disableHourMenuItem.isEnabled = false
         } else {
             disableHourMenuItem.isEnabled = state
         }
         
-        if isDisableCustomSelected || isDisabledForApp {
+        if isDisableCustomSelected {
             disableCustomMenuItem.isEnabled = true
+        } else if isDisabledForApp {
+            disableCustomMenuItem.isEnabled = false
         } else {
             disableCustomMenuItem.isEnabled = state
         }
@@ -302,14 +306,21 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             let dateComponentsFormatter = DateComponentsFormatter()
             dateComponentsFormatter.allowedUnits = [NSCalendar.Unit.second]
             let disabledTimeLeftComponents = calendar.components([.second], from: nowDate, to: disabledUntilDate, options: [])
-            let disabledHoursLeft = disabledTimeLeftComponents.second! / 3600
-            let disabledMinutesLeft = disabledTimeLeftComponents.second! / 60 % 60
+            var disabledHoursLeft = (Double(disabledTimeLeftComponents.second!) / 3600.0).rounded(.down)
+            var disabledMinutesLeft = (Double(disabledTimeLeftComponents.second!) / 60.0).truncatingRemainder(dividingBy: 60.0).rounded(.toNearestOrEven)
             
-            if disabledMinutesLeft > 1 {
+            if disabledMinutesLeft == 60.0 {
+                disabledMinutesLeft = 0.0
+                disabledHoursLeft += 1.0
+            }
+            
+            if disabledHoursLeft > 0 || disabledMinutesLeft > 1 {
                 if disabledHoursLeft == 0 {
                     descriptionMenuItem.title = "Disabled for \(Int(disabledMinutesLeft)) more minutes"
                 } else {
-                    descriptionMenuItem.title = "Disabled for \(Int(disabledHoursLeft))h \(Int(disabledMinutesLeft))m"
+                    let formattedHoursLeft = String(format: "%02d", Int(disabledHoursLeft))
+                    let formattedMinutesLeft = String(format: "%02d", Int(disabledMinutesLeft))
+                    descriptionMenuItem.title = "Disabled for \(formattedHoursLeft)h \(formattedMinutesLeft)m"
                 }
             } else {
                 descriptionMenuItem.title = "Disabled for 1 more minute"

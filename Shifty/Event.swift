@@ -16,7 +16,7 @@ enum Event {
     
     //StatusMenuController
     case toggleNightShift(state: Bool)
-    case disableForCurrentApp(state: Bool, app: String)
+    case disableForCurrentApp(state: Bool)
     case disableForHour(state: Bool)
     case disableForCustomTime(state: Bool, timeInterval: Int?)
     case aboutWindowOpened
@@ -33,8 +33,7 @@ enum Event {
     case feedbackButtonClicked
     
     //PreferencesWindow
-    case autoLaunchOnLogin(isEnabled: Bool)
-    case quickToggle(isEnabled: Bool)
+    case preferences(autoLaunch: Bool, quickToggle: Bool)
 }
 
 
@@ -49,7 +48,7 @@ extension Event {
         case .appLaunched: return "App Launched"
         case .oldMacOSVersion(_): return "Unsupported version of macOS"
         case .toggleNightShift: return "Night Shift Toggled"
-        case .disableForCurrentApp(_, _): return "Disable for current app clicked"
+        case .disableForCurrentApp(_): return "Disable for current app clicked"
         case .disableForHour(_): return" Disable for hour clicked"
         case .disableForCustomTime(_, _): return "Disable for custom time clicked"
         case .aboutWindowOpened: return "About window opened"
@@ -60,8 +59,7 @@ extension Event {
         case .checkForUpdatesClicked: return "Check for updates button clicked"
         case .websiteButtonClicked: return "Website button clicked"
         case .feedbackButtonClicked: return "Feedback button clicked"
-        case .autoLaunchOnLogin(_): return "Auto launch on login preference changed"
-        case .quickToggle(_): return "Quick Toggle preference changed"
+        case .preferences: return "Preferences"
         }
     }
     
@@ -71,18 +69,18 @@ extension Event {
             return ["Version": version]
         case .toggleNightShift(let state):
             return ["State": state ? "true" : "false"]
-        case .disableForCurrentApp(let state, let app):
-            return ["State": state ? "true" : "false", "App Bundle ID": app]
+        case .disableForCurrentApp(let state):
+            return ["State": state ? "true" : "false"]
         case .disableForHour(let state):
             return ["State": state ? "true" : "false"]
         case .disableForCustomTime(let state, let timeInterval):
-            return ["State": state ? "true" : "false", "Time interval in minutes": String(describing: timeInterval)]
+            return ["State": state ? "true" : "false",
+                    "Time interval in minutes": String(describing: timeInterval)]
         case .sliderMoved(let value):
             return ["Slider value": value]
-        case .autoLaunchOnLogin(let isEnabled):
-            return ["Is enabled": isEnabled ? "true" : "false"]
-        case .quickToggle(let isEnabled):
-            return ["Is enabled": isEnabled ? "true" : "false"]
+        case .preferences(let autoLaunch, let quickToggle):
+            return ["Auto Launch": autoLaunch ? "true" : "false",
+                    "Quick Toggle": quickToggle ? "true" : "false"]
         default:
             return nil
         }

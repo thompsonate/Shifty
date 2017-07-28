@@ -18,14 +18,14 @@
         <window title="Shifty Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="397" height="145"/>
+            <rect key="contentRect" x="196" y="240" width="397" height="149"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="397" height="145"/>
+                <rect key="frame" x="0.0" y="0.0" width="397" height="149"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fb9-wb-l37">
-                        <rect key="frame" x="56" y="66" width="102" height="18"/>
+                        <rect key="frame" x="56" y="70" width="102" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Quick Toggle" bezelStyle="regularSquare" imagePosition="left" alignment="center" inset="2" id="Qhj-C4-iGM">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -36,19 +36,10 @@
                             <binding destination="HAt-Ds-MVV" name="value" keyPath="values.isStatusToggleEnabled" id="edz-7W-g7u"/>
                         </connections>
                     </button>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kp4-Qc-5lQ">
-                        <rect key="frame" x="75" y="37" width="265" height="28"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="When enabled, click the Menu Bar icon to toggle Night Shift. Right click to open the menu." id="92c-yA-mm9">
-                            <font key="font" metaFont="smallSystem"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="upJ-Fn-54q">
-                        <rect key="frame" x="56" y="92" width="208" height="18"/>
+                        <rect key="frame" x="56" y="96" width="238" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Automatically Launch on Login" bezelStyle="regularSquare" imagePosition="left" inset="2" id="cy1-Dj-qcW">
+                        <buttonCell key="cell" type="check" title="Automatically launch Shifty on login" bezelStyle="regularSquare" imagePosition="left" inset="2" id="cy1-Dj-qcW">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -57,12 +48,21 @@
                             <binding destination="HAt-Ds-MVV" name="value" keyPath="values.isAutoLaunchEnabled" id="Hx5-7n-9y8"/>
                         </connections>
                     </button>
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kp4-Qc-5lQ">
+                        <rect key="frame" x="75" y="36" width="265" height="28"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="When enabled, click the Menu Bar icon to toggle Night Shift. Right click to open the menu." id="92c-yA-mm9">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="21.5" y="95.5"/>
+            <point key="canvasLocation" x="21.5" y="97.5"/>
         </window>
         <customCell alignment="left" id="sSe-Qw-YLh"/>
         <userDefaultsController representsSharedInstance="YES" id="HAt-Ds-MVV"/>
