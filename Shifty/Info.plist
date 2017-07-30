@@ -47,7 +47,7 @@
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUFeedURL</key>
-	<string>https://raw.githubusercontent.com/thompsonate/Shifty/master/appcast.xml</string>
+	<string>https://raw.githubusercontent.com/thompsonate/Shifty/master/ShiftyAppcast.xml</string>
 	<key>SUPublicDSAKeyFile</key>
 	<string>dsa_pub.pem</string>
 </dict>
