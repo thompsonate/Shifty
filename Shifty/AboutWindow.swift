@@ -7,10 +7,15 @@
 //
 
 import Cocoa
+import Sparkle
 
 class AboutWindow: NSWindowController {
     
     @IBOutlet weak var versionLabel: NSTextField!
+    @IBOutlet weak var checkForUpdatesButton: NSButton!
+
+    var statusMenuController: StatusMenuController!
+    let updater = SUUpdater()
     
     override var windowNibName: String! {
         return "AboutWindow"
@@ -36,7 +41,7 @@ class AboutWindow: NSWindowController {
     }
      
     @IBAction func checkUpdateClicked(_ sender: NSButton) {
-        
+        updater.checkForUpdates(sender)
         Event.checkForUpdatesClicked.record()
     }
     

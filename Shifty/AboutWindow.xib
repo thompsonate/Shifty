@@ -8,6 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="AboutWindow" customModule="Shifty" customModuleProvider="target">
             <connections>
+                <outlet property="checkForUpdatesButton" destination="uqx-zy-Iof" id="AWp-ON-CkK"/>
                 <outlet property="versionLabel" destination="YOn-17-SVA" id="UwU-KU-vLe"/>
                 <outlet property="window" destination="LQV-L9-xCk" id="062-nI-8jZ"/>
             </connections>

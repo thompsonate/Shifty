@@ -87,7 +87,7 @@
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="145" y="165"/>
+            <point key="canvasLocation" x="144.5" y="137.5"/>
         </menu>
         <customView id="xRd-3s-8Ep" customClass="SliderView" customModule="Shifty" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="238" height="26"/>

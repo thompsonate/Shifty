@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		433AD3011F2CED1F0003FBCD /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 433AD3001F2CED1F0003FBCD /* dsa_pub.pem */; };
+		433AD3081F2D00BD0003FBCD /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433AD3061F2D00BD0003FBCD /* Crashlytics.framework */; };
+		433AD3091F2D00BD0003FBCD /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433AD3071F2D00BD0003FBCD /* Fabric.framework */; };
 		433EE8521EBD8ECA007EA870 /* CoreBrightness.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433EE8511EBD8ECA007EA870 /* CoreBrightness.framework */; };
 		4346F8EB1EBE827E00687A67 /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4346F8E91EBE827E00687A67 /* PreferencesWindow.xib */; };
 		4350191D1F21E99F0001324F /* CustomTimeWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4350191C1F21E99F0001324F /* CustomTimeWindow.swift */; };
@@ -19,14 +22,14 @@
 		4394DDAD1EBE376F00F22908 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4394DDA81EBE376F00F22908 /* StatusMenuController.swift */; };
 		43B547E91F2986930034E779 /* AboutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B547E71F2986930034E779 /* AboutWindow.swift */; };
 		43B547EA1F2986930034E779 /* AboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43B547E81F2986930034E779 /* AboutWindow.xib */; };
-		43B547EE1F299AB60034E779 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43B547EC1F299AB60034E779 /* Fabric.framework */; };
-		43B547EF1F299AB60034E779 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43B547ED1F299AB60034E779 /* Crashlytics.framework */; };
 		43B547F11F29A77D0034E779 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B547F01F29A77D0034E779 /* Event.swift */; };
 		43C039DA1F1BD178009B1B70 /* CBBlueLightClient+Shifty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C039D91F1BD178009B1B70 /* CBBlueLightClient+Shifty.swift */; };
 		43C0838C1F19AEF900E73B84 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43C0838B1F19AEF900E73B84 /* ServiceManagement.framework */; };
 		43C7A4881F19F2CB00A697C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C7A4871F19F2CB00A697C0 /* AppDelegate.swift */; };
 		43C7A48C1F19F2CB00A697C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43C7A48B1F19F2CB00A697C0 /* Assets.xcassets */; };
 		43C7A4941F19FA9600A697C0 /* ShiftyHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 43C7A4851F19F2CB00A697C0 /* ShiftyHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4F2D868847D02BDBA9BA9A90 /* Pods_ShiftyHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F271F97E9F31A99983CEA240 /* Pods_ShiftyHelper.framework */; };
+		7D6801183F204BA285C9D5B7 /* Pods_Shifty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932D0C1C5887BEB67BDBBFD0 /* Pods_Shifty.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,6 +46,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		115BB8A6F00EEB28DD8A96E5 /* Pods-Shifty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shifty.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shifty/Pods-Shifty.release.xcconfig"; sourceTree = "<group>"; };
+		433AD3001F2CED1F0003FBCD /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_pub.pem; path = Shifty/dsa_pub.pem; sourceTree = "<group>"; };
+		433AD3061F2D00BD0003FBCD /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		433AD3071F2D00BD0003FBCD /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		433EE8511EBD8ECA007EA870 /* CoreBrightness.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBrightness.framework; path = ../../../../../System/Library/PrivateFrameworks/CoreBrightness.framework; sourceTree = "<group>"; };
 		4346F8E91EBE827E00687A67 /* PreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PreferencesWindow.xib; path = Shifty/PreferencesWindow.xib; sourceTree = "<group>"; };
 		4350191C1F21E99F0001324F /* CustomTimeWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTimeWindow.swift; path = Shifty/CustomTimeWindow.swift; sourceTree = "<group>"; };
@@ -58,8 +65,6 @@
 		4394DDAE1EBE379900F22908 /* Shifty-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Shifty-Bridging-Header.h"; path = "Shifty/Shifty-Bridging-Header.h"; sourceTree = "<group>"; };
 		43B547E71F2986930034E779 /* AboutWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutWindow.swift; path = Shifty/AboutWindow.swift; sourceTree = "<group>"; };
 		43B547E81F2986930034E779 /* AboutWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AboutWindow.xib; path = Shifty/AboutWindow.xib; sourceTree = "<group>"; };
-		43B547EC1F299AB60034E779 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
-		43B547ED1F299AB60034E779 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		43B547F01F29A77D0034E779 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = Shifty/Event.swift; sourceTree = "<group>"; };
 		43C039D91F1BD178009B1B70 /* CBBlueLightClient+Shifty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CBBlueLightClient+Shifty.swift"; path = "Shifty/CBBlueLightClient+Shifty.swift"; sourceTree = "<group>"; };
 		43C0838B1F19AEF900E73B84 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
@@ -70,6 +75,11 @@
 		43C7A4901F19F2CB00A697C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43C7A4951F19FE1A00A697C0 /* ShiftyHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShiftyHelper.entitlements; sourceTree = "<group>"; };
 		43CC9E431EBAB19300983528 /* Shifty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shifty.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C6209F5BF9CCE799389DE98 /* Pods-ShiftyHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShiftyHelper.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShiftyHelper/Pods-ShiftyHelper.release.xcconfig"; sourceTree = "<group>"; };
+		932D0C1C5887BEB67BDBBFD0 /* Pods_Shifty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shifty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4349442197ECCC192DF8A03 /* Pods-Shifty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shifty.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Shifty/Pods-Shifty.debug.xcconfig"; sourceTree = "<group>"; };
+		A993CE981563695C88DEE039 /* Pods-ShiftyHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShiftyHelper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShiftyHelper/Pods-ShiftyHelper.debug.xcconfig"; sourceTree = "<group>"; };
+		F271F97E9F31A99983CEA240 /* Pods_ShiftyHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShiftyHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F2D868847D02BDBA9BA9A90 /* Pods_ShiftyHelper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,9 +96,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				43C0838C1F19AEF900E73B84 /* ServiceManagement.framework in Frameworks */,
+				433AD3091F2D00BD0003FBCD /* Fabric.framework in Frameworks */,
 				433EE8521EBD8ECA007EA870 /* CoreBrightness.framework in Frameworks */,
-				43B547EF1F299AB60034E779 /* Crashlytics.framework in Frameworks */,
-				43B547EE1F299AB60034E779 /* Fabric.framework in Frameworks */,
+				433AD3081F2D00BD0003FBCD /* Crashlytics.framework in Frameworks */,
+				7D6801183F204BA285C9D5B7 /* Pods_Shifty.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +111,8 @@
 			children = (
 				43C0838B1F19AEF900E73B84 /* ServiceManagement.framework */,
 				433EE8511EBD8ECA007EA870 /* CoreBrightness.framework */,
+				932D0C1C5887BEB67BDBBFD0 /* Pods_Shifty.framework */,
+				F271F97E9F31A99983CEA240 /* Pods_ShiftyHelper.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -121,8 +135,9 @@
 				43B547E81F2986930034E779 /* AboutWindow.xib */,
 				4346F8E91EBE827E00687A67 /* PreferencesWindow.xib */,
 				437B3E531F22649A00B281FE /* CustomTimeWindow.xib */,
-				43B547EC1F299AB60034E779 /* Fabric.framework */,
-				43B547ED1F299AB60034E779 /* Crashlytics.framework */,
+				433AD3001F2CED1F0003FBCD /* dsa_pub.pem */,
+				433AD3061F2D00BD0003FBCD /* Crashlytics.framework */,
+				433AD3071F2D00BD0003FBCD /* Fabric.framework */,
 				4394DDA31EBE376F00F22908 /* Assets.xcassets */,
 				4394DDA51EBE376F00F22908 /* Info.plist */,
 			);
@@ -147,6 +162,7 @@
 				43C7A4861F19F2CB00A697C0 /* ShiftyHelper */,
 				43CC9E441EBAB19300983528 /* Products */,
 				433EE8501EBD8ECA007EA870 /* Frameworks */,
+				6A22A26B2D8B066C79401496 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -159,6 +175,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		6A22A26B2D8B066C79401496 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A4349442197ECCC192DF8A03 /* Pods-Shifty.debug.xcconfig */,
+				115BB8A6F00EEB28DD8A96E5 /* Pods-Shifty.release.xcconfig */,
+				A993CE981563695C88DEE039 /* Pods-ShiftyHelper.debug.xcconfig */,
+				8C6209F5BF9CCE799389DE98 /* Pods-ShiftyHelper.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -166,9 +193,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 43C7A4911F19F2CB00A697C0 /* Build configuration list for PBXNativeTarget "ShiftyHelper" */;
 			buildPhases = (
+				27C74446AB58523C2A71650F /* [CP] Check Pods Manifest.lock */,
 				43C7A4811F19F2CB00A697C0 /* Sources */,
 				43C7A4821F19F2CB00A697C0 /* Frameworks */,
 				43C7A4831F19F2CB00A697C0 /* Resources */,
+				5647DDEE3F4B4BF5A23F732C /* [CP] Embed Pods Frameworks */,
+				A0A30ECF4403F682F030113F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -183,11 +213,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 43CC9E521EBAB19300983528 /* Build configuration list for PBXNativeTarget "Shifty" */;
 			buildPhases = (
+				BA000E42F0ECD1867C5592C9 /* [CP] Check Pods Manifest.lock */,
 				43CC9E3F1EBAB19300983528 /* Sources */,
 				43CC9E401EBAB19300983528 /* Frameworks */,
 				43CC9E411EBAB19300983528 /* Resources */,
 				43C083891F19AEA600E73B84 /* CopyFiles */,
 				43B547EB1F299A950034E779 /* ShellScript */,
+				65FE15B889A77F94F9C3A3DF /* [CP] Embed Pods Frameworks */,
+				7FE2AB7236744A171CB710BB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -262,6 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4346F8EB1EBE827E00687A67 /* PreferencesWindow.xib in Resources */,
+				433AD3011F2CED1F0003FBCD /* dsa_pub.pem in Resources */,
 				4394DDAA1EBE376F00F22908 /* Assets.xcassets in Resources */,
 				43B547EA1F2986930034E779 /* AboutWindow.xib in Resources */,
 				4394DDAC1EBE376F00F22908 /* MainMenu.xib in Resources */,
@@ -272,6 +306,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		27C74446AB58523C2A71650F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		43B547EB1F299A950034E779 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -284,6 +333,81 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "./Fabric.framework/run 57ca2a767468cd93801f5cea46dd15311882575b 5ae8e76d8456bfa8e4d60a077b103e6aca3a565f01f02a9f500d7f1fd0173b96";
+		};
+		5647DDEE3F4B4BF5A23F732C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShiftyHelper/Pods-ShiftyHelper-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		65FE15B889A77F94F9C3A3DF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Shifty/Pods-Shifty-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7FE2AB7236744A171CB710BB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Shifty/Pods-Shifty-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A0A30ECF4403F682F030113F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShiftyHelper/Pods-ShiftyHelper-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BA000E42F0ECD1867C5592C9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -316,6 +440,7 @@
 /* Begin XCBuildConfiguration section */
 		43C7A4921F19F2CB00A697C0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A993CE981563695C88DEE039 /* Pods-ShiftyHelper.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ShiftyHelper/ShiftyHelper.entitlements;
@@ -334,6 +459,7 @@
 		};
 		43C7A4931F19F2CB00A697C0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C6209F5BF9CCE799389DE98 /* Pods-ShiftyHelper.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ShiftyHelper/ShiftyHelper.entitlements;
@@ -444,6 +570,7 @@
 		};
 		43CC9E531EBAB19300983528 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A4349442197ECCC192DF8A03 /* Pods-Shifty.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Shifty/Shifty.entitlements;
@@ -455,6 +582,7 @@
 					"$(inherited)",
 					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Shifty",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Shifty/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -469,6 +597,7 @@
 		};
 		43CC9E541EBAB19300983528 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 115BB8A6F00EEB28DD8A96E5 /* Pods-Shifty.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Shifty/Shifty.entitlements;
@@ -479,6 +608,7 @@
 					"$(inherited)",
 					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Shifty",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Shifty/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
