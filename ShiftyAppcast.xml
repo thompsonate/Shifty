@@ -7,10 +7,14 @@
         <item>
             <title>Version 0.1</title>
             <sparkle:releaseNotesLink>
-                http://you.com/app/2.0.html
+                <description><![CDATA[
+                    <h2>New Features</h2>
+                    <p>This is the first release so all the features are new :D</p>
+                ]]>
+                </description>
             </sparkle:releaseNotesLink>
-            <pubDate>Sat, 29 Jul 2006 21:52:11 +0500</pubDate>
-            <enclosure url="https://github.com/thompsonate/Shifty/releases/download/0.1/Shifty.0.1.20.dmg" sparkle:version="20" sparkle:shortVersionString="0.1" length="1623481" type="application/octet-stream" sparkle:dsaSignature="MC0CFEdQIRXCiDOy1PJ04BC2Wq2QK+/oAhUAwRBu0BpsdRJEESH4pRKNS62InZw=" />
+            <pubDate>Sat, 29 Jul 2017 23:00:00 +0500</pubDate>
+            <enclosure url="https://github.com/thompsonate/Shifty/releases/download/0.1/Shifty.0.1.20.dmg" sparkle:version="20" sparkle:shortVersionString="0.1" length="1623481" type="application/octet-stream" sparkle:dsaSignature="MCwCFC3av5VbR6rLX850yTeFNRtLLR/SAhRyRJ49NxZA8Hi7b57D1KOnLOydtA==" />
             <sparkle:minimumSystemVersion>10.12.4</sparkle:minimumSystemVersion>
         </item>
     </channel>

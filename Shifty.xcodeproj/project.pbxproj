@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		432428F11F2D7B0700E4BAFB /* ShiftyAppcast.xml in Resources */ = {isa = PBXBuildFile; fileRef = 432428F01F2D7B0700E4BAFB /* ShiftyAppcast.xml */; };
+		432428F31F2D84BF00E4BAFB /* ShiftyAppcast.xml in Resources */ = {isa = PBXBuildFile; fileRef = 432428F21F2D84BF00E4BAFB /* ShiftyAppcast.xml */; };
 		433AD3011F2CED1F0003FBCD /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 433AD3001F2CED1F0003FBCD /* dsa_pub.pem */; };
 		433AD3081F2D00BD0003FBCD /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433AD3061F2D00BD0003FBCD /* Crashlytics.framework */; };
 		433AD3091F2D00BD0003FBCD /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433AD3071F2D00BD0003FBCD /* Fabric.framework */; };
@@ -48,7 +48,7 @@
 
 /* Begin PBXFileReference section */
 		115BB8A6F00EEB28DD8A96E5 /* Pods-Shifty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shifty.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shifty/Pods-Shifty.release.xcconfig"; sourceTree = "<group>"; };
-		432428F01F2D7B0700E4BAFB /* ShiftyAppcast.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = ShiftyAppcast.xml; path = ShiftyHelper/ShiftyAppcast.xml; sourceTree = "<group>"; };
+		432428F21F2D84BF00E4BAFB /* ShiftyAppcast.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ShiftyAppcast.xml; sourceTree = "<group>"; };
 		433AD3001F2CED1F0003FBCD /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_pub.pem; path = Shifty/dsa_pub.pem; sourceTree = "<group>"; };
 		433AD3061F2D00BD0003FBCD /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		433AD3071F2D00BD0003FBCD /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
@@ -162,7 +162,7 @@
 			children = (
 				4394DDA11EBE375300F22908 /* Shifty */,
 				43C7A4861F19F2CB00A697C0 /* ShiftyHelper */,
-				432428F01F2D7B0700E4BAFB /* ShiftyAppcast.xml */,
+				432428F21F2D84BF00E4BAFB /* ShiftyAppcast.xml */,
 				43CC9E441EBAB19300983528 /* Products */,
 				433EE8501EBD8ECA007EA870 /* Frameworks */,
 				6A22A26B2D8B066C79401496 /* Pods */,
@@ -290,7 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				43C7A48C1F19F2CB00A697C0 /* Assets.xcassets in Resources */,
-				432428F11F2D7B0700E4BAFB /* ShiftyAppcast.xml in Resources */,
+				432428F31F2D84BF00E4BAFB /* ShiftyAppcast.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
