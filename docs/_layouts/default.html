@@ -3,17 +3,20 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-  <head>
-    <meta charset="UTF-8">
-    <title>{% if page.title %}{{ page.title }}{% endif %}</title>
-    <meta name="description" content="{{ page.description | default: site.description | default: site.github.project_tagline }}"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#157878">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
-  </head>
-  <body>
-    <body onload="GetLatestReleaseInfo()">
+<head>
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <meta charset="UTF-8">
+
+  <title>{% if page.title %}{{ page.title }}{% endif %}</title>
+  <meta name="description" content="{{ page.description | default: site.description | default: site.github.project_tagline }}"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#4179f4">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+</head>
+<body>
+  <body onload="GetLatestReleaseInfo()">
     <script type="text/javascript">
     function GetLatestReleaseInfo() {
       $.getJSON("https://api.github.com/repos/thompsonate/Shifty/releases").done(function (release) {
@@ -36,19 +39,19 @@
       <footer class="site-footer">
         <div class="site-footer-credits">Made with ☀️ by <a href="https://github.com/thompsonate">Nate Thompson</a>.</div>
         <div class="site-footer-credits">If you love Shifty, <a href="/donate">help me make it better</a>.</span>
-      </footer>
-    </section>
+        </footer>
+      </section>
 
-    {% if site.google_analytics %}
+      {% if site.google_analytics %}
       <script type="text/javascript">
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-        ga('create', '{{ site.google_analytics }}', 'auto');
-        ga('send', 'pageview');
+      ga('create', '{{ site.google_analytics }}', 'auto');
+      ga('send', 'pageview');
       </script>
-    {% endif %}
-  </body>
-</html>
+      {% endif %}
+    </body>
+    </html>

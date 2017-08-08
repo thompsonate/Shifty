@@ -18,9 +18,7 @@ email: nate@natethompson.io
 description: Shifty is a macOS menu bar app that gives you more control over Night Shift.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://shifty.natethompson.io" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username:
 github_username:  thompsonate
-dmg_url: https://github.com/thompsonate/Shifty/releases
 
 # Build settings
 markdown: kramdown
