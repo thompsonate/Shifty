@@ -93,11 +93,11 @@ a {
   background-image: linear-gradient(120deg, $header-bg-color-secondary, $header-bg-color);
 
   @include large {
-    padding: 5rem 6rem;
+    padding: 2rem 3rem;
   }
 
   @include medium {
-    padding: 3rem 4rem;
+    padding: 2rem 3rem;
   }
 
   @include small {
@@ -105,16 +105,24 @@ a {
   }
 }
 
+.project-icon {
+  margin-top: 0;
+  marign-bottom: 0.1rem;
+  width: 10%;
+  max-width: 6em;
+  min-width: 3em;
+}
+
 .project-name {
   margin-top: 0;
   margin-bottom: 0.1rem;
 
   @include large {
-    font-size: 3.25rem;
+    font-size: 3rem;
   }
 
   @include medium {
-    font-size: 2.25rem;
+    font-size: 2.5rem;
   }
 
   @include small {
@@ -314,6 +322,20 @@ a {
     margin: 1rem 0;
     background-color: $hr-border-color;
     border: 0;
+  }
+}
+
+.shifty-screenshot {
+  @include large {
+    content: url("/images/shifty-screenshot-large.png");
+  }
+
+  @include medium {
+    content: url("/images/shifty-screenshot-large.png");
+  }
+
+  @include small {
+    content: url("/images/shifty-screenshot-small.png");
   }
 }
 
