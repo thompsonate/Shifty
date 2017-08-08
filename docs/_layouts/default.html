@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: "en-US" }}">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
   <head>
     <meta charset="UTF-8">
     <title>{% if page.title %}{{ page.title }}{% endif %}</title>
@@ -10,11 +13,20 @@
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
   </head>
   <body>
+    <body onload="GetLatestReleaseInfo()">
+    <script type="text/javascript">
+    function GetLatestReleaseInfo() {
+      $.getJSON("https://api.github.com/repos/thompsonate/Shifty/releases").done(function (release) {
+        var url = release[0].assets[0].browser_download_url;
+        $('#downloadButton').attr('href', url);
+      });
+    }
+    </script>
     <section class="page-header">
       <img class="project-icon" src="/images/shifty-color-256.png" alt="Shifty icon">
       <h1 class="project-name">{{ site.title | default: site.github.repository_name }}</h1>
       <h2 class="project-tagline">{{ site.description | default: site.github.project_tagline }}</h2>
-      <a href="{% if site.dmg_url %}{{ site.dmg_url }}{% endif %}" class="btn">Download</a>
+      <a id="downloadButton" class="btn">Download Beta</a>
       <a href="{{ site.github.repository_url }}" class="btn">View on GitHub</a>
     </section>
 
@@ -22,10 +34,8 @@
       {{ content }}
 
       <footer class="site-footer">
-        {% if site.github.is_project_page %}
-          <span class="site-footer-owner"><a href="{{ site.github.repository_url }}">{{ site.github.repository_name }}</a> is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a>.</span>
-        {% endif %}
-        <span class="site-footer-credits">Made with ☀️ by <a href="https://github.com/thompsonate">Nate Thompson</a>.</span>
+        <div class="site-footer-credits">Made with ☀️ by <a href="https://github.com/thompsonate">Nate Thompson</a>.</div>
+        <div class="site-footer-credits">If you love Shifty, <a href="/donate">help me make it better</a>.</span>
       </footer>
     </section>
 
