@@ -3,9 +3,22 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+<script>
+$( window ).resize(function() {
+  SetScreenshotWidth();
+});
+</script>
+
 <head>
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="manifest" href="/images/manifest.json">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#444a53">
+  <link rel="shortcut icon" href="/images/favicon.ico">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+
   <meta charset="UTF-8">
 
   <title>{% if page.title %}{{ page.title }}{% endif %}</title>
@@ -35,6 +48,22 @@
 
     <section class="main-content">
       {{ content }}
+
+      <script>
+      function SetScreenshotWidth() {
+        if($(window).width() <= 672) {
+          $("img").each(function() {
+            $(this).attr("src", $(this).attr("src").replace("images/shifty-screenshot-large.png", "images/shifty-screenshot-small.png"));
+          });
+        } else {
+          $("img").each(function() {
+            $(this).attr("src", $(this).attr("src").replace("images/shifty-screenshot-small.png", "images/shifty-screenshot-large.png"));
+          });
+        }
+      };
+
+      $(SetScreenshotWidth())
+      </script>
 
       <footer class="site-footer">
         <div class="site-footer-credits">Made with ☀️ by <a href="https://github.com/thompsonate">Nate Thompson</a>.</div>

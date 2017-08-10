@@ -325,67 +325,11 @@ a {
   }
 }
 
-#container {
-  position: relative;
+#screenshot-container {
   width: 100%;
-}
-
-#container::before {
-  @include large {
-    content: "";
-    display: block;
-    padding-top: 58.77%;
-  }
-
-  @include medium {
-    content: "";
-    display: block;
-    padding-top: 58.77%;
-  }
-
-  @include small {
-    content: "";
-    display: block;
-    padding-top: 51.32%
-  }
-}
-
-.shifty-screenshot {
-  @include large {
-    content: url("/images/shifty-screenshot-large.png");
-    background-image: url("/images/shifty-screenshot-large.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-  }
-
-  @include medium {
-    content: url("/images/shifty-screenshot-large.png");
-    background-image: url("/images/shifty-screenshot-large.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-  }
-
-  @include small {
-    content: url("/images/shifty-screenshot-small.png");
-    background-image: url("/images/shifty-screenshot-small.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-  }
+  max-width: 650px;
+  display: block;
+  margin: 0 auto;
 }
 
 .site-footer {
