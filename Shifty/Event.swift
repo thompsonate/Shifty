@@ -31,6 +31,7 @@ enum Event {
     case checkForUpdatesClicked
     case websiteButtonClicked
     case feedbackButtonClicked
+    case donateButtonClicked
     
     //PreferencesWindow
     case preferences(autoLaunch: Bool, quickToggle: Bool)
@@ -59,6 +60,7 @@ extension Event {
         case .checkForUpdatesClicked: return "Check for updates button clicked"
         case .websiteButtonClicked: return "Website button clicked"
         case .feedbackButtonClicked: return "Feedback button clicked"
+        case .donateButtonClicked: return "Donate button clicked"
         case .preferences: return "Preferences"
         }
     }

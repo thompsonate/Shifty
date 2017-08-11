@@ -7,3 +7,4 @@
 //
 
 #import "CBBlueLightClient.h"
+#import "BLNotificationBlock.h"

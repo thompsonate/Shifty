@@ -18,14 +18,14 @@
         <window title="Shifty Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="397" height="149"/>
+            <rect key="contentRect" x="196" y="240" width="397" height="176"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="397" height="149"/>
+                <rect key="frame" x="0.0" y="0.0" width="397" height="176"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fb9-wb-l37">
-                        <rect key="frame" x="56" y="70" width="102" height="18"/>
+                        <rect key="frame" x="56" y="105" width="102" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Quick Toggle" bezelStyle="regularSquare" imagePosition="left" alignment="center" inset="2" id="Qhj-C4-iGM">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -37,7 +37,7 @@
                         </connections>
                     </button>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="upJ-Fn-54q">
-                        <rect key="frame" x="56" y="96" width="238" height="18"/>
+                        <rect key="frame" x="56" y="131" width="238" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Automatically launch Shifty on login" bezelStyle="regularSquare" imagePosition="left" inset="2" id="cy1-Dj-qcW">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -49,11 +49,20 @@
                         </connections>
                     </button>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kp4-Qc-5lQ">
-                        <rect key="frame" x="75" y="36" width="265" height="28"/>
+                        <rect key="frame" x="75" y="77" width="265" height="28"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="When enabled, click the Menu Bar icon to toggle Night Shift. Right click to open the menu." id="92c-yA-mm9">
                             <font key="font" metaFont="smallSystem"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m8x-JJ-O0P">
+                        <rect key="frame" x="75" y="28" width="265" height="28"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" title="To modify Night Shift schedule settings, go to System Preferences &gt; Displays &gt; Night Shift." id="BQ8-ig-0hO">
+                            <font key="font" metaFont="system" size="11"/>
+                            <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
@@ -62,7 +71,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="21.5" y="97.5"/>
+            <point key="canvasLocation" x="21.5" y="111"/>
         </window>
         <customCell alignment="left" id="sSe-Qw-YLh"/>
         <userDefaultsController representsSharedInstance="YES" id="HAt-Ds-MVV"/>

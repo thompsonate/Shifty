@@ -14,6 +14,7 @@ let ShiftyUpdater = SUUpdater()
 class AboutWindow: NSWindowController {
     
     @IBOutlet weak var versionLabel: NSTextField!
+    @IBOutlet weak var iconCreditLabel: NSTextField!
     @IBOutlet weak var checkForUpdatesButton: NSButton!
 
     var statusMenuController: StatusMenuController!
@@ -56,5 +57,11 @@ class AboutWindow: NSWindowController {
         if let url = URL(string: "mailto:feedback@natethompson.io?subject=Shifty%20Feedback"), NSWorkspace.shared().open(url) {
         }
         Event.feedbackButtonClicked.record()
+    }
+    
+    @IBAction func donateButtonClicked(_ sender: NSButton) {
+        if let url = URL(string: "http://shifty.natethompson.io/donate"), NSWorkspace.shared().open(url) {
+        }
+        Event.donateButtonClicked.record()
     }
 }

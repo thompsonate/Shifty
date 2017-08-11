@@ -15,6 +15,7 @@
 		4346F8EB1EBE827E00687A67 /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4346F8E91EBE827E00687A67 /* PreferencesWindow.xib */; };
 		4350191D1F21E99F0001324F /* CustomTimeWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4350191C1F21E99F0001324F /* CustomTimeWindow.swift */; };
 		4368E3031EBEBA6C00D53310 /* PreferencesWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4368E3021EBEBA6C00D53310 /* PreferencesWindow.swift */; };
+		4373B75D1F3D4AB3005A8ACE /* BLNotificationBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 4373B75C1F3D4AB3005A8ACE /* BLNotificationBlock.m */; };
 		437B3E541F22649A00B281FE /* CustomTimeWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 437B3E531F22649A00B281FE /* CustomTimeWindow.xib */; };
 		437D7E161EC015CB00544FC8 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437D7E151EC015CB00544FC8 /* SliderView.swift */; };
 		4394DDA91EBE376F00F22908 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4394DDA21EBE376F00F22908 /* AppDelegate.swift */; };
@@ -56,6 +57,8 @@
 		4346F8E91EBE827E00687A67 /* PreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PreferencesWindow.xib; path = Shifty/PreferencesWindow.xib; sourceTree = "<group>"; };
 		4350191C1F21E99F0001324F /* CustomTimeWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTimeWindow.swift; path = Shifty/CustomTimeWindow.swift; sourceTree = "<group>"; };
 		4368E3021EBEBA6C00D53310 /* PreferencesWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreferencesWindow.swift; path = Shifty/PreferencesWindow.swift; sourceTree = "<group>"; };
+		4373B75C1F3D4AB3005A8ACE /* BLNotificationBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLNotificationBlock.m; sourceTree = "<group>"; };
+		4373B75E1F3D5353005A8ACE /* BLNotificationBlock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLNotificationBlock.h; sourceTree = "<group>"; };
 		437B3E531F22649A00B281FE /* CustomTimeWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomTimeWindow.xib; path = Shifty/CustomTimeWindow.xib; sourceTree = "<group>"; };
 		437D7E151EC015CB00544FC8 /* SliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SliderView.swift; path = Shifty/SliderView.swift; sourceTree = "<group>"; };
 		4394DDA21EBE376F00F22908 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Shifty/AppDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +128,8 @@
 				43C0838D1F19BA6900E73B84 /* Shifty.entitlements */,
 				4394DDAE1EBE379900F22908 /* Shifty-Bridging-Header.h */,
 				4394DDA41EBE376F00F22908 /* CBBlueLightClient.h */,
+				4373B75E1F3D5353005A8ACE /* BLNotificationBlock.h */,
+				4373B75C1F3D4AB3005A8ACE /* BLNotificationBlock.m */,
 				4394DDA21EBE376F00F22908 /* AppDelegate.swift */,
 				43B547F01F29A77D0034E779 /* Event.swift */,
 				4394DDA81EBE376F00F22908 /* StatusMenuController.swift */,
@@ -431,6 +436,7 @@
 				43B547F11F29A77D0034E779 /* Event.swift in Sources */,
 				4368E3031EBEBA6C00D53310 /* PreferencesWindow.swift in Sources */,
 				437D7E161EC015CB00544FC8 /* SliderView.swift in Sources */,
+				4373B75D1F3D4AB3005A8ACE /* BLNotificationBlock.m in Sources */,
 				4394DDAD1EBE376F00F22908 /* StatusMenuController.swift in Sources */,
 				4350191D1F21E99F0001324F /* CustomTimeWindow.swift in Sources */,
 				4394DDA91EBE376F00F22908 /* AppDelegate.swift in Sources */,
