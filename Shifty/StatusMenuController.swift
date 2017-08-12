@@ -151,6 +151,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
                 self.disableHourMenuItem.state = NSOffState
                 self.disableHourMenuItem.title = "Disable for an hour"
                 self.disableCustomMenuItem.isEnabled = true
+                self.shouldNightShiftBeEnabled = self.activeState
             }
             disableTimer.tolerance = 60
             
@@ -159,9 +160,10 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             addComponents.hour = 1
             disabledUntilDate = calendar.date(byAdding: addComponents, to: currentDate, options: [])!
         } else {
-            disableDisableTimer()
             shift(isEnabled: true)
+            disableDisableTimer()
             disableCustomMenuItem.isEnabled = true
+            shouldNightShiftBeEnabled = activeState
         }
         shouldNightShiftBeEnabled = activeState
         Event.disableForHour(state: isDisableHourSelected).record()
@@ -173,6 +175,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         if !isDisableCustomSelected {
             customTimeWindow.showWindow(nil)
             customTimeWindow.window?.orderFrontRegardless()
+        } else {
+            shift(isEnabled: true)
+            disableDisableTimer()
+            disableCustomMenuItem.isEnabled = true
+            shouldNightShiftBeEnabled = activeState
         }
         
         customTimeWindow.disableCustomTime = { (timeIntervalInSeconds) in
@@ -188,6 +195,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
                 self.disableCustomMenuItem.state = NSOffState
                 self.disableCustomMenuItem.title = "Disable for custom time..."
                 self.disableHourMenuItem.isEnabled = true
+                self.shouldNightShiftBeEnabled = self.activeState
             }
             self.disableTimer.tolerance = 60
             
@@ -199,13 +207,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             self.shouldNightShiftBeEnabled = self.activeState
             timeIntervalInMinutes = timeIntervalInSeconds * 60
         }
-        
-        if isDisableCustomSelected {
-            disableDisableTimer()
-            shift(isEnabled: true)
-            disableCustomMenuItem.isEnabled = true
-            shouldNightShiftBeEnabled = activeState
-        }
+
         Event.disableForCustomTime(state: isDisableCustomSelected, timeInterval: timeIntervalInMinutes).record()
     }
     

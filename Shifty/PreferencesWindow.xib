@@ -37,9 +37,9 @@
                         </connections>
                     </button>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="upJ-Fn-54q">
-                        <rect key="frame" x="56" y="131" width="238" height="18"/>
+                        <rect key="frame" x="56" y="131" width="154" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Automatically launch Shifty on login" bezelStyle="regularSquare" imagePosition="left" inset="2" id="cy1-Dj-qcW">
+                        <buttonCell key="cell" type="check" title="Launch Shifty at login" bezelStyle="regularSquare" imagePosition="left" inset="2" id="cy1-Dj-qcW">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -61,7 +61,7 @@
                         <rect key="frame" x="75" y="28" width="265" height="28"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" title="To modify Night Shift schedule settings, go to System Preferences &gt; Displays &gt; Night Shift." id="BQ8-ig-0hO">
-                            <font key="font" metaFont="system" size="11"/>
+                            <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
