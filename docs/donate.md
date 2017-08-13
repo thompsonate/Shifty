@@ -2,8 +2,8 @@
 title: Shifty - Donate
 layout: default
 ---
-<script> window.location.replace("https://venmo.com/?txn=pay&audience=friends&recipients=@Nate_Thompson&amount=0.01&note=I%20love%20Shifty!"); </script>
+<script> window.location.replace("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=L5MAQKH9V6DXW"); </script>
 
 Redirecting...
 
-If your browser hasn't redirected you in a few seconds, [click here](https://venmo.com/?txn=pay&audience=friends&recipients=@Nate_Thompson&amount=0.01&note=I%20love%20Shifty!).
+If your browser hasn't redirected you in a few seconds, [click here](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=L5MAQKH9V6DXW).
