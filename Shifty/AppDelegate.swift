@@ -37,6 +37,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             NSApplication.shared().terminate(self)
         }
         
+        if !CBBlueLightClient.supportsBlueLightReduction() {
+            Event.unsupportedHardware.record()
+            let alert: NSAlert = NSAlert()
+            alert.messageText = "Your Mac hardware does not support Night Shift"
+            alert.informativeText = "A newer Mac is required to use Shifty."
+            alert.alertStyle = NSAlertStyle.warning
+            alert.addButton(withTitle: "OK")
+            alert.runModal()
+            
+            NSApplication.shared().terminate(self)
+        }
+        
         let launcherAppIdentifier = "io.natethompson.ShiftyHelper"
         
         var startedAtLogin = false
