@@ -13,7 +13,8 @@ import Crashlytics
 enum Event {
     case appLaunched
     case oldMacOSVersion(version: String)
-    
+    case unsupportedHardware
+
     //StatusMenuController
     case toggleNightShift(state: Bool)
     case disableForCurrentApp(state: Bool)
@@ -48,6 +49,7 @@ extension Event {
         switch(self) {
         case .appLaunched: return "App Launched"
         case .oldMacOSVersion(_): return "Unsupported version of macOS"
+        case .unsupportedHardware: return "Unsupported Hardware"
         case .toggleNightShift: return "Night Shift Toggled"
         case .disableForCurrentApp(_): return "Disable for current app clicked"
         case .disableForHour(_): return" Disable for hour clicked"
