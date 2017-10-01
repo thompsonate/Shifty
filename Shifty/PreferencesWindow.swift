@@ -23,8 +23,8 @@ class PreferencesWindow: NSWindowController, NSWindowDelegate {
     let prefs = UserDefaults.standard
     var setStatusToggle: (() -> Void)?
     
-    override var windowNibName: NSNib.Name! {
-        return NSNib.Name(rawValue: "PreferencesWindow")
+    override var windowNibName: NSNib.Name {
+        return NSNib.Name("PreferencesWindow")
     }
 
     override func windowDidLoad() {

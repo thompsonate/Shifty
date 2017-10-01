@@ -88,7 +88,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         
         BLClient.setStatusNotificationBlock(BLNotificationBlock)
 
-        NotificationCenter.default.addObserver(forName: NSNotification.Name.init(rawValue: "nightShiftToggled"), object: nil, queue: nil) { _ in
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("nightShiftToggled"), object: nil, queue: nil) { _ in
             if !self.shiftOriginatedFromShifty {
                 if self.isDisabledForApp {
                     self.shift(isEnabled: false)
@@ -265,38 +265,40 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     }
     
     func setActiveState(state: Bool) {
-        activeState = state
-        sliderView.shiftSlider.isEnabled = state
-        
-        if isDisableHourSelected {
-            disableHourMenuItem.isEnabled = true
-        } else if customTimeWindow.isWindowLoaded && customTimeWindow.window?.isVisible ?? false {
-            disableHourMenuItem.isEnabled = false
-        } else if isDisabledForApp {
-            disableHourMenuItem.isEnabled = false
-        } else {
-            disableHourMenuItem.isEnabled = state
-        }
-        
-        if isDisableCustomSelected {
-            disableCustomMenuItem.isEnabled = true
-        } else if isDisabledForApp {
-            disableCustomMenuItem.isEnabled = false
-        } else {
-            disableCustomMenuItem.isEnabled = state
-        }
-        
-        if state {
-            powerMenuItem.title = "Turn off Night Shift"
-        } else {
-            powerMenuItem.title = "Turn on Night Shift"
+        DispatchQueue.main.async {
+            self.activeState = state
+            self.sliderView.shiftSlider.isEnabled = state
+            
+            if self.isDisableHourSelected {
+                self.disableHourMenuItem.isEnabled = true
+            } else if self.customTimeWindow.isWindowLoaded && self.customTimeWindow.window?.isVisible ?? false {
+                self.disableHourMenuItem.isEnabled = false
+            } else if self.isDisabledForApp {
+                self.disableHourMenuItem.isEnabled = false
+            } else {
+                self.disableHourMenuItem.isEnabled = state
+            }
+            
+            if self.isDisableCustomSelected {
+                self.disableCustomMenuItem.isEnabled = true
+            } else if self.isDisabledForApp {
+                self.disableCustomMenuItem.isEnabled = false
+            } else {
+                self.disableCustomMenuItem.isEnabled = state
+            }
+            
+            if state {
+                self.powerMenuItem.title = "Turn off Night Shift"
+            } else {
+                self.powerMenuItem.title = "Turn on Night Shift"
+            }
         }
     }
     
     func shift(strength: Float) {
         if strength != 0.0 {
             activeState = true
-            BLClient.setStrength(strength/100, commit: true)
+            BLClient.setStrength(strength / 100, commit: true)
             powerMenuItem.title = "Turn off Night Shift"
             disableHourMenuItem.isEnabled = true
             disableCustomMenuItem.isEnabled = true
@@ -309,14 +311,14 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         if !descriptionMenuItem.isHidden {
             setDescriptionText(keepVisible: true)
         }
-        BLClient.setEnabled(strength/100 != 0.0)
+        BLClient.setEnabled(strength / 100 != 0.0)
         shiftOriginatedFromShifty = true
     }
     
     func shift(isEnabled: Bool) {
         if isEnabled {
             let sliderValue = sliderView.shiftSlider.floatValue
-            BLClient.setStrength(sliderValue/100, commit: true)
+            BLClient.setStrength(sliderValue / 100, commit: true)
             BLClient.setEnabled(true)
             activeState = true
             powerMenuItem.title = "Turn off Night Shift"
@@ -333,7 +335,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         if isDisableHourSelected || isDisableCustomSelected {
             let nowDate = Date()
             let dateComponentsFormatter = DateComponentsFormatter()
-            dateComponentsFormatter.allowedUnits = [NSCalendar.Unit.second]
+            dateComponentsFormatter.allowedUnits = [.second]
             let disabledTimeLeftComponents = calendar.components([.second], from: nowDate, to: disabledUntilDate, options: [])
             var disabledHoursLeft = (Double(disabledTimeLeftComponents.second!) / 3600.0).rounded(.down)
             var disabledMinutesLeft = (Double(disabledTimeLeftComponents.second!) / 60.0).truncatingRemainder(dividingBy: 60.0).rounded(.toNearestOrEven)
@@ -392,13 +394,13 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     }
     
     @IBAction func aboutClicked(_ sender: NSMenuItem) {
-        aboutWindow.showWindow(nil)
+        aboutWindow.showWindow(sender)
         aboutWindow.window?.orderFrontRegardless()
         Event.aboutWindowOpened.record()
     }
     
     @IBAction func preferencesClicked(_ sender: NSMenuItem) {
-        preferencesWindow.showWindow(nil)
+        preferencesWindow.showWindow(sender)
         preferencesWindow.window?.orderFrontRegardless()
         Event.preferencesWindowOpened.record()
     }
