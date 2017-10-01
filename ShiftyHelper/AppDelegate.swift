@@ -27,7 +27,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     public func applicationDidFinishLaunching(_ notification: Notification) {
         let mainAppIdentifier = "io.natethompson.Shifty"
-        let running = NSWorkspace.shared().runningApplications
+        let running = NSWorkspace.shared.runningApplications
         var alreadyRunning = false
         
         for app in running {
@@ -49,13 +49,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             components.append("Shifty")
             
             let newPath = NSString.path(withComponents: components)
-            NSWorkspace.shared().launchApplication(newPath)
+            NSWorkspace.shared.launchApplication(newPath)
         } else {
             self.terminate()
         }
     }
     
-    func terminate() {
+    @objc func terminate() {
         NSApp.terminate(self)
     }
 

@@ -21,10 +21,10 @@ class PreferencesWindow: NSWindowController, NSWindowDelegate {
     @IBOutlet weak var toggleStatusItem: NSButton!
     
     let prefs = UserDefaults.standard
-    var setStatusToggle: ((Void) -> Void)?
+    var setStatusToggle: (() -> Void)?
     
-    override var windowNibName: String! {
-        return "PreferencesWindow"
+    override var windowNibName: NSNib.Name! {
+        return NSNib.Name(rawValue: "PreferencesWindow")
     }
 
     override func windowDidLoad() {
@@ -45,19 +45,19 @@ class PreferencesWindow: NSWindowController, NSWindowDelegate {
     }
     
     func windowWillClose(_ notification: Notification) {
-        Event.preferences(autoLaunch: setAutoLaunch.state == NSOnState, quickToggle: toggleStatusItem.state == NSOnState).record()
+        Event.preferences(autoLaunch: setAutoLaunch.state == .on, quickToggle: toggleStatusItem.state == .on).record()
     }
     
     @IBAction func setAutoLaunch(_ sender: NSButtonCell) {
-        let autoLaunch = setAutoLaunch.state == NSOnState
+        let autoLaunch = setAutoLaunch.state == .on
         prefs.setValue(autoLaunch, forKey: Keys.isAutoLaunchEnabled)
         let launcherAppIdentifier = "io.natethompson.ShiftyHelper"
         SMLoginItemSetEnabled(launcherAppIdentifier as CFString, autoLaunch)
     }
     
     @IBAction func toggleStatusItem(_ sender: NSButtonCell) {
-        let quickToggle = toggleStatusItem.state == NSOnState
-        let appDelegate = NSApplication.shared().delegate as! AppDelegate
+        let quickToggle = toggleStatusItem.state == .on
+        let appDelegate = NSApplication.shared.delegate as! AppDelegate
         prefs.setValue(quickToggle, forKey: Keys.isStatusToggleEnabled)
         appDelegate.setStatusToggle()
     }

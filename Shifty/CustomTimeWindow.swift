@@ -26,8 +26,8 @@ class CustomTimeWindow: NSWindowController {
     var customTimeWindowIsOpen: ((Bool) -> Void)?
     let onlyIntValueFormatter = OnlyIntValueFormatter()
     
-    override var windowNibName: String! {
-        return "CustomTimeWindow"
+    override var windowNibName: NSNib.Name! {
+        return NSNib.Name(rawValue: "CustomTimeWindow")
     }
     
     override func windowDidLoad() {
@@ -36,10 +36,10 @@ class CustomTimeWindow: NSWindowController {
         self.window?.center()
         self.window?.makeKeyAndOrderFront(nil)
         self.window?.styleMask.remove(.resizable)
-        self.window?.level = Int(CGWindowLevelForKey(.floatingWindow))
-        self.window?.standardWindowButton(NSWindowButton.closeButton)?.isHidden = true
-        self.window?.standardWindowButton(NSWindowButton.miniaturizeButton)?.isHidden = true
-        self.window?.standardWindowButton(NSWindowButton.zoomButton)?.isHidden = true
+        self.window?.level = NSWindow.Level.floating
+        self.window?.standardWindowButton(NSWindow.ButtonType.closeButton)?.isHidden = true
+        self.window?.standardWindowButton(NSWindow.ButtonType.miniaturizeButton)?.isHidden = true
+        self.window?.standardWindowButton(NSWindow.ButtonType.zoomButton)?.isHidden = true
         NSApp.activate(ignoringOtherApps: true)
         
         hoursTextField.formatter = onlyIntValueFormatter

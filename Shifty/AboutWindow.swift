@@ -19,8 +19,8 @@ class AboutWindow: NSWindowController {
 
     var statusMenuController: StatusMenuController!
     
-    override var windowNibName: String! {
-        return "AboutWindow"
+    override var windowNibName: NSNib.Name! {
+        return NSNib.Name(rawValue: "AboutWindow")
     }
     
     override func windowDidLoad() {
@@ -48,19 +48,19 @@ class AboutWindow: NSWindowController {
     }
     
     @IBAction func visitWebsiteClicked(_ sender: NSButton) {
-        if let url = URL(string: "http://shifty.natethompson.io"), NSWorkspace.shared().open(url) {
+        if let url = URL(string: "http://shifty.natethompson.io"), NSWorkspace.shared.open(url) {
         }
         Event.websiteButtonClicked.record()
     }
     
     @IBAction func submitFeedbackClicked(_ sender: NSButton) {
-        if let url = URL(string: "mailto:feedback@natethompson.io?subject=Shifty%20Feedback"), NSWorkspace.shared().open(url) {
+        if let url = URL(string: "mailto:feedback@natethompson.io?subject=Shifty%20Feedback"), NSWorkspace.shared.open(url) {
         }
         Event.feedbackButtonClicked.record()
     }
     
     @IBAction func donateButtonClicked(_ sender: NSButton) {
-        if let url = URL(string: "http://shifty.natethompson.io/donate"), NSWorkspace.shared().open(url) {
+        if let url = URL(string: "http://shifty.natethompson.io/donate"), NSWorkspace.shared.open(url) {
         }
         Event.donateButtonClicked.record()
     }

@@ -16,8 +16,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     let prefs = UserDefaults.standard
     @IBOutlet weak var statusMenu: NSMenu!
-    let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
-    var statusItemClicked: ((Void) -> Void)?
+    let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+    var statusItemClicked: (() -> Void)?
 
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -30,11 +30,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let alert: NSAlert = NSAlert()
             alert.messageText = "This version of macOS does not support Night Shift"
             alert.informativeText = "Update your Mac to version 10.12.4 or higher to use Shifty."
-            alert.alertStyle = NSAlertStyle.warning
+            alert.alertStyle = NSAlert.Style.warning
             alert.addButton(withTitle: "OK")
             alert.runModal()
             
-            NSApplication.shared().terminate(self)
+            NSApplication.shared.terminate(self)
         }
         
         if !CBBlueLightClient.supportsBlueLightReduction() {
@@ -42,17 +42,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let alert: NSAlert = NSAlert()
             alert.messageText = "Your Mac hardware does not support Night Shift"
             alert.informativeText = "A newer Mac is required to use Shifty."
-            alert.alertStyle = NSAlertStyle.warning
+            alert.alertStyle = NSAlert.Style.warning
             alert.addButton(withTitle: "OK")
             alert.runModal()
             
-            NSApplication.shared().terminate(self)
+            NSApplication.shared.terminate(self)
         }
         
         let launcherAppIdentifier = "io.natethompson.ShiftyHelper"
         
         var startedAtLogin = false
-        for app in NSWorkspace.shared().runningApplications {
+        for app in NSWorkspace.shared.runningApplications {
             if app.bundleIdentifier == launcherAppIdentifier {
                 startedAtLogin = true
             }
@@ -63,8 +63,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         
-        let icon = NSImage(named: "statusIcon")
-        icon?.isTemplate = true
+        let icon = #imageLiteral(resourceName: "statusIcon")
+        icon.isTemplate = true
         statusItem.image = icon
         setStatusToggle()
     }
@@ -81,10 +81,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    func statusBarButtonClicked(sender: NSStatusBarButton) {
+    @objc func statusBarButtonClicked(sender: NSStatusBarButton) {
         let event = NSApp.currentEvent!
         
-        if event.type == NSEventType.rightMouseUp || event.modifierFlags.contains(.control)  {
+        if event.type == NSEvent.EventType.rightMouseUp || event.modifierFlags.contains(.control)  {
             statusItem.menu = statusMenu
             statusItem.popUpMenu(statusMenu)
             statusItem.menu = nil
