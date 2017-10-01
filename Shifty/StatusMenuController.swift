@@ -102,6 +102,10 @@ class StatusMenuController: NSObject, NSMenuDelegate {
                 }
             }
             self.shiftOriginatedFromShifty = false
+            
+            if UserDefaults.standard.bool(forKey: Keys.isDarkModeSyncEnabled) {
+                SLSSetAppearanceThemeLegacy(BLClient.isNightShiftEnabled)
+            }
         }
     }
     

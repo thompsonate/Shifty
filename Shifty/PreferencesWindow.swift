@@ -12,6 +12,7 @@ import ServiceManagement
 struct Keys {
     static let isStatusToggleEnabled = "isStatusToggleEnabled"
     static let isAutoLaunchEnabled = "isAutoLaunchEnabled"
+    static let isDarkModeSyncEnabled = "isDarkModeSyncEnabled"
     static let disabledApps = "disabledApps"
 }
 
@@ -19,6 +20,7 @@ class PreferencesWindow: NSWindowController, NSWindowDelegate {
     
     @IBOutlet weak var setAutoLaunch: NSButton!
     @IBOutlet weak var toggleStatusItem: NSButton!
+    @IBOutlet weak var darkModeSync: NSButton!
     
     let prefs = UserDefaults.standard
     var setStatusToggle: (() -> Void)?
@@ -45,7 +47,7 @@ class PreferencesWindow: NSWindowController, NSWindowDelegate {
     }
     
     func windowWillClose(_ notification: Notification) {
-        Event.preferences(autoLaunch: setAutoLaunch.state == .on, quickToggle: toggleStatusItem.state == .on).record()
+        Event.preferences(autoLaunch: setAutoLaunch.state == .on, quickToggle: toggleStatusItem.state == .on, syncDarkMode: darkModeSync.state == .on).record()
     }
     
     @IBAction func setAutoLaunch(_ sender: NSButtonCell) {
