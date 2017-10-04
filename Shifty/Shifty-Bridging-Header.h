@@ -8,3 +8,4 @@
 
 #import "CBBlueLightClient.h"
 #import "BLNotificationBlock.h"
+#import "EDSunriseSet.h"

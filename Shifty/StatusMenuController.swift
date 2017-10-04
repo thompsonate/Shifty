@@ -45,6 +45,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     var disabledUntilDate: Date!
     
     let calendar = NSCalendar(identifier: .gregorian)!
+    let SSLocationManager = SunriseSetLocationManager()
     
     override func awakeFromNib() {
         statusMenu.delegate = self
@@ -103,6 +104,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             }
             self.shiftOriginatedFromShifty = false
         }
+        
+        SSLocationManager.setup()
     }
     
     func menuWillOpen(_: NSMenu) {
