@@ -32,6 +32,7 @@
 		43C7A4881F19F2CB00A697C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C7A4871F19F2CB00A697C0 /* AppDelegate.swift */; };
 		43C7A48C1F19F2CB00A697C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43C7A48B1F19F2CB00A697C0 /* Assets.xcassets */; };
 		43C7A4941F19FA9600A697C0 /* ShiftyHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 43C7A4851F19F2CB00A697C0 /* ShiftyHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4989C89C1F81611000FF83DB /* SkyLight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4989C89B1F81611000FF83DB /* SkyLight.framework */; };
 		4F2D868847D02BDBA9BA9A90 /* Pods_ShiftyHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F271F97E9F31A99983CEA240 /* Pods_ShiftyHelper.framework */; };
 		7D6801183F204BA285C9D5B7 /* Pods_Shifty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932D0C1C5887BEB67BDBBFD0 /* Pods_Shifty.framework */; };
 /* End PBXBuildFile section */
@@ -85,6 +86,7 @@
 		43C7A4901F19F2CB00A697C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43C7A4951F19FE1A00A697C0 /* ShiftyHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShiftyHelper.entitlements; sourceTree = "<group>"; };
 		43CC9E431EBAB19300983528 /* Shifty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shifty.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4989C89B1F81611000FF83DB /* SkyLight.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SkyLight.framework; path = ../../../../System/Library/PrivateFrameworks/SkyLight.framework; sourceTree = "<group>"; };
 		8C6209F5BF9CCE799389DE98 /* Pods-ShiftyHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShiftyHelper.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShiftyHelper/Pods-ShiftyHelper.release.xcconfig"; sourceTree = "<group>"; };
 		932D0C1C5887BEB67BDBBFD0 /* Pods_Shifty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shifty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4349442197ECCC192DF8A03 /* Pods-Shifty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shifty.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Shifty/Pods-Shifty.debug.xcconfig"; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4989C89C1F81611000FF83DB /* SkyLight.framework in Frameworks */,
 				43C0838C1F19AEF900E73B84 /* ServiceManagement.framework in Frameworks */,
 				433AD3091F2D00BD0003FBCD /* Fabric.framework in Frameworks */,
 				433EE8521EBD8ECA007EA870 /* CoreBrightness.framework in Frameworks */,
@@ -119,6 +122,7 @@
 		433EE8501EBD8ECA007EA870 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4989C89B1F81611000FF83DB /* SkyLight.framework */,
 				43C0838B1F19AEF900E73B84 /* ServiceManagement.framework */,
 				433EE8511EBD8ECA007EA870 /* CoreBrightness.framework */,
 				932D0C1C5887BEB67BDBBFD0 /* Pods_Shifty.framework */,
@@ -331,13 +335,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ShiftyHelper-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		43B547EB1F299A950034E779 /* ShellScript */ = {
@@ -374,9 +381,14 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Shifty/Pods-Shifty-frameworks.sh",
+				"${PODS_ROOT}/Sparkle/Sparkle.framework",
+				"${PODS_ROOT}/Sparkle/Sparkle.framework.dSYM",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sparkle.framework",
+				"${DWARF_DSYM_FOLDER_PATH}/Sparkle.framework.dSYM",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -419,13 +431,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Shifty-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -475,7 +490,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -495,7 +509,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
@@ -627,7 +640,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Shifty/Shifty-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -654,7 +666,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Shifty/Shifty-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;

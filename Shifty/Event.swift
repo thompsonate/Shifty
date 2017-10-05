@@ -35,7 +35,7 @@ enum Event {
     case donateButtonClicked
     
     //PreferencesWindow
-    case preferences(autoLaunch: Bool, quickToggle: Bool)
+    case preferences(autoLaunch: Bool, quickToggle: Bool, syncDarkMode: Bool)
 }
 
 
@@ -82,9 +82,10 @@ extension Event {
                     "Time interval in minutes": String(describing: timeInterval)]
         case .sliderMoved(let value):
             return ["Slider value": value]
-        case .preferences(let autoLaunch, let quickToggle):
+        case .preferences(let autoLaunch, let quickToggle, let syncDarkMode):
             return ["Auto Launch": autoLaunch ? "true" : "false",
-                    "Quick Toggle": quickToggle ? "true" : "false"]
+                    "Quick Toggle": quickToggle ? "true" : "false",
+                    "Sync Dark Mode": syncDarkMode ? "true" : "false"]
         default:
             return nil
         }

@@ -19,8 +19,8 @@ class AboutWindow: NSWindowController {
 
     var statusMenuController: StatusMenuController!
     
-    override var windowNibName: NSNib.Name! {
-        return NSNib.Name(rawValue: "AboutWindow")
+    override var windowNibName: NSNib.Name {
+        return NSNib.Name("AboutWindow")
     }
     
     override func windowDidLoad() {

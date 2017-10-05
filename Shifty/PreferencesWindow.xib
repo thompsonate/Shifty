@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13526" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13526"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PreferencesWindow" customModule="Shifty" customModuleProvider="target">
             <connections>
+                <outlet property="darkModeSync" destination="njk-Qi-6bI" id="2Ga-a4-w2j"/>
                 <outlet property="setAutoLaunch" destination="upJ-Fn-54q" id="dSe-hN-PoC"/>
                 <outlet property="toggleStatusItem" destination="fb9-wb-l37" id="eKq-6r-fe1"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="K4A-Mt-hiJ"/>
@@ -18,14 +19,14 @@
         <window title="Shifty Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="397" height="176"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="contentRect" x="196" y="240" width="397" height="213"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="397" height="176"/>
+                <rect key="frame" x="0.0" y="0.0" width="397" height="213"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fb9-wb-l37">
-                        <rect key="frame" x="56" y="105" width="102" height="18"/>
+                        <rect key="frame" x="56" y="142" width="102" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Quick Toggle" bezelStyle="regularSquare" imagePosition="left" alignment="center" inset="2" id="Qhj-C4-iGM">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -37,7 +38,7 @@
                         </connections>
                     </button>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="upJ-Fn-54q">
-                        <rect key="frame" x="56" y="131" width="154" height="18"/>
+                        <rect key="frame" x="56" y="168" width="154" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Launch Shifty at login" bezelStyle="regularSquare" imagePosition="left" inset="2" id="cy1-Dj-qcW">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -48,8 +49,8 @@
                             <binding destination="HAt-Ds-MVV" name="value" keyPath="values.isAutoLaunchEnabled" id="Hx5-7n-9y8"/>
                         </connections>
                     </button>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kp4-Qc-5lQ">
-                        <rect key="frame" x="75" y="77" width="265" height="28"/>
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kp4-Qc-5lQ">
+                        <rect key="frame" x="75" y="114" width="265" height="28"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="When enabled, click the Menu Bar icon to toggle Night Shift. Right click to open the menu." id="92c-yA-mm9">
                             <font key="font" metaFont="smallSystem"/>
@@ -57,8 +58,31 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m8x-JJ-O0P">
-                        <rect key="frame" x="75" y="28" width="265" height="28"/>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="njk-Qi-6bI">
+                        <rect key="frame" x="56" y="90" width="260" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Synchronize Night Shift and dark mode" bezelStyle="regularSquare" imagePosition="left" inset="2" id="m1b-C0-uhZ">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <connections>
+                                <action selector="toggleStatusItem:" target="-2" id="gUY-oy-hdg"/>
+                            </connections>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="HAt-Ds-MVV" name="value" keyPath="values.isDarkModeSyncEnabled" id="Aft-Xw-iZm"/>
+                        </connections>
+                    </button>
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vv0-Sf-grF">
+                        <rect key="frame" x="75" y="56" width="265" height="28"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" title="When enabled, dark mode will be enabled when Night Shift is and vice versa." id="nAZ-0h-I1c">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m8x-JJ-O0P">
+                        <rect key="frame" x="75" y="20" width="265" height="28"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" title="To modify Night Shift schedule settings, go to System Preferences &gt; Displays &gt; Night Shift." id="BQ8-ig-0hO">
                             <font key="font" metaFont="smallSystem"/>
@@ -71,7 +95,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="21.5" y="111"/>
+            <point key="canvasLocation" x="21.5" y="129.5"/>
         </window>
         <customCell alignment="left" id="sSe-Qw-YLh"/>
         <userDefaultsController representsSharedInstance="YES" id="HAt-Ds-MVV"/>

@@ -65,7 +65,7 @@ extension CBBlueLightClient {
     
     func getIntFromBlueLightStatus(index: Int) -> Int {
         //create an empty mutable OpaquePointer
-        let string = "000000000000000000000000000000"
+        let string = String(repeating: "0", count: 30)
         var data = string.data(using: .utf8)!
         let ints: UnsafeMutablePointer<Int>! = data.withUnsafeMutableBytes{ $0 }
         let bytes = OpaquePointer(ints)

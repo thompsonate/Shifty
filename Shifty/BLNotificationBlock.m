@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-void (^BLNotificationBlock)() = ^() {
+void (^BLNotificationBlock)(void) = ^() {
     [NSNotificationCenter.defaultCenter postNotificationName:(NSString *)@"nightShiftToggled"
                                                       object:(id)nil
                                                     userInfo:(NSDictionary *)nil];
