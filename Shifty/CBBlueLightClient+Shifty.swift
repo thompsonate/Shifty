@@ -41,15 +41,18 @@ extension CBBlueLightClient {
             return .sunSchedule
         case 2:
             let calendar = NSCalendar(identifier: .gregorian)!
+            let now = Date()
+            var startComponents = calendar.components([.year, .month, .day, .hour, .minute, .second], from: now)
+            var endComponents = calendar.components([.year, .month, .day, .hour, .minute, .second], from: now)
             
-            var startComponents = DateComponents()
             startComponents.hour = getIntFromBlueLightStatus(index: 8)
             startComponents.minute = getIntFromBlueLightStatus(index: 12)
+            startComponents.second = 0
             let startDate = calendar.date(from: startComponents)
             
-            var endComponents = DateComponents()
             endComponents.hour = getIntFromBlueLightStatus(index: 16)
             endComponents.minute = getIntFromBlueLightStatus(index: 20)
+            endComponents.second = 0
             let endDate = calendar.date(from: endComponents)
             
             if let startDate = startDate, let endDate = endDate {

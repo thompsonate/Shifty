@@ -11,6 +11,7 @@ import CoreLocation
 class SunriseSetLocationManager: NSObject, CLLocationManagerDelegate {
     
     var locationManager = CLLocationManager()
+    var setSunTimes: ((Date, Date) -> Void)!
     
     func setup() {
         locationManager.delegate = self
@@ -21,8 +22,7 @@ class SunriseSetLocationManager: NSObject, CLLocationManagerDelegate {
         let lastLocation = locations.last!
         let latitude = lastLocation.coordinate.latitude
         let longitude = lastLocation.coordinate.longitude
-        let times = getSunriseSetTimes(timeZone: NSTimeZone.system, latitude: latitude, longitude: longitude)
-        print("sunrise: \(times.sunrise!) sunset: \(times.sunset!)")
+        getSunriseSetTimes(timeZone: NSTimeZone.system, latitude: latitude, longitude: longitude)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -36,22 +36,19 @@ class SunriseSetLocationManager: NSObject, CLLocationManagerDelegate {
             locationManager.startUpdatingLocation()
         case .denied:
             print("Location Services Denied")
-            break
         case .notDetermined:
             print("Location Services Not Determined")
             locationManager.startUpdatingLocation()
             locationManager.stopUpdatingLocation()
-            break
         case .restricted:
             print("Location Services Restricted")
-            break
         default: break
         }
     }
     
-    func getSunriseSetTimes(timeZone: TimeZone, latitude: Double, longitude: Double) -> (sunrise: Date?, sunset: Date?) {
+    func getSunriseSetTimes(timeZone: TimeZone, latitude: Double, longitude: Double) {
         let sunTimes = EDSunriseSet(date: Date(), timezone: timeZone, latitude: latitude, longitude: longitude)
-        return (sunTimes?.sunrise, sunTimes?.sunset)
+        setSunTimes((sunTimes?.sunrise)!, (sunTimes?.sunset)!)
     }
     
 }
