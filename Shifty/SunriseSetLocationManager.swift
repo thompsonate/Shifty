@@ -48,7 +48,7 @@ class SunriseSetLocationManager: NSObject, CLLocationManagerDelegate {
     
     func getSunriseSetTimes(timeZone: TimeZone, latitude: Double, longitude: Double) {
         let sunTimes = EDSunriseSet(date: Date(), timezone: timeZone, latitude: latitude, longitude: longitude)
-        setSunTimes((sunTimes?.sunrise)!, (sunTimes?.sunset)!)
+        setSunTimes(sunTimes.sunrise, sunTimes.sunset)
     }
     
 }

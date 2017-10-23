@@ -22,6 +22,8 @@
 #error This file must be compiled with ARC. Either turn on ARC for the project or use -fobjc-arc flag in this file.
 #endif
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface EDSunriseSet : NSObject
 
 @property (readonly, strong) NSDate *date;
@@ -43,9 +45,10 @@
 @property (readonly, strong) NSDateComponents* localAstronomicalTwilightStart;
 @property (readonly, strong) NSDateComponents* localAstronomicalTwilightEnd;
 
-
 -(instancetype)initWithDate:(NSDate*)date timezone:(NSTimeZone*)timezone latitude:(double)latitude longitude:(double)longitude NS_DESIGNATED_INITIALIZER;
 +(instancetype)sunrisesetWithDate:(NSDate*)date timezone:(NSTimeZone*)timezone latitude:(double)latitude longitude:(double)longitude;
 -(instancetype) init __attribute__((unavailable("init not available. Use initWithDate:timeZone:latitude:longitude: instead")));
+
+NS_ASSUME_NONNULL_END
 
 @end

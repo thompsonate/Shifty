@@ -32,6 +32,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     var disabledApps = [String]()
     var activeState = true
     
+    ///Whether or not Night Shift is currently enabled
+    var shouldNightShiftBeEnabled = false
     ///True if Night Shift is disabled for app currently owning Menu Bar.
     var isDisabledForApp = false
     ///True if change to Night Shift state originated from Shifty
@@ -60,6 +62,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         
         sliderView.sliderValueChanged = {(sliderValue) in
             self.shift(strength: sliderValue)
+            self.shouldNightShiftBeEnabled = sliderValue != 0.0
         }
         
         sliderView.sliderEnabled = {
@@ -70,6 +73,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             self.enableForCurrentApp()
             self.setDescriptionText(keepVisible: true)
         }
+        
+        shouldNightShiftBeEnabled = BLClient.isNightShiftEnabled
         
         SSLocationManager.setSunTimes = { (sunrise: Date, sunset: Date) -> Void in
             self.sunTimes = (sunrise, sunset)
@@ -98,7 +103,16 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             if !self.shiftOriginatedFromShifty {
                 if self.isDisabledForApp {
                     self.shift(isEnabled: false)
+                } else if self.isDisableHourSelected || self.isDisableCustomSelected {
+                    if self.isCloseToScheduledShift() {
+                        self.shift(isEnabled: false)
+                    } else {
+                        self.shouldNightShiftBeEnabled = BLClient.isNightShiftEnabled
+                    }
+                } else {
+                    self.shouldNightShiftBeEnabled = BLClient.isNightShiftEnabled
                 }
+                print(Date())
             }
             self.shiftOriginatedFromShifty = false
             
@@ -135,26 +149,44 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             print("endTime     : \(endTime)")
             print(isBetweenTimes)
             
-            //Night Shift should be on between startTime and endTime
+            //Should be true between startTime and endTime
             return isBetweenTimes
         case .sunSchedule:
             let currentTime = Date()            
             let isBetweenTimes = currentTime > sunTimes.sunrise && currentTime < sunTimes.sunset
             
-            //Night Shift should be off between sunrise and sunset
+            //Should be false between sunrise and sunset
             return !isBetweenTimes
         default:
             return nil
         }
     }
     
+    ///Sets Night Shift state based on the set schedule.
     func setToSchedule() {
-        if let scheduledState = getScheduledState() {
-            if scheduledState != BLClient.isNightShiftEnabled {
-                shift(isEnabled: scheduledState)
+        if !isDisableHourSelected && !isDisableCustomSelected && !isDisabledForApp {
+            if let scheduledState = getScheduledState() {
+                if scheduledState != BLClient.isNightShiftEnabled {
+                    shift(isEnabled: scheduledState)
+                }
             }
         }
     }
+    
+    ///Returns a boolean of whether or not the current time is close to a scheduled shift.
+    func isCloseToScheduledShift() -> Bool {
+        switch BLClient.schedule {
+        case .timedSchedule(let startTime, let endTime):
+            let currentTime = Date()
+            return abs(currentTime.timeIntervalSince(startTime)) < 1 || abs(currentTime.timeIntervalSince(endTime)) < 1
+        case .sunSchedule:
+            let currentTime = Date()
+            return abs(currentTime.timeIntervalSince(sunTimes.sunrise)) < 300 || abs(currentTime.timeIntervalSince(sunTimes.sunset)) < 300
+        default:
+            return false
+        }
+    }
+
     
     
     
@@ -170,6 +202,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         }
         disableDisableTimer()
         enableForCurrentApp()
+        shouldNightShiftBeEnabled = activeState
     }
     
     @IBAction func disableHour(_ sender: NSMenuItem) {
@@ -186,6 +219,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
                 self.disableHourMenuItem.state = .off
                 self.disableHourMenuItem.title = "Disable for an hour"
                 self.disableCustomMenuItem.isEnabled = true
+                self.shouldNightShiftBeEnabled = self.activeState
             }
             disableTimer.tolerance = 60
             
@@ -198,6 +232,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             disableDisableTimer()
             disableCustomMenuItem.isEnabled = true
         }
+        shouldNightShiftBeEnabled = activeState
         Event.disableForHour(state: isDisableHourSelected).record()
     }
     
@@ -211,6 +246,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             shift(isEnabled: true)
             disableDisableTimer()
             disableCustomMenuItem.isEnabled = true
+            shouldNightShiftBeEnabled = activeState
         }
         
         customTimeWindow.disableCustomTime = { (timeIntervalInSeconds) in
@@ -226,6 +262,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
                 self.disableCustomMenuItem.state = .off
                 self.disableCustomMenuItem.title = "Disable for custom time..."
                 self.disableHourMenuItem.isEnabled = true
+                self.shouldNightShiftBeEnabled = self.activeState
             }
             self.disableTimer.tolerance = 60
             
@@ -234,6 +271,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             addComponents.second = timeIntervalInSeconds
             self.disabledUntilDate = self.calendar.date(byAdding: addComponents, to: currentDate, options: [])!
             
+            self.shouldNightShiftBeEnabled = self.activeState
             timeIntervalInMinutes = timeIntervalInSeconds * 60
         }
 
@@ -280,11 +318,9 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             disableAppMenuItem.title = "Disable for \(currentAppName)"
         }
         
-        if let scheduledState = getScheduledState() {
-            if scheduledState && BLClient.isNightShiftEnabled == isDisabledForApp {
-                shift(isEnabled: !isDisabledForApp)
-                setActiveState(state: !isDisabledForApp)
-            }
+        if shouldNightShiftBeEnabled && BLClient.isNightShiftEnabled == isDisabledForApp {
+            shift(isEnabled: !isDisabledForApp)
+            setActiveState(state: !isDisabledForApp)
         }
     }
     
