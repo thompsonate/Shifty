@@ -24,8 +24,19 @@ class PreferencesWindow: NSWindowController, NSWindowDelegate {
     @IBOutlet weak var toggleStatusItem: NSButton!
     @IBOutlet weak var darkModeSync: NSButton!
     
+    @IBOutlet weak var schedulePopup: NSPopUpButton!
+    @IBOutlet weak var offMenuItem: NSMenuItem!
+    @IBOutlet weak var customMenuItem: NSMenuItem!
+    @IBOutlet weak var sunMenuItem: NSMenuItem!
+    
+    @IBOutlet weak var fromTimePicker: NSDatePicker!
+    @IBOutlet weak var toTimePicker: NSDatePicker!
+    @IBOutlet weak var fromLabel: NSTextField!
+    @IBOutlet weak var toLabel: NSTextField!
+    
     let prefs = UserDefaults.standard
     var setStatusToggle: (() -> Void)?
+    var updateSchedule: (() -> Void)?
     
     override var windowNibName: NSNib.Name {
         return NSNib.Name("PreferencesWindow")
@@ -38,6 +49,24 @@ class PreferencesWindow: NSWindowController, NSWindowDelegate {
         self.window?.center()
         self.window?.makeKeyAndOrderFront(nil)
         NSApp.activate(ignoringOtherApps: true)
+        
+        updateSchedule = {
+            switch BLClient.schedule {
+            case .off:
+                self.schedulePopup.select(self.offMenuItem)
+                self.showScheduleDates(displayed: false)
+            case .timedSchedule(startTime: let startTime, endTime: let endTime):
+                self.schedulePopup.select(self.customMenuItem)
+                self.fromTimePicker.dateValue = startTime
+                self.toTimePicker.dateValue = endTime
+                self.showScheduleDates(displayed: true)
+            case .sunSchedule:
+                self.schedulePopup.select(self.sunMenuItem)
+                self.showScheduleDates(displayed: false)
+            }
+        }
+        
+        updateSchedule?()
     }
     
     override func keyDown(with theEvent: NSEvent) {
@@ -64,6 +93,32 @@ class PreferencesWindow: NSWindowController, NSWindowDelegate {
         let appDelegate = NSApplication.shared.delegate as! AppDelegate
         prefs.setValue(quickToggle, forKey: Keys.isStatusToggleEnabled)
         appDelegate.setStatusToggle()
+    }
+    
+    @IBAction func schedulePopup(_ sender: Any) {
+        if schedulePopup.selectedItem == offMenuItem {
+            BLClient.setSchedule(.off)
+            showScheduleDates(displayed: false)
+        } else if schedulePopup.selectedItem == customMenuItem {
+            BLClient.setMode(2)
+            showScheduleDates(displayed: true)
+        } else if schedulePopup.selectedItem == sunMenuItem {
+            BLClient.setMode(1)
+            showScheduleDates(displayed: false)
+        }
+    }
+    
+    @IBAction func scheduleTimePickers(_ sender: Any) {
+        let fromTime = fromTimePicker.dateValue
+        let toTime = toTimePicker.dateValue
+        BLClient.setSchedule(.timedSchedule(startTime: fromTime, endTime: toTime))
+    }
+    
+    func showScheduleDates(displayed: Bool) {
+        fromTimePicker.isHidden = !displayed
+        toTimePicker.isHidden = !displayed
+        fromLabel.isHidden = !displayed
+        toLabel.isHidden = !displayed
     }
 }
 

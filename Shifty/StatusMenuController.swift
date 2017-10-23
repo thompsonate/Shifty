@@ -115,6 +115,10 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             }
             self.shiftOriginatedFromShifty = false
             
+            DispatchQueue.main.async {
+                self.preferencesWindow.updateSchedule?()
+            }
+            
             if UserDefaults.standard.bool(forKey: Keys.isDarkModeSyncEnabled) {
                 SLSSetAppearanceThemeLegacy(BLClient.isNightShiftEnabled)
             }
@@ -461,6 +465,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     }
     
     @IBAction func preferencesClicked(_ sender: NSMenuItem) {
+        preferencesWindow.updateSchedule?()
         preferencesWindow.showWindow(sender)
         preferencesWindow.window?.orderFrontRegardless()
         Event.preferencesWindowOpened.record()

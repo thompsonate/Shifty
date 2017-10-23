@@ -55,8 +55,8 @@ extension CBBlueLightClient {
             startComponents.second = 0
             let startDate = calendar.date(from: startComponents)
             
-            endComponents.hour = Int(blueLightStatus.schedule.fromTime.hour)
-            endComponents.minute = Int(blueLightStatus.schedule.fromTime.minute)
+            endComponents.hour = Int(blueLightStatus.schedule.toTime.hour)
+            endComponents.minute = Int(blueLightStatus.schedule.toTime.minute)
             endComponents.second = 0
             let endDate = calendar.date(from: endComponents)
             
