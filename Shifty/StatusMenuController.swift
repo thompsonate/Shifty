@@ -47,7 +47,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     
     var sunTimes: (sunrise: Date, sunset: Date)!
     let calendar = NSCalendar(identifier: .gregorian)!
-    
+        
     override func awakeFromNib() {
         statusMenu.delegate = self
         aboutWindow = AboutWindow()
@@ -118,13 +118,29 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             DispatchQueue.main.async {
                 self.preferencesWindow.updateSchedule?()
             }
-            
+            self.preferencesWindow.updateDarkMode()
+        }
+        
+        preferencesWindow.updateDarkMode = {
             if UserDefaults.standard.bool(forKey: Keys.isDarkModeSyncEnabled) {
-                SLSSetAppearanceThemeLegacy(BLClient.isNightShiftEnabled)
+                switch BLClient.schedule {
+                case .off:
+                    SLSSetAppearanceThemeLegacy(self.isShiftForAppEnabled)
+                case .sunSchedule:
+                    if let scheduledState = self.getScheduledState() {
+                        SLSSetAppearanceThemeLegacy(scheduledState)
+                    }
+                case .timedSchedule(startTime: _, endTime: _):
+                    if let scheduledState = self.getScheduledState() {
+                        SLSSetAppearanceThemeLegacy(scheduledState)
+                    }
+                }
             }
         }
         
         SSLocationManager.setup()
+        
+        
     }
     
     func menuWillOpen(_: NSMenu) {
@@ -184,7 +200,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             return false
         }
     }
-
+    
+    
     
     
     

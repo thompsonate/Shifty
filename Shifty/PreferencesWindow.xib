@@ -39,9 +39,11 @@
                         <buttonCell key="cell" type="check" title="Quick Toggle" bezelStyle="regularSquare" imagePosition="left" alignment="center" inset="2" id="Qhj-C4-iGM">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
+                            <connections>
+                                <action selector="quickToggle:" target="-2" id="duF-uP-Y8x"/>
+                            </connections>
                         </buttonCell>
                         <connections>
-                            <action selector="toggleStatusItem:" target="-2" id="iSo-nK-zXh"/>
                             <binding destination="HAt-Ds-MVV" name="value" keyPath="values.isStatusToggleEnabled" id="edz-7W-g7u"/>
                         </connections>
                     </button>
@@ -72,11 +74,9 @@
                         <buttonCell key="cell" type="check" title="Synchronize Night Shift and dark mode" bezelStyle="regularSquare" imagePosition="left" inset="2" id="m1b-C0-uhZ">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
-                            <connections>
-                                <action selector="toggleStatusItem:" target="-2" id="gUY-oy-hdg"/>
-                            </connections>
                         </buttonCell>
                         <connections>
+                            <action selector="syncDarkMode:" target="-2" id="ELq-fk-giH"/>
                             <binding destination="HAt-Ds-MVV" name="value" keyPath="values.isDarkModeSyncEnabled" id="Aft-Xw-iZm"/>
                         </connections>
                     </button>
@@ -139,15 +139,6 @@
                             <action selector="scheduleTimePickers:" target="-2" id="iOk-mX-vNl"/>
                         </connections>
                     </datePicker>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UdZ-bu-Av2">
-                        <rect key="frame" x="69" y="58" width="65" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Schedule:" id="LqE-9V-Nti">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WJ1-XF-Ier">
                         <rect key="frame" x="95" y="27" width="39" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -161,6 +152,15 @@
                         <rect key="frame" x="238" y="27" width="20" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="to:" id="Mwt-x2-whR">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UdZ-bu-Av2">
+                        <rect key="frame" x="69" y="58" width="65" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Schedule:" id="LqE-9V-Nti">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>

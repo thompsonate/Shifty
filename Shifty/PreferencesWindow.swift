@@ -37,6 +37,7 @@ class PreferencesWindow: NSWindowController, NSWindowDelegate {
     let prefs = UserDefaults.standard
     var setStatusToggle: (() -> Void)?
     var updateSchedule: (() -> Void)?
+    var updateDarkMode: (() -> Void)!
     
     override var windowNibName: NSNib.Name {
         return NSNib.Name("PreferencesWindow")
@@ -88,11 +89,18 @@ class PreferencesWindow: NSWindowController, NSWindowDelegate {
         SMLoginItemSetEnabled(launcherAppIdentifier as CFString, autoLaunch)
     }
     
-    @IBAction func toggleStatusItem(_ sender: NSButtonCell) {
+    @IBAction func quickToggle(_ sender: NSButtonCell) {
         let quickToggle = toggleStatusItem.state == .on
         let appDelegate = NSApplication.shared.delegate as! AppDelegate
         prefs.setValue(quickToggle, forKey: Keys.isStatusToggleEnabled)
         appDelegate.setStatusToggle()
+    }
+    
+    @IBAction func syncDarkMode(_ sender: NSButtonCell) {
+        updateDarkMode()
+        if !UserDefaults.standard.bool(forKey: Keys.isDarkModeSyncEnabled) {
+            SLSSetAppearanceThemeLegacy(false)
+        }
     }
     
     @IBAction func schedulePopup(_ sender: Any) {
