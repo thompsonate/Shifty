@@ -8,8 +8,6 @@
 
 import Foundation
 
-typealias Time = (hour: Int, minute: Int)
-
 enum ScheduleType {
     case off
     case sunSchedule
@@ -17,6 +15,13 @@ enum ScheduleType {
 }
 
 extension CBBlueLightClient {
+    
+    var blueLightStatus: StatusData {
+        var statusData: StatusData = StatusData()
+        getBlueLightStatus(&statusData)
+        return statusData
+    }
+    
     var strength: Float {
         var strength: Float = 0.0
         self.getStrength(&strength)
@@ -30,11 +35,11 @@ extension CBBlueLightClient {
     }
     
     var isNightShiftEnabled: Bool {
-        return getBoolFromBlueLightStatus(index: 1)
+        return blueLightStatus.enabled.boolValue
     }
     
     var schedule: ScheduleType {
-        switch(getIntFromBlueLightStatus(index: 4)) {
+        switch blueLightStatus.mode {
         case 0:
             return .off
         case 1:
@@ -45,13 +50,13 @@ extension CBBlueLightClient {
             var startComponents = calendar.components([.year, .month, .day, .hour, .minute, .second], from: now)
             var endComponents = calendar.components([.year, .month, .day, .hour, .minute, .second], from: now)
             
-            startComponents.hour = getIntFromBlueLightStatus(index: 8)
-            startComponents.minute = getIntFromBlueLightStatus(index: 12)
+            startComponents.hour = Int(blueLightStatus.schedule.fromTime.hour)
+            startComponents.minute = Int(blueLightStatus.schedule.fromTime.minute)
             startComponents.second = 0
             let startDate = calendar.date(from: startComponents)
             
-            endComponents.hour = getIntFromBlueLightStatus(index: 16)
-            endComponents.minute = getIntFromBlueLightStatus(index: 20)
+            endComponents.hour = Int(blueLightStatus.schedule.fromTime.hour)
+            endComponents.minute = Int(blueLightStatus.schedule.fromTime.minute)
             endComponents.second = 0
             let endDate = calendar.date(from: endComponents)
             
@@ -66,25 +71,25 @@ extension CBBlueLightClient {
         }
     }
     
-    func getIntFromBlueLightStatus(index: Int) -> Int {
-        //create an empty mutable OpaquePointer
-        let string = String(repeating: "0", count: 30)
-        var data = string.data(using: .utf8)!
-        let ints: UnsafeMutablePointer<Int>! = data.withUnsafeMutableBytes{ $0 }
-        let bytes = OpaquePointer(ints)
-        
-        //load the BlueLightStatus struct into the opaque pointer
-        self.getBlueLightStatus(bytes)
-        
-        //get the byes from the BlueLightStatus pointer
-        let intsArray = [UInt8](data)
-        
-        //passes in index parameter
-        return Int(intsArray[index])
-    }
-    
-    func getBoolFromBlueLightStatus(index: Int) -> Bool {
-        return getIntFromBlueLightStatus(index: index) == 1
+    func setSchedule(_ schedule: ScheduleType) {
+        switch schedule {
+        case .off:
+            setMode(0)
+        case .sunSchedule:
+            setMode(1)
+        case .timedSchedule(startTime: let startTime, endTime: let endTime):
+            setMode(2)
+            
+            let calendar = NSCalendar(identifier: .gregorian)!
+            let startComponents = calendar.components([.year, .month, .day, .hour, .minute, .second], from: startTime)
+            let fromTime = Time(hour: Int32(startComponents.hour!), minute: Int32(startComponents.minute!))
+
+            let endComponents = calendar.components([.year, .month, .day, .hour, .minute, .second], from: endTime)
+            let toTime = Time(hour: Int32(endComponents.hour!), minute: Int32(endComponents.minute!))
+            
+            var schedule = Schedule(fromTime: fromTime, toTime: toTime)
+            setSchedule(&schedule)
+        }
     }
 }
 
