@@ -112,7 +112,6 @@ class StatusMenuController: NSObject, NSMenuDelegate {
                 } else {
                     self.shouldNightShiftBeEnabled = BLClient.isNightShiftEnabled
                 }
-                print(Date())
             }
             self.shiftOriginatedFromShifty = false
             
@@ -143,11 +142,6 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         case .timedSchedule(let startTime, let endTime):
             let currentTime = Date()
             let isBetweenTimes = currentTime > startTime && currentTime < endTime
-            
-            print("startTime   : \(startTime)")
-            print("currentTime : \(currentTime)")
-            print("endTime     : \(endTime)")
-            print(isBetweenTimes)
             
             //Should be true between startTime and endTime
             return isBetweenTimes
@@ -215,7 +209,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             
             disableTimer = Timer.scheduledTimer(withTimeInterval: 3600, repeats: false) { _ in
                 self.isDisableHourSelected = false
-                self.shift(isEnabled: true)
+                self.shift(isEnabled: self.getScheduledState() != false)
                 self.disableHourMenuItem.state = .off
                 self.disableHourMenuItem.title = "Disable for an hour"
                 self.disableCustomMenuItem.isEnabled = true
@@ -228,7 +222,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             addComponents.hour = 1
             disabledUntilDate = calendar.date(byAdding: addComponents, to: currentDate, options: [])!
         } else {
-            shift(isEnabled: true)
+            shift(isEnabled: self.getScheduledState() != false)
             disableDisableTimer()
             disableCustomMenuItem.isEnabled = true
         }
@@ -243,7 +237,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             customTimeWindow.showWindow(nil)
             customTimeWindow.window?.orderFrontRegardless()
         } else {
-            shift(isEnabled: true)
+            shift(isEnabled: getScheduledState() != false)
             disableDisableTimer()
             disableCustomMenuItem.isEnabled = true
             shouldNightShiftBeEnabled = activeState
@@ -258,7 +252,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             
             self.disableTimer = Timer.scheduledTimer(withTimeInterval: TimeInterval(timeIntervalInSeconds), repeats: false) { _ in
                 self.isDisableCustomSelected = false
-                self.shift(isEnabled: true)
+                self.shift(isEnabled: self.getScheduledState() != false)
                 self.disableCustomMenuItem.state = .off
                 self.disableCustomMenuItem.title = "Disable for custom time..."
                 self.disableHourMenuItem.isEnabled = true
