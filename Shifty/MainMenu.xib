@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -104,10 +104,10 @@
                         <action selector="clickEnableSlider:" target="xRd-3s-8Ep" id="nyf-aQ-CMP"/>
                     </connections>
                 </button>
-                <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qOz-qT-jic">
+                <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qOz-qT-jic" customClass="NSSliderWithScroll" customModule="Shifty" customModuleProvider="target">
                     <rect key="frame" x="47" y="4" width="149" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="48.7945556640625" tickMarkPosition="above" sliderType="linear" id="AT9-Xr-w3B"/>
+                    <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="AT9-Xr-w3B"/>
                     <connections>
                         <action selector="shiftSliderMoved:" target="xRd-3s-8Ep" id="Ijr-EN-eZS"/>
                     </connections>

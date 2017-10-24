@@ -28,3 +28,20 @@ class SliderView: NSView {
         Event.enableSlider.record()
     }
 }
+
+
+class NSSliderWithScroll: NSSlider {
+    override func scrollWheel(with event: NSEvent) {
+        let range = Float(self.maxValue - self.minValue)
+        var delta = Float(event.deltaY - event.deltaX)
+        if event.isDirectionInvertedFromDevice {
+            delta *= -1
+        }
+        
+        let increment = range * delta / 100
+        let value = self.floatValue + increment
+        
+        self.floatValue = value
+        self.sendAction(self.action, to: self.target)
+    }
+}
