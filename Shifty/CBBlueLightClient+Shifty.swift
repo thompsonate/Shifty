@@ -53,12 +53,29 @@ extension CBBlueLightClient {
             startComponents.hour = Int(blueLightStatus.schedule.fromTime.hour)
             startComponents.minute = Int(blueLightStatus.schedule.fromTime.minute)
             startComponents.second = 0
-            let startDate = calendar.date(from: startComponents)
+            var startDate = calendar.date(from: startComponents)
             
             endComponents.hour = Int(blueLightStatus.schedule.toTime.hour)
             endComponents.minute = Int(blueLightStatus.schedule.toTime.minute)
             endComponents.second = 0
-            let endDate = calendar.date(from: endComponents)
+            var endDate = calendar.date(from: endComponents)
+            
+            if let startDay = startComponents.day,
+                let endDay = endComponents.day,
+                let start = startDate,
+                let end = endDate {
+                
+                //If start and end times are on different days, adjust relative date based on current time
+                if start > end {
+                    if now > start {
+                        endComponents.day = endDay + 1
+                        endDate = calendar.date(from: endComponents)
+                    } else if now < end {
+                        startComponents.day = startDay - 1
+                        startDate = calendar.date(from: startComponents)
+                    }
+                }
+            }
             
             if let startDate = startDate, let endDate = endDate {
                 return .timedSchedule(startTime: startDate, endTime: endDate)
