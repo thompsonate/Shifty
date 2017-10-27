@@ -76,6 +76,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         
         isShiftForAppEnabled = BLClient.isNightShiftEnabled
         
+        SSLocationManager.updateLocationStatus()
         SSLocationManager.setSunTimes = { (sunrise: Date, sunset: Date) -> Void in
             self.sunTimes = (sunrise, sunset)
         }
@@ -114,6 +115,12 @@ class StatusMenuController: NSObject, NSMenuDelegate {
                 }
             }
             self.shiftOriginatedFromShifty = false
+            
+            if SSLocationManager.isAuthorizationDenied && BLClient.isSunSchedule {
+                DispatchQueue.main.async {
+                    SSLocationManager.showLocationServicesDeniedAlert()
+                }
+            }
             
             DispatchQueue.main.async {
                 self.preferencesWindow.updateSchedule?()

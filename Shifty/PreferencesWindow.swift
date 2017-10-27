@@ -14,7 +14,6 @@ struct Keys {
     static let isAutoLaunchEnabled = "isAutoLaunchEnabled"
     static let isDarkModeSyncEnabled = "isDarkModeSyncEnabled"
     static let lastKnownLocation = "lastKnownLocation"
-    static let sunriseSetTimes = "sunriseSetTimes"
     static let disabledApps = "disabledApps"
 }
 

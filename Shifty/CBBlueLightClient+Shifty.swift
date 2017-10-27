@@ -91,6 +91,27 @@ extension CBBlueLightClient {
             setSchedule(&schedule)
         }
     }
+    
+    var isOffSchedule: Bool {
+        switch schedule {
+        case .off: return true
+        default: return false
+        }
+    }
+    
+    var isSunSchedule: Bool {
+        switch schedule {
+        case .sunSchedule: return true
+        default: return false
+        }
+    }
+    
+    var isTimedSchedule: Bool {
+        switch schedule {
+        case .timedSchedule(_,_): return true
+        default: return false
+        }
+    }
 }
 
 
