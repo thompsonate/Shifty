@@ -11,7 +11,6 @@ import CoreLocation
 class SunriseSetLocationManager: NSObject, CLLocationManagerDelegate {
     
     var locationManager = CLLocationManager()
-    var setSunTimes: ((Date, Date) -> Void)!
     var shouldShowAlert = true
     
     var latitude: CLLocationDegrees?

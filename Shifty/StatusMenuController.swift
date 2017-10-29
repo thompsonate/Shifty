@@ -95,54 +95,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         BLClient.setStatusNotificationBlock(BLNotificationBlock)
 
         NotificationCenter.default.addObserver(forName: NSNotification.Name("nightShiftToggled"), object: nil, queue: nil) { _ in
-            if !self.shiftOriginatedFromShifty {
-                if self.isDisabledForApp {
-                    self.shift(isEnabled: false)
-                } else if self.isDisableHourSelected || self.isDisableCustomSelected {
-                    if self.isCloseToScheduledShift() {
-                        self.shift(isEnabled: false)
-                    } else {
-                        self.isShiftForAppEnabled = BLClient.isNightShiftEnabled
-                    }
-                } else {
-                    self.isShiftForAppEnabled = BLClient.isNightShiftEnabled
-                }
-            }
-            self.shiftOriginatedFromShifty = false
-            
-            SSLocationManager.updateLocationMonitoringStatus()
-            
-            if SSLocationManager.shouldShowAlert {
-                if SSLocationManager.isAuthorizationDenied && BLClient.isSunSchedule {
-                    SSLocationManager.showLocationServicesDeniedAlert()
-                    SSLocationManager.shouldShowAlert = false
-                } else if SSLocationManager.isAuthorized && BLClient.isSunSchedule && SSLocationManager.sunTimes == nil {
-                    SSLocationManager.showLocationErrorAlert()
-                    SSLocationManager.shouldShowAlert = false
-                }
-            }
-            
-            DispatchQueue.main.async {
-                self.preferencesWindow.updateSchedule?()
-            }
-            self.preferencesWindow.updateDarkMode()
+            self.blueLightNotification()
         }
         
         preferencesWindow.updateDarkMode = {
-            if UserDefaults.standard.bool(forKey: Keys.isDarkModeSyncEnabled) {
-                switch BLClient.schedule {
-                case .off:
-                    SLSSetAppearanceThemeLegacy(self.isShiftForAppEnabled)
-                case .sunSchedule:
-                    if let scheduledState = self.getScheduledState() {
-                        SLSSetAppearanceThemeLegacy(scheduledState)
-                    }
-                case .timedSchedule(startTime: _, endTime: _):
-                    if let scheduledState = self.getScheduledState() {
-                        SLSSetAppearanceThemeLegacy(scheduledState)
-                    }
-                }
-            }
+            self.updateDarkMode()
         }
         
         SSLocationManager.setup()
@@ -207,6 +164,58 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             return abs(currentTime.timeIntervalSince(sunTimes.sunrise)) < 300 || abs(currentTime.timeIntervalSince(sunTimes.sunset)) < 300
         default:
             return false
+        }
+    }
+    
+    ///Called when BLNotificationBlock posts a notification
+    func blueLightNotification() {
+        if !self.shiftOriginatedFromShifty {
+            if isDisabledForApp {
+                shift(isEnabled: false)
+            } else if isDisableHourSelected || isDisableCustomSelected {
+                if isCloseToScheduledShift() {
+                    shift(isEnabled: false)
+                } else {
+                    isShiftForAppEnabled = BLClient.isNightShiftEnabled
+                }
+            } else {
+                isShiftForAppEnabled = BLClient.isNightShiftEnabled
+            }
+        }
+        shiftOriginatedFromShifty = false
+        
+        SSLocationManager.updateLocationMonitoringStatus()
+        
+        if SSLocationManager.shouldShowAlert {
+            if SSLocationManager.isAuthorizationDenied && BLClient.isSunSchedule {
+                SSLocationManager.showLocationServicesDeniedAlert()
+                SSLocationManager.shouldShowAlert = false
+            } else if SSLocationManager.isAuthorized && BLClient.isSunSchedule && SSLocationManager.sunTimes == nil {
+                SSLocationManager.showLocationErrorAlert()
+                SSLocationManager.shouldShowAlert = false
+            }
+        }
+        
+        DispatchQueue.main.async {
+            self.preferencesWindow.updateSchedule?()
+        }
+        self.preferencesWindow.updateDarkMode()
+    }
+    
+    func updateDarkMode() {
+        if UserDefaults.standard.bool(forKey: Keys.isDarkModeSyncEnabled) {
+            switch BLClient.schedule {
+            case .off:
+                SLSSetAppearanceThemeLegacy(isShiftForAppEnabled)
+            case .sunSchedule:
+                if let scheduledState = getScheduledState() {
+                    SLSSetAppearanceThemeLegacy(scheduledState)
+                }
+            case .timedSchedule(startTime: _, endTime: _):
+                if let scheduledState = getScheduledState() {
+                    SLSSetAppearanceThemeLegacy(scheduledState)
+                }
+            }
         }
     }
     
