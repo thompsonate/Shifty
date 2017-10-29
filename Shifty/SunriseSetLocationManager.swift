@@ -12,50 +12,69 @@ class SunriseSetLocationManager: NSObject, CLLocationManagerDelegate {
     
     var locationManager = CLLocationManager()
     var setSunTimes: ((Date, Date) -> Void)!
-    var shouldShowLocationServicesDeniedAlert = true
+    var shouldShowAlert = true
+    
+    var latitude: CLLocationDegrees?
+    var longitude: CLLocationDegrees?
     
     func setup() {
         locationManager.delegate = self
     }
     
-    func updateLocationStatus() {
+    var sunTimes: (sunrise: Date, sunset: Date)? {
+        if let latitude = latitude, let longitude = longitude {
+            return getSunriseSetTimes(timeZone: NSTimeZone.system, latitude: latitude, longitude: longitude)
+        } else {
+            if let data = UserDefaults.standard.value(forKey: Keys.lastKnownLocation) as? Data {
+                if let lastKnownLocation = try? PropertyListDecoder().decode(Location.self, from: data) {
+                    return getSunriseSetTimes(timeZone: NSTimeZone.system, latitude: lastKnownLocation.latitude, longitude: lastKnownLocation.longitude)
+                } else {
+                    return nil
+                }
+            } else {
+                return nil
+            }
+        }
+    }
+    
+    func getSunriseSetTimes(timeZone: TimeZone, latitude: Double, longitude: Double) -> (sunrise: Date, sunset: Date) {
+        let sunriseSet = EDSunriseSet(date: Date(), timezone: timeZone, latitude: latitude, longitude: longitude)
+        return (sunriseSet.sunrise, sunriseSet.sunset)
+    }
+    
+    func updateLocationMonitoringStatus() {
         switch BLClient.schedule {
         case .sunSchedule:
             locationManager.startMonitoringSignificantLocationChanges()
         default:
-            locationManager.startMonitoringSignificantLocationChanges()
+            locationManager.stopMonitoringSignificantLocationChanges()
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let lastLocation = locations.last!
-        let latitude = lastLocation.coordinate.latitude
-        let longitude = lastLocation.coordinate.longitude
+        latitude = lastLocation.coordinate.latitude
+        longitude = lastLocation.coordinate.longitude
         print(lastLocation)
-        let lastKnownLocation = Location(latitude: latitude, longitude: longitude, saveDate: Date())
-        UserDefaults.standard.set(try? PropertyListEncoder().encode(lastKnownLocation), forKey: Keys.lastKnownLocation)
-        
-        getSunriseSetTimes(timeZone: NSTimeZone.system, latitude: latitude, longitude: longitude)
+        if let latitude = latitude, let longitude = longitude {
+            let lastKnownLocation = Location(latitude: latitude, longitude: longitude, saveDate: Date())
+            UserDefaults.standard.set(try? PropertyListEncoder().encode(lastKnownLocation), forKey: Keys.lastKnownLocation)
+        }
     }
-    
+
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error);
-        //Update sunrise and sunset times based on last known location
-        if let data = UserDefaults.standard.value(forKey: Keys.lastKnownLocation) as? Data {
-            if let lastKnownLocation = try? PropertyListDecoder().decode(Location.self, from: data) {
-                getSunriseSetTimes(timeZone: NSTimeZone.system, latitude: lastKnownLocation.latitude, longitude: lastKnownLocation.longitude)
-                print(lastKnownLocation)
-            }
-        } else {
-            showLocationErrorAlert()
-        }
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .authorizedAlways:
             print("Location Services Authorized")
-            updateLocationStatus()
+            updateLocationMonitoringStatus()
+            if SSLocationManager.isAuthorized && BLClient.isSunSchedule && SSLocationManager.sunTimes == nil {
+                SSLocationManager.showLocationErrorAlert()
+                SSLocationManager.shouldShowAlert = false
+            }
         case .denied:
             print("Location Services Denied")
             if BLClient.isSunSchedule {
@@ -79,44 +98,52 @@ class SunriseSetLocationManager: NSObject, CLLocationManagerDelegate {
             CLLocationManager.authorizationStatus() == .restricted
     }
     
-    func getSunriseSetTimes(timeZone: TimeZone, latitude: Double, longitude: Double) {
-        let sunTimes = EDSunriseSet(date: Date(), timezone: timeZone, latitude: latitude, longitude: longitude)
-        setSunTimes(sunTimes.sunrise, sunTimes.sunset)
+    var isAuthorized: Bool {
+        return CLLocationManager.authorizationStatus() == .authorized
     }
     
     func showLocationServicesDeniedAlert() {
-        let privacyPrefs = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy")
-        let alert = NSAlert()
-        alert.messageText = "Location Services disabled"
-        alert.informativeText = "Allow access to your location in order to use Shifty with the Sunset to Sunrise schedule. Shifty needs access to your location to calculate sunrise and sunset times."
-        alert.alertStyle = NSAlert.Style.warning
-        alert.addButton(withTitle: "Open Preferences")
-        alert.addButton(withTitle: "Turn schedule off")
-        
-        let response = alert.runModal()
-        if response == .alertFirstButtonReturn {
-            NSWorkspace.shared.open(privacyPrefs!)
-            shouldShowLocationServicesDeniedAlert = true
-        } else {
-            BLClient.setSchedule(.off)
-            shouldShowLocationServicesDeniedAlert = true
+        DispatchQueue.main.async {
+            let privacyPrefs = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy")
+            let alert = NSAlert()
+            alert.messageText = "Location Services disabled"
+            alert.informativeText = "Allow access to your location in order to use Shifty with the Sunset to Sunrise schedule. Shifty needs access to your location to calculate sunrise and sunset times."
+            alert.alertStyle = NSAlert.Style.warning
+            alert.addButton(withTitle: "Open Preferences")
+            alert.addButton(withTitle: "Turn schedule off")
+            
+            let response = alert.runModal()
+            if response == .alertFirstButtonReturn {
+                NSWorkspace.shared.open(privacyPrefs!)
+                self.shouldShowAlert = true
+            } else {
+                BLClient.setSchedule(.off)
+                self.shouldShowAlert = true
+            }
         }
     }
     
     func showLocationErrorAlert() {
-        let alert = NSAlert()
-        alert.messageText = "Unable to get location"
-        alert.informativeText = "Check your internet connection. Shifty needs access to your location to calculate sunrise and sunset times."
-        alert.alertStyle = NSAlert.Style.warning
-        alert.addButton(withTitle: "Try again")
-        alert.addButton(withTitle: "Turn schedule off")
-        
-        let response = alert.runModal()
-        if response == .alertFirstButtonReturn {
-            locationManager.stopMonitoringSignificantLocationChanges()
-            locationManager.startMonitoringSignificantLocationChanges()
-        } else {
-            BLClient.setSchedule(.off)
+        DispatchQueue.main.async {
+            let alert = NSAlert()
+            alert.messageText = "Unable to get location"
+            alert.informativeText = "Check your internet connection. Shifty needs access to your location to calculate sunrise and sunset times."
+            alert.alertStyle = NSAlert.Style.warning
+            alert.addButton(withTitle: "Try again")
+            alert.addButton(withTitle: "Turn schedule off")
+            
+            let response = alert.runModal()
+            if response == .alertFirstButtonReturn {
+                self.locationManager.stopMonitoringSignificantLocationChanges()
+                self.locationManager.startMonitoringSignificantLocationChanges()
+                if self.sunTimes == nil {
+                    self.showLocationErrorAlert()
+                }
+                self.shouldShowAlert = true
+            } else {
+                BLClient.setSchedule(.off)
+                self.shouldShowAlert = true
+            }
         }
     }
 }

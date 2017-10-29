@@ -45,7 +45,6 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     var disableTimer: Timer!
     var disabledUntilDate: Date!
     
-    var sunTimes: (sunrise: Date, sunset: Date)!
     let calendar = NSCalendar(identifier: .gregorian)!
         
     override func awakeFromNib() {
@@ -75,12 +74,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         }
         
         isShiftForAppEnabled = BLClient.isNightShiftEnabled
-        
-        SSLocationManager.updateLocationStatus()
-        SSLocationManager.setSunTimes = { (sunrise: Date, sunset: Date) -> Void in
-            self.sunTimes = (sunrise, sunset)
-        }
-        
+
         disabledApps = PreferencesManager.sharedInstance.userDefaults.value(forKey: Keys.disabledApps) as? [String] ?? []
         
         let appDelegate = NSApplication.shared.delegate as! AppDelegate
@@ -116,12 +110,15 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             }
             self.shiftOriginatedFromShifty = false
             
-            if SSLocationManager.shouldShowLocationServicesDeniedAlert {
+            SSLocationManager.updateLocationMonitoringStatus()
+            
+            if SSLocationManager.shouldShowAlert {
                 if SSLocationManager.isAuthorizationDenied && BLClient.isSunSchedule {
-                    DispatchQueue.main.async {
-                        SSLocationManager.showLocationServicesDeniedAlert()
-                    }
-                    SSLocationManager.shouldShowLocationServicesDeniedAlert = false
+                    SSLocationManager.showLocationServicesDeniedAlert()
+                    SSLocationManager.shouldShowAlert = false
+                } else if SSLocationManager.isAuthorized && BLClient.isSunSchedule && SSLocationManager.sunTimes == nil {
+                    SSLocationManager.showLocationErrorAlert()
+                    SSLocationManager.shouldShowAlert = false
                 }
             }
             
@@ -149,7 +146,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         }
         
         SSLocationManager.setup()
-        
+        SSLocationManager.updateLocationMonitoringStatus()
         
     }
     
@@ -176,6 +173,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             //Should be true between startTime and endTime
             return isBetweenTimes
         case .sunSchedule:
+            guard let sunTimes = SSLocationManager.sunTimes else { return false }
             let currentTime = Date()            
             let isBetweenTimes = currentTime > sunTimes.sunrise && currentTime < sunTimes.sunset
             
@@ -204,6 +202,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             let currentTime = Date()
             return abs(currentTime.timeIntervalSince(startTime)) < 1 || abs(currentTime.timeIntervalSince(endTime)) < 1
         case .sunSchedule:
+            guard let sunTimes = SSLocationManager.sunTimes else { return false }
             let currentTime = Date()
             return abs(currentTime.timeIntervalSince(sunTimes.sunrise)) < 300 || abs(currentTime.timeIntervalSince(sunTimes.sunset)) < 300
         default:
