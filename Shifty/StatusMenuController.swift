@@ -116,9 +116,12 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             }
             self.shiftOriginatedFromShifty = false
             
-            if SSLocationManager.isAuthorizationDenied && BLClient.isSunSchedule {
-                DispatchQueue.main.async {
-                    SSLocationManager.showLocationServicesDeniedAlert()
+            if SSLocationManager.shouldShowLocationServicesDeniedAlert {
+                if SSLocationManager.isAuthorizationDenied && BLClient.isSunSchedule {
+                    DispatchQueue.main.async {
+                        SSLocationManager.showLocationServicesDeniedAlert()
+                    }
+                    SSLocationManager.shouldShowLocationServicesDeniedAlert = false
                 }
             }
             

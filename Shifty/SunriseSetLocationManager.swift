@@ -12,6 +12,7 @@ class SunriseSetLocationManager: NSObject, CLLocationManagerDelegate {
     
     var locationManager = CLLocationManager()
     var setSunTimes: ((Date, Date) -> Void)!
+    var shouldShowLocationServicesDeniedAlert = true
     
     func setup() {
         locationManager.delegate = self
@@ -45,6 +46,8 @@ class SunriseSetLocationManager: NSObject, CLLocationManagerDelegate {
                 getSunriseSetTimes(timeZone: NSTimeZone.system, latitude: lastKnownLocation.latitude, longitude: lastKnownLocation.longitude)
                 print(lastKnownLocation)
             }
+        } else {
+            showLocationErrorAlert()
         }
     }
     
@@ -93,6 +96,25 @@ class SunriseSetLocationManager: NSObject, CLLocationManagerDelegate {
         let response = alert.runModal()
         if response == .alertFirstButtonReturn {
             NSWorkspace.shared.open(privacyPrefs!)
+            shouldShowLocationServicesDeniedAlert = true
+        } else {
+            BLClient.setSchedule(.off)
+            shouldShowLocationServicesDeniedAlert = true
+        }
+    }
+    
+    func showLocationErrorAlert() {
+        let alert = NSAlert()
+        alert.messageText = "Unable to get location"
+        alert.informativeText = "Check your internet connection. Shifty needs access to your location to calculate sunrise and sunset times."
+        alert.alertStyle = NSAlert.Style.warning
+        alert.addButton(withTitle: "Try again")
+        alert.addButton(withTitle: "Turn schedule off")
+        
+        let response = alert.runModal()
+        if response == .alertFirstButtonReturn {
+            locationManager.stopMonitoringSignificantLocationChanges()
+            locationManager.startMonitoringSignificantLocationChanges()
         } else {
             BLClient.setSchedule(.off)
         }
