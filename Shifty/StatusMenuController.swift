@@ -111,7 +111,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         if BLClient.isNightShiftEnabled {
             sliderView.shiftSlider.floatValue = BLClient.strength * 100
             setActiveState(state: true)
-            disableDisableTimer()
+            //disableDisableTimer()
 
         } else if sliderView.shiftSlider.floatValue != 0.0 {
             setActiveState(state: BLClient.isNightShiftEnabled)
@@ -289,7 +289,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             disableHourMenuItem.title = "Disabled for an hour"
             disableCustomMenuItem.isEnabled = false
             
-            disableTimer = Timer.scheduledTimer(withTimeInterval: 3600, repeats: false) { _ in
+            disableTimer = Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { _ in
                 self.isDisableHourSelected = false
                 self.setToSchedule()
                 self.disableHourMenuItem.state = .off
@@ -304,9 +304,9 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             addComponents.hour = 1
             disabledUntilDate = calendar.date(byAdding: addComponents, to: currentDate, options: [])!
         } else {
-            isDisableHourSelected = false
             disableDisableTimer()
-            disableCustomMenuItem.isEnabled = true
+            setToSchedule()
+            setActiveState(state: true)
         }
         isShiftForAppEnabled = activeState
         Event.disableForHour(state: isDisableHourSelected).record()
@@ -320,8 +320,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             customTimeWindow.window?.orderFrontRegardless()
         } else {
             disableDisableTimer()
-            disableCustomMenuItem.isEnabled = true
-            isShiftForAppEnabled = activeState
+            setToSchedule()
+            setActiveState(state: true)
         }
         
         customTimeWindow.disableCustomTime = { (timeIntervalInSeconds) in
@@ -365,7 +365,6 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             disableCustomMenuItem.state = .off
             disableCustomMenuItem.title = "Disable for custom time..."
         }
-        setToSchedule()
     }
     
     @IBAction func disableForApp(_ sender: NSMenuItem) {
