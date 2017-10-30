@@ -121,7 +121,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         updateCurrentApp()
     }
     
-    func getScheduledState() -> Bool? {
+    ///Returns true if the scheduled state is on or if the scheduled shift is close
+    var scheduledState: Bool? {
         switch BLClient.schedule {
         case .timedSchedule(let startTime, let endTime):
             let currentTime = Date()
@@ -141,29 +142,59 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         }
     }
     
-    ///Sets Night Shift state based on the set schedule.
-    func setToSchedule() {
-        if !isDisableHourSelected && !isDisableCustomSelected && !isDisabledForApp {
-            if let scheduledState = getScheduledState() {
-                if scheduledState != BLClient.isNightShiftEnabled {
-                    shift(isEnabled: scheduledState)
-                }
-            }
-        }
-    }
-    
-    ///Returns a boolean of whether or not the current time is close to a scheduled shift.
-    func isCloseToScheduledShift() -> Bool {
+    ///Returns a boolean tuple representing whether or not the current time is close to a scheduled shift and the state of that shift.
+    var scheduledShift: (isClose: Bool, shiftState: Bool?) {
         switch BLClient.schedule {
         case .timedSchedule(let startTime, let endTime):
             let currentTime = Date()
-            return abs(currentTime.timeIntervalSince(startTime)) < 1 || abs(currentTime.timeIntervalSince(endTime)) < 1
+            let isCloseToStartTime = abs(currentTime.timeIntervalSince(startTime)) < 5
+            let isCloseToEndTime = abs(currentTime.timeIntervalSince(endTime)) < 5
+            let isClose = isCloseToStartTime || isCloseToEndTime
+            
+            let shiftState: Bool?
+            if isCloseToStartTime {
+                shiftState = true
+            } else if isCloseToEndTime {
+                shiftState = false
+            } else {
+                shiftState = nil
+            }
+            return (isClose, shiftState)
         case .sunSchedule:
-            guard let sunTimes = SSLocationManager.sunTimes else { return false }
+            guard let sunTimes = SSLocationManager.sunTimes else { return (false, nil) }
             let currentTime = Date()
-            return abs(currentTime.timeIntervalSince(sunTimes.sunrise)) < 300 || abs(currentTime.timeIntervalSince(sunTimes.sunset)) < 300
+            let isCloseToSunrise = abs(currentTime.timeIntervalSince(sunTimes.sunrise)) < 600
+            let isCloseToSunset = abs(currentTime.timeIntervalSince(sunTimes.sunset)) < 600
+            let isClose = isCloseToSunrise || isCloseToSunset
+            
+            let shiftState: Bool?
+            if isCloseToSunset {
+                shiftState = true
+            } else if isCloseToSunrise {
+                shiftState = false
+            } else {
+                shiftState = nil
+            }
+            return (isClose, shiftState)
         default:
-            return false
+            return (false, nil)
+        }
+    }
+    
+    ///Sets Night Shift state based on the set schedule. If a scheduled shift is close, the state is set to what it will be after the shift.
+    func setToSchedule() {
+        if !isDisableHourSelected && !isDisableCustomSelected && !isDisabledForApp {
+            if scheduledShift.isClose {
+                if let shiftState = scheduledShift.shiftState {
+                    shift(isEnabled: shiftState)
+                }
+            } else {
+                if let scheduledState = scheduledState {
+                    shift(isEnabled: scheduledState)
+                }
+            }
+        } else {
+            shift(isEnabled: false)
         }
     }
     
@@ -173,7 +204,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             if isDisabledForApp {
                 shift(isEnabled: false)
             } else if isDisableHourSelected || isDisableCustomSelected {
-                if isCloseToScheduledShift() {
+                if scheduledShift.isClose {
                     shift(isEnabled: false)
                 } else {
                     isShiftForAppEnabled = BLClient.isNightShiftEnabled
@@ -208,12 +239,24 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             case .off:
                 SLSSetAppearanceThemeLegacy(isShiftForAppEnabled)
             case .sunSchedule:
-                if let scheduledState = getScheduledState() {
-                    SLSSetAppearanceThemeLegacy(scheduledState)
+                if let scheduledState = scheduledState {
+                    if scheduledShift.isClose {
+                        if let shiftState = scheduledShift.shiftState {
+                            SLSSetAppearanceThemeLegacy(shiftState)
+                        }
+                    } else {
+                        SLSSetAppearanceThemeLegacy(scheduledState)
+                    }
                 }
             case .timedSchedule(startTime: _, endTime: _):
-                if let scheduledState = getScheduledState() {
-                    SLSSetAppearanceThemeLegacy(scheduledState)
+                if let scheduledState = scheduledState {
+                    if scheduledShift.isClose {
+                        if let shiftState = scheduledShift.shiftState {
+                            SLSSetAppearanceThemeLegacy(shiftState)
+                        }
+                    } else {
+                        SLSSetAppearanceThemeLegacy(scheduledState)
+                    }
                 }
             }
         }
@@ -248,7 +291,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             
             disableTimer = Timer.scheduledTimer(withTimeInterval: 3600, repeats: false) { _ in
                 self.isDisableHourSelected = false
-                self.shift(isEnabled: self.getScheduledState() != false)
+                self.setToSchedule()
                 self.disableHourMenuItem.state = .off
                 self.disableHourMenuItem.title = "Disable for an hour"
                 self.disableCustomMenuItem.isEnabled = true
@@ -261,7 +304,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             addComponents.hour = 1
             disabledUntilDate = calendar.date(byAdding: addComponents, to: currentDate, options: [])!
         } else {
-            shift(isEnabled: self.getScheduledState() != false)
+            isDisableHourSelected = false
             disableDisableTimer()
             disableCustomMenuItem.isEnabled = true
         }
@@ -276,7 +319,6 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             customTimeWindow.showWindow(nil)
             customTimeWindow.window?.orderFrontRegardless()
         } else {
-            shift(isEnabled: getScheduledState() != false)
             disableDisableTimer()
             disableCustomMenuItem.isEnabled = true
             isShiftForAppEnabled = activeState
@@ -291,7 +333,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             
             self.disableTimer = Timer.scheduledTimer(withTimeInterval: TimeInterval(timeIntervalInSeconds), repeats: false) { _ in
                 self.isDisableCustomSelected = false
-                self.shift(isEnabled: self.getScheduledState() != false)
+                self.setToSchedule()
                 self.disableCustomMenuItem.state = .off
                 self.disableCustomMenuItem.title = "Disable for custom time..."
                 self.disableHourMenuItem.isEnabled = true
@@ -323,6 +365,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             disableCustomMenuItem.state = .off
             disableCustomMenuItem.title = "Disable for custom time..."
         }
+        setToSchedule()
     }
     
     @IBAction func disableForApp(_ sender: NSMenuItem) {
