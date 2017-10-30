@@ -90,6 +90,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         
         NSWorkspace.shared.notificationCenter.addObserver(forName: NSWorkspace.screensDidWakeNotification, object: nil, queue: nil) { _ in
             self.setToSchedule()
+            self.updateDarkMode()
         }
         
         BLClient.setStatusNotificationBlock(BLNotificationBlock)
@@ -289,7 +290,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             disableHourMenuItem.title = "Disabled for an hour"
             disableCustomMenuItem.isEnabled = false
             
-            disableTimer = Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { _ in
+            disableTimer = Timer.scheduledTimer(withTimeInterval: 3600, repeats: false) { _ in
                 self.isDisableHourSelected = false
                 self.setToSchedule()
                 self.disableHourMenuItem.state = .off
