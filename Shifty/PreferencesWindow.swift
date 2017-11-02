@@ -142,6 +142,7 @@ class PreferencesManager {
         let factoryDefaults = [
             Keys.isAutoLaunchEnabled: NSNumber(value: false),
             Keys.isStatusToggleEnabled: NSNumber(value: false),
+            Keys.isDarkModeSyncEnabled: NSNumber(value: false),
             Keys.disabledApps: [String]()
             ] as [String : Any]
         
@@ -155,6 +156,10 @@ class PreferencesManager {
     func reset() {
         userDefaults.removeObject(forKey: Keys.isAutoLaunchEnabled)
         userDefaults.removeObject(forKey: Keys.isStatusToggleEnabled)
+        userDefaults.removeObject(forKey: Keys.isDarkModeSyncEnabled)
+        userDefaults.removeObject(forKey: Keys.lastKnownLocation)
+        userDefaults.removeObject(forKey: Keys.disabledApps)
+        
         synchronize()
     }
 }
