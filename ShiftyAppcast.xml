@@ -5,6 +5,23 @@
         <description>Most recent changes with links to updates.</description>
         <language>en</language>
         <item>
+            <title>Version 0.3</title>
+            <description><![CDATA[
+                <ul style="list-style-type:disc">
+                <li>macOS dark mode can now be automatically set based on the Night Shift schedule.</li>
+                <li>Night Shift schedule settings can now be set from within Shifty's preferences window.</li>
+                <li>The slider can now be operated by scrolling.</li>
+                <li>Fixes an issue where Night Shift is sometimes not set to the correct state after being disabled in Shifty.</li>
+                <li>Because of the dark mode feature and the above issue, Shifty now requests your location when using the Sunset to Sunrise schedule. This is to calculate the sunset and sunrise times based on your location. Your location is not and will never be shared.</li>
+                </ul>
+            ]]>
+            </description>
+            <pubDate>Thur, 2 Nov 2017 1:00:00 -0400</pubDate>
+            <enclosure url="https://github.com/thompsonate/Shifty/releases/download/0.3/Shifty-0.3.dmg" sparkle:version="24" sparkle:shortVersionString="0.3" length="1623481" type="application/octet-stream" sparkle:dsaSignature="MCwCFA6rl+zxoAs+aYjCao923nrOQGLHAhQ3fm2qa6IUwOPsakmUpz1C44uS/g==" />
+            <sparkle:minimumSystemVersion>10.12.4</sparkle:minimumSystemVersion>
+        </item>
+
+        <item>
             <title>Version 0.2</title>
             <description><![CDATA[
                 <h2>Known Issues</h2>
