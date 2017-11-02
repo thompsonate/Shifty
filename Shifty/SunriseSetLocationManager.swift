@@ -81,8 +81,10 @@ class SunriseSetLocationManager: NSObject, CLLocationManagerDelegate {
             }
         case .notDetermined:
             print("Location Services Not Determined")
-            locationManager.startUpdatingLocation()
-            locationManager.stopUpdatingLocation()
+            if BLClient.isSunSchedule {
+                locationManager.startUpdatingLocation()
+                locationManager.stopUpdatingLocation()
+            }
         case .restricted:
             print("Location Services Restricted")
             if BLClient.isSunSchedule {
