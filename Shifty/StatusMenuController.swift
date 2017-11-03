@@ -120,6 +120,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         
         setDescriptionText()
         updateCurrentApp()
+        Event.menuOpened.record()
     }
     
     ///Returns true if the scheduled state is on or if the scheduled shift is close

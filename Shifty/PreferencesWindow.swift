@@ -78,7 +78,10 @@ class PreferencesWindow: NSWindowController, NSWindowDelegate {
     }
     
     func windowWillClose(_ notification: Notification) {
-        Event.preferences(autoLaunch: setAutoLaunch.state == .on, quickToggle: toggleStatusItem.state == .on, syncDarkMode: darkModeSync.state == .on).record()
+        Event.preferences(autoLaunch: setAutoLaunch.state == .on,
+                          quickToggle: toggleStatusItem.state == .on,
+                          syncDarkMode: darkModeSync.state == .on,
+                          schedule: BLClient.schedule).record()
     }
     
     @IBAction func setAutoLaunch(_ sender: NSButtonCell) {

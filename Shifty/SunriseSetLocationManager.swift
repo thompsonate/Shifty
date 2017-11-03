@@ -121,6 +121,7 @@ class SunriseSetLocationManager: NSObject, CLLocationManagerDelegate {
                 BLClient.setSchedule(.off)
                 self.shouldShowAlert = true
             }
+            Event.locationServicesDeniedAlertShown.record()
         }
     }
     
@@ -145,6 +146,7 @@ class SunriseSetLocationManager: NSObject, CLLocationManagerDelegate {
                 BLClient.setSchedule(.off)
                 self.shouldShowAlert = true
             }
+            Event.locationErrorAlertShown.record()
         }
     }
 }

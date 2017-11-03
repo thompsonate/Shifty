@@ -16,6 +16,7 @@ enum Event {
     case unsupportedHardware
 
     //StatusMenuController
+    case menuOpened
     case toggleNightShift(state: Bool)
     case disableForCurrentApp(state: Bool)
     case disableForHour(state: Bool)
@@ -35,7 +36,11 @@ enum Event {
     case donateButtonClicked
     
     //PreferencesWindow
-    case preferences(autoLaunch: Bool, quickToggle: Bool, syncDarkMode: Bool)
+    case preferences(autoLaunch: Bool, quickToggle: Bool, syncDarkMode: Bool, schedule: ScheduleType)
+    
+    //Errors
+    case locationServicesDeniedAlertShown
+    case locationErrorAlertShown
 }
 
 
@@ -50,6 +55,7 @@ extension Event {
         case .appLaunched: return "App Launched"
         case .oldMacOSVersion(_): return "Unsupported version of macOS"
         case .unsupportedHardware: return "Unsupported Hardware"
+        case .menuOpened: return "Menu opened"
         case .toggleNightShift: return "Night Shift Toggled"
         case .disableForCurrentApp(_): return "Disable for current app clicked"
         case .disableForHour(_): return" Disable for hour clicked"
@@ -64,6 +70,8 @@ extension Event {
         case .feedbackButtonClicked: return "Feedback button clicked"
         case .donateButtonClicked: return "Donate button clicked"
         case .preferences: return "Preferences"
+        case .locationServicesDeniedAlertShown: return "Location Services Denied alert shown"
+        case .locationErrorAlertShown: return "Location Error alert shown"
         }
     }
     
@@ -82,10 +90,17 @@ extension Event {
                     "Time interval in minutes": String(describing: timeInterval)]
         case .sliderMoved(let value):
             return ["Slider value": value]
-        case .preferences(let autoLaunch, let quickToggle, let syncDarkMode):
+        case .preferences(let autoLaunch, let quickToggle, let syncDarkMode, let schedule):
+            var scheduleString: String
+            switch schedule {
+            case .off: scheduleString = "off"
+            case .sunSchedule: scheduleString = "sunset to sunrise"
+            case .timedSchedule(_, _): scheduleString = "custom"
+            }
             return ["Auto Launch": autoLaunch ? "true" : "false",
                     "Quick Toggle": quickToggle ? "true" : "false",
-                    "Sync Dark Mode": syncDarkMode ? "true" : "false"]
+                    "Sync Dark Mode": syncDarkMode ? "true" : "false",
+                    "Schedule": scheduleString]
         default:
             return nil
         }
