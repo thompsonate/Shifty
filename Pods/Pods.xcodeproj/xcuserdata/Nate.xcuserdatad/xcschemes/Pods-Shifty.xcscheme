@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0900"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9B52D7A21C836BD32513BA033D0B6B69"
+               BlueprintIdentifier = "0C48F5A259FC34030472DE7157C660A7"
                BuildableName = "Pods_Shifty.framework"
                BlueprintName = "Pods-Shifty"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9B52D7A21C836BD32513BA033D0B6B69"
+            BlueprintIdentifier = "0C48F5A259FC34030472DE7157C660A7"
             BuildableName = "Pods_Shifty.framework"
             BlueprintName = "Pods-Shifty"
             ReferencedContainer = "container:Pods.xcodeproj">
