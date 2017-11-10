@@ -10,6 +10,7 @@ import Cocoa
 import ServiceManagement
 import Fabric
 import Crashlytics
+import MASPreferences
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -18,7 +19,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var statusMenu: NSMenu!
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     var statusItemClicked: (() -> Void)?
-
+    
+    lazy var preferenceWindowController: NSWindowController = {
+        return MASPreferencesWindowController(viewControllers: [PrefGeneralViewController()], title: "Preferences")
+    }()
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         UserDefaults.standard.register(defaults: ["NSApplicationCrashOnExceptions": true])

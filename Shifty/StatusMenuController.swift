@@ -544,10 +544,12 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     }
     
     @IBAction func preferencesClicked(_ sender: NSMenuItem) {
-        preferencesWindow.updateSchedule?()
-        preferencesWindow.showWindow(sender)
-        preferencesWindow.window?.orderFrontRegardless()
-        Event.preferencesWindowOpened.record()
+        let appDelegate = NSApplication.shared.delegate as? AppDelegate
+        appDelegate?.preferenceWindowController.showWindow(sender)
+//        preferencesWindow.updateSchedule?()
+//        preferencesWindow.showWindow(sender)
+//        preferencesWindow.window?.orderFrontRegardless()
+//        Event.preferencesWindowOpened.record()
     }
     
     @IBAction func quitClicked(_ sender: NSMenuItem) {
