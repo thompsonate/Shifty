@@ -26,7 +26,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 PrefGeneralViewController(),
                 PrefShortcutsViewController(),
                 PrefAboutViewController()],
-            title: "Shifty Preferences")
+            title: "Preferences")
     }()
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {

@@ -6,7 +6,10 @@
 //
 
 import Cocoa
+import Sparkle
 import MASPreferences
+
+let ShiftyUpdater = SUUpdater()
 
 @objcMembers
 class PrefAboutViewController: NSViewController, MASPreferencesViewController {
@@ -30,10 +33,37 @@ class PrefAboutViewController: NSViewController, MASPreferencesViewController {
     
     var hasResizableWidth = false
     var hasResizableHeight = false
-
+    
+    @IBOutlet weak var versionLabel: NSTextField!
+        
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+        
+        let versionObject = Bundle.main.infoDictionary?["CFBundleShortVersionString"]
+        versionLabel.stringValue = versionObject as? String ?? ""
+    }
+    
+    @IBAction func checkUpdateClicked(_ sender: NSButton) {
+        ShiftyUpdater.checkForUpdates(sender)
+        Event.checkForUpdatesClicked.record()
+    }
+    
+    @IBAction func visitWebsiteClicked(_ sender: NSButton) {
+        if let url = URL(string: "http://shifty.natethompson.io"), NSWorkspace.shared.open(url) {
+        }
+        Event.websiteButtonClicked.record()
+    }
+    
+    @IBAction func submitFeedbackClicked(_ sender: NSButton) {
+        if let url = URL(string: "mailto:feedback@natethompson.io?subject=Shifty%20Feedback"), NSWorkspace.shared.open(url) {
+        }
+        Event.feedbackButtonClicked.record()
+    }
+    
+    @IBAction func donateButtonClicked(_ sender: NSButton) {
+        if let url = URL(string: "http://shifty.natethompson.io/donate"), NSWorkspace.shared.open(url) {
+        }
+        Event.donateButtonClicked.record()
     }
     
 }

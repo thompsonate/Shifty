@@ -26,7 +26,6 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     
     var preferencesWindow: NSWindowController!
     var prefGeneral: PrefGeneralViewController!
-    var aboutWindow: AboutWindow!
     var customTimeWindow: CustomTimeWindow!
     var currentAppName = ""
     var currentAppBundleId = ""
@@ -50,7 +49,6 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         
     override func awakeFromNib() {
         statusMenu.delegate = self
-        aboutWindow = AboutWindow()
         customTimeWindow = CustomTimeWindow()
         
         let prefWindow = (NSApplication.shared.delegate as? AppDelegate)?.preferenceWindowController
@@ -540,12 +538,6 @@ class StatusMenuController: NSObject, NSMenuDelegate {
                 descriptionMenuItem.title = "Disabled"
             }
         }
-    }
-    
-    @IBAction func aboutClicked(_ sender: NSMenuItem) {
-        aboutWindow.showWindow(sender)
-        aboutWindow.window?.orderFrontRegardless()
-        Event.aboutWindowOpened.record()
     }
     
     @IBAction func preferencesClicked(_ sender: NSMenuItem) {
