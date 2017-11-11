@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0C48F5A259FC34030472DE7157C660A7"
+               BlueprintIdentifier = "FBE9DF55330BFA86F4A70A2E9250C107"
                BuildableName = "Pods_Shifty.framework"
                BlueprintName = "Pods-Shifty"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0C48F5A259FC34030472DE7157C660A7"
+            BlueprintIdentifier = "FBE9DF55330BFA86F4A70A2E9250C107"
             BuildableName = "Pods_Shifty.framework"
             BlueprintName = "Pods-Shifty"
             ReferencedContainer = "container:Pods.xcodeproj">
