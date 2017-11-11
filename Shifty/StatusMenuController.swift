@@ -24,7 +24,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     @IBOutlet weak var sunIcon: NSImageView!
     @IBOutlet weak var moonIcon: NSImageView!
     
-    var preferencesWindow: PreferencesWindow!
+    var preferencesWindow: NSWindowController!
+    var prefGeneral: PrefGeneralViewController!
     var aboutWindow: AboutWindow!
     var customTimeWindow: CustomTimeWindow!
     var currentAppName = ""
@@ -50,7 +51,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     override func awakeFromNib() {
         statusMenu.delegate = self
         aboutWindow = AboutWindow()
-        preferencesWindow = PreferencesWindow()
+        prefGeneral = PrefGeneralViewController()
         customTimeWindow = CustomTimeWindow()
         
         descriptionMenuItem.isEnabled = false
@@ -75,7 +76,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         
         isShiftForAppEnabled = BLClient.isNightShiftEnabled
 
-        disabledApps = PreferencesManager.sharedInstance.userDefaults.value(forKey: Keys.disabledApps) as? [String] ?? []
+        disabledApps = PrefManager.sharedInstance.userDefaults.value(forKey: Keys.disabledApps) as? [String] ?? []
         
         let appDelegate = NSApplication.shared.delegate as! AppDelegate
         appDelegate.statusItemClicked = {
@@ -99,7 +100,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             self.blueLightNotification()
         }
         
-        preferencesWindow.updateDarkMode = {
+        prefGeneral.updateDarkMode = {
             self.updateDarkMode()
         }
         
@@ -230,9 +231,9 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         }
         
         DispatchQueue.main.async {
-            self.preferencesWindow.updateSchedule?()
+            self.prefGeneral.updateSchedule?()
         }
-        self.preferencesWindow.updateDarkMode()
+        self.updateDarkMode()
     }
     
     func updateDarkMode() {
@@ -376,7 +377,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             disabledApps.remove(at: disabledApps.index(of: currentAppBundleId)!)
         }
         updateCurrentApp()
-        PreferencesManager.sharedInstance.userDefaults.set(disabledApps, forKey: Keys.disabledApps)
+        PrefManager.sharedInstance.userDefaults.set(disabledApps, forKey: Keys.disabledApps)
         Event.disableForCurrentApp(state: sender.state == .on).record()
     }
     
@@ -546,10 +547,9 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     @IBAction func preferencesClicked(_ sender: NSMenuItem) {
         let appDelegate = NSApplication.shared.delegate as? AppDelegate
         appDelegate?.preferenceWindowController.showWindow(sender)
+//        appDelegate?.preferenceWindowController.window?.makeKeyAndOrderFront(sender)
 //        preferencesWindow.updateSchedule?()
-//        preferencesWindow.showWindow(sender)
-//        preferencesWindow.window?.orderFrontRegardless()
-//        Event.preferencesWindowOpened.record()
+        Event.preferencesWindowOpened.record()
     }
     
     @IBAction func quitClicked(_ sender: NSMenuItem) {

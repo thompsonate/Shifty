@@ -21,7 +21,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var statusItemClicked: (() -> Void)?
     
     lazy var preferenceWindowController: NSWindowController = {
-        return MASPreferencesWindowController(viewControllers: [PrefGeneralViewController()], title: "Preferences")
+        return MASPreferencesWindowController(viewControllers: [
+            PrefGeneralViewController(),
+            PrefShortcutsViewController(),
+            PrefAboutViewController()
+            ], title: "Shifty Preferences")
     }()
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {

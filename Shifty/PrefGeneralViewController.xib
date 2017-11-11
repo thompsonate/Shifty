@@ -8,24 +8,166 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PrefGeneralViewController" customModule="Shifty" customModuleProvider="target">
             <connections>
-                <outlet property="view" destination="c22-O7-iKe" id="Rcu-hL-vQd"/>
+                <outlet property="customMenuItem" destination="Cum-ew-Bk2" id="iWD-k7-XSW"/>
+                <outlet property="darkModeSync" destination="Gdr-ZW-5aK" id="iTV-SM-SLG"/>
+                <outlet property="fromLabel" destination="Pyo-AD-ZFn" id="krQ-yJ-iRG"/>
+                <outlet property="fromTimePicker" destination="uxU-uR-S3U" id="eww-uF-r1Y"/>
+                <outlet property="offMenuItem" destination="lkN-xJ-pf3" id="TRT-Va-OSg"/>
+                <outlet property="schedulePopup" destination="vul-m7-WVn" id="ajT-uq-u4n"/>
+                <outlet property="setAutoLaunch" destination="JqG-nx-58t" id="01f-mF-14o"/>
+                <outlet property="sunMenuItem" destination="TwI-wC-vyX" id="wfQ-J2-59y"/>
+                <outlet property="toLabel" destination="kBV-5Y-V1o" id="Pgb-pd-dtC"/>
+                <outlet property="toTimePicker" destination="ddu-sM-B7W" id="8tl-IJ-9hf"/>
+                <outlet property="toggleStatusItem" destination="xTG-ui-90C" id="XeV-Ik-9y7"/>
+                <outlet property="view" destination="bXz-rK-jao" id="xYY-dt-fo2"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView id="c22-O7-iKe">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+        <view wantsLayer="YES" id="bXz-rK-jao">
+            <rect key="frame" x="0.0" y="0.0" width="397" height="244"/>
+            <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rQ3-ZG-Fuh">
-                    <rect key="frame" x="200" y="118" width="81" height="32"/>
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xTG-ui-90C">
+                    <rect key="frame" x="50" y="177" width="102" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HVz-EY-RnT">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                    <buttonCell key="cell" type="check" title="Quick Toggle" bezelStyle="regularSquare" imagePosition="left" alignment="center" inset="2" id="LeO-kk-zOj">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
+                        <connections>
+                            <action selector="quickToggle:" target="-2" id="vPK-ud-XAZ"/>
+                        </connections>
                     </buttonCell>
+                    <connections>
+                        <binding destination="HAt-Ds-MVV" name="value" keyPath="values.isStatusToggleEnabled" id="dSU-Ym-XSo"/>
+                    </connections>
                 </button>
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JqG-nx-58t">
+                    <rect key="frame" x="50" y="203" width="154" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Launch Shifty at login" bezelStyle="regularSquare" imagePosition="left" inset="2" id="bxC-lM-Pei">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                        <connections>
+                            <action selector="setAutoLaunch:" target="-2" id="HYY-n7-WXb"/>
+                        </connections>
+                    </buttonCell>
+                    <connections>
+                        <binding destination="HAt-Ds-MVV" name="value" keyPath="values.isAutoLaunchEnabled" id="uBI-xn-JbJ"/>
+                    </connections>
+                </button>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6yx-Be-Jx5">
+                    <rect key="frame" x="69" y="149" width="264" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="If enabled, click the Menu Bar icon to toggle Night Shift. Right click to open the menu." id="MXt-WM-cMR">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gdr-ZW-5aK">
+                    <rect key="frame" x="50" y="125" width="155" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Scheduled dark mode" bezelStyle="regularSquare" imagePosition="left" inset="2" id="5s5-Y5-5b9">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                        <connections>
+                            <action selector="syncDarkMode:" target="-2" id="Kvp-NE-frn"/>
+                        </connections>
+                    </buttonCell>
+                    <connections>
+                        <binding destination="HAt-Ds-MVV" name="value" keyPath="values.isDarkModeSyncEnabled" id="YbA-gX-gH0"/>
+                    </connections>
+                </button>
+                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vul-m7-WVn">
+                    <rect key="frame" x="138" y="52" width="207" height="26"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="push" title="Off" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="lkN-xJ-pf3" id="kHG-4E-c49">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" id="IzK-Pk-NXh">
+                            <items>
+                                <menuItem title="Off" state="on" id="lkN-xJ-pf3"/>
+                                <menuItem title="Custom" id="Cum-ew-Bk2"/>
+                                <menuItem title="Sunset to Sunrise" id="TwI-wC-vyX"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <action selector="schedulePopup:" target="-2" id="IS6-jY-1uh"/>
+                    </connections>
+                </popUpButton>
+                <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uxU-uR-S3U">
+                    <rect key="frame" x="140" y="24" width="83" height="27"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="Wgk-Oq-MD0">
+                        <font key="font" metaFont="system"/>
+                        <date key="date" timeIntervalSinceReferenceDate="-595969200">
+                            <!--1982-02-12 05:00:00 +0000-->
+                        </date>
+                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <datePickerElements key="datePickerElements" hour="YES" minute="YES"/>
+                    </datePickerCell>
+                    <connections>
+                        <action selector="scheduleTimePickers:" target="-2" id="Rr0-i8-Lws"/>
+                    </connections>
+                </datePicker>
+                <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ddu-sM-B7W">
+                    <rect key="frame" x="264" y="24" width="83" height="27"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="oan-yK-2dL">
+                        <font key="font" metaFont="system"/>
+                        <date key="date" timeIntervalSinceReferenceDate="-595929600">
+                            <!--1982-02-12 16:00:00 +0000-->
+                        </date>
+                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <datePickerElements key="datePickerElements" hour="YES" minute="YES"/>
+                    </datePickerCell>
+                    <connections>
+                        <action selector="scheduleTimePickers:" target="-2" id="Lm8-bK-2EE"/>
+                    </connections>
+                </datePicker>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pyo-AD-ZFn">
+                    <rect key="frame" x="95" y="27" width="39" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="From:" id="PbT-Ky-Re6">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kBV-5Y-V1o">
+                    <rect key="frame" x="238" y="27" width="20" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="to:" id="aNq-H7-I2m">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cgx-4b-v1c">
+                    <rect key="frame" x="69" y="58" width="65" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Schedule:" id="UGI-RO-ff6">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xjO-vb-Nxv">
+                    <rect key="frame" x="69" y="96" width="277" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" title="If enabled, macOS dark mode will be automatically set based on the Night Shift schedule." id="ZdB-dN-hiO">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
-        </customView>
+        </view>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customCell alignment="left" id="sSe-Qw-YLh"/>
+        <userDefaultsController representsSharedInstance="YES" id="HAt-Ds-MVV"/>
     </objects>
 </document>
