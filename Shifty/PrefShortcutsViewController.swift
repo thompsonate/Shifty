@@ -50,17 +50,27 @@ class PrefShortcutsViewController: NSViewController, MASPreferencesViewControlle
         disableAppShortcut.associatedUserDefaultsKey = Keys.disableAppShortcut
         disableHourShortcut.associatedUserDefaultsKey = Keys.disableHourShortcut
         disableCustomShortcut.associatedUserDefaultsKey = Keys.disableCustomShortcut
-        
+    }
+    
+    func bindShortcuts() {
         MASShortcutBinder.shared().bindShortcut(withDefaultsKey: Keys.toggleNightShiftShortcut) {
             self.statusMenuController?.power(self)
         }
         
         MASShortcutBinder.shared().bindShortcut(withDefaultsKey: Keys.incrementColorTempShortcut) {
-            BLClient.setStrength(BLClient.strength + 0.1, commit: true)
+            if !BLClient.isNightShiftEnabled {
+                BLClient.setEnabled(true)
+                BLClient.setStrength(0.1, commit: true)
+            } else {
+                BLClient.setStrength(BLClient.strength + 0.1, commit: true)
+            }
         }
         
         MASShortcutBinder.shared().bindShortcut(withDefaultsKey: Keys.decrementColorTempShortcut) {
             BLClient.setStrength(BLClient.strength - 0.1, commit: true)
+            if BLClient.strength == 0.0 {
+                BLClient.setEnabled(false)
+            }
         }
         
         MASShortcutBinder.shared().bindShortcut(withDefaultsKey: Keys.disableAppShortcut) {
@@ -68,12 +78,19 @@ class PrefShortcutsViewController: NSViewController, MASPreferencesViewControlle
         }
         
         MASShortcutBinder.shared().bindShortcut(withDefaultsKey: Keys.disableHourShortcut) {
-            self.statusMenuController?.disableHour(self)
+            if BLClient.isNightShiftEnabled || (self.statusMenuController?.isDisableHourSelected) ?? false {
+                self.statusMenuController?.disableHour(self)
+            } else {
+                NSSound.beep()
+            }
         }
         
         MASShortcutBinder.shared().bindShortcut(withDefaultsKey: Keys.disableCustomShortcut) {
-            self.statusMenuController?.disableCustomTime(self)
+            if BLClient.isNightShiftEnabled || (self.statusMenuController?.isDisableCustomSelected) ?? false {
+                self.statusMenuController?.disableCustomTime(self)
+            } else {
+                NSSound.beep()
+            }
         }
     }
-    
 }

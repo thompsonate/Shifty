@@ -26,6 +26,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     
     var preferencesWindow: NSWindowController!
     var prefGeneral: PrefGeneralViewController!
+    var prefShortcuts: PrefShortcutsViewController!
     var customTimeWindow: CustomTimeWindow!
     var currentAppName = ""
     var currentAppBundleId = ""
@@ -54,6 +55,9 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         let prefWindow = (NSApplication.shared.delegate as? AppDelegate)?.preferenceWindowController
         prefGeneral = prefWindow?.viewControllers.flatMap { childViewController in
             return childViewController as? PrefGeneralViewController
+        }.first
+        prefShortcuts = prefWindow?.viewControllers.flatMap { childViewController in
+            return childViewController as? PrefShortcutsViewController
         }.first
         
         descriptionMenuItem.isEnabled = false
@@ -106,6 +110,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             self.updateDarkMode()
         }
         
+        prefShortcuts.bindShortcuts()
+        
         SSLocationManager.setup()
         SSLocationManager.updateLocationMonitoringStatus()
         
@@ -113,7 +119,6 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     
     func menuWillOpen(_: NSMenu) {
         if BLClient.isNightShiftEnabled {
-            sliderView.shiftSlider.floatValue = BLClient.strength * 100
             setActiveState(state: true)
             //disableDisableTimer()
 
@@ -121,6 +126,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             setActiveState(state: BLClient.isNightShiftEnabled)
         }
         
+        sliderView.shiftSlider.floatValue = BLClient.strength * 100
         setDescriptionText()
         updateCurrentApp()
         Event.menuOpened.record()
