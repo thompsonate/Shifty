@@ -9,7 +9,6 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PrefAboutViewController" customModule="Shifty" customModuleProvider="target">
             <connections>
-                <outlet property="checkForUpdatesButton" destination="dIb-5N-Omh" id="Thk-YJ-adB"/>
                 <outlet property="versionLabel" destination="mbK-0c-d8c" id="tqA-MH-Huc"/>
                 <outlet property="view" destination="FgB-wr-6em" id="txH-vj-tEy"/>
             </connections>

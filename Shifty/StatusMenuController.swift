@@ -286,7 +286,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         isShiftForAppEnabled = activeState
     }
     
-    @IBAction func disableHour(_ sender: NSMenuItem) {
+    @IBAction func disableHour(_ sender: Any) {
         if !isDisableHourSelected {
             isDisableHourSelected = true
             shift(isEnabled: false)
@@ -317,7 +317,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         Event.disableForHour(state: isDisableHourSelected).record()
     }
     
-    @IBAction func disableCustomTime(_ sender: NSMenuItem) {
+    @IBAction func disableCustomTime(_ sender: Any) {
         var timeIntervalInMinutes: Int!
         
         if !isDisableCustomSelected {
@@ -372,7 +372,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         }
     }
     
-    @IBAction func disableForApp(_ sender: NSMenuItem) {
+    @IBAction func disableForApp(_ sender: Any) {
         if disableAppMenuItem.state == .off {
             disabledApps.append(currentAppBundleId)
         } else {
@@ -380,7 +380,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         }
         updateCurrentApp()
         PrefManager.sharedInstance.userDefaults.set(disabledApps, forKey: Keys.disabledApps)
-        Event.disableForCurrentApp(state: sender.state == .on).record()
+        Event.disableForCurrentApp(state: (sender as? NSMenuItem)?.state == .on).record()
     }
     
     
