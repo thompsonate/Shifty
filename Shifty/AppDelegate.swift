@@ -20,12 +20,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     var statusItemClicked: (() -> Void)?
     
-    lazy var preferenceWindowController: NSWindowController = {
-        return MASPreferencesWindowController(viewControllers: [
-            PrefGeneralViewController(),
-            PrefShortcutsViewController(),
-            PrefAboutViewController()
-            ], title: "Shifty Preferences")
+    lazy var preferenceWindowController: MASPreferencesWindowController = {
+        return MASPreferencesWindowController(
+            viewControllers: [
+                PrefGeneralViewController(),
+                PrefShortcutsViewController(),
+                PrefAboutViewController()],
+            title: "Shifty Preferences")
     }()
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {

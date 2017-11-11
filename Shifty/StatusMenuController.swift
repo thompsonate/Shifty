@@ -51,8 +51,12 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     override func awakeFromNib() {
         statusMenu.delegate = self
         aboutWindow = AboutWindow()
-        prefGeneral = PrefGeneralViewController()
         customTimeWindow = CustomTimeWindow()
+        
+        let prefWindow = (NSApplication.shared.delegate as? AppDelegate)?.preferenceWindowController
+        prefGeneral = prefWindow?.viewControllers.flatMap { childViewController in
+            return childViewController as? PrefGeneralViewController
+        }.first
         
         descriptionMenuItem.isEnabled = false
         sliderMenuItem.view = sliderView
@@ -547,7 +551,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     @IBAction func preferencesClicked(_ sender: NSMenuItem) {
         let appDelegate = NSApplication.shared.delegate as? AppDelegate
         appDelegate?.preferenceWindowController.showWindow(sender)
-//        appDelegate?.preferenceWindowController.window?.makeKeyAndOrderFront(sender)
+        appDelegate?.preferenceWindowController.window?.makeKeyAndOrderFront(sender)
 //        preferencesWindow.updateSchedule?()
         Event.preferencesWindowOpened.record()
     }

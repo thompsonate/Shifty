@@ -12,15 +12,6 @@ import ServiceManagement
 @objcMembers
 class PrefGeneralViewController: NSViewController, MASPreferencesViewController {
     
-    required init() {
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-
-    }
-    
     override var nibName: NSNib.Name {
         get { return NSNib.Name("PrefGeneralViewController") }
     }
