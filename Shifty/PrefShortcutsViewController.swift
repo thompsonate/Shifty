@@ -58,18 +58,29 @@ class PrefShortcutsViewController: NSViewController, MASPreferencesViewControlle
         }
         
         MASShortcutBinder.shared().bindShortcut(withDefaultsKey: Keys.incrementColorTempShortcut) {
-            if !BLClient.isNightShiftEnabled {
+            if BLClient.isNightShiftEnabled {
+                if BLClient.strength == 1.0 {
+                    NSSound.beep()
+                }
+                BLClient.setStrength(BLClient.strength + 0.1, commit: true)
+            } else {
                 BLClient.setEnabled(true)
                 BLClient.setStrength(0.1, commit: true)
-            } else {
-                BLClient.setStrength(BLClient.strength + 0.1, commit: true)
+                self.statusMenuController?.disableDisableTimer()
+                if self.statusMenuController?.isDisabledForApp ?? false {
+                    NSSound.beep()
+                }
             }
         }
         
         MASShortcutBinder.shared().bindShortcut(withDefaultsKey: Keys.decrementColorTempShortcut) {
-            BLClient.setStrength(BLClient.strength - 0.1, commit: true)
-            if BLClient.strength == 0.0 {
-                BLClient.setEnabled(false)
+            if BLClient.isNightShiftEnabled {
+                BLClient.setStrength(BLClient.strength - 0.1, commit: true)
+                if BLClient.strength == 0.0 {
+                    BLClient.setEnabled(false)
+                }
+            } else {
+                NSSound.beep()
             }
         }
         
