@@ -551,8 +551,9 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     @IBAction func preferencesClicked(_ sender: NSMenuItem) {
         let appDelegate = NSApplication.shared.delegate as? AppDelegate
         appDelegate?.preferenceWindowController.showWindow(sender)
-        appDelegate?.preferenceWindowController.window?.makeKeyAndOrderFront(sender)
-//        preferencesWindow.updateSchedule?()
+        appDelegate?.preferenceWindowController.window?.level = .floating
+
+        prefGeneral.updateSchedule?()
         Event.preferencesWindowOpened.record()
     }
     
