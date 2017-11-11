@@ -400,6 +400,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Shifty/Pods-Shifty-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/KVOController/KVOController.framework",
 				"${BUILT_PRODUCTS_DIR}/MASPreferences/MASPreferences.framework",
 				"${BUILT_PRODUCTS_DIR}/MASShortcut/MASShortcut.framework",
 				"${PODS_ROOT}/Sparkle/Sparkle.framework",
@@ -407,6 +408,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KVOController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MASPreferences.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MASShortcut.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sparkle.framework",

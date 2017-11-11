@@ -1,18 +1,21 @@
 PODS:
+  - KVOController (1.2.0)
   - MASPreferences (1.3)
   - MASShortcut (2.3.6)
   - Sparkle (1.18.1)
 
 DEPENDENCIES:
+  - KVOController
   - MASPreferences
   - MASShortcut
   - Sparkle
 
 SPEC CHECKSUMS:
+  KVOController: d72ace34afea42468329623b3379ab3cd1d286b6
   MASPreferences: c08b8622dd17b47da87669e741efd7c92e970e8c
   MASShortcut: 9c215e8a8a78f3d01ce56da48e2730ab66b538fa
   Sparkle: 06ea33170007c5937ee54da481b4481af98fac79
 
-PODFILE CHECKSUM: c3c4f2d68029794b7fbb088994c17b3ea74f6f1f
+PODFILE CHECKSUM: 7483af0f637387bdd99cd9e011c6ee2ea0bdb6e7
 
 COCOAPODS: 1.3.1
