@@ -1,10 +1,10 @@
 CODE_SIGN_IDENTITY =
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Sparkle" "$PODS_CONFIGURATION_BUILD_DIR/KVOController" "$PODS_CONFIGURATION_BUILD_DIR/MASPreferences" "$PODS_CONFIGURATION_BUILD_DIR/MASShortcut"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Sparkle" "$PODS_CONFIGURATION_BUILD_DIR/MASPreferences" "$PODS_CONFIGURATION_BUILD_DIR/MASShortcut"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/Sparkle"
 LD_RUNPATH_SEARCH_PATHS = @loader_path/../Frameworks $(inherited) '@executable_path/../Frameworks' '@loader_path/Frameworks'
-OTHER_CFLAGS = $(inherited) -iquote "$PODS_CONFIGURATION_BUILD_DIR/KVOController/KVOController.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/MASPreferences/MASPreferences.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/MASShortcut/MASShortcut.framework/Headers" -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/Sparkle"
-OTHER_LDFLAGS = $(inherited) -framework "KVOController" -framework "MASPreferences" -framework "MASShortcut" -framework "Sparkle"
+OTHER_CFLAGS = $(inherited) -iquote "$PODS_CONFIGURATION_BUILD_DIR/MASPreferences/MASPreferences.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/MASShortcut/MASShortcut.framework/Headers" -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/Sparkle"
+OTHER_LDFLAGS = $(inherited) -framework "MASPreferences" -framework "MASShortcut" -framework "Sparkle"
 PODS_BUILD_DIR = $BUILD_DIR
 PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_PODFILE_DIR_PATH = ${SRCROOT}/.
