@@ -14,15 +14,6 @@ class SliderView: NSView {
     var sliderValueChanged: ((Float) -> Void)?
     var sliderEnabled: (() -> Void)?
     
-    override func viewWillDraw() {
-        super.viewWillDraw()
-        
-//        let appDelegate = NSApplication.shared.delegate as! AppDelegate
-//        
-//        let widthConstraint = self.widthAnchor.constraint(equalToConstant: appDelegate.statusMenu.size.width)
-//        widthConstraint.isActive = true
-    }
-    
     @IBAction func shiftSliderMoved(_ sender: NSSlider) {
         sliderValueChanged?(sender.floatValue)
         let event = NSApplication.shared.currentEvent

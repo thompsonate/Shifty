@@ -21,7 +21,7 @@ class PrefShortcutsViewController: NSViewController, MASPreferencesViewControlle
     var viewIdentifier: String = "PrefShortcutsViewController"
     
     var toolbarItemImage: NSImage? {
-        get { return NSImage(named: .computer)! }
+        get { return #imageLiteral(resourceName: "shortcuts-icon") }
     }
     
     var toolbarItemLabel: String? {

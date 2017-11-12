@@ -13,6 +13,10 @@ let ShiftyUpdater = SUUpdater()
 
 @objcMembers
 class PrefAboutViewController: NSViewController, MASPreferencesViewController {
+        
+    lazy var creditsViewController: NSViewController = {
+        return NSViewController.init(nibName: NSNib.Name("PrefCreditsViewController"), bundle: nil)
+    }()
     
     override var nibName: NSNib.Name {
         get { return NSNib.Name("PrefAboutViewController") }
@@ -21,7 +25,7 @@ class PrefAboutViewController: NSViewController, MASPreferencesViewController {
     var viewIdentifier: String = "PrefAboutViewController"
     
     var toolbarItemImage: NSImage? {
-        get { return #imageLiteral(resourceName: "statusIcon") }
+        get { return #imageLiteral(resourceName: "shifty-icon-small") }
     }
     
     var toolbarItemLabel: String? {
@@ -66,4 +70,19 @@ class PrefAboutViewController: NSViewController, MASPreferencesViewController {
         Event.donateButtonClicked.record()
     }
     
+    @IBAction func creditsButtonClicked(_ sender: Any) {
+        self.presentViewControllerAsSheet(creditsViewController)
+    }
 }
+
+
+class LinkButton: NSButton {
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    override func resetCursorRects() {
+        addCursorRect(self.bounds, cursor: .pointingHand)
+    }
+}
+

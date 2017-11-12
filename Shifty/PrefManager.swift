@@ -64,3 +64,5 @@ class PrefManager {
         synchronize()
     }
 }
+
+
