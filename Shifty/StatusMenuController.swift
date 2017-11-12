@@ -437,33 +437,31 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     }
     
     func setActiveState(state: Bool) {
-        DispatchQueue.main.async {
-            self.activeState = state
-            self.sliderView.shiftSlider.isEnabled = state
-            
-            if self.isDisableHourSelected {
-                self.disableHourMenuItem.isEnabled = true
-            } else if self.customTimeWindow.isWindowLoaded && self.customTimeWindow.window?.isVisible ?? false {
-                self.disableHourMenuItem.isEnabled = false
-            } else if self.isDisabledForApp {
-                self.disableHourMenuItem.isEnabled = false
-            } else {
-                self.disableHourMenuItem.isEnabled = state
-            }
-            
-            if self.isDisableCustomSelected {
-                self.disableCustomMenuItem.isEnabled = true
-            } else if self.isDisabledForApp {
-                self.disableCustomMenuItem.isEnabled = false
-            } else {
-                self.disableCustomMenuItem.isEnabled = state
-            }
-            
-            if state {
-                self.powerMenuItem.title = "Turn off Night Shift"
-            } else {
-                self.powerMenuItem.title = "Turn on Night Shift"
-            }
+        self.activeState = state
+        self.sliderView.shiftSlider.isEnabled = state
+        
+        if self.isDisableHourSelected {
+            self.disableHourMenuItem.isEnabled = true
+        } else if self.customTimeWindow.isWindowLoaded && self.customTimeWindow.window?.isVisible ?? false {
+            self.disableHourMenuItem.isEnabled = false
+        } else if self.isDisabledForApp {
+            self.disableHourMenuItem.isEnabled = false
+        } else {
+            self.disableHourMenuItem.isEnabled = state
+        }
+        
+        if self.isDisableCustomSelected {
+            self.disableCustomMenuItem.isEnabled = true
+        } else if self.isDisabledForApp {
+            self.disableCustomMenuItem.isEnabled = false
+        } else {
+            self.disableCustomMenuItem.isEnabled = state
+        }
+        
+        if state {
+            self.powerMenuItem.title = "Turn off Night Shift"
+        } else {
+            self.powerMenuItem.title = "Turn on Night Shift"
         }
     }
     
