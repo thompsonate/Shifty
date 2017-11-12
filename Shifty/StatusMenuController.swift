@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import MASShortcut
 
 let BLClient = CBBlueLightClient()
 let SSLocationManager = SunriseSetLocationManager()
@@ -129,7 +130,23 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         sliderView.shiftSlider.floatValue = BLClient.strength * 100
         setDescriptionText()
         updateCurrentApp()
+        
+        assignKeyboardShortcutToMenuItem(powerMenuItem, userDefaultsKey: Keys.toggleNightShiftShortcut)
+        assignKeyboardShortcutToMenuItem(disableAppMenuItem, userDefaultsKey: Keys.disableAppShortcut)
+        assignKeyboardShortcutToMenuItem(disableHourMenuItem, userDefaultsKey: Keys.disableHourShortcut)
+        assignKeyboardShortcutToMenuItem(disableCustomMenuItem, userDefaultsKey: Keys.disableCustomShortcut)
+        
         Event.menuOpened.record()
+    }
+    
+    func assignKeyboardShortcutToMenuItem(_ menuItem: NSMenuItem, userDefaultsKey: String) {
+        if let data = UserDefaults.standard.value(forKey: userDefaultsKey) {
+            if let shortcut = NSKeyedUnarchiver.unarchiveObject(with: data as! Data) as? MASShortcut {
+                let flags = NSEvent.ModifierFlags.init(rawValue: shortcut.modifierFlags)
+                menuItem.keyEquivalentModifierMask = flags
+                menuItem.keyEquivalent = shortcut.keyCodeString.lowercased()
+            }
+        }
     }
     
     ///Returns true if the scheduled state is on or if the scheduled shift is close
