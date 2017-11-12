@@ -13,10 +13,6 @@ let ShiftyUpdater = SUUpdater()
 
 @objcMembers
 class PrefAboutViewController: NSViewController, MASPreferencesViewController {
-        
-    lazy var creditsViewController: NSViewController = {
-        return NSViewController.init(nibName: NSNib.Name("PrefCreditsViewController"), bundle: nil)
-    }()
     
     override var nibName: NSNib.Name {
         get { return NSNib.Name("PrefAboutViewController") }
@@ -53,25 +49,30 @@ class PrefAboutViewController: NSViewController, MASPreferencesViewController {
     }
     
     @IBAction func visitWebsiteClicked(_ sender: NSButton) {
-        if let url = URL(string: "http://shifty.natethompson.io"), NSWorkspace.shared.open(url) {
-        }
+        guard let url = URL(string: "http://shifty.natethompson.io") else { return }
+        NSWorkspace.shared.open(url)
+        view.window?.close()
         Event.websiteButtonClicked.record()
     }
     
     @IBAction func submitFeedbackClicked(_ sender: NSButton) {
-        if let url = URL(string: "mailto:feedback@natethompson.io?subject=Shifty%20Feedback"), NSWorkspace.shared.open(url) {
-        }
+        guard let url = URL(string: "mailto:feedback@natethompson.io?subject=Shifty%20Feedback") else { return }
+        NSWorkspace.shared.open(url)
+        view.window?.close()
         Event.feedbackButtonClicked.record()
     }
     
     @IBAction func donateButtonClicked(_ sender: NSButton) {
-        if let url = URL(string: "http://shifty.natethompson.io/donate"), NSWorkspace.shared.open(url) {
-        }
+        guard let url = URL(string: "http://shifty.natethompson.io/donate") else { return }
+        NSWorkspace.shared.open(url)
+        view.window?.close()
         Event.donateButtonClicked.record()
     }
     
     @IBAction func creditsButtonClicked(_ sender: Any) {
-        self.presentViewControllerAsSheet(creditsViewController)
+        guard let path = Bundle.main.path(forResource: "credits", ofType: "rtf") else { return }
+        NSWorkspace.shared.openFile(path)
+        view.window?.close()
     }
 }
 

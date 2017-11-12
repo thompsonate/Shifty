@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		43087E191F41EE0700A54523 /* BLNotificationBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 43087E181F41EE0700A54523 /* BLNotificationBlock.m */; };
-		43111A781FB83DA5000D8214 /* PrefCreditsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43111A771FB83DA4000D8214 /* PrefCreditsViewController.xib */; };
-		43111A7A1FB83DAA000D8214 /* PrefCreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43111A791FB83DA9000D8214 /* PrefCreditsViewController.swift */; };
+		43111A7C1FB84BC8000D8214 /* credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 43111A7B1FB84BC8000D8214 /* credits.rtf */; };
 		432428F31F2D84BF00E4BAFB /* ShiftyAppcast.xml in Resources */ = {isa = PBXBuildFile; fileRef = 432428F21F2D84BF00E4BAFB /* ShiftyAppcast.xml */; };
 		433AD3011F2CED1F0003FBCD /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 433AD3001F2CED1F0003FBCD /* dsa_pub.pem */; };
 		433AD3081F2D00BD0003FBCD /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433AD3061F2D00BD0003FBCD /* Crashlytics.framework */; };
@@ -59,8 +58,7 @@
 		115BB8A6F00EEB28DD8A96E5 /* Pods-Shifty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shifty.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shifty/Pods-Shifty.release.xcconfig"; sourceTree = "<group>"; };
 		43087E171F41EE0700A54523 /* BLNotificationBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BLNotificationBlock.h; path = Shifty/BLNotificationBlock.h; sourceTree = "<group>"; };
 		43087E181F41EE0700A54523 /* BLNotificationBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BLNotificationBlock.m; path = Shifty/BLNotificationBlock.m; sourceTree = "<group>"; };
-		43111A771FB83DA4000D8214 /* PrefCreditsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PrefCreditsViewController.xib; path = Shifty/PrefCreditsViewController.xib; sourceTree = "<group>"; };
-		43111A791FB83DA9000D8214 /* PrefCreditsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrefCreditsViewController.swift; path = Shifty/PrefCreditsViewController.swift; sourceTree = "<group>"; };
+		43111A7B1FB84BC8000D8214 /* credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = credits.rtf; sourceTree = "<group>"; };
 		432428F21F2D84BF00E4BAFB /* ShiftyAppcast.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ShiftyAppcast.xml; sourceTree = "<group>"; };
 		433AD3001F2CED1F0003FBCD /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_pub.pem; path = Shifty/dsa_pub.pem; sourceTree = "<group>"; };
 		433AD3061F2D00BD0003FBCD /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -151,8 +149,6 @@
 				43B9DE141FB5924F002C4C29 /* PrefShortcutsViewController.xib */,
 				43B9DE191FB592AE002C4C29 /* PrefAboutViewController.swift */,
 				43B9DE1A1FB592AE002C4C29 /* PrefAboutViewController.xib */,
-				43111A791FB83DA9000D8214 /* PrefCreditsViewController.swift */,
-				43111A771FB83DA4000D8214 /* PrefCreditsViewController.xib */,
 			);
 			name = Preferences;
 			sourceTree = "<group>";
@@ -181,6 +177,7 @@
 				433AD3061F2D00BD0003FBCD /* Crashlytics.framework */,
 				433AD3071F2D00BD0003FBCD /* Fabric.framework */,
 				4394DDA31EBE376F00F22908 /* Assets.xcassets */,
+				43111A7B1FB84BC8000D8214 /* credits.rtf */,
 				4394DDA51EBE376F00F22908 /* Info.plist */,
 			);
 			name = Shifty;
@@ -342,7 +339,7 @@
 			files = (
 				4346F8EB1EBE827E00687A67 /* PrefGeneralViewController.xib in Resources */,
 				433AD3011F2CED1F0003FBCD /* dsa_pub.pem in Resources */,
-				43111A781FB83DA5000D8214 /* PrefCreditsViewController.xib in Resources */,
+				43111A7C1FB84BC8000D8214 /* credits.rtf in Resources */,
 				4394DDAA1EBE376F00F22908 /* Assets.xcassets in Resources */,
 				43B9DE1C1FB592AE002C4C29 /* PrefAboutViewController.xib in Resources */,
 				4394DDAC1EBE376F00F22908 /* MainMenu.xib in Resources */,
@@ -491,7 +488,6 @@
 				4388E8EB1F84AD1A00DC34CC /* EDSunriseSet.m in Sources */,
 				4368E3031EBEBA6C00D53310 /* PrefManager.swift in Sources */,
 				437D7E161EC015CB00544FC8 /* SliderView.swift in Sources */,
-				43111A7A1FB83DAA000D8214 /* PrefCreditsViewController.swift in Sources */,
 				4351C7811FB5737900788CC9 /* PrefGeneralViewController.swift in Sources */,
 				43087E191F41EE0700A54523 /* BLNotificationBlock.m in Sources */,
 				4394DDAD1EBE376F00F22908 /* StatusMenuController.swift in Sources */,
