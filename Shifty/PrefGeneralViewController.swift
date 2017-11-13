@@ -68,15 +68,15 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
             switch BLClient.schedule {
             case .off:
                 self.schedulePopup.select(self.offMenuItem)
-                self.setCustomControlVisibility(false, animate: false)
+                self.setCustomControlVisibility(false, animate: true)
             case .timedSchedule(startTime: let startTime, endTime: let endTime):
                 self.schedulePopup.select(self.customMenuItem)
                 self.fromTimePicker.dateValue = startTime
                 self.toTimePicker.dateValue = endTime
-                self.setCustomControlVisibility(true, animate: false)
+                self.setCustomControlVisibility(true, animate: true)
             case .sunSchedule:
                 self.schedulePopup.select(self.sunMenuItem)
-                self.setCustomControlVisibility(false, animate: false)
+                self.setCustomControlVisibility(false, animate: true)
             }
         }
     }

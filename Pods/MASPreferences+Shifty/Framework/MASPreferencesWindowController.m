@@ -282,9 +282,19 @@ NSRect newFrame;
 
     //Check if the selected controller is the general view and let newFrame be mutated if true. Super janky I know.
     if ([controller.nibName  isEqual: @"PrefGeneralViewController"]) {
-        [self.window setFrame:[self getNewWindowFrame] display:YES animate:[self.window isVisible]];
+        [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
+            [context setDuration:0.2];
+            [self.window.animator setFrame:[self getNewWindowFrame] display:YES animate:[self.window isVisible]];
+            [controller.view.animator setAlphaValue:1];
+            [_selectedViewController.view.animator setAlphaValue:0];
+        } completionHandler:nil];
     } else {
-        [self.window setFrame:newFrame display:YES animate:[self.window isVisible]];
+        [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
+            [context setDuration:0.2];
+            [self.window.animator setFrame:newFrame display:YES animate:[self.window isVisible]];
+            [controller.view.animator setAlphaValue:1];
+            [_selectedViewController.view.animator setAlphaValue:0];
+        } completionHandler:nil];
     }
 
     _selectedViewController = controller;
