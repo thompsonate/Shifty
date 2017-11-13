@@ -9,6 +9,8 @@ import Cocoa
 import MASPreferences
 import ServiceManagement
 
+let PREF_GENERAL_HEIGHT_ADJUSTMENT = CGFloat(33.0)
+
 @objcMembers
 class PrefGeneralViewController: NSViewController, MASPreferencesViewController {
     
@@ -128,7 +130,7 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
     }
     
     func setCustomControlVisibility(_ visible: Bool, animate: Bool) {
-        var adjustment = CGFloat(33.0)
+        var adjustment = PREF_GENERAL_HEIGHT_ADJUSTMENT
         if customTimeStackView.isHidden == visible || (!visible && !animate)  {
             if let frame = prefWindow?.frame {
                 if visible {
@@ -157,10 +159,19 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
 }
 
 
-extension MASPreferencesWindowController {
-    override open func keyDown(with theEvent: NSEvent) {
+class PrefWindowController: MASPreferencesWindowController {
+    override func keyDown(with theEvent: NSEvent) {
         if theEvent.keyCode == 13 {
             window?.close()
+        }
+    }
+    
+    override func getNewWindowFrame() -> NSRect {
+        if BLClient.isOffSchedule || BLClient.isSunSchedule {
+            let newFrame = super.getNewWindowFrame()
+            return NSMakeRect(newFrame.origin.x, newFrame.origin.y + PREF_GENERAL_HEIGHT_ADJUSTMENT, newFrame.width, newFrame.height - PREF_GENERAL_HEIGHT_ADJUSTMENT)
+        } else {
+            return super.getNewWindowFrame()
         }
     }
 }

@@ -20,8 +20,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     var statusItemClicked: (() -> Void)?
     
-    lazy var preferenceWindowController: MASPreferencesWindowController = {
-        return MASPreferencesWindowController(
+    lazy var preferenceWindowController: PrefWindowController = {
+        return PrefWindowController(
             viewControllers: [
                 PrefGeneralViewController(),
                 PrefShortcutsViewController(),
