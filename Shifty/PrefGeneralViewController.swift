@@ -45,30 +45,41 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
     @IBOutlet weak var toTimePicker: NSDatePicker!
     @IBOutlet weak var fromLabel: NSTextField!
     @IBOutlet weak var toLabel: NSTextField!
+    @IBOutlet weak var customTimeStackView: NSStackView!
     
     let prefs = UserDefaults.standard
     var setStatusToggle: (() -> Void)?
     var updateSchedule: (() -> Void)?
     var updateDarkMode: (() -> Void)?
     
+    var appDelegate: AppDelegate!
+    var prefWindow: NSWindow!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        appDelegate = NSApplication.shared.delegate as! AppDelegate
+        prefWindow = appDelegate.preferenceWindowController.window
         
         updateSchedule = {
             switch BLClient.schedule {
             case .off:
                 self.schedulePopup.select(self.offMenuItem)
-                self.showScheduleDates(displayed: false)
+                self.setCustomControlVisibility(false, animate: false)
             case .timedSchedule(startTime: let startTime, endTime: let endTime):
                 self.schedulePopup.select(self.customMenuItem)
                 self.fromTimePicker.dateValue = startTime
                 self.toTimePicker.dateValue = endTime
-                self.showScheduleDates(displayed: true)
+                self.setCustomControlVisibility(true, animate: false)
             case .sunSchedule:
                 self.schedulePopup.select(self.sunMenuItem)
-                self.showScheduleDates(displayed: false)
+                self.setCustomControlVisibility(false, animate: false)
             }
         }
+    }
+    
+    override func viewWillAppear() {
+        super.viewWillAppear()
         
         updateSchedule?()
     }
@@ -99,13 +110,14 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
     @IBAction func schedulePopup(_ sender: Any) {
         if schedulePopup.selectedItem == offMenuItem {
             BLClient.setSchedule(.off)
-            showScheduleDates(displayed: false)
+            setCustomControlVisibility(false, animate: true)
         } else if schedulePopup.selectedItem == customMenuItem {
             BLClient.setMode(2)
-            showScheduleDates(displayed: true)
+            setCustomControlVisibility(true, animate: true)
         } else if schedulePopup.selectedItem == sunMenuItem {
             BLClient.setMode(1)
-            showScheduleDates(displayed: false)
+            setCustomControlVisibility(false, animate: true)
+            
         }
     }
     
@@ -115,11 +127,32 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
         BLClient.setSchedule(.timedSchedule(startTime: fromTime, endTime: toTime))
     }
     
-    func showScheduleDates(displayed: Bool) {
-        fromTimePicker.isHidden = !displayed
-        toTimePicker.isHidden = !displayed
-        fromLabel.isHidden = !displayed
-        toLabel.isHidden = !displayed
+    func setCustomControlVisibility(_ visible: Bool, animate: Bool) {
+        var adjustment = CGFloat(33.0)
+        if customTimeStackView.isHidden == visible || (!visible && !animate)  {
+            if let frame = prefWindow?.frame {
+                if visible {
+                    //Keep elements hidden until after animation is completed
+                    fromLabel.isHidden = true
+                    fromTimePicker.isHidden = true
+                    toLabel.isHidden = true
+                    toTimePicker.isHidden = true
+                } else {
+                    adjustment *= -1
+                }
+                
+                customTimeStackView.isHidden = !visible
+                let newFrame = NSMakeRect(frame.origin.x, frame.origin.y - adjustment, frame.width, frame.height + adjustment)
+                prefWindow.setFrame(newFrame, display: true, animate: animate)
+                
+                if visible {
+                    fromLabel.isHidden = false
+                    fromTimePicker.isHidden = false
+                    toLabel.isHidden = false
+                    toTimePicker.isHidden = false
+                }
+            }
+        }
     }
 }
 
@@ -131,5 +164,3 @@ extension MASPreferencesWindowController {
         }
     }
 }
-
-

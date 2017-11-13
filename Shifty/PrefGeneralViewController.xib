@@ -3,12 +3,16 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PrefGeneralViewController" customModule="Shifty" customModuleProvider="target">
             <connections>
                 <outlet property="customMenuItem" destination="Cum-ew-Bk2" id="iWD-k7-XSW"/>
+                <outlet property="customTimeStackView" destination="SyV-fO-WK6" id="h5b-Cy-HBc"/>
                 <outlet property="darkModeSync" destination="Gdr-ZW-5aK" id="iTV-SM-SLG"/>
                 <outlet property="fromLabel" destination="Pyo-AD-ZFn" id="krQ-yJ-iRG"/>
                 <outlet property="fromTimePicker" destination="uxU-uR-S3U" id="eww-uF-r1Y"/>
@@ -24,150 +28,313 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <view wantsLayer="YES" id="bXz-rK-jao">
-            <rect key="frame" x="0.0" y="0.0" width="397" height="244"/>
-            <autoresizingMask key="autoresizingMask"/>
+            <rect key="frame" x="0.0" y="0.0" width="359" height="281"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xTG-ui-90C">
-                    <rect key="frame" x="50" y="177" width="102" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Quick Toggle" bezelStyle="regularSquare" imagePosition="left" alignment="center" inset="2" id="LeO-kk-zOj">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                        <connections>
-                            <action selector="quickToggle:" target="-2" id="vPK-ud-XAZ"/>
-                        </connections>
-                    </buttonCell>
-                    <connections>
-                        <binding destination="HAt-Ds-MVV" name="value" keyPath="values.isStatusToggleEnabled" id="dSU-Ym-XSo"/>
-                    </connections>
-                </button>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JqG-nx-58t">
-                    <rect key="frame" x="50" y="203" width="154" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Launch Shifty at login" bezelStyle="regularSquare" imagePosition="left" inset="2" id="bxC-lM-Pei">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                        <connections>
-                            <action selector="setAutoLaunch:" target="-2" id="HYY-n7-WXb"/>
-                        </connections>
-                    </buttonCell>
-                    <connections>
-                        <binding destination="HAt-Ds-MVV" name="value" keyPath="values.isAutoLaunchEnabled" id="uBI-xn-JbJ"/>
-                    </connections>
-                </button>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6yx-Be-Jx5">
-                    <rect key="frame" x="69" y="149" width="264" height="28"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="If enabled, click the Menu Bar icon to toggle Night Shift. Right click to open the menu." id="MXt-WM-cMR">
-                        <font key="font" metaFont="smallSystem"/>
-                        <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gdr-ZW-5aK">
-                    <rect key="frame" x="50" y="125" width="155" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Scheduled dark mode" bezelStyle="regularSquare" imagePosition="left" inset="2" id="5s5-Y5-5b9">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                        <connections>
-                            <action selector="syncDarkMode:" target="-2" id="Kvp-NE-frn"/>
-                        </connections>
-                    </buttonCell>
-                    <connections>
-                        <binding destination="HAt-Ds-MVV" name="value" keyPath="values.isDarkModeSyncEnabled" id="YbA-gX-gH0"/>
-                    </connections>
-                </button>
-                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vul-m7-WVn">
-                    <rect key="frame" x="138" y="52" width="207" height="26"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="push" title="Off" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="lkN-xJ-pf3" id="kHG-4E-c49">
-                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="menu"/>
-                        <menu key="menu" id="IzK-Pk-NXh">
-                            <items>
-                                <menuItem title="Off" state="on" id="lkN-xJ-pf3"/>
-                                <menuItem title="Custom" id="Cum-ew-Bk2"/>
-                                <menuItem title="Sunset to Sunrise" id="TwI-wC-vyX"/>
-                            </items>
-                        </menu>
-                    </popUpButtonCell>
-                    <connections>
-                        <action selector="schedulePopup:" target="-2" id="IS6-jY-1uh"/>
-                    </connections>
-                </popUpButton>
-                <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uxU-uR-S3U">
-                    <rect key="frame" x="140" y="24" width="83" height="27"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="Wgk-Oq-MD0">
-                        <font key="font" metaFont="system"/>
-                        <date key="date" timeIntervalSinceReferenceDate="-595969200">
-                            <!--1982-02-12 05:00:00 +0000-->
-                        </date>
-                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <datePickerElements key="datePickerElements" hour="YES" minute="YES"/>
-                    </datePickerCell>
-                    <connections>
-                        <action selector="scheduleTimePickers:" target="-2" id="Rr0-i8-Lws"/>
-                    </connections>
-                </datePicker>
-                <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ddu-sM-B7W">
-                    <rect key="frame" x="264" y="24" width="83" height="27"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="oan-yK-2dL">
-                        <font key="font" metaFont="system"/>
-                        <date key="date" timeIntervalSinceReferenceDate="-595929600">
-                            <!--1982-02-12 16:00:00 +0000-->
-                        </date>
-                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <datePickerElements key="datePickerElements" hour="YES" minute="YES"/>
-                    </datePickerCell>
-                    <connections>
-                        <action selector="scheduleTimePickers:" target="-2" id="Lm8-bK-2EE"/>
-                    </connections>
-                </datePicker>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pyo-AD-ZFn">
-                    <rect key="frame" x="95" y="27" width="39" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="From:" id="PbT-Ky-Re6">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kBV-5Y-V1o">
-                    <rect key="frame" x="238" y="27" width="20" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="to:" id="aNq-H7-I2m">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cgx-4b-v1c">
-                    <rect key="frame" x="69" y="58" width="65" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Schedule:" id="UGI-RO-ff6">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xjO-vb-Nxv">
-                    <rect key="frame" x="69" y="96" width="277" height="28"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" title="If enabled, macOS dark mode will be automatically set based on the Night Shift schedule." id="ZdB-dN-hiO">
-                        <font key="font" metaFont="smallSystem"/>
-                        <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
+                <box horizontalHuggingPriority="1000" verticalHuggingPriority="1000" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Xwu-c8-3l2">
+                    <rect key="frame" x="17" y="16" width="325" height="78"/>
+                    <view key="contentView" id="M39-xI-Ibk">
+                        <rect key="frame" x="2" y="2" width="321" height="74"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RlH-eS-o9O">
+                                <rect key="frame" x="0.0" y="10" width="321" height="54"/>
+                                <subviews>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DwA-jT-rcV">
+                                        <rect key="frame" x="21" y="33" width="290" height="21"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cgx-4b-v1c">
+                                                <rect key="frame" x="-2" y="3" width="65" height="17"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Schedule:" id="UGI-RO-ff6">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vul-m7-WVn">
+                                                <rect key="frame" x="67" y="-3" width="226" height="26"/>
+                                                <popUpButtonCell key="cell" type="push" title="Off" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="lkN-xJ-pf3" id="kHG-4E-c49">
+                                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="menu"/>
+                                                    <menu key="menu" id="IzK-Pk-NXh">
+                                                        <items>
+                                                            <menuItem title="Off" state="on" id="lkN-xJ-pf3"/>
+                                                            <menuItem title="Custom" id="Cum-ew-Bk2"/>
+                                                            <menuItem title="Sunset to Sunrise" id="TwI-wC-vyX"/>
+                                                        </items>
+                                                    </menu>
+                                                </popUpButtonCell>
+                                                <connections>
+                                                    <action selector="schedulePopup:" target="-2" id="IS6-jY-1uh"/>
+                                                </connections>
+                                            </popUpButton>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="cgx-4b-v1c" firstAttribute="baseline" secondItem="vul-m7-WVn" secondAttribute="baseline" id="0w8-9d-iZK"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fillProportionally" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SyV-fO-WK6">
+                                        <rect key="frame" x="0.0" y="0.0" width="311" height="23"/>
+                                        <subviews>
+                                            <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d8y-sn-Tbn">
+                                                <rect key="frame" x="0.0" y="0.0" width="170" height="23"/>
+                                                <subviews>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Pyo-AD-ZFn">
+                                                        <rect key="frame" x="-2" y="3" width="86" height="17"/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="From:" id="PbT-Ky-Re6">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <datePicker verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uxU-uR-S3U">
+                                                        <rect key="frame" x="90" y="0.0" width="83" height="27"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="uxU-uR-S3U" secondAttribute="height" multiplier="80:23" id="613-kZ-g5A"/>
+                                                        </constraints>
+                                                        <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="Wgk-Oq-MD0">
+                                                            <font key="font" metaFont="system"/>
+                                                            <date key="date" timeIntervalSinceReferenceDate="-595969200">
+                                                                <!--1982-02-12 05:00:00 +0000-->
+                                                            </date>
+                                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <datePickerElements key="datePickerElements" hour="YES" minute="YES"/>
+                                                        </datePickerCell>
+                                                        <connections>
+                                                            <action selector="scheduleTimePickers:" target="-2" id="Rr0-i8-Lws"/>
+                                                        </connections>
+                                                    </datePicker>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="Pyo-AD-ZFn" firstAttribute="baseline" secondItem="uxU-uR-S3U" secondAttribute="baseline" id="FM2-tH-RYg"/>
+                                                    <constraint firstItem="uxU-uR-S3U" firstAttribute="centerY" secondItem="d8y-sn-Tbn" secondAttribute="centerY" id="nQg-cl-APX"/>
+                                                </constraints>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
+                                            <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HzU-vh-YBc">
+                                                <rect key="frame" x="178" y="0.0" width="133" height="23"/>
+                                                <subviews>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kBV-5Y-V1o">
+                                                        <rect key="frame" x="-2" y="3" width="49" height="17"/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="to:" id="aNq-H7-I2m">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <datePicker verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ddu-sM-B7W">
+                                                        <rect key="frame" x="53" y="0.0" width="83" height="27"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="ddu-sM-B7W" secondAttribute="height" multiplier="80:23" id="aED-iS-yOj"/>
+                                                        </constraints>
+                                                        <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="oan-yK-2dL">
+                                                            <font key="font" metaFont="system"/>
+                                                            <date key="date" timeIntervalSinceReferenceDate="-595929600">
+                                                                <!--1982-02-12 16:00:00 +0000-->
+                                                            </date>
+                                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <datePickerElements key="datePickerElements" hour="YES" minute="YES"/>
+                                                        </datePickerCell>
+                                                        <connections>
+                                                            <action selector="scheduleTimePickers:" target="-2" id="Lm8-bK-2EE"/>
+                                                        </connections>
+                                                    </datePicker>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="ddu-sM-B7W" firstAttribute="centerY" secondItem="HzU-vh-YBc" secondAttribute="centerY" id="9WG-LA-jay"/>
+                                                    <constraint firstItem="kBV-5Y-V1o" firstAttribute="baseline" secondItem="ddu-sM-B7W" secondAttribute="baseline" id="axH-F1-saL"/>
+                                                </constraints>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="DwA-jT-rcV" secondAttribute="trailing" constant="10" id="CfD-gC-efs"/>
+                                    <constraint firstItem="uxU-uR-S3U" firstAttribute="leading" secondItem="vul-m7-WVn" secondAttribute="leading" id="VrK-ok-BB6"/>
+                                    <constraint firstItem="ddu-sM-B7W" firstAttribute="trailing" secondItem="vul-m7-WVn" secondAttribute="trailing" id="jk2-tK-c26"/>
+                                    <constraint firstItem="Pyo-AD-ZFn" firstAttribute="trailing" secondItem="cgx-4b-v1c" secondAttribute="trailing" id="p5o-cq-AZU"/>
+                                </constraints>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="RlH-eS-o9O" firstAttribute="top" secondItem="M39-xI-Ibk" secondAttribute="top" constant="10" id="0Wn-CQ-doz"/>
+                            <constraint firstAttribute="trailing" secondItem="RlH-eS-o9O" secondAttribute="trailing" id="3Tg-e1-3ce"/>
+                            <constraint firstAttribute="bottom" secondItem="RlH-eS-o9O" secondAttribute="bottom" constant="10" id="LzZ-YI-AvR"/>
+                            <constraint firstItem="RlH-eS-o9O" firstAttribute="leading" secondItem="M39-xI-Ibk" secondAttribute="leading" id="gaj-Aa-G8w"/>
+                        </constraints>
+                    </view>
+                </box>
+                <stackView distribution="fillProportionally" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0jm-Ti-Q6H">
+                    <rect key="frame" x="20" y="112" width="319" height="149"/>
+                    <subviews>
+                        <button horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="150" placeholderIntrinsicHeight="infinite" translatesAutoresizingMaskIntoConstraints="NO" id="JqG-nx-58t">
+                            <rect key="frame" x="-2" y="126" width="154" height="25"/>
+                            <buttonCell key="cell" type="check" title="Launch Shifty at login" bezelStyle="regularSquare" imagePosition="left" inset="2" id="bxC-lM-Pei">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="system"/>
+                                <connections>
+                                    <action selector="setAutoLaunch:" target="-2" id="HYY-n7-WXb"/>
+                                </connections>
+                            </buttonCell>
+                            <connections>
+                                <binding destination="HAt-Ds-MVV" name="value" keyPath="values.isAutoLaunchEnabled" id="uBI-xn-JbJ"/>
+                            </connections>
+                        </button>
+                        <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="3" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yAY-1H-lKe">
+                            <rect key="frame" x="0.0" y="75" width="319" height="45"/>
+                            <subviews>
+                                <button horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xTG-ui-90C">
+                                    <rect key="frame" x="-2" y="29" width="102" height="18"/>
+                                    <buttonCell key="cell" type="check" title="Quick Toggle" bezelStyle="regularSquare" imagePosition="left" alignment="center" inset="2" id="LeO-kk-zOj">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                        <connections>
+                                            <action selector="quickToggle:" target="-2" id="vPK-ud-XAZ"/>
+                                        </connections>
+                                    </buttonCell>
+                                    <connections>
+                                        <binding destination="HAt-Ds-MVV" name="value" keyPath="values.isStatusToggleEnabled" id="dSU-Ym-XSo"/>
+                                    </connections>
+                                </button>
+                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="6yx-Be-Jx5">
+                                    <rect key="frame" x="18" y="0.0" width="301" height="28"/>
+                                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="If enabled, click the Menu Bar icon to toggle Night Shift. Right click to open the menu." id="MXt-WM-cMR">
+                                        <font key="font" metaFont="smallSystem"/>
+                                        <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="6yx-Be-Jx5" firstAttribute="leading" secondItem="yAY-1H-lKe" secondAttribute="leading" constant="20" id="D83-71-Qql"/>
+                            </constraints>
+                            <visibilityPriorities>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                            </visibilityPriorities>
+                            <customSpacing>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                            </customSpacing>
+                        </stackView>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Iuc-Pc-Qb3">
+                            <rect key="frame" x="-2" y="51" width="288" height="18"/>
+                            <buttonCell key="cell" type="check" title="Sun icon in menu bar when Night Shift is off" bezelStyle="regularSquare" imagePosition="left" inset="2" id="4io-9H-HXp">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="3" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oRi-qV-fL9">
+                            <rect key="frame" x="0.0" y="0.0" width="319" height="45"/>
+                            <subviews>
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Gdr-ZW-5aK">
+                                    <rect key="frame" x="-2" y="29" width="155" height="18"/>
+                                    <buttonCell key="cell" type="check" title="Scheduled dark mode" bezelStyle="regularSquare" imagePosition="left" inset="2" id="5s5-Y5-5b9">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                        <connections>
+                                            <action selector="syncDarkMode:" target="-2" id="Kvp-NE-frn"/>
+                                        </connections>
+                                    </buttonCell>
+                                    <connections>
+                                        <binding destination="HAt-Ds-MVV" name="value" keyPath="values.isDarkModeSyncEnabled" id="YbA-gX-gH0"/>
+                                    </connections>
+                                </button>
+                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="xjO-vb-Nxv">
+                                    <rect key="frame" x="18" y="0.0" width="292" height="28"/>
+                                    <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" title="If enabled, macOS dark mode will be automatically set based on the Night Shift schedule." id="ZdB-dN-hiO">
+                                        <font key="font" metaFont="smallSystem"/>
+                                        <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="xjO-vb-Nxv" firstAttribute="leading" secondItem="oRi-qV-fL9" secondAttribute="leading" constant="20" id="KJc-7R-Hlo"/>
+                            </constraints>
+                            <visibilityPriorities>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                            </visibilityPriorities>
+                            <customSpacing>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                            </customSpacing>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="149" id="YMs-ly-N0d"/>
+                        <constraint firstAttribute="trailing" secondItem="yAY-1H-lKe" secondAttribute="trailing" id="cpw-tD-PTx"/>
+                        <constraint firstAttribute="trailing" secondItem="oRi-qV-fL9" secondAttribute="trailing" id="hJC-fM-j7X"/>
+                    </constraints>
+                    <visibilityPriorities>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                    </visibilityPriorities>
+                    <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                    </customSpacing>
+                </stackView>
             </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Xwu-c8-3l2" secondAttribute="bottom" priority="500" constant="20" id="1CT-VD-KSJ"/>
+                <constraint firstAttribute="trailing" secondItem="Xwu-c8-3l2" secondAttribute="trailing" constant="20" id="Afh-Im-1Sf"/>
+                <constraint firstItem="cgx-4b-v1c" firstAttribute="leading" secondItem="xjO-vb-Nxv" secondAttribute="leading" id="VEF-4C-AGc"/>
+                <constraint firstItem="Xwu-c8-3l2" firstAttribute="top" secondItem="0jm-Ti-Q6H" secondAttribute="bottom" constant="20" id="eQk-Wj-doz"/>
+                <constraint firstItem="0jm-Ti-Q6H" firstAttribute="leading" secondItem="bXz-rK-jao" secondAttribute="leading" constant="20" id="hgy-yx-3la"/>
+                <constraint firstItem="0jm-Ti-Q6H" firstAttribute="top" secondItem="bXz-rK-jao" secondAttribute="top" constant="20" id="kDT-2l-W50"/>
+                <constraint firstItem="Xwu-c8-3l2" firstAttribute="leading" secondItem="bXz-rK-jao" secondAttribute="leading" constant="20" id="oOd-4Y-2n6"/>
+                <constraint firstAttribute="trailing" secondItem="0jm-Ti-Q6H" secondAttribute="trailing" constant="20" id="ulL-5K-bvV"/>
+            </constraints>
+            <point key="canvasLocation" x="48.5" y="319.5"/>
         </view>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customCell alignment="left" id="sSe-Qw-YLh"/>
         <userDefaultsController representsSharedInstance="YES" id="HAt-Ds-MVV"/>
     </objects>
 </document>
