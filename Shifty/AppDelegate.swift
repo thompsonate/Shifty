@@ -10,7 +10,7 @@ import Cocoa
 import ServiceManagement
 import Fabric
 import Crashlytics
-import MASPreferences
+import MASPreferences_Shifty
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {

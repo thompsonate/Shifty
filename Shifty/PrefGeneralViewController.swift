@@ -6,9 +6,10 @@
 //
 
 import Cocoa
-import MASPreferences
+import MASPreferences_Shifty
 import ServiceManagement
 
+///The height difference between the custom schedule controls being shown and hidden
 let PREF_GENERAL_HEIGHT_ADJUSTMENT = CGFloat(33.0)
 
 @objcMembers
@@ -166,6 +167,7 @@ class PrefWindowController: MASPreferencesWindowController {
         }
     }
     
+    //Decreases window frame height if custom schedule controls are not shown
     override func getNewWindowFrame() -> NSRect {
         if BLClient.isOffSchedule || BLClient.isSunSchedule {
             let newFrame = super.getNewWindowFrame()

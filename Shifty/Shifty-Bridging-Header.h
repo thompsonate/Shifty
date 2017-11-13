@@ -9,6 +9,5 @@
 #import "CBBlueLightClient.h"
 #import "BLNotificationBlock.h"
 #import "EDSunriseSet.h"
-#import <MASPreferences/MASPreferencesViewController.h>
 
 void SLSSetAppearanceThemeLegacy(BOOL);

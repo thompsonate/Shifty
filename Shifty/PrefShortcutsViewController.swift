@@ -6,7 +6,7 @@
 //
 
 import Cocoa
-import MASPreferences
+import MASPreferences_Shifty
 import MASShortcut
 
 @objcMembers
