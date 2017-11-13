@@ -1,7 +1,7 @@
 # Acknowledgements
 This application makes use of the following third party libraries:
 
-## MASPreferences
+## MASPreferences+Shifty
 
 MASPreferences is licensed under the 2-clause BSD license.
 

@@ -200,6 +200,16 @@ static NSString * PreferencesKeyForViewBounds (NSString *identifier)
 
 #pragma mark -
 
+//Declare global variable so getNewWindowFrame() can access it
+NSRect newFrame;
+
++ (NSRect)newFrame { return newFrame; }
+
+//Returns newFrame so it can be mutated by a subclass
+- (NSRect)getNewWindowFrame { return newFrame; }
+
+#pragma mark -
+
 - (void)setSelectedViewController:(NSViewController <MASPreferencesViewController> *)controller
 {
     if (_selectedViewController == controller)
@@ -261,7 +271,7 @@ static NSString * PreferencesKeyForViewBounds (NSString *identifier)
 
     // Calculate new window size and position
     NSRect oldFrame = [self.window frame];
-    NSRect newFrame = [self.window frameRectForContentRect:oldViewRect];
+    newFrame = [self.window frameRectForContentRect:oldViewRect];
     newFrame = NSOffsetRect(newFrame, NSMinX(oldFrame), NSMaxY(oldFrame) - NSMaxY(newFrame));
 
     // Setup min/max sizes and show/hide resize indicator
@@ -270,8 +280,13 @@ static NSString * PreferencesKeyForViewBounds (NSString *identifier)
     [self.window setShowsResizeIndicator:sizableWidth || sizableHeight];
     [[self.window standardWindowButton:NSWindowZoomButton] setEnabled:sizableWidth || sizableHeight];
 
-    [self.window setFrame:newFrame display:YES animate:[self.window isVisible]];
-    
+    //Check if the selected controller is the general view and let newFrame be mutated if true. Super janky I know.
+    if ([controller.nibName  isEqual: @"PrefGeneralViewController"]) {
+        [self.window setFrame:[self getNewWindowFrame] display:YES animate:[self.window isVisible]];
+    } else {
+        [self.window setFrame:newFrame display:YES animate:[self.window isVisible]];
+    }
+
     _selectedViewController = controller;
 
     // In OSX 10.10, setContentView below calls viewWillAppear.  We still want to call viewWillAppear on < 10.10,

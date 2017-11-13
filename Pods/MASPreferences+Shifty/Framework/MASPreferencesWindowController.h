@@ -87,6 +87,10 @@ __attribute__((__visibility__("default")))
  */
 - (void)addViewController:(NSViewController <MASPreferencesViewController> *)viewController;
 
++ (NSRect)newFrame;
+
+- (NSRect)getNewWindowFrame;
+
 /*!
  * Changes selection in the Preferences toolbar.
  *

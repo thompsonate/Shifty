@@ -42,7 +42,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 			<key>License</key>
 			<string>BSD</string>
 			<key>Title</key>
-			<string>MASPreferences</string>
+			<string>MASPreferences+Shifty</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>

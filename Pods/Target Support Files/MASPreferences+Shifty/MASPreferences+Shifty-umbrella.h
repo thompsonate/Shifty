@@ -14,6 +14,6 @@
 #import "MASPreferencesViewController.h"
 #import "MASPreferencesWindowController.h"
 
-FOUNDATION_EXPORT double MASPreferencesVersionNumber;
-FOUNDATION_EXPORT const unsigned char MASPreferencesVersionString[];
+FOUNDATION_EXPORT double MASPreferences_ShiftyVersionNumber;
+FOUNDATION_EXPORT const unsigned char MASPreferences_ShiftyVersionString[];
 
