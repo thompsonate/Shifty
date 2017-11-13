@@ -161,6 +161,12 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
 
 
 class PrefWindowController: MASPreferencesWindowController {
+    override func windowDidLoad() {
+        super.windowDidLoad()
+        
+        window?.level = .floating
+    }
+    
     override func keyDown(with theEvent: NSEvent) {
         if theEvent.keyCode == 13 {
             window?.close()
