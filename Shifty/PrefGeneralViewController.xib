@@ -22,7 +22,7 @@
                 <outlet property="sunMenuItem" destination="TwI-wC-vyX" id="wfQ-J2-59y"/>
                 <outlet property="toLabel" destination="kBV-5Y-V1o" id="Pgb-pd-dtC"/>
                 <outlet property="toTimePicker" destination="ddu-sM-B7W" id="8tl-IJ-9hf"/>
-                <outlet property="toggleStatusItem" destination="xTG-ui-90C" id="XeV-Ik-9y7"/>
+                <outlet property="toggleStatusItem" destination="KNx-x5-o3g" id="bY6-mG-QE4"/>
                 <outlet property="view" destination="bXz-rK-jao" id="xYY-dt-fo2"/>
             </connections>
         </customObject>
@@ -43,7 +43,7 @@
                                     <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DwA-jT-rcV">
                                         <rect key="frame" x="21" y="33" width="290" height="21"/>
                                         <subviews>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cgx-4b-v1c">
+                                            <textField horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="cgx-4b-v1c">
                                                 <rect key="frame" x="-2" y="3" width="65" height="17"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Schedule:" id="UGI-RO-ff6">
                                                     <font key="font" metaFont="system"/>
@@ -224,18 +224,15 @@
                         <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="3" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yAY-1H-lKe">
                             <rect key="frame" x="0.0" y="75" width="319" height="45"/>
                             <subviews>
-                                <button horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xTG-ui-90C">
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KNx-x5-o3g">
                                     <rect key="frame" x="-2" y="29" width="102" height="18"/>
-                                    <buttonCell key="cell" type="check" title="Quick Toggle" bezelStyle="regularSquare" imagePosition="left" alignment="center" inset="2" id="LeO-kk-zOj">
+                                    <buttonCell key="cell" type="check" title="Quick Toggle" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Foo-g6-6iX">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="system"/>
                                         <connections>
-                                            <action selector="quickToggle:" target="-2" id="vPK-ud-XAZ"/>
+                                            <action selector="quickToggle:" target="-2" id="R8T-6n-l2A"/>
                                         </connections>
                                     </buttonCell>
-                                    <connections>
-                                        <binding destination="HAt-Ds-MVV" name="value" keyPath="values.isStatusToggleEnabled" id="dSU-Ym-XSo"/>
-                                    </connections>
                                 </button>
                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="6yx-Be-Jx5">
                                     <rect key="frame" x="18" y="0.0" width="301" height="28"/>

@@ -97,73 +97,73 @@
 		197B4DD20DB319ACB906E8DAACF1F27B /* SUUpdater.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUUpdater.h; path = Sparkle.framework/Versions/A/Headers/SUUpdater.h; sourceTree = "<group>"; };
 		1BD010FA9E4B129C14231DC75674D2D8 /* Pods-Shifty-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Shifty-resources.sh"; sourceTree = "<group>"; };
 		1C45C51A3A97480FAAFFC9FBB1C9A9C8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1DA94D94441935C1B09C7764CB491B6C /* fr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = fr.lproj; sourceTree = "<group>"; };
+		1DA94D94441935C1B09C7764CB491B6C /* fr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = fr.lproj; sourceTree = "<group>"; };
 		2531C30BD820AE8238D969EB05A2A914 /* MASPreferencesViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASPreferencesViewController.h; path = Framework/MASPreferencesViewController.h; sourceTree = "<group>"; };
-		29214B409EBCFABB7C035651FF670F01 /* zh-Hans.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = "zh-Hans.lproj"; sourceTree = "<group>"; };
+		29214B409EBCFABB7C035651FF670F01 /* zh-Hans.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = "zh-Hans.lproj"; sourceTree = "<group>"; };
 		2B5515A5F1FA4A9914F465B9C436ACF0 /* MASPreferences+Shifty.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "MASPreferences+Shifty.xcconfig"; sourceTree = "<group>"; };
 		2E8B3BCAE3930DB03E31F39C1A09E705 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/Carbon.framework; sourceTree = DEVELOPER_DIR; };
-		30A16591DCDC84780B7A6FC4947D4711 /* Pods-ShiftyHelper.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-ShiftyHelper.modulemap"; sourceTree = "<group>"; };
+		30A16591DCDC84780B7A6FC4947D4711 /* Pods-ShiftyHelper.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-ShiftyHelper.modulemap"; sourceTree = "<group>"; };
 		32E23A0BBCB59033478C96BE8B56DC46 /* Pods-ShiftyHelper-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ShiftyHelper-acknowledgements.markdown"; sourceTree = "<group>"; };
-		340CC779A915C3F53E4EB06FB95939D6 /* Pods_Shifty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Shifty.framework; path = "Pods-Shifty.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		340CC779A915C3F53E4EB06FB95939D6 /* Pods_Shifty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shifty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35171098404BD9E6569D8BFDF506BA5B /* ResourceBundle-MASShortcut-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-MASShortcut-Info.plist"; sourceTree = "<group>"; };
-		3B7D2B3389DAB8DE1B224C5F553F5AAB /* MASShortcut.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MASShortcut.framework; path = MASShortcut.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B7D2B3389DAB8DE1B224C5F553F5AAB /* MASShortcut.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MASShortcut.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DFB9F4B94FC94A094EFACB024A8E0C3 /* Pods-ShiftyHelper-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ShiftyHelper-frameworks.sh"; sourceTree = "<group>"; };
 		465428DA0EC722631555D28C216F57AA /* Pods-ShiftyHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ShiftyHelper.debug.xcconfig"; sourceTree = "<group>"; };
 		4BB0ED60630EF853068AA2C8E07A2BE2 /* MASShortcutBinder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASShortcutBinder.m; path = Framework/MASShortcutBinder.m; sourceTree = "<group>"; };
 		50D2F56C75E1038C21ABF439A50AE99D /* MASDictionaryTransformer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASDictionaryTransformer.m; path = Framework/MASDictionaryTransformer.m; sourceTree = "<group>"; };
 		5299D0EECAB063A2AFD7E2CED0F5B571 /* Pods-ShiftyHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ShiftyHelper.release.xcconfig"; sourceTree = "<group>"; };
-		538CD37EF6B40124E0C52872EF5870FD /* es.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = es.lproj; sourceTree = "<group>"; };
+		538CD37EF6B40124E0C52872EF5870FD /* es.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = es.lproj; sourceTree = "<group>"; };
 		5484E372671C7195CD137AC6E271B43E /* Pods-ShiftyHelper-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ShiftyHelper-umbrella.h"; sourceTree = "<group>"; };
 		551B20019B505081C8BF948F753551E6 /* MASPreferences+Shifty-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MASPreferences+Shifty-dummy.m"; sourceTree = "<group>"; };
 		584EDEDB97E76CD7602362507551245F /* Shortcut.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Shortcut.h; path = Framework/Shortcut.h; sourceTree = "<group>"; };
 		5ACC50D0A591EAF6A165E88051A1332F /* MASShortcutMonitor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASShortcutMonitor.h; path = Framework/MASShortcutMonitor.h; sourceTree = "<group>"; };
 		5DEA950F7C29E1B00AFB010BDE9D916D /* MASLocalization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASLocalization.h; path = Framework/MASLocalization.h; sourceTree = "<group>"; };
 		5F22B3F652F541588FB73256FA346D8A /* MASPreferences.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASPreferences.h; path = Framework/MASPreferences.h; sourceTree = "<group>"; };
-		5F7C99C6EEAC6AC15EE1039BCA04C3DE /* Pods_ShiftyHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ShiftyHelper.framework; path = "Pods-ShiftyHelper.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F7C99C6EEAC6AC15EE1039BCA04C3DE /* Pods_ShiftyHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShiftyHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		64BA5176CF41A842C0EC997E38097B6C /* MASKeyMasks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASKeyMasks.h; path = Framework/MASKeyMasks.h; sourceTree = "<group>"; };
-		67931DCEDED6634B581525F2F75BF1F4 /* en.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = en.lproj; sourceTree = "<group>"; };
-		6AC7E967D0331E2A22BC42151561591E /* ja.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = ja.lproj; sourceTree = "<group>"; };
-		733D8CA7139CD20352BA831DE8E2C432 /* Pods-Shifty.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Shifty.modulemap"; sourceTree = "<group>"; };
+		67931DCEDED6634B581525F2F75BF1F4 /* en.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = en.lproj; sourceTree = "<group>"; };
+		6AC7E967D0331E2A22BC42151561591E /* ja.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = ja.lproj; sourceTree = "<group>"; };
+		733D8CA7139CD20352BA831DE8E2C432 /* Pods-Shifty.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Shifty.modulemap"; sourceTree = "<group>"; };
 		7A7982F591F4EA47A98240043E51B8F8 /* Pods-Shifty-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Shifty-dummy.m"; sourceTree = "<group>"; };
 		7AA84972DFA1DE742D6BCAD9E6F640A9 /* Pods-ShiftyHelper-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ShiftyHelper-resources.sh"; sourceTree = "<group>"; };
 		84F9E0260B47E775AAC8BE2957E5670A /* Pods-Shifty-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Shifty-acknowledgements.markdown"; sourceTree = "<group>"; };
 		86A92A91BA9D0A4C87C77312F41E2184 /* MASShortcutBinder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASShortcutBinder.h; path = Framework/MASShortcutBinder.h; sourceTree = "<group>"; };
 		86ED94DA153C604D65B74D3B7F78A678 /* Pods-ShiftyHelper-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ShiftyHelper-dummy.m"; sourceTree = "<group>"; };
-		884BFF1DB6104630FFD9C421529071B5 /* ru.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = ru.lproj; sourceTree = "<group>"; };
+		884BFF1DB6104630FFD9C421529071B5 /* ru.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = ru.lproj; sourceTree = "<group>"; };
 		8A65E310870D3D8B2EB6BB4CC50FD825 /* SUVersionDisplayProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUVersionDisplayProtocol.h; path = Sparkle.framework/Versions/A/Headers/SUVersionDisplayProtocol.h; sourceTree = "<group>"; };
-		8A826E59AA1DCACF33644EC3D9139B4D /* zh-Hant.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = "zh-Hant.lproj"; sourceTree = "<group>"; };
+		8A826E59AA1DCACF33644EC3D9139B4D /* zh-Hant.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = "zh-Hant.lproj"; sourceTree = "<group>"; };
 		8B11B7029E3C5005DFE31888B7D3B602 /* MASShortcut.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MASShortcut.xcconfig; sourceTree = "<group>"; };
 		8CAA7995D87F10DEB9EC75AD5189BA33 /* MASPreferencesWindowController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASPreferencesWindowController.h; path = Framework/MASPreferencesWindowController.h; sourceTree = "<group>"; };
 		8FB95514948608D76CB0CC5024DC4949 /* MASHotKey.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASHotKey.m; path = Framework/MASHotKey.m; sourceTree = "<group>"; };
 		92207E60756309DAC04E4779837EE365 /* SUAppcast.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUAppcast.h; path = Sparkle.framework/Versions/A/Headers/SUAppcast.h; sourceTree = "<group>"; };
 		92B9DF5A240C8BEB1AC020A31A0D902A /* SUExport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUExport.h; path = Sparkle.framework/Versions/A/Headers/SUExport.h; sourceTree = "<group>"; };
 		93879DC9DBB0EAF2EFEEADFB0F5243B2 /* MASShortcutView+Bindings.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "MASShortcutView+Bindings.m"; path = "Framework/MASShortcutView+Bindings.m"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		940D664772CC1E8EA67BD97F66CDA8E4 /* Pods-ShiftyHelper-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ShiftyHelper-acknowledgements.plist"; sourceTree = "<group>"; };
-		9498A3A1D044B59076A747CB8CBF3FD1 /* pl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = pl.lproj; sourceTree = "<group>"; };
+		9498A3A1D044B59076A747CB8CBF3FD1 /* pl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = pl.lproj; sourceTree = "<group>"; };
 		96E85B21C087CDDC9D75D530388AC36F /* MASKeyCodes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASKeyCodes.h; path = Framework/MASKeyCodes.h; sourceTree = "<group>"; };
 		986C924B7B8E231E2755562786FE9DE3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9AC2C0F4B2F0F5165882F1212162D5F7 /* Pods-Shifty-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Shifty-acknowledgements.plist"; sourceTree = "<group>"; };
 		9AEA4D7A45D89D573A3FB0467B586EAA /* Pods-Shifty-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Shifty-umbrella.h"; sourceTree = "<group>"; };
-		9B6141872D96C7CA04D0FF2A738230CE /* cs.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = cs.lproj; sourceTree = "<group>"; };
+		9B6141872D96C7CA04D0FF2A738230CE /* cs.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = cs.lproj; sourceTree = "<group>"; };
 		A5F431F9A73F4C761ECE5DEC408CD162 /* MASShortcutView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASShortcutView.m; path = Framework/MASShortcutView.m; sourceTree = "<group>"; };
 		A7F7ED1CCC3FE750FD9A277033753AAA /* Pods-Shifty-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Shifty-frameworks.sh"; sourceTree = "<group>"; };
 		AAC32C44FDFAC4FD3A12C90087A9F2C6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ACB0EAC33DCA6C8FF544A92494ECA164 /* MASShortcutValidator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASShortcutValidator.h; path = Framework/MASShortcutValidator.h; sourceTree = "<group>"; };
 		B01EF5C5C23AD8AD3A78374378FA5CEF /* MASShortcutView+Bindings.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MASShortcutView+Bindings.h"; path = "Framework/MASShortcutView+Bindings.h"; sourceTree = "<group>"; };
 		B55509CED671550F15BCFB281C630F5F /* MASShortcut.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASShortcut.m; path = Framework/MASShortcut.m; sourceTree = "<group>"; };
-		B6A064AD8C2A70E72EADA198FE10ECFB /* it.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = it.lproj; sourceTree = "<group>"; };
+		B6A064AD8C2A70E72EADA198FE10ECFB /* it.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = it.lproj; sourceTree = "<group>"; };
 		BBE53CF570EE15CB2E6E553E4939B679 /* MASHotKey.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASHotKey.h; path = Framework/MASHotKey.h; sourceTree = "<group>"; };
 		BE4525ED83F096C017548DA55A7E6CDD /* MASPreferencesWindow.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = MASPreferencesWindow.xib; path = en.lproj/MASPreferencesWindow.xib; sourceTree = "<group>"; };
 		C324F341B50F39EFF5B395FD01AC6FCA /* Pods-Shifty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Shifty.debug.xcconfig"; sourceTree = "<group>"; };
 		C3B296B8C78939BCFCACB220781327E1 /* MASShortcutMonitor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASShortcutMonitor.m; path = Framework/MASShortcutMonitor.m; sourceTree = "<group>"; };
-		C5F56264528AC69FA3CFB9A7CEC02EEB /* nl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = nl.lproj; sourceTree = "<group>"; };
+		C5F56264528AC69FA3CFB9A7CEC02EEB /* nl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = nl.lproj; sourceTree = "<group>"; };
 		CAB35E3E152BC59F261AF6F04F3EC5C3 /* MASLocalization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASLocalization.m; path = Framework/MASLocalization.m; sourceTree = "<group>"; };
 		CD659E7CF8C174530BCED92C67FE825A /* SUStandardVersionComparator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUStandardVersionComparator.h; path = Sparkle.framework/Versions/A/Headers/SUStandardVersionComparator.h; sourceTree = "<group>"; };
 		CDFBCE275358DF2CDC075CBBAAD97F07 /* Pods-Shifty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Shifty.release.xcconfig"; sourceTree = "<group>"; };
-		CF21813785C996B6B3FAA88345A43887 /* MASPreferences+Shifty.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "MASPreferences+Shifty.modulemap"; sourceTree = "<group>"; };
-		D3DF0781E1806A25452D08976CB348CB /* de.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = de.lproj; sourceTree = "<group>"; };
-		D85A920E3091756A90658ACC0822FF00 /* MASShortcut.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = MASShortcut.modulemap; sourceTree = "<group>"; };
+		CF21813785C996B6B3FAA88345A43887 /* MASPreferences+Shifty.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "MASPreferences+Shifty.modulemap"; sourceTree = "<group>"; };
+		D3DF0781E1806A25452D08976CB348CB /* de.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = de.lproj; sourceTree = "<group>"; };
+		D85A920E3091756A90658ACC0822FF00 /* MASShortcut.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = MASShortcut.modulemap; sourceTree = "<group>"; };
 		D8E2671919C654B4A2F634CCF7F4C8DD /* Sparkle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Sparkle.h; path = Sparkle.framework/Versions/A/Headers/Sparkle.h; sourceTree = "<group>"; };
 		E2541250471DC86A02E1797D513CBDB1 /* MASShortcutValidator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASShortcutValidator.m; path = Framework/MASShortcutValidator.m; sourceTree = "<group>"; };
 		E4E5B8AFE3555BBDB5B959F2089C36F2 /* SUUpdaterDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUUpdaterDelegate.h; path = Sparkle.framework/Versions/A/Headers/SUUpdaterDelegate.h; sourceTree = "<group>"; };
@@ -172,14 +172,14 @@
 		ED594F2822FC11CC373A36712484F909 /* SUVersionComparisonProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUVersionComparisonProtocol.h; path = Sparkle.framework/Versions/A/Headers/SUVersionComparisonProtocol.h; sourceTree = "<group>"; };
 		EEB681C172C732CBFF456D011CE0B2C6 /* MASDictionaryTransformer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASDictionaryTransformer.h; path = Framework/MASDictionaryTransformer.h; sourceTree = "<group>"; };
 		F22C41F89C3E5BD4C750B18890451E64 /* MASShortcut.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASShortcut.h; path = Framework/MASShortcut.h; sourceTree = "<group>"; };
-		F36EC99A796932F231BA524807094CE5 /* ko.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = ko.lproj; sourceTree = "<group>"; };
+		F36EC99A796932F231BA524807094CE5 /* ko.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = ko.lproj; sourceTree = "<group>"; };
 		F639982A8A7FEA11588F8AFFD31C594B /* MASShortcut-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MASShortcut-prefix.pch"; sourceTree = "<group>"; };
 		F6CE99528BAE426429360DE761178CF0 /* MASShortcut-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MASShortcut-umbrella.h"; sourceTree = "<group>"; };
 		FA8B46BABB3E6D080C0B0171C5AF3789 /* SUErrors.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUErrors.h; path = Sparkle.framework/Versions/A/Headers/SUErrors.h; sourceTree = "<group>"; };
 		FB76D3DB00185EF4FF95A4B6ADD57CC3 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
-		FBE4C68D01B9CEF8CD68948CD2D1A933 /* MASShortcut.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MASShortcut.bundle; path = MASShortcut.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBE4C68D01B9CEF8CD68948CD2D1A933 /* MASShortcut.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MASShortcut.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEC173249EB2BB44EB203F1C89A5DB88 /* MASShortcutView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASShortcutView.h; path = Framework/MASShortcutView.h; sourceTree = "<group>"; };
-		FF41A5EA04850C54F654DEF82748E3AF /* MASPreferences_Shifty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MASPreferences_Shifty.framework; path = "MASPreferences+Shifty.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF41A5EA04850C54F654DEF82748E3AF /* MASPreferences_Shifty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MASPreferences_Shifty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -380,7 +380,6 @@
 				968F5B4406C14DE7DB4608F2B996F120 /* Resources */,
 				F7DD0C72512A2F83C376F1B9B002157E /* Support Files */,
 			);
-			name = MASShortcut;
 			path = MASShortcut;
 			sourceTree = "<group>";
 		};
@@ -394,7 +393,6 @@
 				F7DB2D85EB57BAA44304DF64CFBCC55F /* Resources */,
 				645407A403E453A5FFBFD7F0A1FB280B /* Support Files */,
 			);
-			name = "MASPreferences+Shifty";
 			path = "MASPreferences+Shifty";
 			sourceTree = "<group>";
 		};
@@ -425,7 +423,6 @@
 				8A65E310870D3D8B2EB6BB4CC50FD825 /* SUVersionDisplayProtocol.h */,
 				188C74E62E2D0142FC80F2A1FDD48368 /* Frameworks */,
 			);
-			name = Sparkle;
 			path = Sparkle;
 			sourceTree = "<group>";
 		};
@@ -602,7 +599,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0910;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -995,7 +992,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1003,15 +1002,21 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"POD_CONFIGURATION_DEBUG=1",
@@ -1135,7 +1140,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1143,14 +1150,20 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"POD_CONFIGURATION_RELEASE=1",
 					"$(inherited)",
