@@ -71,11 +71,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             DistributedNotificationCenter.default().post(name: Notification.Name("killme"), object: Bundle.main.bundleIdentifier!)
         }
         
-        
-        let icon = #imageLiteral(resourceName: "statusIcon")
-        icon.isTemplate = true
-        statusItem.image = icon
+        setMenuBarIcon()
         setStatusToggle()
+    }
+    
+    func setMenuBarIcon() {
+        var icon: NSImage
+        if UserDefaults.standard.bool(forKey: Keys.isIconSwitchingEnabled) {
+            if !BLClient.isNightShiftEnabled {
+                icon = #imageLiteral(resourceName: "sun")
+            } else {
+                icon = #imageLiteral(resourceName: "statusIcon")
+            }
+        } else {
+            icon = #imageLiteral(resourceName: "statusIcon")
+        }
+        icon.isTemplate = true
+        DispatchQueue.main.async {
+            self.statusItem.image = icon
+        }
     }
     
     func setStatusToggle() {

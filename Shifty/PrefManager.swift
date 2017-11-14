@@ -11,6 +11,7 @@ import Cocoa
 struct Keys {
     static let isStatusToggleEnabled = "isStatusToggleEnabled"
     static let isAutoLaunchEnabled = "isAutoLaunchEnabled"
+    static let isIconSwitchingEnabled = "isIconSwitchingEnabled"
     static let isDarkModeSyncEnabled = "isDarkModeSyncEnabled"
     static let lastKnownLocation = "lastKnownLocation"
     static let disabledApps = "disabledApps"
@@ -37,6 +38,7 @@ class PrefManager {
         let factoryDefaults = [
             Keys.isAutoLaunchEnabled: NSNumber(value: false),
             Keys.isStatusToggleEnabled: NSNumber(value: false),
+            Keys.isIconSwitchingEnabled: NSNumber(value: false),
             Keys.isDarkModeSyncEnabled: NSNumber(value: false),
             Keys.disabledApps: [String]()
             ] as [String : Any]
@@ -51,6 +53,7 @@ class PrefManager {
     func reset() {
         userDefaults.removeObject(forKey: Keys.isAutoLaunchEnabled)
         userDefaults.removeObject(forKey: Keys.isStatusToggleEnabled)
+        userDefaults.removeObject(forKey: Keys.isIconSwitchingEnabled)
         userDefaults.removeObject(forKey: Keys.isDarkModeSyncEnabled)
         userDefaults.removeObject(forKey: Keys.lastKnownLocation)
         userDefaults.removeObject(forKey: Keys.disabledApps)

@@ -261,6 +261,9 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             self.prefGeneral.updateSchedule?()
         }
         self.updateDarkMode()
+        
+        let appDelegate = NSApplication.shared.delegate as! AppDelegate
+        appDelegate.setMenuBarIcon()
     }
     
     func updateDarkMode() {

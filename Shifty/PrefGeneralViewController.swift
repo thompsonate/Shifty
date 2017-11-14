@@ -37,6 +37,7 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
     
     @IBOutlet weak var setAutoLaunch: NSButton!
     @IBOutlet weak var toggleStatusItem: NSButton!
+    @IBOutlet weak var setIconSwitching: NSButton!
     @IBOutlet weak var darkModeSync: NSButton!
     
     @IBOutlet weak var schedulePopup: NSPopUpButton!
@@ -90,17 +91,18 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
     //MARK: IBActions
     
     @IBAction func setAutoLaunch(_ sender: NSButtonCell) {
-        let autoLaunch = setAutoLaunch.state == .on
-        prefs.setValue(autoLaunch, forKey: Keys.isAutoLaunchEnabled)
         let launcherAppIdentifier = "io.natethompson.ShiftyHelper"
-        SMLoginItemSetEnabled(launcherAppIdentifier as CFString, autoLaunch)
+        SMLoginItemSetEnabled(launcherAppIdentifier as CFString, setAutoLaunch.state == .on)
     }
     
     @IBAction func quickToggle(_ sender: NSButtonCell) {
-        let quickToggle = toggleStatusItem.state == .on
         let appDelegate = NSApplication.shared.delegate as! AppDelegate
-        prefs.setValue(quickToggle, forKey: Keys.isStatusToggleEnabled)
         appDelegate.setStatusToggle()
+    }
+    
+    @IBAction func setIconSwitching(_ sender: Any) {
+        let appDelegate = NSApplication.shared.delegate as! AppDelegate
+        appDelegate.setMenuBarIcon()
     }
     
     @IBAction func syncDarkMode(_ sender: NSButtonCell) {
