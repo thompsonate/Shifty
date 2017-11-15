@@ -346,6 +346,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     }
     
     @IBAction func disableCustomTime(_ sender: Any) {
+        NSApplication.shared.activate(ignoringOtherApps: true)
+        
         var timeIntervalInMinutes: Int!
         
         if !isDisableCustomSelected {
@@ -382,7 +384,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             self.isShiftForAppEnabled = self.activeState
             timeIntervalInMinutes = timeIntervalInSeconds * 60
         }
-
+        
         Event.disableForCustomTime(state: isDisableCustomSelected, timeInterval: timeIntervalInMinutes).record()
     }
     
@@ -567,9 +569,10 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     }
     
     @IBAction func preferencesClicked(_ sender: NSMenuItem) {
+        NSApplication.shared.activate(ignoringOtherApps: true)
         let appDelegate = NSApplication.shared.delegate as? AppDelegate
         appDelegate?.preferenceWindowController.showWindow(sender)
-
+        
         Event.preferencesWindowOpened.record()
     }
     

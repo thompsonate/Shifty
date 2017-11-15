@@ -51,28 +51,24 @@ class PrefAboutViewController: NSViewController, MASPreferencesViewController {
     @IBAction func visitWebsiteClicked(_ sender: NSButton) {
         guard let url = URL(string: "http://shifty.natethompson.io") else { return }
         NSWorkspace.shared.open(url)
-        view.window?.close()
         Event.websiteButtonClicked.record()
     }
     
     @IBAction func submitFeedbackClicked(_ sender: NSButton) {
         guard let url = URL(string: "mailto:feedback@natethompson.io?subject=Shifty%20Feedback") else { return }
         NSWorkspace.shared.open(url)
-        view.window?.close()
         Event.feedbackButtonClicked.record()
     }
     
     @IBAction func donateButtonClicked(_ sender: NSButton) {
         guard let url = URL(string: "http://shifty.natethompson.io/donate") else { return }
         NSWorkspace.shared.open(url)
-        view.window?.close()
         Event.donateButtonClicked.record()
     }
     
     @IBAction func creditsButtonClicked(_ sender: Any) {
         guard let path = Bundle.main.path(forResource: "credits", ofType: "rtf") else { return }
         NSWorkspace.shared.openFile(path)
-        view.window?.close()
     }
 }
 

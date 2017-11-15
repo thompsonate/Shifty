@@ -87,7 +87,7 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
         
         updateSchedule?()
     }
-    
+
     //MARK: IBActions
     
     @IBAction func setAutoLaunch(_ sender: NSButtonCell) {
@@ -162,13 +162,7 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
 }
 
 
-class PrefWindowController: MASPreferencesWindowController {
-    override func windowDidLoad() {
-        super.windowDidLoad()
-        
-        window?.level = .floating
-    }
-    
+class PrefWindowController: MASPreferencesWindowController {    
     override func keyDown(with theEvent: NSEvent) {
         if theEvent.keyCode == 13 {
             window?.close()
