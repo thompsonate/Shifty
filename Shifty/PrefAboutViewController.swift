@@ -21,7 +21,7 @@ class PrefAboutViewController: NSViewController, MASPreferencesViewController {
     var viewIdentifier: String = "PrefAboutViewController"
     
     var toolbarItemImage: NSImage? {
-        get { return #imageLiteral(resourceName: "shifty-icon-small") }
+        get { return #imageLiteral(resourceName: "shiftyColorIcon") }
     }
     
     var toolbarItemLabel: String? {

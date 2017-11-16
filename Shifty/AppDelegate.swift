@@ -79,16 +79,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         var icon: NSImage
         if UserDefaults.standard.bool(forKey: Keys.isIconSwitchingEnabled) {
             if !BLClient.isNightShiftEnabled {
-                icon = #imageLiteral(resourceName: "sun")
+                icon = #imageLiteral(resourceName: "sunOpenIcon")
             } else {
-                icon = #imageLiteral(resourceName: "statusIcon")
+                icon = #imageLiteral(resourceName: "shiftyMenuIcon")
             }
         } else {
-            icon = #imageLiteral(resourceName: "statusIcon")
+            icon = #imageLiteral(resourceName: "shiftyMenuIcon")
         }
         icon.isTemplate = true
         DispatchQueue.main.async {
-            self.statusItem.image = icon
+            self.statusItem.button?.image = icon
         }
     }
     
