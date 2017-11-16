@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import MASShortcut
 
 let BLClient = CBBlueLightClient()
 let SSLocationManager = SunriseSetLocationManager()
@@ -24,8 +25,9 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     @IBOutlet weak var sunIcon: NSImageView!
     @IBOutlet weak var moonIcon: NSImageView!
     
-    var preferencesWindow: PreferencesWindow!
-    var aboutWindow: AboutWindow!
+    var preferencesWindow: NSWindowController!
+    var prefGeneral: PrefGeneralViewController!
+    var prefShortcuts: PrefShortcutsViewController!
     var customTimeWindow: CustomTimeWindow!
     var currentAppName = ""
     var currentAppBundleId = ""
@@ -49,9 +51,15 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         
     override func awakeFromNib() {
         statusMenu.delegate = self
-        aboutWindow = AboutWindow()
-        preferencesWindow = PreferencesWindow()
         customTimeWindow = CustomTimeWindow()
+        
+        let prefWindow = (NSApplication.shared.delegate as? AppDelegate)?.preferenceWindowController
+        prefGeneral = prefWindow?.viewControllers.flatMap { childViewController in
+            return childViewController as? PrefGeneralViewController
+        }.first
+        prefShortcuts = prefWindow?.viewControllers.flatMap { childViewController in
+            return childViewController as? PrefShortcutsViewController
+        }.first
         
         descriptionMenuItem.isEnabled = false
         sliderMenuItem.view = sliderView
@@ -75,7 +83,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         
         isShiftForAppEnabled = BLClient.isNightShiftEnabled
 
-        disabledApps = PreferencesManager.sharedInstance.userDefaults.value(forKey: Keys.disabledApps) as? [String] ?? []
+        disabledApps = PrefManager.sharedInstance.userDefaults.value(forKey: Keys.disabledApps) as? [String] ?? []
         
         let appDelegate = NSApplication.shared.delegate as! AppDelegate
         appDelegate.statusItemClicked = {
@@ -99,9 +107,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             self.blueLightNotification()
         }
         
-        preferencesWindow.updateDarkMode = {
+        prefGeneral.updateDarkMode = {
             self.updateDarkMode()
         }
+        
+        prefShortcuts.bindShortcuts()
         
         SSLocationManager.setup()
         SSLocationManager.updateLocationMonitoringStatus()
@@ -110,7 +120,6 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     
     func menuWillOpen(_: NSMenu) {
         if BLClient.isNightShiftEnabled {
-            sliderView.shiftSlider.floatValue = BLClient.strength * 100
             setActiveState(state: true)
             //disableDisableTimer()
 
@@ -118,9 +127,28 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             setActiveState(state: BLClient.isNightShiftEnabled)
         }
         
+        sliderView.shiftSlider.floatValue = BLClient.strength * 100
         setDescriptionText()
         updateCurrentApp()
+        
+        assignKeyboardShortcutToMenuItem(powerMenuItem, userDefaultsKey: Keys.toggleNightShiftShortcut)
+        assignKeyboardShortcutToMenuItem(disableAppMenuItem, userDefaultsKey: Keys.disableAppShortcut)
+        assignKeyboardShortcutToMenuItem(disableHourMenuItem, userDefaultsKey: Keys.disableHourShortcut)
+        assignKeyboardShortcutToMenuItem(disableCustomMenuItem, userDefaultsKey: Keys.disableCustomShortcut)
+        
         Event.menuOpened.record()
+    }
+    
+    func assignKeyboardShortcutToMenuItem(_ menuItem: NSMenuItem, userDefaultsKey: String) {
+        if let data = UserDefaults.standard.value(forKey: userDefaultsKey),
+            let shortcut = NSKeyedUnarchiver.unarchiveObject(with: data as! Data) as? MASShortcut {
+            let flags = NSEvent.ModifierFlags.init(rawValue: shortcut.modifierFlags)
+            menuItem.keyEquivalentModifierMask = flags
+            menuItem.keyEquivalent = shortcut.keyCodeString.lowercased()
+        } else {
+            menuItem.keyEquivalentModifierMask = []
+            menuItem.keyEquivalent = ""
+        }
     }
     
     ///Returns true if the scheduled state is on or if the scheduled shift is close
@@ -230,9 +258,12 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         }
         
         DispatchQueue.main.async {
-            self.preferencesWindow.updateSchedule?()
+            self.prefGeneral.updateSchedule?()
         }
-        self.preferencesWindow.updateDarkMode()
+        self.updateDarkMode()
+        
+        let appDelegate = NSApplication.shared.delegate as! AppDelegate
+        appDelegate.setMenuBarIcon()
     }
     
     func updateDarkMode() {
@@ -283,7 +314,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         isShiftForAppEnabled = activeState
     }
     
-    @IBAction func disableHour(_ sender: NSMenuItem) {
+    @IBAction func disableHour(_ sender: Any) {
         if !isDisableHourSelected {
             isDisableHourSelected = true
             shift(isEnabled: false)
@@ -314,7 +345,9 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         Event.disableForHour(state: isDisableHourSelected).record()
     }
     
-    @IBAction func disableCustomTime(_ sender: NSMenuItem) {
+    @IBAction func disableCustomTime(_ sender: Any) {
+        NSApplication.shared.activate(ignoringOtherApps: true)
+        
         var timeIntervalInMinutes: Int!
         
         if !isDisableCustomSelected {
@@ -351,7 +384,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             self.isShiftForAppEnabled = self.activeState
             timeIntervalInMinutes = timeIntervalInSeconds * 60
         }
-
+        
         Event.disableForCustomTime(state: isDisableCustomSelected, timeInterval: timeIntervalInMinutes).record()
     }
     
@@ -369,15 +402,15 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         }
     }
     
-    @IBAction func disableForApp(_ sender: NSMenuItem) {
+    @IBAction func disableForApp(_ sender: Any) {
         if disableAppMenuItem.state == .off {
             disabledApps.append(currentAppBundleId)
         } else {
             disabledApps.remove(at: disabledApps.index(of: currentAppBundleId)!)
         }
         updateCurrentApp()
-        PreferencesManager.sharedInstance.userDefaults.set(disabledApps, forKey: Keys.disabledApps)
-        Event.disableForCurrentApp(state: sender.state == .on).record()
+        PrefManager.sharedInstance.userDefaults.set(disabledApps, forKey: Keys.disabledApps)
+        Event.disableForCurrentApp(state: (sender as? NSMenuItem)?.state == .on).record()
     }
     
     
@@ -409,33 +442,31 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     }
     
     func setActiveState(state: Bool) {
-        DispatchQueue.main.async {
-            self.activeState = state
-            self.sliderView.shiftSlider.isEnabled = state
-            
-            if self.isDisableHourSelected {
-                self.disableHourMenuItem.isEnabled = true
-            } else if self.customTimeWindow.isWindowLoaded && self.customTimeWindow.window?.isVisible ?? false {
-                self.disableHourMenuItem.isEnabled = false
-            } else if self.isDisabledForApp {
-                self.disableHourMenuItem.isEnabled = false
-            } else {
-                self.disableHourMenuItem.isEnabled = state
-            }
-            
-            if self.isDisableCustomSelected {
-                self.disableCustomMenuItem.isEnabled = true
-            } else if self.isDisabledForApp {
-                self.disableCustomMenuItem.isEnabled = false
-            } else {
-                self.disableCustomMenuItem.isEnabled = state
-            }
-            
-            if state {
-                self.powerMenuItem.title = "Turn off Night Shift"
-            } else {
-                self.powerMenuItem.title = "Turn on Night Shift"
-            }
+        self.activeState = state
+        self.sliderView.shiftSlider.isEnabled = state
+        
+        if self.isDisableHourSelected {
+            self.disableHourMenuItem.isEnabled = true
+        } else if self.customTimeWindow.isWindowLoaded && self.customTimeWindow.window?.isVisible ?? false {
+            self.disableHourMenuItem.isEnabled = false
+        } else if self.isDisabledForApp {
+            self.disableHourMenuItem.isEnabled = false
+        } else {
+            self.disableHourMenuItem.isEnabled = state
+        }
+        
+        if self.isDisableCustomSelected {
+            self.disableCustomMenuItem.isEnabled = true
+        } else if self.isDisabledForApp {
+            self.disableCustomMenuItem.isEnabled = false
+        } else {
+            self.disableCustomMenuItem.isEnabled = state
+        }
+        
+        if state {
+            self.powerMenuItem.title = "Turn off Night Shift"
+        } else {
+            self.powerMenuItem.title = "Turn on Night Shift"
         }
     }
     
@@ -537,16 +568,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         }
     }
     
-    @IBAction func aboutClicked(_ sender: NSMenuItem) {
-        aboutWindow.showWindow(sender)
-        aboutWindow.window?.orderFrontRegardless()
-        Event.aboutWindowOpened.record()
-    }
-    
     @IBAction func preferencesClicked(_ sender: NSMenuItem) {
-        preferencesWindow.updateSchedule?()
-        preferencesWindow.showWindow(sender)
-        preferencesWindow.window?.orderFrontRegardless()
+        NSApplication.shared.activate(ignoringOtherApps: true)
+        let appDelegate = NSApplication.shared.delegate as? AppDelegate
+        appDelegate?.preferenceWindowController.showWindow(sender)
+        
         Event.preferencesWindowOpened.record()
     }
     

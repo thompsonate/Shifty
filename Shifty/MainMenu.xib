@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13529"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -68,12 +69,6 @@
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="OE0-tz-FKo"/>
-                <menuItem title="About..." id="B5o-hm-scl">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="aboutClicked:" target="YHE-ZD-Fjn" id="Rhu-71-Pgb"/>
-                    </connections>
-                </menuItem>
                 <menuItem title="Preferences..." id="GJi-nB-WzR">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
@@ -90,12 +85,11 @@
             <point key="canvasLocation" x="144.5" y="137.5"/>
         </menu>
         <customView id="xRd-3s-8Ep" customClass="SliderView" customModule="Shifty" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="238" height="26"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <rect key="frame" x="0.0" y="0.0" width="247" height="21"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JKy-ed-5KM">
-                    <rect key="frame" x="-6" y="-4" width="250" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JKy-ed-5KM">
+                    <rect key="frame" x="-6" y="-7" width="259" height="32"/>
                     <buttonCell key="cell" type="push" bezelStyle="rounded" alignment="center" borderStyle="border" transparent="YES" imageScaling="proportionallyDown" inset="2" id="Eas-n8-yck">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -104,25 +98,60 @@
                         <action selector="clickEnableSlider:" target="xRd-3s-8Ep" id="nyf-aQ-CMP"/>
                     </connections>
                 </button>
-                <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qOz-qT-jic" customClass="ScrollableSlider" customModule="Shifty" customModuleProvider="target">
-                    <rect key="frame" x="47" y="4" width="149" height="19"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="AT9-Xr-w3B"/>
-                    <connections>
-                        <action selector="shiftSliderMoved:" target="xRd-3s-8Ep" id="Ijr-EN-eZS"/>
-                    </connections>
-                </slider>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dky-H2-15i">
-                    <rect key="frame" x="22" y="3" width="19" height="19"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="sun" id="qBk-P2-1HM"/>
-                </imageView>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QFo-Gz-iR8">
-                    <rect key="frame" x="202" y="5" width="15" height="15"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="moon" id="1sP-n7-4O8"/>
-                </imageView>
+                <stackView distribution="fillProportionally" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qwu-Gq-7IE">
+                    <rect key="frame" x="25" y="0.0" width="197" height="21"/>
+                    <subviews>
+                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dky-H2-15i">
+                            <rect key="frame" x="0.0" y="2" width="18" height="18"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="18" id="KQA-UR-LLn"/>
+                                <constraint firstAttribute="height" constant="18" id="wa8-97-0tF"/>
+                            </constraints>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="sunIcon" id="qBk-P2-1HM"/>
+                        </imageView>
+                        <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qOz-qT-jic" customClass="ScrollableSlider" customModule="Shifty" customModuleProvider="target">
+                            <rect key="frame" x="24" y="1" width="149" height="19"/>
+                            <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="AT9-Xr-w3B"/>
+                            <connections>
+                                <action selector="shiftSliderMoved:" target="xRd-3s-8Ep" id="Ijr-EN-eZS"/>
+                            </connections>
+                        </slider>
+                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QFo-Gz-iR8">
+                            <rect key="frame" x="179" y="2" width="18" height="18"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="18" id="UgS-nD-Ct9"/>
+                                <constraint firstAttribute="width" constant="18" id="WHp-Py-ODO"/>
+                            </constraints>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="moonIcon" id="1sP-n7-4O8"/>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="QFo-Gz-iR8" firstAttribute="centerY" secondItem="Qwu-Gq-7IE" secondAttribute="centerY" id="AFi-EE-3Qm"/>
+                        <constraint firstItem="qOz-qT-jic" firstAttribute="centerY" secondItem="Qwu-Gq-7IE" secondAttribute="centerY" id="g6r-Mz-LK8"/>
+                        <constraint firstItem="Dky-H2-15i" firstAttribute="centerY" secondItem="Qwu-Gq-7IE" secondAttribute="centerY" id="swR-br-8V4"/>
+                    </constraints>
+                    <visibilityPriorities>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                    </visibilityPriorities>
+                    <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                    </customSpacing>
+                </stackView>
             </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Qwu-Gq-7IE" secondAttribute="bottom" id="79a-le-Udc"/>
+                <constraint firstItem="Qwu-Gq-7IE" firstAttribute="top" secondItem="xRd-3s-8Ep" secondAttribute="top" id="DVZ-QE-dhT"/>
+                <constraint firstItem="JKy-ed-5KM" firstAttribute="leading" secondItem="xRd-3s-8Ep" secondAttribute="leading" id="JH7-79-uub"/>
+                <constraint firstAttribute="trailing" secondItem="JKy-ed-5KM" secondAttribute="trailing" id="KZG-mD-Apd"/>
+                <constraint firstAttribute="trailing" secondItem="Qwu-Gq-7IE" secondAttribute="trailing" constant="25" id="X28-bl-RLR"/>
+                <constraint firstItem="Qwu-Gq-7IE" firstAttribute="leading" secondItem="xRd-3s-8Ep" secondAttribute="leading" constant="25" id="l9b-BQ-6G7"/>
+                <constraint firstItem="JKy-ed-5KM" firstAttribute="top" secondItem="xRd-3s-8Ep" secondAttribute="top" id="pi5-iG-HHQ"/>
+                <constraint firstAttribute="bottom" secondItem="JKy-ed-5KM" secondAttribute="bottom" id="v98-qN-Fat"/>
+            </constraints>
             <connections>
                 <outlet property="shiftSlider" destination="qOz-qT-jic" id="RJ9-eC-U59"/>
             </connections>
@@ -130,7 +159,7 @@
         </customView>
     </objects>
     <resources>
-        <image name="moon" width="36" height="36"/>
-        <image name="sun" width="36" height="36"/>
+        <image name="moonIcon" width="18" height="18"/>
+        <image name="sunIcon" width="18" height="18"/>
     </resources>
 </document>

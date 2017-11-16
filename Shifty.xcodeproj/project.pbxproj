@@ -8,14 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		43087E191F41EE0700A54523 /* BLNotificationBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 43087E181F41EE0700A54523 /* BLNotificationBlock.m */; };
+		43111A7C1FB84BC8000D8214 /* credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 43111A7B1FB84BC8000D8214 /* credits.rtf */; };
 		432428F31F2D84BF00E4BAFB /* ShiftyAppcast.xml in Resources */ = {isa = PBXBuildFile; fileRef = 432428F21F2D84BF00E4BAFB /* ShiftyAppcast.xml */; };
 		433AD3011F2CED1F0003FBCD /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 433AD3001F2CED1F0003FBCD /* dsa_pub.pem */; };
 		433AD3081F2D00BD0003FBCD /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433AD3061F2D00BD0003FBCD /* Crashlytics.framework */; };
 		433AD3091F2D00BD0003FBCD /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433AD3071F2D00BD0003FBCD /* Fabric.framework */; };
 		433EE8521EBD8ECA007EA870 /* CoreBrightness.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433EE8511EBD8ECA007EA870 /* CoreBrightness.framework */; };
-		4346F8EB1EBE827E00687A67 /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4346F8E91EBE827E00687A67 /* PreferencesWindow.xib */; };
+		4346F8EB1EBE827E00687A67 /* PrefGeneralViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4346F8E91EBE827E00687A67 /* PrefGeneralViewController.xib */; };
 		4350191D1F21E99F0001324F /* CustomTimeWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4350191C1F21E99F0001324F /* CustomTimeWindow.swift */; };
-		4368E3031EBEBA6C00D53310 /* PreferencesWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4368E3021EBEBA6C00D53310 /* PreferencesWindow.swift */; };
+		4351C7811FB5737900788CC9 /* PrefGeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4351C7801FB5737900788CC9 /* PrefGeneralViewController.swift */; };
+		4368E3031EBEBA6C00D53310 /* PrefManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4368E3021EBEBA6C00D53310 /* PrefManager.swift */; };
 		437B3E541F22649A00B281FE /* CustomTimeWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 437B3E531F22649A00B281FE /* CustomTimeWindow.xib */; };
 		437D7E161EC015CB00544FC8 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437D7E151EC015CB00544FC8 /* SliderView.swift */; };
 		4388E8E51F84ACCF00DC34CC /* SunriseSetLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4388E8E41F84ACCF00DC34CC /* SunriseSetLocationManager.swift */; };
@@ -24,9 +26,11 @@
 		4394DDAA1EBE376F00F22908 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4394DDA31EBE376F00F22908 /* Assets.xcassets */; };
 		4394DDAC1EBE376F00F22908 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4394DDA61EBE376F00F22908 /* MainMenu.xib */; };
 		4394DDAD1EBE376F00F22908 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4394DDA81EBE376F00F22908 /* StatusMenuController.swift */; };
-		43B547E91F2986930034E779 /* AboutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B547E71F2986930034E779 /* AboutWindow.swift */; };
-		43B547EA1F2986930034E779 /* AboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43B547E81F2986930034E779 /* AboutWindow.xib */; };
 		43B547F11F29A77D0034E779 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B547F01F29A77D0034E779 /* Event.swift */; };
+		43B9DE151FB5924F002C4C29 /* PrefShortcutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B9DE131FB5924F002C4C29 /* PrefShortcutsViewController.swift */; };
+		43B9DE161FB5924F002C4C29 /* PrefShortcutsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43B9DE141FB5924F002C4C29 /* PrefShortcutsViewController.xib */; };
+		43B9DE1B1FB592AE002C4C29 /* PrefAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B9DE191FB592AE002C4C29 /* PrefAboutViewController.swift */; };
+		43B9DE1C1FB592AE002C4C29 /* PrefAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43B9DE1A1FB592AE002C4C29 /* PrefAboutViewController.xib */; };
 		43C039DA1F1BD178009B1B70 /* CBBlueLightClient+Shifty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C039D91F1BD178009B1B70 /* CBBlueLightClient+Shifty.swift */; };
 		43C0838C1F19AEF900E73B84 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43C0838B1F19AEF900E73B84 /* ServiceManagement.framework */; };
 		43C7A4881F19F2CB00A697C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C7A4871F19F2CB00A697C0 /* AppDelegate.swift */; };
@@ -54,14 +58,16 @@
 		115BB8A6F00EEB28DD8A96E5 /* Pods-Shifty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shifty.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shifty/Pods-Shifty.release.xcconfig"; sourceTree = "<group>"; };
 		43087E171F41EE0700A54523 /* BLNotificationBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BLNotificationBlock.h; path = Shifty/BLNotificationBlock.h; sourceTree = "<group>"; };
 		43087E181F41EE0700A54523 /* BLNotificationBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BLNotificationBlock.m; path = Shifty/BLNotificationBlock.m; sourceTree = "<group>"; };
+		43111A7B1FB84BC8000D8214 /* credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = credits.rtf; sourceTree = "<group>"; };
 		432428F21F2D84BF00E4BAFB /* ShiftyAppcast.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ShiftyAppcast.xml; sourceTree = "<group>"; };
 		433AD3001F2CED1F0003FBCD /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_pub.pem; path = Shifty/dsa_pub.pem; sourceTree = "<group>"; };
 		433AD3061F2D00BD0003FBCD /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		433AD3071F2D00BD0003FBCD /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		433EE8511EBD8ECA007EA870 /* CoreBrightness.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBrightness.framework; path = ../../../../../System/Library/PrivateFrameworks/CoreBrightness.framework; sourceTree = "<group>"; };
-		4346F8E91EBE827E00687A67 /* PreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PreferencesWindow.xib; path = Shifty/PreferencesWindow.xib; sourceTree = "<group>"; };
+		4346F8E91EBE827E00687A67 /* PrefGeneralViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PrefGeneralViewController.xib; path = Shifty/PrefGeneralViewController.xib; sourceTree = "<group>"; };
 		4350191C1F21E99F0001324F /* CustomTimeWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTimeWindow.swift; path = Shifty/CustomTimeWindow.swift; sourceTree = "<group>"; };
-		4368E3021EBEBA6C00D53310 /* PreferencesWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreferencesWindow.swift; path = Shifty/PreferencesWindow.swift; sourceTree = "<group>"; };
+		4351C7801FB5737900788CC9 /* PrefGeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PrefGeneralViewController.swift; path = Shifty/PrefGeneralViewController.swift; sourceTree = "<group>"; };
+		4368E3021EBEBA6C00D53310 /* PrefManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrefManager.swift; path = Shifty/PrefManager.swift; sourceTree = "<group>"; };
 		437B3E531F22649A00B281FE /* CustomTimeWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomTimeWindow.xib; path = Shifty/CustomTimeWindow.xib; sourceTree = "<group>"; };
 		437D7E151EC015CB00544FC8 /* SliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SliderView.swift; path = Shifty/SliderView.swift; sourceTree = "<group>"; };
 		4388E8E41F84ACCF00DC34CC /* SunriseSetLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SunriseSetLocationManager.swift; path = Shifty/SunriseSetLocationManager.swift; sourceTree = "<group>"; };
@@ -74,9 +80,11 @@
 		4394DDA61EBE376F00F22908 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = Shifty/MainMenu.xib; sourceTree = "<group>"; };
 		4394DDA81EBE376F00F22908 /* StatusMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatusMenuController.swift; path = Shifty/StatusMenuController.swift; sourceTree = "<group>"; };
 		4394DDAE1EBE379900F22908 /* Shifty-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Shifty-Bridging-Header.h"; path = "Shifty/Shifty-Bridging-Header.h"; sourceTree = "<group>"; };
-		43B547E71F2986930034E779 /* AboutWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutWindow.swift; path = Shifty/AboutWindow.swift; sourceTree = "<group>"; };
-		43B547E81F2986930034E779 /* AboutWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AboutWindow.xib; path = Shifty/AboutWindow.xib; sourceTree = "<group>"; };
 		43B547F01F29A77D0034E779 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = Shifty/Event.swift; sourceTree = "<group>"; };
+		43B9DE131FB5924F002C4C29 /* PrefShortcutsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PrefShortcutsViewController.swift; path = Shifty/PrefShortcutsViewController.swift; sourceTree = "<group>"; };
+		43B9DE141FB5924F002C4C29 /* PrefShortcutsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PrefShortcutsViewController.xib; path = Shifty/PrefShortcutsViewController.xib; sourceTree = "<group>"; };
+		43B9DE191FB592AE002C4C29 /* PrefAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PrefAboutViewController.swift; path = Shifty/PrefAboutViewController.swift; sourceTree = "<group>"; };
+		43B9DE1A1FB592AE002C4C29 /* PrefAboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PrefAboutViewController.xib; path = Shifty/PrefAboutViewController.xib; sourceTree = "<group>"; };
 		43C039D91F1BD178009B1B70 /* CBBlueLightClient+Shifty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CBBlueLightClient+Shifty.swift"; path = "Shifty/CBBlueLightClient+Shifty.swift"; sourceTree = "<group>"; };
 		43C0838B1F19AEF900E73B84 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		43C0838D1F19BA6900E73B84 /* Shifty.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Shifty.entitlements; path = Shifty/Shifty.entitlements; sourceTree = "<group>"; };
@@ -131,6 +139,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4351C77D1FB5731B00788CC9 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				4368E3021EBEBA6C00D53310 /* PrefManager.swift */,
+				4351C7801FB5737900788CC9 /* PrefGeneralViewController.swift */,
+				4346F8E91EBE827E00687A67 /* PrefGeneralViewController.xib */,
+				43B9DE131FB5924F002C4C29 /* PrefShortcutsViewController.swift */,
+				43B9DE141FB5924F002C4C29 /* PrefShortcutsViewController.xib */,
+				43B9DE191FB592AE002C4C29 /* PrefAboutViewController.swift */,
+				43B9DE1A1FB592AE002C4C29 /* PrefAboutViewController.xib */,
+			);
+			name = Preferences;
+			sourceTree = "<group>";
+		};
 		4394DDA11EBE375300F22908 /* Shifty */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,18 +168,16 @@
 				43B547F01F29A77D0034E779 /* Event.swift */,
 				4388E8E41F84ACCF00DC34CC /* SunriseSetLocationManager.swift */,
 				4394DDA81EBE376F00F22908 /* StatusMenuController.swift */,
-				43B547E71F2986930034E779 /* AboutWindow.swift */,
 				437D7E151EC015CB00544FC8 /* SliderView.swift */,
-				4368E3021EBEBA6C00D53310 /* PreferencesWindow.swift */,
-				4350191C1F21E99F0001324F /* CustomTimeWindow.swift */,
 				4394DDA61EBE376F00F22908 /* MainMenu.xib */,
-				43B547E81F2986930034E779 /* AboutWindow.xib */,
-				4346F8E91EBE827E00687A67 /* PreferencesWindow.xib */,
+				4350191C1F21E99F0001324F /* CustomTimeWindow.swift */,
 				437B3E531F22649A00B281FE /* CustomTimeWindow.xib */,
+				4351C77D1FB5731B00788CC9 /* Preferences */,
 				433AD3001F2CED1F0003FBCD /* dsa_pub.pem */,
 				433AD3061F2D00BD0003FBCD /* Crashlytics.framework */,
 				433AD3071F2D00BD0003FBCD /* Fabric.framework */,
 				4394DDA31EBE376F00F22908 /* Assets.xcassets */,
+				43111A7B1FB84BC8000D8214 /* credits.rtf */,
 				4394DDA51EBE376F00F22908 /* Info.plist */,
 			);
 			name = Shifty;
@@ -317,12 +337,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4346F8EB1EBE827E00687A67 /* PreferencesWindow.xib in Resources */,
+				4346F8EB1EBE827E00687A67 /* PrefGeneralViewController.xib in Resources */,
 				433AD3011F2CED1F0003FBCD /* dsa_pub.pem in Resources */,
+				43111A7C1FB84BC8000D8214 /* credits.rtf in Resources */,
 				4394DDAA1EBE376F00F22908 /* Assets.xcassets in Resources */,
-				43B547EA1F2986930034E779 /* AboutWindow.xib in Resources */,
+				43B9DE1C1FB592AE002C4C29 /* PrefAboutViewController.xib in Resources */,
 				4394DDAC1EBE376F00F22908 /* MainMenu.xib in Resources */,
 				437B3E541F22649A00B281FE /* CustomTimeWindow.xib in Resources */,
+				43B9DE161FB5924F002C4C29 /* PrefShortcutsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,7 +366,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		43B547EB1F299A950034E779 /* ShellScript */ = {
@@ -382,11 +404,15 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Shifty/Pods-Shifty-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/MASPreferences+Shifty/MASPreferences_Shifty.framework",
+				"${BUILT_PRODUCTS_DIR}/MASShortcut/MASShortcut.framework",
 				"${PODS_ROOT}/Sparkle/Sparkle.framework",
 				"${PODS_ROOT}/Sparkle/Sparkle.framework.dSYM",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MASPreferences_Shifty.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MASShortcut.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sparkle.framework",
 				"${DWARF_DSYM_FOLDER_PATH}/Sparkle.framework.dSYM",
 			);
@@ -440,7 +466,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -460,14 +486,16 @@
 			files = (
 				43B547F11F29A77D0034E779 /* Event.swift in Sources */,
 				4388E8EB1F84AD1A00DC34CC /* EDSunriseSet.m in Sources */,
-				4368E3031EBEBA6C00D53310 /* PreferencesWindow.swift in Sources */,
+				4368E3031EBEBA6C00D53310 /* PrefManager.swift in Sources */,
 				437D7E161EC015CB00544FC8 /* SliderView.swift in Sources */,
+				4351C7811FB5737900788CC9 /* PrefGeneralViewController.swift in Sources */,
 				43087E191F41EE0700A54523 /* BLNotificationBlock.m in Sources */,
 				4394DDAD1EBE376F00F22908 /* StatusMenuController.swift in Sources */,
+				43B9DE1B1FB592AE002C4C29 /* PrefAboutViewController.swift in Sources */,
 				4388E8E51F84ACCF00DC34CC /* SunriseSetLocationManager.swift in Sources */,
 				4350191D1F21E99F0001324F /* CustomTimeWindow.swift in Sources */,
+				43B9DE151FB5924F002C4C29 /* PrefShortcutsViewController.swift in Sources */,
 				4394DDA91EBE376F00F22908 /* AppDelegate.swift in Sources */,
-				43B547E91F2986930034E779 /* AboutWindow.swift in Sources */,
 				43C039DA1F1BD178009B1B70 /* CBBlueLightClient+Shifty.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

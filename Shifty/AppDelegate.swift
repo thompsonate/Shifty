@@ -10,6 +10,7 @@ import Cocoa
 import ServiceManagement
 import Fabric
 import Crashlytics
+import MASPreferences_Shifty
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -18,7 +19,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var statusMenu: NSMenu!
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     var statusItemClicked: (() -> Void)?
-
+    
+    lazy var preferenceWindowController: PrefWindowController = {
+        return PrefWindowController(
+            viewControllers: [
+                PrefGeneralViewController(),
+                PrefShortcutsViewController(),
+                PrefAboutViewController()],
+            title: "Preferences")
+    }()
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         UserDefaults.standard.register(defaults: ["NSApplicationCrashOnExceptions": true])
@@ -62,11 +71,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             DistributedNotificationCenter.default().post(name: Notification.Name("killme"), object: Bundle.main.bundleIdentifier!)
         }
         
-        
-        let icon = #imageLiteral(resourceName: "statusIcon")
-        icon.isTemplate = true
-        statusItem.image = icon
+        setMenuBarIcon()
         setStatusToggle()
+    }
+    
+    func setMenuBarIcon() {
+        var icon: NSImage
+        if UserDefaults.standard.bool(forKey: Keys.isIconSwitchingEnabled) {
+            if !BLClient.isNightShiftEnabled {
+                icon = #imageLiteral(resourceName: "sunOpenIcon")
+            } else {
+                icon = #imageLiteral(resourceName: "shiftyMenuIcon")
+            }
+        } else {
+            icon = #imageLiteral(resourceName: "shiftyMenuIcon")
+        }
+        icon.isTemplate = true
+        DispatchQueue.main.async {
+            self.statusItem.button?.image = icon
+        }
     }
     
     func setStatusToggle() {
