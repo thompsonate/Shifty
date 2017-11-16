@@ -34,20 +34,14 @@ class CustomTimeWindow: NSWindowController {
         super.windowDidLoad()
         
         self.window?.center()
-        self.window?.makeKeyAndOrderFront(nil)
         self.window?.styleMask.remove(.resizable)
         self.window?.level = .floating
         self.window?.standardWindowButton(.closeButton)?.isHidden = true
         self.window?.standardWindowButton(.miniaturizeButton)?.isHidden = true
         self.window?.standardWindowButton(.zoomButton)?.isHidden = true
-        NSApp.activate(ignoringOtherApps: true)
         
         hoursTextField.formatter = onlyIntValueFormatter
         minutesTextField.formatter = onlyIntValueFormatter
-    }
-    
-    override func showWindow(_ sender: Any?) {
-        super.showWindow(sender)
     }
     
     @IBOutlet weak var hoursTextField: NSTextField!

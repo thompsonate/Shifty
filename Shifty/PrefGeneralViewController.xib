@@ -261,8 +261,8 @@
                             </customSpacing>
                         </stackView>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Iuc-Pc-Qb3">
-                            <rect key="frame" x="-2" y="51" width="288" height="18"/>
-                            <buttonCell key="cell" type="check" title="Sun icon in menu bar when Night Shift is off" bezelStyle="regularSquare" imagePosition="left" inset="2" id="4io-9H-HXp">
+                            <rect key="frame" x="-2" y="51" width="246" height="18"/>
+                            <buttonCell key="cell" type="check" title="Change icon according to Night Shift" bezelStyle="regularSquare" imagePosition="left" inset="2" id="4io-9H-HXp">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
                                 <connections>

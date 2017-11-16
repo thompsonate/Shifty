@@ -663,7 +663,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Shifty/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.12.4;
 				PRODUCT_BUNDLE_IDENTIFIER = io.natethompson.Shifty;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -689,7 +689,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Shifty/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.12.4;
 				PRODUCT_BUNDLE_IDENTIFIER = io.natethompson.Shifty;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
