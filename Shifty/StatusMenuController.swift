@@ -48,6 +48,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     var disabledUntilDate: Date!
     
     let calendar = NSCalendar(identifier: .gregorian)!
+    
+    //MARK: Menu life cycle
         
     override func awakeFromNib() {
         statusMenu.delegate = self
@@ -150,6 +152,9 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             menuItem.keyEquivalent = ""
         }
     }
+    
+    
+    //MARK: Handle states
     
     ///Returns true if the scheduled state is on or if the scheduled shift is close
     var scheduledState: Bool? {
@@ -314,6 +319,17 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         isShiftForAppEnabled = activeState
     }
     
+    @IBAction func disableForApp(_ sender: Any) {
+        if disableAppMenuItem.state == .off {
+            disabledApps.append(currentAppBundleId)
+        } else {
+            disabledApps.remove(at: disabledApps.index(of: currentAppBundleId)!)
+        }
+        updateCurrentApp()
+        PrefManager.sharedInstance.userDefaults.set(disabledApps, forKey: Keys.disabledApps)
+        Event.disableForCurrentApp(state: (sender as? NSMenuItem)?.state == .on).record()
+    }
+    
     @IBAction func disableHour(_ sender: Any) {
         if !isDisableHourSelected {
             isDisableHourSelected = true
@@ -388,6 +404,25 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         Event.disableForCustomTime(state: isDisableCustomSelected, timeInterval: timeIntervalInMinutes).record()
     }
     
+    @IBAction func preferencesClicked(_ sender: NSMenuItem) {
+        NSApplication.shared.activate(ignoringOtherApps: true)
+        let appDelegate = NSApplication.shared.delegate as? AppDelegate
+        appDelegate?.preferenceWindowController.showWindow(sender)
+        
+        Event.preferencesWindowOpened.record()
+    }
+    
+    @IBAction func quitClicked(_ sender: NSMenuItem) {
+        if isDisableHourSelected || isDisableCustomSelected || isDisabledForApp {
+            shift(isEnabled: true)
+        }
+        Event.quitShifty.record()
+        NSApplication.shared.terminate(self)
+    }
+    
+    
+    //MARK: Helper functions
+    
     func disableDisableTimer() {
         disableTimer?.invalidate()
         
@@ -401,18 +436,6 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             disableCustomMenuItem.title = "Disable for custom time..."
         }
     }
-    
-    @IBAction func disableForApp(_ sender: Any) {
-        if disableAppMenuItem.state == .off {
-            disabledApps.append(currentAppBundleId)
-        } else {
-            disabledApps.remove(at: disabledApps.index(of: currentAppBundleId)!)
-        }
-        updateCurrentApp()
-        PrefManager.sharedInstance.userDefaults.set(disabledApps, forKey: Keys.disabledApps)
-        Event.disableForCurrentApp(state: (sender as? NSMenuItem)?.state == .on).record()
-    }
-    
     
     func updateCurrentApp() {
         currentAppName = NSWorkspace.shared.menuBarOwningApplication?.localizedName ?? ""
@@ -566,22 +589,6 @@ class StatusMenuController: NSObject, NSMenuDelegate {
                 descriptionMenuItem.title = "Disabled"
             }
         }
-    }
-    
-    @IBAction func preferencesClicked(_ sender: NSMenuItem) {
-        NSApplication.shared.activate(ignoringOtherApps: true)
-        let appDelegate = NSApplication.shared.delegate as? AppDelegate
-        appDelegate?.preferenceWindowController.showWindow(sender)
-        
-        Event.preferencesWindowOpened.record()
-    }
-    
-    @IBAction func quitClicked(_ sender: NSMenuItem) {
-        if isDisableHourSelected || isDisableCustomSelected || isDisabledForApp {
-            shift(isEnabled: true)
-        }
-        Event.quitShifty.record()
-        NSApplication.shared.terminate(self)
     }
 }
 
