@@ -1,0 +1,40 @@
+/* 
+  Localizable.strings
+  
+
+  Created by Nate Thompson on 11/20/17.
+  
+*/
+
+"general.ok" = "OK";
+"general.cancel" = "Cancel";
+
+"menu.toggle_on" = "Turn on Night Shift";
+"menu.toggle_off" = "Turn off Night Shift";
+"menu.disable_app" = "Disable for %@";
+"menu.disabled_app" = "Disabled for %@";
+"menu.disable_hour" = "Disable for an hour";
+"menu.disabled_hour" = "Disabled for an hour";
+"menu.disable_custom" = "Disable for custom time...";
+"menu.disabled_custom" = "Disabled for custom time";
+"menu.preferences" = "Preferences...";
+"menu.quit" = "Quit Shifty";
+
+"description.enabled" = "Enabled";
+"description.enabled_sunrise" = "Enabled until sunrise";
+"description.enabled_time" = "Enabled until %@";
+"description.disabled" = "Disabled";
+"description.disabled_hours_minutes" = "Disabled for %02d:%02d";
+"description.disabled_minutes" = "Disabled for %d more minutes";
+"description.disabled_1_minute" = "Disabled for 1 more minute";
+
+"prefs.title" = "Preferences";
+"prefs.general" = "General";
+"prefs.shortcuts" = "Shortcuts";
+"prefs.about" = "About";
+
+"alert.version_message" = "This version of macOS does not support Night Shift";
+"alert.version_informative" = "Update your Mac to version 10.12.4 or higher to use Shifty.";
+
+"alert.hardware_message" = "Your Mac hardware does not support Night Shift";
+"alert.hardware_informative" = "A newer Mac is required to use Shifty.";

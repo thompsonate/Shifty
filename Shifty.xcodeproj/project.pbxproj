@@ -13,28 +13,30 @@
 		433AD3081F2D00BD0003FBCD /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433AD3061F2D00BD0003FBCD /* Crashlytics.framework */; };
 		433AD3091F2D00BD0003FBCD /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433AD3071F2D00BD0003FBCD /* Fabric.framework */; };
 		433EE8521EBD8ECA007EA870 /* CoreBrightness.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433EE8511EBD8ECA007EA870 /* CoreBrightness.framework */; };
-		4346F8EB1EBE827E00687A67 /* PrefGeneralViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4346F8E91EBE827E00687A67 /* PrefGeneralViewController.xib */; };
 		4350191D1F21E99F0001324F /* CustomTimeWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4350191C1F21E99F0001324F /* CustomTimeWindow.swift */; };
 		4351C7811FB5737900788CC9 /* PrefGeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4351C7801FB5737900788CC9 /* PrefGeneralViewController.swift */; };
 		4368E3031EBEBA6C00D53310 /* PrefManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4368E3021EBEBA6C00D53310 /* PrefManager.swift */; };
-		437B3E541F22649A00B281FE /* CustomTimeWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 437B3E531F22649A00B281FE /* CustomTimeWindow.xib */; };
 		437D7E161EC015CB00544FC8 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437D7E151EC015CB00544FC8 /* SliderView.swift */; };
 		4388E8E51F84ACCF00DC34CC /* SunriseSetLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4388E8E41F84ACCF00DC34CC /* SunriseSetLocationManager.swift */; };
 		4388E8EB1F84AD1A00DC34CC /* EDSunriseSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4388E8E91F84AD1A00DC34CC /* EDSunriseSet.m */; };
 		4394DDA91EBE376F00F22908 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4394DDA21EBE376F00F22908 /* AppDelegate.swift */; };
 		4394DDAA1EBE376F00F22908 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4394DDA31EBE376F00F22908 /* Assets.xcassets */; };
-		4394DDAC1EBE376F00F22908 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4394DDA61EBE376F00F22908 /* MainMenu.xib */; };
 		4394DDAD1EBE376F00F22908 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4394DDA81EBE376F00F22908 /* StatusMenuController.swift */; };
 		43B547F11F29A77D0034E779 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B547F01F29A77D0034E779 /* Event.swift */; };
 		43B9DE151FB5924F002C4C29 /* PrefShortcutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B9DE131FB5924F002C4C29 /* PrefShortcutsViewController.swift */; };
-		43B9DE161FB5924F002C4C29 /* PrefShortcutsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43B9DE141FB5924F002C4C29 /* PrefShortcutsViewController.xib */; };
 		43B9DE1B1FB592AE002C4C29 /* PrefAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B9DE191FB592AE002C4C29 /* PrefAboutViewController.swift */; };
-		43B9DE1C1FB592AE002C4C29 /* PrefAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43B9DE1A1FB592AE002C4C29 /* PrefAboutViewController.xib */; };
 		43C039DA1F1BD178009B1B70 /* CBBlueLightClient+Shifty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C039D91F1BD178009B1B70 /* CBBlueLightClient+Shifty.swift */; };
 		43C0838C1F19AEF900E73B84 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43C0838B1F19AEF900E73B84 /* ServiceManagement.framework */; };
 		43C7A4881F19F2CB00A697C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C7A4871F19F2CB00A697C0 /* AppDelegate.swift */; };
 		43C7A48C1F19F2CB00A697C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43C7A48B1F19F2CB00A697C0 /* Assets.xcassets */; };
 		43C7A4941F19FA9600A697C0 /* ShiftyHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 43C7A4851F19F2CB00A697C0 /* ShiftyHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		43D5C2161FC2CA1300AF88E0 /* PrefGeneralViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43D5C2181FC2CA1300AF88E0 /* PrefGeneralViewController.xib */; };
+		43D5C21B1FC2CAC300AF88E0 /* PrefShortcutsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43D5C21D1FC2CAC300AF88E0 /* PrefShortcutsViewController.xib */; };
+		43D5C21E1FC2CACA00AF88E0 /* PrefAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43D5C2201FC2CACA00AF88E0 /* PrefAboutViewController.xib */; };
+		43D5C2211FC2CACF00AF88E0 /* CustomTimeWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43D5C2231FC2CACF00AF88E0 /* CustomTimeWindow.xib */; };
+		43D5C2301FC2CECC00AF88E0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43D5C2321FC2CECC00AF88E0 /* Localizable.strings */; };
+		43D5C2391FC35FB500AF88E0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43D5C2381FC35FB500AF88E0 /* MainMenu.xib */; };
+		43D5C2451FC3A9A100AF88E0 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43D5C2441FC3A9A100AF88E0 /* Info.plist */; };
 		4989C89C1F81611000FF83DB /* SkyLight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4989C89B1F81611000FF83DB /* SkyLight.framework */; };
 		4F2D868847D02BDBA9BA9A90 /* Pods_ShiftyHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F271F97E9F31A99983CEA240 /* Pods_ShiftyHelper.framework */; };
 		7D6801183F204BA285C9D5B7 /* Pods_Shifty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932D0C1C5887BEB67BDBBFD0 /* Pods_Shifty.framework */; };
@@ -62,12 +64,10 @@
 		433AD3061F2D00BD0003FBCD /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		433AD3071F2D00BD0003FBCD /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		433EE8511EBD8ECA007EA870 /* CoreBrightness.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBrightness.framework; path = ../../../../../System/Library/PrivateFrameworks/CoreBrightness.framework; sourceTree = "<group>"; };
-		4346F8E91EBE827E00687A67 /* PrefGeneralViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PrefGeneralViewController.xib; path = Shifty/PrefGeneralViewController.xib; sourceTree = "<group>"; };
 		4350191C1F21E99F0001324F /* CustomTimeWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTimeWindow.swift; path = Shifty/CustomTimeWindow.swift; sourceTree = "<group>"; };
 		4351C7801FB5737900788CC9 /* PrefGeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PrefGeneralViewController.swift; path = Shifty/PrefGeneralViewController.swift; sourceTree = "<group>"; };
 		4368E3021EBEBA6C00D53310 /* PrefManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrefManager.swift; path = Shifty/PrefManager.swift; sourceTree = "<group>"; };
 		436A0F3C1FBE913600E77D41 /* ShiftyAppcast.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ShiftyAppcast.xml; sourceTree = "<group>"; };
-		437B3E531F22649A00B281FE /* CustomTimeWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomTimeWindow.xib; path = Shifty/CustomTimeWindow.xib; sourceTree = "<group>"; };
 		437D7E151EC015CB00544FC8 /* SliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SliderView.swift; path = Shifty/SliderView.swift; sourceTree = "<group>"; };
 		4388E8E41F84ACCF00DC34CC /* SunriseSetLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SunriseSetLocationManager.swift; path = Shifty/SunriseSetLocationManager.swift; sourceTree = "<group>"; };
 		4388E8E91F84AD1A00DC34CC /* EDSunriseSet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = EDSunriseSet.m; path = Shifty/EDSunriseSet.m; sourceTree = "<group>"; };
@@ -75,15 +75,11 @@
 		4394DDA21EBE376F00F22908 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Shifty/AppDelegate.swift; sourceTree = "<group>"; };
 		4394DDA31EBE376F00F22908 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Shifty/Assets.xcassets; sourceTree = "<group>"; };
 		4394DDA41EBE376F00F22908 /* CBBlueLightClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CBBlueLightClient.h; path = Shifty/CBBlueLightClient.h; sourceTree = "<group>"; };
-		4394DDA51EBE376F00F22908 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Shifty/Info.plist; sourceTree = "<group>"; };
-		4394DDA61EBE376F00F22908 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = Shifty/MainMenu.xib; sourceTree = "<group>"; };
 		4394DDA81EBE376F00F22908 /* StatusMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatusMenuController.swift; path = Shifty/StatusMenuController.swift; sourceTree = "<group>"; };
 		4394DDAE1EBE379900F22908 /* Shifty-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Shifty-Bridging-Header.h"; path = "Shifty/Shifty-Bridging-Header.h"; sourceTree = "<group>"; };
 		43B547F01F29A77D0034E779 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = Shifty/Event.swift; sourceTree = "<group>"; };
 		43B9DE131FB5924F002C4C29 /* PrefShortcutsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PrefShortcutsViewController.swift; path = Shifty/PrefShortcutsViewController.swift; sourceTree = "<group>"; };
-		43B9DE141FB5924F002C4C29 /* PrefShortcutsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PrefShortcutsViewController.xib; path = Shifty/PrefShortcutsViewController.xib; sourceTree = "<group>"; };
 		43B9DE191FB592AE002C4C29 /* PrefAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PrefAboutViewController.swift; path = Shifty/PrefAboutViewController.swift; sourceTree = "<group>"; };
-		43B9DE1A1FB592AE002C4C29 /* PrefAboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PrefAboutViewController.xib; path = Shifty/PrefAboutViewController.xib; sourceTree = "<group>"; };
 		43C039D91F1BD178009B1B70 /* CBBlueLightClient+Shifty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CBBlueLightClient+Shifty.swift"; path = "Shifty/CBBlueLightClient+Shifty.swift"; sourceTree = "<group>"; };
 		43C0838B1F19AEF900E73B84 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		43C0838D1F19BA6900E73B84 /* Shifty.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Shifty.entitlements; path = Shifty/Shifty.entitlements; sourceTree = "<group>"; };
@@ -93,6 +89,13 @@
 		43C7A4901F19F2CB00A697C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43C7A4951F19FE1A00A697C0 /* ShiftyHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShiftyHelper.entitlements; sourceTree = "<group>"; };
 		43CC9E431EBAB19300983528 /* Shifty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shifty.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		43D5C2171FC2CA1300AF88E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PrefGeneralViewController.xib; sourceTree = "<group>"; };
+		43D5C21C1FC2CAC300AF88E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PrefShortcutsViewController.xib; sourceTree = "<group>"; };
+		43D5C21F1FC2CACA00AF88E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PrefAboutViewController.xib; sourceTree = "<group>"; };
+		43D5C2221FC2CACF00AF88E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CustomTimeWindow.xib; sourceTree = "<group>"; };
+		43D5C2311FC2CECC00AF88E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		43D5C2381FC35FB500AF88E0 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = Shifty/MainMenu.xib; sourceTree = "<group>"; };
+		43D5C2441FC3A9A100AF88E0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Shifty/Info.plist; sourceTree = "<group>"; };
 		4989C89B1F81611000FF83DB /* SkyLight.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SkyLight.framework; path = ../../../../System/Library/PrivateFrameworks/SkyLight.framework; sourceTree = "<group>"; };
 		8C6209F5BF9CCE799389DE98 /* Pods-ShiftyHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShiftyHelper.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShiftyHelper/Pods-ShiftyHelper.release.xcconfig"; sourceTree = "<group>"; };
 		932D0C1C5887BEB67BDBBFD0 /* Pods_Shifty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shifty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,11 +146,11 @@
 			children = (
 				4368E3021EBEBA6C00D53310 /* PrefManager.swift */,
 				4351C7801FB5737900788CC9 /* PrefGeneralViewController.swift */,
-				4346F8E91EBE827E00687A67 /* PrefGeneralViewController.xib */,
+				43D5C2181FC2CA1300AF88E0 /* PrefGeneralViewController.xib */,
 				43B9DE131FB5924F002C4C29 /* PrefShortcutsViewController.swift */,
-				43B9DE141FB5924F002C4C29 /* PrefShortcutsViewController.xib */,
+				43D5C21D1FC2CAC300AF88E0 /* PrefShortcutsViewController.xib */,
 				43B9DE191FB592AE002C4C29 /* PrefAboutViewController.swift */,
-				43B9DE1A1FB592AE002C4C29 /* PrefAboutViewController.xib */,
+				43D5C2201FC2CACA00AF88E0 /* PrefAboutViewController.xib */,
 			);
 			name = Preferences;
 			sourceTree = "<group>";
@@ -175,9 +178,9 @@
 				4394DDA21EBE376F00F22908 /* AppDelegate.swift */,
 				4394DDA81EBE376F00F22908 /* StatusMenuController.swift */,
 				437D7E151EC015CB00544FC8 /* SliderView.swift */,
-				4394DDA61EBE376F00F22908 /* MainMenu.xib */,
+				43D5C2381FC35FB500AF88E0 /* MainMenu.xib */,
 				4350191C1F21E99F0001324F /* CustomTimeWindow.swift */,
-				437B3E531F22649A00B281FE /* CustomTimeWindow.xib */,
+				43D5C2231FC2CACF00AF88E0 /* CustomTimeWindow.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -188,7 +191,8 @@
 				4394DDA31EBE376F00F22908 /* Assets.xcassets */,
 				43111A7B1FB84BC8000D8214 /* credits.rtf */,
 				433AD3001F2CED1F0003FBCD /* dsa_pub.pem */,
-				4394DDA51EBE376F00F22908 /* Info.plist */,
+				43D5C2441FC3A9A100AF88E0 /* Info.plist */,
+				43D5C2321FC2CECC00AF88E0 /* Localizable.strings */,
 				436A0F3C1FBE913600E77D41 /* ShiftyAppcast.xml */,
 				433AD3061F2D00BD0003FBCD /* Crashlytics.framework */,
 				433AD3071F2D00BD0003FBCD /* Fabric.framework */,
@@ -359,14 +363,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4346F8EB1EBE827E00687A67 /* PrefGeneralViewController.xib in Resources */,
+				43D5C2161FC2CA1300AF88E0 /* PrefGeneralViewController.xib in Resources */,
 				433AD3011F2CED1F0003FBCD /* dsa_pub.pem in Resources */,
 				43111A7C1FB84BC8000D8214 /* credits.rtf in Resources */,
 				4394DDAA1EBE376F00F22908 /* Assets.xcassets in Resources */,
-				43B9DE1C1FB592AE002C4C29 /* PrefAboutViewController.xib in Resources */,
-				4394DDAC1EBE376F00F22908 /* MainMenu.xib in Resources */,
-				437B3E541F22649A00B281FE /* CustomTimeWindow.xib in Resources */,
-				43B9DE161FB5924F002C4C29 /* PrefShortcutsViewController.xib in Resources */,
+				43D5C2301FC2CECC00AF88E0 /* Localizable.strings in Resources */,
+				43D5C21E1FC2CACA00AF88E0 /* PrefAboutViewController.xib in Resources */,
+				43D5C2211FC2CACF00AF88E0 /* CustomTimeWindow.xib in Resources */,
+				43D5C21B1FC2CAC300AF88E0 /* PrefShortcutsViewController.xib in Resources */,
+				43D5C2451FC3A9A100AF88E0 /* Info.plist in Resources */,
+				43D5C2391FC35FB500AF88E0 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,6 +530,54 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		43D5C2181FC2CA1300AF88E0 /* PrefGeneralViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				43D5C2171FC2CA1300AF88E0 /* Base */,
+			);
+			name = PrefGeneralViewController.xib;
+			path = Shifty;
+			sourceTree = "<group>";
+		};
+		43D5C21D1FC2CAC300AF88E0 /* PrefShortcutsViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				43D5C21C1FC2CAC300AF88E0 /* Base */,
+			);
+			name = PrefShortcutsViewController.xib;
+			path = Shifty;
+			sourceTree = "<group>";
+		};
+		43D5C2201FC2CACA00AF88E0 /* PrefAboutViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				43D5C21F1FC2CACA00AF88E0 /* Base */,
+			);
+			name = PrefAboutViewController.xib;
+			path = Shifty;
+			sourceTree = "<group>";
+		};
+		43D5C2231FC2CACF00AF88E0 /* CustomTimeWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				43D5C2221FC2CACF00AF88E0 /* Base */,
+			);
+			name = CustomTimeWindow.xib;
+			path = Shifty;
+			sourceTree = "<group>";
+		};
+		43D5C2321FC2CECC00AF88E0 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				43D5C2311FC2CECC00AF88E0 /* en */,
+			);
+			name = Localizable.strings;
+			path = Shifty;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		43C7A4921F19F2CB00A697C0 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -567,6 +621,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -623,6 +678,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";

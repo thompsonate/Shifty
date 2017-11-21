@@ -27,7 +27,7 @@ class PrefAboutViewController: NSViewController, MASPreferencesViewController {
     var toolbarItemLabel: String? {
         get {
             view.layoutSubtreeIfNeeded()
-            return "About"
+            return NSLocalizedString("prefs.about", comment: "About")
         }
     }
     

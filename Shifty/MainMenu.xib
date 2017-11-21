@@ -28,6 +28,8 @@
                 <outlet property="disableHourMenuItem" destination="lLZ-zs-A2J" id="JBY-cw-D9b"/>
                 <outlet property="moonIcon" destination="QFo-Gz-iR8" id="bkD-8o-fbd"/>
                 <outlet property="powerMenuItem" destination="3QK-Yf-KEO" id="Ndx-D9-T04"/>
+                <outlet property="preferencesMenuItem" destination="GJi-nB-WzR" id="0Ga-17-Xdo"/>
+                <outlet property="quitMenuItem" destination="Xyz-vQ-f3p" id="Krm-T0-yVw"/>
                 <outlet property="sliderMenuItem" destination="NRb-4W-jcc" id="mJZ-ta-RmX"/>
                 <outlet property="sliderView" destination="xRd-3s-8Ep" id="5v2-aR-QE3"/>
                 <outlet property="statusMenu" destination="YaK-8p-dol" id="uua-tx-AWw"/>
@@ -159,7 +161,7 @@
         </customView>
     </objects>
     <resources>
-        <image name="moonIcon" width="18" height="18"/>
+        <image name="moonIcon" width="14" height="14"/>
         <image name="sunIcon" width="18" height="18"/>
     </resources>
 </document>

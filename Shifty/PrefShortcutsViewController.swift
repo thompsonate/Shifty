@@ -27,7 +27,7 @@ class PrefShortcutsViewController: NSViewController, MASPreferencesViewControlle
     var toolbarItemLabel: String? {
         get {
             view.layoutSubtreeIfNeeded()
-            return "Shortcuts"
+            return NSLocalizedString("prefs.shortcuts", comment: "Shortcuts")
         }
     }
     

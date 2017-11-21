@@ -26,7 +26,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 PrefGeneralViewController(),
                 PrefShortcutsViewController(),
                 PrefAboutViewController()],
-            title: "Preferences")
+            title: NSLocalizedString("prefs.title", comment: "Preferences"))
     }()
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -37,10 +37,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if !ProcessInfo().isOperatingSystemAtLeast(OperatingSystemVersion(majorVersion: 10, minorVersion: 12, patchVersion: 4)) {
             Event.oldMacOSVersion(version: ProcessInfo().operatingSystemVersionString).record()
             let alert: NSAlert = NSAlert()
-            alert.messageText = "This version of macOS does not support Night Shift"
-            alert.informativeText = "Update your Mac to version 10.12.4 or higher to use Shifty."
+            alert.messageText = NSLocalizedString("alert.version_message", comment: "This version of macOS does not support Night Shift")
+            alert.informativeText = NSLocalizedString("alert.version_informative", comment: "Update your Mac to version 10.12.4 or higher to use Shifty.")
             alert.alertStyle = NSAlert.Style.warning
-            alert.addButton(withTitle: "OK")
+            alert.addButton(withTitle: NSLocalizedString("general.ok", comment: "OK"))
             alert.runModal()
             
             NSApplication.shared.terminate(self)
@@ -49,10 +49,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if !CBBlueLightClient.supportsBlueLightReduction() {
             Event.unsupportedHardware.record()
             let alert: NSAlert = NSAlert()
-            alert.messageText = "Your Mac hardware does not support Night Shift"
-            alert.informativeText = "A newer Mac is required to use Shifty."
+            alert.messageText = NSLocalizedString("alert.hardware_message", comment: "Your Mac hardware does not support Night Shift")
+            alert.informativeText = NSLocalizedString("alert.hardware_informative", comment: "A newer Mac is required to use Shifty.")
             alert.alertStyle = NSAlert.Style.warning
-            alert.addButton(withTitle: "OK")
+            alert.addButton(withTitle: NSLocalizedString("general.ok", comment: "OK"))
             alert.runModal()
             
             NSApplication.shared.terminate(self)

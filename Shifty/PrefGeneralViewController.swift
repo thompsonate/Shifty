@@ -28,7 +28,7 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
     var toolbarItemLabel: String? {
         get {
             view.layoutSubtreeIfNeeded()
-            return "General"
+            return NSLocalizedString("prefs.general", comment: "General")
         }
     }
     

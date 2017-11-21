@@ -21,6 +21,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     @IBOutlet weak var disableAppMenuItem: NSMenuItem!
     @IBOutlet weak var disableHourMenuItem: NSMenuItem!
     @IBOutlet weak var disableCustomMenuItem: NSMenuItem!
+    @IBOutlet weak var preferencesMenuItem: NSMenuItem!
+    @IBOutlet weak var quitMenuItem: NSMenuItem!
     @IBOutlet weak var sliderView: SliderView!
     @IBOutlet weak var sunIcon: NSImageView!
     @IBOutlet weak var moonIcon: NSImageView!
@@ -82,6 +84,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             self.enableForCurrentApp()
             self.setDescriptionText(keepVisible: true)
         }
+        
+        disableHourMenuItem.title = NSLocalizedString("menu.disable_hour", comment: "Disable for an hour")
+        disableCustomMenuItem.title = NSLocalizedString("menu.disable_custom", comment: "Disable for custom time...")
+        preferencesMenuItem.title = NSLocalizedString("menu.preferences", comment: "Preferences...")
+        quitMenuItem.title = NSLocalizedString("menu.quit", comment: "Quit Shifty")
         
         isShiftForAppEnabled = BLClient.isNightShiftEnabled
 
@@ -335,14 +342,14 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             isDisableHourSelected = true
             shift(isEnabled: false)
             disableHourMenuItem.state = .on
-            disableHourMenuItem.title = "Disabled for an hour"
+            disableHourMenuItem.title = NSLocalizedString("menu.disabled_hour", comment: "Disabled for an hour")
             disableCustomMenuItem.isEnabled = false
             
             disableTimer = Timer.scheduledTimer(withTimeInterval: 3600, repeats: false) { _ in
                 self.isDisableHourSelected = false
                 self.setToSchedule()
                 self.disableHourMenuItem.state = .off
-                self.disableHourMenuItem.title = "Disable for an hour"
+                self.disableHourMenuItem.title = NSLocalizedString("menu.disable_hour", comment: "Disable for an hour")
                 self.disableCustomMenuItem.isEnabled = true
                 self.isShiftForAppEnabled = self.activeState
             }
@@ -379,14 +386,14 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             self.isDisableCustomSelected = true
             self.shift(isEnabled: false)
             self.disableCustomMenuItem.state = .on
-            self.disableCustomMenuItem.title = "Disabled for custom time"
+            self.disableCustomMenuItem.title = NSLocalizedString("menu.disabled_custom", comment: "Disabled for custom time")
             self.disableHourMenuItem.isEnabled = false
             
             self.disableTimer = Timer.scheduledTimer(withTimeInterval: TimeInterval(timeIntervalInSeconds), repeats: false) { _ in
                 self.isDisableCustomSelected = false
                 self.setToSchedule()
                 self.disableCustomMenuItem.state = .off
-                self.disableCustomMenuItem.title = "Disable for custom time..."
+                self.disableCustomMenuItem.title = NSLocalizedString("menu.disable_custom", comment: "Disable for custom time...")
                 self.disableHourMenuItem.isEnabled = true
                 self.isShiftForAppEnabled = self.activeState
             }
@@ -429,11 +436,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         if isDisableHourSelected {
             isDisableHourSelected = false
             disableHourMenuItem.state = .off
-            disableHourMenuItem.title = "Disable for an hour"
+            disableHourMenuItem.title = NSLocalizedString("menu.disable_hour", comment: "Disable for an hour")
         } else if isDisableCustomSelected {
             isDisableCustomSelected = false
             disableCustomMenuItem.state = .off
-            disableCustomMenuItem.title = "Disable for custom time..."
+            disableCustomMenuItem.title = NSLocalizedString("menu.disable_custom", comment: "Disable for custom time...")
         }
     }
     
@@ -445,10 +452,10 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         
         if isDisabledForApp {
             disableAppMenuItem.state = .on
-            disableAppMenuItem.title = "Disabled for \(currentAppName)"
+            disableAppMenuItem.title = String(format: NSLocalizedString("menu.disabled_app", comment: "Disabled for %@"), currentAppName)
         } else {
             disableAppMenuItem.state = .off
-            disableAppMenuItem.title = "Disable for \(currentAppName)"
+            disableAppMenuItem.title = String(format: NSLocalizedString("menu.disable_app", comment: "Disable for %@"), currentAppName)
         }
         
         if isShiftForAppEnabled && BLClient.isNightShiftEnabled == isDisabledForApp {
@@ -487,9 +494,9 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         }
         
         if state {
-            self.powerMenuItem.title = "Turn off Night Shift"
+            self.powerMenuItem.title = NSLocalizedString("menu.toggle_off", comment: "Turn off Night Shift")
         } else {
-            self.powerMenuItem.title = "Turn on Night Shift"
+            self.powerMenuItem.title = NSLocalizedString("menu.toggle_on", comment: "Turn on Night Shift")
         }
     }
     
@@ -497,12 +504,12 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         if strength != 0.0 {
             activeState = true
             BLClient.setStrength(strength / 100, commit: true)
-            powerMenuItem.title = "Turn off Night Shift"
+            powerMenuItem.title = NSLocalizedString("menu.toggle_off", comment: "Turn off Night Shift")
             disableHourMenuItem.isEnabled = true
             disableCustomMenuItem.isEnabled = true
         } else {
             activeState = false
-            powerMenuItem.title = "Turn on Night Shift"
+            powerMenuItem.title = NSLocalizedString("menu.toggle_on", comment: "Turn on Night Shift")
             disableHourMenuItem.isEnabled = false
             disableCustomMenuItem.isEnabled = false
         }
@@ -519,12 +526,12 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             BLClient.setStrength(sliderValue / 100, commit: true)
             BLClient.setEnabled(true)
             activeState = true
-            powerMenuItem.title = "Turn off Night Shift"
+            powerMenuItem.title = NSLocalizedString("menu.toggle_off", comment: "Turn off Night Shift")
             sliderView.shiftSlider.isEnabled = true
         } else {
             BLClient.setEnabled(false)
             activeState = false
-            powerMenuItem.title = "Turn on Night Shift"
+            powerMenuItem.title = NSLocalizedString("menu.toggle_on", comment: "Turn on Night Shift")
         }
         shiftOriginatedFromShifty = true
     }
@@ -545,14 +552,12 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             
             if disabledHoursLeft > 0 || disabledMinutesLeft > 1 {
                 if disabledHoursLeft == 0 {
-                    descriptionMenuItem.title = "Disabled for \(Int(disabledMinutesLeft)) more minutes"
+                    descriptionMenuItem.title = String(format: NSLocalizedString("description.disabled_minutes", comment: "Disabled for %d more minutes"), Int(disabledMinutesLeft))
                 } else {
-                    let formattedHoursLeft = String(format: "%02d", Int(disabledHoursLeft))
-                    let formattedMinutesLeft = String(format: "%02d", Int(disabledMinutesLeft))
-                    descriptionMenuItem.title = "Disabled for \(formattedHoursLeft)h \(formattedMinutesLeft)m"
+                    descriptionMenuItem.title = String(format: NSLocalizedString("description.disabled_hours_minutes", comment: "Disabled for %02d:%02d"), Int(disabledHoursLeft), Int(disabledMinutesLeft))
                 }
             } else {
-                descriptionMenuItem.title = "Disabled for 1 more minute"
+                descriptionMenuItem.title = NSLocalizedString("description.disabled_1_minute", comment: "Disabled for 1 more minute")
             }
             descriptionMenuItem.isHidden = false
             return
@@ -561,7 +566,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         switch BLClient.schedule {
         case .off:
             if keepVisible {
-                descriptionMenuItem.title = "Enabled"
+                descriptionMenuItem.title = NSLocalizedString("description.enabled", comment: "Enabled")
             } else {
                 descriptionMenuItem.isHidden = true
             }
@@ -570,9 +575,9 @@ class StatusMenuController: NSObject, NSMenuDelegate {
                 descriptionMenuItem.isHidden = !activeState
             }
             if activeState {
-                descriptionMenuItem.title = "Enabled until sunrise"
+                descriptionMenuItem.title = NSLocalizedString("description.enabled_sunrise", comment: "Enabled until sunrise")
             } else {
-                descriptionMenuItem.title = "Disabled"
+                descriptionMenuItem.title = NSLocalizedString("description.disabled", comment: "Disabled")
             }
         case .timedSchedule(_, let endTime):
             if !keepVisible {
@@ -584,9 +589,9 @@ class StatusMenuController: NSObject, NSMenuDelegate {
                 dateFormatter.timeStyle = .short
                 let date = dateFormatter.string(from: endTime)
                 
-                descriptionMenuItem.title = "Enabled until \(date)"
+                descriptionMenuItem.title = String(format: NSLocalizedString("description.enabled_time", comment: "Enabled until %@"), date)
             } else {
-                descriptionMenuItem.title = "Disabled"
+                descriptionMenuItem.title = NSLocalizedString("description.disabled", comment: "Disabled")
             }
         }
     }
