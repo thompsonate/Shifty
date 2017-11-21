@@ -146,6 +146,17 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         assignKeyboardShortcutToMenuItem(disableCustomMenuItem, userDefaultsKey: Keys.disableCustomShortcut)
         
         Event.menuOpened.record()
+        
+        //refresh location if not updated in over a day
+        if let data = UserDefaults.standard.value(forKey: Keys.lastKnownLocation) as? Data,
+            let location = try? PropertyListDecoder().decode(Location.self, from: data) {
+            
+            if location.date < Date.init(timeIntervalSinceNow: -86400) {
+                SSLocationManager.getLocationFromIP()
+            }
+        } else {
+            SSLocationManager.getLocationFromIP()
+        }
     }
     
     func assignKeyboardShortcutToMenuItem(_ menuItem: NSMenuItem, userDefaultsKey: String) {
