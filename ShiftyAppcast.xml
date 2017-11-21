@@ -5,6 +5,21 @@
         <description>Most recent changes with links to updates.</description>
         <language>en</language>
         <item>
+            <title>Version 0.4</title>
+            <description><![CDATA[
+                <ul style="list-style-type:disc">
+                <li>Added customizable global shortcuts for common actions.</li>
+                <li>New option to change icon based on Night Shift state.</li>
+                <li>Completely redesigned Preferences menu.</li>
+                <li>Fixes an issue where the location cannot be determined on some systems.</li>
+                </ul>
+            ]]>
+            </description>
+            <pubDate>Mon, 20 Nov 2017 22:00:00 -0500</pubDate>
+            <enclosure url="https://github.com/thompsonate/Shifty/releases/download/0.4/Shifty-0.4.dmg" sparkle:version="27" sparkle:shortVersionString="0.4" length="1623481" type="application/octet-stream" sparkle:dsaSignature="MC0CFQCXXV/U3IDIXeQDzDufnTYZP8mZaQIUE6Q4A38Nc0Vr6BbwHpzXehaHoj8=" />
+            <sparkle:minimumSystemVersion>10.13.0</sparkle:minimumSystemVersion>
+        </item>
+        <item>
             <title>Version 0.3</title>
             <description><![CDATA[
                 <ul style="list-style-type:disc">
@@ -20,7 +35,6 @@
             <enclosure url="https://github.com/thompsonate/Shifty/releases/download/0.3/Shifty-0.3.dmg" sparkle:version="24" sparkle:shortVersionString="0.3" length="1623481" type="application/octet-stream" sparkle:dsaSignature="MCwCFA6rl+zxoAs+aYjCao923nrOQGLHAhQ3fm2qa6IUwOPsakmUpz1C44uS/g==" />
             <sparkle:minimumSystemVersion>10.13.0</sparkle:minimumSystemVersion>
         </item>
-
         <item>
             <title>Version 0.2</title>
             <description><![CDATA[

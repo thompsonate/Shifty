@@ -132,6 +132,10 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
         BLClient.setSchedule(.timedSchedule(startTime: fromTime, endTime: toTime))
     }
     
+    override func viewWillDisappear() {
+        Event.preferences(autoLaunch: setAutoLaunch.state == .on, quickToggle: toggleStatusItem.state == .on, iconSwitching: setIconSwitching.state == .on, syncDarkMode: darkModeSync.state == .on, schedule: BLClient.schedule).record()
+    }
+    
     func setCustomControlVisibility(_ visible: Bool, animate: Bool) {
         var adjustment = PREF_GENERAL_HEIGHT_ADJUSTMENT
         if customTimeStackView.isHidden == visible || (!visible && !animate)  {

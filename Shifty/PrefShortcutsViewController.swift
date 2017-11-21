@@ -52,6 +52,10 @@ class PrefShortcutsViewController: NSViewController, MASPreferencesViewControlle
         disableCustomShortcut.associatedUserDefaultsKey = Keys.disableCustomShortcut
     }
     
+    override func viewWillDisappear() {
+        Event.shortcuts(toggleNightShift: toggleNightShiftShortcut.shortcutValue != nil, increaseColorTemp: incrementColorTempShortcut.shortcutValue != nil, decreaseColorTemp: decrementColorTempShortcut.shortcutValue != nil, disableApp: disableAppShortcut.shortcutValue != nil, disableHour: disableHourShortcut.shortcutValue != nil, disableCustom: disableCustomShortcut.shortcutValue != nil).record()
+    }
+    
     func bindShortcuts() {
         MASShortcutBinder.shared().bindShortcut(withDefaultsKey: Keys.toggleNightShiftShortcut) {
             self.statusMenuController?.power(self)

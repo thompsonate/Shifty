@@ -36,7 +36,6 @@
 		43D5C2211FC2CACF00AF88E0 /* CustomTimeWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43D5C2231FC2CACF00AF88E0 /* CustomTimeWindow.xib */; };
 		43D5C2301FC2CECC00AF88E0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43D5C2321FC2CECC00AF88E0 /* Localizable.strings */; };
 		43D5C2391FC35FB500AF88E0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43D5C2381FC35FB500AF88E0 /* MainMenu.xib */; };
-		43D5C2451FC3A9A100AF88E0 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43D5C2441FC3A9A100AF88E0 /* Info.plist */; };
 		4989C89C1F81611000FF83DB /* SkyLight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4989C89B1F81611000FF83DB /* SkyLight.framework */; };
 		4F2D868847D02BDBA9BA9A90 /* Pods_ShiftyHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F271F97E9F31A99983CEA240 /* Pods_ShiftyHelper.framework */; };
 		7D6801183F204BA285C9D5B7 /* Pods_Shifty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932D0C1C5887BEB67BDBBFD0 /* Pods_Shifty.framework */; };
@@ -371,7 +370,6 @@
 				43D5C21E1FC2CACA00AF88E0 /* PrefAboutViewController.xib in Resources */,
 				43D5C2211FC2CACF00AF88E0 /* CustomTimeWindow.xib in Resources */,
 				43D5C21B1FC2CAC300AF88E0 /* PrefShortcutsViewController.xib in Resources */,
-				43D5C2451FC3A9A100AF88E0 /* Info.plist in Resources */,
 				43D5C2391FC35FB500AF88E0 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

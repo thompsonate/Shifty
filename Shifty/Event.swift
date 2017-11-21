@@ -21,7 +21,6 @@ enum Event {
     case disableForCurrentApp(state: Bool)
     case disableForHour(state: Bool)
     case disableForCustomTime(state: Bool, timeInterval: Int?)
-    case aboutWindowOpened
     case preferencesWindowOpened
     case quitShifty
     
@@ -29,14 +28,14 @@ enum Event {
     case enableSlider
     case sliderMoved(value: Float)
     
-    //AboutWindow
-    case checkForUpdatesClicked
+    //Preferences
+    case preferences(autoLaunch: Bool, quickToggle: Bool, iconSwitching: Bool, syncDarkMode: Bool, schedule: ScheduleType)
+    case shortcuts(toggleNightShift: Bool, increaseColorTemp: Bool, decreaseColorTemp: Bool, disableApp: Bool, disableHour: Bool, disableCustom: Bool)
     case websiteButtonClicked
     case feedbackButtonClicked
     case donateButtonClicked
-    
-    //PreferencesWindow
-    case preferences(autoLaunch: Bool, quickToggle: Bool, syncDarkMode: Bool, schedule: ScheduleType)
+    case checkForUpdatesClicked
+    case creditsClicked
     
     //Errors
     case locationServicesDeniedAlertShown
@@ -60,16 +59,17 @@ extension Event {
         case .disableForCurrentApp(_): return "Disable for current app clicked"
         case .disableForHour(_): return" Disable for hour clicked"
         case .disableForCustomTime(_, _): return "Disable for custom time clicked"
-        case .aboutWindowOpened: return "About window opened"
         case .preferencesWindowOpened: return "Preferences window opened"
         case .quitShifty: return "Quit button clicked"
         case .enableSlider: return "Enable slider button clicked"
         case .sliderMoved(_): return "Slider moved"
-        case .checkForUpdatesClicked: return "Check for updates button clicked"
+        case .preferences: return "Preferences"
+        case .shortcuts: return "Shortcuts"
         case .websiteButtonClicked: return "Website button clicked"
         case .feedbackButtonClicked: return "Feedback button clicked"
         case .donateButtonClicked: return "Donate button clicked"
-        case .preferences: return "Preferences"
+        case .checkForUpdatesClicked: return "Check for updates button clicked"
+        case .creditsClicked: return "Credits button clicked"
         case .locationServicesDeniedAlertShown: return "Location Services Denied alert shown"
         case .locationErrorAlertShown: return "Location Error alert shown"
         }
@@ -90,7 +90,14 @@ extension Event {
                     "Time interval in minutes": String(describing: timeInterval)]
         case .sliderMoved(let value):
             return ["Slider value": value]
-        case .preferences(let autoLaunch, let quickToggle, let syncDarkMode, let schedule):
+        case .shortcuts(let toggleNightShift, let increaseColorTemp, let decreaseColorTemp, let disableApp, let disableHour, let disableCustom):
+            return ["Toggle Night Shift": toggleNightShift ? "true" : "false",
+                    "Increase Color Temp": increaseColorTemp ? "true" : "false",
+                    "Decrease Color Temp": decreaseColorTemp ? "true" : "false",
+                    "Disable for Current App": disableApp ? "true" : "false",
+                    "Disable for an hour": disableHour ? "true" : "false",
+                    "Disable for custom time": disableCustom ? "true" : "false"]
+        case .preferences(let autoLaunch, let quickToggle, let iconSwitching, let syncDarkMode, let schedule):
             var scheduleString: String
             switch schedule {
             case .off: scheduleString = "off"
@@ -99,6 +106,7 @@ extension Event {
             }
             return ["Auto Launch": autoLaunch ? "true" : "false",
                     "Quick Toggle": quickToggle ? "true" : "false",
+                    "Icon Switching": iconSwitching ? "true" : "false",
                     "Sync Dark Mode": syncDarkMode ? "true" : "false",
                     "Schedule": scheduleString]
         default:
