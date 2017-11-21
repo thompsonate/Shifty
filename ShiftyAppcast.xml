@@ -17,7 +17,7 @@
             </description>
             <pubDate>Mon, 20 Nov 2017 22:00:00 -0500</pubDate>
             <enclosure url="https://github.com/thompsonate/Shifty/releases/download/0.4/Shifty-0.4.dmg" sparkle:version="27" sparkle:shortVersionString="0.4" length="1623481" type="application/octet-stream" sparkle:dsaSignature="MC0CFQCXXV/U3IDIXeQDzDufnTYZP8mZaQIUE6Q4A38Nc0Vr6BbwHpzXehaHoj8=" />
-            <sparkle:minimumSystemVersion>10.13.0</sparkle:minimumSystemVersion>
+            <sparkle:minimumSystemVersion>10.12.4</sparkle:minimumSystemVersion>
         </item>
         <item>
             <title>Version 0.3</title>
