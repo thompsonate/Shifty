@@ -139,7 +139,7 @@ class SunriseSetLocationManager: NSObject, CLLocationManagerDelegate {
                 self.locationManager.stopMonitoringSignificantLocationChanges()
                 self.locationManager.startMonitoringSignificantLocationChanges()
                 if self.sunTimes == nil {
-                    self.showLocationErrorAlert()
+                    self.getLocationFromIP()
                 }
                 self.shouldShowAlert = true
             } else {
@@ -148,6 +148,28 @@ class SunriseSetLocationManager: NSObject, CLLocationManagerDelegate {
             }
             Event.locationErrorAlertShown.record()
         }
+    }
+    
+    func getLocationFromIP() {
+        let url = URL(string: "http://ip-api.com/json")!
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let data = data else {
+                print(error?.localizedDescription as Any)
+                self.showLocationErrorAlert()
+                return
+            }
+            
+            let jsonDecoder = JSONDecoder()
+            if let location = try? jsonDecoder.decode(IpLocation.self, from: data) {
+                let latitude = location.lat
+                let longitude = location.lon
+                let lastKnownLocation = Location(latitude: latitude, longitude: longitude, saveDate: Date())
+                UserDefaults.standard.set(try? PropertyListEncoder().encode(lastKnownLocation), forKey: Keys.lastKnownLocation)
+            } else {
+                self.showLocationErrorAlert()
+            }
+        }
+        task.resume()
     }
 }
 
@@ -178,5 +200,10 @@ class Location: NSObject, Codable {
     }
 }
 
+
+struct IpLocation: Codable {
+    let lat: Double
+    let lon: Double
+}
 
 
