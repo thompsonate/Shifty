@@ -11,4 +11,4 @@ Shifty is customizable! Make it easier to toggle Night Shift with Quick Toggle o
 * System meets the [requirements for Night Shift](https://support.apple.com/en-us/HT207513#requirements)
 
 <br>
-Shifty is free and open source, licensed under [AGPLv3](LICENSE.txt). Feel free to make a pull request!
+Shifty is free and open source, licensed under AGPLv3. Feel free to make a pull request!
