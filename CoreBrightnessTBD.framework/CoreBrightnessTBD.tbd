@@ -1,0 +1,9 @@
+--- !tapi-tbd-v2
+archs:           [ x86_64 ]
+platform:        macosx
+install-name:    /System/Library/PrivateFrameworks/CoreBrightness.framework/CoreBrightness
+objc-constraint: none
+exports:
+  - archs:           [ x86_64 ]
+    objc-classes:    [ _CBBlueLightClient ]
+...
