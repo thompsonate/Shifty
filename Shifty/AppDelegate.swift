@@ -49,7 +49,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if !CBBlueLightClient.supportsBlueLightReduction() {
             Event.unsupportedHardware.record()
             let alert: NSAlert = NSAlert()
-            alert.messageText = NSLocalizedString("alert.hardware_message", comment: "Your Mac hardware does not support Night Shift")
+            alert.messageText = NSLocalizedString("alert.hardware_message", comment: "Your Mac does not support Night Shift")
             alert.informativeText = NSLocalizedString("alert.hardware_informative", comment: "A newer Mac is required to use Shifty.")
             alert.alertStyle = NSAlert.Style.warning
             alert.addButton(withTitle: NSLocalizedString("general.ok", comment: "OK"))
