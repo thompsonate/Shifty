@@ -4,6 +4,10 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIconFile</key>
@@ -12,14 +16,12 @@
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
-	<key>CFBundleName</key>
-	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>0.4</string>
 	<key>CFBundleVersion</key>
-	<string>27</string>
+	<string>28</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -57,5 +59,9 @@
 	<string>https://raw.githubusercontent.com/thompsonate/Shifty/master/ShiftyAppcast.xml</string>
 	<key>SUPublicDSAKeyFile</key>
 	<string>dsa_pub.pem</string>
+	<key>LSHasLocalizedDisplayName</key>
+	<true/>
+	<key>NSHumanReadableCopyright</key>
+	<string>© 2017 Nate Thompson. AGPL-3.0 License.</string>
 </dict>
 </plist>

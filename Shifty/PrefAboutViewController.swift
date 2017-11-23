@@ -34,10 +34,14 @@ class PrefAboutViewController: NSViewController, MASPreferencesViewController {
     var hasResizableWidth = false
     var hasResizableHeight = false
     
+    @IBOutlet weak var nameLabel: NSTextField!
     @IBOutlet weak var versionLabel: NSTextField!
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let bundleDisplayName = Bundle.main.localizedInfoDictionary?["CFBundleDisplayName"]
+        nameLabel.stringValue = bundleDisplayName as? String ?? ""
         
         let versionObject = Bundle.main.infoDictionary?["CFBundleShortVersionString"]
         versionLabel.stringValue = versionObject as? String ?? ""

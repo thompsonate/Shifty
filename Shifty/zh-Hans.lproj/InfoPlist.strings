@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  
+
+  Created by Nate Thompson on 2017/11/22.
+  
+*/
+
+"CFBundleDisplayName" = "Shifty 夜览管家";
+"NSHumanReadableCopyright" = "© 2017 Nate Thompson 保留所有权，应用程序遵循 AGPL-3.0 许可协议。";

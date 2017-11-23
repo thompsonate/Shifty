@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  
+
+  Created by Nate Thompson on 2017/11/22.
+  
+*/
+
+"CFBundleDisplayName" = "Shifty";
+"NSHumanReadableCopyright" = "© 2017 Nate Thompson. AGPL-3.0 License.";

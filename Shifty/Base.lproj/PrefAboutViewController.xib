@@ -10,6 +10,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PrefAboutViewController" customModule="Shifty" customModuleProvider="target">
             <connections>
+                <outlet property="nameLabel" destination="8q5-Sw-Dbf" id="mEN-Rn-IdL"/>
                 <outlet property="versionLabel" destination="mbK-0c-d8c" id="tqA-MH-Huc"/>
                 <outlet property="view" destination="FgB-wr-6em" id="txH-vj-tEy"/>
             </connections>

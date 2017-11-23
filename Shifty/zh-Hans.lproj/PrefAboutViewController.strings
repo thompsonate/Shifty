@@ -1,0 +1,41 @@
+/* Class = "NSButtonCell"; title = "Credits..."; ObjectID = "8Qq-tv-01n"; */
+"8Qq-tv-01n.title" = "致谢名单…";
+
+/* Class = "NSTextFieldCell"; title = "0.0"; ObjectID = "C2N-lz-GkC"; */
+"C2N-lz-GkC.title" = "0.0";
+
+/* Class = "NSTextFieldCell"; title = "shifty.natethompson.io"; ObjectID = "Gbt-lh-vi5"; */
+"Gbt-lh-vi5.title" = "shifty.natethompson.io";
+
+/* Class = "NSTextFieldCell"; title = "📬"; ObjectID = "L2z-Z9-XAa"; */
+"L2z-Z9-XAa.title" = "📬";
+
+/* Class = "NSButtonCell"; title = "Check for Updates..."; ObjectID = "LHX-7G-HlA"; */
+"LHX-7G-HlA.title" = "检查更新...";
+
+/* Class = "NSTextFieldCell"; title = "💸"; ObjectID = "PPr-9L-fc3"; */
+"PPr-9L-fc3.title" = "💸";
+
+/* Class = "NSTextFieldCell"; title = "contact:"; ObjectID = "Rp7-VG-IbF"; */
+"Rp7-VG-IbF.title" = "邮箱:";
+
+/* Class = "NSTextFieldCell"; title = "feedback@natethompson.io"; ObjectID = "Thi-Pp-iy3"; */
+"Thi-Pp-iy3.title" = "feedback@natethompson.io";
+
+/* Class = "NSTextFieldCell"; title = "Shifty"; ObjectID = "bnR-vg-kNb"; */
+"bnR-vg-kNb.title" = "Shifty 夜览管家";
+
+/* Class = "NSTextFieldCell"; title = "donate:"; ObjectID = "fUX-vR-OmZ"; */
+"fUX-vR-OmZ.title" = "捐赠:";
+
+/* Class = "NSTextFieldCell"; title = "🌍"; ObjectID = "lQn-mG-tDV"; */
+"lQn-mG-tDV.title" = "🌍";
+
+/* Class = "NSTextFieldCell"; title = "site:"; ObjectID = "pAL-H2-Wch"; */
+"pAL-H2-Wch.title" = "网站:";
+
+/* Class = "NSTextFieldCell"; title = "PayPal"; ObjectID = "qD1-X6-taU"; */
+"qD1-X6-taU.title" = "PayPal";
+
+/* Class = "NSTextFieldCell"; title = "© 2017 Nate Thompson"; ObjectID = "yZ7-c6-8tC"; */
+"yZ7-c6-8tC.title" = "© 2017 Nate Thompson 保留所有权";

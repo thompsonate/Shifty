@@ -22,6 +22,7 @@
 		4394DDA91EBE376F00F22908 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4394DDA21EBE376F00F22908 /* AppDelegate.swift */; };
 		4394DDAA1EBE376F00F22908 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4394DDA31EBE376F00F22908 /* Assets.xcassets */; };
 		4394DDAD1EBE376F00F22908 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4394DDA81EBE376F00F22908 /* StatusMenuController.swift */; };
+		43965AC31FC68A19001A076D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43965AC51FC68A19001A076D /* InfoPlist.strings */; };
 		43B547F11F29A77D0034E779 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B547F01F29A77D0034E779 /* Event.swift */; };
 		43B9DE151FB5924F002C4C29 /* PrefShortcutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B9DE131FB5924F002C4C29 /* PrefShortcutsViewController.swift */; };
 		43B9DE1B1FB592AE002C4C29 /* PrefAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B9DE191FB592AE002C4C29 /* PrefAboutViewController.swift */; };
@@ -58,6 +59,11 @@
 		115BB8A6F00EEB28DD8A96E5 /* Pods-Shifty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shifty.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shifty/Pods-Shifty.release.xcconfig"; sourceTree = "<group>"; };
 		43087E171F41EE0700A54523 /* BLNotificationBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BLNotificationBlock.h; path = Shifty/BLNotificationBlock.h; sourceTree = "<group>"; };
 		43087E181F41EE0700A54523 /* BLNotificationBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BLNotificationBlock.m; path = Shifty/BLNotificationBlock.m; sourceTree = "<group>"; };
+		43099BA81FC67B5000A0720B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/CustomTimeWindow.strings"; sourceTree = "<group>"; };
+		43099BA91FC67B5100A0720B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/PrefGeneralViewController.strings"; sourceTree = "<group>"; };
+		43099BAA1FC67B5100A0720B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/PrefShortcutsViewController.strings"; sourceTree = "<group>"; };
+		43099BAB1FC67B5100A0720B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/PrefAboutViewController.strings"; sourceTree = "<group>"; };
+		43099BAD1FC67B5C00A0720B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		43111A7B1FB84BC8000D8214 /* credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = credits.rtf; sourceTree = "<group>"; };
 		433AD3001F2CED1F0003FBCD /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_pub.pem; path = Shifty/dsa_pub.pem; sourceTree = "<group>"; };
 		433AD3061F2D00BD0003FBCD /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -76,6 +82,8 @@
 		4394DDA41EBE376F00F22908 /* CBBlueLightClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CBBlueLightClient.h; path = Shifty/CBBlueLightClient.h; sourceTree = "<group>"; };
 		4394DDA81EBE376F00F22908 /* StatusMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatusMenuController.swift; path = Shifty/StatusMenuController.swift; sourceTree = "<group>"; };
 		4394DDAE1EBE379900F22908 /* Shifty-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Shifty-Bridging-Header.h"; path = "Shifty/Shifty-Bridging-Header.h"; sourceTree = "<group>"; };
+		43965AC41FC68A19001A076D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		43965AC61FC68A1B001A076D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		43B547F01F29A77D0034E779 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = Shifty/Event.swift; sourceTree = "<group>"; };
 		43B9DE131FB5924F002C4C29 /* PrefShortcutsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PrefShortcutsViewController.swift; path = Shifty/PrefShortcutsViewController.swift; sourceTree = "<group>"; };
 		43B9DE191FB592AE002C4C29 /* PrefAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PrefAboutViewController.swift; path = Shifty/PrefAboutViewController.swift; sourceTree = "<group>"; };
@@ -191,6 +199,7 @@
 				43111A7B1FB84BC8000D8214 /* credits.rtf */,
 				433AD3001F2CED1F0003FBCD /* dsa_pub.pem */,
 				43D5C2441FC3A9A100AF88E0 /* Info.plist */,
+				43965AC51FC68A19001A076D /* InfoPlist.strings */,
 				43D5C2321FC2CECC00AF88E0 /* Localizable.strings */,
 				436A0F3C1FBE913600E77D41 /* ShiftyAppcast.xml */,
 				433AD3061F2D00BD0003FBCD /* Crashlytics.framework */,
@@ -337,6 +346,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 43CC9E3A1EBAB19300983528;
 			productRefGroup = 43CC9E441EBAB19300983528 /* Products */;
@@ -371,6 +381,7 @@
 				43D5C2211FC2CACF00AF88E0 /* CustomTimeWindow.xib in Resources */,
 				43D5C21B1FC2CAC300AF88E0 /* PrefShortcutsViewController.xib in Resources */,
 				43D5C2391FC35FB500AF88E0 /* MainMenu.xib in Resources */,
+				43965AC31FC68A19001A076D /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -529,10 +540,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		43965AC51FC68A19001A076D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				43965AC41FC68A19001A076D /* en */,
+				43965AC61FC68A1B001A076D /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
+			path = Shifty;
+			sourceTree = "<group>";
+		};
 		43D5C2181FC2CA1300AF88E0 /* PrefGeneralViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				43D5C2171FC2CA1300AF88E0 /* Base */,
+				43099BA91FC67B5100A0720B /* zh-Hans */,
 			);
 			name = PrefGeneralViewController.xib;
 			path = Shifty;
@@ -542,6 +564,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				43D5C21C1FC2CAC300AF88E0 /* Base */,
+				43099BAA1FC67B5100A0720B /* zh-Hans */,
 			);
 			name = PrefShortcutsViewController.xib;
 			path = Shifty;
@@ -551,6 +574,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				43D5C21F1FC2CACA00AF88E0 /* Base */,
+				43099BAB1FC67B5100A0720B /* zh-Hans */,
 			);
 			name = PrefAboutViewController.xib;
 			path = Shifty;
@@ -560,6 +584,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				43D5C2221FC2CACF00AF88E0 /* Base */,
+				43099BA81FC67B5000A0720B /* zh-Hans */,
 			);
 			name = CustomTimeWindow.xib;
 			path = Shifty;
@@ -569,6 +594,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				43D5C2311FC2CECC00AF88E0 /* en */,
+				43099BAD1FC67B5C00A0720B /* zh-Hans */,
 			);
 			name = Localizable.strings;
 			path = Shifty;

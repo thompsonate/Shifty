@@ -1,0 +1,20 @@
+/* Class = "NSTextFieldCell"; title = "minutes:"; ObjectID = "2Kf-wM-5dv"; */
+"2Kf-wM-5dv.title" = "分钟:";
+
+/* Class = "NSTextFieldCell"; title = "Disable Night Shift for"; ObjectID = "5HX-Xg-Gxp"; */
+"5HX-Xg-Gxp.title" = "在以下时间内关闭“夜览”模式";
+
+/* Class = "NSTextFieldCell"; title = " "; ObjectID = "EMc-rb-n2W"; */
+"EMc-rb-n2W.title" = " ";
+
+/* Class = "NSWindow"; title = "Shifty"; ObjectID = "QvC-M9-y7g"; */
+"QvC-M9-y7g.title" = "Shifty 夜览管家";
+
+/* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "UXa-Rw-949"; */
+"UXa-Rw-949.title" = "取消";
+
+/* Class = "NSTextFieldCell"; title = "hours:"; ObjectID = "Y5N-UQ-dDD"; */
+"Y5N-UQ-dDD.title" = "小时:";
+
+/* Class = "NSButtonCell"; title = "OK"; ObjectID = "mX6-tk-bjB"; */
+"mX6-tk-bjB.title" = "好";

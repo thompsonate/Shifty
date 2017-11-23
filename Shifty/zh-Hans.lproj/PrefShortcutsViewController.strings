@@ -1,0 +1,17 @@
+/* Class = "NSTextFieldCell"; title = "Increase color temp:"; ObjectID = "FfB-x2-5QK"; */
+"FfB-x2-5QK.title" = "增高色温:";
+
+/* Class = "NSTextFieldCell"; title = "Toggle Night Shift:"; ObjectID = "IdZ-nb-iqg"; */
+"IdZ-nb-iqg.title" = "切换“夜览”模式开关:";
+
+/* Class = "NSTextFieldCell"; title = "Disable for an hour:"; ObjectID = "Kfd-ZQ-sGn"; */
+"Kfd-ZQ-sGn.title" = "禁用一个小时:";
+
+/* Class = "NSTextFieldCell"; title = "Disable for current app:"; ObjectID = "Wqh-KU-7V9"; */
+"Wqh-KU-7V9.title" = "为当前应用程序禁用:";
+
+/* Class = "NSTextFieldCell"; title = "Disable for custom time:"; ObjectID = "oMJ-PL-YWn"; */
+"oMJ-PL-YWn.title" = "在自定义时间内禁用:";
+
+/* Class = "NSTextFieldCell"; title = "Decrease color temp:"; ObjectID = "qba-Ra-lrp"; */
+"qba-Ra-lrp.title" = "降低色温:";
