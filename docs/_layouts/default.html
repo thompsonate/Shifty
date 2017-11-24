@@ -43,20 +43,48 @@ $( window ).resize(function() {
       <h1 class="project-name">{{ site.title | default: site.github.repository_name }}</h1>
       <h2 class="project-tagline">{{ site.description | default: site.github.project_tagline }}</h2>
       <a id="downloadButton" class="btn">Download Beta</a>
-      <a href="{{ site.github.repository_url }}" class="btn">View on GitHub</a>
+      <a id="view-on-github" href="{{ site.github.repository_url }}" class="btn">View on GitHub</a>
     </section>
 
     <section class="main-content">
-      {{ content }}
+      <div id="page-content">{{ content }}</div>
+
+      <footer class="site-footer">
+        <div class="site-footer-credits">Made with ☀️ by <a href="https://github.com/thompsonate">Nate Thompson</a>.</div>
+        <div class="site-footer-credits">Have a question, comment, or bug report? <a href="mailto:feedback@natethompson.io?subject=Shifty%20Feedback">Send me an email</a>.</div></span>
+        <div class="site-footer-credits">If you love Shifty, <a href="/donate">help me make it better</a>.</div></span>
+        </footer>
+      </section>
+
+      <script type="text/javascript">
+        var language = getLang();
+        if (language == "zh-CN") {
+          document.title = "Shifty 夜览管家 - 自定义夜览模式";
+          document.getElementsByClassName("project-name")[0].innerHTML = "Shifty 夜览管家";
+          document.getElementsByClassName("project-tagline")[0].innerHTML = "Shifty 夜览管家是一款 macOS 菜单栏应用程序，为夜览模式赋予更多便捷与自定义控制选项。";
+          document.getElementById("downloadButton").innerHTML = "下载测试版";
+          document.getElementById("view-on-github").innerHTML = "在 Github 查看源码";
+          document.getElementById("page-content").innerHTML = "<section class=\"main-content\"><p>Shifty 夜览管家为 macOS 内置的夜览模式赋予更多便捷与自定义控制选项。你可以设置在开启特定应用程序后，或在自定义时间段内暂时关闭夜览模式。此外，易于访问的滑块使完善色温变得轻而易举。有了 Shifty 夜览管家，夜览模式得以成为专业用户的天作之合。</p><div id=\"screenshot-container\"><img class=\"shifty-screenshot\" src=\"images/shifty-screenshot-cn-large.png\"></div><p>你也可以自定义 Shifty 夜览管家！启用快速切换功能以一键开启或关闭夜览模式，或根据夜览模式的设定时间自动启用暗色菜单栏和程序坞。此外，你还可以通过设置全局快捷键激活常用的 Shifty 夜览管家功能。</p><p><img id=\"prefs-general\" src=\"images/prefs-general-screenshot-cn.png\"></p><h3 id=\"system-requirements\">系统要求：</h3><ul><li>macOS 10.12.4 或更高版本</li><li>Mac 电脑机型符合<a href=\"https://support.apple.com/en-us/HT207513#requirements\">夜览模式的系统需求</a></li></ul><p><br>Shifty 夜览管家免费且开源，应用程序遵循 <a href=\"https://www.gnu.org/licenses/agpl.html\">AGPL-3.0 许可协议</a>。<a href=\"http://github.com/thompsonate/Shifty\">在 Github 查看项目源码</a></p>";
+          document.getElementsByClassName("site-footer-credits")[0].innerHTML = "由 <a href=\"https://github.com/thompsonate\">Nate Thompson</a> 开发 ☀️";
+          document.getElementsByClassName("site-footer-credits")[1].innerHTML = "有问题、评价或建议？<a href=\"mailto:feedback@natethompson.io?subject=Shifty%20夜览管家反馈\">向我发邮件</a>。";
+          document.getElementsByClassName("site-footer-credits")[2].innerHTML = "如果你钟爱 Shifty，<a href=\"/donate\">向开发者贡献自己的一份捐助</a>。";
+        }
+        function getLang(){
+          return (navigator.languages && navigator.languages.length) ? navigator.languages[0] : navigator.language;
+        }
+
+      </script>
 
       <script>
       function SetScreenshotWidth() {
         if($(window).width() <= 672) {
           $("img").each(function() {
+            $(this).attr("src", $(this).attr("src").replace("images/shifty-screenshot-cn-large.png", "images/shifty-screenshot-cn-small.png"));
             $(this).attr("src", $(this).attr("src").replace("images/shifty-screenshot-large.png", "images/shifty-screenshot-small.png"));
           });
         } else {
           $("img").each(function() {
+            $(this).attr("src", $(this).attr("src").replace("images/shifty-screenshot-cn-small.png", "images/shifty-screenshot-cn-large.png"));
             $(this).attr("src", $(this).attr("src").replace("images/shifty-screenshot-small.png", "images/shifty-screenshot-large.png"));
           });
         }
@@ -64,13 +92,6 @@ $( window ).resize(function() {
 
       $(SetScreenshotWidth())
       </script>
-
-      <footer class="site-footer">
-        <div class="site-footer-credits">Made with ☀️ by <a href="https://github.com/thompsonate">Nate Thompson</a>.</div>
-        <div class="site-footer-credits">Have a question, comment, or bug report? <a href="mailto:feedback@natethompson.io?subject=Shifty%20Feedback">Send me an email</a>.</span>
-        <div class="site-footer-credits">If you love Shifty, <a href="/donate">help me make it better</a>.</span>
-        </footer>
-      </section>
 
       <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
