@@ -102,12 +102,14 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/AXSwift/AXSwift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MASPreferences+Shifty/MASPreferences_Shifty.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MASShortcut/MASShortcut.framework"
   install_framework "${PODS_ROOT}/Sparkle/Sparkle.framework"
   install_dsym "${PODS_ROOT}/Sparkle/Sparkle.framework.dSYM"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/AXSwift/AXSwift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MASPreferences+Shifty/MASPreferences_Shifty.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MASShortcut/MASShortcut.framework"
   install_framework "${PODS_ROOT}/Sparkle/Sparkle.framework"
