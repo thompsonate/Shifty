@@ -461,6 +461,21 @@ class StatusMenuController: NSObject, NSMenuDelegate {
 
         isDisabledForApp = disabledApps.contains(currentAppBundleId)
         
+        if Bundle.main.preferredLocalizations.first == "zh-Hans" {
+            var normalizedName = currentAppName as NSString
+            if normalizedName.length > 0 {
+                let startingCharacter = normalizedName.character(at: 0)
+                let endingCharacter = normalizedName.character(at: normalizedName.length - 1)
+                if 0x4E00 > startingCharacter || startingCharacter > 0x9FA5 {
+                    normalizedName = " \(normalizedName)" as NSString
+                }
+                if 0x4E00 > endingCharacter || endingCharacter > 0x9FA5 {
+                    normalizedName = "\(normalizedName) " as NSString
+                }
+                currentAppName = normalizedName as String
+            }
+        }
+        
         if isDisabledForApp {
             disableAppMenuItem.state = .on
             disableAppMenuItem.title = String(format: NSLocalizedString("menu.disabled_app", comment: "Disabled for %@"), currentAppName)
