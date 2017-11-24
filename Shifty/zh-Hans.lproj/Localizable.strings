@@ -8,14 +8,14 @@
 
 "general.ok" = "好";
 
-"menu.toggle_on" = "打开“夜览”模式";
-"menu.toggle_off" = "关闭“夜览”模式";
-"menu.disable_app" = "在开启%@时关闭“夜览”模式";
-"menu.disabled_app" = "已在开启%@时关闭“夜览”模式";
-"menu.disable_hour" = "暂时关闭“夜览”模式一个小时";
-"menu.disabled_hour" = "已暂时关闭“夜览”模式一个小时";
-"menu.disable_custom" = "在自定义时间段内关闭“夜览”模式...";
-"menu.disabled_custom" = "已在自定义时间段内关闭“夜览”模式";
+"menu.toggle_on" = "打开夜览模式";
+"menu.toggle_off" = "关闭夜览模式";
+"menu.disable_app" = "在开启%@时关闭夜览模式";
+"menu.disabled_app" = "已在开启%@时关闭夜览模式";
+"menu.disable_hour" = "暂时关闭夜览模式一个小时";
+"menu.disabled_hour" = "已暂时关闭夜览模式一个小时";
+"menu.disable_custom" = "在自定义时间段内关闭夜览模式...";
+"menu.disabled_custom" = "已在自定义时间段内关闭夜览模式";
 "menu.preferences" = "偏好设置...";
 "menu.quit" = "退出 Shifty 夜览管家";
 
@@ -32,8 +32,8 @@
 "prefs.shortcuts" = "快捷鍵";
 "prefs.about" = "关于";
 
-"alert.version_message" = "“夜览”模式不能与此版本的 macOS 配合使用。";
-"alert.version_informative" = "“夜览”模式要求 macOS 10.12.4 或更高版本。将你的 Mac 更新到 macOS 10.12.4 或更高版本以使用 Shifty 夜览管家。";
+"alert.version_message" = "夜览模式不能与此版本的 macOS 配合使用。";
+"alert.version_informative" = "夜览模式要求 macOS 10.12.4 或更高版本。将你的 Mac 更新到 macOS 10.12.4 或更高版本以使用 Shifty 夜览管家。";
 
-"alert.hardware_message" = "你的 Mac 不支持“夜览”模式。";
-"alert.hardware_informative" = "需要新款 Mac 才能启用“夜览”模式与 Shifty 夜览管家。";
+"alert.hardware_message" = "你的 Mac 不支持夜览模式。";
+"alert.hardware_informative" = "需要新款 Mac 才能启用夜览模式与 Shifty 夜览管家。";
