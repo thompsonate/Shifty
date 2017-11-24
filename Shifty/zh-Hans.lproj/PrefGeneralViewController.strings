@@ -1,17 +1,17 @@
 /* Class = "NSButtonCell"; title = "Change icon according to Night Shift"; ObjectID = "4io-9H-HXp"; */
-"4io-9H-HXp.title" = "根据是否开启“夜览”模式更改图标";
+"4io-9H-HXp.title" = "根据是否开启“夜览”模式更改菜单栏图标";
 
 /* Class = "NSButtonCell"; title = "Scheduled dark mode"; ObjectID = "5s5-Y5-5b9"; */
-"5s5-Y5-5b9.title" = "计时启用暗色菜单栏和程序坞";
+"5s5-Y5-5b9.title" = "自动启用暗色菜单栏和程序坞";
 
 /* Class = "NSMenuItem"; title = "Custom"; ObjectID = "Cum-ew-Bk2"; */
-"Cum-ew-Bk2.title" = "自定义";
+"Cum-ew-Bk2.title" = "自定";
 
 /* Class = "NSButtonCell"; title = "Quick Toggle"; ObjectID = "Foo-g6-6iX"; */
-"Foo-g6-6iX.title" = "快速切换";
+"Foo-g6-6iX.title" = "快速切换“夜览”模式";
 
 /* Class = "NSTextFieldCell"; title = "If enabled, click the Menu Bar icon to toggle Night Shift. Right click to open the menu."; ObjectID = "MXt-WM-cMR"; */
-"MXt-WM-cMR.title" = "启用后，单击菜单栏图标以切换“夜览”模式。辅助点按以打开菜单。";
+"MXt-WM-cMR.title" = "启用后，点按菜单栏图标以切换“夜览”模式。辅助点按以打开菜单。";
 
 /* Class = "NSTextFieldCell"; title = "From:"; ObjectID = "PbT-Ky-Re6"; */
 "PbT-Ky-Re6.title" = "从:";
@@ -20,7 +20,7 @@
 "TwI-wC-vyX.title" = "日落到日出";
 
 /* Class = "NSTextFieldCell"; title = "Schedule:"; ObjectID = "UGI-RO-ff6"; */
-"UGI-RO-ff6.title" = "时间表:";
+"UGI-RO-ff6.title" = "设定时间:";
 
 /* Class = "NSTextFieldCell"; title = "If enabled, macOS dark mode will be automatically set based on the Night Shift schedule."; ObjectID = "ZdB-dN-hiO"; */
 "ZdB-dN-hiO.title" = "启用后，macOS 将自动根据“夜览”模式的设定时间启用或停用暗色菜单栏和程序坞。";
