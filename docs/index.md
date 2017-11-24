@@ -14,7 +14,7 @@ Shifty is customizable! Make it easier to toggle Night Shift with Quick Toggle o
 
 ### System requirements:
 * macOS 10.12.4 or later
-* System meets the [requirements for Night Shift](https://support.apple.com/en-us/HT207513#requirements)
+* System meets the [requirements for Night Shift](https://support.apple.com/HT207513#requirements)
 
 <br>
 Shifty is free and open source, licensed under [AGPL-3.0](https://www.gnu.org/licenses/agpl.html). [View the project on GitHub](http://github.com/thompsonate/Shifty)
