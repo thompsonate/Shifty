@@ -596,8 +596,14 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             }
             if activeState {
                 let dateFormatter = DateFormatter()
-                dateFormatter.dateStyle = .none
-                dateFormatter.timeStyle = .short
+                
+                if Bundle.main.preferredLocalizations.first == "zh-Hans" {
+                    dateFormatter.dateFormat = "a hh:mm "
+                } else {
+                    dateFormatter.dateStyle = .none
+                    dateFormatter.timeStyle = .short
+                }
+                
                 let date = dateFormatter.string(from: endTime)
                 
                 descriptionMenuItem.title = String(format: NSLocalizedString("description.enabled_time", comment: "Enabled until %@"), date)

@@ -131,6 +131,7 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="ucD-RF-vX0" firstAttribute="top" secondItem="Lby-a4-HBQ" secondAttribute="top" id="JzF-Af-gu8"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ucD-RF-vX0" secondAttribute="trailing" id="N6p-3U-yu4"/>
                             <constraint firstItem="ucD-RF-vX0" firstAttribute="leading" secondItem="Lby-a4-HBQ" secondAttribute="leading" id="NjI-VL-r1s"/>
                             <constraint firstAttribute="bottom" secondItem="Dph-5v-720" secondAttribute="bottom" id="UrA-MU-cyP"/>
                             <constraint firstAttribute="trailing" secondItem="Dph-5v-720" secondAttribute="trailing" id="dtG-zr-gbe"/>
@@ -173,6 +174,7 @@ Gw
                     <constraint firstItem="YTT-ok-XCv" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="9YW-CE-G07"/>
                     <constraint firstItem="Lby-a4-HBQ" firstAttribute="leading" secondItem="YTT-ok-XCv" secondAttribute="trailing" constant="20" id="Hwn-ve-Hzi"/>
                     <constraint firstAttribute="trailing" secondItem="Lby-a4-HBQ" secondAttribute="trailing" constant="20" id="J6z-UH-zGc"/>
+                    <constraint firstItem="CkZ-02-pTf" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="OF5-Yj-F1w"/>
                     <constraint firstItem="CkZ-02-pTf" firstAttribute="top" secondItem="Lby-a4-HBQ" secondAttribute="bottom" constant="20" symbolic="YES" id="a8v-W1-Kum"/>
                     <constraint firstItem="Lby-a4-HBQ" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" symbolic="YES" id="cZJ-Yu-9tf"/>
                     <constraint firstItem="nlQ-dl-FsZ" firstAttribute="leading" secondItem="CkZ-02-pTf" secondAttribute="trailing" constant="12" symbolic="YES" id="fXj-bk-iJn"/>

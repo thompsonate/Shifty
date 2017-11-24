@@ -19,7 +19,7 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <view wantsLayer="YES" id="FgB-wr-6em">
             <rect key="frame" x="0.0" y="0.0" width="300" height="189"/>
-            <autoresizingMask key="autoresizingMask"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8q5-Sw-Dbf">
                     <rect key="frame" x="18" y="157" width="53" height="22"/>
@@ -139,7 +139,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <stackView distribution="fillProportionally" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1HH-lX-oxw">
+                <stackView distribution="fillProportionally" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalCompressionResistancePriority="250" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1HH-lX-oxw">
                     <rect key="frame" x="20" y="34" width="260" height="21"/>
                     <subviews>
                         <button horizontalHuggingPriority="500" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dIb-5N-Omh">
@@ -230,7 +230,7 @@
                 <constraint firstItem="Bg0-7b-gjc" firstAttribute="top" secondItem="dqK-Z7-jwa" secondAttribute="top" id="zSy-xm-mEz"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5Hm-zf-Nhs" secondAttribute="trailing" constant="20" id="zsM-I0-hD8"/>
             </constraints>
-            <point key="canvasLocation" x="146" y="57"/>
+            <point key="canvasLocation" x="146" y="56.5"/>
         </view>
     </objects>
 </document>

@@ -240,7 +240,7 @@
                                     </connections>
                                 </button>
                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="6yx-Be-Jx5">
-                                    <rect key="frame" x="18" y="0.0" width="301" height="28"/>
+                                    <rect key="frame" x="18" y="0.0" width="303" height="28"/>
                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="If enabled, click the Menu Bar icon to toggle Night Shift. Right click to open the menu." id="MXt-WM-cMR">
                                         <font key="font" metaFont="smallSystem"/>
                                         <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
@@ -250,6 +250,7 @@
                             </subviews>
                             <constraints>
                                 <constraint firstItem="6yx-Be-Jx5" firstAttribute="leading" secondItem="yAY-1H-lKe" secondAttribute="leading" constant="20" id="D83-71-Qql"/>
+                                <constraint firstAttribute="trailing" secondItem="6yx-Be-Jx5" secondAttribute="trailing" id="zo1-c7-xvS"/>
                             </constraints>
                             <visibilityPriorities>
                                 <integer value="1000"/>
@@ -291,7 +292,7 @@
                                     </connections>
                                 </button>
                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="xjO-vb-Nxv">
-                                    <rect key="frame" x="18" y="0.0" width="292" height="28"/>
+                                    <rect key="frame" x="18" y="0.0" width="303" height="28"/>
                                     <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" title="If enabled, macOS dark mode will be automatically set based on the Night Shift schedule." id="ZdB-dN-hiO">
                                         <font key="font" metaFont="smallSystem"/>
                                         <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
@@ -300,6 +301,7 @@
                                 </textField>
                             </subviews>
                             <constraints>
+                                <constraint firstAttribute="trailing" secondItem="xjO-vb-Nxv" secondAttribute="trailing" id="9Ou-JH-JdB"/>
                                 <constraint firstItem="xjO-vb-Nxv" firstAttribute="leading" secondItem="oRi-qV-fL9" secondAttribute="leading" constant="20" id="KJc-7R-Hlo"/>
                             </constraints>
                             <visibilityPriorities>

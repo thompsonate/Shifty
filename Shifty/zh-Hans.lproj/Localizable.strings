@@ -21,7 +21,7 @@
 
 "description.enabled" = "已启用";
 "description.enabled_sunrise" = "已在日出前启用";
-"description.enabled_time" = "已在 %@ 前启用";
+"description.enabled_time" = "已在%@前启用";
 "description.disabled" = "已关闭";
 "description.disabled_hours_minutes" = "已在 %02d:%02d 内关闭";
 "description.disabled_minutes" = "已多禁用 %d 分钟";
