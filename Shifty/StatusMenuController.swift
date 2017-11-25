@@ -7,7 +7,9 @@
 //
 
 import Cocoa
+import ScriptingBridge
 import MASShortcut
+import AXSwift
 
 let BLClient = CBBlueLightClient()
 let SSLocationManager = SunriseSetLocationManager()
@@ -461,6 +463,22 @@ class StatusMenuController: NSObject, NSMenuDelegate {
 
         isDisabledForApp = disabledApps.contains(currentAppBundleId)
         
+        if let supportedBrowser = SupportedBrowser(rawValue: currentAppBundleId) {
+            if let pid = NSWorkspace.shared.menuBarOwningApplication?.processIdentifier {
+                if let app = Application(forProcessID: pid) {
+                    do {
+                        try startBrowserWatcher(app) {
+                            self.isDisabledForApp = checkBroserForRule(browser: supportedBrowser, processIdentifier: pid)
+                            self.updateStatus()
+                        }
+                    } catch let error {
+                        NSLog("Error: Could not watch app [\(app)]: \(error)")
+                    }
+                }
+                isDisabledForApp = checkBroserForRule(browser: supportedBrowser, processIdentifier: pid)
+            }
+        }
+        
         if Bundle.main.preferredLocalizations.first == "zh-Hans" {
             var normalizedName = currentAppName as NSString
             if normalizedName.length > 0 {
@@ -476,6 +494,10 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             }
         }
         
+        updateStatus()
+    }
+    
+    func updateStatus() {
         if isDisabledForApp {
             disableAppMenuItem.state = .on
             disableAppMenuItem.title = String(format: NSLocalizedString("menu.disabled_app", comment: "Disabled for %@"), currentAppName)

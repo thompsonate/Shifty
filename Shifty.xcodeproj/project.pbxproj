@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3BFD7D381FC98B6900E1604D /* BrowserRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFD7D371FC98B6900E1604D /* BrowserRule.swift */; };
 		43087E191F41EE0700A54523 /* BLNotificationBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 43087E181F41EE0700A54523 /* BLNotificationBlock.m */; };
 		43111A7C1FB84BC8000D8214 /* credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 43111A7B1FB84BC8000D8214 /* credits.rtf */; };
 		433AD3011F2CED1F0003FBCD /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 433AD3001F2CED1F0003FBCD /* dsa_pub.pem */; };
@@ -57,6 +58,7 @@
 
 /* Begin PBXFileReference section */
 		115BB8A6F00EEB28DD8A96E5 /* Pods-Shifty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shifty.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shifty/Pods-Shifty.release.xcconfig"; sourceTree = "<group>"; };
+		3BFD7D371FC98B6900E1604D /* BrowserRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserRule.swift; sourceTree = "<group>"; };
 		43087E171F41EE0700A54523 /* BLNotificationBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BLNotificationBlock.h; path = Shifty/BLNotificationBlock.h; sourceTree = "<group>"; };
 		43087E181F41EE0700A54523 /* BLNotificationBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BLNotificationBlock.m; path = Shifty/BLNotificationBlock.m; sourceTree = "<group>"; };
 		43099BA81FC67B5000A0720B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/CustomTimeWindow.strings"; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				4388E8E91F84AD1A00DC34CC /* EDSunriseSet.m */,
 				4388E8E41F84ACCF00DC34CC /* SunriseSetLocationManager.swift */,
 				43B547F01F29A77D0034E779 /* Event.swift */,
+				3BFD7D371FC98B6900E1604D /* BrowserRule.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -317,7 +320,7 @@
 				TargetAttributes = {
 					43C7A4841F19F2CB00A697C0 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 3Q7XKEDZ36;
+						DevelopmentTeam = VJ8592T25A;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -328,7 +331,7 @@
 					};
 					43CC9E421EBAB19300983528 = {
 						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = 3Q7XKEDZ36;
+						DevelopmentTeam = VJ8592T25A;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -533,6 +536,7 @@
 				43B9DE1B1FB592AE002C4C29 /* PrefAboutViewController.swift in Sources */,
 				4388E8E51F84ACCF00DC34CC /* SunriseSetLocationManager.swift in Sources */,
 				4350191D1F21E99F0001324F /* CustomTimeWindow.swift in Sources */,
+				3BFD7D381FC98B6900E1604D /* BrowserRule.swift in Sources */,
 				43B9DE151FB5924F002C4C29 /* PrefShortcutsViewController.swift in Sources */,
 				4394DDA91EBE376F00F22908 /* AppDelegate.swift in Sources */,
 				43C039DA1F1BD178009B1B70 /* CBBlueLightClient+Shifty.swift in Sources */,
@@ -613,7 +617,7 @@
 				CODE_SIGN_ENTITLEMENTS = ShiftyHelper/ShiftyHelper.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 3Q7XKEDZ36;
+				DEVELOPMENT_TEAM = VJ8592T25A;
 				INFOPLIST_FILE = ShiftyHelper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.natethompson.ShiftyHelper;
@@ -632,7 +636,7 @@
 				CODE_SIGN_ENTITLEMENTS = ShiftyHelper/ShiftyHelper.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 3Q7XKEDZ36;
+				DEVELOPMENT_TEAM = VJ8592T25A;
 				INFOPLIST_FILE = ShiftyHelper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.natethompson.ShiftyHelper;
@@ -756,9 +760,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Shifty/Shifty.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 3Q7XKEDZ36;
+				DEVELOPMENT_TEAM = VJ8592T25A;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
@@ -783,8 +788,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Shifty/Shifty.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 3Q7XKEDZ36;
+				DEVELOPMENT_TEAM = VJ8592T25A;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",

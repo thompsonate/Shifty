@@ -11,6 +11,7 @@ import ServiceManagement
 import Fabric
 import Crashlytics
 import MASPreferences_Shifty
+import AXSwift
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -33,6 +34,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         UserDefaults.standard.register(defaults: ["NSApplicationCrashOnExceptions": true])
         Fabric.with([Crashlytics.self])
         Event.appLaunched.record()
+        
+        guard UIElement.isProcessTrusted(withPrompt: true) else {
+            NSLog("No accessibility API permission, exiting")
+            NSRunningApplication.current.terminate()
+            return
+        }
                 
         if !ProcessInfo().isOperatingSystemAtLeast(OperatingSystemVersion(majorVersion: 10, minorVersion: 12, patchVersion: 4)) {
             Event.oldMacOSVersion(version: ProcessInfo().operatingSystemVersionString).record()
