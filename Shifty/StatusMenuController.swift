@@ -7,9 +7,7 @@
 //
 
 import Cocoa
-import ScriptingBridge
 import MASShortcut
-import AXSwift
 
 let BLClient = CBBlueLightClient()
 let SSLocationManager = SunriseSetLocationManager()
@@ -458,6 +456,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     }
     
     func updateCurrentApp() {
+        stopBrowserWatcher()
         currentAppName = NSWorkspace.shared.menuBarOwningApplication?.localizedName ?? ""
         currentAppBundleId = NSWorkspace.shared.menuBarOwningApplication?.bundleIdentifier ?? ""
 
@@ -465,15 +464,13 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         
         if let supportedBrowser = SupportedBrowser(rawValue: currentAppBundleId) {
             if let pid = NSWorkspace.shared.menuBarOwningApplication?.processIdentifier {
-                if let app = Application(forProcessID: pid) {
-                    do {
-                        try startBrowserWatcher(app) {
-                            self.isDisabledForApp = checkBroserForRule(browser: supportedBrowser, processIdentifier: pid)
-                            self.updateStatus()
-                        }
-                    } catch let error {
-                        NSLog("Error: Could not watch app [\(app)]: \(error)")
+                do {
+                    try startBrowserWatcher(pid) {
+                        self.isDisabledForApp = checkBroserForRule(browser: supportedBrowser, processIdentifier: pid)
+                        self.updateStatus()
                     }
+                } catch let error {
+                    NSLog("Error: Could not watch app [\(pid)]: \(error)")
                 }
                 isDisabledForApp = checkBroserForRule(browser: supportedBrowser, processIdentifier: pid)
             }

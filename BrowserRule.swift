@@ -134,36 +134,45 @@ func checkBroserForRule(browser: SupportedBrowser, processIdentifier: pid_t) -> 
 }
 
 
-func startBrowserWatcher(_ app: Application, callback: @escaping () -> Void) throws {
-    browserObserver = app.createObserver { (observer: Observer, element: UIElement, event: AXNotification, info: [String: AnyObject]?) in
-        if event == .windowCreated {
-            do {
-                try browserObserver.addNotification(.titleChanged, forElement: element)
-            } catch let error {
-                NSLog("Error: Could not watch [\(element)]: \(error)")
+func startBrowserWatcher(_ processIdentifier: pid_t, callback: @escaping () -> Void) throws {
+    if let app = Application(forProcessID: processIdentifier) {
+        browserObserver = app.createObserver { (observer: Observer, element: UIElement, event: AXNotification, info: [String: AnyObject]?) in
+            if event == .windowCreated {
+                do {
+                    try browserObserver.addNotification(.titleChanged, forElement: element)
+                } catch let error {
+                    NSLog("Error: Could not watch [\(element)]: \(error)")
+                }
+            }
+            if event == .titleChanged || event == .focusedWindowChanged {
+                DispatchQueue.main.async {
+                    callback()
+                }
             }
         }
-        if event == .titleChanged || event == .focusedWindowChanged {
-            DispatchQueue.main.async {
-                callback()
+        
+        do {
+            let windows = try app.windows()!
+            for window in windows {
+                do {
+                    try browserObserver.addNotification(.titleChanged, forElement: window)
+                } catch let error {
+                    NSLog("Error: Could not watch [\(window)]: \(error)")
+                }
             }
+        } catch let error {
+            NSLog("Error: Could not get windows for \(app): \(error)")
         }
+        try browserObserver.addNotification(.focusedWindowChanged, forElement: app)
+        try browserObserver.addNotification(.windowCreated, forElement: app)
     }
-    
-    do {
-        let windows = try app.windows()!
-        for window in windows {
-            do {
-                try browserObserver.addNotification(.titleChanged, forElement: window)
-            } catch let error {
-                NSLog("Error: Could not watch [\(window)]: \(error)")
-            }
-        }
-    } catch let error {
-        NSLog("Error: Could not get windows for \(app): \(error)")
+}
+
+func stopBrowserWatcher() {
+    if browserObserver != nil {
+        browserObserver.stop()
+        browserObserver = nil
     }
-    try browserObserver.addNotification(.focusedWindowChanged, forElement: app)
-    try browserObserver.addNotification(.windowCreated, forElement: app)
 }
 
 
