@@ -466,13 +466,13 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             if let pid = NSWorkspace.shared.menuBarOwningApplication?.processIdentifier {
                 do {
                     try startBrowserWatcher(pid) {
-                        self.isDisabledForApp = checkBroserForRule(browser: supportedBrowser, processIdentifier: pid)
+                        self.isDisabledForApp = checkBrowserForRule(browser: supportedBrowser, processIdentifier: pid)
                         self.updateStatus()
                     }
                 } catch let error {
                     NSLog("Error: Could not watch app [\(pid)]: \(error)")
                 }
-                isDisabledForApp = checkBroserForRule(browser: supportedBrowser, processIdentifier: pid)
+                isDisabledForApp = checkBrowserForRule(browser: supportedBrowser, processIdentifier: pid)
             }
         }
         

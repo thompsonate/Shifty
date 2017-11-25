@@ -104,35 +104,63 @@ extension URL {
         }
         return false
     }
+    
+    func containsPath(path: String) -> Bool {
+        return self.path.range(of: path) != nil
+    }
 }
 
-var disabledHosts = [
-    "netflix.com"
+struct BrowserRule: CustomStringConvertible {
+    var host: String
+    var path: String
+    var includeSubdomains: Bool
+    
+    var description: String {
+        return "Rule for domain \(host) with path \(path), include subdomains: \(includeSubdomains)"
+    }
+}
+
+var browserRules = [
+    BrowserRule(host: "netflix.com", path: "", includeSubdomains: true)
 ]
 
-func checkBroserForRule(browser: SupportedBrowser, processIdentifier: pid_t) -> Bool {
+private func ruleMatchesURL(rule: BrowserRule, url: URL) -> Bool {
+    var matches = false
+    
+    if !(rule.host.isEmpty) {
+        matches = url.matchesDomain(domain: rule.host, includeSubdomains: rule.includeSubdomains)
+    }
+    
+    if !(rule.path.isEmpty) {
+        matches = matches && url.containsPath(path: rule.path)
+    }
+    
+    return matches
+}
+
+func checkBrowserForRule(browser: SupportedBrowser, processIdentifier: pid_t) -> Bool {
+    var currentURL: URL? = nil
     switch browser {
     case .Safari, .SafariTechnologyPreview:
         if let url = getSafariCurrentTabURL(processIdentifier) {
-            for host in disabledHosts {
-                if url.matchesDomain(domain: host, includeSubdomains: true) {
-                    return true
-                }
-            }
+            currentURL = url
         }
     case .Chrome:
         if let url = getChromeCurrentTabURL(processIdentifier) {
-            for host in disabledHosts {
-                if url.matchesDomain(domain: host, includeSubdomains: true) {
-                    return true
-                }
+            currentURL = url
+        }
+    }
+    
+    if let url = currentURL {
+        for rule in browserRules {
+            if ruleMatchesURL(rule: rule, url: url) {
+                return true
             }
         }
     }
     
     return false
 }
-
 
 func startBrowserWatcher(_ processIdentifier: pid_t, callback: @escaping () -> Void) throws {
     if let app = Application(forProcessID: processIdentifier) {
