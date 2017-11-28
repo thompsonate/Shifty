@@ -12,6 +12,10 @@
 "menu.toggle_off" = "Turn off Night Shift";
 "menu.disable_app" = "Disable for %@";
 "menu.disabled_app" = "Disabled for %@";
+"menu.disable_domain" = "Disable for %@";
+"menu.disabled_domain" = "Disabled for %@";
+"menu.disable_subdomain" = "Disable for %@";
+"menu.disabled_subdomain" = "Disabled for %@";
 "menu.disable_hour" = "Disable for an hour";
 "menu.disabled_hour" = "Disabled for an hour";
 "menu.disable_custom" = "Disable for custom time...";

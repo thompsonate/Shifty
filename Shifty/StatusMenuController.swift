@@ -11,7 +11,6 @@ import MASShortcut
 
 let BLClient = CBBlueLightClient()
 let SSLocationManager = SunriseSetLocationManager()
-
 class StatusMenuController: NSObject, NSMenuDelegate {
     
     @IBOutlet weak var statusMenu: NSMenu!
@@ -19,6 +18,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     @IBOutlet weak var sliderMenuItem: NSMenuItem!
     @IBOutlet weak var descriptionMenuItem: NSMenuItem!
     @IBOutlet weak var disableAppMenuItem: NSMenuItem!
+    @IBOutlet weak var disableDomainMenuItem: NSMenuItem!
+    @IBOutlet weak var disableSubdomainMenuItem: NSMenuItem!
     @IBOutlet weak var disableHourMenuItem: NSMenuItem!
     @IBOutlet weak var disableCustomMenuItem: NSMenuItem!
     @IBOutlet weak var preferencesMenuItem: NSMenuItem!
@@ -33,13 +34,20 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     var customTimeWindow: CustomTimeWindow!
     var currentAppName = ""
     var currentAppBundleId = ""
+    var currentDomain = ""
+    var currentSubdomain = ""
     var disabledApps = [String]()
+    var browserRules = [BrowserRule]()
     var activeState = true
     
     ///Whether or not Night Shift should be toggled based on current app. False if NS is disabled across the board.
     var isShiftForAppEnabled = false
     ///True if Night Shift is disabled for app currently owning Menu Bar.
     var isDisabledForApp = false
+    ///True if Night Shift is disabled for browser matching browser rule - domain
+    var isDisabledForDomain = false
+    ///True if Night Shift is disabled for browser matching browser rule - subdomain
+    var isDisabledForSubdomain = false
     ///True if change to Night Shift state originated from Shifty
     var shiftOriginatedFromShifty = false
     
@@ -80,8 +88,13 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             self.shift(isEnabled: true)
             self.disableHourMenuItem.isEnabled = true
             self.disableCustomMenuItem.isEnabled = true
+            self.disableAppMenuItem.isEnabled = true
+            self.disableDomainMenuItem.isEnabled = true
+            self.disableSubdomainMenuItem.isEnabled = true
             self.disableDisableTimer()
             self.enableForCurrentApp()
+            self.enableForCurrentDomain()
+            self.enableForCurrentSubdomain()
             self.setDescriptionText(keepVisible: true)
         }
         
@@ -93,7 +106,18 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         isShiftForAppEnabled = BLClient.isNightShiftEnabled
 
         disabledApps = PrefManager.sharedInstance.userDefaults.value(forKey: Keys.disabledApps) as? [String] ?? []
-        
+        if let data = PrefManager.sharedInstance.userDefaults.value(forKey: Keys.browserRules) as? Data {
+            do {
+                browserRules = try PropertyListDecoder().decode(Array<BrowserRule>.self, from: data)
+            }
+            catch let error {
+                NSLog("Error: \(error.localizedDescription)")
+                browserRules = []
+            }
+        } else {
+            browserRules = []
+        }
+
         let appDelegate = NSApplication.shared.delegate as! AppDelegate
         appDelegate.statusItemClicked = {
             self.power(self)
@@ -236,7 +260,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     
     ///Sets Night Shift state based on the set schedule. If a scheduled shift is close, the state is set to what it will be after the shift.
     func setToSchedule() {
-        if !isDisableHourSelected && !isDisableCustomSelected && !isDisabledForApp {
+        if !isDisableHourSelected && !isDisableCustomSelected && !isDisabledForApp && !isDisabledForDomain && !isDisabledForSubdomain {
             if scheduledShift.isClose {
                 if let shiftState = scheduledShift.shiftState {
                     shift(isEnabled: shiftState)
@@ -334,6 +358,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         }
         disableDisableTimer()
         enableForCurrentApp()
+        enableForCurrentDomain()
+        enableForCurrentSubdomain()
         isShiftForAppEnabled = activeState
     }
     
@@ -346,6 +372,28 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         updateCurrentApp()
         PrefManager.sharedInstance.userDefaults.set(disabledApps, forKey: Keys.disabledApps)
         Event.disableForCurrentApp(state: (sender as? NSMenuItem)?.state == .on).record()
+    }
+    
+    @IBAction func disableForDomain(_ sender: Any) {
+        let rule = BrowserRule(host: currentDomain, includeSubdomains: true)
+        if disableDomainMenuItem.state == .off {
+            browserRules.append(rule)
+        } else {
+            browserRules.remove(at: browserRules.index(of: rule)!)
+        }
+        updateCurrentApp()
+        PrefManager.sharedInstance.userDefaults.set(try? PropertyListEncoder().encode(browserRules), forKey: Keys.browserRules)
+    }
+
+    @IBAction func disableForSubdomain(_ sender: Any) {
+        let rule = BrowserRule(host: currentSubdomain, includeSubdomains: false)
+        if disableSubdomainMenuItem.state == .off {
+            browserRules.append(rule)
+        } else {
+            browserRules.remove(at: browserRules.index(of: rule)!)
+        }
+        updateCurrentApp()
+        PrefManager.sharedInstance.userDefaults.set(try? PropertyListEncoder().encode(browserRules), forKey: Keys.browserRules)
     }
     
     @IBAction func disableHour(_ sender: Any) {
@@ -419,6 +467,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             timeIntervalInMinutes = timeIntervalInSeconds * 60
         }
         
+        isShiftForAppEnabled = activeState
         Event.disableForCustomTime(state: isDisableCustomSelected, timeInterval: timeIntervalInMinutes).record()
     }
     
@@ -431,7 +480,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     }
     
     @IBAction func quitClicked(_ sender: NSMenuItem) {
-        if isDisableHourSelected || isDisableCustomSelected || isDisabledForApp {
+        if isDisableHourSelected || isDisableCustomSelected || isDisabledForApp || isDisabledForDomain || isDisabledForSubdomain {
             shift(isEnabled: true)
         }
         Event.quitShifty.record()
@@ -461,19 +510,34 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         currentAppBundleId = NSWorkspace.shared.menuBarOwningApplication?.bundleIdentifier ?? ""
 
         isDisabledForApp = disabledApps.contains(currentAppBundleId)
+        isDisabledForDomain = false
+        isDisabledForSubdomain = false
         
         if let supportedBrowser = SupportedBrowser(rawValue: currentAppBundleId) {
             if let pid = NSWorkspace.shared.menuBarOwningApplication?.processIdentifier {
                 do {
                     try startBrowserWatcher(pid) {
-                        self.isDisabledForApp = checkBrowserForRule(browser: supportedBrowser, processIdentifier: pid)
+                        (self.currentDomain,
+                         self.isDisabledForDomain,
+                         self.currentSubdomain,
+                         self.isDisabledForSubdomain) = checkBrowserForRules(browser: supportedBrowser,
+                                                                             processIdentifier: pid,
+                                                                             rules: self.browserRules)
                         self.updateStatus()
                     }
                 } catch let error {
                     NSLog("Error: Could not watch app [\(pid)]: \(error)")
                 }
-                isDisabledForApp = checkBrowserForRule(browser: supportedBrowser, processIdentifier: pid)
+                (currentDomain,
+                 isDisabledForDomain,
+                 currentSubdomain,
+                 isDisabledForSubdomain) = checkBrowserForRules(browser: supportedBrowser,
+                                                                processIdentifier: pid,
+                                                                rules: browserRules)
             }
+        } else {
+            currentDomain = ""
+            currentSubdomain = ""
         }
         
         if Bundle.main.preferredLocalizations.first == "zh-Hans" {
@@ -495,6 +559,35 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     }
     
     func updateStatus() {
+        if currentDomain == currentSubdomain {
+            currentSubdomain = ""
+        }
+        if currentDomain.isEmpty {
+            disableDomainMenuItem.isHidden = true
+        } else {
+            disableDomainMenuItem.isHidden = false
+        }
+        if currentSubdomain.isEmpty {
+            disableSubdomainMenuItem.isHidden = true
+        } else {
+            disableSubdomainMenuItem.isHidden = false
+        }
+
+        if isDisabledForDomain {
+            disableDomainMenuItem.state = .on
+            disableDomainMenuItem.title = String(format: NSLocalizedString("menu.disabled_domain", comment: "Disabled for %@"), currentDomain)
+        } else {
+            disableDomainMenuItem.state = .off
+            disableDomainMenuItem.title = String(format: NSLocalizedString("menu.disable_domain", comment: "Disable for %@"), currentDomain)
+        }
+        if isDisabledForSubdomain {
+            disableSubdomainMenuItem.state = .on
+            disableSubdomainMenuItem.title = String(format: NSLocalizedString("menu.disabled_subdomain", comment: "Disabled for %@"), currentSubdomain)
+        } else {
+            disableSubdomainMenuItem.state = .off
+            disableSubdomainMenuItem.title = String(format: NSLocalizedString("menu.disable_subdomain", comment: "Disable for %@"), currentSubdomain)
+        }
+
         if isDisabledForApp {
             disableAppMenuItem.state = .on
             disableAppMenuItem.title = String(format: NSLocalizedString("menu.disabled_app", comment: "Disabled for %@"), currentAppName)
@@ -503,15 +596,31 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             disableAppMenuItem.title = String(format: NSLocalizedString("menu.disable_app", comment: "Disable for %@"), currentAppName)
         }
         
-        if isShiftForAppEnabled && BLClient.isNightShiftEnabled == isDisabledForApp {
-            shift(isEnabled: !isDisabledForApp)
-            setActiveState(state: !isDisabledForApp)
+        if isShiftForAppEnabled && (BLClient.isNightShiftEnabled == isDisabledForApp || BLClient.isNightShiftEnabled == isDisabledForDomain || BLClient.isNightShiftEnabled == isDisabledForSubdomain) {
+            shift(isEnabled: !(isDisabledForApp || isDisabledForDomain || isDisabledForSubdomain) )
+            setActiveState(state: !(isDisabledForApp || isDisabledForDomain || isDisabledForSubdomain) )
         }
     }
     
     func enableForCurrentApp() {
         if isDisabledForApp {
             disabledApps.remove(at: disabledApps.index(of: currentAppBundleId)!)
+            updateCurrentApp()
+        }
+    }
+    
+    func enableForCurrentDomain() {
+        if isDisabledForDomain {
+            let rule = BrowserRule(host: currentDomain, includeSubdomains: true)
+            browserRules.remove(at: browserRules.index(of: rule)!)
+            updateCurrentApp()
+        }
+    }
+    
+    func enableForCurrentSubdomain() {
+        if isDisabledForSubdomain {
+            let rule = BrowserRule(host: currentSubdomain, includeSubdomains: false)
+            browserRules.remove(at: browserRules.index(of: rule)!)
             updateCurrentApp()
         }
     }
@@ -526,6 +635,10 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             self.disableHourMenuItem.isEnabled = false
         } else if self.isDisabledForApp {
             self.disableHourMenuItem.isEnabled = false
+        } else if self.isDisabledForDomain {
+            self.disableHourMenuItem.isEnabled = false
+        } else if self.isDisabledForSubdomain {
+            self.disableHourMenuItem.isEnabled = false
         } else {
             self.disableHourMenuItem.isEnabled = state
         }
@@ -534,8 +647,48 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             self.disableCustomMenuItem.isEnabled = true
         } else if self.isDisabledForApp {
             self.disableCustomMenuItem.isEnabled = false
+        } else if self.isDisabledForDomain {
+            self.disableCustomMenuItem.isEnabled = false
+        } else if self.isDisabledForSubdomain {
+            self.disableCustomMenuItem.isEnabled = false
         } else {
             self.disableCustomMenuItem.isEnabled = state
+        }
+        
+        if self.isDisableCustomSelected {
+            self.disableAppMenuItem.isEnabled = false
+        } else if self.isDisabledForApp {
+            self.disableAppMenuItem.isEnabled = true
+        } else if self.isDisabledForDomain {
+            self.disableAppMenuItem.isEnabled = false
+        } else if self.isDisabledForSubdomain {
+            self.disableAppMenuItem.isEnabled = false
+        } else {
+            self.disableAppMenuItem.isEnabled = state
+        }
+        
+        if self.isDisableCustomSelected {
+            self.disableDomainMenuItem.isEnabled = false
+        } else if self.isDisabledForApp {
+            self.disableDomainMenuItem.isEnabled = false
+        } else if self.isDisabledForDomain {
+            self.disableDomainMenuItem.isEnabled = true
+        } else if self.isDisabledForSubdomain {
+            self.disableDomainMenuItem.isEnabled = false
+        } else {
+            self.disableDomainMenuItem.isEnabled = state
+        }
+        
+        if self.isDisableCustomSelected {
+            self.disableSubdomainMenuItem.isEnabled = false
+        } else if self.isDisabledForApp {
+            self.disableSubdomainMenuItem.isEnabled = false
+        } else if self.isDisabledForDomain {
+            self.disableSubdomainMenuItem.isEnabled = false
+        } else if self.isDisabledForSubdomain {
+            self.disableSubdomainMenuItem.isEnabled = true
+        } else {
+            self.disableSubdomainMenuItem.isEnabled = state
         }
         
         if state {

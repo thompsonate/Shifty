@@ -108,38 +108,133 @@ extension URL {
     func containsPath(path: String) -> Bool {
         return self.path.range(of: path) != nil
     }
+    
+    func topDomain() -> String? {
+        if let self_host = self.host {
+            let components = self_host.components(separatedBy: ".")
+            if components.count < 2 {
+                return nil
+            }
+            let possibleDomain = components[components.count - 2]
+            let possibleTLD = components.last!
+            var isSecondLevel = false
+            switch possibleTLD {
+            case "at":
+                switch possibleDomain {
+                case "co","or","priv","ac":
+                    isSecondLevel = true
+                default:
+                    isSecondLevel = false
+                }
+            case "fr":
+                switch possibleDomain {
+                case "avocat","aeroport","veterinaire":
+                    isSecondLevel = true
+                default:
+                    isSecondLevel = false
+                }
+            case "nz":
+                switch possibleDomain {
+                case "ac","co","school","cri","govt","mil","parliament":
+                    isSecondLevel = true
+                default:
+                    isSecondLevel = false
+                }
+            case "il":
+                switch possibleDomain {
+                case "org","k12","gov","muni","idf":
+                    isSecondLevel = true
+                default:
+                    isSecondLevel = false
+                }
+            case "ru":
+                switch possibleDomain {
+                case "ac","com","int":
+                    isSecondLevel = true
+                default:
+                    isSecondLevel = false
+                }
+            case "za":
+                switch possibleDomain {
+                case "ac","gov","law","mil","nom","school","net":
+                    isSecondLevel = true
+                default:
+                    isSecondLevel = false
+                }
+            case "es":
+                switch possibleDomain {
+                case "nom","org","gob","com":
+                    isSecondLevel = true
+                default:
+                    isSecondLevel = false
+                }
+            case "ua":
+                switch possibleDomain {
+                case "gov","com","in","org","net","edu":
+                    isSecondLevel = true
+                default:
+                    isSecondLevel = false
+                }
+            case "uk":
+                switch possibleDomain {
+                case "co","org","me","ltd","plc","plc":
+                    isSecondLevel = true
+                default:
+                    isSecondLevel = false
+                }
+            default:
+                isSecondLevel = false
+            }
+            if isSecondLevel {
+                if components.count < 3 {
+                    return nil
+                } else {
+                    let realDomain = components[components.count - 3]
+                    return [realDomain, possibleDomain, possibleTLD]
+                        .joined(separator: ".")
+                }
+            } else {
+                return [possibleDomain, possibleTLD]
+                    .joined(separator: ".")
+            }
+        }
+        return nil
+    }
 }
 
-struct BrowserRule: CustomStringConvertible {
+struct BrowserRule: CustomStringConvertible, Equatable, Codable {
     var host: String
-    var path: String
     var includeSubdomains: Bool
     
     var description: String {
-        return "Rule for domain \(host) with path \(path), include subdomains: \(includeSubdomains)"
+        return "Rule for domain \(host), include subdomains: \(includeSubdomains)"
+    }
+    static func ==(lhs: BrowserRule, rhs: BrowserRule) -> Bool {
+        return lhs.host == rhs.host && lhs.includeSubdomains == rhs.includeSubdomains
     }
 }
 
-var browserRules = [
-    BrowserRule(host: "netflix.com", path: "", includeSubdomains: true)
-]
-
-private func ruleMatchesURL(rule: BrowserRule, url: URL) -> Bool {
-    var matches = false
-    
-    if !(rule.host.isEmpty) {
-        matches = url.matchesDomain(domain: rule.host, includeSubdomains: rule.includeSubdomains)
-    }
-    
-    if !(rule.path.isEmpty) {
-        matches = matches && url.containsPath(path: rule.path)
-    }
-    
-    return matches
+enum RuleResult {
+    case matchDomain
+    case matchSubdomain
+    case noMatch
 }
 
-func checkBrowserForRule(browser: SupportedBrowser, processIdentifier: pid_t) -> Bool {
+private func ruleMatchesURL(rule: BrowserRule, url: URL) -> RuleResult {
+    if url.matchesDomain(domain: rule.host,
+                         includeSubdomains: rule.includeSubdomains) {
+        return rule.includeSubdomains ? .matchDomain : .matchSubdomain
+    }
+    return .noMatch
+}
+
+func checkBrowserForRules(browser: SupportedBrowser, processIdentifier: pid_t, rules: [BrowserRule]) -> (String, Bool, String, Bool) {
     var currentURL: URL? = nil
+    var domain: String = ""
+    var subdomain: String = ""
+    var matchedDomain: Bool = false
+    var matchedSubdomain: Bool = false
+    
     switch browser {
     case .Safari, .SafariTechnologyPreview:
         if let url = getSafariCurrentTabURL(processIdentifier) {
@@ -152,14 +247,23 @@ func checkBrowserForRule(browser: SupportedBrowser, processIdentifier: pid_t) ->
     }
     
     if let url = currentURL {
-        for rule in browserRules {
-            if ruleMatchesURL(rule: rule, url: url) {
-                return true
+        domain = url.topDomain() ?? ""
+        subdomain = url.host ?? ""
+        for rule in rules {
+            switch ruleMatchesURL(rule: rule, url: url) {
+            case .matchDomain:
+                matchedDomain = true
+                break
+            case .matchSubdomain:
+                matchedSubdomain = true
+                break
+            case .noMatch:
+                continue
             }
         }
     }
     
-    return false
+    return (domain, matchedDomain, subdomain, matchedSubdomain)
 }
 
 func startBrowserWatcher(_ processIdentifier: pid_t, callback: @escaping () -> Void) throws {
