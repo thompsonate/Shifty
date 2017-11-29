@@ -35,9 +35,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         Fabric.with([Crashlytics.self])
         Event.appLaunched.record()
 
-        guard UIElement.isProcessTrusted(withPrompt: true) else {
-            NSLog("No accessibility API permission, exiting")
-            NSRunningApplication.current.terminate()
+        if !UIElement.isProcessTrusted(withPrompt: false) {
+            let alert: NSAlert = NSAlert()
+            alert.messageText = NSLocalizedString("alert.accessibility_message", comment: "Shifty needs Accessibility permissions to provide all its features")
+            alert.informativeText = NSLocalizedString("alert.accessibility_informative", comment: "Launch Shifty only when you have granted the required permissions.")
+            alert.alertStyle = NSAlert.Style.warning
+            alert.addButton(withTitle: NSLocalizedString("general.ok", comment: "OK"))
+            alert.addButton(withTitle: NSLocalizedString("general.cancel", comment: "Cancel"))
+            if alert.runModal() == .alertFirstButtonReturn {
+                NSWorkspace.shared.open(URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility")!)
+            }
+            NSApplication.shared.terminate(self)
             return
         }
                 
