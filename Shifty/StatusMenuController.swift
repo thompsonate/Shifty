@@ -79,6 +79,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         sunIcon.image?.isTemplate = true
         moonIcon.image?.isTemplate = true
         
+        sliderView.shiftSlider.floatValue = BLClient.strength * 100
+        
         sliderView.sliderValueChanged = {(sliderValue) in
             self.shift(strength: sliderValue)
             self.isShiftForAppEnabled = sliderValue != 0.0
@@ -97,7 +99,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             self.enableForCurrentSubdomain()
             self.setDescriptionText(keepVisible: true)
         }
-        
+
         disableHourMenuItem.title = NSLocalizedString("menu.disable_hour", comment: "Disable for an hour")
         disableCustomMenuItem.title = NSLocalizedString("menu.disable_custom", comment: "Disable for custom time...")
         preferencesMenuItem.title = NSLocalizedString("menu.preferences", comment: "Preferences...")
