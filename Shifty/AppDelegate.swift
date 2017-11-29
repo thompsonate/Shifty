@@ -34,7 +34,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         UserDefaults.standard.register(defaults: ["NSApplicationCrashOnExceptions": true])
         Fabric.with([Crashlytics.self])
         Event.appLaunched.record()
-        
+
         guard UIElement.isProcessTrusted(withPrompt: true) else {
             NSLog("No accessibility API permission, exiting")
             NSRunningApplication.current.terminate()

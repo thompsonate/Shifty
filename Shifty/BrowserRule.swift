@@ -7,6 +7,7 @@
 
 import ScriptingBridge
 import AXSwift
+import PublicSuffix
 
 enum SupportedBrowser : String {
     case Safari                  = "com.apple.Safari"
@@ -108,98 +109,6 @@ extension URL {
     func containsPath(path: String) -> Bool {
         return self.path.range(of: path) != nil
     }
-    
-    func topDomain() -> String? {
-        if let self_host = self.host {
-            let components = self_host.components(separatedBy: ".")
-            if components.count < 2 {
-                return nil
-            }
-            let possibleDomain = components[components.count - 2]
-            let possibleTLD = components.last!
-            var isSecondLevel = false
-            switch possibleTLD {
-            case "at":
-                switch possibleDomain {
-                case "co","or","priv","ac":
-                    isSecondLevel = true
-                default:
-                    isSecondLevel = false
-                }
-            case "fr":
-                switch possibleDomain {
-                case "avocat","aeroport","veterinaire":
-                    isSecondLevel = true
-                default:
-                    isSecondLevel = false
-                }
-            case "nz":
-                switch possibleDomain {
-                case "ac","co","school","cri","govt","mil","parliament":
-                    isSecondLevel = true
-                default:
-                    isSecondLevel = false
-                }
-            case "il":
-                switch possibleDomain {
-                case "org","k12","gov","muni","idf":
-                    isSecondLevel = true
-                default:
-                    isSecondLevel = false
-                }
-            case "ru":
-                switch possibleDomain {
-                case "ac","com","int":
-                    isSecondLevel = true
-                default:
-                    isSecondLevel = false
-                }
-            case "za":
-                switch possibleDomain {
-                case "ac","gov","law","mil","nom","school","net":
-                    isSecondLevel = true
-                default:
-                    isSecondLevel = false
-                }
-            case "es":
-                switch possibleDomain {
-                case "nom","org","gob","com":
-                    isSecondLevel = true
-                default:
-                    isSecondLevel = false
-                }
-            case "ua":
-                switch possibleDomain {
-                case "gov","com","in","org","net","edu":
-                    isSecondLevel = true
-                default:
-                    isSecondLevel = false
-                }
-            case "uk":
-                switch possibleDomain {
-                case "co","org","me","ltd","plc","plc":
-                    isSecondLevel = true
-                default:
-                    isSecondLevel = false
-                }
-            default:
-                isSecondLevel = false
-            }
-            if isSecondLevel {
-                if components.count < 3 {
-                    return nil
-                } else {
-                    let realDomain = components[components.count - 3]
-                    return [realDomain, possibleDomain, possibleTLD]
-                        .joined(separator: ".")
-                }
-            } else {
-                return [possibleDomain, possibleTLD]
-                    .joined(separator: ".")
-            }
-        }
-        return nil
-    }
 }
 
 struct BrowserRule: CustomStringConvertible, Equatable, Codable {
@@ -247,7 +156,7 @@ func checkBrowserForRules(browser: SupportedBrowser, processIdentifier: pid_t, r
     }
     
     if let url = currentURL {
-        domain = url.topDomain() ?? ""
+        domain = url.registeredDomain ?? ""
         subdomain = url.host ?? ""
         for rule in rules {
             switch ruleMatchesURL(rule: rule, url: url) {
