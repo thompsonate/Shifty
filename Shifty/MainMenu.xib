@@ -25,7 +25,9 @@
                 <outlet property="descriptionMenuItem" destination="zi6-lD-Hd5" id="DcD-QI-A3k"/>
                 <outlet property="disableAppMenuItem" destination="ycw-C3-JG6" id="w7g-sV-odc"/>
                 <outlet property="disableCustomMenuItem" destination="VMR-D3-M60" id="Seo-8A-F4I"/>
+                <outlet property="disableDomainMenuItem" destination="JPo-kA-2ad" id="apR-hI-2G1"/>
                 <outlet property="disableHourMenuItem" destination="lLZ-zs-A2J" id="JBY-cw-D9b"/>
+                <outlet property="disableSubdomainMenuItem" destination="VgG-sQ-dcu" id="1hP-t7-xvX"/>
                 <outlet property="moonIcon" destination="QFo-Gz-iR8" id="bkD-8o-fbd"/>
                 <outlet property="powerMenuItem" destination="3QK-Yf-KEO" id="Ndx-D9-T04"/>
                 <outlet property="preferencesMenuItem" destination="GJi-nB-WzR" id="0Ga-17-Xdo"/>
@@ -56,6 +58,18 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="disableForApp:" target="YHE-ZD-Fjn" id="Akx-Tu-eBm"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Disable for Domain" hidden="YES" indentationLevel="2" id="JPo-kA-2ad">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="disableForDomain:" target="YHE-ZD-Fjn" id="wmW-zE-TU0"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Disable for Subdomain" hidden="YES" indentationLevel="2" id="VgG-sQ-dcu">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="disableForSubdomain:" target="YHE-ZD-Fjn" id="gcy-bV-Y1z"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Disable for an hour" id="lLZ-zs-A2J">

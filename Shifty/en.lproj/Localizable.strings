@@ -7,11 +7,16 @@
 */
 
 "general.ok" = "OK";
+"general.cancel" = "Cancel";
 
 "menu.toggle_on" = "Turn on Night Shift";
 "menu.toggle_off" = "Turn off Night Shift";
 "menu.disable_app" = "Disable for %@";
 "menu.disabled_app" = "Disabled for %@";
+"menu.disable_domain" = "Disable for %@";
+"menu.disabled_domain" = "Disabled for %@";
+"menu.disable_subdomain" = "Disable for %@";
+"menu.disabled_subdomain" = "Disabled for %@";
 "menu.disable_hour" = "Disable for an hour";
 "menu.disabled_hour" = "Disabled for an hour";
 "menu.disable_custom" = "Disable for custom time...";
@@ -37,3 +42,6 @@
 
 "alert.hardware_message" = "Your Mac does not support Night Shift";
 "alert.hardware_informative" = "A newer Mac is required to use Shifty.";
+
+"alert.accessibility_message" = "Shifty needs Accessibility permissions to provide all its features";
+"alert.accessibility_informative" = "Launch Shifty only when you have granted the required permissions.";

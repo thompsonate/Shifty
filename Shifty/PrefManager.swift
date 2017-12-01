@@ -15,6 +15,7 @@ struct Keys {
     static let isDarkModeSyncEnabled = "isDarkModeSyncEnabled"
     static let lastKnownLocation = "lastKnownLocation"
     static let disabledApps = "disabledApps"
+    static let browserRules = "browserRules"
     
     static let toggleNightShiftShortcut = "toggleNightShiftShortcut"
     static let incrementColorTempShortcut = "incrementColorTempShortcut"
@@ -40,7 +41,8 @@ class PrefManager {
             Keys.isStatusToggleEnabled: NSNumber(value: false),
             Keys.isIconSwitchingEnabled: NSNumber(value: false),
             Keys.isDarkModeSyncEnabled: NSNumber(value: false),
-            Keys.disabledApps: [String]()
+            Keys.disabledApps: [String](),
+            Keys.browserRules: NSData()
             ] as [String : Any]
         
         userDefaults.register(defaults: factoryDefaults)
@@ -57,6 +59,7 @@ class PrefManager {
         userDefaults.removeObject(forKey: Keys.isDarkModeSyncEnabled)
         userDefaults.removeObject(forKey: Keys.lastKnownLocation)
         userDefaults.removeObject(forKey: Keys.disabledApps)
+        userDefaults.removeObject(forKey: Keys.browserRules)
         userDefaults.removeObject(forKey: Keys.toggleNightShiftShortcut)
         userDefaults.removeObject(forKey: Keys.incrementColorTempShortcut)
         userDefaults.removeObject(forKey: Keys.decrementColorTempShortcut)
