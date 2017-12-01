@@ -13,6 +13,7 @@ struct Keys {
     static let isAutoLaunchEnabled = "isAutoLaunchEnabled"
     static let isIconSwitchingEnabled = "isIconSwitchingEnabled"
     static let isDarkModeSyncEnabled = "isDarkModeSyncEnabled"
+    static let isWebsiteControlEnabled = "isWebsiteControlEnabled"
     static let lastKnownLocation = "lastKnownLocation"
     static let disabledApps = "disabledApps"
     static let browserRules = "browserRules"
@@ -41,6 +42,7 @@ class PrefManager {
             Keys.isStatusToggleEnabled: NSNumber(value: false),
             Keys.isIconSwitchingEnabled: NSNumber(value: false),
             Keys.isDarkModeSyncEnabled: NSNumber(value: false),
+            Keys.isWebsiteControlEnabled: NSNumber(value: false),
             Keys.disabledApps: [String](),
             Keys.browserRules: NSData()
             ] as [String : Any]
@@ -57,6 +59,7 @@ class PrefManager {
         userDefaults.removeObject(forKey: Keys.isStatusToggleEnabled)
         userDefaults.removeObject(forKey: Keys.isIconSwitchingEnabled)
         userDefaults.removeObject(forKey: Keys.isDarkModeSyncEnabled)
+        userDefaults.removeObject(forKey: Keys.isWebsiteControlEnabled)
         userDefaults.removeObject(forKey: Keys.lastKnownLocation)
         userDefaults.removeObject(forKey: Keys.disabledApps)
         userDefaults.removeObject(forKey: Keys.browserRules)

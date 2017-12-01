@@ -515,31 +515,33 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         isDisabledForDomain = false
         isDisabledForSubdomain = false
         
-        if let supportedBrowser = SupportedBrowser(rawValue: currentAppBundleId) {
-            if let pid = NSWorkspace.shared.menuBarOwningApplication?.processIdentifier {
-                do {
-                    try startBrowserWatcher(pid) {
-                        (self.currentDomain,
-                         self.isDisabledForDomain,
-                         self.currentSubdomain,
-                         self.isDisabledForSubdomain) = checkBrowserForRules(browser: supportedBrowser,
-                                                                             processIdentifier: pid,
-                                                                             rules: self.browserRules)
-                        self.updateStatus()
+        if UserDefaults.standard.bool(forKey: Keys.isWebsiteControlEnabled) {
+            if let supportedBrowser = SupportedBrowser(rawValue: currentAppBundleId) {
+                if let pid = NSWorkspace.shared.menuBarOwningApplication?.processIdentifier {
+                    do {
+                        try startBrowserWatcher(pid) {
+                            (self.currentDomain,
+                             self.isDisabledForDomain,
+                             self.currentSubdomain,
+                             self.isDisabledForSubdomain) = checkBrowserForRules(browser: supportedBrowser,
+                                                                                 processIdentifier: pid,
+                                                                                 rules: self.browserRules)
+                            self.updateStatus()
+                        }
+                    } catch let error {
+                        NSLog("Error: Could not watch app [\(pid)]: \(error)")
                     }
-                } catch let error {
-                    NSLog("Error: Could not watch app [\(pid)]: \(error)")
+                    (currentDomain,
+                     isDisabledForDomain,
+                     currentSubdomain,
+                     isDisabledForSubdomain) = checkBrowserForRules(browser: supportedBrowser,
+                                                                    processIdentifier: pid,
+                                                                    rules: browserRules)
                 }
-                (currentDomain,
-                 isDisabledForDomain,
-                 currentSubdomain,
-                 isDisabledForSubdomain) = checkBrowserForRules(browser: supportedBrowser,
-                                                                processIdentifier: pid,
-                                                                rules: browserRules)
+            } else {
+                currentDomain = ""
+                currentSubdomain = ""
             }
-        } else {
-            currentDomain = ""
-            currentSubdomain = ""
         }
         
         if Bundle.main.preferredLocalizations.first == "zh-Hans" {
@@ -564,15 +566,12 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         if currentDomain == currentSubdomain {
             currentSubdomain = ""
         }
-        if currentDomain.isEmpty {
+        if UserDefaults.standard.bool(forKey: Keys.isWebsiteControlEnabled) {
+            disableDomainMenuItem.isHidden = currentDomain.isEmpty
+            disableSubdomainMenuItem.isHidden = currentSubdomain.isEmpty
+        } else {
             disableDomainMenuItem.isHidden = true
-        } else {
-            disableDomainMenuItem.isHidden = false
-        }
-        if currentSubdomain.isEmpty {
             disableSubdomainMenuItem.isHidden = true
-        } else {
-            disableSubdomainMenuItem.isHidden = false
         }
 
         if isDisabledForDomain {
@@ -631,6 +630,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         self.activeState = state
         self.sliderView.shiftSlider.isEnabled = state
         
+        //disableHourMenuItem
         if self.isDisableHourSelected {
             self.disableHourMenuItem.isEnabled = true
         } else if self.customTimeWindow.isWindowLoaded && self.customTimeWindow.window?.isVisible ?? false {
@@ -645,6 +645,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             self.disableHourMenuItem.isEnabled = state
         }
         
+        
+        //disableCustomMenuItem
         if self.isDisableCustomSelected {
             self.disableCustomMenuItem.isEnabled = true
         } else if self.isDisabledForApp {
@@ -657,6 +659,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             self.disableCustomMenuItem.isEnabled = state
         }
         
+        //disableAppMenuItem
         if self.isDisableCustomSelected {
             self.disableAppMenuItem.isEnabled = false
         } else if self.isDisabledForApp {
@@ -669,6 +672,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             self.disableAppMenuItem.isEnabled = state
         }
         
+        //disableDomainMenuItem
         if self.isDisableCustomSelected {
             self.disableDomainMenuItem.isEnabled = false
         } else if self.isDisabledForApp {
@@ -681,6 +685,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             self.disableDomainMenuItem.isEnabled = state
         }
         
+        //disableSubdomainMenuItem
         if self.isDisableCustomSelected {
             self.disableSubdomainMenuItem.isEnabled = false
         } else if self.isDisabledForApp {

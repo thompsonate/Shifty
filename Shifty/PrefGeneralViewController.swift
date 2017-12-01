@@ -8,6 +8,7 @@
 import Cocoa
 import MASPreferences_Shifty
 import ServiceManagement
+import AXSwift
 
 ///The height difference between the custom schedule controls being shown and hidden
 let PREF_GENERAL_HEIGHT_ADJUSTMENT = CGFloat(33.0)
@@ -106,9 +107,22 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
     }
     
     @IBAction func syncDarkMode(_ sender: NSButtonCell) {
-        updateDarkMode!()
-        if !UserDefaults.standard.bool(forKey: Keys.isDarkModeSyncEnabled) {
+        if sender.state == .on {
+            updateDarkMode!()
+        } else {
             SLSSetAppearanceThemeLegacy(false)
+        }
+    }
+    
+    @IBAction func setWebsiteControl(_ sender: NSButtonCell) {
+        if !UIElement.isProcessTrusted(withPrompt: false) {
+            if sender.state == .on {
+                appDelegate.showAccessibilityAlert()
+            } else {
+                stopBrowserWatcher()
+            }
+        } else {
+            stopBrowserWatcher()
         }
     }
     

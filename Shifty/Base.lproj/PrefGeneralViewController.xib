@@ -29,7 +29,7 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <view wantsLayer="YES" id="bXz-rK-jao">
-            <rect key="frame" x="0.0" y="0.0" width="359" height="274"/>
+            <rect key="frame" x="0.0" y="0.0" width="359" height="297"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <box horizontalHuggingPriority="1000" verticalHuggingPriority="1000" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Xwu-c8-3l2">
@@ -208,10 +208,10 @@
                     </view>
                 </box>
                 <stackView distribution="fillProportionally" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0jm-Ti-Q6H">
-                    <rect key="frame" x="20" y="112" width="319" height="142"/>
+                    <rect key="frame" x="20" y="112" width="319" height="165"/>
                     <subviews>
                         <button horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="150" placeholderIntrinsicHeight="infinite" translatesAutoresizingMaskIntoConstraints="NO" id="JqG-nx-58t">
-                            <rect key="frame" x="-2" y="126" width="154" height="18"/>
+                            <rect key="frame" x="-2" y="148" width="154" height="19"/>
                             <buttonCell key="cell" type="check" title="Launch Shifty at login" bezelStyle="regularSquare" imagePosition="left" inset="2" id="bxC-lM-Pei">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -224,7 +224,7 @@
                             </connections>
                         </button>
                         <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="3" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yAY-1H-lKe">
-                            <rect key="frame" x="0.0" y="75" width="319" height="45"/>
+                            <rect key="frame" x="0.0" y="97" width="319" height="45"/>
                             <subviews>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KNx-x5-o3g">
                                     <rect key="frame" x="-2" y="29" width="102" height="18"/>
@@ -262,7 +262,7 @@
                             </customSpacing>
                         </stackView>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Iuc-Pc-Qb3">
-                            <rect key="frame" x="-2" y="51" width="246" height="18"/>
+                            <rect key="frame" x="-2" y="73" width="246" height="18"/>
                             <buttonCell key="cell" type="check" title="Change icon according to Night Shift" bezelStyle="regularSquare" imagePosition="left" inset="2" id="4io-9H-HXp">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -276,7 +276,7 @@
                             </connections>
                         </button>
                         <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="3" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oRi-qV-fL9">
-                            <rect key="frame" x="0.0" y="0.0" width="319" height="45"/>
+                            <rect key="frame" x="0.0" y="22" width="319" height="45"/>
                             <subviews>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Gdr-ZW-5aK">
                                     <rect key="frame" x="-2" y="29" width="155" height="18"/>
@@ -313,9 +313,22 @@
                                 <real value="3.4028234663852886e+38"/>
                             </customSpacing>
                         </stackView>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="I5d-cF-2Wh">
+                            <rect key="frame" x="-2" y="-2" width="248" height="18"/>
+                            <buttonCell key="cell" type="check" title="Enable control for individual websites" bezelStyle="regularSquare" imagePosition="left" inset="2" id="HRq-mZ-FxG">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="system"/>
+                                <connections>
+                                    <action selector="setWebsiteControl:" target="-2" id="Bv1-Zq-Cdh"/>
+                                </connections>
+                            </buttonCell>
+                            <connections>
+                                <binding destination="HAt-Ds-MVV" name="value" keyPath="values.isWebsiteControlEnabled" id="dpJ-If-rbe"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="height" constant="142" id="YMs-ly-N0d"/>
+                        <constraint firstAttribute="height" constant="165" id="YMs-ly-N0d"/>
                         <constraint firstAttribute="trailing" secondItem="yAY-1H-lKe" secondAttribute="trailing" id="cpw-tD-PTx"/>
                         <constraint firstAttribute="trailing" secondItem="oRi-qV-fL9" secondAttribute="trailing" id="hJC-fM-j7X"/>
                     </constraints>
@@ -324,8 +337,10 @@
                         <integer value="1000"/>
                         <integer value="1000"/>
                         <integer value="1000"/>
+                        <integer value="1000"/>
                     </visibilityPriorities>
                     <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
                         <real value="3.4028234663852886e+38"/>
                         <real value="3.4028234663852886e+38"/>
                         <real value="3.4028234663852886e+38"/>
@@ -342,7 +357,7 @@
                 <constraint firstItem="Xwu-c8-3l2" firstAttribute="leading" secondItem="bXz-rK-jao" secondAttribute="leading" constant="20" id="oOd-4Y-2n6"/>
                 <constraint firstAttribute="trailing" secondItem="0jm-Ti-Q6H" secondAttribute="trailing" constant="20" id="ulL-5K-bvV"/>
             </constraints>
-            <point key="canvasLocation" x="48.5" y="316"/>
+            <point key="canvasLocation" x="48.5" y="327.5"/>
         </view>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <userDefaultsController representsSharedInstance="YES" id="HAt-Ds-MVV"/>
