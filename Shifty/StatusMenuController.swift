@@ -563,8 +563,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     }
     
     func updateStatus() {
-        
-        if currentDomain == currentSubdomain {
+        if currentDomain == currentSubdomain || currentSubdomain == "www.\(currentDomain)" {
             currentSubdomain = ""
         }
         if UserDefaults.standard.bool(forKey: Keys.isWebsiteControlEnabled) {
