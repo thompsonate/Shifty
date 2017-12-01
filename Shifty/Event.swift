@@ -46,7 +46,9 @@ enum Event {
 extension Event {
     
     func record() {
-        Answers.logCustomEvent(withName: eventName, customAttributes: customAttributes)
+        #if !DEBUG
+            Answers.logCustomEvent(withName: eventName, customAttributes: customAttributes)
+        #endif
     }
     
     private var eventName: String {
