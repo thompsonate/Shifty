@@ -563,6 +563,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     }
     
     func updateStatus() {
+        
         if currentDomain == currentSubdomain {
             currentSubdomain = ""
         }
@@ -635,63 +636,73 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             self.disableHourMenuItem.isEnabled = true
         } else if self.customTimeWindow.isWindowLoaded && self.customTimeWindow.window?.isVisible ?? false {
             self.disableHourMenuItem.isEnabled = false
+        } else if self.isDisableCustomSelected {
+            self.disableHourMenuItem.isEnabled = false
         } else if self.isDisabledForApp {
-            self.disableHourMenuItem.isEnabled = false
+            self.disableHourMenuItem.isEnabled = true
         } else if self.isDisabledForDomain {
-            self.disableHourMenuItem.isEnabled = false
+            self.disableHourMenuItem.isEnabled = true
         } else if self.isDisabledForSubdomain {
-            self.disableHourMenuItem.isEnabled = false
+            self.disableHourMenuItem.isEnabled = true
         } else {
             self.disableHourMenuItem.isEnabled = state
         }
         
         
         //disableCustomMenuItem
-        if self.isDisableCustomSelected {
+        if self.isDisableHourSelected {
+            self.disableCustomMenuItem.isEnabled = false
+        } else if self.isDisableCustomSelected {
             self.disableCustomMenuItem.isEnabled = true
         } else if self.isDisabledForApp {
-            self.disableCustomMenuItem.isEnabled = false
+            self.disableCustomMenuItem.isEnabled = true
         } else if self.isDisabledForDomain {
-            self.disableCustomMenuItem.isEnabled = false
+            self.disableCustomMenuItem.isEnabled = true
         } else if self.isDisabledForSubdomain {
-            self.disableCustomMenuItem.isEnabled = false
+            self.disableCustomMenuItem.isEnabled = true
         } else {
             self.disableCustomMenuItem.isEnabled = state
         }
         
         //disableAppMenuItem
-        if self.isDisableCustomSelected {
-            self.disableAppMenuItem.isEnabled = false
+        if self.isDisableHourSelected {
+            self.disableAppMenuItem.isEnabled = true
+        } else if self.isDisableCustomSelected {
+            self.disableAppMenuItem.isEnabled = true
         } else if self.isDisabledForApp {
             self.disableAppMenuItem.isEnabled = true
         } else if self.isDisabledForDomain {
-            self.disableAppMenuItem.isEnabled = false
+            self.disableAppMenuItem.isEnabled = true
         } else if self.isDisabledForSubdomain {
-            self.disableAppMenuItem.isEnabled = false
+            self.disableAppMenuItem.isEnabled = true
         } else {
             self.disableAppMenuItem.isEnabled = state
         }
         
         //disableDomainMenuItem
-        if self.isDisableCustomSelected {
-            self.disableDomainMenuItem.isEnabled = false
+        if self.isDisableHourSelected {
+            self.disableDomainMenuItem.isEnabled = true
+        } else if self.isDisableCustomSelected {
+            self.disableDomainMenuItem.isEnabled = true
         } else if self.isDisabledForApp {
-            self.disableDomainMenuItem.isEnabled = false
+            self.disableDomainMenuItem.isEnabled = true
         } else if self.isDisabledForDomain {
             self.disableDomainMenuItem.isEnabled = true
         } else if self.isDisabledForSubdomain {
-            self.disableDomainMenuItem.isEnabled = false
+            self.disableDomainMenuItem.isEnabled = true
         } else {
             self.disableDomainMenuItem.isEnabled = state
         }
         
         //disableSubdomainMenuItem
-        if self.isDisableCustomSelected {
-            self.disableSubdomainMenuItem.isEnabled = false
+        if self.isDisableHourSelected {
+            self.disableSubdomainMenuItem.isEnabled = true
+        } else if self.isDisableCustomSelected {
+            self.disableSubdomainMenuItem.isEnabled = true
         } else if self.isDisabledForApp {
-            self.disableSubdomainMenuItem.isEnabled = false
+            self.disableSubdomainMenuItem.isEnabled = true
         } else if self.isDisabledForDomain {
-            self.disableSubdomainMenuItem.isEnabled = false
+            self.disableSubdomainMenuItem.isEnabled = true
         } else if self.isDisabledForSubdomain {
             self.disableSubdomainMenuItem.isEnabled = true
         } else {

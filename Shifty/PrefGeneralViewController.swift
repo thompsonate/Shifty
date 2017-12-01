@@ -115,12 +115,8 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
     }
     
     @IBAction func setWebsiteControl(_ sender: NSButtonCell) {
-        if !UIElement.isProcessTrusted(withPrompt: false) {
-            if sender.state == .on {
-                appDelegate.showAccessibilityAlert()
-            } else {
-                stopBrowserWatcher()
-            }
+        if sender.state == .on && !UIElement.isProcessTrusted(withPrompt: false) {
+            appDelegate.showAccessibilityAlert()
         } else {
             stopBrowserWatcher()
         }

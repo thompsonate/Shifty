@@ -60,13 +60,13 @@
                         <action selector="disableForApp:" target="YHE-ZD-Fjn" id="Akx-Tu-eBm"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Disable for Domain" hidden="YES" indentationLevel="2" id="JPo-kA-2ad">
+                <menuItem title="Disable for Domain" hidden="YES" indentationLevel="1" id="JPo-kA-2ad">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="disableForDomain:" target="YHE-ZD-Fjn" id="wmW-zE-TU0"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Disable for Subdomain" hidden="YES" indentationLevel="2" id="VgG-sQ-dcu">
+                <menuItem title="Disable for Subdomain" hidden="YES" indentationLevel="1" id="VgG-sQ-dcu">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="disableForSubdomain:" target="YHE-ZD-Fjn" id="gcy-bV-Y1z"/>
