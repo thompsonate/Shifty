@@ -10,9 +10,12 @@ import AXSwift
 import PublicSuffix
 
 enum SupportedBrowser : String {
-    case Safari                  = "com.apple.Safari"
+    case Safari = "com.apple.Safari"
     case SafariTechnologyPreview = "com.apple.SafariTechnologyPreview"
-    case Chrome                  = "com.google.Chrome"
+    
+    case Chrome = "com.google.Chrome"
+    case ChromeCanary = "com.google.Chrome.canary"
+    case Chromium = "org.chromium.Chromium"
 }
 
 var browserObserver: Observer!
@@ -149,7 +152,7 @@ func checkBrowserForRules(browser: SupportedBrowser, processIdentifier: pid_t, r
         if let url = getSafariCurrentTabURL(processIdentifier) {
             currentURL = url
         }
-    case .Chrome:
+    case .Chrome, .ChromeCanary, .Chromium:
         if let url = getChromeCurrentTabURL(processIdentifier) {
             currentURL = url
         }
