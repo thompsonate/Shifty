@@ -19,6 +19,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let prefs = UserDefaults.standard
     @IBOutlet weak var statusMenu: NSMenu!
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+    var accessibilityPromptWindow: AccessibilityPromptWindow!
     var statusItemClicked: (() -> Void)?
     
     lazy var preferenceWindowController: PrefWindowController = {
@@ -34,12 +35,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         UserDefaults.standard.register(defaults: ["NSApplicationCrashOnExceptions": true])
         Fabric.with([Crashlytics.self])
         Event.appLaunched.record()
-        
-        if UserDefaults.standard.bool(forKey: Keys.isWebsiteControlEnabled) {
-            if !UIElement.isProcessTrusted(withPrompt: false) {
-               showAccessibilityAlert()
-            }
-        }
                 
         if !ProcessInfo().isOperatingSystemAtLeast(OperatingSystemVersion(majorVersion: 10, minorVersion: 12, patchVersion: 4)) {
             Event.oldMacOSVersion(version: ProcessInfo().operatingSystemVersionString).record()
@@ -78,21 +73,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             DistributedNotificationCenter.default().post(name: Notification.Name("killme"), object: Bundle.main.bundleIdentifier!)
         }
         
+        //Show accessibility permission prompt on third app launch
+        let count = UserDefaults.standard.integer(forKey: Keys.appLaunchCount)
+        UserDefaults.standard.set(count + 1, forKey: Keys.appLaunchCount)
+        if count == 2 && !UIElement.isProcessTrusted(withPrompt: false) {
+            NSApplication.shared.activate(ignoringOtherApps: true)
+            accessibilityPromptWindow = AccessibilityPromptWindow()
+            accessibilityPromptWindow.showWindow(nil)
+        }
+        
         setMenuBarIcon()
         setStatusToggle()
-    }
-    
-    func showAccessibilityAlert() {
-        let alert: NSAlert = NSAlert()
-        alert.messageText = NSLocalizedString("alert.accessibility_message", comment: "Shifty needs Accessibility permissions to provide all its features")
-        alert.informativeText = NSLocalizedString("alert.accessibility_informative", comment: "Launch Shifty only when you have granted the required permissions.")
-        alert.alertStyle = NSAlert.Style.warning
-        alert.addButton(withTitle: NSLocalizedString("general.ok", comment: "OK"))
-        alert.addButton(withTitle: NSLocalizedString("general.cancel", comment: "Cancel"))
-        if alert.runModal() == .alertFirstButtonReturn {
-            NSWorkspace.shared.open(URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility")!)
-        }
-        NSApplication.shared.terminate(self)
     }
     
     func setMenuBarIcon() {

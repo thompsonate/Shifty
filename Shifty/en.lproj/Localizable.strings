@@ -45,3 +45,6 @@
 
 "alert.accessibility_message" = "Shifty needs Accessibility permissions to provide all its features";
 "alert.accessibility_informative" = "Launch Shifty only when you have granted the required permissions.";
+
+"alert.open_preferences" = "Open System Preferences";
+"alert.not_now" = "Not Now";

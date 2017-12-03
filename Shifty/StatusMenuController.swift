@@ -8,6 +8,7 @@
 
 import Cocoa
 import MASShortcut
+import AXSwift
 
 let BLClient = CBBlueLightClient()
 let SSLocationManager = SunriseSetLocationManager()
@@ -140,6 +141,17 @@ class StatusMenuController: NSObject, NSMenuDelegate {
 
         NotificationCenter.default.addObserver(forName: NSNotification.Name("nightShiftToggled"), object: nil, queue: nil) { _ in
             self.blueLightNotification()
+        }
+        
+        
+        DistributedNotificationCenter.default().addObserver(forName: NSNotification.Name("com.apple.accessibility.api"), object: nil, queue: nil) { _ in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+                if UIElement.isProcessTrusted(withPrompt: false) {
+                    UserDefaults.standard.set(true, forKey: Keys.isWebsiteControlEnabled)
+                } else {
+                    UserDefaults.standard.set(false, forKey: Keys.isWebsiteControlEnabled)
+                }
+            })
         }
         
         prefGeneral.updateDarkMode = {

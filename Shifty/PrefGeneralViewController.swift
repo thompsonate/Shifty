@@ -115,8 +115,19 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
     }
     
     @IBAction func setWebsiteControl(_ sender: NSButtonCell) {
-        if sender.state == .on && !UIElement.isProcessTrusted(withPrompt: false) {
-            appDelegate.showAccessibilityAlert()
+        if sender.state == .on {
+            if !UIElement.isProcessTrusted(withPrompt: false) {
+                UserDefaults.standard.set(false, forKey: Keys.isWebsiteControlEnabled)
+                let alert: NSAlert = NSAlert()
+                alert.messageText = NSLocalizedString("alert.accessibility_message", comment: "Shifty needs Accessibility permissions to provide all its features")
+                alert.informativeText = NSLocalizedString("alert.accessibility_informative", comment: "Launch Shifty only when you have granted the required permissions.")
+                alert.alertStyle = NSAlert.Style.warning
+                alert.addButton(withTitle: NSLocalizedString("alert.open_preferences", comment: "Open System Preferences"))
+                alert.addButton(withTitle: NSLocalizedString("alert.not_now", comment: "Not Now"))
+                if alert.runModal() == .alertFirstButtonReturn {
+                    NSWorkspace.shared.open(URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility")!)
+                }
+            }
         } else {
             stopBrowserWatcher()
         }

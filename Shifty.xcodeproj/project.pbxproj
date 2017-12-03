@@ -24,6 +24,8 @@
 		4394DDAA1EBE376F00F22908 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4394DDA31EBE376F00F22908 /* Assets.xcassets */; };
 		4394DDAD1EBE376F00F22908 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4394DDA81EBE376F00F22908 /* StatusMenuController.swift */; };
 		43965AC31FC68A19001A076D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43965AC51FC68A19001A076D /* InfoPlist.strings */; };
+		439757991FD3BAC600EE456A /* AccessibilityPromptWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439757971FD3BAC600EE456A /* AccessibilityPromptWindow.swift */; };
+		4397579E1FD3CB6B00EE456A /* AccessibilityPromptWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 439757981FD3BAC600EE456A /* AccessibilityPromptWindow.xib */; };
 		43B547F11F29A77D0034E779 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B547F01F29A77D0034E779 /* Event.swift */; };
 		43B9DE151FB5924F002C4C29 /* PrefShortcutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B9DE131FB5924F002C4C29 /* PrefShortcutsViewController.swift */; };
 		43B9DE1B1FB592AE002C4C29 /* PrefAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B9DE191FB592AE002C4C29 /* PrefAboutViewController.swift */; };
@@ -86,6 +88,8 @@
 		4394DDAE1EBE379900F22908 /* Shifty-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Shifty-Bridging-Header.h"; path = "Shifty/Shifty-Bridging-Header.h"; sourceTree = "<group>"; };
 		43965AC41FC68A19001A076D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		43965AC61FC68A1B001A076D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		439757971FD3BAC600EE456A /* AccessibilityPromptWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccessibilityPromptWindow.swift; path = /Users/Nate/GitHub/Shifty/AccessibilityPromptWindow.swift; sourceTree = "<absolute>"; };
+		439757981FD3BAC600EE456A /* AccessibilityPromptWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = AccessibilityPromptWindow.xib; path = /Users/Nate/GitHub/Shifty/AccessibilityPromptWindow.xib; sourceTree = "<absolute>"; };
 		43B547F01F29A77D0034E779 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = Shifty/Event.swift; sourceTree = "<group>"; };
 		43B9DE131FB5924F002C4C29 /* PrefShortcutsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PrefShortcutsViewController.swift; path = Shifty/PrefShortcutsViewController.swift; sourceTree = "<group>"; };
 		43B9DE191FB592AE002C4C29 /* PrefAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PrefAboutViewController.swift; path = Shifty/PrefAboutViewController.swift; sourceTree = "<group>"; };
@@ -191,6 +195,8 @@
 				43D5C2381FC35FB500AF88E0 /* MainMenu.xib */,
 				4350191C1F21E99F0001324F /* CustomTimeWindow.swift */,
 				43D5C2231FC2CACF00AF88E0 /* CustomTimeWindow.xib */,
+				439757971FD3BAC600EE456A /* AccessibilityPromptWindow.swift */,
+				439757981FD3BAC600EE456A /* AccessibilityPromptWindow.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -385,6 +391,7 @@
 				43D5C21B1FC2CAC300AF88E0 /* PrefShortcutsViewController.xib in Resources */,
 				43D5C2391FC35FB500AF88E0 /* MainMenu.xib in Resources */,
 				43965AC31FC68A19001A076D /* InfoPlist.strings in Resources */,
+				4397579E1FD3CB6B00EE456A /* AccessibilityPromptWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,6 +540,7 @@
 				4368E3031EBEBA6C00D53310 /* PrefManager.swift in Sources */,
 				437D7E161EC015CB00544FC8 /* SliderView.swift in Sources */,
 				4351C7811FB5737900788CC9 /* PrefGeneralViewController.swift in Sources */,
+				439757991FD3BAC600EE456A /* AccessibilityPromptWindow.swift in Sources */,
 				43087E191F41EE0700A54523 /* BLNotificationBlock.m in Sources */,
 				4394DDAD1EBE376F00F22908 /* StatusMenuController.swift in Sources */,
 				43B9DE1B1FB592AE002C4C29 /* PrefAboutViewController.swift in Sources */,
