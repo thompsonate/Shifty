@@ -81,7 +81,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             accessibilityPromptWindow = AccessibilityPromptWindow()
             accessibilityPromptWindow.showWindow(nil)
         }
-        
+    
         setMenuBarIcon()
         setStatusToggle()
     }

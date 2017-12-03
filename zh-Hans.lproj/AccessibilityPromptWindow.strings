@@ -1,0 +1,15 @@
+
+/* Class = "NSTextFieldCell"; title = "Enable control for websites?"; ObjectID = "0AX-dD-TgZ"; */
+"0AX-dD-TgZ.title" = "Enable control for websites?";
+
+/* Class = "NSWindow"; title = "Shifty"; ObjectID = "F0z-JX-Cv5"; */
+"F0z-JX-Cv5.title" = "Shifty";
+
+/* Class = "NSTextFieldCell"; title = "Would you like to enable controlling Night Shift's state based on your current website? This feature requires accessibility permissions. Grant access to Shifty in Security & Privacy preferences, located in System Preferences."; ObjectID = "K11-SR-1vX"; */
+"K11-SR-1vX.title" = "Would you like to enable controlling Night Shift's state based on your current website? This feature requires accessibility permissions. Grant access to Shifty in Security & Privacy preferences, located in System Preferences.";
+
+/* Class = "NSButtonCell"; title = "Open System Preferences"; ObjectID = "LXx-kV-LCZ"; */
+"LXx-kV-LCZ.title" = "Open System Preferences";
+
+/* Class = "NSButtonCell"; title = "Not Now"; ObjectID = "Td9-df-dVS"; */
+"Td9-df-dVS.title" = "Not Now";

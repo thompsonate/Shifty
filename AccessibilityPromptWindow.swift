@@ -8,6 +8,8 @@
 import Cocoa
 
 class AccessibilityPromptWindow: NSWindowController {
+   
+    @IBOutlet weak var openSysPrefsButton: NSButton!
     
     override var windowNibName: NSNib.Name {
         return NSNib.Name("AccessibilityPromptWindow")
@@ -19,6 +21,8 @@ class AccessibilityPromptWindow: NSWindowController {
         self.window?.center()
         self.window?.styleMask.remove(.resizable)
         self.window?.level = .floating
+        
+        openSysPrefsButton.title = NSLocalizedString("alert.open_preferences", comment: "Open System Preferences")
     }
     
     @IBAction func openSysPrefsClicked(sender: AnyObject) {

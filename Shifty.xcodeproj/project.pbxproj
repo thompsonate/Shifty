@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3B342D441FCCA68900DEDECF /* BrowserRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B342D431FCCA68900DEDECF /* BrowserRule.swift */; };
+		43026F591FD3E00100537238 /* AccessibilityPromptWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43026F5B1FD3E00100537238 /* AccessibilityPromptWindow.xib */; };
 		43087E191F41EE0700A54523 /* BLNotificationBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 43087E181F41EE0700A54523 /* BLNotificationBlock.m */; };
 		43111A7C1FB84BC8000D8214 /* credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 43111A7B1FB84BC8000D8214 /* credits.rtf */; };
 		433AD3011F2CED1F0003FBCD /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 433AD3001F2CED1F0003FBCD /* dsa_pub.pem */; };
@@ -25,7 +26,6 @@
 		4394DDAD1EBE376F00F22908 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4394DDA81EBE376F00F22908 /* StatusMenuController.swift */; };
 		43965AC31FC68A19001A076D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43965AC51FC68A19001A076D /* InfoPlist.strings */; };
 		439757991FD3BAC600EE456A /* AccessibilityPromptWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439757971FD3BAC600EE456A /* AccessibilityPromptWindow.swift */; };
-		4397579E1FD3CB6B00EE456A /* AccessibilityPromptWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 439757981FD3BAC600EE456A /* AccessibilityPromptWindow.xib */; };
 		43B547F11F29A77D0034E779 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B547F01F29A77D0034E779 /* Event.swift */; };
 		43B9DE151FB5924F002C4C29 /* PrefShortcutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B9DE131FB5924F002C4C29 /* PrefShortcutsViewController.swift */; };
 		43B9DE1B1FB592AE002C4C29 /* PrefAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B9DE191FB592AE002C4C29 /* PrefAboutViewController.swift */; };
@@ -61,6 +61,8 @@
 /* Begin PBXFileReference section */
 		115BB8A6F00EEB28DD8A96E5 /* Pods-Shifty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shifty.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shifty/Pods-Shifty.release.xcconfig"; sourceTree = "<group>"; };
 		3B342D431FCCA68900DEDECF /* BrowserRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BrowserRule.swift; path = Shifty/BrowserRule.swift; sourceTree = "<group>"; };
+		43026F5A1FD3E00100537238 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AccessibilityPromptWindow.xib; sourceTree = "<group>"; };
+		43026F5D1FD3E00700537238 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/AccessibilityPromptWindow.strings"; sourceTree = "<group>"; };
 		43087E171F41EE0700A54523 /* BLNotificationBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BLNotificationBlock.h; path = Shifty/BLNotificationBlock.h; sourceTree = "<group>"; };
 		43087E181F41EE0700A54523 /* BLNotificationBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BLNotificationBlock.m; path = Shifty/BLNotificationBlock.m; sourceTree = "<group>"; };
 		43099BA81FC67B5000A0720B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/CustomTimeWindow.strings"; sourceTree = "<group>"; };
@@ -89,7 +91,6 @@
 		43965AC41FC68A19001A076D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		43965AC61FC68A1B001A076D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		439757971FD3BAC600EE456A /* AccessibilityPromptWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccessibilityPromptWindow.swift; path = /Users/Nate/GitHub/Shifty/AccessibilityPromptWindow.swift; sourceTree = "<absolute>"; };
-		439757981FD3BAC600EE456A /* AccessibilityPromptWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = AccessibilityPromptWindow.xib; path = /Users/Nate/GitHub/Shifty/AccessibilityPromptWindow.xib; sourceTree = "<absolute>"; };
 		43B547F01F29A77D0034E779 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = Shifty/Event.swift; sourceTree = "<group>"; };
 		43B9DE131FB5924F002C4C29 /* PrefShortcutsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PrefShortcutsViewController.swift; path = Shifty/PrefShortcutsViewController.swift; sourceTree = "<group>"; };
 		43B9DE191FB592AE002C4C29 /* PrefAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PrefAboutViewController.swift; path = Shifty/PrefAboutViewController.swift; sourceTree = "<group>"; };
@@ -196,7 +197,7 @@
 				4350191C1F21E99F0001324F /* CustomTimeWindow.swift */,
 				43D5C2231FC2CACF00AF88E0 /* CustomTimeWindow.xib */,
 				439757971FD3BAC600EE456A /* AccessibilityPromptWindow.swift */,
-				439757981FD3BAC600EE456A /* AccessibilityPromptWindow.xib */,
+				43026F5B1FD3E00100537238 /* AccessibilityPromptWindow.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -391,7 +392,7 @@
 				43D5C21B1FC2CAC300AF88E0 /* PrefShortcutsViewController.xib in Resources */,
 				43D5C2391FC35FB500AF88E0 /* MainMenu.xib in Resources */,
 				43965AC31FC68A19001A076D /* InfoPlist.strings in Resources */,
-				4397579E1FD3CB6B00EE456A /* AccessibilityPromptWindow.xib in Resources */,
+				43026F591FD3E00100537238 /* AccessibilityPromptWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -556,6 +557,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		43026F5B1FD3E00100537238 /* AccessibilityPromptWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				43026F5A1FD3E00100537238 /* Base */,
+				43026F5D1FD3E00700537238 /* zh-Hans */,
+			);
+			name = AccessibilityPromptWindow.xib;
+			path = /Users/Nate/GitHub/Shifty;
+			sourceTree = "<absolute>";
+		};
 		43965AC51FC68A19001A076D /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

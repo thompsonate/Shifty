@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="AccessibilityPromptWindow" customModule="Shifty" customModuleProvider="target">
+            <connections>
+                <outlet property="openSysPrefsButton" destination="ASe-xt-n4e" id="imG-Vc-4vS"/>
+                <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Shifty" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titleVisibility="hidden" id="F0z-JX-Cv5">
+            <windowStyleMask key="styleMask" titled="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="498" height="423"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <view key="contentView" wantsLayer="YES" misplaced="YES" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="498" height="423"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ASe-xt-n4e">
+                        <rect key="frame" x="286" y="13" width="198" height="32"/>
+                        <buttonCell key="cell" type="push" title="Open System Preferences" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LXx-kV-LCZ">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="openSysPrefsClickedWithSender:" target="-2" id="Dnb-7m-4Bt"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EJf-5Q-Xa1">
+                        <rect key="frame" x="195" y="13" width="93" height="32"/>
+                        <buttonCell key="cell" type="push" title="Not Now" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Td9-df-dVS">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="notNowClicked:" target="-2" id="o0d-wQ-znO"/>
+                        </connections>
+                    </button>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mjk-zU-Y8w">
+                        <rect key="frame" x="99" y="51" width="300" height="250"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="300" id="72N-pt-jba"/>
+                            <constraint firstAttribute="height" constant="250" id="utT-VO-hOH"/>
+                        </constraints>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="websiteFeatureScreenshot" id="VJX-n3-BY9"/>
+                    </imageView>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lct-ZP-iXx">
+                        <rect key="frame" x="20" y="344" width="65" height="65"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="65" id="FFG-gR-fwZ"/>
+                            <constraint firstAttribute="width" secondItem="Lct-ZP-iXx" secondAttribute="height" multiplier="1:1" id="heo-1b-s2d"/>
+                        </constraints>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="AppIcon" id="TRC-oe-K5t"/>
+                    </imageView>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="500" translatesAutoresizingMaskIntoConstraints="NO" id="5LE-Nx-Tvn">
+                        <rect key="frame" x="103" y="316" width="377" height="68"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="K11-SR-1vX">
+                            <font key="font" metaFont="system"/>
+                            <string key="title">Would you like to enable controlling Night Shift's state based on your current website? This feature requires accessibility permissions. Grant access to Shifty in Security &amp; Privacy preferences, located in System Preferences.</string>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2wx-R3-Io0">
+                        <rect key="frame" x="103" y="392" width="377" height="17"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Enable control for websites?" id="0AX-dD-TgZ">
+                            <font key="font" metaFont="systemBold"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="mjk-zU-Y8w" firstAttribute="top" secondItem="5LE-Nx-Tvn" secondAttribute="bottom" constant="15" id="4Wd-Ia-gbD"/>
+                    <constraint firstItem="2wx-R3-Io0" firstAttribute="leading" secondItem="Lct-ZP-iXx" secondAttribute="trailing" constant="20" id="969-5c-Hvl"/>
+                    <constraint firstAttribute="bottom" secondItem="ASe-xt-n4e" secondAttribute="bottom" constant="20" id="A5j-Q2-HfU"/>
+                    <constraint firstAttribute="trailing" secondItem="ASe-xt-n4e" secondAttribute="trailing" constant="20" id="Dk9-63-Jb9"/>
+                    <constraint firstItem="5LE-Nx-Tvn" firstAttribute="leading" secondItem="Lct-ZP-iXx" secondAttribute="trailing" constant="20" id="Dzu-sY-vAC"/>
+                    <constraint firstAttribute="trailing" secondItem="5LE-Nx-Tvn" secondAttribute="trailing" constant="20" id="E27-Pt-lpP"/>
+                    <constraint firstItem="ASe-xt-n4e" firstAttribute="top" secondItem="mjk-zU-Y8w" secondAttribute="bottom" constant="10" id="Nvi-xw-lrz"/>
+                    <constraint firstItem="2wx-R3-Io0" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" id="V0X-vR-7MD"/>
+                    <constraint firstAttribute="bottom" secondItem="EJf-5Q-Xa1" secondAttribute="bottom" constant="20" id="Y55-7E-EiU"/>
+                    <constraint firstItem="mjk-zU-Y8w" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="jWP-ZA-QRq"/>
+                    <constraint firstItem="EJf-5Q-Xa1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="je8-9o-qxQ"/>
+                    <constraint firstItem="ASe-xt-n4e" firstAttribute="leading" secondItem="EJf-5Q-Xa1" secondAttribute="trailing" constant="10" id="kmp-i7-ruv"/>
+                    <constraint firstAttribute="trailing" secondItem="2wx-R3-Io0" secondAttribute="trailing" constant="20" id="oXf-16-aSf"/>
+                    <constraint firstItem="5LE-Nx-Tvn" firstAttribute="top" secondItem="2wx-R3-Io0" secondAttribute="bottom" constant="8" id="oq1-DR-Ev9"/>
+                    <constraint firstItem="Lct-ZP-iXx" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="ov3-0i-1Bg"/>
+                    <constraint firstItem="Lct-ZP-iXx" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" id="sQ3-he-NHM"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
+            </connections>
+            <point key="canvasLocation" x="-1187" y="4.5"/>
+        </window>
+    </objects>
+    <resources>
+        <image name="AppIcon" width="128" height="128"/>
+        <image name="websiteFeatureScreenshot" width="300" height="250"/>
+    </resources>
+</document>

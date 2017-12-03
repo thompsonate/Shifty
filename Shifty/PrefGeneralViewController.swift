@@ -119,11 +119,11 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
             if !UIElement.isProcessTrusted(withPrompt: false) {
                 UserDefaults.standard.set(false, forKey: Keys.isWebsiteControlEnabled)
                 let alert: NSAlert = NSAlert()
-                alert.messageText = NSLocalizedString("alert.accessibility_message", comment: "Shifty needs Accessibility permissions to provide all its features")
-                alert.informativeText = NSLocalizedString("alert.accessibility_informative", comment: "Launch Shifty only when you have granted the required permissions.")
+                alert.messageText = NSLocalizedString("alert.accessibility_message", comment: "This feature requires accessibility permissions.")
+                alert.informativeText = NSLocalizedString("alert.accessibility_informative", comment: "Grant access to Shifty in Security & Privacy preferences, located in System Preferences.")
                 alert.alertStyle = NSAlert.Style.warning
                 alert.addButton(withTitle: NSLocalizedString("alert.open_preferences", comment: "Open System Preferences"))
-                alert.addButton(withTitle: NSLocalizedString("alert.not_now", comment: "Not Now"))
+                alert.addButton(withTitle: NSLocalizedString("general.cancel", comment: "Cancel"))
                 if alert.runModal() == .alertFirstButtonReturn {
                     NSWorkspace.shared.open(URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility")!)
                 }
