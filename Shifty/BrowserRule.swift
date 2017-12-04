@@ -117,12 +117,13 @@ extension URL {
 struct BrowserRule: CustomStringConvertible, Equatable, Codable {
     var host: String
     var includeSubdomains: Bool
+    var isException: Bool
     
     var description: String {
-        return "Rule for domain \(host), include subdomains: \(includeSubdomains)"
+        return "Rule for domain: \(host), include subdomains: \(includeSubdomains), is exception: \(isException)"
     }
     static func ==(lhs: BrowserRule, rhs: BrowserRule) -> Bool {
-        return lhs.host == rhs.host && lhs.includeSubdomains == rhs.includeSubdomains
+        return lhs.host == rhs.host && lhs.includeSubdomains == rhs.includeSubdomains && lhs.isException == rhs.isException
     }
 }
 
@@ -140,12 +141,13 @@ private func ruleMatchesURL(rule: BrowserRule, url: URL) -> RuleResult {
     return .noMatch
 }
 
-func checkBrowserForRules(browser: SupportedBrowser, processIdentifier: pid_t, rules: [BrowserRule]) -> (String, Bool, String, Bool) {
+func checkBrowserForRules(browser: SupportedBrowser, processIdentifier: pid_t, rules: [BrowserRule]) -> (String, Bool, String, Bool, Bool) {
     var currentURL: URL? = nil
     var domain: String = ""
     var subdomain: String = ""
     var matchedDomain: Bool = false
     var matchedSubdomain: Bool = false
+    var isException: Bool = false
     
     switch browser {
     case .Safari, .SafariTechnologyPreview:
@@ -165,17 +167,17 @@ func checkBrowserForRules(browser: SupportedBrowser, processIdentifier: pid_t, r
             switch ruleMatchesURL(rule: rule, url: url) {
             case .matchDomain:
                 matchedDomain = true
-                break
+                isException = rule.isException
             case .matchSubdomain:
                 matchedSubdomain = true
-                break
+                isException = rule.isException
             case .noMatch:
                 continue
             }
         }
     }
     
-    return (domain, matchedDomain, subdomain, matchedSubdomain)
+    return (domain, matchedDomain, subdomain, matchedSubdomain, isException)
 }
 
 func startBrowserWatcher(_ processIdentifier: pid_t, callback: @escaping () -> Void) throws {
