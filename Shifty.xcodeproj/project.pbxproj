@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3B342D441FCCA68900DEDECF /* BrowserRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B342D431FCCA68900DEDECF /* BrowserRule.swift */; };
-		43026F591FD3E00100537238 /* AccessibilityPromptWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43026F5B1FD3E00100537238 /* AccessibilityPromptWindow.xib */; };
 		43087E191F41EE0700A54523 /* BLNotificationBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 43087E181F41EE0700A54523 /* BLNotificationBlock.m */; };
 		43111A7C1FB84BC8000D8214 /* credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 43111A7B1FB84BC8000D8214 /* credits.rtf */; };
 		433AD3011F2CED1F0003FBCD /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 433AD3001F2CED1F0003FBCD /* dsa_pub.pem */; };
@@ -18,6 +17,8 @@
 		4350191D1F21E99F0001324F /* CustomTimeWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4350191C1F21E99F0001324F /* CustomTimeWindow.swift */; };
 		4351C7811FB5737900788CC9 /* PrefGeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4351C7801FB5737900788CC9 /* PrefGeneralViewController.swift */; };
 		4368E3031EBEBA6C00D53310 /* PrefManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4368E3021EBEBA6C00D53310 /* PrefManager.swift */; };
+		437D3A411FD7314000303AFE /* AccessibilityPromptWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437D3A3F1FD7314000303AFE /* AccessibilityPromptWindow.swift */; };
+		437D3A421FD7314700303AFE /* AccessibilityPromptWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 437D3A441FD7314700303AFE /* AccessibilityPromptWindow.xib */; };
 		437D7E161EC015CB00544FC8 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437D7E151EC015CB00544FC8 /* SliderView.swift */; };
 		4388E8E51F84ACCF00DC34CC /* SunriseSetLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4388E8E41F84ACCF00DC34CC /* SunriseSetLocationManager.swift */; };
 		4388E8EB1F84AD1A00DC34CC /* EDSunriseSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4388E8E91F84AD1A00DC34CC /* EDSunriseSet.m */; };
@@ -25,7 +26,6 @@
 		4394DDAA1EBE376F00F22908 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4394DDA31EBE376F00F22908 /* Assets.xcassets */; };
 		4394DDAD1EBE376F00F22908 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4394DDA81EBE376F00F22908 /* StatusMenuController.swift */; };
 		43965AC31FC68A19001A076D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43965AC51FC68A19001A076D /* InfoPlist.strings */; };
-		439757991FD3BAC600EE456A /* AccessibilityPromptWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439757971FD3BAC600EE456A /* AccessibilityPromptWindow.swift */; };
 		43B547F11F29A77D0034E779 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B547F01F29A77D0034E779 /* Event.swift */; };
 		43B9DE151FB5924F002C4C29 /* PrefShortcutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B9DE131FB5924F002C4C29 /* PrefShortcutsViewController.swift */; };
 		43B9DE1B1FB592AE002C4C29 /* PrefAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B9DE191FB592AE002C4C29 /* PrefAboutViewController.swift */; };
@@ -61,8 +61,6 @@
 /* Begin PBXFileReference section */
 		115BB8A6F00EEB28DD8A96E5 /* Pods-Shifty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shifty.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shifty/Pods-Shifty.release.xcconfig"; sourceTree = "<group>"; };
 		3B342D431FCCA68900DEDECF /* BrowserRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BrowserRule.swift; path = Shifty/BrowserRule.swift; sourceTree = "<group>"; };
-		43026F5A1FD3E00100537238 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AccessibilityPromptWindow.xib; sourceTree = "<group>"; };
-		43026F5D1FD3E00700537238 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/AccessibilityPromptWindow.strings"; sourceTree = "<group>"; };
 		43087E171F41EE0700A54523 /* BLNotificationBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BLNotificationBlock.h; path = Shifty/BLNotificationBlock.h; sourceTree = "<group>"; };
 		43087E181F41EE0700A54523 /* BLNotificationBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BLNotificationBlock.m; path = Shifty/BLNotificationBlock.m; sourceTree = "<group>"; };
 		43099BA81FC67B5000A0720B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/CustomTimeWindow.strings"; sourceTree = "<group>"; };
@@ -79,6 +77,9 @@
 		4351C7801FB5737900788CC9 /* PrefGeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PrefGeneralViewController.swift; path = Shifty/PrefGeneralViewController.swift; sourceTree = "<group>"; };
 		4368E3021EBEBA6C00D53310 /* PrefManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrefManager.swift; path = Shifty/PrefManager.swift; sourceTree = "<group>"; };
 		436A0F3C1FBE913600E77D41 /* ShiftyAppcast.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ShiftyAppcast.xml; sourceTree = "<group>"; };
+		437D3A3F1FD7314000303AFE /* AccessibilityPromptWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccessibilityPromptWindow.swift; path = Shifty/AccessibilityPromptWindow.swift; sourceTree = "<group>"; };
+		437D3A431FD7314700303AFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AccessibilityPromptWindow.xib; sourceTree = "<group>"; };
+		437D3A461FD7314A00303AFE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/AccessibilityPromptWindow.strings"; sourceTree = "<group>"; };
 		437D7E151EC015CB00544FC8 /* SliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SliderView.swift; path = Shifty/SliderView.swift; sourceTree = "<group>"; };
 		4388E8E41F84ACCF00DC34CC /* SunriseSetLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SunriseSetLocationManager.swift; path = Shifty/SunriseSetLocationManager.swift; sourceTree = "<group>"; };
 		4388E8E91F84AD1A00DC34CC /* EDSunriseSet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = EDSunriseSet.m; path = Shifty/EDSunriseSet.m; sourceTree = "<group>"; };
@@ -90,7 +91,6 @@
 		4394DDAE1EBE379900F22908 /* Shifty-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Shifty-Bridging-Header.h"; path = "Shifty/Shifty-Bridging-Header.h"; sourceTree = "<group>"; };
 		43965AC41FC68A19001A076D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		43965AC61FC68A1B001A076D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		439757971FD3BAC600EE456A /* AccessibilityPromptWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccessibilityPromptWindow.swift; path = /Users/Nate/GitHub/Shifty/AccessibilityPromptWindow.swift; sourceTree = "<absolute>"; };
 		43B547F01F29A77D0034E779 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = Shifty/Event.swift; sourceTree = "<group>"; };
 		43B9DE131FB5924F002C4C29 /* PrefShortcutsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PrefShortcutsViewController.swift; path = Shifty/PrefShortcutsViewController.swift; sourceTree = "<group>"; };
 		43B9DE191FB592AE002C4C29 /* PrefAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PrefAboutViewController.swift; path = Shifty/PrefAboutViewController.swift; sourceTree = "<group>"; };
@@ -196,8 +196,8 @@
 				43D5C2381FC35FB500AF88E0 /* MainMenu.xib */,
 				4350191C1F21E99F0001324F /* CustomTimeWindow.swift */,
 				43D5C2231FC2CACF00AF88E0 /* CustomTimeWindow.xib */,
-				439757971FD3BAC600EE456A /* AccessibilityPromptWindow.swift */,
-				43026F5B1FD3E00100537238 /* AccessibilityPromptWindow.xib */,
+				437D3A3F1FD7314000303AFE /* AccessibilityPromptWindow.swift */,
+				437D3A441FD7314700303AFE /* AccessibilityPromptWindow.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -392,7 +392,7 @@
 				43D5C21B1FC2CAC300AF88E0 /* PrefShortcutsViewController.xib in Resources */,
 				43D5C2391FC35FB500AF88E0 /* MainMenu.xib in Resources */,
 				43965AC31FC68A19001A076D /* InfoPlist.strings in Resources */,
-				43026F591FD3E00100537238 /* AccessibilityPromptWindow.xib in Resources */,
+				437D3A421FD7314700303AFE /* AccessibilityPromptWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,7 +541,7 @@
 				4368E3031EBEBA6C00D53310 /* PrefManager.swift in Sources */,
 				437D7E161EC015CB00544FC8 /* SliderView.swift in Sources */,
 				4351C7811FB5737900788CC9 /* PrefGeneralViewController.swift in Sources */,
-				439757991FD3BAC600EE456A /* AccessibilityPromptWindow.swift in Sources */,
+				437D3A411FD7314000303AFE /* AccessibilityPromptWindow.swift in Sources */,
 				43087E191F41EE0700A54523 /* BLNotificationBlock.m in Sources */,
 				4394DDAD1EBE376F00F22908 /* StatusMenuController.swift in Sources */,
 				43B9DE1B1FB592AE002C4C29 /* PrefAboutViewController.swift in Sources */,
@@ -557,15 +557,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		43026F5B1FD3E00100537238 /* AccessibilityPromptWindow.xib */ = {
+		437D3A441FD7314700303AFE /* AccessibilityPromptWindow.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				43026F5A1FD3E00100537238 /* Base */,
-				43026F5D1FD3E00700537238 /* zh-Hans */,
+				437D3A431FD7314700303AFE /* Base */,
+				437D3A461FD7314A00303AFE /* zh-Hans */,
 			);
 			name = AccessibilityPromptWindow.xib;
-			path = /Users/Nate/GitHub/Shifty;
-			sourceTree = "<absolute>";
+			path = Shifty;
+			sourceTree = "<group>";
 		};
 		43965AC51FC68A19001A076D /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
