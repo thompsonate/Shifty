@@ -411,7 +411,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         if disableSubdomainMenuItem.state == .off {
             browserRules.append(rule)
         } else {
-            browserRules.remove(at: browserRules.index(of: rule)!)
+            guard let ruleIndex = browserRules.index(of: rule) else {
+                NSLog("Could not find browser rule in array: \(rule)")
+                return
+            }
+            browserRules.remove(at: ruleIndex)
         }
         updateCurrentApp()
         PrefManager.sharedInstance.userDefaults.set(try? PropertyListEncoder().encode(browserRules), forKey: Keys.browserRules)
