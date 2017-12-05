@@ -49,6 +49,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     var isDisabledForDomain = false
     ///True if Night Shift is disabled for browser matching browser rule - subdomain
     var isDisabledForSubdomain = false
+    ///True if current browser rule is an exception for subdomain (Night Shift is enabled)
+    var isExceptionForSubdomain = false
     ///True if change to Night Shift state originated from Shifty
     var shiftOriginatedFromShifty = false
     
@@ -389,18 +391,23 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     }
     
     @IBAction func disableForDomain(_ sender: Any) {
-        let rule = BrowserRule(host: currentDomain, includeSubdomains: true)
+        let rule = BrowserRule(host: currentDomain, includeSubdomains: true, isException: false)
         if disableDomainMenuItem.state == .off {
             browserRules.append(rule)
         } else {
             browserRules.remove(at: browserRules.index(of: rule)!)
+        }
+        
+        if isDisabledForSubdomain {
+            let subdomain_rule = BrowserRule(host: currentSubdomain, includeSubdomains: false, isException: isExceptionForSubdomain)
+            browserRules.remove(at: browserRules.index(of: subdomain_rule)!)
         }
         updateCurrentApp()
         PrefManager.sharedInstance.userDefaults.set(try? PropertyListEncoder().encode(browserRules), forKey: Keys.browserRules)
     }
 
     @IBAction func disableForSubdomain(_ sender: Any) {
-        let rule = BrowserRule(host: currentSubdomain, includeSubdomains: false)
+        let rule = BrowserRule(host: currentSubdomain, includeSubdomains: false, isException: isDisabledForDomain)
         if disableSubdomainMenuItem.state == .off {
             browserRules.append(rule)
         } else {
@@ -526,6 +533,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         isDisabledForApp = disabledApps.contains(currentAppBundleId)
         isDisabledForDomain = false
         isDisabledForSubdomain = false
+        isExceptionForSubdomain = false
         
         if UserDefaults.standard.bool(forKey: Keys.isWebsiteControlEnabled) {
             if let supportedBrowser = SupportedBrowser(rawValue: currentAppBundleId) {
@@ -535,7 +543,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
                             (self.currentDomain,
                              self.isDisabledForDomain,
                              self.currentSubdomain,
-                             self.isDisabledForSubdomain) = checkBrowserForRules(browser: supportedBrowser,
+                             self.isDisabledForSubdomain,
+                             self.isExceptionForSubdomain) = checkBrowserForRules(browser: supportedBrowser,
                                                                                  processIdentifier: pid,
                                                                                  rules: self.browserRules)
                             self.updateStatus()
@@ -546,7 +555,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
                     (currentDomain,
                      isDisabledForDomain,
                      currentSubdomain,
-                     isDisabledForSubdomain) = checkBrowserForRules(browser: supportedBrowser,
+                     isDisabledForSubdomain,
+                     isExceptionForSubdomain) = checkBrowserForRules(browser: supportedBrowser,
                                                                     processIdentifier: pid,
                                                                     rules: browserRules)
                 }
@@ -594,11 +604,21 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             disableDomainMenuItem.title = String(format: NSLocalizedString("menu.disable_domain", comment: "Disable for %@"), currentDomain)
         }
         if isDisabledForSubdomain {
-            disableSubdomainMenuItem.state = .on
-            disableSubdomainMenuItem.title = String(format: NSLocalizedString("menu.disabled_subdomain", comment: "Disabled for %@"), currentSubdomain)
+            if isDisabledForDomain {
+                disableSubdomainMenuItem.state = .on
+                disableSubdomainMenuItem.title = String(format: NSLocalizedString("menu.enabled_subdomain", comment: "Enabled for %@"), currentSubdomain)
+            } else  {
+                disableSubdomainMenuItem.state = .on
+                disableSubdomainMenuItem.title = String(format: NSLocalizedString("menu.disabled_subdomain", comment: "Disabled for %@"), currentSubdomain)
+            }
         } else {
-            disableSubdomainMenuItem.state = .off
-            disableSubdomainMenuItem.title = String(format: NSLocalizedString("menu.disable_subdomain", comment: "Disable for %@"), currentSubdomain)
+            if isDisabledForDomain {
+                disableSubdomainMenuItem.state = .off
+                disableSubdomainMenuItem.title = String(format: NSLocalizedString("menu.enable_subdomain", comment: "Enable for %@"), currentSubdomain)
+            } else {
+                disableSubdomainMenuItem.state = .off
+                disableSubdomainMenuItem.title = String(format: NSLocalizedString("menu.disable_subdomain", comment: "Disable for %@"), currentSubdomain)
+            }
         }
 
         if isDisabledForApp {
@@ -610,8 +630,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         }
         
         if isShiftForAppEnabled && (BLClient.isNightShiftEnabled == isDisabledForApp || BLClient.isNightShiftEnabled == isDisabledForDomain || BLClient.isNightShiftEnabled == isDisabledForSubdomain) {
-            shift(isEnabled: !(isDisabledForApp || isDisabledForDomain || isDisabledForSubdomain) )
-            setActiveState(state: !(isDisabledForApp || isDisabledForDomain || isDisabledForSubdomain) )
+            shift(isEnabled: !(isDisabledForApp || isDisabledForDomain || isDisabledForSubdomain) || isExceptionForSubdomain )
+            setActiveState(state: !(isDisabledForApp || isDisabledForDomain || isDisabledForSubdomain) || isExceptionForSubdomain)
         }
     }
     
@@ -624,7 +644,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     
     func enableForCurrentDomain() {
         if isDisabledForDomain {
-            let rule = BrowserRule(host: currentDomain, includeSubdomains: true)
+            let rule = BrowserRule(host: currentDomain, includeSubdomains: true, isException: false)
             browserRules.remove(at: browserRules.index(of: rule)!)
             updateCurrentApp()
         }
@@ -632,7 +652,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     
     func enableForCurrentSubdomain() {
         if isDisabledForSubdomain {
-            let rule = BrowserRule(host: currentSubdomain, includeSubdomains: false)
+            let rule = BrowserRule(host: currentSubdomain, includeSubdomains: false, isException: false)
             browserRules.remove(at: browserRules.index(of: rule)!)
             updateCurrentApp()
         }

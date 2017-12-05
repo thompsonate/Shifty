@@ -17,6 +17,9 @@
 "menu.disabled_domain" = "Disabled for %@";
 "menu.disable_subdomain" = "Disable for %@";
 "menu.disabled_subdomain" = "Disabled for %@";
+"menu.enable_subdomain" = "Enable for %@";
+"menu.enabled_subdomain" = "Enabled for %@";
+
 "menu.disable_hour" = "Disable for an hour";
 "menu.disabled_hour" = "Disabled for an hour";
 "menu.disable_custom" = "Disable for custom time...";
