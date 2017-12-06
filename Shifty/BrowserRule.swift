@@ -84,70 +84,47 @@ extension SBObject: ChromeWindow {}
 }
 extension SBObject: ChromeTab {}
 
-extension URL {
-    func matchesDomain(domain: String, includeSubdomains: Bool) -> Bool {
-        if let self_host = self.host {
-            if includeSubdomains {
-                var selfHostComponents = self_host.components(separatedBy: ".")
-                var targetHostComponents = domain.components(separatedBy: ".")
-                let selfComponentsCount = selfHostComponents.count
-                let targetComponentsCount = targetHostComponents.count
-                let offset = selfComponentsCount - targetComponentsCount
-                if offset < 0 {
-                    return false
-                }
-                for i in offset..<selfComponentsCount {
-                    if !(selfHostComponents[i] == targetHostComponents[i - offset]) {
-                        return false
-                    }
-                }
-                return true
-            } else {
-                return self_host == domain
-            }
-        }
+private func isSubdomainOfDomain(subdomain: String, domain: String) -> Bool {
+    var subdomainComponents = subdomain.components(separatedBy: ".")
+    var domainComponents = domain.components(separatedBy: ".")
+    let subdomainComponentsCount = subdomainComponents.count
+    let domainComponentsCount = domainComponents.count
+    let offset = subdomainComponentsCount - domainComponentsCount
+    if offset < 0 {
         return false
     }
-    
-    func containsPath(path: String) -> Bool {
-        return self.path.range(of: path) != nil
+    for i in offset..<subdomainComponentsCount {
+        if !(subdomainComponents[i] == domainComponents[i - offset]) {
+            return false
+        }
     }
+    return true
+}
+
+enum RuleType : String, Codable {
+    case Domain
+    case Subdomain
 }
 
 struct BrowserRule: CustomStringConvertible, Equatable, Codable {
+    var type: RuleType
     var host: String
-    var includeSubdomains: Bool
-    var isException: Bool
+    var enableNightShift: Bool
     
     var description: String {
-        return "Rule for domain: \(host), include subdomains: \(includeSubdomains), is exception: \(isException)"
+        return "Rule type; \(type) for host: \(host) enables NightSift: \(enableNightShift)"
     }
     static func ==(lhs: BrowserRule, rhs: BrowserRule) -> Bool {
-        return lhs.host == rhs.host && lhs.includeSubdomains == rhs.includeSubdomains && lhs.isException == rhs.isException
+        return lhs.type == rhs.type
+            && lhs.host == rhs.host
+            && lhs.enableNightShift == rhs.enableNightShift
     }
 }
 
-enum RuleResult {
-    case matchDomain
-    case matchSubdomain
-    case noMatch
-}
-
-private func ruleMatchesURL(rule: BrowserRule, url: URL) -> RuleResult {
-    if url.matchesDomain(domain: rule.host,
-                         includeSubdomains: rule.includeSubdomains) {
-        return rule.includeSubdomains ? .matchDomain : .matchSubdomain
-    }
-    return .noMatch
-}
-
-func checkBrowserForRules(browser: SupportedBrowser, processIdentifier: pid_t, rules: [BrowserRule]) -> (String, Bool, String, Bool, Bool) {
+func getBrowserCurrentTabDomainSubdomain(browser: SupportedBrowser, processIdentifier: pid_t) -> (String, String) {
     var currentURL: URL? = nil
     var domain: String = ""
     var subdomain: String = ""
-    var matchedDomain: Bool = false
-    var matchedSubdomain: Bool = false
-    var isException: Bool = false
     
     switch browser {
     case .Safari, .SafariTechnologyPreview:
@@ -163,21 +140,36 @@ func checkBrowserForRules(browser: SupportedBrowser, processIdentifier: pid_t, r
     if let url = currentURL {
         domain = url.registeredDomain ?? ""
         subdomain = url.host ?? ""
-        for rule in rules {
-            switch ruleMatchesURL(rule: rule, url: url) {
-            case .matchDomain:
+    }
+    return (domain, subdomain)
+}
+
+func subdomainRulesForDomain(domain: String, rules: [BrowserRule]) -> [BrowserRule] {
+    return rules.filter {
+        ($0.type == .Subdomain) && isSubdomainOfDomain(subdomain: $0.host, domain: domain)
+    }
+}
+
+func checkDomainSubdomainForRules(domain: String, subdomain: String, rules: [BrowserRule]) -> (Bool, Bool, Bool) {
+    var matchedDomain: Bool = false
+    var matchedSubdomain: Bool = false
+    var isException: Bool = false
+
+    for rule in rules {
+        switch rule.type {
+        case .Domain:
+            if rule.host == domain {
                 matchedDomain = true
-                isException = rule.isException
-            case .matchSubdomain:
+            }
+        case .Subdomain:
+            if rule.host == subdomain {
                 matchedSubdomain = true
-                isException = rule.isException
-            case .noMatch:
-                continue
+                isException = rule.enableNightShift
             }
         }
     }
     
-    return (domain, matchedDomain, subdomain, matchedSubdomain, isException)
+    return (matchedDomain, matchedSubdomain, isException)
 }
 
 func startBrowserWatcher(_ processIdentifier: pid_t, callback: @escaping () -> Void) throws {

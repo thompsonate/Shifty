@@ -391,15 +391,14 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     }
     
     @IBAction func disableForDomain(_ sender: Any) {
-        let rule = BrowserRule(host: currentDomain, includeSubdomains: true, isException: false)
+        let rule = BrowserRule(type: .Domain, host: currentDomain, enableNightShift: false)
         if disableDomainMenuItem.state == .off {
             browserRules.append(rule)
         } else {
             browserRules.remove(at: browserRules.index(of: rule)!)
         }
         
-        if isDisabledForSubdomain {
-            let subdomain_rule = BrowserRule(host: currentSubdomain, includeSubdomains: false, isException: isExceptionForSubdomain)
+        for subdomain_rule in subdomainRulesForDomain(domain: currentDomain, rules: browserRules) {
             browserRules.remove(at: browserRules.index(of: subdomain_rule)!)
         }
         updateCurrentApp()
@@ -407,7 +406,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     }
 
     @IBAction func disableForSubdomain(_ sender: Any) {
-        let rule = BrowserRule(host: currentSubdomain, includeSubdomains: false, isException: isDisabledForDomain)
+        let rule = BrowserRule(type: .Subdomain, host: currentSubdomain, enableNightShift: isDisabledForDomain)
         if disableSubdomainMenuItem.state == .off {
             browserRules.append(rule)
         } else {
@@ -545,11 +544,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
                     do {
                         try startBrowserWatcher(pid) {
                             (self.currentDomain,
-                             self.isDisabledForDomain,
-                             self.currentSubdomain,
+                             self.currentSubdomain) = getBrowserCurrentTabDomainSubdomain(browser: supportedBrowser, processIdentifier: pid)
+                            (self.isDisabledForDomain,
                              self.isDisabledForSubdomain,
-                             self.isExceptionForSubdomain) = checkBrowserForRules(browser: supportedBrowser,
-                                                                                 processIdentifier: pid,
+                             self.isExceptionForSubdomain) = checkDomainSubdomainForRules(domain: self.currentDomain,
+                                                                                 subdomain: self.currentSubdomain,
                                                                                  rules: self.browserRules)
                             self.updateStatus()
                         }
@@ -557,11 +556,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
                         NSLog("Error: Could not watch app [\(pid)]: \(error)")
                     }
                     (currentDomain,
-                     isDisabledForDomain,
-                     currentSubdomain,
+                     currentSubdomain) = getBrowserCurrentTabDomainSubdomain(browser: supportedBrowser, processIdentifier: pid)
+                    (isDisabledForDomain,
                      isDisabledForSubdomain,
-                     isExceptionForSubdomain) = checkBrowserForRules(browser: supportedBrowser,
-                                                                    processIdentifier: pid,
+                     isExceptionForSubdomain) = checkDomainSubdomainForRules(domain: currentDomain,
+                                                                    subdomain: currentSubdomain,
                                                                     rules: browserRules)
                 }
             } else {
@@ -648,15 +647,18 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     
     func enableForCurrentDomain() {
         if isDisabledForDomain {
-            let rule = BrowserRule(host: currentDomain, includeSubdomains: true, isException: false)
+            let rule = BrowserRule(type: .Domain, host: currentDomain, enableNightShift: false)
             browserRules.remove(at: browserRules.index(of: rule)!)
+            for subdomain_rule in subdomainRulesForDomain(domain: currentDomain, rules: browserRules) {
+                browserRules.remove(at: browserRules.index(of: subdomain_rule)!)
+            }
             updateCurrentApp()
         }
     }
     
     func enableForCurrentSubdomain() {
         if isDisabledForSubdomain {
-            let rule = BrowserRule(host: currentSubdomain, includeSubdomains: false, isException: false)
+            let rule = BrowserRule(type: .Subdomain, host: currentSubdomain, enableNightShift: false)
             browserRules.remove(at: browserRules.index(of: rule)!)
             updateCurrentApp()
         }
