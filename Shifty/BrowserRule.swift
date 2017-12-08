@@ -150,26 +150,27 @@ func subdomainRulesForDomain(domain: String, rules: [BrowserRule]) -> [BrowserRu
     }
 }
 
-func checkDomainSubdomainForRules(domain: String, subdomain: String, rules: [BrowserRule]) -> (Bool, Bool, Bool) {
-    var matchedDomain: Bool = false
-    var matchedSubdomain: Bool = false
-    var isException: Bool = false
-
-    for rule in rules {
-        switch rule.type {
-        case .Domain:
-            if rule.host == domain {
-                matchedDomain = true
-            }
-        case .Subdomain:
-            if rule.host == subdomain {
-                matchedSubdomain = true
-                isException = rule.enableNightShift
-            }
-        }
+func checkForBrowserRules(domain: String, subdomain: String, rules: [BrowserRule]) -> (Bool, Bool, Bool) {
+    let disabledDomain = rules.filter {
+        $0.type == .Domain && $0.host == domain }.count > 0
+    var res: Bool
+    var isException: Bool
+    if disabledDomain {
+        res = (rules.filter {
+            $0.type == .Subdomain
+                && $0.host == subdomain
+                && $0.enableNightShift == true
+            }.count > 0)
+        isException = res
+    } else {
+        res = (rules.filter {
+            $0.type == .Subdomain
+                && $0.host == subdomain
+                && $0.enableNightShift == false
+            }.count > 0)
+        isException = false
     }
-    
-    return (matchedDomain, matchedSubdomain, isException)
+    return (disabledDomain, res, isException)
 }
 
 func startBrowserWatcher(_ processIdentifier: pid_t, callback: @escaping () -> Void) throws {
