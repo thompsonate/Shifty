@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<footer class="site-footer">
+  <div class="site-footer-contents">{{ page.made_by }}</div>
+  <div class="site-footer-contents">{{ page.feedback }}</div></span>
+  <div class="site-footer-contents">{{ page.donate }}</div></span>
+  <!-- <br>
+  <div class="site-footer-contents">Language:
+    <select name="language" onchange="location = this.value">
+      {% assign pages=site.pages | where:"ref", page.ref | sort: 'lang_name_eng' %}
+
+      {% for p in pages %}
+
+      {% if p.lang == "en" %}
+      {% assign lang = p.lang_name %}
+      {% else %}
+      {% assign lang = p.lang_name | append: " — " | append: p.lang_name_eng %}
+      {% endif %}
+
+      {% if p.url == page.url %}
+      <option selected value = "{{ p.url }}">{{ lang }}</option>
+      {% else %}
+      <option value = "{{ p.url }}">{{ lang }}</option>
+      {% endif %}
+      {% endfor %}
+    </select>
+  </div> -->
+</footer>
