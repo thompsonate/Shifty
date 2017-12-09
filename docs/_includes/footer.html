@@ -1,7 +1,7 @@
 <footer class="site-footer">
-  <div class="site-footer-contents">{{ page.made_by | liquify | markdownify | remove: '<p>' | remove: '</p>' }}</div>
-  <div class="site-footer-contents">{{ page.feedback | liquify | markdownify | remove: '<p>' | remove: '</p>' }}</div></span>
-  <div class="site-footer-contents">{{ page.donate | liquify | markdownify | remove: '<p>' | remove: '</p>' }}</div></span>
+  <div class="site-footer-contents">{{ page.made_by | replace: "GITHUB_ACCT_LINK", site.github_acct_link | markdownify | remove: '<p>' | remove: '</p>' }}</div>
+  <div class="site-footer-contents">{{ page.feedback | replace: "MAILTO_LINK", site.mailto_link | markdownify | remove: '<p>' | remove: '</p>' }}</div></span>
+  <div class="site-footer-contents">{{ page.donate | replace: "DONATE_LINK", site.donate_link_usd | markdownify | remove: '<p>' | remove: '</p>' }}</div></span>
   <!-- <br>
   <div class="site-footer-contents">{{ page.language }}:
     <select name="language" onchange="location = this.value">
