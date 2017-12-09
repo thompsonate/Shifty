@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-
 <footer class="site-footer">
-  <div class="site-footer-contents">{{ page.made_by }}</div>
-  <div class="site-footer-contents">{{ page.feedback }}</div></span>
-  <div class="site-footer-contents">{{ page.donate }}</div></span>
+  <div class="site-footer-contents">{{ page.made_by | liquify | markdownify | remove: '<p>' | remove: '</p>' }}</div>
+  <div class="site-footer-contents">{{ page.feedback | liquify | markdownify | remove: '<p>' | remove: '</p>' }}</div></span>
+  <div class="site-footer-contents">{{ page.donate | liquify | markdownify | remove: '<p>' | remove: '</p>' }}</div></span>
   <!-- <br>
-  <div class="site-footer-contents">Language:
+  <div class="site-footer-contents">{{ page.language }}:
     <select name="language" onchange="location = this.value">
       {% assign pages=site.pages | where:"ref", page.ref | sort: 'lang_name_eng' %}
 
@@ -18,9 +16,9 @@
       {% endif %}
 
       {% if p.url == page.url %}
-      <option selected value = "{{ p.url }}">{{ lang }}</option>
+      <option selected value="{{ p.url }}">{{ lang }}</option>
       {% else %}
-      <option value = "{{ p.url }}">{{ lang }}</option>
+      <option value="{{ p.url }}">{{ lang }}</option>
       {% endif %}
       {% endfor %}
     </select>
