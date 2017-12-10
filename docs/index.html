@@ -1,0 +1,22 @@
+<script>
+var supported = ['en'];
+var languages = getLangs();
+redirect();
+
+function redirect() {
+  for (lang in languages) {
+    for (supp in supported) {
+      if (languages[lang].substring(0,2) == supported[supp].substring(0,2)) {
+        window.location.replace("/" + supported[supp]);
+        return;
+      }
+    }
+  }
+  window.location.replace("/en")
+}
+
+function getLangs(){
+  return navigator.languages;
+}
+
+</script>
