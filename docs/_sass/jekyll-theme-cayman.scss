@@ -93,24 +93,24 @@ a {
   background-image: linear-gradient(120deg, $header-bg-color-secondary, $header-bg-color);
 
   @include large {
-    padding: 2rem 3rem;
+    padding: 2rem 3rem 1rem;
   }
 
   @include medium {
-    padding: 2rem 3rem;
+    padding: 2rem 3rem 1rem;
   }
 
   @include small {
-    padding: 2rem 1rem;
+    padding: 2rem 1rem 0.5rem;
   }
 }
 
 .project-icon {
   margin-top: 0;
-  marign-bottom: 0.1rem;
+  margin-bottom: 1rem;
   width: 10%;
-  max-width: 6em;
-  min-width: 3em;
+  max-width: 7em;
+  min-width: 4em;
 }
 
 .project-name {
@@ -131,7 +131,7 @@ a {
 }
 
 .project-tagline {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   font-weight: normal;
   opacity: 0.8;
 
@@ -168,7 +168,7 @@ a {
   }
 
   @include small {
-    padding: 2rem 1rem;
+    padding: 1rem 1rem 2rem;
     font-size: 1rem;
   }
 
