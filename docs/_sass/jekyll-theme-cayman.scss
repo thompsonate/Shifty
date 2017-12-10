@@ -334,9 +334,42 @@ a {
 
 #prefs-general {
   width: 500px;
-  max-width: 100%;
   display: block;
   margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 0 15px 25px rgba(0,0,0,0.45), 0 1px 0 rgba(255, 255, 255, 0.6);
+
+  @include small {
+    max-width: 75%;
+  }
+
+  @include medium {
+    max-width: 100%;
+  }
+
+  @include large {
+    max-width: 100%;
+  }
+}
+
+.prefs-columns {
+    display: flex;
+    align-items: center;
+    padding-top: 2%;
+}
+
+.prefs-text {
+  @include small {
+    padding-bottom: 20px;
+  }
+
+  @include medium {
+    padding-bottom: 0;
+  }
+
+  @include large {
+    padding-bottom: 0;
+  }
 }
 
 .site-footer {

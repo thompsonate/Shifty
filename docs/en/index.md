@@ -22,13 +22,12 @@ Shifty was made to expand the capabilities of the built in Night Shift feature i
   <img class="shifty-screenshot" src="images/shifty-screenshot-large.png"/>
 </div>
 
-<div class="row">
-  <div class="col-sm-6" style="margin-right: -8.5%">
-    <br>
+<div class="row prefs-columns">
+  <div class="col-sm-6 prefs-text">
     Shifty is customizable! Make it easier to toggle Night Shift with Quick Toggle or set dark mode based on the schedule. For common Shifty actions, you can set global keyboard shortcuts.
   </div>
-  <div class="col-sm-8" style="margin-right: -15%">
-    <img id="prefs-general" src="images/prefs-general-screenshot.png" style="width: 95%"/>
+  <div class="col-sm-6">
+    <img id="prefs-general" src="images/prefs-general-screenshot.png">
   </div>
 </div>
 

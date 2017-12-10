@@ -22,13 +22,12 @@ Shifty 夜览管家为 macOS 内置的夜览模式赋予更多便捷与自定义
   <img class="shifty-screenshot" src="images/shifty-screenshot-large.png"/>
 </div>
 
-<div class="row">
-  <div class="col-sm-6" style="margin-right: -8.5%">
-    <br>
+<div class="row prefs-columns">
+  <div class="col-sm-6 prefs-text">
     你也可以自定义 Shifty 夜览管家！启用快速切换功能以一键开启或关闭夜览模式，或根据夜览模式的设定时间自动启用暗色菜单栏和程序坞。此外，你还可以通过设置全局快捷键激活常用的 Shifty 夜览管家功能。
   </div>
-  <div class="col-sm-8" style="margin-right: -15%">
-    <img id="prefs-general" src="images/prefs-general-screenshot.png" style="width: 95%"/>
+  <div class="col-sm-6">
+    <img id="prefs-general" src="images/prefs-general-screenshot.png">
   </div>
 </div>
 
