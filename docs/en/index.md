@@ -3,18 +3,6 @@ title: Shifty — Get more control over Night Shift
 layout: default
 ref: home
 lang: en
-lang_name: English
-lang_name_eng: English
-
-shifty: Shifty
-tagline: Shifty is a macOS menu bar app that gives you more control over Night Shift.
-download: Download Beta
-view_github: View on GitHub
-
-made_by: Made with ☀️ by [Nate Thompson](GITHUB_ACCT_LINK).
-feedback: Have a question, comment, or bug report? [Send me an email](MAILTO_LINK).
-donate: If you love Shifty, [donate](DONATE_LINK) to help me make it better.
-language: Language
 ---
 Shifty was made to expand the capabilities of the built in Night Shift feature in macOS. You can disable Night Shift for specific apps and custom time periods. It also provides easy access to a slider to fine tune your color temperature. With Shifty, Night Shift becomes a power user feature!
 
@@ -36,4 +24,6 @@ Shifty was made to expand the capabilities of the built in Night Shift feature i
 * System meets the [requirements for Night Shift](https://support.apple.com/HT207513#requirements)
 
 <br>
-Shifty is free and open source, licensed under [AGPL-3.0](https://www.gnu.org/licenses/agpl.html). [View the project on GitHub](http://github.com/thompsonate/Shifty)
+If you love Shifty, [donate]({{ site.donate_link_usd }}) to help me make it better.
+
+Shifty is free and open source, licensed under [AGPL-3.0]({{ site.license_link }}). [Contribute on GitHub]({{ site.repository_link }})

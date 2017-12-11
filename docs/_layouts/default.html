@@ -21,7 +21,7 @@ $( window ).resize(function() {
 
   <meta charset="UTF-8">
 
-  <title>{% if page.title %}{{ page.title }}{% endif %}</title>
+  <title>{{ page.title }}</title>
   <meta name="description" content="{{ page.description | default: site.description | default: site.github.project_tagline }}"/>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#4179f4">
@@ -39,12 +39,15 @@ $( window ).resize(function() {
       });
     }
     </script>
+
+    {% assign translation = site.data.translations[page.lang] %}
+
     <section class="page-header">
       <img class="project-icon" src="/images/shifty-color-256.png" alt="Shifty icon">
-      <h1 class="project-name">{{ page.shifty }}</h1>
-      <h2 class="project-tagline">{{ page.tagline }}</h2>
-      <a id="downloadButton" class="btn">{{ page.download }}</a>
-      <a id="view-on-github" href="https://github.com/thompsonate/Shifty" class="btn">{{ page.view_github }}</a>
+      <h1 class="project-name">{{ translation.shifty }}</h1>
+      <h2 class="project-tagline">{{ translation.tagline }}</h2>
+      <a id="downloadButton" class="btn">{{ translation.download_beta }}</a>
+      <a id="view-on-github" href="{{ site.repository_link }}" class="btn">{{ translation.view_github }}</a>
     </section>
 
     <section class="main-content">

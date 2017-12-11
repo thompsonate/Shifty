@@ -1,18 +1,17 @@
 <footer class="site-footer">
-  <div class="site-footer-contents">{{ page.made_by | replace: "GITHUB_ACCT_LINK", site.github_acct_link | markdownify | remove: '<p>' | remove: '</p>' }}</div>
-  <div class="site-footer-contents">{{ page.feedback | replace: "MAILTO_LINK", site.mailto_link | markdownify | remove: '<p>' | remove: '</p>' }}</div></span>
-  <div class="site-footer-contents">{{ page.donate | replace: "DONATE_LINK", site.donate_link_usd | markdownify | remove: '<p>' | remove: '</p>' }}</div></span>
-  <!-- <br>
-  <div class="site-footer-contents">{{ page.language }}:
+  <div class="site-footer-contents">{{ translation.made_by | replace: "GITHUB_ACCT_LINK", site.github_acct_link | markdownify | remove: '<p>' | remove: '</p>' }}</div>
+  <div class="site-footer-contents">{{ translation.feedback | replace: "MAILTO_LINK", site.mailto_link | markdownify | remove: '<p>' | remove: '</p>' }}</div></span>
+  <!-- <div class="site-footer-contents">{{ translation.language }}
     <select name="language" onchange="location = this.value">
-      {% assign pages=site.pages | where:"ref", page.ref | sort: 'lang_name_eng' %}
+      {% assign pages=site.pages | where:"ref", page.ref | sort: 'lang' %}
 
       {% for p in pages %}
+      {% assign p_translation = site.data.translations.[p.lang] %}
 
       {% if p.lang == "en" %}
-      {% assign lang = p.lang_name %}
+      {% assign lang = p_translation.lang_name %}
       {% else %}
-      {% assign lang = p.lang_name | append: " — " | append: p.lang_name_eng %}
+      {% assign lang = p_translation.lang_name | append: " — " | append: p_translation.lang_name_eng %}
       {% endif %}
 
       {% if p.url == page.url %}

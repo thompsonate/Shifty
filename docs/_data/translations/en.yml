@@ -1,0 +1,14 @@
+lang: en
+lang_name: English
+lang_name_eng: English
+
+shifty: Shifty
+tagline: A macOS menu bar app that gives you more control over Night Shift.
+download: Download
+download_beta: Download Beta
+view_github: View on GitHub
+
+made_by: Made with ☀️ by [Nate Thompson](GITHUB_ACCT_LINK).
+feedback: Have a question, comment, or bug report? [Send me an email](MAILTO_LINK).
+license: Shifty is free and open source, licensed under [AGPL-3.0](LICENSE_LINK).
+language: 'Language:'
