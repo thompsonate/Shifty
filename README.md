@@ -4,7 +4,7 @@ Shifty was made to expand the capabilities of the built in Night Shift feature i
 
 Shifty is customizable! Make it easier to toggle Night Shift with Quick Toggle or set dark mode based on the schedule. For common Shifty actions, you can set global keyboard shortcuts.
 
-<img src="docs/en/images/prefs-general-screenshot.png" width=60%/>
+<img src="docs/en/images/prefs-general-screenshot-shadow.png" width=60%/>
 
 ### System requirements:
 * macOS 10.12.4 or later
