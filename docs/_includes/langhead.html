@@ -1,0 +1,11 @@
+{% if page.ref == 'home' or page.url == '/' %}
+<link rel="alternate" hreflang="x-default" href="http://shifty.natethompson.io/"/>
+{% assign pages = site.pages | where:'ref', 'home' | sort: 'lang' %}
+{% for p in pages %}
+<link rel="alternate" hreflang="{{ p.lang }}" href="http://shifty.natethompson.io{{ p.url }}"/>
+{% endfor %}
+{% endif %}
+
+{% if page.lang %}
+<meta http-equiv="content-language" content="{{ page.lang }}">
+{% endif %}
