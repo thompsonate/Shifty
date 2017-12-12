@@ -1,90 +1,87 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: "en-US" }}">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-<script>
-$( window ).resize(function() {
-  SetScreenshotWidth();
-});
-</script>
+{% assign translation = site.data.translations[page.lang] %}
 
 <head>
+  <title>{{ page.title }}</title>
+  <meta name="description" content="{{ page.description | default: translation.tagline | default: site.description }}"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#4179f4">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+  <meta charset="UTF-8">
+
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
   <link rel="manifest" href="/images/manifest.json">
   <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#444a53">
   <link rel="shortcut icon" href="/images/favicon.ico">
-  <meta name="msapplication-config" content="/images/browserconfig.xml">
-  <meta name="theme-color" content="#ffffff">
 
-  <meta charset="UTF-8">
-
-  <title>{{ page.title }}</title>
-  <meta name="description" content="{{ page.description | default: site.description | default: site.github.project_tagline }}"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#4179f4">
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
   <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
 </head>
-<body>
-  <body onload="GetLatestReleaseInfo()">
-    <script type="text/javascript">
-    function GetLatestReleaseInfo() {
-      $.getJSON("https://api.github.com/repos/thompsonate/Shifty/releases").done(function (release) {
-        var url = release[0].assets[0].browser_download_url;
-        $('#downloadButton').attr('href', url);
-      });
-    }
-    </script>
 
-    {% assign translation = site.data.translations[page.lang] %}
+<body onload="GetLatestReleaseInfo()">
+  <section class="page-header">
+    <img class="project-icon" src="/images/shifty-color-256.png" alt="Shifty icon">
+    <h1 class="project-name">{{ translation.shifty }}</h1>
+    <h2 class="project-tagline">{{ translation.tagline }}</h2>
+    <a id="downloadButton" class="btn">{{ translation.download_beta }}</a>
+    <a id="view-on-github" href="{{ site.repository_link }}" class="btn">{{ translation.view_github }}</a>
+  </section>
 
-    <section class="page-header">
-      <img class="project-icon" src="/images/shifty-color-256.png" alt="Shifty icon">
-      <h1 class="project-name">{{ translation.shifty }}</h1>
-      <h2 class="project-tagline">{{ translation.tagline }}</h2>
-      <a id="downloadButton" class="btn">{{ translation.download_beta }}</a>
-      <a id="view-on-github" href="{{ site.repository_link }}" class="btn">{{ translation.view_github }}</a>
-    </section>
+  <section class="main-content">
+    <div id="page-content">{{ content }}</div>
 
-    <section class="main-content">
-      <div id="page-content">{{ content }}</div>
+    {% include footer.html %}
 
-      {% include footer.html %}
+  </section>
+</body>
 
-    </section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
-    <script>
-    function SetScreenshotWidth() {
-      if($(window).width() <= 672) {
-        $("img").each(function() {
-          $(this).attr("src", $(this).attr("src").replace("images/shifty-screenshot-large.png", "images/shifty-screenshot-small.png"));
-        });
-      } else {
-        $("img").each(function() {
-          $(this).attr("src", $(this).attr("src").replace("images/shifty-screenshot-small.png", "images/shifty-screenshot-large.png"));
-        });
-      }
-    };
+<script type="text/javascript">
+function GetLatestReleaseInfo() {
+  $.getJSON("https://api.github.com/repos/thompsonate/Shifty/releases").done(function (release) {
+    var url = release[0].assets[0].browser_download_url;
+    $('#downloadButton').attr('href', url);
+  });
+}
+</script>
 
-    $(SetScreenshotWidth())
-    </script>
+<script>
+$( window ).resize(function() {
+  SetScreenshotWidth();
+});
 
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+function SetScreenshotWidth() {
+  if($(window).width() <= 672) {
+    $("img").each(function() {
+      $(this).attr("src", $(this).attr("src").replace("images/shifty-screenshot-large.png", "images/shifty-screenshot-small.png"));
+    });
+  } else {
+    $("img").each(function() {
+      $(this).attr("src", $(this).attr("src").replace("images/shifty-screenshot-small.png", "images/shifty-screenshot-large.png"));
+    });
+  }
+};
 
-    ga('create', 'UA-91065230-2', 'auto');
-    ga('send', 'pageview');
-    </script>
+$(SetScreenshotWidth())
+</script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-  </body>
-  </html>
+ga('create', 'UA-91065230-2', 'auto');
+ga('send', 'pageview');
+</script>
+
+</html>
