@@ -1,5 +1,5 @@
 ---
-title: Shifty — Get more control over Night Shift
+title: Shifty - Get more control over Night Shift
 layout: default
 ref: home
 lang: en
@@ -19,7 +19,7 @@ Shifty was made to expand the capabilities of the built in Night Shift feature i
   </div>
 </div>
 
-### System requirements:
+##### System requirements:
 * macOS 10.12.4 or later
 * System meets the [requirements for Night Shift](https://support.apple.com/HT207513#requirements)
 

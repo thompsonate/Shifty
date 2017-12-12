@@ -19,7 +19,7 @@ Shifty 夜览管家为 macOS 内置的夜览模式赋予更多便捷与自定义
   </div>
 </div>
 
-### 系统要求：
+##### 系统要求：
 * macOS 10.12.4 或更高版本
 * Mac 电脑机型符合[夜览模式的系统需求](https://support.apple.com/zh-cn/HT207513#requirements)
 
