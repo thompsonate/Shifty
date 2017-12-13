@@ -15,7 +15,7 @@
 # in the templates via {{ site.myvariable }}.
 title: Shifty - Get more control over Night Shift
 email: nate@natethompson.io
-description: A macOS menu bar app that gives you more control over Night Shift.
+description: A macOS menu bar app that gives you more control over Night Shift. With Shifty, Night Shift becomes a power user feature! Free download
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://shifty.natethompson.io" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  thompsonate

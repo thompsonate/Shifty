@@ -5,7 +5,7 @@
 
 <head>
   <title>{{ page.title }}</title>
-  <meta name="description" content="{{ page.description | default: translation.tagline | default: site.description }}"/>
+  <meta name="description" content="{{ page.description | default: translation.description | default: translation.tagline | default: site.description }}"/>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#4179f4">
   <meta name="msapplication-config" content="/images/browserconfig.xml">
