@@ -33,6 +33,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     var prefGeneral: PrefGeneralViewController!
     var prefShortcuts: PrefShortcutsViewController!
     var customTimeWindow: CustomTimeWindow!
+    var accessibilityPromptWindow: AccessibilityPromptWindow!
     var currentAppName = ""
     var currentAppBundleId = ""
     var currentDomain = ""
@@ -186,6 +187,15 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         assignKeyboardShortcutToMenuItem(disableCustomMenuItem, userDefaultsKey: Keys.disableCustomShortcut)
         
         Event.menuOpened.record()
+        
+        //Show accessibility permission prompt on second menu open
+        let count = UserDefaults.standard.integer(forKey: Keys.menuLaunchCount)
+        UserDefaults.standard.set(count + 1, forKey: Keys.menuLaunchCount)
+        if count == 1 && !UIElement.isProcessTrusted(withPrompt: false) {
+            NSApplication.shared.activate(ignoringOtherApps: true)
+            accessibilityPromptWindow = AccessibilityPromptWindow()
+            accessibilityPromptWindow.showWindow(nil)
+        }
         
         //refresh location if not updated in over a day
         if let data = UserDefaults.standard.value(forKey: Keys.lastKnownLocation) as? Data,

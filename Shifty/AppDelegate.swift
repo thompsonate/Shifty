@@ -19,7 +19,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let prefs = UserDefaults.standard
     @IBOutlet weak var statusMenu: NSMenu!
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-    var accessibilityPromptWindow: AccessibilityPromptWindow!
     var statusItemClicked: (() -> Void)?
     
     lazy var preferenceWindowController: PrefWindowController = {
@@ -73,13 +72,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             DistributedNotificationCenter.default().post(name: Notification.Name("killme"), object: Bundle.main.bundleIdentifier!)
         }
         
-        //Show accessibility permission prompt on third app launch
-        let count = UserDefaults.standard.integer(forKey: Keys.appLaunchCount)
-        UserDefaults.standard.set(count + 1, forKey: Keys.appLaunchCount)
-        if count == 2 && !UIElement.isProcessTrusted(withPrompt: false) {
-            NSApplication.shared.activate(ignoringOtherApps: true)
-            accessibilityPromptWindow = AccessibilityPromptWindow()
-            accessibilityPromptWindow.showWindow(nil)
+        //Show alert if accessibility permissions have been revoked while app is not running
+        if UserDefaults.standard.bool(forKey: Keys.isWebsiteControlEnabled) &&
+            !UIElement.isProcessTrusted(withPrompt: false) {
+            let alert: NSAlert = NSAlert()
+            alert.messageText = NSLocalizedString("alert.accessibility_disabled_message", comment: "Accessibility permissions for Shifty have been disabled")
+            alert.informativeText = NSLocalizedString("alert.accessibility_informative", comment: "Grant access to Shifty in Security & Privacy preferences, located in System Preferences.")
+            alert.alertStyle = NSAlert.Style.warning
+            alert.addButton(withTitle: NSLocalizedString("alert.open_preferences", comment: "Open System Preferences"))
+            alert.addButton(withTitle: NSLocalizedString("alert.not_now", comment: "Not now"))
+            if alert.runModal() == .alertFirstButtonReturn {
+                NSWorkspace.shared.open(URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility")!)
+            } else {
+                UserDefaults.standard.set(false, forKey: Keys.isWebsiteControlEnabled)
+            }
         }
     
         setMenuBarIcon()

@@ -25,7 +25,7 @@ struct Keys {
     static let disableHourShortcut = "disableHourShortcut"
     static let disableCustomShortcut = "disableCustomShortcut"
     
-    static let appLaunchCount = "appLaunchCount"
+    static let menuLaunchCount = "menuLaunchCount"
 }
 
 
@@ -47,7 +47,7 @@ class PrefManager {
             Keys.isWebsiteControlEnabled: NSNumber(value: false),
             Keys.disabledApps: [String](),
             Keys.browserRules: NSData(),
-            Keys.appLaunchCount: NSNumber(value: 0)
+            Keys.menuLaunchCount: NSNumber(value: 0)
             ] as [String : Any]
         
         userDefaults.register(defaults: factoryDefaults)
@@ -72,7 +72,7 @@ class PrefManager {
         userDefaults.removeObject(forKey: Keys.disableAppShortcut)
         userDefaults.removeObject(forKey: Keys.disableHourShortcut)
         userDefaults.removeObject(forKey: Keys.disableCustomShortcut)
-        userDefaults.removeObject(forKey: Keys.appLaunchCount)
+        userDefaults.removeObject(forKey: Keys.menuLaunchCount)
         
         synchronize()
     }
