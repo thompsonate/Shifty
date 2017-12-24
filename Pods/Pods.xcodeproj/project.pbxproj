@@ -32,7 +32,6 @@
 		618D3C71663174E07B65950421C46D48 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A5E586EAF4C098BB13472B84B96B96F /* AppKit.framework */; };
 		66DEB394C39F5DCCD70A27ECEF274983 /* de.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 0C40400599301E2C29BBEF88FC60369F /* de.lproj */; };
 		6B4361F5ADC6268E7953732371174FE9 /* MASShortcut-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BD07EBCB6F5F0CCB31108F358858FC /* MASShortcut-dummy.m */; };
-		6C01C1D8E5DDAB1DEBA61FEA57EB5817 /* MASPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4629CE86E2BEDC7D02A9B3FE57B4E4A8 /* MASPreferencesWindowController.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		6C46CD2C85970F61B86FFEFC697D885C /* MASPreferencesViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 37A4BAADE96B0AF0B1B2742E6485E221 /* MASPreferencesViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		72618F8FF851AC23862BFB3A4EB160BC /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F8BAE02453F3BA3C5E660661DE556C /* Error.swift */; };
 		72FC268C3DEB4922F62CD2E17340690B /* AXSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EA9D52DE4A0613C670BD3F2C1EC6DD /* AXSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -49,7 +48,9 @@
 		90616AF4CE8215DF6AFFC588C53AB3F2 /* Pods-Shifty-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AEA4D7A45D89D573A3FB0467B586EAA /* Pods-Shifty-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		946F1C8199DCEA1FD10CFFCEF5C61E81 /* etld.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C5750A385DBC08A2AB8F258DEE8724F /* etld.plist */; };
 		97B374490F695A6ECB06271EF080EB6C /* nl.lproj in Resources */ = {isa = PBXBuildFile; fileRef = EA544A162E52DFF64AE76277DA591447 /* nl.lproj */; };
+		9B932F90422A8139A5C827EEF6A648F3 /* MASPreferences+Shifty-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 99682B7484573ECCEDDFBD1AB2F1DDA6 /* MASPreferences+Shifty-dummy.m */; };
 		9BC75EFB8882D8E8D6C888E54880884A /* AXSwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A5090CA9C1CFC8E9802A19A8AB5D96B /* AXSwift-dummy.m */; };
+		A1A83DD4E9ABFF2291FFD664FD4620BF /* MASPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4629CE86E2BEDC7D02A9B3FE57B4E4A8 /* MASPreferencesWindowController.m */; };
 		A4DBF0AB2E88B1A9D1078042F47618B0 /* ru.lproj in Resources */ = {isa = PBXBuildFile; fileRef = A8A7DBDF4DE3C46CCC27B51A15A6D3F9 /* ru.lproj */; };
 		AA7CDF00DFA1EAFF7F28CAF33FE5BC37 /* MASHotKey.h in Headers */ = {isa = PBXBuildFile; fileRef = 2333336AEB818ADD4A00C6F3BF0EE6E9 /* MASHotKey.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ACBE29C4BF8BAEA483D6EEA940FE5314 /* MASShortcutView+Bindings.m in Sources */ = {isa = PBXBuildFile; fileRef = 92615FF3CAB512D4AE9B240D02B48FD3 /* MASShortcutView+Bindings.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
@@ -62,7 +63,6 @@
 		C24DEE3A2CCF20DA6EC0304725687506 /* SwiftLog-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 24BF85D5EEECD46A8117C65E1C0331C4 /* SwiftLog-dummy.m */; };
 		C50FA5B211B8916770FBE55623B83DA4 /* MASLocalization.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB13A6771B37B30CB6CCF05114F0E28 /* MASLocalization.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		C74A0639C29093B79FA23EB0CC348ADF /* Pods-ShiftyHelper-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5484E372671C7195CD137AC6E271B43E /* Pods-ShiftyHelper-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CE5ABB5FFABDDE82BCB3A0E821C74F38 /* MASPreferences+Shifty-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 99682B7484573ECCEDDFBD1AB2F1DDA6 /* MASPreferences+Shifty-dummy.m */; };
 		CE6EDD1DC8D07BBB4E1B43F910C4A935 /* AXSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B0EF44D689D2B86C173680073208EB3E /* AXSwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D6EA93219364CDC135BAFE63084F6361 /* es.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 3616ECCDA6A4E22CB3F6F0152399B787 /* es.lproj */; };
 		DE24C629B3DB152EE4924B56E3CC59F5 /* pl.lproj in Resources */ = {isa = PBXBuildFile; fileRef = BAEF157622CD4791833E1ABD96B858FD /* pl.lproj */; };
@@ -760,7 +760,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3A83C19030F6F02DBC34088CBC6CA94F /* Build configuration list for PBXNativeTarget "MASPreferences+Shifty" */;
 			buildPhases = (
-				1F4ECE9035423459132763E161D6551C /* Sources */,
+				3A850B5E44AAEF4F49FD95DA39F82CAE /* Sources */,
 				FB76404B608E6B819A0A9DC14BA4869E /* Frameworks */,
 				BCA9BBA41562A115ACAB06AF4D7B9FCD /* Headers */,
 				1A0EDB9EA9F82703532BB3C23E586591 /* Resources */,
@@ -945,15 +945,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1F4ECE9035423459132763E161D6551C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CE5ABB5FFABDDE82BCB3A0E821C74F38 /* MASPreferences+Shifty-dummy.m in Sources */,
-				6C01C1D8E5DDAB1DEBA61FEA57EB5817 /* MASPreferencesWindowController.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		297BE7DD9CB331685036DCDC90D0CF5D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -983,6 +974,15 @@
 				58CE04D9C6CAC7243825ABF4AB20EF32 /* MASShortcutValidator.m in Sources */,
 				ACBE29C4BF8BAEA483D6EEA940FE5314 /* MASShortcutView+Bindings.m in Sources */,
 				E5312C0FED7C61135F252D3A7A112990 /* MASShortcutView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A850B5E44AAEF4F49FD95DA39F82CAE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B932F90422A8139A5C827EEF6A648F3 /* MASPreferences+Shifty-dummy.m in Sources */,
+				A1A83DD4E9ABFF2291FFD664FD4620BF /* MASPreferencesWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1325,6 +1325,37 @@
 			};
 			name = Release;
 		};
+		2536D4C87768A28FFDAAD6D00EFA853B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4B6721541871AFCEAC5D1D22C5050D76 /* MASPreferences+Shifty.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_PREFIX_HEADER = "Target Support Files/MASPreferences+Shifty/MASPreferences+Shifty-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MASPreferences+Shifty/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/MASPreferences+Shifty/MASPreferences+Shifty.modulemap";
+				PRODUCT_NAME = MASPreferences_Shifty;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		312ACE5D8CB6F9064A5725F7C4CF9B12 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E23D80DC69E459B62FF67E3E021B6389 /* MASShortcut.xcconfig */;
@@ -1491,37 +1522,6 @@
 			};
 			name = Release;
 		};
-		7F7369AF1582425F95C8C43985BB1F5D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4B6721541871AFCEAC5D1D22C5050D76 /* MASPreferences+Shifty.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_PREFIX_HEADER = "Target Support Files/MASPreferences+Shifty/MASPreferences+Shifty-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/MASPreferences+Shifty/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				MODULEMAP_FILE = "Target Support Files/MASPreferences+Shifty/MASPreferences+Shifty.modulemap";
-				PRODUCT_NAME = MASPreferences_Shifty;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		8E2126FAF43A0E95B878C7E34FA18709 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5299D0EECAB063A2AFD7E2CED0F5B571 /* Pods-ShiftyHelper.release.xcconfig */;
@@ -1550,37 +1550,6 @@
 				PRODUCT_NAME = Pods_ShiftyHelper;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		9E2A8D78227552FB936D8BD999B5B0E5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4B6721541871AFCEAC5D1D22C5050D76 /* MASPreferences+Shifty.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_PREFIX_HEADER = "Target Support Files/MASPreferences+Shifty/MASPreferences+Shifty-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/MASPreferences+Shifty/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				MODULEMAP_FILE = "Target Support Files/MASPreferences+Shifty/MASPreferences+Shifty.modulemap";
-				PRODUCT_NAME = MASPreferences_Shifty;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1682,6 +1651,37 @@
 			};
 			name = Debug;
 		};
+		F2E459539588B3E1D7FC2DDD2D56A846 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4B6721541871AFCEAC5D1D22C5050D76 /* MASPreferences+Shifty.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_PREFIX_HEADER = "Target Support Files/MASPreferences+Shifty/MASPreferences+Shifty-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MASPreferences+Shifty/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/MASPreferences+Shifty/MASPreferences+Shifty.modulemap";
+				PRODUCT_NAME = MASPreferences_Shifty;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1724,8 +1724,8 @@
 		3A83C19030F6F02DBC34088CBC6CA94F /* Build configuration list for PBXNativeTarget "MASPreferences+Shifty" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7F7369AF1582425F95C8C43985BB1F5D /* Debug */,
-				9E2A8D78227552FB936D8BD999B5B0E5 /* Release */,
+				F2E459539588B3E1D7FC2DDD2D56A846 /* Debug */,
+				2536D4C87768A28FFDAAD6D00EFA853B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
