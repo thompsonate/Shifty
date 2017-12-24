@@ -5,8 +5,9 @@ target 'Shifty' do
   pod 'Sparkle'
   pod 'MASPreferences+Shifty'
   pod 'MASShortcut'
-  pod "AXSwift"
+  pod 'AXSwift'
   pod 'PublicSuffix'
+  pod 'SwiftLog'
 end
 
 target 'ShiftyHelper' do

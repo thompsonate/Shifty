@@ -6,51 +6,87 @@
 	<dict>
 		<key>AXSwift.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>4</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>MASPreferences+Shifty.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>5</integer>
 		</dict>
 		<key>MASShortcut-MASShortcut.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>7</integer>
 		</dict>
 		<key>MASShortcut.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>6</integer>
 		</dict>
 		<key>Pods-Shifty.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
 		</dict>
 		<key>Pods-ShiftyHelper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
 		</dict>
 		<key>PublicSuffix.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>8</integer>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftLog.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict/>
+	<dict>
+		<key>00C94ED0B49A44FBF0C4E2F6C875CFFC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2E6AEEEDDB61755F415EF0E050AF9A30</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5FD65D8CD2842F60B0BB0AECA5B2AD18</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6880D6C625EA6D2CECEE88358AB97713</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7B483B38EAFC6BF90C56DA12C9834D18</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>865676AA01F724C48513F2437E15E01C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D6E5ED8DAF7CA937C8F68F342C48B26E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F37047B5283131217E36C4D068CDC2D6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
 </dict>
 </plist>

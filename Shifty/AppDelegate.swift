@@ -12,6 +12,7 @@ import Fabric
 import Crashlytics
 import MASPreferences_Shifty
 import AXSwift
+import SwiftLog
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -87,6 +88,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 UserDefaults.standard.set(false, forKey: Keys.isWebsiteControlEnabled)
             }
         }
+        
+        Log.logger.directory = "~/Library/Logs/Shifty"
+        Log.logger.name = "Shifty"
+        logw("log file created")
     
         setMenuBarIcon()
         setStatusToggle()
