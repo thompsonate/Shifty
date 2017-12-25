@@ -201,6 +201,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             NSApplication.shared.activate(ignoringOtherApps: true)
             accessibilityPromptWindow = AccessibilityPromptWindow()
             accessibilityPromptWindow.showWindow(nil)
+            logw("Accessibility prompt window shown")
         }
         
         //refresh location if not updated in over a day

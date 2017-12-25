@@ -6,6 +6,7 @@
 //
 
 import Cocoa
+import SwiftLog
 
 class AccessibilityPromptWindow: NSWindowController {
    
@@ -28,9 +29,11 @@ class AccessibilityPromptWindow: NSWindowController {
     @IBAction func openSysPrefsClicked(sender: AnyObject) {
         window?.close()
         NSWorkspace.shared.open(URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility")!)
+        logw("Open System Preferences button clicked")
     }
     
     @IBAction func notNowClicked(_ sender: Any) {
         window?.close()
+        logw("Not now button clicked")
     }
 }

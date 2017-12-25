@@ -122,6 +122,9 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
     @IBAction func setWebsiteControl(_ sender: NSButtonCell) {
         if sender.state == .on {
             if !UIElement.isProcessTrusted(withPrompt: false) {
+                logw("Website control preference clicked")
+                logw("Accessibility permissions alert shown")
+                
                 UserDefaults.standard.set(false, forKey: Keys.isWebsiteControlEnabled)
                 let alert: NSAlert = NSAlert()
                 alert.messageText = NSLocalizedString("alert.enable_accessibility_message", comment: "This feature requires accessibility permissions.")
@@ -132,12 +135,14 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
                 if alert.runModal() == .alertFirstButtonReturn {
                     NSWorkspace.shared.open(URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility")!)
                     logw("Open System Preferences button clicked")
+                } else {
+                    logw("Not now button clicked")
                 }
             }
         } else {
             stopBrowserWatcher()
+            logw("Website control disabled")
         }
-        logw("Website control preference set to \(sender.state.rawValue)")
     }
     
     @IBAction func schedulePopup(_ sender: NSPopUpButton) {
