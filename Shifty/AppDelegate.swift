@@ -103,9 +103,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             if alert.runModal() == .alertFirstButtonReturn {
                 NSWorkspace.shared.open(URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility")!)
                 logw("Open System Preferences button clicked")
-            } else {
-                UserDefaults.standard.set(false, forKey: Keys.isWebsiteControlEnabled)
             }
+            UserDefaults.standard.set(false, forKey: Keys.isWebsiteControlEnabled)
+
         }
         
         logw("Night Shift state: \(BLClient.isNightShiftEnabled)")
