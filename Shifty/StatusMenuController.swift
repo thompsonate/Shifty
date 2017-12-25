@@ -67,6 +67,15 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     //MARK: Menu life cycle
         
     override func awakeFromNib() {
+        Log.logger.directory = "~/Library/Logs/Shifty"
+        #if DEBUG
+            Log.logger.name = "Shifty-debug"
+        #else
+            Log.logger.name = "Shifty"
+        #endif
+        //Edit printToConsole parameter in Edit Scheme > Run > Arguments > Environment Variables
+        Log.logger.printToConsole = ProcessInfo.processInfo.environment["print_log"] == "true"
+        
         statusMenu.delegate = self
         customTimeWindow = CustomTimeWindow()
         
@@ -118,8 +127,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
                 browserRules = try PropertyListDecoder().decode(Array<BrowserRule>.self, from: data)
             }
             catch let error {
-                NSLog("Error: \(error.localizedDescription)")
-                logw("Error: \(error.localizedDescription)")
+                NSLog("Browser Rules decoding error: \(error.localizedDescription)")
+                logw("Browser Rules decoding error: \(error.localizedDescription)")
                 browserRules = []
             }
         } else {

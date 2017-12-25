@@ -36,12 +36,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         Fabric.with([Crashlytics.self])
         Event.appLaunched.record()
         
-        Log.logger.directory = "~/Library/Logs/Shifty"
-        Log.logger.name = "Shifty"
-        //Edit printToConsole parameter in Edit Scheme > Run > Arguments > Environment Variables
-        Log.logger.printToConsole = ProcessInfo.processInfo.environment["print_log"] == "true"
-        
-        logw("")
         logw("")
         logw("App launched")
         logw("macOS \(ProcessInfo().operatingSystemVersionString)")
