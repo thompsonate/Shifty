@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import SwiftLog
 
 class SliderView: NSView {
     
@@ -19,6 +20,7 @@ class SliderView: NSView {
         let event = NSApplication.shared.currentEvent
         if event?.type == NSEvent.EventType.leftMouseUp {
             Event.sliderMoved(value: sender.floatValue).record()
+            logw("Slider set to \(sender.floatValue)")
         }
     }
     
@@ -26,6 +28,7 @@ class SliderView: NSView {
         shiftSlider.isEnabled = true
         sliderEnabled?()
         Event.enableSlider.record()
+        logw("Enable slider button clicked")
     }
 }
 

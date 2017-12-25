@@ -42,8 +42,11 @@ open class Log {
         }
     }
     
-    //The name of the log files.
+    ///The name of the log files.
     open var name = "logfile"
+    
+    ///Whether or not logging also prints to the console
+    open var printToConsole = true
     
     ///logging singleton
     open class var logger: Log {
@@ -77,7 +80,9 @@ open class Log {
             fileHandle.seekToEndOfFile()
             fileHandle.write(writeText.data(using: String.Encoding.utf8)!)
             fileHandle.closeFile()
-            print(writeText, terminator: "")
+            if printToConsole {
+                print(writeText, terminator: "")
+            }
             cleanup()
         }
     }
@@ -151,7 +156,7 @@ open class Log {
     
 }
 
-///a free function to make writing to the log much nicer
+///Writes content to the current log file
 public func logw(_ text: String) {
     Log.logger.write(text)
 }

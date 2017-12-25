@@ -9,6 +9,7 @@
 import Cocoa
 import MASShortcut
 import AXSwift
+import SwiftLog
 
 let BLClient = CBBlueLightClient()
 let SSLocationManager = SunriseSetLocationManager()
@@ -118,6 +119,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             }
             catch let error {
                 NSLog("Error: \(error.localizedDescription)")
+                logw("Error: \(error.localizedDescription)")
                 browserRules = []
             }
         } else {
@@ -138,6 +140,9 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         NSWorkspace.shared.notificationCenter.addObserver(forName: NSWorkspace.screensDidWakeNotification, object: nil, queue: nil) { _ in
             self.setToSchedule()
             self.updateDarkMode()
+            logw("Screen did wake")
+            logw("isShiftForAppEnabled: \(self.isShiftForAppEnabled)")
+            logw("schedule: \(BLClient.schedule)")
         }
         
         BLClient.setStatusNotificationBlock(BLNotificationBlock)
@@ -148,6 +153,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         
         
         DistributedNotificationCenter.default().addObserver(forName: NSNotification.Name("com.apple.accessibility.api"), object: nil, queue: nil) { _ in
+            logw("Accessibility permissions changed: \(UIElement.isProcessTrusted(withPrompt: false))")
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
                 if UIElement.isProcessTrusted(withPrompt: false) {
                     UserDefaults.standard.set(true, forKey: Keys.isWebsiteControlEnabled)
@@ -262,6 +268,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             } else {
                 shiftState = nil
             }
+            logw("Scheduled shift is close: \(isClose); shift state: \(String(describing: shiftState))")
             return (isClose, shiftState)
         case .sunSchedule:
             guard let sunTimes = SSLocationManager.sunTimes else { return (false, nil) }
@@ -278,6 +285,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             } else {
                 shiftState = nil
             }
+            logw("Scheduled shift is close: \(isClose); shift state: \(String(describing: shiftState))")
             return (isClose, shiftState)
         default:
             return (false, nil)
@@ -286,6 +294,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     
     ///Sets Night Shift state based on the set schedule. If a scheduled shift is close, the state is set to what it will be after the shift.
     func setToSchedule() {
+        logw("Night Shift set to schedule")
         if !isDisableHourSelected && !isDisableCustomSelected && !isDisabledForApp && !isDisabledForDomain && !isDisabledForSubdomain {
             if scheduledShift.isClose {
                 if let shiftState = scheduledShift.shiftState {
@@ -304,6 +313,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     ///Called when BLNotificationBlock posts a notification
     func blueLightNotification() {
         if !self.shiftOriginatedFromShifty {
+            logw("BLNotificationBlock called; state: \(BLClient.isNightShiftEnabled), schedule: \(BLClient.schedule)")
             if isDisabledForApp {
                 shift(isEnabled: false)
             } else if isDisableHourSelected || isDisableCustomSelected {
@@ -344,14 +354,17 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             switch BLClient.schedule {
             case .off:
                 SLSSetAppearanceThemeLegacy(isShiftForAppEnabled)
+                logw("Dark mode set to \(isShiftForAppEnabled)")
             case .sunSchedule:
                 if let scheduledState = scheduledState {
                     if scheduledShift.isClose {
                         if let shiftState = scheduledShift.shiftState {
                             SLSSetAppearanceThemeLegacy(shiftState)
+                            logw("Dark mode set to \(shiftState)")
                         }
                     } else {
                         SLSSetAppearanceThemeLegacy(scheduledState)
+                        logw("Dark mode set to \(scheduledState)")
                     }
                 }
             case .timedSchedule(startTime: _, endTime: _):
@@ -359,9 +372,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
                     if scheduledShift.isClose {
                         if let shiftState = scheduledShift.shiftState {
                             SLSSetAppearanceThemeLegacy(shiftState)
+                            logw("Dark mode set to \(shiftState)")
                         }
                     } else {
                         SLSSetAppearanceThemeLegacy(scheduledState)
+                        logw("Dark mode set to \(scheduledState)")
                     }
                 }
             }
@@ -387,6 +402,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         enableForCurrentDomain()
         enableForCurrentSubdomain()
         isShiftForAppEnabled = activeState
+        logw("Power menu item clicked; state: \(powerMenuItem.state.rawValue)")
     }
     
     @IBAction func disableForApp(_ sender: Any) {
@@ -397,7 +413,9 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         }
         updateCurrentApp()
         PrefManager.sharedInstance.userDefaults.set(disabledApps, forKey: Keys.disabledApps)
+        
         Event.disableForCurrentApp(state: (sender as? NSMenuItem)?.state == .on).record()
+        logw("Disable for app menu item clicked; state: \(disableAppMenuItem.state.rawValue)")
     }
     
     @IBAction func disableForDomain(_ sender: Any) {
@@ -410,6 +428,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         
         updateCurrentApp()
         PrefManager.sharedInstance.userDefaults.set(try? PropertyListEncoder().encode(browserRules), forKey: Keys.browserRules)
+        
+        logw("Disable for domain menu item clicked; state: \(disableDomainMenuItem.state.rawValue)")
     }
 
     @IBAction func disableForSubdomain(_ sender: Any) {
@@ -419,12 +439,15 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         } else {
             guard let ruleIndex = browserRules.index(of: rule) else {
                 NSLog("Could not find browser rule in array: \(rule)")
+                logw("Could not find browser rule in array: \(rule)")
                 return
             }
             browserRules.remove(at: ruleIndex)
         }
         updateCurrentApp()
         PrefManager.sharedInstance.userDefaults.set(try? PropertyListEncoder().encode(browserRules), forKey: Keys.browserRules)
+        
+        logw("Disable for subdomain menu item clicked; state: \(disableSubdomainMenuItem.state.rawValue)")
     }
     
     @IBAction func disableHour(_ sender: Any) {
@@ -455,7 +478,9 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             setActiveState(state: true)
         }
         isShiftForAppEnabled = activeState
+        
         Event.disableForHour(state: isDisableHourSelected).record()
+        logw("Disable for hour menu item clicked; state: \(disableHourMenuItem.state.rawValue)")
     }
     
     @IBAction func disableCustomTime(_ sender: Any) {
@@ -497,9 +522,10 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             self.isShiftForAppEnabled = self.activeState
             timeIntervalInMinutes = timeIntervalInSeconds * 60
         }
-        
         isShiftForAppEnabled = activeState
+        
         Event.disableForCustomTime(state: isDisableCustomSelected, timeInterval: timeIntervalInMinutes).record()
+        logw("Disable for custom time menu item clicked; state: \(disableCustomMenuItem.state.rawValue)")
     }
     
     @IBAction func preferencesClicked(_ sender: NSMenuItem) {
@@ -508,6 +534,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         appDelegate?.preferenceWindowController.showWindow(sender)
         
         Event.preferencesWindowOpened.record()
+        logw("Preferences menu item clicked")
     }
     
     @IBAction func quitClicked(_ sender: NSMenuItem) {
@@ -515,6 +542,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             shift(isEnabled: true)
         }
         Event.quitShifty.record()
+        logw("Quit menu item clicked")
         NSApplication.shared.terminate(self)
     }
     
@@ -561,6 +589,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
                         }
                     } catch let error {
                         NSLog("Error: Could not watch app [\(pid)]: \(error)")
+                        logw("Error: Could not watch app [\(pid)]: \(error)")
                     }
                     (currentDomain,
                      currentSubdomain) = getBrowserCurrentTabDomainSubdomain(browser: supportedBrowser, processIdentifier: pid)

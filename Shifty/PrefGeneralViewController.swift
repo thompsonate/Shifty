@@ -9,6 +9,7 @@ import Cocoa
 import MASPreferences_Shifty
 import ServiceManagement
 import AXSwift
+import SwiftLog
 
 ///The height difference between the custom schedule controls being shown and hidden
 let PREF_GENERAL_HEIGHT_ADJUSTMENT = CGFloat(33.0)
@@ -94,16 +95,19 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
     @IBAction func setAutoLaunch(_ sender: NSButtonCell) {
         let launcherAppIdentifier = "io.natethompson.ShiftyHelper"
         SMLoginItemSetEnabled(launcherAppIdentifier as CFString, setAutoLaunch.state == .on)
+        logw("Auto launch on login set to \(sender.state.rawValue)")
     }
     
     @IBAction func quickToggle(_ sender: NSButtonCell) {
         let appDelegate = NSApplication.shared.delegate as! AppDelegate
         appDelegate.setStatusToggle()
+        logw("Quick Toggle set to \(sender.state.rawValue)")
     }
     
-    @IBAction func setIconSwitching(_ sender: Any) {
+    @IBAction func setIconSwitching(_ sender: NSButtonCell) {
         let appDelegate = NSApplication.shared.delegate as! AppDelegate
         appDelegate.setMenuBarIcon()
+        logw("Icon switching set to \(sender.state.rawValue)")
     }
     
     @IBAction func syncDarkMode(_ sender: NSButtonCell) {
@@ -112,6 +116,7 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
         } else {
             SLSSetAppearanceThemeLegacy(false)
         }
+        logw("Dark mode sync preference set to \(sender.state.rawValue)")
     }
     
     @IBAction func setWebsiteControl(_ sender: NSButtonCell) {
@@ -126,14 +131,16 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
                 alert.addButton(withTitle: NSLocalizedString("general.cancel", comment: "Cancel"))
                 if alert.runModal() == .alertFirstButtonReturn {
                     NSWorkspace.shared.open(URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility")!)
+                    logw("Open System Preferences button clicked")
                 }
             }
         } else {
             stopBrowserWatcher()
         }
+        logw("Website control preference set to \(sender.state.rawValue)")
     }
     
-    @IBAction func schedulePopup(_ sender: Any) {
+    @IBAction func schedulePopup(_ sender: NSPopUpButton) {
         if schedulePopup.selectedItem == offMenuItem {
             BLClient.setSchedule(.off)
             setCustomControlVisibility(false, animate: true)
@@ -143,7 +150,6 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
         } else if schedulePopup.selectedItem == sunMenuItem {
             BLClient.setMode(1)
             setCustomControlVisibility(false, animate: true)
-            
         }
     }
     
