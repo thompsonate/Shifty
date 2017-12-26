@@ -199,8 +199,8 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
 
 
 class PrefWindowController: MASPreferencesWindowController {    
-    override func keyDown(with theEvent: NSEvent) {
-        if theEvent.keyCode == 13 {
+    override func keyDown(with event: NSEvent) {
+        if event.keyCode == 13 && event.modifierFlags.contains(.command) {
             window?.close()
         }
     }
