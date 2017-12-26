@@ -44,6 +44,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if !ProcessInfo().isOperatingSystemAtLeast(OperatingSystemVersion(majorVersion: 10, minorVersion: 12, patchVersion: 4)) {
             Event.oldMacOSVersion(version: ProcessInfo().operatingSystemVersionString).record()
             logw("Operating system version not supported")
+            NSApplication.shared.activate(ignoringOtherApps: true)
 
             let alert: NSAlert = NSAlert()
             alert.messageText = NSLocalizedString("alert.version_message", comment: "This version of macOS does not support Night Shift")
@@ -58,6 +59,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if !CBBlueLightClient.supportsBlueLightReduction() {
             Event.unsupportedHardware.record()
             logw("System does not support Night Shift")
+            NSApplication.shared.activate(ignoringOtherApps: true)
             
             let alert: NSAlert = NSAlert()
             alert.messageText = NSLocalizedString("alert.hardware_message", comment: "Your Mac does not support Night Shift")
