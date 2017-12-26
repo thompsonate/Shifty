@@ -128,7 +128,7 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
                 UserDefaults.standard.set(false, forKey: Keys.isWebsiteControlEnabled)
                 let alert: NSAlert = NSAlert()
                 alert.messageText = NSLocalizedString("alert.enable_accessibility_message", comment: "This feature requires accessibility permissions.")
-                alert.informativeText = NSLocalizedString("alert.accessibility_informative", comment: "Grant access to Shifty in Security & Privacy preferences, located in System Preferences.")
+                alert.informativeText = NSLocalizedString("alert.enable_accessibility_informative", comment: "Grant access to Shifty in Security & Privacy preferences, located in System Preferences.")
                 alert.alertStyle = NSAlert.Style.warning
                 alert.addButton(withTitle: NSLocalizedString("alert.open_preferences", comment: "Open System Preferences"))
                 alert.addButton(withTitle: NSLocalizedString("general.cancel", comment: "Cancel"))

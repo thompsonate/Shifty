@@ -168,6 +168,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
                     UserDefaults.standard.set(true, forKey: Keys.isWebsiteControlEnabled)
                 } else {
                     UserDefaults.standard.set(false, forKey: Keys.isWebsiteControlEnabled)
+                    let appDelegate = NSApplication.shared.delegate as! AppDelegate
+                    appDelegate.showAccessibilityDeniedAlert()
                 }
             })
         }

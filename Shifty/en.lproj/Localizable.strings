@@ -47,8 +47,11 @@
 "alert.hardware_informative" = "A newer Mac is required to use Shifty.";
 
 "alert.enable_accessibility_message" = "This feature requires accessibility permissions.";
+"alert.enable_accessibility_informative" = "Grant access to Shifty in Security & Privacy preferences, located in System Preferences.";
+
 "alert.accessibility_disabled_message" = "Accessibility permissions for Shifty have been disabled";
-"alert.accessibility_informative" = "Grant access to Shifty in Security & Privacy preferences, located in System Preferences.";
+"alert.accessibility_disabled_informative" = "Accessibility permissions must be enabled to control Night Shift's state based on your current website. Grant access to Shifty in Security & Privacy preferences, located in System Preferences.";
+
 
 "alert.open_preferences" = "Open System Preferences";
 "alert.not_now" = "Not now";
