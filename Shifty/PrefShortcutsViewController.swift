@@ -38,6 +38,8 @@ class PrefShortcutsViewController: NSViewController, MASPreferencesViewControlle
     @IBOutlet weak var incrementColorTempShortcut: MASShortcutView!
     @IBOutlet weak var decrementColorTempShortcut: MASShortcutView!
     @IBOutlet weak var disableAppShortcut: MASShortcutView!
+    @IBOutlet weak var disableDomainShortcut: MASShortcutView!
+    @IBOutlet weak var disableSubdomainShortcut: MASShortcutView!
     @IBOutlet weak var disableHourShortcut: MASShortcutView!
     @IBOutlet weak var disableCustomShortcut: MASShortcutView!
     
@@ -48,6 +50,8 @@ class PrefShortcutsViewController: NSViewController, MASPreferencesViewControlle
         incrementColorTempShortcut.associatedUserDefaultsKey = Keys.incrementColorTempShortcut
         decrementColorTempShortcut.associatedUserDefaultsKey = Keys.decrementColorTempShortcut
         disableAppShortcut.associatedUserDefaultsKey = Keys.disableAppShortcut
+        disableDomainShortcut.associatedUserDefaultsKey = Keys.disableDomainShortcut
+        disableSubdomainShortcut.associatedUserDefaultsKey = Keys.disableSubdomainShortcut
         disableHourShortcut.associatedUserDefaultsKey = Keys.disableHourShortcut
         disableCustomShortcut.associatedUserDefaultsKey = Keys.disableCustomShortcut
     }
@@ -90,6 +94,24 @@ class PrefShortcutsViewController: NSViewController, MASPreferencesViewControlle
         
         MASShortcutBinder.shared().bindShortcut(withDefaultsKey: Keys.disableAppShortcut) {
             self.statusMenuController?.disableForApp(self)
+        }
+        
+        MASShortcutBinder.shared().bindShortcut(withDefaultsKey: Keys.disableDomainShortcut) {
+            guard let menu = self.statusMenuController else { return }
+            if !menu.disableDomainMenuItem.isHidden {
+                self.statusMenuController?.disableForDomain(self)
+            } else {
+                NSSound.beep()
+            }
+        }
+        
+        MASShortcutBinder.shared().bindShortcut(withDefaultsKey: Keys.disableSubdomainShortcut) {
+            guard let menu = self.statusMenuController else { return }
+            if !menu.disableSubdomainMenuItem.isHidden {
+                self.statusMenuController?.disableForSubdomain(self)
+            } else {
+                NSSound.beep()
+            }
         }
         
         MASShortcutBinder.shared().bindShortcut(withDefaultsKey: Keys.disableHourShortcut) {

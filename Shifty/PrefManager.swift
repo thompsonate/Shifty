@@ -22,6 +22,8 @@ struct Keys {
     static let incrementColorTempShortcut = "incrementColorTempShortcut"
     static let decrementColorTempShortcut = "decrementColorTempShortcut"
     static let disableAppShortcut = "disableAppShortcut"
+    static let disableDomainShortcut = "disableDomainShortcut"
+    static let disableSubdomainShortcut = "disableSubdomainShortcut"
     static let disableHourShortcut = "disableHourShortcut"
     static let disableCustomShortcut = "disableCustomShortcut"
     
@@ -70,6 +72,8 @@ class PrefManager {
         userDefaults.removeObject(forKey: Keys.incrementColorTempShortcut)
         userDefaults.removeObject(forKey: Keys.decrementColorTempShortcut)
         userDefaults.removeObject(forKey: Keys.disableAppShortcut)
+        userDefaults.removeObject(forKey: Keys.disableDomainShortcut)
+        userDefaults.removeObject(forKey: Keys.disableSubdomainShortcut)
         userDefaults.removeObject(forKey: Keys.disableHourShortcut)
         userDefaults.removeObject(forKey: Keys.disableCustomShortcut)
         userDefaults.removeObject(forKey: Keys.menuLaunchCount)
