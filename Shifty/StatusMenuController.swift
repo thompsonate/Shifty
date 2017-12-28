@@ -147,11 +147,9 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         }
         
         NSWorkspace.shared.notificationCenter.addObserver(forName: NSWorkspace.screensDidWakeNotification, object: nil, queue: nil) { _ in
+            logw("Screen did wake")
             self.setToSchedule()
             self.updateDarkMode()
-            logw("Screen did wake")
-            logw("isShiftForAppEnabled: \(self.isShiftForAppEnabled)")
-            logw("schedule: \(BLClient.schedule)")
         }
         
         BLClient.setStatusNotificationBlock(BLNotificationBlock)
@@ -415,6 +413,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     //MARK: User Interaction
     
     @IBAction func power(_ sender: Any) {
+        logw("Power menu item clicked")
+        
         if sliderView.shiftSlider.floatValue == 0.0 {
             Event.toggleNightShift(state: true).record()
             shift(strength: 50)
@@ -427,10 +427,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         enableForCurrentDomain()
         enableForCurrentSubdomain()
         isShiftForAppEnabled = activeState
-        logw("Power menu item clicked; state: \(powerMenuItem.state.rawValue)")
     }
     
     @IBAction func disableForApp(_ sender: Any) {
+        logw("Disable for app menu item clicked; state: \(disableAppMenuItem.state.rawValue)")
+        
         if disableAppMenuItem.state == .off {
             disabledApps.append(currentAppBundleId)
         } else {
@@ -440,10 +441,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         PrefManager.sharedInstance.userDefaults.set(disabledApps, forKey: Keys.disabledApps)
         
         Event.disableForCurrentApp(state: (sender as? NSMenuItem)?.state == .on).record()
-        logw("Disable for app menu item clicked; state: \(disableAppMenuItem.state.rawValue)")
     }
     
     @IBAction func disableForDomain(_ sender: Any) {
+        logw("Disable for domain menu item clicked; state: \(disableDomainMenuItem.state.rawValue)")
+
         let rule = BrowserRule(type: .Domain, host: currentDomain, enableNightShift: false)
         if disableDomainMenuItem.state == .off {
             browserRules.append(rule)
@@ -453,11 +455,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         
         updateCurrentApp()
         PrefManager.sharedInstance.userDefaults.set(try? PropertyListEncoder().encode(browserRules), forKey: Keys.browserRules)
-        
-        logw("Disable for domain menu item clicked; state: \(disableDomainMenuItem.state.rawValue)")
     }
 
     @IBAction func disableForSubdomain(_ sender: Any) {
+        logw("Disable for subdomain menu item clicked; state: \(disableSubdomainMenuItem.state.rawValue)")
+
         let rule = BrowserRule(type: .Subdomain, host: currentSubdomain, enableNightShift: isDisabledForDomain)
         if disableSubdomainMenuItem.state == .off {
             browserRules.append(rule)
@@ -471,11 +473,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         }
         updateCurrentApp()
         PrefManager.sharedInstance.userDefaults.set(try? PropertyListEncoder().encode(browserRules), forKey: Keys.browserRules)
-        
-        logw("Disable for subdomain menu item clicked; state: \(disableSubdomainMenuItem.state.rawValue)")
     }
     
     @IBAction func disableHour(_ sender: Any) {
+        logw("Disable for hour menu item clicked; state: \(disableHourMenuItem.state.rawValue)")
+
         if !isDisableHourSelected {
             isDisableHourSelected = true
             shift(isEnabled: false)
@@ -505,10 +507,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         isShiftForAppEnabled = activeState
         
         Event.disableForHour(state: isDisableHourSelected).record()
-        logw("Disable for hour menu item clicked; state: \(disableHourMenuItem.state.rawValue)")
     }
     
     @IBAction func disableCustomTime(_ sender: Any) {
+        logw("Disable for custom time menu item clicked; state: \(disableCustomMenuItem.state.rawValue)")
+
         NSApplication.shared.activate(ignoringOtherApps: true)
         
         var timeIntervalInMinutes: Int!
@@ -550,24 +553,25 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         isShiftForAppEnabled = activeState
         
         Event.disableForCustomTime(state: isDisableCustomSelected, timeInterval: timeIntervalInMinutes).record()
-        logw("Disable for custom time menu item clicked; state: \(disableCustomMenuItem.state.rawValue)")
     }
     
     @IBAction func preferencesClicked(_ sender: NSMenuItem) {
+        logw("Preferences menu item clicked")
+        
         NSApplication.shared.activate(ignoringOtherApps: true)
         let appDelegate = NSApplication.shared.delegate as? AppDelegate
         appDelegate?.preferenceWindowController.showWindow(sender)
         
         Event.preferencesWindowOpened.record()
-        logw("Preferences menu item clicked")
     }
     
     @IBAction func quitClicked(_ sender: NSMenuItem) {
+        logw("Quit menu item clicked")
+
         if isDisableHourSelected || isDisableCustomSelected || isDisabledForApp || isDisabledForDomain || isDisabledForSubdomain {
             shift(isEnabled: true)
         }
         Event.quitShifty.record()
-        logw("Quit menu item clicked")
         NSApplication.shared.terminate(self)
     }
     
@@ -828,6 +832,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             setDescriptionText(keepVisible: true)
         }
         BLClient.setEnabled(strength / 100 != 0.0)
+        logw("Night Shift state: \(strength != 0.0)")
         shiftOriginatedFromShifty = true
     }
     
@@ -836,11 +841,13 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             let sliderValue = sliderView.shiftSlider.floatValue
             BLClient.setStrength(sliderValue / 100, commit: true)
             BLClient.setEnabled(true)
+            logw("Night Shift state: true")
             activeState = true
             powerMenuItem.title = NSLocalizedString("menu.toggle_off", comment: "Turn off Night Shift")
             sliderView.shiftSlider.isEnabled = true
         } else {
             BLClient.setEnabled(false)
+            logw("Night Shift state: false")
             activeState = false
             powerMenuItem.title = NSLocalizedString("menu.toggle_on", comment: "Turn on Night Shift")
         }

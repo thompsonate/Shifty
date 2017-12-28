@@ -111,14 +111,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if UserDefaults.standard.bool(forKey: Keys.isIconSwitchingEnabled) {
             if !BLClient.isNightShiftEnabled {
                 icon = #imageLiteral(resourceName: "sunOpenIcon")
-                logw("Menu bar icon set to open sunOpenIcon")
             } else {
                 icon = #imageLiteral(resourceName: "shiftyMenuIcon")
-                logw("Menu bar icon set to shiftyMenuIcon")
             }
         } else {
             icon = #imageLiteral(resourceName: "shiftyMenuIcon")
-            logw("Menu bar icon set to moon in shiftyMenuIcon")
         }
         icon.isTemplate = true
         DispatchQueue.main.async {
