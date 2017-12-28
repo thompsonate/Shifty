@@ -763,51 +763,6 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             self.disableCustomMenuItem.isEnabled = state
         }
         
-        //disableAppMenuItem
-        if self.isDisableHourSelected {
-            self.disableAppMenuItem.isEnabled = true
-        } else if self.isDisableCustomSelected {
-            self.disableAppMenuItem.isEnabled = true
-        } else if self.isDisabledForApp {
-            self.disableAppMenuItem.isEnabled = true
-        } else if self.isDisabledForDomain {
-            self.disableAppMenuItem.isEnabled = true
-        } else if self.isDisabledForSubdomain {
-            self.disableAppMenuItem.isEnabled = true
-        } else {
-            self.disableAppMenuItem.isEnabled = state
-        }
-        
-        //disableDomainMenuItem
-        if self.isDisableHourSelected {
-            self.disableDomainMenuItem.isEnabled = true
-        } else if self.isDisableCustomSelected {
-            self.disableDomainMenuItem.isEnabled = true
-        } else if self.isDisabledForApp {
-            self.disableDomainMenuItem.isEnabled = true
-        } else if self.isDisabledForDomain {
-            self.disableDomainMenuItem.isEnabled = true
-        } else if self.isDisabledForSubdomain {
-            self.disableDomainMenuItem.isEnabled = true
-        } else {
-            self.disableDomainMenuItem.isEnabled = state
-        }
-        
-        //disableSubdomainMenuItem
-        if self.isDisableHourSelected {
-            self.disableSubdomainMenuItem.isEnabled = true
-        } else if self.isDisableCustomSelected {
-            self.disableSubdomainMenuItem.isEnabled = true
-        } else if self.isDisabledForApp {
-            self.disableSubdomainMenuItem.isEnabled = true
-        } else if self.isDisabledForDomain {
-            self.disableSubdomainMenuItem.isEnabled = true
-        } else if self.isDisabledForSubdomain {
-            self.disableSubdomainMenuItem.isEnabled = true
-        } else {
-            self.disableSubdomainMenuItem.isEnabled = state
-        }
-        
         if state {
             self.powerMenuItem.title = NSLocalizedString("menu.toggle_off", comment: "Turn off Night Shift")
         } else {
