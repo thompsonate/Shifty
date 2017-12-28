@@ -307,35 +307,48 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     ///Sets Night Shift state based on the set schedule. If a scheduled shift is close, the state is set to what it will be after the shift.
     func setToSchedule() {
         logw("Night Shift set to schedule")
-        if !isDisableHourSelected && !isDisableCustomSelected && !isDisabledForApp && !isDisabledForDomain && !isDisabledForSubdomain {
+        if isDisableHourSelected || isDisableCustomSelected {
+            shift(isEnabled: false)
+            isShiftForAppEnabled = false
+        } else if isDisabledForApp || isDisabledForDomain || isDisabledForSubdomain {
+            shift(isEnabled: false)
+            if let scheduledState = scheduledState {
+                isShiftForAppEnabled = scheduledState
+            }
+        } else {
             if scheduledShift.isClose {
                 if let shiftState = scheduledShift.shiftState {
                     shift(isEnabled: shiftState)
+                    isShiftForAppEnabled = shiftState
                 }
             } else {
                 if let scheduledState = scheduledState {
                     shift(isEnabled: scheduledState)
+                    isShiftForAppEnabled = scheduledState
                 }
             }
-        } else {
-            shift(isEnabled: false)
         }
     }
-    
+        
     ///Called when BLNotificationBlock posts a notification
     func blueLightNotification() {
         if !self.shiftOriginatedFromShifty {
-            logw("BLNotificationBlock called; state: \(BLClient.isNightShiftEnabled), schedule: \(BLClient.schedule)")
-            if isDisabledForApp {
+            logw("BLNotificationBlock called")
+            logw("Schedule: \(BLClient.schedule)")
+            if isDisabledForApp || isDisabledForDomain || isDisabledForSubdomain {
                 shift(isEnabled: false)
+                isShiftForAppEnabled = false
             } else if isDisableHourSelected || isDisableCustomSelected {
                 if scheduledShift.isClose {
                     shift(isEnabled: false)
+                    isShiftForAppEnabled = false
                 } else {
                     isShiftForAppEnabled = BLClient.isNightShiftEnabled
+                    logw("Night Shift state: \(BLClient.isNightShiftEnabled)")
                 }
             } else {
                 isShiftForAppEnabled = BLClient.isNightShiftEnabled
+                logw("Night Shift state: \(BLClient.isNightShiftEnabled)")
             }
         }
         shiftOriginatedFromShifty = false
