@@ -148,7 +148,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         
         NSWorkspace.shared.notificationCenter.addObserver(forName: NSWorkspace.screensDidWakeNotification, object: nil, queue: nil) { _ in
             logw("Screen did wake")
-            self.setToSchedule()
+            self.setShiftForApp()
             self.updateDarkMode()
         }
         
@@ -324,6 +324,16 @@ class StatusMenuController: NSObject, NSMenuDelegate {
                     shift(isEnabled: scheduledState)
                     isShiftForAppEnabled = scheduledState
                 }
+            }
+        }
+    }
+    
+    func setShiftForApp() {
+        if isDisableHourSelected || isDisableCustomSelected {
+            isShiftForAppEnabled = false
+        } else {
+            if let scheduledState = scheduledState {
+                isShiftForAppEnabled = scheduledState
             }
         }
     }
