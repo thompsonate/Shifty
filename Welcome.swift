@@ -26,6 +26,12 @@ class WelcomeWindowController: NSWindowController {
     }
 }
 
+class WelcomeWindow: NSWindow {
+    override func animationResizeTime(_ newFrame: NSRect) -> TimeInterval {
+        return 0.4
+    }
+}
+
 
 class ContainerViewController: NSViewController {
     var sourceViewController: NSViewController!
@@ -45,6 +51,8 @@ class SlideStoryboard: NSStoryboardSegue {
     open var animation: NSViewController.TransitionOptions {
         return NSViewController.TransitionOptions.slideForward
     }
+    
+    
     
     // make references to the source controller and destination controller
     override init(identifier: NSStoryboardSegue.Identifier,
@@ -89,7 +97,9 @@ class SlideStoryboard: NSStoryboardSegue {
         let newWindowRect = NSMakeRect(currentRect.origin.x - horizontalChange,
                                        currentRect.origin.y - verticalChange + titleBarHeight/2,
                                        targetWidth, targetHeight)
-        containerViewController.view.window?.setFrame(newWindowRect, display: true, animate: true)
+        DispatchQueue.main.async {
+            containerViewController.view.window?.setFrame(newWindowRect, display: true, animate: true)
+        }
         
         // lose the sourceViewController, it's no longer visible
         containerViewController.removeChildViewController(at: 0)
