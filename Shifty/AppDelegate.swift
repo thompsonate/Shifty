@@ -104,6 +104,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
         setMenuBarIcon()
         setStatusToggle()
+        
+        if UserDefaults.standard.bool(forKey: Keys.isFirstLaunch) {
+            NSApplication.shared.activate(ignoringOtherApps: true)
+            let welcome = WelcomeWindowController()
+            let controller = welcome.storyboard.instantiateInitialController() as! NSWindowController
+            controller.showWindow(self)
+            
+            UserDefaults.standard.set(false, forKey: Keys.isFirstLaunch)
+        }
     }
     
     func setMenuBarIcon() {
