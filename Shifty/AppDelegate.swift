@@ -87,7 +87,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         //Show alert if accessibility permissions have been revoked while app is not running
         if UserDefaults.standard.bool(forKey: Keys.isWebsiteControlEnabled) &&
-            !UIElement.isProcessTrusted(withPrompt: false) {
+            !UIElement.isProcessTrusted(withPrompt: true) {
             
             logw("Accessibility permissions revoked while app was not running")
             showAccessibilityDeniedAlert()
@@ -101,17 +101,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             logw("sunset: \(String(describing: SSLocationManager.sunTimes?.sunset))")
         }
         logw("")
-    
+        
         setMenuBarIcon()
         setStatusToggle()
         
         if UserDefaults.standard.bool(forKey: Keys.isFirstLaunch) {
             NSApplication.shared.activate(ignoringOtherApps: true)
-            let welcome = WelcomeWindowController()
-            let controller = welcome.storyboard.instantiateInitialController() as! NSWindowController
+            let setup = SetupWindowController()
+            let controller = setup.storyboard.instantiateInitialController() as! NSWindowController
             controller.showWindow(self)
             
-            UserDefaults.standard.set(false, forKey: Keys.isFirstLaunch)
+//            UserDefaults.standard.set(false, forKey: Keys.isFirstLaunch)
         }
     }
     
