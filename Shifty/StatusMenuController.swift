@@ -34,7 +34,6 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     var prefGeneral: PrefGeneralViewController!
     var prefShortcuts: PrefShortcutsViewController!
     var customTimeWindow: CustomTimeWindow!
-    var accessibilityPromptWindow: AccessibilityPromptWindow!
     var accessibilityViewController: AccessibilityViewController!
     var currentAppName = ""
     var currentAppBundleId = ""
