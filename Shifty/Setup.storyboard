@@ -184,6 +184,9 @@ DQ
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="closeButtonClicked:" target="NqW-NI-dEn" id="xEh-sp-RqX"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oJ6-zk-aYq">
                                 <rect key="frame" x="14" y="13" width="52" height="32"/>
@@ -373,10 +376,10 @@ DQ
                                 </connections>
                             </button>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="Isi-hi-gbD">
-                                <rect key="frame" x="20" y="61" width="410" height="344"/>
+                                <rect key="frame" x="20" y="61" width="410" height="364"/>
                                 <subviews>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="dFs-Xp-v4t">
-                                        <rect key="frame" x="0.0" y="94" width="410" height="156"/>
+                                        <rect key="frame" x="0.0" y="104" width="410" height="156"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HOk-mq-u4U">
                                                 <rect key="frame" x="178" y="76" width="54" height="80"/>
@@ -428,7 +431,7 @@ DQ
                             <constraint firstItem="22i-XU-Ifo" firstAttribute="leading" secondItem="lIO-UQ-KPf" secondAttribute="leading" constant="20" id="EdZ-qf-UaG"/>
                             <constraint firstItem="Isi-hi-gbD" firstAttribute="leading" secondItem="lIO-UQ-KPf" secondAttribute="leading" constant="20" id="V5F-u5-dSt"/>
                             <constraint firstAttribute="bottom" secondItem="r6Q-C0-71a" secondAttribute="bottom" constant="20" id="Va1-PO-39g"/>
-                            <constraint firstItem="Isi-hi-gbD" firstAttribute="top" secondItem="lIO-UQ-KPf" secondAttribute="top" constant="20" id="WYx-6C-FLc"/>
+                            <constraint firstItem="Isi-hi-gbD" firstAttribute="top" secondItem="lIO-UQ-KPf" secondAttribute="top" id="WYx-6C-FLc"/>
                             <constraint firstAttribute="trailing" secondItem="Isi-hi-gbD" secondAttribute="trailing" constant="20" id="unc-99-EPM"/>
                             <constraint firstAttribute="bottom" secondItem="22i-XU-Ifo" secondAttribute="bottom" constant="20" id="vYO-58-ogE"/>
                             <constraint firstAttribute="trailing" secondItem="r6Q-C0-71a" secondAttribute="trailing" constant="20" id="voS-U5-Y7n"/>
@@ -449,7 +452,8 @@ DQ
         <image name="websiteFeatureScreenshot" width="329" height="267"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="RBK-ii-duJ"/>
+        <segue reference="7yX-3s-HfZ"/>
+        <segue reference="cdz-pS-K8F"/>
         <segue reference="OTp-Xx-YUK"/>
     </inferredMetricsTieBreakers>
 </document>
