@@ -71,7 +71,7 @@ class PrefAboutViewController: NSViewController, MASPreferencesViewController {
     }
     
     @IBAction func creditsButtonClicked(_ sender: Any) {
-        guard let path = Bundle.main.path(forResource: "credits", ofType: "rtf") else { return }
+        guard let path = Bundle.main.path(forResource: "credits", ofType: "rtfd") else { return }
         NSWorkspace.shared.openFile(path)
     }
 }

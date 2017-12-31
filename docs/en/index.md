@@ -26,4 +26,4 @@ Shifty was made to expand the capabilities of the built in Night Shift feature i
 <br>
 If you love Shifty, [donate]({{ site.donate_link_usd }}) to help me make it better.
 
-Shifty is free and open source, licensed under [AGPL-3.0]({{ site.license_link }}). [Contribute on GitHub]({{ site.repository_link }})
+Shifty is free and open source, licensed under [GPLv3]({{ site.license_link }}). [Contribute on GitHub]({{ site.repository_link }})

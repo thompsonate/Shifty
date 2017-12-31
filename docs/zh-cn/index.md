@@ -26,4 +26,4 @@ Shifty 夜览管家为 macOS 内置的夜览模式赋予更多便捷与自定义
 <br>
 如果你钟爱 Shifty，[向开发者贡献自己的一份捐助]({{ site.donate_link_usd }})。
 
-Shifty 夜览管家免费且开源，应用程序遵循 [AGPL-3.0 许可协议]({{ site.license_link }}). [在 Github 查看项目源码]({{ site.repository_link }})
+Shifty 夜览管家免费且开源，应用程序遵循 [GPLv3 许可协议]({{ site.license_link }}). [在 Github 查看项目源码]({{ site.repository_link }})
