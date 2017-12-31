@@ -8,9 +8,13 @@
 import Cocoa
 import SwiftLog
 
-class SetupWindowController: NSWindowController {
+class SetupWindowController: NSWindowController {    
     override var storyboard: NSStoryboard {
         return NSStoryboard(name: .init("Setup"), bundle: nil)
+    }
+    
+    override func windowDidLoad() {
+        window?.backgroundColor = NSColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
     }
 }
 

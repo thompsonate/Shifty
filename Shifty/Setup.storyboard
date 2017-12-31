@@ -47,34 +47,34 @@
             <objects>
                 <viewController storyboardIdentifier="sourceViewController" id="O2N-Tr-VDU" sceneMemberID="viewController">
                     <view key="view" id="vpL-89-GYZ" customClass="SetupView" customModule="Shifty" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="415"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="425"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zqM-VP-MKT">
-                                <rect key="frame" x="193" y="351" width="64" height="64"/>
+                                <rect key="frame" x="193" y="361" width="64" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="64" id="C38-De-3i5"/>
                                     <constraint firstAttribute="width" secondItem="zqM-VP-MKT" secondAttribute="height" multiplier="1:1" id="VTn-Ih-aLU"/>
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="AppIcon" id="Csb-ai-sDK"/>
                             </imageView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mxU-q0-bpJ">
-                                <rect key="frame" x="93" y="307" width="265" height="36"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="mxU-q0-bpJ">
+                                <rect key="frame" x="93" y="317" width="265" height="36"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Welcome to Shifty!" id="9wQ-sP-igZ">
                                     <font key="font" metaFont="systemSemibold" size="30"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6jJ-c5-oIY">
-                                <rect key="frame" x="109" y="280" width="232" height="17"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="6jJ-c5-oIY">
+                                <rect key="frame" x="109" y="290" width="232" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Shifty is now running in the menu bar." id="WcY-uu-0Eu">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ldh-Qb-ijW">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="ldh-Qb-ijW">
                                 <rect key="frame" x="18" y="71" width="315" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Click Next to continue setup. It'll just take a minute." id="J4B-E9-KIZ">
                                     <font key="font" metaFont="system"/>
@@ -82,7 +82,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="15C-Gh-udT">
+                            <button verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="15C-Gh-udT">
                                 <rect key="frame" x="354" y="13" width="82" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="QTp-dQ-ljg"/>
@@ -98,10 +98,10 @@ DQ
                                     <segue destination="92U-Sh-UpN" kind="custom" customClass="SlideForwardSegue" customModule="Shifty" customModuleProvider="target" id="Ibe-5u-Fbi"/>
                                 </connections>
                             </button>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jn8-mZ-J20">
-                                <rect key="frame" x="20" y="168" width="410" height="82"/>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="jn8-mZ-J20">
+                                <rect key="frame" x="45" y="124" width="362" height="151"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="jn8-mZ-J20" secondAttribute="height" multiplier="393:79" id="bE7-GK-3Rt"/>
+                                    <constraint firstAttribute="width" secondItem="jn8-mZ-J20" secondAttribute="height" multiplier="125:52" id="dfB-ry-RTz"/>
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="menuBarScreenshot" id="bWW-qv-Hho"/>
                             </imageView>
@@ -110,43 +110,44 @@ DQ
                             <constraint firstItem="mxU-q0-bpJ" firstAttribute="top" secondItem="zqM-VP-MKT" secondAttribute="bottom" constant="8" id="1kK-Ur-CBB"/>
                             <constraint firstItem="mxU-q0-bpJ" firstAttribute="centerX" secondItem="vpL-89-GYZ" secondAttribute="centerX" id="4h2-RS-iPZ"/>
                             <constraint firstItem="zqM-VP-MKT" firstAttribute="centerX" secondItem="vpL-89-GYZ" secondAttribute="centerX" id="5N7-5b-FtK"/>
-                            <constraint firstItem="ldh-Qb-ijW" firstAttribute="top" relation="greaterThanOrEqual" secondItem="jn8-mZ-J20" secondAttribute="bottom" constant="30" id="D51-j9-054"/>
+                            <constraint firstItem="ldh-Qb-ijW" firstAttribute="top" relation="greaterThanOrEqual" secondItem="jn8-mZ-J20" secondAttribute="bottom" constant="20" id="D51-j9-054"/>
                             <constraint firstItem="ldh-Qb-ijW" firstAttribute="leading" secondItem="vpL-89-GYZ" secondAttribute="leading" constant="20" id="E3P-HT-i7l"/>
                             <constraint firstItem="15C-Gh-udT" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vpL-89-GYZ" secondAttribute="leading" constant="20" id="Gxx-pd-csi"/>
                             <constraint firstAttribute="trailing" secondItem="15C-Gh-udT" secondAttribute="trailing" constant="20" id="SbX-de-8dk"/>
                             <constraint firstAttribute="bottom" secondItem="15C-Gh-udT" secondAttribute="bottom" constant="20" id="WgK-EX-DtX"/>
                             <constraint firstItem="6jJ-c5-oIY" firstAttribute="centerX" secondItem="vpL-89-GYZ" secondAttribute="centerX" id="brD-Wv-bwl"/>
+                            <constraint firstItem="jn8-mZ-J20" firstAttribute="centerX" secondItem="vpL-89-GYZ" secondAttribute="centerX" id="fGI-zJ-dh8"/>
                             <constraint firstItem="zqM-VP-MKT" firstAttribute="top" secondItem="vpL-89-GYZ" secondAttribute="top" id="iZx-Rp-eIi"/>
-                            <constraint firstItem="jn8-mZ-J20" firstAttribute="top" secondItem="6jJ-c5-oIY" secondAttribute="bottom" constant="30" id="jFM-SF-SrF"/>
+                            <constraint firstItem="jn8-mZ-J20" firstAttribute="top" secondItem="6jJ-c5-oIY" secondAttribute="bottom" constant="15" id="jFM-SF-SrF"/>
                             <constraint firstItem="15C-Gh-udT" firstAttribute="top" secondItem="ldh-Qb-ijW" secondAttribute="bottom" constant="30" id="kof-3B-rAh"/>
-                            <constraint firstAttribute="trailing" secondItem="jn8-mZ-J20" secondAttribute="trailing" constant="20" id="p2J-W9-lZl"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jn8-mZ-J20" secondAttribute="trailing" constant="20" id="p2J-W9-lZl"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ldh-Qb-ijW" secondAttribute="trailing" constant="20" id="qHB-fg-hzS"/>
-                            <constraint firstItem="jn8-mZ-J20" firstAttribute="leading" secondItem="vpL-89-GYZ" secondAttribute="leading" constant="20" id="sx6-n7-FJ3"/>
+                            <constraint firstItem="jn8-mZ-J20" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vpL-89-GYZ" secondAttribute="leading" constant="20" id="sx6-n7-FJ3"/>
                             <constraint firstItem="6jJ-c5-oIY" firstAttribute="top" secondItem="mxU-q0-bpJ" secondAttribute="bottom" constant="10" id="zTk-KF-Yv3"/>
                         </constraints>
                     </view>
                 </viewController>
                 <customObject id="hxG-4G-Y0b" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="578"/>
+            <point key="canvasLocation" x="75" y="577.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="4dx-09-CxY">
             <objects>
                 <viewController storyboardIdentifier="destinationViewController" id="92U-Sh-UpN" sceneMemberID="viewController">
                     <view key="view" id="NqW-NI-dEn" customClass="SetupView" customModule="Shifty" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="415"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="425"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="mxV-uh-tNL">
-                                <rect key="frame" x="75" y="72" width="300" height="250"/>
+                                <rect key="frame" x="64" y="72" width="322" height="267"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="mxV-uh-tNL" secondAttribute="height" multiplier="6:5" id="II3-jk-zqU"/>
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="websiteFeatureScreenshot" id="lih-8C-3IP"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="500" translatesAutoresizingMaskIntoConstraints="NO" id="sJ8-k4-SBk">
-                                <rect key="frame" x="18" y="337" width="414" height="34"/>
+                                <rect key="frame" x="18" y="347" width="414" height="34"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Would you like to let Shifty automatically disable Night Shift when you visit certain websites?" id="hcb-Lm-Zmy">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -154,7 +155,7 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tfl-ez-xrs">
-                                <rect key="frame" x="18" y="379" width="339" height="36"/>
+                                <rect key="frame" x="18" y="389" width="339" height="36"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Enable website shifting?" id="yjk-M4-AOM">
                                     <font key="font" metaFont="systemSemibold" size="30"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -206,11 +207,11 @@ DQ
                             <constraint firstItem="mxV-uh-tNL" firstAttribute="centerX" secondItem="NqW-NI-dEn" secondAttribute="centerX" id="DD7-bC-gzS"/>
                             <constraint firstItem="tfl-ez-xrs" firstAttribute="top" secondItem="NqW-NI-dEn" secondAttribute="top" id="FCt-7d-E6r"/>
                             <constraint firstAttribute="bottom" secondItem="xfN-to-t5F" secondAttribute="bottom" constant="20" id="Fhy-8K-WLZ"/>
-                            <constraint firstItem="xfN-to-t5F" firstAttribute="top" secondItem="mxV-uh-tNL" secondAttribute="bottom" constant="31" id="GWV-p5-7dp"/>
+                            <constraint firstItem="xfN-to-t5F" firstAttribute="top" relation="greaterThanOrEqual" secondItem="mxV-uh-tNL" secondAttribute="bottom" constant="30" id="GWV-p5-7dp"/>
                             <constraint firstItem="tfl-ez-xrs" firstAttribute="leading" secondItem="NqW-NI-dEn" secondAttribute="leading" constant="20" id="KLQ-tt-LUv"/>
                             <constraint firstItem="xfN-to-t5F" firstAttribute="leading" secondItem="j4y-h2-U3X" secondAttribute="trailing" constant="12" id="LNB-tU-DXX"/>
                             <constraint firstAttribute="bottom" secondItem="oJ6-zk-aYq" secondAttribute="bottom" constant="20" id="Lol-yx-aFr"/>
-                            <constraint firstItem="mxV-uh-tNL" firstAttribute="top" secondItem="sJ8-k4-SBk" secondAttribute="bottom" constant="15" id="RZ7-E7-kAA"/>
+                            <constraint firstItem="mxV-uh-tNL" firstAttribute="top" secondItem="sJ8-k4-SBk" secondAttribute="bottom" constant="8" id="RZ7-E7-kAA"/>
                             <constraint firstItem="sJ8-k4-SBk" firstAttribute="top" secondItem="tfl-ez-xrs" secondAttribute="bottom" constant="8" id="Sk9-6E-c2D"/>
                             <constraint firstItem="oJ6-zk-aYq" firstAttribute="leading" secondItem="NqW-NI-dEn" secondAttribute="leading" constant="20" id="fX4-II-rWF"/>
                             <constraint firstAttribute="trailing" secondItem="sJ8-k4-SBk" secondAttribute="trailing" constant="20" id="iQV-Y9-fnX"/>
@@ -220,15 +221,15 @@ DQ
                 </viewController>
                 <customObject id="hac-oa-XUY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="623" y="578"/>
+            <point key="canvasLocation" x="623" y="577.5"/>
         </scene>
         <!--Accessibility View Controller-->
         <scene sceneID="1wS-7b-mSm">
             <objects>
-                <viewController id="PlF-rh-bvd" customClass="AccessibilityViewController" customModule="Shifty" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="accessibilityViewController" id="PlF-rh-bvd" customClass="AccessibilityViewController" customModule="Shifty" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="a2t-LO-CJe" customClass="SetupView" customModule="Shifty" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="415"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="425"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2a5-C1-Dyc">
                                 <rect key="frame" x="238" y="13" width="198" height="32"/>
@@ -251,12 +252,44 @@ DQ
                                 <buttonCell key="cell" type="push" title="Skip" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0wv-vs-acj">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
-                                    <string key="keyEquivalent" base64-UTF8="YES">
-Gw
-</string>
+                                    <string key="keyEquivalent"></string>
                                 </buttonCell>
                                 <connections>
                                     <segue destination="j1O-j4-Iou" kind="custom" identifier="showNextView" customClass="SlideForwardSegue" customModule="Shifty" customModuleProvider="target" id="7yX-3s-HfZ"/>
+                                </connections>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="500" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CGw-SI-ByB">
+                                <rect key="frame" x="18" y="330" width="414" height="51"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="KRN-1v-4ms">
+                                    <font key="font" metaFont="system"/>
+                                    <string key="title">Website shifting requires accessibility permissions. Grant access to Shifty in Security &amp; Privacy preferences, located in System Preferences.</string>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QJF-2J-J7X">
+                                <rect key="frame" x="18" y="389" width="361" height="36"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Allow accessibility control" id="KMg-l3-YrM">
+                                    <font key="font" metaFont="systemSemibold" size="30"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="UHl-5f-hX5">
+                                <rect key="frame" x="37" y="71" width="376" height="251"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="UHl-5f-hX5" secondAttribute="height" multiplier="6:4" id="18t-WJ-1Yw"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="accessibilityPrefsScreenshot" id="WtR-xs-2zx"/>
+                            </imageView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HyY-Eu-arg">
+                                <rect key="frame" x="62" y="10" width="39" height="38"/>
+                                <buttonCell key="cell" type="round" title="?" bezelStyle="circular" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hnI-7M-qBT">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="accessibilityHelp:" target="a2t-LO-CJe" id="ihi-P6-6NQ"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WXS-J3-zgH">
@@ -273,74 +306,40 @@ Gw
                                     <segue destination="92U-Sh-UpN" kind="custom" customClass="SlideBackwardSegue" customModule="Shifty" customModuleProvider="target" id="OTp-Xx-YUK"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="500" translatesAutoresizingMaskIntoConstraints="NO" id="CGw-SI-ByB">
-                                <rect key="frame" x="18" y="320" width="414" height="51"/>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="KRN-1v-4ms">
-                                    <font key="font" metaFont="system"/>
-                                    <string key="title">Website shifting requires accessibility permissions. Grant access to Shifty in Security &amp; Privacy preferences, located in System Preferences.</string>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QJF-2J-J7X">
-                                <rect key="frame" x="18" y="379" width="361" height="36"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Allow accessibility control" id="KMg-l3-YrM">
-                                    <font key="font" metaFont="systemSemibold" size="30"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="UHl-5f-hX5">
-                                <rect key="frame" x="81" y="61" width="288" height="251"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="UHl-5f-hX5" secondAttribute="height" multiplier="287:251" id="PsG-73-Eqk"/>
-                                </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="accessibilityPrefsScreenshot" id="WtR-xs-2zx"/>
-                            </imageView>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HyY-Eu-arg">
-                                <rect key="frame" x="14" y="277" width="39" height="38"/>
-                                <buttonCell key="cell" type="round" title="?" bezelStyle="circular" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hnI-7M-qBT">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="accessibilityHelp:" target="a2t-LO-CJe" id="ihi-P6-6NQ"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="QJF-2J-J7X" secondAttribute="trailing" constant="20" id="0Jc-Uh-YAM"/>
-                            <constraint firstItem="UHl-5f-hX5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="a2t-LO-CJe" secondAttribute="leading" constant="20" id="2bK-eN-DLO"/>
-                            <constraint firstItem="UHl-5f-hX5" firstAttribute="top" secondItem="CGw-SI-ByB" secondAttribute="bottom" constant="8" id="3Ib-iR-f63"/>
                             <constraint firstItem="2a5-C1-Dyc" firstAttribute="leading" secondItem="CLB-OS-6L8" secondAttribute="trailing" constant="10" id="3PK-Ci-jyl"/>
-                            <constraint firstItem="UHl-5f-hX5" firstAttribute="centerX" secondItem="a2t-LO-CJe" secondAttribute="centerX" id="6WP-Uo-Knf"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="UHl-5f-hX5" secondAttribute="trailing" constant="20" id="BYv-QY-vnS"/>
-                            <constraint firstItem="QJF-2J-J7X" firstAttribute="top" secondItem="a2t-LO-CJe" secondAttribute="top" id="EoB-Sd-5cW"/>
-                            <constraint firstItem="HyY-Eu-arg" firstAttribute="top" secondItem="CGw-SI-ByB" secondAttribute="bottom" constant="8" id="Exq-WW-hZn"/>
-                            <constraint firstItem="CGw-SI-ByB" firstAttribute="leading" secondItem="a2t-LO-CJe" secondAttribute="leading" constant="20" id="FTe-Jy-WIk"/>
-                            <constraint firstAttribute="trailing" secondItem="CGw-SI-ByB" secondAttribute="trailing" constant="20" id="JYE-ZM-Xa8"/>
-                            <constraint firstAttribute="bottom" secondItem="2a5-C1-Dyc" secondAttribute="bottom" constant="20" id="OTw-8y-4gL"/>
-                            <constraint firstItem="HyY-Eu-arg" firstAttribute="leading" secondItem="a2t-LO-CJe" secondAttribute="leading" constant="20" id="UO9-zT-htv"/>
-                            <constraint firstAttribute="bottom" secondItem="WXS-J3-zgH" secondAttribute="bottom" constant="20" id="YR6-Q8-0Wh"/>
-                            <constraint firstItem="WXS-J3-zgH" firstAttribute="leading" secondItem="a2t-LO-CJe" secondAttribute="leading" constant="20" id="eDP-rp-MU5"/>
+                            <constraint firstItem="QJF-2J-J7X" firstAttribute="top" secondItem="a2t-LO-CJe" secondAttribute="top" id="7P0-Xg-2u3"/>
+                            <constraint firstAttribute="bottom" secondItem="WXS-J3-zgH" secondAttribute="bottom" constant="20" id="8Q4-eA-vLX"/>
+                            <constraint firstItem="CLB-OS-6L8" firstAttribute="baseline" secondItem="HyY-Eu-arg" secondAttribute="baseline" id="Cl7-NN-A6n"/>
+                            <constraint firstAttribute="trailing" secondItem="2a5-C1-Dyc" secondAttribute="trailing" constant="20" id="H7O-zE-wrv"/>
+                            <constraint firstItem="2a5-C1-Dyc" firstAttribute="top" relation="greaterThanOrEqual" secondItem="UHl-5f-hX5" secondAttribute="bottom" constant="30" id="JMG-T1-Aop"/>
+                            <constraint firstItem="CGw-SI-ByB" firstAttribute="leading" secondItem="a2t-LO-CJe" secondAttribute="leading" constant="20" id="PgL-5S-5fk"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="UHl-5f-hX5" secondAttribute="trailing" constant="20" id="Q7v-et-AJ2"/>
+                            <constraint firstItem="UHl-5f-hX5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="a2t-LO-CJe" secondAttribute="leading" constant="20" id="RGX-cg-QF4"/>
+                            <constraint firstItem="WXS-J3-zgH" firstAttribute="leading" secondItem="a2t-LO-CJe" secondAttribute="leading" constant="20" id="S9r-u5-TFe"/>
+                            <constraint firstItem="QJF-2J-J7X" firstAttribute="leading" secondItem="a2t-LO-CJe" secondAttribute="leading" constant="20" id="bBT-Mv-j0l"/>
                             <constraint firstItem="2a5-C1-Dyc" firstAttribute="centerY" secondItem="CLB-OS-6L8" secondAttribute="centerY" id="eO5-Fq-jL6"/>
-                            <constraint firstItem="CGw-SI-ByB" firstAttribute="top" secondItem="QJF-2J-J7X" secondAttribute="bottom" constant="8" id="gfB-Ia-WtU"/>
-                            <constraint firstItem="QJF-2J-J7X" firstAttribute="leading" secondItem="a2t-LO-CJe" secondAttribute="leading" constant="20" id="sD2-MP-2Ai"/>
-                            <constraint firstItem="2a5-C1-Dyc" firstAttribute="top" secondItem="UHl-5f-hX5" secondAttribute="bottom" constant="20" id="vXM-Qv-FkR"/>
-                            <constraint firstAttribute="trailing" secondItem="2a5-C1-Dyc" secondAttribute="trailing" constant="20" id="z1E-a0-ZCL"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="QJF-2J-J7X" secondAttribute="trailing" constant="20" id="eOM-b2-6nA"/>
+                            <constraint firstItem="UHl-5f-hX5" firstAttribute="centerX" secondItem="a2t-LO-CJe" secondAttribute="centerX" id="ea5-gC-TXv"/>
+                            <constraint firstAttribute="bottom" secondItem="2a5-C1-Dyc" secondAttribute="bottom" constant="20" id="lgC-eY-Uju"/>
+                            <constraint firstItem="CGw-SI-ByB" firstAttribute="top" secondItem="QJF-2J-J7X" secondAttribute="bottom" constant="8" id="rbz-1t-lOR"/>
+                            <constraint firstItem="HyY-Eu-arg" firstAttribute="leading" secondItem="WXS-J3-zgH" secondAttribute="trailing" constant="8" id="rqu-Jy-OtT"/>
+                            <constraint firstItem="UHl-5f-hX5" firstAttribute="top" secondItem="CGw-SI-ByB" secondAttribute="bottom" constant="8" id="wnc-LY-cUW"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="CGw-SI-ByB" secondAttribute="trailing" constant="20" id="zKY-DU-mRq"/>
                         </constraints>
                     </view>
                 </viewController>
                 <customObject id="YJL-cy-XNo" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1148" y="577.5"/>
+            <point key="canvasLocation" x="1148" y="576.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="EL0-es-9Lf">
             <objects>
                 <viewController id="j1O-j4-Iou" sceneMemberID="viewController">
                     <view key="view" id="lIO-UQ-KPf" customClass="SetupView" customModule="Shifty" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="415"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="425"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="r6Q-C0-71a">
@@ -374,10 +373,10 @@ DQ
                                 </connections>
                             </button>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="Isi-hi-gbD">
-                                <rect key="frame" x="20" y="61" width="410" height="334"/>
+                                <rect key="frame" x="20" y="61" width="410" height="344"/>
                                 <subviews>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="dFs-Xp-v4t">
-                                        <rect key="frame" x="0.0" y="90" width="410" height="156"/>
+                                        <rect key="frame" x="0.0" y="94" width="410" height="156"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HOk-mq-u4U">
                                                 <rect key="frame" x="178" y="76" width="54" height="80"/>
@@ -388,16 +387,16 @@ DQ
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YeC-1H-Dey">
-                                                <rect key="frame" x="134" y="32" width="143" height="36"/>
-                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Congrats!" id="uHP-lQ-mpf">
+                                                <rect key="frame" x="79" y="32" width="253" height="36"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="You're good to go!" id="uHP-lQ-mpf">
                                                     <font key="font" metaFont="systemSemibold" size="30"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="500" translatesAutoresizingMaskIntoConstraints="NO" id="H6b-IS-hPt">
-                                                <rect key="frame" x="148" y="0.0" width="115" height="17"/>
-                                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="You're good to go." id="CQu-0P-OFW">
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qrq-NZ-lPw">
+                                                <rect key="frame" x="121" y="0.0" width="168" height="17"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Thanks for installing Shifty." id="E7p-5d-X2C">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -405,17 +404,15 @@ DQ
                                             </textField>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="H6b-IS-hPt" firstAttribute="centerX" secondItem="dFs-Xp-v4t" secondAttribute="centerX" id="3Ae-4C-qT5"/>
+                                            <constraint firstAttribute="bottom" secondItem="qrq-NZ-lPw" secondAttribute="bottom" id="0Fg-M3-McF"/>
                                             <constraint firstItem="HOk-mq-u4U" firstAttribute="centerX" secondItem="dFs-Xp-v4t" secondAttribute="centerX" id="DyK-KV-Uzs"/>
-                                            <constraint firstAttribute="bottom" secondItem="H6b-IS-hPt" secondAttribute="bottom" id="EVf-5W-6Rs"/>
                                             <constraint firstItem="YeC-1H-Dey" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dFs-Xp-v4t" secondAttribute="leading" id="HTx-rV-07H"/>
-                                            <constraint firstItem="H6b-IS-hPt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dFs-Xp-v4t" secondAttribute="leading" id="IIy-17-Gsg"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="YeC-1H-Dey" secondAttribute="trailing" id="Kl7-1C-og8"/>
                                             <constraint firstItem="YeC-1H-Dey" firstAttribute="top" secondItem="HOk-mq-u4U" secondAttribute="bottom" constant="8" id="Lqr-0e-Evq"/>
-                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="H6b-IS-hPt" secondAttribute="trailing" id="TAa-5k-BdB"/>
+                                            <constraint firstItem="qrq-NZ-lPw" firstAttribute="centerX" secondItem="dFs-Xp-v4t" secondAttribute="centerX" id="YWd-Vv-FZf"/>
                                             <constraint firstItem="YeC-1H-Dey" firstAttribute="centerX" secondItem="dFs-Xp-v4t" secondAttribute="centerX" id="prJ-ly-kEq"/>
                                             <constraint firstItem="HOk-mq-u4U" firstAttribute="top" secondItem="dFs-Xp-v4t" secondAttribute="top" id="rbq-Wu-RRX"/>
-                                            <constraint firstItem="H6b-IS-hPt" firstAttribute="top" secondItem="YeC-1H-Dey" secondAttribute="bottom" constant="15" id="wnv-9s-zqz"/>
+                                            <constraint firstItem="qrq-NZ-lPw" firstAttribute="top" secondItem="YeC-1H-Dey" secondAttribute="bottom" constant="15" id="vtI-U5-vev"/>
                                         </constraints>
                                     </customView>
                                 </subviews>
@@ -447,12 +444,12 @@ DQ
         <image name="AppIcon" width="128" height="128"/>
         <image name="NSGoLeftTemplate" width="9" height="12"/>
         <image name="NSLeftFacingTriangleTemplate" width="9" height="12"/>
-        <image name="accessibilityPrefsScreenshot" width="780" height="685"/>
-        <image name="menuBarScreenshot" width="392.5" height="79"/>
-        <image name="websiteFeatureScreenshot" width="300" height="250"/>
+        <image name="accessibilityPrefsScreenshot" width="545.5" height="371"/>
+        <image name="menuBarScreenshot" width="362" height="155.5"/>
+        <image name="websiteFeatureScreenshot" width="329" height="267"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cdz-pS-K8F"/>
-        <segue reference="Ibe-5u-Fbi"/>
+        <segue reference="RBK-ii-duJ"/>
+        <segue reference="OTp-Xx-YUK"/>
     </inferredMetricsTieBreakers>
 </document>
