@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
         <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
@@ -140,9 +141,9 @@ DQ
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="mxV-uh-tNL">
-                                <rect key="frame" x="64" y="72" width="322" height="267"/>
+                                <rect key="frame" x="61" y="172" width="329" height="167"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="mxV-uh-tNL" secondAttribute="height" multiplier="6:5" id="II3-jk-zqU"/>
+                                    <constraint firstAttribute="width" secondItem="mxV-uh-tNL" secondAttribute="height" multiplier="329:167" id="Bs4-1k-lsH"/>
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="websiteFeatureScreenshot" id="lih-8C-3IP"/>
                             </imageView>
@@ -202,23 +203,155 @@ DQ
                                     <segue destination="O2N-Tr-VDU" kind="custom" customClass="SlideBackwardSegue" customModule="Shifty" customModuleProvider="target" id="za5-mC-13N"/>
                                 </connections>
                             </button>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C1T-Yo-Rmw">
+                                <rect key="frame" x="20" y="68" width="160" height="89"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fxw-jc-XI4">
+                                        <rect key="frame" x="-2" y="72" width="164" height="17"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Website shifting supports:" id="bNv-dv-CBp">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IYO-zU-rWM">
+                                        <rect key="frame" x="0.0" y="48" width="160" height="20"/>
+                                        <subviews>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fC7-e4-xgu">
+                                                <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="mIg-xi-ma3"/>
+                                                    <constraint firstAttribute="width" constant="20" id="qJN-Xj-XDb"/>
+                                                </constraints>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="safariIcon" id="ZFb-5U-9xA"/>
+                                            </imageView>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WWn-Pc-9SO">
+                                                <rect key="frame" x="26" y="2" width="136" height="17"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Safari" id="4ft-mI-wIN">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="WWn-Pc-9SO" firstAttribute="centerY" secondItem="fC7-e4-xgu" secondAttribute="centerY" id="HVh-ke-1Vz"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9NB-FN-bPk">
+                                        <rect key="frame" x="0.0" y="24" width="160" height="20"/>
+                                        <subviews>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p8L-eK-sfO">
+                                                <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="JdX-Cx-CvM"/>
+                                                    <constraint firstAttribute="width" constant="20" id="Prr-UA-zrY"/>
+                                                </constraints>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="chromeIcon" id="pZL-lW-eR3"/>
+                                            </imageView>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MmC-i0-VFp">
+                                                <rect key="frame" x="26" y="2" width="136" height="17"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Chrome" id="shv-ze-VLi">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="MmC-i0-VFp" firstAttribute="centerY" secondItem="p8L-eK-sfO" secondAttribute="centerY" id="YXE-0q-kND"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xdg-mR-Qlo">
+                                        <rect key="frame" x="0.0" y="0.0" width="160" height="20"/>
+                                        <subviews>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Hr-jL-37D">
+                                                <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="20" id="7Ir-Rs-edV"/>
+                                                    <constraint firstAttribute="height" constant="20" id="ecg-r8-dk4"/>
+                                                </constraints>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="vivaldiIcon" id="GYy-uD-kEC"/>
+                                            </imageView>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="df5-Zs-JT5">
+                                                <rect key="frame" x="26" y="2" width="136" height="17"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Vivaldi" id="cXQ-bL-QlF">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="df5-Zs-JT5" firstAttribute="centerY" secondItem="5Hr-jL-37D" secondAttribute="centerY" id="rpu-Lv-Taj"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="9NB-FN-bPk" secondAttribute="trailing" id="0f5-Of-8pZ"/>
+                                    <constraint firstItem="9NB-FN-bPk" firstAttribute="leading" secondItem="C1T-Yo-Rmw" secondAttribute="leading" id="2Ur-lJ-bj5"/>
+                                    <constraint firstItem="IYO-zU-rWM" firstAttribute="leading" secondItem="C1T-Yo-Rmw" secondAttribute="leading" id="gCm-T3-jL3"/>
+                                    <constraint firstAttribute="trailing" secondItem="xdg-mR-Qlo" secondAttribute="trailing" id="uNi-qa-AMV"/>
+                                    <constraint firstItem="xdg-mR-Qlo" firstAttribute="leading" secondItem="C1T-Yo-Rmw" secondAttribute="leading" id="wyE-WE-ZFK"/>
+                                    <constraint firstAttribute="trailing" secondItem="IYO-zU-rWM" secondAttribute="trailing" id="xjG-B3-lYC"/>
+                                </constraints>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="mxV-uh-tNL" firstAttribute="top" secondItem="sJ8-k4-SBk" secondAttribute="bottom" constant="8" id="2a6-RP-Sqm"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tfl-ez-xrs" secondAttribute="trailing" constant="20" id="2ef-rQ-UOT"/>
                             <constraint firstItem="sJ8-k4-SBk" firstAttribute="leading" secondItem="NqW-NI-dEn" secondAttribute="leading" constant="20" id="5i1-dQ-HcI"/>
                             <constraint firstAttribute="bottom" secondItem="j4y-h2-U3X" secondAttribute="bottom" constant="20" id="8mh-4g-IVL"/>
                             <constraint firstItem="mxV-uh-tNL" firstAttribute="centerX" secondItem="NqW-NI-dEn" secondAttribute="centerX" id="DD7-bC-gzS"/>
                             <constraint firstItem="tfl-ez-xrs" firstAttribute="top" secondItem="NqW-NI-dEn" secondAttribute="top" id="FCt-7d-E6r"/>
                             <constraint firstAttribute="bottom" secondItem="xfN-to-t5F" secondAttribute="bottom" constant="20" id="Fhy-8K-WLZ"/>
-                            <constraint firstItem="xfN-to-t5F" firstAttribute="top" relation="greaterThanOrEqual" secondItem="mxV-uh-tNL" secondAttribute="bottom" constant="30" id="GWV-p5-7dp"/>
                             <constraint firstItem="tfl-ez-xrs" firstAttribute="leading" secondItem="NqW-NI-dEn" secondAttribute="leading" constant="20" id="KLQ-tt-LUv"/>
                             <constraint firstItem="xfN-to-t5F" firstAttribute="leading" secondItem="j4y-h2-U3X" secondAttribute="trailing" constant="12" id="LNB-tU-DXX"/>
                             <constraint firstAttribute="bottom" secondItem="oJ6-zk-aYq" secondAttribute="bottom" constant="20" id="Lol-yx-aFr"/>
-                            <constraint firstItem="mxV-uh-tNL" firstAttribute="top" secondItem="sJ8-k4-SBk" secondAttribute="bottom" constant="8" id="RZ7-E7-kAA"/>
+                            <constraint firstItem="C1T-Yo-Rmw" firstAttribute="leading" secondItem="NqW-NI-dEn" secondAttribute="leading" constant="20" id="MHX-Av-d4e"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="C1T-Yo-Rmw" secondAttribute="trailing" constant="20" id="Nw6-fj-ezl"/>
+                            <constraint firstItem="C1T-Yo-Rmw" firstAttribute="top" secondItem="mxV-uh-tNL" secondAttribute="bottom" constant="15" id="Q8a-7C-Cbo"/>
                             <constraint firstItem="sJ8-k4-SBk" firstAttribute="top" secondItem="tfl-ez-xrs" secondAttribute="bottom" constant="8" id="Sk9-6E-c2D"/>
                             <constraint firstItem="oJ6-zk-aYq" firstAttribute="leading" secondItem="NqW-NI-dEn" secondAttribute="leading" constant="20" id="fX4-II-rWF"/>
                             <constraint firstAttribute="trailing" secondItem="sJ8-k4-SBk" secondAttribute="trailing" constant="20" id="iQV-Y9-fnX"/>
                             <constraint firstAttribute="trailing" secondItem="xfN-to-t5F" secondAttribute="trailing" constant="20" id="nk1-v1-GfS"/>
+                            <constraint firstItem="j4y-h2-U3X" firstAttribute="top" relation="greaterThanOrEqual" secondItem="C1T-Yo-Rmw" secondAttribute="bottom" constant="20" id="uI6-Po-5et"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -375,10 +508,10 @@ DQ
                                     <segue destination="PlF-rh-bvd" kind="custom" customClass="SlideBackwardSegue" customModule="Shifty" customModuleProvider="target" id="cdz-pS-K8F"/>
                                 </connections>
                             </button>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="Isi-hi-gbD">
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="BGI-WD-n0c">
                                 <rect key="frame" x="20" y="61" width="410" height="364"/>
                                 <subviews>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="dFs-Xp-v4t">
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="8NH-cV-yLc">
                                         <rect key="frame" x="0.0" y="104" width="410" height="156"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HOk-mq-u4U">
@@ -407,32 +540,30 @@ DQ
                                             </textField>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="qrq-NZ-lPw" secondAttribute="bottom" id="0Fg-M3-McF"/>
-                                            <constraint firstItem="HOk-mq-u4U" firstAttribute="centerX" secondItem="dFs-Xp-v4t" secondAttribute="centerX" id="DyK-KV-Uzs"/>
-                                            <constraint firstItem="YeC-1H-Dey" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dFs-Xp-v4t" secondAttribute="leading" id="HTx-rV-07H"/>
-                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="YeC-1H-Dey" secondAttribute="trailing" id="Kl7-1C-og8"/>
-                                            <constraint firstItem="YeC-1H-Dey" firstAttribute="top" secondItem="HOk-mq-u4U" secondAttribute="bottom" constant="8" id="Lqr-0e-Evq"/>
-                                            <constraint firstItem="qrq-NZ-lPw" firstAttribute="centerX" secondItem="dFs-Xp-v4t" secondAttribute="centerX" id="YWd-Vv-FZf"/>
-                                            <constraint firstItem="YeC-1H-Dey" firstAttribute="centerX" secondItem="dFs-Xp-v4t" secondAttribute="centerX" id="prJ-ly-kEq"/>
-                                            <constraint firstItem="HOk-mq-u4U" firstAttribute="top" secondItem="dFs-Xp-v4t" secondAttribute="top" id="rbq-Wu-RRX"/>
-                                            <constraint firstItem="qrq-NZ-lPw" firstAttribute="top" secondItem="YeC-1H-Dey" secondAttribute="bottom" constant="15" id="vtI-U5-vev"/>
+                                            <constraint firstAttribute="bottom" secondItem="qrq-NZ-lPw" secondAttribute="bottom" id="1td-98-ifI"/>
+                                            <constraint firstItem="YeC-1H-Dey" firstAttribute="top" secondItem="HOk-mq-u4U" secondAttribute="bottom" constant="8" id="27n-Bf-P7F"/>
+                                            <constraint firstItem="HOk-mq-u4U" firstAttribute="centerX" secondItem="8NH-cV-yLc" secondAttribute="centerX" id="6tG-0E-3Pg"/>
+                                            <constraint firstItem="qrq-NZ-lPw" firstAttribute="top" secondItem="YeC-1H-Dey" secondAttribute="bottom" constant="15" id="Btb-qf-ZHY"/>
+                                            <constraint firstItem="YeC-1H-Dey" firstAttribute="centerX" secondItem="8NH-cV-yLc" secondAttribute="centerX" id="Lcd-2b-rkc"/>
+                                            <constraint firstItem="HOk-mq-u4U" firstAttribute="top" secondItem="8NH-cV-yLc" secondAttribute="top" id="oUR-sY-5eD"/>
+                                            <constraint firstItem="qrq-NZ-lPw" firstAttribute="centerX" secondItem="8NH-cV-yLc" secondAttribute="centerX" id="wws-dX-0Sj"/>
                                         </constraints>
                                     </customView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="dFs-Xp-v4t" firstAttribute="centerY" secondItem="Isi-hi-gbD" secondAttribute="centerY" id="G8x-i3-uA1"/>
-                                    <constraint firstAttribute="trailing" secondItem="dFs-Xp-v4t" secondAttribute="trailing" id="Zj8-lx-cj4"/>
-                                    <constraint firstItem="dFs-Xp-v4t" firstAttribute="leading" secondItem="Isi-hi-gbD" secondAttribute="leading" id="cBI-Iu-31v"/>
+                                    <constraint firstItem="8NH-cV-yLc" firstAttribute="centerY" secondItem="BGI-WD-n0c" secondAttribute="centerY" id="A65-mg-bB0"/>
+                                    <constraint firstItem="8NH-cV-yLc" firstAttribute="leading" secondItem="BGI-WD-n0c" secondAttribute="leading" id="dfd-NL-Loe"/>
+                                    <constraint firstAttribute="trailing" secondItem="8NH-cV-yLc" secondAttribute="trailing" id="wYc-PN-18G"/>
                                 </constraints>
                             </customView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="r6Q-C0-71a" firstAttribute="top" secondItem="Isi-hi-gbD" secondAttribute="bottom" constant="20" id="7cA-H1-pVC"/>
+                            <constraint firstItem="r6Q-C0-71a" firstAttribute="top" secondItem="BGI-WD-n0c" secondAttribute="bottom" constant="20" id="242-Mg-JI8"/>
                             <constraint firstItem="22i-XU-Ifo" firstAttribute="leading" secondItem="lIO-UQ-KPf" secondAttribute="leading" constant="20" id="EdZ-qf-UaG"/>
-                            <constraint firstItem="Isi-hi-gbD" firstAttribute="leading" secondItem="lIO-UQ-KPf" secondAttribute="leading" constant="20" id="V5F-u5-dSt"/>
-                            <constraint firstAttribute="bottom" secondItem="r6Q-C0-71a" secondAttribute="bottom" constant="20" id="Va1-PO-39g"/>
-                            <constraint firstItem="Isi-hi-gbD" firstAttribute="top" secondItem="lIO-UQ-KPf" secondAttribute="top" id="WYx-6C-FLc"/>
-                            <constraint firstAttribute="trailing" secondItem="Isi-hi-gbD" secondAttribute="trailing" constant="20" id="unc-99-EPM"/>
+                            <constraint firstAttribute="trailing" secondItem="BGI-WD-n0c" secondAttribute="trailing" constant="20" id="HeB-OH-Ew9"/>
+                            <constraint firstItem="BGI-WD-n0c" firstAttribute="leading" secondItem="lIO-UQ-KPf" secondAttribute="leading" constant="20" id="Mr1-ue-C1g"/>
+                            <constraint firstAttribute="bottom" secondItem="r6Q-C0-71a" secondAttribute="bottom" constant="20" id="d5v-PD-J6s"/>
+                            <constraint firstItem="BGI-WD-n0c" firstAttribute="top" secondItem="lIO-UQ-KPf" secondAttribute="top" id="hvF-Rj-WOz"/>
                             <constraint firstAttribute="bottom" secondItem="22i-XU-Ifo" secondAttribute="bottom" constant="20" id="vYO-58-ogE"/>
                             <constraint firstAttribute="trailing" secondItem="r6Q-C0-71a" secondAttribute="trailing" constant="20" id="voS-U5-Y7n"/>
                         </constraints>
@@ -448,12 +579,14 @@ DQ
         <image name="NSGoLeftTemplate" width="9" height="12"/>
         <image name="NSLeftFacingTriangleTemplate" width="9" height="12"/>
         <image name="accessibilityPrefsScreenshot" width="545.5" height="371"/>
+        <image name="chromeIcon" width="32" height="32"/>
         <image name="menuBarScreenshot" width="362" height="155.5"/>
-        <image name="websiteFeatureScreenshot" width="329" height="267"/>
+        <image name="safariIcon" width="32" height="32"/>
+        <image name="vivaldiIcon" width="32" height="32"/>
+        <image name="websiteFeatureScreenshot" width="329" height="167"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7yX-3s-HfZ"/>
-        <segue reference="cdz-pS-K8F"/>
+        <segue reference="RBK-ii-duJ"/>
         <segue reference="OTp-Xx-YUK"/>
     </inferredMetricsTieBreakers>
 </document>
