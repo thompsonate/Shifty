@@ -159,7 +159,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         let alert: NSAlert = NSAlert()
         alert.messageText = NSLocalizedString("alert.accessibility_disabled_message", comment: "Accessibility permissions for Shifty have been disabled")
-        alert.informativeText = NSLocalizedString("alert.accessibility_disabled_informative", comment: "Accessibility permissions must be enabled to control Night Shift's state based on your current website. Grant access to Shifty in Security & Privacy preferences, located in System Preferences.")
+        alert.informativeText = NSLocalizedString("alert.accessibility_disabled_informative", comment: "Accessibility must be allowed to enable website shifting. Grant access to Shifty in Security & Privacy preferences, located in System Preferences.")
         alert.alertStyle = NSAlert.Style.warning
         alert.addButton(withTitle: NSLocalizedString("alert.open_preferences", comment: "Open System Preferences"))
         alert.addButton(withTitle: NSLocalizedString("alert.not_now", comment: "Not now"))
