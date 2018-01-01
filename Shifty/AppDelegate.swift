@@ -86,9 +86,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         //Show alert if accessibility permissions have been revoked while app is not running
-        if UserDefaults.standard.bool(forKey: Keys.isWebsiteControlEnabled) &&
-            !UIElement.isProcessTrusted(withPrompt: true) {
-            
+        if UserDefaults.standard.bool(forKey: Keys.isWebsiteControlEnabled) && !UIElement.isProcessTrusted() {
             logw("Accessibility permissions revoked while app was not running")
             showAccessibilityDeniedAlert()
             UserDefaults.standard.set(false, forKey: Keys.isWebsiteControlEnabled)
@@ -111,7 +109,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let controller = setup.storyboard.instantiateInitialController() as! NSWindowController
             controller.showWindow(self)
             
-//            UserDefaults.standard.set(false, forKey: Keys.isFirstLaunch)
+            UserDefaults.standard.set(false, forKey: Keys.isFirstLaunch)
         }
     }
     

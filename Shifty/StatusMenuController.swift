@@ -34,7 +34,6 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     var prefGeneral: PrefGeneralViewController!
     var prefShortcuts: PrefShortcutsViewController!
     var customTimeWindow: CustomTimeWindow!
-    var accessibilityViewController: AccessibilityViewController!
     var currentAppName = ""
     var currentAppBundleId = ""
     var currentDomain = ""
@@ -86,8 +85,6 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         prefShortcuts = prefWindow?.viewControllers.flatMap { childViewController in
             return childViewController as? PrefShortcutsViewController
         }.first
-        
-        accessibilityViewController = AccessibilityViewController.shared
         
         descriptionMenuItem.isEnabled = false
         sliderMenuItem.view = sliderView
@@ -160,23 +157,16 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             self.blueLightNotification()
         }
         
-        var accessibilityAllowed = UIElement.isProcessTrusted(withPrompt: false)
         
-        DistributedNotificationCenter.default().addObserver(forName: NSNotification.Name("com.apple.accessibility.api"), object: nil, queue: nil) { notification in
-            if UIElement.isProcessTrusted(withPrompt: false) != accessibilityAllowed {
-                logw("Accessibility permissions changed: \(UIElement.isProcessTrusted(withPrompt: false))")
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
-                    if UIElement.isProcessTrusted(withPrompt: false) {
-                        UserDefaults.standard.set(true, forKey: Keys.isWebsiteControlEnabled)
-                        if isAccessibilityViewVisible {
-                            self.accessibilityViewController.showNextView()
-                        }
-                    } else {
-                        UserDefaults.standard.set(false, forKey: Keys.isWebsiteControlEnabled)
-                    }
-                })
-                accessibilityAllowed = UIElement.isProcessTrusted(withPrompt: false)
-            }
+        DistributedNotificationCenter.default().addObserver(forName: NSNotification.Name("com.apple.accessibility.api"), object: nil, queue: nil) { _ in
+            logw("Accessibility permissions changed: \(UIElement.isProcessTrusted(withPrompt: false))")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+                if UIElement.isProcessTrusted(withPrompt: false) {
+                    UserDefaults.standard.set(true, forKey: Keys.isWebsiteControlEnabled)
+                } else {
+                    UserDefaults.standard.set(false, forKey: Keys.isWebsiteControlEnabled)
+                }
+            })
         }
         
         prefGeneral.updateDarkMode = {

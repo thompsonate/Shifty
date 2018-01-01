@@ -48,6 +48,14 @@ class SetupView: NSView {
 class AccessibilityViewController: NSViewController {
     var observer: NSObjectProtocol!
     
+    @IBOutlet weak var accessibilitySetupView: NSView!
+    
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        
+        
+    }
+    
     override func viewDidAppear() {
         super.viewDidAppear()
         

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="AccessibilityWindow" customModule="Shifty" customModuleProvider="target">
+            <connections>
+                <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" deferred="NO" oneShot="NO" animationBehavior="alertPanel" titleVisibility="hidden" id="F0z-JX-Cv5">
+            <windowStyleMask key="styleMask" titled="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="450" height="435"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="450" height="435"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="OLR-Pz-yEW" customClass="AccessibilityView" customModule="Shifty" customModuleProvider="target">
+                        <rect key="frame" x="20" y="61" width="410" height="364"/>
+                    </customView>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k6h-5j-wb2">
+                        <rect key="frame" x="238" y="13" width="198" height="32"/>
+                        <buttonCell key="cell" type="push" title="Open System Preferences" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PCI-s5-e0M">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="openSysPrefsClicked:" target="-2" id="8ck-uu-edq"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eH2-tl-Fl9">
+                        <rect key="frame" x="149" y="13" width="91" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="Tde-iM-xP4"/>
+                        </constraints>
+                        <buttonCell key="cell" type="push" title="Not now" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="d5m-3e-SPq">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent"></string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="notNowClicked:" target="-2" id="3FY-rW-9ap"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mQk-VB-ynz">
+                        <rect key="frame" x="14" y="10" width="39" height="38"/>
+                        <buttonCell key="cell" type="round" title="?" bezelStyle="circular" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Zl3-oh-W8W">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="helpClicked:" target="-2" id="OCg-fz-dZo"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="OLR-Pz-yEW" secondAttribute="trailing" constant="20" id="69I-XG-BQg"/>
+                    <constraint firstItem="eH2-tl-Fl9" firstAttribute="baseline" secondItem="k6h-5j-wb2" secondAttribute="baseline" id="HD6-8m-otK"/>
+                    <constraint firstItem="k6h-5j-wb2" firstAttribute="leading" secondItem="eH2-tl-Fl9" secondAttribute="trailing" constant="10" id="HYB-98-2hc"/>
+                    <constraint firstAttribute="trailing" secondItem="k6h-5j-wb2" secondAttribute="trailing" constant="20" id="M6N-DG-74U"/>
+                    <constraint firstItem="OLR-Pz-yEW" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="10" id="OhA-oP-ZuJ"/>
+                    <constraint firstItem="eH2-tl-Fl9" firstAttribute="baseline" secondItem="mQk-VB-ynz" secondAttribute="baseline" id="PlV-lb-PE0"/>
+                    <constraint firstAttribute="bottom" secondItem="k6h-5j-wb2" secondAttribute="bottom" constant="20" id="UWC-dj-vNC"/>
+                    <constraint firstItem="k6h-5j-wb2" firstAttribute="top" secondItem="OLR-Pz-yEW" secondAttribute="bottom" constant="20" id="YKp-3j-U7k"/>
+                    <constraint firstItem="mQk-VB-ynz" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="cWe-bO-CB9"/>
+                    <constraint firstItem="OLR-Pz-yEW" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="jon-lM-egH"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
+            </connections>
+        </window>
+    </objects>
+</document>

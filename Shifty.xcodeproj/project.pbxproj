@@ -25,6 +25,10 @@
 		4394DDAA1EBE376F00F22908 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4394DDA31EBE376F00F22908 /* Assets.xcassets */; };
 		4394DDAD1EBE376F00F22908 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4394DDA81EBE376F00F22908 /* StatusMenuController.swift */; };
 		43965AC31FC68A19001A076D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43965AC51FC68A19001A076D /* InfoPlist.strings */; };
+		43AA23C71FFABCD2001DDF5A /* AccessibilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AA23C61FFABCD2001DDF5A /* AccessibilityView.swift */; };
+		43AA23C91FFAC1A1001DDF5A /* AccessibilityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43AA23C81FFAC1A0001DDF5A /* AccessibilityView.xib */; };
+		43AA23CE1FFAC69A001DDF5A /* AccessibilityWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AA23CC1FFAC69A001DDF5A /* AccessibilityWindow.swift */; };
+		43AA23CF1FFAC69A001DDF5A /* AccessibilityWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43AA23CD1FFAC69A001DDF5A /* AccessibilityWindow.xib */; };
 		43B547F11F29A77D0034E779 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B547F01F29A77D0034E779 /* Event.swift */; };
 		43B9DE151FB5924F002C4C29 /* PrefShortcutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B9DE131FB5924F002C4C29 /* PrefShortcutsViewController.swift */; };
 		43B9DE1B1FB592AE002C4C29 /* PrefAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B9DE191FB592AE002C4C29 /* PrefAboutViewController.swift */; };
@@ -90,6 +94,10 @@
 		4394DDAE1EBE379900F22908 /* Shifty-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Shifty-Bridging-Header.h"; path = "Shifty/Shifty-Bridging-Header.h"; sourceTree = "<group>"; };
 		43965AC41FC68A19001A076D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		43965AC61FC68A1B001A076D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		43AA23C61FFABCD2001DDF5A /* AccessibilityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccessibilityView.swift; path = Shifty/AccessibilityView.swift; sourceTree = "<group>"; };
+		43AA23C81FFAC1A0001DDF5A /* AccessibilityView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AccessibilityView.xib; path = Shifty/AccessibilityView.xib; sourceTree = "<group>"; };
+		43AA23CC1FFAC69A001DDF5A /* AccessibilityWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccessibilityWindow.swift; path = Shifty/AccessibilityWindow.swift; sourceTree = "<group>"; };
+		43AA23CD1FFAC69A001DDF5A /* AccessibilityWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = AccessibilityWindow.xib; path = Shifty/AccessibilityWindow.xib; sourceTree = "<group>"; };
 		43B547F01F29A77D0034E779 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = Shifty/Event.swift; sourceTree = "<group>"; };
 		43B9DE131FB5924F002C4C29 /* PrefShortcutsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PrefShortcutsViewController.swift; path = Shifty/PrefShortcutsViewController.swift; sourceTree = "<group>"; };
 		43B9DE191FB592AE002C4C29 /* PrefAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PrefAboutViewController.swift; path = Shifty/PrefAboutViewController.swift; sourceTree = "<group>"; };
@@ -198,6 +206,10 @@
 				43D5C2381FC35FB500AF88E0 /* MainMenu.xib */,
 				4350191C1F21E99F0001324F /* CustomTimeWindow.swift */,
 				43D5C2231FC2CACF00AF88E0 /* CustomTimeWindow.xib */,
+				43AA23CC1FFAC69A001DDF5A /* AccessibilityWindow.swift */,
+				43AA23CD1FFAC69A001DDF5A /* AccessibilityWindow.xib */,
+				43AA23C61FFABCD2001DDF5A /* AccessibilityView.swift */,
+				43AA23C81FFAC1A0001DDF5A /* AccessibilityView.xib */,
 				437556B31FF745A6001951AB /* Setup.swift */,
 				43FC49911FF8B65800CD3196 /* Setup.storyboard */,
 			);
@@ -387,8 +399,10 @@
 				43FC49921FF8B65900CD3196 /* Setup.storyboard in Resources */,
 				43FC498C1FF8936F00CD3196 /* credits.rtfd in Resources */,
 				43D5C2161FC2CA1300AF88E0 /* PrefGeneralViewController.xib in Resources */,
+				43AA23CF1FFAC69A001DDF5A /* AccessibilityWindow.xib in Resources */,
 				433AD3011F2CED1F0003FBCD /* dsa_pub.pem in Resources */,
 				4394DDAA1EBE376F00F22908 /* Assets.xcassets in Resources */,
+				43AA23C91FFAC1A1001DDF5A /* AccessibilityView.xib in Resources */,
 				43D5C2301FC2CECC00AF88E0 /* Localizable.strings in Resources */,
 				43D5C21E1FC2CACA00AF88E0 /* PrefAboutViewController.xib in Resources */,
 				43D5C2211FC2CACF00AF88E0 /* CustomTimeWindow.xib in Resources */,
@@ -540,6 +554,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43AA23C71FFABCD2001DDF5A /* AccessibilityView.swift in Sources */,
 				43B547F11F29A77D0034E779 /* Event.swift in Sources */,
 				4388E8EB1F84AD1A00DC34CC /* EDSunriseSet.m in Sources */,
 				437556B61FF746BD001951AB /* SlideSegue.swift in Sources */,
@@ -555,6 +570,7 @@
 				43B9DE151FB5924F002C4C29 /* PrefShortcutsViewController.swift in Sources */,
 				3B342D441FCCA68900DEDECF /* BrowserRule.swift in Sources */,
 				4394DDA91EBE376F00F22908 /* AppDelegate.swift in Sources */,
+				43AA23CE1FFAC69A001DDF5A /* AccessibilityWindow.swift in Sources */,
 				43C039DA1F1BD178009B1B70 /* CBBlueLightClient+Shifty.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

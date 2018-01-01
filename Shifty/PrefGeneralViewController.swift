@@ -120,24 +120,13 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
     }
     
     @IBAction func setWebsiteControl(_ sender: NSButtonCell) {
+        logw("Website control preference clicked")
         if sender.state == .on {
-            if !UIElement.isProcessTrusted(withPrompt: false) {
-                logw("Website control preference clicked")
+            if !UIElement.isProcessTrusted() {
                 logw("Accessibility permissions alert shown")
                 
-                UserDefaults.standard.set(false, forKey: Keys.isWebsiteControlEnabled)
-                let alert: NSAlert = NSAlert()
-                alert.messageText = NSLocalizedString("alert.enable_accessibility_message", comment: "This feature requires accessibility permissions.")
-                alert.informativeText = NSLocalizedString("alert.enable_accessibility_informative", comment: "Grant access to Shifty in Security & Privacy preferences, located in System Preferences.")
-                alert.alertStyle = NSAlert.Style.warning
-                alert.addButton(withTitle: NSLocalizedString("alert.open_preferences", comment: "Open System Preferences"))
-                alert.addButton(withTitle: NSLocalizedString("general.cancel", comment: "Cancel"))
-                if alert.runModal() == .alertFirstButtonReturn {
-                    NSWorkspace.shared.open(URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility")!)
-                    logw("Open System Preferences button clicked")
-                } else {
-                    logw("Not now button clicked")
-                }
+                prefs.set(false, forKey: Keys.isWebsiteControlEnabled)
+                NSApp.runModal(for: AccessibilityWindow().window!)
             }
         } else {
             stopBrowserWatcher()
