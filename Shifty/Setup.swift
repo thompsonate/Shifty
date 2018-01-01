@@ -6,6 +6,7 @@
 //
 
 import Cocoa
+import AXSwift
 import SwiftLog
 
 class SetupWindowController: NSWindowController {    
@@ -44,23 +45,28 @@ class SetupView: NSView {
     }
 }
 
-var isAccessibilityViewVisible = false
-
 class AccessibilityViewController: NSViewController {
-    static let shared = AccessibilityViewController()
+    var observer: NSObjectProtocol!
     
     override func viewDidAppear() {
         super.viewDidAppear()
-        isAccessibilityViewVisible = true
+        
+        observer = DistributedNotificationCenter.default().addObserver(forName: NSNotification.Name("com.apple.accessibility.api"), object: nil, queue: nil) { _ in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+                if UIElement.isProcessTrusted() {
+                    self.showNextView()
+                }
+            })
+        }
     }
     
     override func viewWillDisappear() {
         super.viewWillDisappear()
-        isAccessibilityViewVisible = false
+        DistributedNotificationCenter.default().removeObserver(observer, name: NSNotification.Name("com.apple.accessibility.api"), object: nil)
     }
     
     func showNextView() {
-        performSegue(withIdentifier: NSStoryboardSegue.Identifier("showNextView"), sender: self)
+        performSegue(withIdentifier: NSStoryboardSegue.Identifier("showCompleteView"), sender: self)
     }
 }
 

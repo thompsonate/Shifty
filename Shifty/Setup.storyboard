@@ -100,7 +100,7 @@ DQ
                                 </connections>
                             </button>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="jn8-mZ-J20">
-                                <rect key="frame" x="45" y="124" width="362" height="151"/>
+                                <rect key="frame" x="44" y="124" width="362" height="151"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="jn8-mZ-J20" secondAttribute="height" multiplier="125:52" id="dfB-ry-RTz"/>
                                 </constraints>
@@ -391,7 +391,7 @@ DQ
                                     <string key="keyEquivalent"></string>
                                 </buttonCell>
                                 <connections>
-                                    <segue destination="j1O-j4-Iou" kind="custom" identifier="showNextView" customClass="SlideForwardSegue" customModule="Shifty" customModuleProvider="target" id="7yX-3s-HfZ"/>
+                                    <segue destination="j1O-j4-Iou" kind="custom" identifier="showCompleteView" customClass="SlideForwardSegue" customModule="Shifty" customModuleProvider="target" id="7yX-3s-HfZ"/>
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="500" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CGw-SI-ByB">
@@ -586,7 +586,8 @@ DQ
         <image name="websiteFeatureScreenshot" width="329" height="167"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="RBK-ii-duJ"/>
+        <segue reference="7yX-3s-HfZ"/>
+        <segue reference="cdz-pS-K8F"/>
         <segue reference="OTp-Xx-YUK"/>
     </inferredMetricsTieBreakers>
 </document>
