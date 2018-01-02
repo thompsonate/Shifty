@@ -103,13 +103,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         setMenuBarIcon()
         setStatusToggle()
         
-        if UserDefaults.standard.bool(forKey: Keys.isFirstLaunch) {
+        if !UserDefaults.standard.bool(forKey: Keys.hasSetupWindowShown) && !UIElement.isProcessTrusted() {
             NSApplication.shared.activate(ignoringOtherApps: true)
             let setup = SetupWindowController()
             let controller = setup.storyboard.instantiateInitialController() as! NSWindowController
             controller.showWindow(self)
             
-            UserDefaults.standard.set(false, forKey: Keys.isFirstLaunch)
+            UserDefaults.standard.set(true, forKey: Keys.hasSetupWindowShown)
         }
     }
     
