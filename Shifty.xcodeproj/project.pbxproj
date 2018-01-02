@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3B342D441FCCA68900DEDECF /* BrowserRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B342D431FCCA68900DEDECF /* BrowserRule.swift */; };
+		3B8A52AB1FFBA11C003FA427 /* BrightnessSystemClient+Shifty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8A52AA1FFBA11C003FA427 /* BrightnessSystemClient+Shifty.swift */; };
 		43087E191F41EE0700A54523 /* BLNotificationBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 43087E181F41EE0700A54523 /* BLNotificationBlock.m */; };
 		433AD3011F2CED1F0003FBCD /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 433AD3001F2CED1F0003FBCD /* dsa_pub.pem */; };
 		433AD3081F2D00BD0003FBCD /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433AD3061F2D00BD0003FBCD /* Crashlytics.framework */; };
@@ -66,6 +67,8 @@
 /* Begin PBXFileReference section */
 		115BB8A6F00EEB28DD8A96E5 /* Pods-Shifty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shifty.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shifty/Pods-Shifty.release.xcconfig"; sourceTree = "<group>"; };
 		3B342D431FCCA68900DEDECF /* BrowserRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BrowserRule.swift; path = Shifty/BrowserRule.swift; sourceTree = "<group>"; };
+		3B8A52A91FFBA05F003FA427 /* BrightnessSystemClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BrightnessSystemClient.h; path = Shifty/BrightnessSystemClient.h; sourceTree = "<group>"; };
+		3B8A52AA1FFBA11C003FA427 /* BrightnessSystemClient+Shifty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "BrightnessSystemClient+Shifty.swift"; path = "Shifty/BrightnessSystemClient+Shifty.swift"; sourceTree = "<group>"; };
 		43087E171F41EE0700A54523 /* BLNotificationBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BLNotificationBlock.h; path = Shifty/BLNotificationBlock.h; sourceTree = "<group>"; };
 		43087E181F41EE0700A54523 /* BLNotificationBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BLNotificationBlock.m; path = Shifty/BLNotificationBlock.m; sourceTree = "<group>"; };
 		43099BA81FC67B5000A0720B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/CustomTimeWindow.strings"; sourceTree = "<group>"; };
@@ -193,6 +196,8 @@
 				4388E8E41F84ACCF00DC34CC /* SunriseSetLocationManager.swift */,
 				43B547F01F29A77D0034E779 /* Event.swift */,
 				3B342D431FCCA68900DEDECF /* BrowserRule.swift */,
+				3B8A52A91FFBA05F003FA427 /* BrightnessSystemClient.h */,
+				3B8A52AA1FFBA11C003FA427 /* BrightnessSystemClient+Shifty.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -554,6 +559,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B8A52AB1FFBA11C003FA427 /* BrightnessSystemClient+Shifty.swift in Sources */,
 				43AA23C71FFABCD2001DDF5A /* AccessibilityView.swift in Sources */,
 				43B547F11F29A77D0034E779 /* Event.swift in Sources */,
 				4388E8EB1F84AD1A00DC34CC /* EDSunriseSet.m in Sources */,
