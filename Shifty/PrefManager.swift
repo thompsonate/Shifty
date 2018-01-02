@@ -14,7 +14,6 @@ struct Keys {
     static let isIconSwitchingEnabled = "isIconSwitchingEnabled"
     static let isDarkModeSyncEnabled = "isDarkModeSyncEnabled"
     static let isWebsiteControlEnabled = "isWebsiteControlEnabled"
-    static let lastKnownLocation = "lastKnownLocation"
     static let disabledApps = "disabledApps"
     static let browserRules = "browserRules"
     
@@ -65,7 +64,6 @@ class PrefManager {
         userDefaults.removeObject(forKey: Keys.isIconSwitchingEnabled)
         userDefaults.removeObject(forKey: Keys.isDarkModeSyncEnabled)
         userDefaults.removeObject(forKey: Keys.isWebsiteControlEnabled)
-        userDefaults.removeObject(forKey: Keys.lastKnownLocation)
         userDefaults.removeObject(forKey: Keys.disabledApps)
         userDefaults.removeObject(forKey: Keys.browserRules)
         userDefaults.removeObject(forKey: Keys.toggleNightShiftShortcut)
