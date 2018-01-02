@@ -16,6 +16,9 @@ class SetupWindowController: NSWindowController {
     
     override func windowDidLoad() {
         window?.backgroundColor = NSColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
+        window?.titleVisibility = .hidden
+        window?.titlebarAppearsTransparent = true
+        window?.isMovableByWindowBackground = true
     }
 }
 
