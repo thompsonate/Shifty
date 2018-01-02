@@ -17,6 +17,7 @@ enum SupportedBrowser : String {
     case Chrome = "com.google.Chrome"
     case ChromeCanary = "com.google.Chrome.canary"
     case Chromium = "org.chromium.Chromium"
+    case Vivaldi = "com.vivaldi.Vivaldi"
 }
 
 var browserObserver: Observer!
@@ -132,7 +133,7 @@ func getBrowserCurrentTabDomainSubdomain(browser: SupportedBrowser, processIdent
         if let url = getSafariCurrentTabURL(processIdentifier) {
             currentURL = url
         }
-    case .Chrome, .ChromeCanary, .Chromium:
+    case .Chrome, .ChromeCanary, .Chromium, .Vivaldi:
         if let url = getChromeCurrentTabURL(processIdentifier) {
             currentURL = url
         }
