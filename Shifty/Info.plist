@@ -51,8 +51,6 @@
 	</dict>
 	<key>NSHumanReadableCopyright</key>
 	<string>© 2017-2018 Nate Thompson. GPLv3 License.</string>
-	<key>NSLocationUsageDescription</key>
-	<string>Shifty needs access to your location to calculate sunrise and sunset times.</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>

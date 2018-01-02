@@ -9,6 +9,5 @@
 #import "CBBlueLightClient.h"
 #import "BrightnessSystemClient.h"
 #import "BLNotificationBlock.h"
-#import "EDSunriseSet.h"
 
 void SLSSetAppearanceThemeLegacy(BOOL);

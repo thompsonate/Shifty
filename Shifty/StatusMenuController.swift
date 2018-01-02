@@ -13,7 +13,6 @@ import SwiftLog
 
 let BLClient = CBBlueLightClient()
 let BSClient = BrightnessSystemClient()!
-let SSLocationManager = SunriseSetLocationManager()
 class StatusMenuController: NSObject, NSMenuDelegate {
     
     @IBOutlet weak var statusMenu: NSMenu!
@@ -175,9 +174,6 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         }
         
         prefShortcuts.bindShortcuts()
-        
-        SSLocationManager.setup()
-        SSLocationManager.updateLocationMonitoringStatus()
     }
     
     func menuWillOpen(_: NSMenu) {
@@ -201,17 +197,6 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         assignKeyboardShortcutToMenuItem(disableCustomMenuItem, userDefaultsKey: Keys.disableCustomShortcut)
         
         Event.menuOpened.record()
-        
-        //refresh location if not updated in over a day
-        if let data = UserDefaults.standard.value(forKey: Keys.lastKnownLocation) as? Data,
-            let location = try? PropertyListDecoder().decode(Location.self, from: data) {
-            
-            if location.date < Date.init(timeIntervalSinceNow: -86400) {
-                SSLocationManager.getLocationFromIP()
-            }
-        } else {
-            SSLocationManager.getLocationFromIP()
-        }
     }
     
     func assignKeyboardShortcutToMenuItem(_ menuItem: NSMenuItem, userDefaultsKey: String) {
@@ -347,18 +332,6 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             }
         }
         shiftOriginatedFromShifty = false
-        
-        SSLocationManager.updateLocationMonitoringStatus()
-        
-        if SSLocationManager.shouldShowAlert {
-            if SSLocationManager.isAuthorizationDenied && BLClient.isSunSchedule {
-                SSLocationManager.showLocationServicesDeniedAlert()
-                SSLocationManager.shouldShowAlert = false
-            } else if SSLocationManager.isAuthorized && BLClient.isSunSchedule && SSLocationManager.sunTimes == nil {
-                SSLocationManager.showLocationErrorAlert()
-                SSLocationManager.shouldShowAlert = false
-            }
-        }
         
         DispatchQueue.main.async {
             self.prefGeneral.updateSchedule?()

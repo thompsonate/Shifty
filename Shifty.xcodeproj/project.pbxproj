@@ -20,8 +20,6 @@
 		437556B41FF745A6001951AB /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437556B31FF745A6001951AB /* Setup.swift */; };
 		437556B61FF746BD001951AB /* SlideSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437556B51FF746BD001951AB /* SlideSegue.swift */; };
 		437D7E161EC015CB00544FC8 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437D7E151EC015CB00544FC8 /* SliderView.swift */; };
-		4388E8E51F84ACCF00DC34CC /* SunriseSetLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4388E8E41F84ACCF00DC34CC /* SunriseSetLocationManager.swift */; };
-		4388E8EB1F84AD1A00DC34CC /* EDSunriseSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4388E8E91F84AD1A00DC34CC /* EDSunriseSet.m */; };
 		4394DDA91EBE376F00F22908 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4394DDA21EBE376F00F22908 /* AppDelegate.swift */; };
 		4394DDAA1EBE376F00F22908 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4394DDA31EBE376F00F22908 /* Assets.xcassets */; };
 		4394DDAD1EBE376F00F22908 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4394DDA81EBE376F00F22908 /* StatusMenuController.swift */; };
@@ -87,9 +85,6 @@
 		437556B31FF745A6001951AB /* Setup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Setup.swift; path = Shifty/Setup.swift; sourceTree = "<group>"; };
 		437556B51FF746BD001951AB /* SlideSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SlideSegue.swift; path = Shifty/SlideSegue.swift; sourceTree = "<group>"; };
 		437D7E151EC015CB00544FC8 /* SliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SliderView.swift; path = Shifty/SliderView.swift; sourceTree = "<group>"; };
-		4388E8E41F84ACCF00DC34CC /* SunriseSetLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SunriseSetLocationManager.swift; path = Shifty/SunriseSetLocationManager.swift; sourceTree = "<group>"; };
-		4388E8E91F84AD1A00DC34CC /* EDSunriseSet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = EDSunriseSet.m; path = Shifty/EDSunriseSet.m; sourceTree = "<group>"; };
-		4388E8EA1F84AD1A00DC34CC /* EDSunriseSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = EDSunriseSet.h; path = Shifty/EDSunriseSet.h; sourceTree = "<group>"; };
 		4394DDA21EBE376F00F22908 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Shifty/AppDelegate.swift; sourceTree = "<group>"; };
 		4394DDA31EBE376F00F22908 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Shifty/Assets.xcassets; sourceTree = "<group>"; };
 		4394DDA41EBE376F00F22908 /* CBBlueLightClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CBBlueLightClient.h; path = Shifty/CBBlueLightClient.h; sourceTree = "<group>"; };
@@ -192,10 +187,7 @@
 				43C039D91F1BD178009B1B70 /* CBBlueLightClient+Shifty.swift */,
 				3B8A52A91FFBA05F003FA427 /* BrightnessSystemClient.h */,
 				3B8A52AA1FFBA11C003FA427 /* BrightnessSystemClient+Shifty.swift */,
-				4388E8EA1F84AD1A00DC34CC /* EDSunriseSet.h */,
-				4388E8E91F84AD1A00DC34CC /* EDSunriseSet.m */,
 				437556B51FF746BD001951AB /* SlideSegue.swift */,
-				4388E8E41F84ACCF00DC34CC /* SunriseSetLocationManager.swift */,
 				43B547F01F29A77D0034E779 /* Event.swift */,
 				3B342D431FCCA68900DEDECF /* BrowserRule.swift */,
 			);
@@ -562,7 +554,6 @@
 				3B8A52AB1FFBA11C003FA427 /* BrightnessSystemClient+Shifty.swift in Sources */,
 				43AA23C71FFABCD2001DDF5A /* AccessibilityView.swift in Sources */,
 				43B547F11F29A77D0034E779 /* Event.swift in Sources */,
-				4388E8EB1F84AD1A00DC34CC /* EDSunriseSet.m in Sources */,
 				437556B61FF746BD001951AB /* SlideSegue.swift in Sources */,
 				4368E3031EBEBA6C00D53310 /* PrefManager.swift in Sources */,
 				437D7E161EC015CB00544FC8 /* SliderView.swift in Sources */,
@@ -571,7 +562,6 @@
 				437556B41FF745A6001951AB /* Setup.swift in Sources */,
 				4394DDAD1EBE376F00F22908 /* StatusMenuController.swift in Sources */,
 				43B9DE1B1FB592AE002C4C29 /* PrefAboutViewController.swift in Sources */,
-				4388E8E51F84ACCF00DC34CC /* SunriseSetLocationManager.swift in Sources */,
 				4350191D1F21E99F0001324F /* CustomTimeWindow.swift in Sources */,
 				43B9DE151FB5924F002C4C29 /* PrefShortcutsViewController.swift in Sources */,
 				3B342D441FCCA68900DEDECF /* BrowserRule.swift in Sources */,
