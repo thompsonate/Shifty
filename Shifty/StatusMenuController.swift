@@ -638,35 +638,35 @@ class StatusMenuController: NSObject, NSMenuDelegate {
 
         if isDisabledForDomain {
             disableDomainMenuItem.state = .on
-            disableDomainMenuItem.title = String(format: NSLocalizedString("menu.disabled_domain", comment: "Disabled for %@"), currentDomain)
+            disableDomainMenuItem.title = String(format: NSLocalizedString("menu.disabled_for", comment: "Disabled for %@"), currentDomain)
         } else {
             disableDomainMenuItem.state = .off
-            disableDomainMenuItem.title = String(format: NSLocalizedString("menu.disable_domain", comment: "Disable for %@"), currentDomain)
+            disableDomainMenuItem.title = String(format: NSLocalizedString("menu.disable_for", comment: "Disable for %@"), currentDomain)
         }
         if isDisabledForSubdomain {
             if isDisabledForDomain {
                 disableSubdomainMenuItem.state = .on
-                disableSubdomainMenuItem.title = String(format: NSLocalizedString("menu.enabled_subdomain", comment: "Enabled for %@"), currentSubdomain)
+                disableSubdomainMenuItem.title = String(format: NSLocalizedString("menu.enabled_for", comment: "Enabled for %@"), currentSubdomain)
             } else  {
                 disableSubdomainMenuItem.state = .on
-                disableSubdomainMenuItem.title = String(format: NSLocalizedString("menu.disabled_subdomain", comment: "Disabled for %@"), currentSubdomain)
+                disableSubdomainMenuItem.title = String(format: NSLocalizedString("menu.disabled_for", comment: "Disabled for %@"), currentSubdomain)
             }
         } else {
             if isDisabledForDomain {
                 disableSubdomainMenuItem.state = .off
-                disableSubdomainMenuItem.title = String(format: NSLocalizedString("menu.enable_subdomain", comment: "Enable for %@"), currentSubdomain)
+                disableSubdomainMenuItem.title = String(format: NSLocalizedString("menu.enable_for", comment: "Enable for %@"), currentSubdomain)
             } else {
                 disableSubdomainMenuItem.state = .off
-                disableSubdomainMenuItem.title = String(format: NSLocalizedString("menu.disable_subdomain", comment: "Disable for %@"), currentSubdomain)
+                disableSubdomainMenuItem.title = String(format: NSLocalizedString("menu.disable_for", comment: "Disable for %@"), currentSubdomain)
             }
         }
 
         if isDisabledForApp {
             disableAppMenuItem.state = .on
-            disableAppMenuItem.title = String(format: NSLocalizedString("menu.disabled_app", comment: "Disabled for %@"), currentAppName)
+            disableAppMenuItem.title = String(format: NSLocalizedString("menu.disabled_for", comment: "Disabled for %@"), currentAppName)
         } else {
             disableAppMenuItem.state = .off
-            disableAppMenuItem.title = String(format: NSLocalizedString("menu.disable_app", comment: "Disable for %@"), currentAppName)
+            disableAppMenuItem.title = String(format: NSLocalizedString("menu.disable_for", comment: "Disable for %@"), currentAppName)
         }
 
         if isShiftForAppEnabled && (BLClient.isNightShiftEnabled == isDisabledForApp || BLClient.isNightShiftEnabled == isDisabledForDomain || BLClient.isNightShiftEnabled == isDisabledForSubdomain) {
@@ -795,14 +795,10 @@ class StatusMenuController: NSObject, NSMenuDelegate {
                 disabledHoursLeft += 1.0
             }
             
-            if disabledHoursLeft > 0 || disabledMinutesLeft > 1 {
-                if disabledHoursLeft == 0 {
-                    descriptionMenuItem.title = String(format: NSLocalizedString("description.disabled_minutes", comment: "Disabled for %d more minutes"), Int(disabledMinutesLeft))
-                } else {
-                    descriptionMenuItem.title = String(format: NSLocalizedString("description.disabled_hours_minutes", comment: "Disabled for %02d:%02d"), Int(disabledHoursLeft), Int(disabledMinutesLeft))
-                }
+            if disabledHoursLeft > 0 {
+                descriptionMenuItem.title = String(format: NSLocalizedString("description.disabled_hours_minutes", comment: "Disabled for %02d:%02d"), Int(disabledHoursLeft), Int(disabledMinutesLeft))
             } else {
-                descriptionMenuItem.title = NSLocalizedString("description.disabled_1_minute", comment: "Disabled for 1 more minute")
+                descriptionMenuItem.title = localizedPlural("menu.disabled_time", count: Int(disabledMinutesLeft), comment: "The number of minutes left when disabled for a set amount of time.")
             }
             descriptionMenuItem.isHidden = false
             return
@@ -845,6 +841,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
                 descriptionMenuItem.title = NSLocalizedString("description.disabled", comment: "Disabled")
             }
         }
+    }
+    
+    func localizedPlural(_ key: String, count: Int, comment: String) -> String {
+        let format = NSLocalizedString(key, comment: comment)
+        return String(format: format, locale: .current, arguments: [count])
     }
 }
 

@@ -30,6 +30,7 @@
 		43B547F11F29A77D0034E779 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B547F01F29A77D0034E779 /* Event.swift */; };
 		43B612581FFC297400724DAE /* AccessibilityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43B6125A1FFC297400724DAE /* AccessibilityView.xib */; };
 		43B6125D1FFC298200724DAE /* Setup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43B6125F1FFC298200724DAE /* Setup.storyboard */; };
+		43B6126C1FFC413A00724DAE /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 43B6126A1FFC413A00724DAE /* Localizable.stringsdict */; };
 		43B9DE151FB5924F002C4C29 /* PrefShortcutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B9DE131FB5924F002C4C29 /* PrefShortcutsViewController.swift */; };
 		43B9DE1B1FB592AE002C4C29 /* PrefAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B9DE191FB592AE002C4C29 /* PrefAboutViewController.swift */; };
 		43C039DA1F1BD178009B1B70 /* CBBlueLightClient+Shifty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C039D91F1BD178009B1B70 /* CBBlueLightClient+Shifty.swift */; };
@@ -100,6 +101,8 @@
 		43B6125C1FFC297B00724DAE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/AccessibilityView.strings"; sourceTree = "<group>"; };
 		43B6125E1FFC298200724DAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Setup.storyboard; sourceTree = "<group>"; };
 		43B612611FFC298400724DAE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Setup.strings"; sourceTree = "<group>"; };
+		43B6126B1FFC413A00724DAE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = Shifty/en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		43B6126D1FFC4B6300724DAE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = "zh-Hans"; path = "Shifty/zh-Hans.lproj/Localizable.stringsdict"; sourceTree = "<group>"; };
 		43B9DE131FB5924F002C4C29 /* PrefShortcutsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PrefShortcutsViewController.swift; path = Shifty/PrefShortcutsViewController.swift; sourceTree = "<group>"; };
 		43B9DE191FB592AE002C4C29 /* PrefAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PrefAboutViewController.swift; path = Shifty/PrefAboutViewController.swift; sourceTree = "<group>"; };
 		43C039D91F1BD178009B1B70 /* CBBlueLightClient+Shifty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CBBlueLightClient+Shifty.swift"; path = "Shifty/CBBlueLightClient+Shifty.swift"; sourceTree = "<group>"; };
@@ -224,6 +227,7 @@
 				43D5C2441FC3A9A100AF88E0 /* Info.plist */,
 				43965AC51FC68A19001A076D /* InfoPlist.strings */,
 				43D5C2321FC2CECC00AF88E0 /* Localizable.strings */,
+				43B6126A1FFC413A00724DAE /* Localizable.stringsdict */,
 				436A0F3C1FBE913600E77D41 /* ShiftyAppcast.xml */,
 				433AD3061F2D00BD0003FBCD /* Crashlytics.framework */,
 				433AD3071F2D00BD0003FBCD /* Fabric.framework */,
@@ -408,6 +412,7 @@
 				43D5C21B1FC2CAC300AF88E0 /* PrefShortcutsViewController.xib in Resources */,
 				43D5C2391FC35FB500AF88E0 /* MainMenu.xib in Resources */,
 				43965AC31FC68A19001A076D /* InfoPlist.strings in Resources */,
+				43B6126C1FFC413A00724DAE /* Localizable.stringsdict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -604,6 +609,15 @@
 			);
 			name = Setup.storyboard;
 			path = Shifty;
+			sourceTree = "<group>";
+		};
+		43B6126A1FFC413A00724DAE /* Localizable.stringsdict */ = {
+			isa = PBXVariantGroup;
+			children = (
+				43B6126B1FFC413A00724DAE /* en */,
+				43B6126D1FFC4B6300724DAE /* zh-Hans */,
+			);
+			name = Localizable.stringsdict;
 			sourceTree = "<group>";
 		};
 		43D5C2181FC2CA1300AF88E0 /* PrefGeneralViewController.xib */ = {

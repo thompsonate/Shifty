@@ -11,14 +11,10 @@
 
 "menu.toggle_on" = "Turn on Night Shift";
 "menu.toggle_off" = "Turn off Night Shift";
-"menu.disable_app" = "Disable for %@";
-"menu.disabled_app" = "Disabled for %@";
-"menu.disable_domain" = "Disable for %@";
-"menu.disabled_domain" = "Disabled for %@";
-"menu.disable_subdomain" = "Disable for %@";
-"menu.disabled_subdomain" = "Disabled for %@";
-"menu.enable_subdomain" = "Enable for %@";
-"menu.enabled_subdomain" = "Enabled for %@";
+"menu.disable_for" = "Disable for %@";
+"menu.disabled_for" = "Disabled for %@";
+"menu.enable_for" = "Enable for %@";
+"menu.enabled_for" = "Enabled for %@";
 
 "menu.disable_hour" = "Disable for an hour";
 "menu.disabled_hour" = "Disabled for an hour";
@@ -32,8 +28,6 @@
 "description.enabled_time" = "Enabled until %@";
 "description.disabled" = "Disabled";
 "description.disabled_hours_minutes" = "Disabled for %02d:%02d";
-"description.disabled_minutes" = "Disabled for %d more minutes";
-"description.disabled_1_minute" = "Disabled for 1 more minute";
 
 "prefs.title" = "Preferences";
 "prefs.general" = "General";
