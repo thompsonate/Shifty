@@ -190,14 +190,14 @@
 				43087E181F41EE0700A54523 /* BLNotificationBlock.m */,
 				4394DDA41EBE376F00F22908 /* CBBlueLightClient.h */,
 				43C039D91F1BD178009B1B70 /* CBBlueLightClient+Shifty.swift */,
+				3B8A52A91FFBA05F003FA427 /* BrightnessSystemClient.h */,
+				3B8A52AA1FFBA11C003FA427 /* BrightnessSystemClient+Shifty.swift */,
 				4388E8EA1F84AD1A00DC34CC /* EDSunriseSet.h */,
 				4388E8E91F84AD1A00DC34CC /* EDSunriseSet.m */,
 				437556B51FF746BD001951AB /* SlideSegue.swift */,
 				4388E8E41F84ACCF00DC34CC /* SunriseSetLocationManager.swift */,
 				43B547F01F29A77D0034E779 /* Event.swift */,
 				3B342D431FCCA68900DEDECF /* BrowserRule.swift */,
-				3B8A52A91FFBA05F003FA427 /* BrightnessSystemClient.h */,
-				3B8A52AA1FFBA11C003FA427 /* BrightnessSystemClient+Shifty.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";

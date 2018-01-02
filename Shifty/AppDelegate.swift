@@ -97,8 +97,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         logw("Night Shift state: \(BLClient.isNightShiftEnabled)")
         logw("Schedule: \(BLClient.schedule)")
         if BLClient.isSunSchedule {
-            logw("sunrise: \(String(describing: SSLocationManager.sunTimes?.sunrise))")
-            logw("sunset: \(String(describing: SSLocationManager.sunTimes?.sunset))")
+            logw("sunrise: \(String(describing: BSClient.sunrise))")
+            logw("sunset: \(String(describing: BSClient.sunset))")
         }
         logw("")
         

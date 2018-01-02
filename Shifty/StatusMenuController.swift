@@ -12,6 +12,7 @@ import AXSwift
 import SwiftLog
 
 let BLClient = CBBlueLightClient()
+let BSClient = BrightnessSystemClient()!
 let SSLocationManager = SunriseSetLocationManager()
 class StatusMenuController: NSObject, NSMenuDelegate {
     
@@ -177,7 +178,6 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         
         SSLocationManager.setup()
         SSLocationManager.updateLocationMonitoringStatus()
-        
     }
     
     func menuWillOpen(_: NSMenu) {
@@ -239,12 +239,10 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             //Should be true between startTime and endTime
             return isBetweenTimes
         case .sunSchedule:
-            guard let sunTimes = SSLocationManager.sunTimes else { return false }
-            let currentTime = Date()            
-            let isBetweenTimes = currentTime > sunTimes.sunrise && currentTime < sunTimes.sunset
+            guard let isDaylight = BSClient.isDaylight else { return false }
             
             //Should be false between sunrise and sunset
-            return !isBetweenTimes
+            return !isDaylight
         default:
             return nil
         }
@@ -270,10 +268,10 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             logw("Scheduled shift is close: \(isClose); shift state: \(String(describing: shiftState))")
             return (isClose, shiftState)
         case .sunSchedule:
-            guard let sunTimes = SSLocationManager.sunTimes else { return (false, nil) }
+            guard let sunrise = BSClient.sunrise, let sunset = BSClient.sunset else { return (false, nil) }
             let currentTime = Date()
-            let isCloseToSunrise = abs(currentTime.timeIntervalSince(sunTimes.sunrise)) < 600
-            let isCloseToSunset = abs(currentTime.timeIntervalSince(sunTimes.sunset)) < 600
+            let isCloseToSunrise = abs(currentTime.timeIntervalSince(sunrise)) < 5
+            let isCloseToSunset = abs(currentTime.timeIntervalSince(sunset)) < 5
             let isClose = isCloseToSunrise || isCloseToSunset
             
             let shiftState: Bool?
