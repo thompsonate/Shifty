@@ -425,6 +425,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         
         updateCurrentApp()
         PrefManager.sharedInstance.userDefaults.set(try? PropertyListEncoder().encode(browserRules), forKey: Keys.browserRules)
+        Event.disableForDomain(state: (sender as? NSMenuItem)?.state == .on).record()
     }
 
     @IBAction func disableForSubdomain(_ sender: Any) {
@@ -443,6 +444,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         }
         updateCurrentApp()
         PrefManager.sharedInstance.userDefaults.set(try? PropertyListEncoder().encode(browserRules), forKey: Keys.browserRules)
+        Event.disableForSubdomain(state: (sender as? NSMenuItem)?.state == .on).record()
     }
     
     @IBAction func disableHour(_ sender: Any) {

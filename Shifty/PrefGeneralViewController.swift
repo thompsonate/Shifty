@@ -41,6 +41,7 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
     @IBOutlet weak var toggleStatusItem: NSButton!
     @IBOutlet weak var setIconSwitching: NSButton!
     @IBOutlet weak var darkModeSync: NSButton!
+    @IBOutlet weak var websiteShifting: NSButton!
     
     @IBOutlet weak var schedulePopup: NSPopUpButton!
     @IBOutlet weak var offMenuItem: NSMenuItem!
@@ -154,7 +155,12 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
     }
     
     override func viewWillDisappear() {
-        Event.preferences(autoLaunch: setAutoLaunch.state == .on, quickToggle: toggleStatusItem.state == .on, iconSwitching: setIconSwitching.state == .on, syncDarkMode: darkModeSync.state == .on, schedule: BLClient.schedule).record()
+        Event.preferences(autoLaunch: setAutoLaunch.state == .on,
+                          quickToggle: toggleStatusItem.state == .on,
+                          iconSwitching: setIconSwitching.state == .on,
+                          syncDarkMode: darkModeSync.state == .on,
+                          websiteShifting: websiteShifting.state == .on,
+                          schedule: BLClient.schedule).record()
     }
     
     func setCustomControlVisibility(_ visible: Bool, animate: Bool) {

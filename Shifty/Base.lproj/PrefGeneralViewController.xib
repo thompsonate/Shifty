@@ -25,6 +25,7 @@
                 <outlet property="toTimePicker" destination="ddu-sM-B7W" id="8tl-IJ-9hf"/>
                 <outlet property="toggleStatusItem" destination="KNx-x5-o3g" id="bY6-mG-QE4"/>
                 <outlet property="view" destination="bXz-rK-jao" id="xYY-dt-fo2"/>
+                <outlet property="websiteShifting" destination="I5d-cF-2Wh" id="8YU-yK-l5g"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
