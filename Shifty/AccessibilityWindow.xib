@@ -8,6 +8,8 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="AccessibilityWindow" customModule="Shifty" customModuleProvider="target">
             <connections>
+                <outlet property="notNowButton" destination="eH2-tl-Fl9" id="qI7-iM-FKb"/>
+                <outlet property="openSysPrefsButton" destination="k6h-5j-wb2" id="YDM-rh-R4l"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>

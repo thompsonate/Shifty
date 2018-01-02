@@ -9,12 +9,18 @@ import Cocoa
 
 class AccessibilityWindow: NSWindowController {
 
+    @IBOutlet weak var notNowButton: NSButton!
+    @IBOutlet weak var openSysPrefsButton: NSButton!
+    
     override var windowNibName: NSNib.Name {
         get { return NSNib.Name("AccessibilityWindow") }
     }
     
     override func windowDidLoad() {
         window?.center()
+        
+        notNowButton.title = NSLocalizedString("alert.not_now", comment: "Not now")
+        openSysPrefsButton.title = NSLocalizedString("alert.open_preferences", comment: "Open System Preferences")
     }
     
     @IBAction func openSysPrefsClicked(_ sender: Any) {

@@ -25,10 +25,11 @@
 		4394DDAD1EBE376F00F22908 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4394DDA81EBE376F00F22908 /* StatusMenuController.swift */; };
 		43965AC31FC68A19001A076D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43965AC51FC68A19001A076D /* InfoPlist.strings */; };
 		43AA23C71FFABCD2001DDF5A /* AccessibilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AA23C61FFABCD2001DDF5A /* AccessibilityView.swift */; };
-		43AA23C91FFAC1A1001DDF5A /* AccessibilityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43AA23C81FFAC1A0001DDF5A /* AccessibilityView.xib */; };
 		43AA23CE1FFAC69A001DDF5A /* AccessibilityWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AA23CC1FFAC69A001DDF5A /* AccessibilityWindow.swift */; };
 		43AA23CF1FFAC69A001DDF5A /* AccessibilityWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43AA23CD1FFAC69A001DDF5A /* AccessibilityWindow.xib */; };
 		43B547F11F29A77D0034E779 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B547F01F29A77D0034E779 /* Event.swift */; };
+		43B612581FFC297400724DAE /* AccessibilityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43B6125A1FFC297400724DAE /* AccessibilityView.xib */; };
+		43B6125D1FFC298200724DAE /* Setup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43B6125F1FFC298200724DAE /* Setup.storyboard */; };
 		43B9DE151FB5924F002C4C29 /* PrefShortcutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B9DE131FB5924F002C4C29 /* PrefShortcutsViewController.swift */; };
 		43B9DE1B1FB592AE002C4C29 /* PrefAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B9DE191FB592AE002C4C29 /* PrefAboutViewController.swift */; };
 		43C039DA1F1BD178009B1B70 /* CBBlueLightClient+Shifty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C039D91F1BD178009B1B70 /* CBBlueLightClient+Shifty.swift */; };
@@ -43,7 +44,6 @@
 		43D5C2301FC2CECC00AF88E0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43D5C2321FC2CECC00AF88E0 /* Localizable.strings */; };
 		43D5C2391FC35FB500AF88E0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43D5C2381FC35FB500AF88E0 /* MainMenu.xib */; };
 		43FC498C1FF8936F00CD3196 /* credits.rtfd in Resources */ = {isa = PBXBuildFile; fileRef = 43FC498B1FF8936E00CD3196 /* credits.rtfd */; };
-		43FC49921FF8B65900CD3196 /* Setup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43FC49911FF8B65800CD3196 /* Setup.storyboard */; };
 		4989C89C1F81611000FF83DB /* SkyLight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4989C89B1F81611000FF83DB /* SkyLight.framework */; };
 		4F2D868847D02BDBA9BA9A90 /* Pods_ShiftyHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F271F97E9F31A99983CEA240 /* Pods_ShiftyHelper.framework */; };
 		7D6801183F204BA285C9D5B7 /* Pods_Shifty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932D0C1C5887BEB67BDBBFD0 /* Pods_Shifty.framework */; };
@@ -93,10 +93,13 @@
 		43965AC41FC68A19001A076D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		43965AC61FC68A1B001A076D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		43AA23C61FFABCD2001DDF5A /* AccessibilityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccessibilityView.swift; path = Shifty/AccessibilityView.swift; sourceTree = "<group>"; };
-		43AA23C81FFAC1A0001DDF5A /* AccessibilityView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AccessibilityView.xib; path = Shifty/AccessibilityView.xib; sourceTree = "<group>"; };
 		43AA23CC1FFAC69A001DDF5A /* AccessibilityWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccessibilityWindow.swift; path = Shifty/AccessibilityWindow.swift; sourceTree = "<group>"; };
 		43AA23CD1FFAC69A001DDF5A /* AccessibilityWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = AccessibilityWindow.xib; path = Shifty/AccessibilityWindow.xib; sourceTree = "<group>"; };
 		43B547F01F29A77D0034E779 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = Shifty/Event.swift; sourceTree = "<group>"; };
+		43B612591FFC297400724DAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AccessibilityView.xib; sourceTree = "<group>"; };
+		43B6125C1FFC297B00724DAE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/AccessibilityView.strings"; sourceTree = "<group>"; };
+		43B6125E1FFC298200724DAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Setup.storyboard; sourceTree = "<group>"; };
+		43B612611FFC298400724DAE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Setup.strings"; sourceTree = "<group>"; };
 		43B9DE131FB5924F002C4C29 /* PrefShortcutsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PrefShortcutsViewController.swift; path = Shifty/PrefShortcutsViewController.swift; sourceTree = "<group>"; };
 		43B9DE191FB592AE002C4C29 /* PrefAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PrefAboutViewController.swift; path = Shifty/PrefAboutViewController.swift; sourceTree = "<group>"; };
 		43C039D91F1BD178009B1B70 /* CBBlueLightClient+Shifty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CBBlueLightClient+Shifty.swift"; path = "Shifty/CBBlueLightClient+Shifty.swift"; sourceTree = "<group>"; };
@@ -116,7 +119,6 @@
 		43D5C2381FC35FB500AF88E0 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = Shifty/MainMenu.xib; sourceTree = "<group>"; };
 		43D5C2441FC3A9A100AF88E0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Shifty/Info.plist; sourceTree = "<group>"; };
 		43FC498B1FF8936E00CD3196 /* credits.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = credits.rtfd; sourceTree = "<group>"; };
-		43FC49911FF8B65800CD3196 /* Setup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Setup.storyboard; path = Shifty/Setup.storyboard; sourceTree = "<group>"; };
 		4989C89B1F81611000FF83DB /* SkyLight.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SkyLight.framework; path = ../../../../System/Library/PrivateFrameworks/SkyLight.framework; sourceTree = "<group>"; };
 		8C6209F5BF9CCE799389DE98 /* Pods-ShiftyHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShiftyHelper.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShiftyHelper/Pods-ShiftyHelper.release.xcconfig"; sourceTree = "<group>"; };
 		932D0C1C5887BEB67BDBBFD0 /* Pods_Shifty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shifty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -206,9 +208,9 @@
 				43AA23CC1FFAC69A001DDF5A /* AccessibilityWindow.swift */,
 				43AA23CD1FFAC69A001DDF5A /* AccessibilityWindow.xib */,
 				43AA23C61FFABCD2001DDF5A /* AccessibilityView.swift */,
-				43AA23C81FFAC1A0001DDF5A /* AccessibilityView.xib */,
+				43B6125A1FFC297400724DAE /* AccessibilityView.xib */,
 				437556B31FF745A6001951AB /* Setup.swift */,
-				43FC49911FF8B65800CD3196 /* Setup.storyboard */,
+				43B6125F1FFC298200724DAE /* Setup.storyboard */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -393,13 +395,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43FC49921FF8B65900CD3196 /* Setup.storyboard in Resources */,
+				43B6125D1FFC298200724DAE /* Setup.storyboard in Resources */,
 				43FC498C1FF8936F00CD3196 /* credits.rtfd in Resources */,
 				43D5C2161FC2CA1300AF88E0 /* PrefGeneralViewController.xib in Resources */,
 				43AA23CF1FFAC69A001DDF5A /* AccessibilityWindow.xib in Resources */,
 				433AD3011F2CED1F0003FBCD /* dsa_pub.pem in Resources */,
 				4394DDAA1EBE376F00F22908 /* Assets.xcassets in Resources */,
-				43AA23C91FFAC1A1001DDF5A /* AccessibilityView.xib in Resources */,
+				43B612581FFC297400724DAE /* AccessibilityView.xib in Resources */,
 				43D5C2301FC2CECC00AF88E0 /* Localizable.strings in Resources */,
 				43D5C21E1FC2CACA00AF88E0 /* PrefAboutViewController.xib in Resources */,
 				43D5C2211FC2CACF00AF88E0 /* CustomTimeWindow.xib in Resources */,
@@ -581,6 +583,26 @@
 				43965AC61FC68A1B001A076D /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
+			path = Shifty;
+			sourceTree = "<group>";
+		};
+		43B6125A1FFC297400724DAE /* AccessibilityView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				43B612591FFC297400724DAE /* Base */,
+				43B6125C1FFC297B00724DAE /* zh-Hans */,
+			);
+			name = AccessibilityView.xib;
+			path = Shifty;
+			sourceTree = "<group>";
+		};
+		43B6125F1FFC298200724DAE /* Setup.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				43B6125E1FFC298200724DAE /* Base */,
+				43B612611FFC298400724DAE /* zh-Hans */,
+			);
+			name = Setup.storyboard;
 			path = Shifty;
 			sourceTree = "<group>";
 		};

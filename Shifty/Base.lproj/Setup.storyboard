@@ -61,7 +61,7 @@
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="mxU-q0-bpJ">
                                 <rect key="frame" x="93" y="317" width="265" height="36"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Welcome to Shifty!" id="9wQ-sP-igZ">
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Welcome to Shifty!" id="9wQ-sP-igZ">
                                     <font key="font" metaFont="systemSemibold" size="30"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -69,7 +69,7 @@
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="6jJ-c5-oIY">
                                 <rect key="frame" x="109" y="290" width="232" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Shifty is now running in the menu bar." id="WcY-uu-0Eu">
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Shifty is now running in the menu bar." id="WcY-uu-0Eu">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -77,7 +77,7 @@
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="ldh-Qb-ijW">
                                 <rect key="frame" x="18" y="71" width="315" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Click Next to continue setup. It'll just take a minute." id="J4B-E9-KIZ">
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Click Next to continue setup. It'll just take a minute." id="J4B-E9-KIZ">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -111,11 +111,15 @@ DQ
                             <constraint firstItem="mxU-q0-bpJ" firstAttribute="top" secondItem="zqM-VP-MKT" secondAttribute="bottom" constant="8" id="1kK-Ur-CBB"/>
                             <constraint firstItem="mxU-q0-bpJ" firstAttribute="centerX" secondItem="vpL-89-GYZ" secondAttribute="centerX" id="4h2-RS-iPZ"/>
                             <constraint firstItem="zqM-VP-MKT" firstAttribute="centerX" secondItem="vpL-89-GYZ" secondAttribute="centerX" id="5N7-5b-FtK"/>
+                            <constraint firstItem="mxU-q0-bpJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vpL-89-GYZ" secondAttribute="leading" constant="20" id="Alr-RY-Fuv"/>
                             <constraint firstItem="ldh-Qb-ijW" firstAttribute="top" relation="greaterThanOrEqual" secondItem="jn8-mZ-J20" secondAttribute="bottom" constant="20" id="D51-j9-054"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mxU-q0-bpJ" secondAttribute="trailing" constant="20" id="Dtm-ry-O5F"/>
                             <constraint firstItem="ldh-Qb-ijW" firstAttribute="leading" secondItem="vpL-89-GYZ" secondAttribute="leading" constant="20" id="E3P-HT-i7l"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="6jJ-c5-oIY" secondAttribute="trailing" constant="20" id="FhB-5c-D9c"/>
                             <constraint firstItem="15C-Gh-udT" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vpL-89-GYZ" secondAttribute="leading" constant="20" id="Gxx-pd-csi"/>
                             <constraint firstAttribute="trailing" secondItem="15C-Gh-udT" secondAttribute="trailing" constant="20" id="SbX-de-8dk"/>
                             <constraint firstAttribute="bottom" secondItem="15C-Gh-udT" secondAttribute="bottom" constant="20" id="WgK-EX-DtX"/>
+                            <constraint firstItem="6jJ-c5-oIY" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vpL-89-GYZ" secondAttribute="leading" constant="20" id="YSY-WJ-IpY"/>
                             <constraint firstItem="6jJ-c5-oIY" firstAttribute="centerX" secondItem="vpL-89-GYZ" secondAttribute="centerX" id="brD-Wv-bwl"/>
                             <constraint firstItem="jn8-mZ-J20" firstAttribute="centerX" secondItem="vpL-89-GYZ" secondAttribute="centerX" id="fGI-zJ-dh8"/>
                             <constraint firstItem="zqM-VP-MKT" firstAttribute="top" secondItem="vpL-89-GYZ" secondAttribute="top" id="iZx-Rp-eIi"/>
@@ -157,7 +161,7 @@ DQ
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tfl-ez-xrs">
                                 <rect key="frame" x="18" y="389" width="339" height="36"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Enable website shifting?" id="yjk-M4-AOM">
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Enable website shifting?" id="yjk-M4-AOM">
                                     <font key="font" metaFont="systemSemibold" size="30"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -192,7 +196,7 @@ DQ
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oJ6-zk-aYq">
                                 <rect key="frame" x="14" y="13" width="52" height="32"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="4Uh-U4-1SL"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="4Uh-U4-1SL"/>
                                 </constraints>
                                 <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSLeftFacingTriangleTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yYu-Hy-TQe">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -208,7 +212,7 @@ DQ
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fxw-jc-XI4">
                                         <rect key="frame" x="-2" y="72" width="164" height="17"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Website shifting supports:" id="bNv-dv-CBp">
+                                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Website shifting supports:" id="bNv-dv-CBp">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -409,7 +413,7 @@ DQ
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="qYL-7n-j51"/>
                                 </constraints>
-                                <buttonCell key="cell" type="push" title="Back" bezelStyle="rounded" image="NSGoLeftTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Uyi-J6-pvR">
+                                <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSGoLeftTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Uyi-J6-pvR">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                     <string key="keyEquivalent"></string>
@@ -474,7 +478,7 @@ DQ
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="xdj-hT-apc"/>
                                 </constraints>
-                                <buttonCell key="cell" type="push" title="Back" bezelStyle="rounded" image="NSGoLeftTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dJy-3p-fnG">
+                                <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSGoLeftTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dJy-3p-fnG">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                     <string key="keyEquivalent"></string>
@@ -499,7 +503,7 @@ DQ
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YeC-1H-Dey">
                                                 <rect key="frame" x="79" y="32" width="253" height="36"/>
-                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="You're good to go!" id="uHP-lQ-mpf">
+                                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="You're good to go!" id="uHP-lQ-mpf">
                                                     <font key="font" metaFont="systemSemibold" size="30"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -507,7 +511,7 @@ DQ
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qrq-NZ-lPw">
                                                 <rect key="frame" x="121" y="0.0" width="168" height="17"/>
-                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Thanks for installing Shifty." id="E7p-5d-X2C">
+                                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Thanks for installing Shifty." id="E7p-5d-X2C">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -517,9 +521,13 @@ DQ
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="qrq-NZ-lPw" secondAttribute="bottom" id="1td-98-ifI"/>
                                             <constraint firstItem="YeC-1H-Dey" firstAttribute="top" secondItem="HOk-mq-u4U" secondAttribute="bottom" constant="8" id="27n-Bf-P7F"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qrq-NZ-lPw" secondAttribute="trailing" id="3NJ-4D-nns"/>
                                             <constraint firstItem="HOk-mq-u4U" firstAttribute="centerX" secondItem="8NH-cV-yLc" secondAttribute="centerX" id="6tG-0E-3Pg"/>
                                             <constraint firstItem="qrq-NZ-lPw" firstAttribute="top" secondItem="YeC-1H-Dey" secondAttribute="bottom" constant="15" id="Btb-qf-ZHY"/>
+                                            <constraint firstItem="YeC-1H-Dey" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8NH-cV-yLc" secondAttribute="leading" id="GIi-nH-qdr"/>
                                             <constraint firstItem="YeC-1H-Dey" firstAttribute="centerX" secondItem="8NH-cV-yLc" secondAttribute="centerX" id="Lcd-2b-rkc"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="YeC-1H-Dey" secondAttribute="trailing" id="Rbx-6R-187"/>
+                                            <constraint firstItem="qrq-NZ-lPw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8NH-cV-yLc" secondAttribute="leading" id="dNb-rb-QfE"/>
                                             <constraint firstItem="HOk-mq-u4U" firstAttribute="top" secondItem="8NH-cV-yLc" secondAttribute="top" id="oUR-sY-5eD"/>
                                             <constraint firstItem="qrq-NZ-lPw" firstAttribute="centerX" secondItem="8NH-cV-yLc" secondAttribute="centerX" id="wws-dX-0Sj"/>
                                         </constraints>
@@ -561,6 +569,6 @@ DQ
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="RBK-ii-duJ"/>
-        <segue reference="Ibe-5u-Fbi"/>
+        <segue reference="OTp-Xx-YUK"/>
     </inferredMetricsTieBreakers>
 </document>
