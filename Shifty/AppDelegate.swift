@@ -31,6 +31,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             title: NSLocalizedString("prefs.title", comment: "Preferences"))
     }()
     
+    var setupWindow: NSWindow!
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         UserDefaults.standard.register(defaults: ["NSApplicationCrashOnExceptions": true])
         Fabric.with([Crashlytics.self])
@@ -104,10 +106,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         setStatusToggle()
         
         if (!UserDefaults.standard.bool(forKey: Keys.hasSetupWindowShown) && !UIElement.isProcessTrusted()) || ProcessInfo.processInfo.environment["show_setup"] == "true" {
-            NSApplication.shared.activate(ignoringOtherApps: true)
             let storyboard = NSStoryboard(name: .init("Setup"), bundle: nil)
             let controller = storyboard.instantiateInitialController() as! NSWindowController
+            setupWindow = controller.window
+            
+            NSApplication.shared.activate(ignoringOtherApps: true)
             controller.showWindow(self)
+            setupWindow.makeMain()
             
             UserDefaults.standard.set(true, forKey: Keys.hasSetupWindowShown)
         }
