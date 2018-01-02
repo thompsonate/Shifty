@@ -32,7 +32,7 @@
                             <constraint firstAttribute="width" constant="65" id="OsD-2Y-1B9"/>
                             <constraint firstAttribute="width" secondItem="YTT-ok-XCv" secondAttribute="height" multiplier="1:1" id="kN7-u2-9WH"/>
                         </constraints>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="AppIcon" id="H23-Be-uWH"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="shiftyColorIcon" id="H23-Be-uWH"/>
                     </imageView>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="Lby-a4-HBQ">
                         <rect key="frame" x="105" y="61" width="250" height="49"/>
@@ -190,6 +190,6 @@ Gw
         </window>
     </objects>
     <resources>
-        <image name="AppIcon" width="128" height="128"/>
+        <image name="shiftyColorIcon" width="245.75999450683594" height="245.75999450683594"/>
     </resources>
 </document>

@@ -57,7 +57,7 @@
                                     <constraint firstAttribute="width" constant="64" id="C38-De-3i5"/>
                                     <constraint firstAttribute="width" secondItem="zqM-VP-MKT" secondAttribute="height" multiplier="1:1" id="VTn-Ih-aLU"/>
                                 </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="AppIcon" id="Csb-ai-sDK"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="shiftyColorIcon" id="Csb-ai-sDK"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="mxU-q0-bpJ">
                                 <rect key="frame" x="93" y="317" width="265" height="36"/>
@@ -550,17 +550,17 @@ DQ
         </scene>
     </scenes>
     <resources>
-        <image name="AppIcon" width="128" height="128"/>
         <image name="NSGoLeftTemplate" width="9" height="12"/>
         <image name="NSLeftFacingTriangleTemplate" width="9" height="12"/>
         <image name="chromeIcon" width="32" height="32"/>
         <image name="menuBarScreenshot" width="362" height="155.5"/>
         <image name="safariIcon" width="32" height="32"/>
+        <image name="shiftyColorIcon" width="245.75999450683594" height="245.75999450683594"/>
         <image name="vivaldiIcon" width="32" height="32"/>
         <image name="websiteFeatureScreenshot" width="329" height="167"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="RBK-ii-duJ"/>
-        <segue reference="OTp-Xx-YUK"/>
+        <segue reference="Ibe-5u-Fbi"/>
     </inferredMetricsTieBreakers>
 </document>
