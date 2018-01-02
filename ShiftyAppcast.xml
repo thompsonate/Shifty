@@ -5,6 +5,27 @@
         <description>Most recent changes with links to updates.</description>
         <language>en</language>
         <item>
+            <title>Version 0.5</title>
+            <description><![CDATA[
+                <ul style="list-style-type:disc">
+                <li>Adds website shifting! Night Shift can now be disabled for individual websites in supported browsers.</li>
+                <li>Website shifting supports:</li>
+                    <ul style="list-style-type:disc">
+                    <li>Safari</li>
+                    <li>Chrome</li>
+                    <li>Vivaldi</li>
+                    </ul>
+                <li>Fixes an issue that caused Night Shift to be incorrectly enabled on wake.</li>
+                <li>Removes location requirement for Sunset to Sunrise schedule. Now, Shifty gets sunrise and sunset times from where they're stored in the system so it no longer needs your location to calculate them.</li>
+                <li>Special thanks to Enrico Ghirardi for making much of this update possible.</li>
+                </ul>
+            ]]>
+            </description>
+            <pubDate>Tue, 2 Jan 2018 13:30:00 -0500</pubDate>
+            <enclosure url="https://github.com/thompsonate/Shifty/releases/download/0.5/Shifty-0.5.dmg" sparkle:version="37" sparkle:shortVersionString="0.5" length="1623481" type="application/octet-stream" sparkle:dsaSignature="MCwCFCnelLalLpEbJgYKGT7ia58qTVT1AhRFA436yamf+zsk/aUBcVfqBypumA==" />
+            <sparkle:minimumSystemVersion>10.12.4</sparkle:minimumSystemVersion>
+        </item>
+        <item>
             <title>Version 0.4</title>
             <description><![CDATA[
                 <ul style="list-style-type:disc">
