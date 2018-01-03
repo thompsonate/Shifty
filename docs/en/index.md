@@ -4,7 +4,7 @@ layout: default
 ref: home
 lang: en
 ---
-Shifty was made to expand the capabilities of the built in Night Shift feature in macOS. You can disable Night Shift for specific apps and custom time periods. It also provides easy access to a slider to fine tune your color temperature. With Shifty, Night Shift becomes a power user feature!
+Shifty was made to expand the capabilities of the built in Night Shift feature in macOS. You can disable Night Shift for specific apps, websites, and custom time periods. It also provides easy access to a slider to fine tune your color temperature. With Shifty, Night Shift becomes a power user feature!
 
 <div id="screenshot-container">
   <img class="shifty-screenshot" src="images/shifty-screenshot-large.png"/>
@@ -22,8 +22,11 @@ Shifty was made to expand the capabilities of the built in Night Shift feature i
 ##### System requirements:
 * macOS 10.12.4 or later
 * System meets the [requirements for Night Shift](https://support.apple.com/HT207513#requirements)
+* Website shifting supports Safari, Chrome, and Vivaldi.
 
 <br>
-If you love Shifty, [donate]({{ site.donate_link_usd }}) to help me make it better.
+If you love Shifty, consider [donating]({{ site.donate_link_usd }}) to help me make it better.
 
 Shifty is free and open source, licensed under [GPLv3]({{ site.license_link }}). [Contribute on GitHub]({{ site.repository_link }})
+
+If you would like to help translate Shifty into other languages, you can contribute [here](http://translate.shifty.natethompson.io).
