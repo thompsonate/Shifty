@@ -20,20 +20,81 @@ enum SupportedBrowser : String {
     case Vivaldi = "com.vivaldi.Vivaldi"
 }
 
+enum BrowserError : Error {
+    case BrowserAXError
+}
+
 var browserObserver: Observer!
 
 //MARK: Safari Scripting Bridge
 
 func getSafariCurrentTabURL(_ processIdentifier: pid_t) -> URL? {
-    if let app: SafariApplication = SBApplication(processIdentifier: processIdentifier) {
-        if let windows = app.windows as? [SafariWindow] {
-            if !windows.isEmpty {
-                if let tab = windows[0].currentTab {
-                    if let url = URL(string: tab.URL!) {
-                        return url
+    if let axapp = Application(forProcessID: processIdentifier) {
+        do {
+            // Special fullscreen win
+            guard let axwin: UIElement = try axapp.attribute(.focusedWindow) else { throw BrowserError.BrowserAXError }
+            guard let axwin_children: [UIElement] = try axwin.arrayAttribute(.children) else { throw BrowserError.BrowserAXError }
+            switch axwin_children.count {
+            case 1:
+                var axchild = axwin_children[0]
+                for _ in 1...3 {
+                    guard let children: [UIElement] = try axchild.arrayAttribute(.children) else { throw BrowserError.BrowserAXError }
+                    if !children.isEmpty {
+                        axchild = children[0]
+                    }
+                }
+                return try axchild.attribute("AXURL")
+            case 2...7:
+                // Standard win
+                var filtered = try axwin_children.filter {
+                    let role = try $0.role()
+                    return role == .splitGroup
+                }
+
+                if filtered.count == 1 {
+                    let child_lvl1 = filtered[0]
+                    guard let children_lvl1: [UIElement] =
+                        try child_lvl1.arrayAttribute(.children) else { throw BrowserError.BrowserAXError }
+                    filtered = try children_lvl1.filter {
+                        let role = try $0.role()
+                        return role == .tabGroup
+                    }
+                    if filtered.count == 1 {
+                        var axchild = filtered[0]
+                        for _ in 1...3 {
+                            guard let children: [UIElement] = try axchild.arrayAttribute(.children) else { throw BrowserError.BrowserAXError }
+                            if !children.isEmpty {
+                                axchild = children[0]
+                            }
+                        }
+                        guard let children_lvl2: [UIElement] =
+                            try axchild.arrayAttribute(.children) else { throw BrowserError.BrowserAXError }
+                        filtered = try children_lvl2.filter {
+                            let role = try $0.role()
+                            return role == Role.init(rawValue: "AXWebArea")
+                        }
+                        if filtered.count == 1 {
+                            return try filtered[0].attribute("AXURL")
+                        }
+                    }
+                }
+                fallthrough
+            default:
+                throw BrowserError.BrowserAXError
+            }
+        } catch {
+            if let app: SafariApplication = SBApplication(processIdentifier: processIdentifier) {
+                if let windows = app.windows as? [SafariWindow] {
+                    if !windows.isEmpty {
+                        if let tab = windows[0].currentTab {
+                            if let url = URL(string: tab.URL!) {
+                                return url
+                            }
+                        }
                     }
                 }
             }
+            return nil
         }
     }
     return nil
