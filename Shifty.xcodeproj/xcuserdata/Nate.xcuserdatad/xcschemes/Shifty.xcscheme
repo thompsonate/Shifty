@@ -66,7 +66,7 @@
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "show_setup"
-            value = "true"
+            value = "false"
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable

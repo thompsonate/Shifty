@@ -35,6 +35,7 @@ enum Event {
     case shortcuts(toggleNightShift: Bool, increaseColorTemp: Bool, decreaseColorTemp: Bool, disableApp: Bool, disableDomain: Bool, disableSubdomain: Bool, disableHour: Bool, disableCustom: Bool)
     case websiteButtonClicked
     case feedbackButtonClicked
+    case translateButtonClicked
     case donateButtonClicked
     case checkForUpdatesClicked
     case creditsClicked
@@ -72,6 +73,7 @@ extension Event {
         case .shortcuts: return "Shortcuts"
         case .websiteButtonClicked: return "Website button clicked"
         case .feedbackButtonClicked: return "Feedback button clicked"
+        case .translateButtonClicked: return "Translate button clicked"
         case .donateButtonClicked: return "Donate button clicked"
         case .checkForUpdatesClicked: return "Check for updates button clicked"
         case .creditsClicked: return "Credits button clicked"

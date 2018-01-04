@@ -64,6 +64,12 @@ class PrefAboutViewController: NSViewController, MASPreferencesViewController {
         Event.feedbackButtonClicked.record()
     }
     
+    @IBAction func translateButtonClicked(_ sender: NSButton) {
+        guard let url = URL(string: "http://translate.shifty.natethompson.io") else { return }
+        NSWorkspace.shared.open(url)
+        Event.translateButtonClicked.record()
+    }
+    
     @IBAction func donateButtonClicked(_ sender: NSButton) {
         guard let url = URL(string: "http://shifty.natethompson.io/donate") else { return }
         NSWorkspace.shared.open(url)
