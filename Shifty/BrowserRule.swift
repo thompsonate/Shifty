@@ -178,37 +178,14 @@ func checkForBrowserRules(domain: String, subdomain: String, rules: [BrowserRule
 func startBrowserWatcher(_ processIdentifier: pid_t, callback: @escaping () -> Void) throws {
     if let app = Application(forProcessID: processIdentifier) {
         browserObserver = app.createObserver { (observer: Observer, element: UIElement, event: AXNotification, info: [String: AnyObject]?) in
-            if event == .windowCreated {
-                do {
-                    try browserObserver.addNotification(.titleChanged, forElement: element)
-                } catch let error {
-                    NSLog("Error: Could not watch [\(element)]: \(error)")
-                    logw("Error: Could not watch [\(element)]: \(error)")
-                }
-            }
-            if event == .titleChanged || event == .focusedWindowChanged {
+            if event == .valueChanged
+            {
                 DispatchQueue.main.async {
                     callback()
                 }
             }
         }
-        
-        do {
-            let windows = try app.windows()!
-            for window in windows {
-                do {
-                    try browserObserver.addNotification(.titleChanged, forElement: window)
-                } catch let error {
-                    NSLog("Error: Could not watch [\(window)]: \(error)")
-                    logw("Error: Could not watch [\(window)]: \(error)")
-                }
-            }
-        } catch let error {
-            NSLog("Error: Could not get windows for \(app): \(error)")
-            logw("Error: Could not get windows for \(app): \(error)")
-        }
-        try browserObserver.addNotification(.focusedWindowChanged, forElement: app)
-        try browserObserver.addNotification(.windowCreated, forElement: app)
+        try browserObserver.addNotification(.valueChanged, forElement: app)
     }
 }
 
