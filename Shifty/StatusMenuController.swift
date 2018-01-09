@@ -569,6 +569,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         currentAppName = NSWorkspace.shared.menuBarOwningApplication?.localizedName ?? ""
         currentAppBundleId = NSWorkspace.shared.menuBarOwningApplication?.bundleIdentifier ?? ""
 
+        isShiftForAppEnabled = scheduledState ?? false
         isDisabledForApp = disabledApps.contains(currentAppBundleId)
         isDisabledForDomain = false
         isDisabledForSubdomain = false
