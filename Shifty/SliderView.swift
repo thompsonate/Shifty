@@ -18,7 +18,8 @@ class SliderView: NSView {
     @IBAction func shiftSliderMoved(_ sender: NSSlider) {
         sliderValueChanged?(sender.floatValue)
         let event = NSApplication.shared.currentEvent
-        if event?.type == NSEvent.EventType.leftMouseUp {
+        if event?.type == .leftMouseUp {
+            sender.superview?.enclosingMenuItem?.menu?.cancelTracking()
             Event.sliderMoved(value: sender.floatValue).record()
             logw("Slider set to \(sender.floatValue)")
         }
