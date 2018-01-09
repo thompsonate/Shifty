@@ -33,7 +33,18 @@ class CustomTimeWindow: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
         
-        window?.center()
+        if UserDefaults.standard.value(forKey: "customTimeWindowFrame") == nil {
+            window?.center()
+        }
+        
+        let saveName = NSWindow.FrameAutosaveName.init("customTimeWindowFrame")
+        
+        window?.setFrameUsingName(saveName)
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("NSWindowWillCloseNotification"), object: nil, queue: nil) { _ in
+            self.window?.saveFrame(usingName: saveName)
+        }
+        
         window?.level = .floating
         window?.titleVisibility = .hidden
         
