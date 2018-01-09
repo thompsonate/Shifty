@@ -46,15 +46,15 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="M0d-pj-5gB">
-                    <rect key="frame" x="45" y="150" width="30" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="site:" id="pAL-H2-Wch">
+                    <rect key="frame" x="45" y="150" width="55" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="website:" id="pAL-H2-Wch">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Hm-zf-Nhs">
-                    <rect key="frame" x="75" y="150" width="151" height="17"/>
+                    <rect key="frame" x="100" y="150" width="151" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="shifty.natethompson.io" id="Gbt-lh-vi5">
                         <font key="font" metaFont="systemMedium" size="13"/>
                         <color key="textColor" red="0.29728435901470579" green="0.53554502905236256" blue="0.8769965320069173" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -62,7 +62,7 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="3WI-wA-JOM" customClass="LinkButton" customModule="Shifty" customModuleProvider="target">
-                    <rect key="frame" x="77" y="150" width="147" height="17"/>
+                    <rect key="frame" x="102" y="150" width="147" height="17"/>
                     <buttonCell key="cell" type="bevel" bezelStyle="rounded" alignment="center" transparent="YES" imageScaling="proportionallyDown" inset="2" id="EFj-8i-FPx">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
