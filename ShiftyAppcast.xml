@@ -5,6 +5,20 @@
         <description>Most recent changes with links to updates.</description>
         <language>en</language>
         <item>
+            <title>Version 0.5.1</title>
+            <description><![CDATA[
+                <ul style="list-style-type:disc">
+                <li>Fixes an issue with disabling for websites with full-screen videos in Safari</li>
+                <li>Fixes an issue with Night Shift being set to the incorrect state after it is disabled for an app</li>
+                <li>Fixes an issue that caused the app to be displayed in a partial, broken Chinese translation when the system language is set to Chinese</li>
+                </ul>
+            ]]>
+            </description>
+            <pubDate>Wed, 10 Jan 2018 16:30:00 -0500</pubDate>
+            <enclosure url="https://github.com/thompsonate/Shifty/releases/download/0.5.1/Shifty-0.5.1.dmg" sparkle:version="38" sparkle:shortVersionString="0.5.1" length="1623481" type="application/octet-stream" sparkle:dsaSignature="MC0CFQCL7PekhLAx8mC1KhSrbaUqQ/5DSAIUfcJAarA4U+WHIUhozDOB+/wdsfQ=" />
+            <sparkle:minimumSystemVersion>10.12.4</sparkle:minimumSystemVersion>
+        </item>
+        <item>
             <title>Version 0.5</title>
             <description><![CDATA[
                 <ul style="list-style-type:disc">
