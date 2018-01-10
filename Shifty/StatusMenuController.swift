@@ -568,12 +568,15 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         stopBrowserWatcher()
         currentAppName = NSWorkspace.shared.menuBarOwningApplication?.localizedName ?? ""
         currentAppBundleId = NSWorkspace.shared.menuBarOwningApplication?.bundleIdentifier ?? ""
-
-        isShiftForAppEnabled = scheduledState ?? false
+        
         isDisabledForApp = disabledApps.contains(currentAppBundleId)
         isDisabledForDomain = false
         isDisabledForSubdomain = false
         isExceptionForSubdomain = false
+        
+        if let scheduledState = scheduledState {
+            isShiftForAppEnabled = scheduledState
+        }
         
         if UserDefaults.standard.bool(forKey: Keys.isWebsiteControlEnabled) {
             if let supportedBrowser = SupportedBrowser(rawValue: currentAppBundleId) {
