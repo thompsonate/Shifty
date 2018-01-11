@@ -62,7 +62,12 @@ class PrefShortcutsViewController: NSViewController, MASPreferencesViewControlle
     
     func bindShortcuts() {
         MASShortcutBinder.shared().bindShortcut(withDefaultsKey: Keys.toggleNightShiftShortcut) {
-            self.statusMenuController?.power(self)
+            guard let menu = self.statusMenuController else { return }
+            if !menu.powerMenuItem.isHidden && menu.powerMenuItem.isEnabled {
+                self.statusMenuController?.power(self)
+            } else {
+                NSSound.beep()
+            }
         }
         
         MASShortcutBinder.shared().bindShortcut(withDefaultsKey: Keys.incrementColorTempShortcut) {
@@ -93,12 +98,17 @@ class PrefShortcutsViewController: NSViewController, MASPreferencesViewControlle
         }
         
         MASShortcutBinder.shared().bindShortcut(withDefaultsKey: Keys.disableAppShortcut) {
-            self.statusMenuController?.disableForApp(self)
+            guard let menu = self.statusMenuController else { return }
+            if !menu.disableAppMenuItem.isHidden && menu.disableAppMenuItem.isEnabled {
+                self.statusMenuController?.disableForApp(self)
+            } else {
+                NSSound.beep()
+            }
         }
         
         MASShortcutBinder.shared().bindShortcut(withDefaultsKey: Keys.disableDomainShortcut) {
             guard let menu = self.statusMenuController else { return }
-            if !menu.disableDomainMenuItem.isHidden {
+            if !menu.disableDomainMenuItem.isHidden && menu.disableDomainMenuItem.isEnabled {
                 self.statusMenuController?.disableForDomain(self)
             } else {
                 NSSound.beep()
@@ -107,7 +117,7 @@ class PrefShortcutsViewController: NSViewController, MASPreferencesViewControlle
         
         MASShortcutBinder.shared().bindShortcut(withDefaultsKey: Keys.disableSubdomainShortcut) {
             guard let menu = self.statusMenuController else { return }
-            if !menu.disableSubdomainMenuItem.isHidden {
+            if !menu.disableSubdomainMenuItem.isHidden && menu.disableSubdomainMenuItem.isEnabled {
                 self.statusMenuController?.disableForSubdomain(self)
             } else {
                 NSSound.beep()
@@ -115,7 +125,8 @@ class PrefShortcutsViewController: NSViewController, MASPreferencesViewControlle
         }
         
         MASShortcutBinder.shared().bindShortcut(withDefaultsKey: Keys.disableHourShortcut) {
-            if BLClient.isNightShiftEnabled || (self.statusMenuController?.isDisableHourSelected) ?? false {
+            guard let menu = self.statusMenuController else { return }
+            if !menu.disableHourMenuItem.isHidden && menu.disableHourMenuItem.isEnabled {
                 self.statusMenuController?.disableHour(self)
             } else {
                 NSSound.beep()
@@ -123,7 +134,8 @@ class PrefShortcutsViewController: NSViewController, MASPreferencesViewControlle
         }
         
         MASShortcutBinder.shared().bindShortcut(withDefaultsKey: Keys.disableCustomShortcut) {
-            if BLClient.isNightShiftEnabled || (self.statusMenuController?.isDisableCustomSelected) ?? false {
+            guard let menu = self.statusMenuController else { return }
+            if !menu.disableCustomMenuItem.isHidden && menu.disableCustomMenuItem.isEnabled {
                 self.statusMenuController?.disableCustomTime(self)
             } else {
                 NSSound.beep()
