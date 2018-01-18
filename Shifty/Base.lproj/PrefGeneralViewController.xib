@@ -293,7 +293,7 @@
             </subviews>
             <constraints>
                 <constraint firstItem="JqG-nx-58t" firstAttribute="top" secondItem="bXz-rK-jao" secondAttribute="top" constant="20" id="0BF-uj-67A"/>
-                <constraint firstAttribute="bottom" secondItem="Xwu-c8-3l2" secondAttribute="bottom" priority="500" constant="20" id="1CT-VD-KSJ"/>
+                <constraint firstAttribute="bottom" secondItem="Xwu-c8-3l2" secondAttribute="bottom" constant="20" id="84T-Sd-Scm"/>
                 <constraint firstItem="xjO-vb-Nxv" firstAttribute="leading" secondItem="bXz-rK-jao" secondAttribute="leading" constant="40" id="9AJ-vB-jDa"/>
                 <constraint firstItem="I5d-cF-2Wh" firstAttribute="top" secondItem="xjO-vb-Nxv" secondAttribute="bottom" constant="8" id="9AP-l2-28O"/>
                 <constraint firstAttribute="trailing" secondItem="Xwu-c8-3l2" secondAttribute="trailing" constant="20" id="Afh-Im-1Sf"/>

@@ -11,8 +11,6 @@ import ServiceManagement
 import AXSwift
 import SwiftLog
 
-///The height difference between the custom schedule controls being shown and hidden
-let PREF_GENERAL_HEIGHT_ADJUSTMENT = CGFloat(33.0)
 
 @objcMembers
 class PrefGeneralViewController: NSViewController, MASPreferencesViewController {
@@ -164,7 +162,6 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
     }
     
     func setCustomControlVisibility(_ visible: Bool, animate: Bool) {
-        var adjustment = PREF_GENERAL_HEIGHT_ADJUSTMENT
         if customTimeStackView.isHidden == visible || (!visible && !animate)  {
             if let frame = prefWindow?.frame {
                 if visible {
@@ -173,12 +170,16 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
                     fromTimePicker.isHidden = true
                     toLabel.isHidden = true
                     toTimePicker.isHidden = true
-                } else {
-                    adjustment *= -1
                 }
                 
+                let prevHeight = view.fittingSize.height
+
                 customTimeStackView.isHidden = !visible
-                let newFrame = NSMakeRect(frame.origin.x, frame.origin.y - adjustment, frame.width, frame.height + adjustment)
+                
+                let adjustment = prevHeight - view.fittingSize.height
+                
+                let newContentRect = NSMakeRect(frame.origin.x, frame.origin.y + adjustment, frame.width, view.fittingSize.height)
+                let newFrame = prefWindow.frameRect(forContentRect: newContentRect)
                 prefWindow.setFrame(newFrame, display: true, animate: animate)
                 
                 if visible {
@@ -197,16 +198,6 @@ class PrefWindowController: MASPreferencesWindowController {
     override func keyDown(with event: NSEvent) {
         if event.keyCode == 13 && event.modifierFlags.contains(.command) {
             window?.close()
-        }
-    }
-    
-    //Decreases window frame height if custom schedule controls are not shown
-    override func getNewWindowFrame() -> NSRect {
-        if BLClient.isOffSchedule || BLClient.isSunSchedule {
-            let newFrame = super.getNewWindowFrame()
-            return NSMakeRect(newFrame.origin.x, newFrame.origin.y + PREF_GENERAL_HEIGHT_ADJUSTMENT, newFrame.width, newFrame.height - PREF_GENERAL_HEIGHT_ADJUSTMENT)
-        } else {
-            return super.getNewWindowFrame()
         }
     }
 }
