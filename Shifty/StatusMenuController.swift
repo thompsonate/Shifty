@@ -30,7 +30,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     @IBOutlet weak var sunIcon: NSImageView!
     @IBOutlet weak var moonIcon: NSImageView!
     
-    var preferencesWindow: NSWindowController!
+    var prefWindowController: PrefWindowController!
     var prefGeneral: PrefGeneralViewController!
     var prefShortcuts: PrefShortcutsViewController!
     var customTimeWindow: CustomTimeWindow!
@@ -78,13 +78,17 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         statusMenu.delegate = self
         customTimeWindow = CustomTimeWindow()
         
-        let prefWindow = (NSApplication.shared.delegate as? AppDelegate)?.preferenceWindowController
-        prefGeneral = prefWindow?.viewControllers.flatMap { childViewController in
-            return childViewController as? PrefGeneralViewController
-        }.first
-        prefShortcuts = prefWindow?.viewControllers.flatMap { childViewController in
-            return childViewController as? PrefShortcutsViewController
-        }.first
+        prefGeneral = PrefGeneralViewController()
+        prefShortcuts = PrefShortcutsViewController()
+        let prefAbout = PrefAboutViewController()
+        let prefVC = PrefViewController()
+        prefVC.childViewControllers = [prefGeneral, prefShortcuts, prefAbout]
+        
+        let window = NSWindow(contentViewController: prefVC)
+        window.styleMask = [.titled, .closable]
+        window.title = NSLocalizedString("prefs.title", comment: "Preferences")
+        prefWindowController = PrefWindowController(window: window)
+        prefWindowController.window?.contentView?.wantsLayer = true
         
         descriptionMenuItem.isEnabled = false
         sliderMenuItem.view = sliderView
@@ -179,7 +183,6 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     func menuWillOpen(_: NSMenu) {
         if BLClient.isNightShiftEnabled {
             setActiveState(state: true)
-            //disableDisableTimer()
 
         } else if sliderView.shiftSlider.floatValue != 0.0 {
             setActiveState(state: BLClient.isNightShiftEnabled)
@@ -529,10 +532,9 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     
     @IBAction func preferencesClicked(_ sender: NSMenuItem) {
         logw("Preferences menu item clicked")
-        
+
         NSApplication.shared.activate(ignoringOtherApps: true)
-        let appDelegate = NSApplication.shared.delegate as? AppDelegate
-        appDelegate?.preferenceWindowController.showWindow(sender)
+        prefWindowController.showWindow(self)
         
         Event.preferencesWindowOpened.record()
     }

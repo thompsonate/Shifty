@@ -22,15 +22,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     var statusItemClicked: (() -> Void)?
     
-    lazy var preferenceWindowController: PrefWindowController = {
-        return PrefWindowController(
-            viewControllers: [
-                PrefGeneralViewController(),
-                PrefShortcutsViewController(),
-                PrefAboutViewController()],
-            title: NSLocalizedString("prefs.title", comment: "Preferences"))
-    }()
-    
     var setupWindow: NSWindow!
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {

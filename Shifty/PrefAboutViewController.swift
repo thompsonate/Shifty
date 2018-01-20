@@ -12,19 +12,13 @@ import MASPreferences_Shifty
 let ShiftyUpdater = SUUpdater()
 
 @objcMembers
-class PrefAboutViewController: NSViewController, MASPreferencesViewController {
+class PrefAboutViewController: PrefPaneViewController {
     
-    override var nibName: NSNib.Name {
-        get { return NSNib.Name("PrefAboutViewController") }
-    }
-    
-    var viewIdentifier: String = "PrefAboutViewController"
-    
-    var toolbarItemImage: NSImage? {
+    override var toolbarItemImage: NSImage? {
         get { return #imageLiteral(resourceName: "shiftyCircleIcon") }
     }
     
-    var toolbarItemLabel: String? {
+    override var toolbarItemLabel: String? {
         get {
             view.layoutSubtreeIfNeeded()
             return NSLocalizedString("prefs.about", comment: "About")

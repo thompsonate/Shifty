@@ -13,25 +13,19 @@ import SwiftLog
 
 
 @objcMembers
-class PrefGeneralViewController: NSViewController, MASPreferencesViewController {
+class PrefGeneralViewController: PrefPaneViewController {
     
-    override var nibName: NSNib.Name {
-        get { return NSNib.Name("PrefGeneralViewController") }
-    }
-    
-    var viewIdentifier: String = "PrefGeneralViewController"
-    
-    var toolbarItemImage: NSImage? {
+    override var toolbarItemImage: NSImage? {
         get { return NSImage(named: .preferencesGeneral)! }
     }
     
-    var toolbarItemLabel: String? {
+    override var toolbarItemLabel: String? {
         get {
             view.layoutSubtreeIfNeeded()
             return NSLocalizedString("prefs.general", comment: "General")
         }
     }
-    
+        
     var hasResizableWidth = false
     var hasResizableHeight = false
     
@@ -63,9 +57,6 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        appDelegate = NSApplication.shared.delegate as! AppDelegate
-        prefWindow = appDelegate.preferenceWindowController.window
-        
         updateSchedule = {
             switch BLClient.schedule {
             case .off:
@@ -85,6 +76,9 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
     
     override func viewWillAppear() {
         super.viewWillAppear()
+        
+        let statusMenuController = (NSApplication.shared.delegate as! AppDelegate).statusMenu.delegate as! StatusMenuController
+        prefWindow = statusMenuController.prefWindowController.window
         
         updateSchedule?()
     }
@@ -174,7 +168,7 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
                 
                 let prevHeight = view.fittingSize.height
 
-                customTimeStackView.isHidden = !visible
+                customTimeStackView.isHidden = false
                 
                 let adjustment = prevHeight - view.fittingSize.height
                 
@@ -183,21 +177,13 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
                 prefWindow.setFrame(newFrame, display: true, animate: animate)
                 
                 if visible {
-                    fromLabel.isHidden = false
-                    fromTimePicker.isHidden = false
-                    toLabel.isHidden = false
-                    toTimePicker.isHidden = false
+                    fromLabel.isHidden = true
+                    fromTimePicker.isHidden = true
+                    toLabel.isHidden = true
+                    toTimePicker.isHidden = true
                 }
             }
         }
     }
 }
 
-
-class PrefWindowController: MASPreferencesWindowController {    
-    override func keyDown(with event: NSEvent) {
-        if event.keyCode == 13 && event.modifierFlags.contains(.command) {
-            window?.close()
-        }
-    }
-}

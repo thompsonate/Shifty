@@ -10,21 +10,15 @@ import MASPreferences_Shifty
 import MASShortcut
 
 @objcMembers
-class PrefShortcutsViewController: NSViewController, MASPreferencesViewController {
+class PrefShortcutsViewController: PrefPaneViewController {
     
     let statusMenuController = (NSApplication.shared.delegate as? AppDelegate)?.statusMenu.delegate as? StatusMenuController
-    
-    override var nibName: NSNib.Name {
-        get { return NSNib.Name("PrefShortcutsViewController") }
-    }
-    
-    var viewIdentifier: String = "PrefShortcutsViewController"
-    
-    var toolbarItemImage: NSImage? {
+
+    override var toolbarItemImage: NSImage? {
         get { return #imageLiteral(resourceName: "shortcutsIcon") }
     }
-    
-    var toolbarItemLabel: String? {
+        
+    override var toolbarItemLabel: String? {
         get {
             view.layoutSubtreeIfNeeded()
             return NSLocalizedString("prefs.shortcuts", comment: "Shortcuts")
