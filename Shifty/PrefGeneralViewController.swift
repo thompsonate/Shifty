@@ -168,7 +168,7 @@ class PrefGeneralViewController: PrefPaneViewController {
                 
                 let prevHeight = view.fittingSize.height
 
-                customTimeStackView.isHidden = false
+                customTimeStackView.isHidden = !visible
                 
                 let adjustment = prevHeight - view.fittingSize.height
                 
@@ -177,10 +177,10 @@ class PrefGeneralViewController: PrefPaneViewController {
                 prefWindow.setFrame(newFrame, display: true, animate: animate)
                 
                 if visible {
-                    fromLabel.isHidden = true
-                    fromTimePicker.isHidden = true
-                    toLabel.isHidden = true
-                    toTimePicker.isHidden = true
+                    fromLabel.isHidden = false
+                    fromTimePicker.isHidden = false
+                    toLabel.isHidden = false
+                    toTimePicker.isHidden = false
                 }
             }
         }
