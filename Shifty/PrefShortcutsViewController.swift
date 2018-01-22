@@ -46,6 +46,11 @@ class PrefShortcutsViewController: NSViewController, MASPreferencesViewControlle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Fix layer-backing issues in 10.12 that cause window corners to not be rounded.
+        if !ProcessInfo().isOperatingSystemAtLeast(OperatingSystemVersion(majorVersion: 10, minorVersion: 13, patchVersion: 0)) {
+            view.wantsLayer = false
+        }
+        
         toggleNightShiftShortcut.associatedUserDefaultsKey = Keys.toggleNightShiftShortcut
         incrementColorTempShortcut.associatedUserDefaultsKey = Keys.incrementColorTempShortcut
         decrementColorTempShortcut.associatedUserDefaultsKey = Keys.decrementColorTempShortcut

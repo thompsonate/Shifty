@@ -40,6 +40,11 @@ class PrefAboutViewController: NSViewController, MASPreferencesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Fix layer-backing issues in 10.12 that cause window corners to not be rounded.
+        if !ProcessInfo().isOperatingSystemAtLeast(OperatingSystemVersion(majorVersion: 10, minorVersion: 13, patchVersion: 0)) {
+            view.wantsLayer = false
+        }
+        
         let bundleDisplayName = Bundle.main.localizedInfoDictionary?["CFBundleDisplayName"]
         nameLabel.stringValue = bundleDisplayName as? String ?? ""
         
