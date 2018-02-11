@@ -9,19 +9,19 @@
 import Cocoa
 
 class SliderView: NSView {
-    
+
     @IBOutlet weak var shiftSlider: NSSlider!
     var sliderValueChanged: ((Float) -> Void)?
     var sliderEnabled: (() -> Void)?
-    
+
     @IBAction func shiftSliderMoved(_ sender: NSSlider) {
         sliderValueChanged?(sender.floatValue)
-        let event = NSApplication.shared.currentEvent
-        if event?.type == NSEvent.EventType.leftMouseUp {
+        let event = NSApp.currentEvent
+        if event?.type == .leftMouseUp {
             Event.sliderMoved(value: sender.floatValue).record()
         }
     }
-    
+
     @IBAction func clickEnableSlider(_ sender: Any) {
         shiftSlider.isEnabled = true
         sliderEnabled?()
@@ -32,42 +32,42 @@ class SliderView: NSView {
 
 class ScrollableSlider: NSSlider {
     override func scrollWheel(with event: NSEvent) {
-        guard self.isEnabled else { return }
-        
-        let range = Float(self.maxValue - self.minValue)
-        var delta = Float(0)
-        
+        guard isEnabled else { return }
+
+        let range = maxValue - minValue
+        var delta: CGFloat = 0.0
+
         //Allow horizontal scrolling on horizontal and circular sliders
         if self.isVertical && self.sliderType == .linear {
-            delta = Float(event.deltaY)
+            delta = event.deltaY
         } else if self.userInterfaceLayoutDirection == .rightToLeft {
-            delta = Float(event.deltaY + event.deltaX)
+            delta = event.deltaY + event.deltaX
         } else {
-            delta = Float(event.deltaY - event.deltaX)
+            delta = event.deltaY - event.deltaX
         }
-        
+
         //Account for natural scrolling
         if event.isDirectionInvertedFromDevice {
             delta *= -1
         }
-        
-        let increment = range * delta / 100
-        var value = self.floatValue + increment
-        
+
+        let increment = range * Double(delta) / 100
+        var value = doubleValue + increment
+
         //Wrap around if slider is circular
-        if self.sliderType == .circular {
-            let minValue = Float(self.minValue)
-            let maxValue = Float(self.maxValue)
-            
+        if sliderType == .circular {
+            let minValue = self.minValue
+            let maxValue = self.maxValue
+
             if value < minValue {
-                value = maxValue - fabs(increment)
+                value = maxValue - abs(increment)
             }
             if value > maxValue {
-                value = minValue + fabs(increment)
+                value = minValue + abs(increment)
             }
         }
-        
-        self.floatValue = value
-        self.sendAction(self.action, to: self.target)
+
+        self.doubleValue = value
+        self.sendAction(action, to: target)
     }
 }

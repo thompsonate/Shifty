@@ -17,27 +17,27 @@ struct Keys {
     static let lastKnownLocation = "lastKnownLocation"
     static let disabledApps = "disabledApps"
     static let browserRules = "browserRules"
-    
+
     static let toggleNightShiftShortcut = "toggleNightShiftShortcut"
     static let incrementColorTempShortcut = "incrementColorTempShortcut"
     static let decrementColorTempShortcut = "decrementColorTempShortcut"
     static let disableAppShortcut = "disableAppShortcut"
     static let disableHourShortcut = "disableHourShortcut"
     static let disableCustomShortcut = "disableCustomShortcut"
-    
+
     static let menuLaunchCount = "menuLaunchCount"
 }
 
 
 class PrefManager {
-    static let sharedInstance = PrefManager()
-    
+    static let shared = PrefManager()
+
     private init() {
         registerFactoryDefaults()
     }
-    
+
     let userDefaults = UserDefaults.standard
-    
+
     private func registerFactoryDefaults() {
         let factoryDefaults = [
             Keys.isAutoLaunchEnabled: NSNumber(value: false),
@@ -48,15 +48,15 @@ class PrefManager {
             Keys.disabledApps: [String](),
             Keys.browserRules: NSData(),
             Keys.menuLaunchCount: NSNumber(value: 0)
-            ] as [String : Any]
-        
+        ] as [String: Any]
+
         userDefaults.register(defaults: factoryDefaults)
     }
-    
+
     func synchronize() {
         userDefaults.synchronize()
     }
-    
+
     func reset() {
         userDefaults.removeObject(forKey: Keys.isAutoLaunchEnabled)
         userDefaults.removeObject(forKey: Keys.isStatusToggleEnabled)
@@ -73,7 +73,7 @@ class PrefManager {
         userDefaults.removeObject(forKey: Keys.disableHourShortcut)
         userDefaults.removeObject(forKey: Keys.disableCustomShortcut)
         userDefaults.removeObject(forKey: Keys.menuLaunchCount)
-        
+
         synchronize()
     }
 }

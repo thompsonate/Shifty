@@ -8,7 +8,6 @@
 
 import Cocoa
 
-
 class ShiftyHelperApplication: NSApplication {
     let strongDelegate = AppDelegate()
     
@@ -38,7 +37,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         if !alreadyRunning {
-            DistributedNotificationCenter.default().addObserver(self, selector: #selector(terminate), name:  Notification.Name("killme"), object: mainAppIdentifier)
+			DistributedNotificationCenter.default().addObserver(NSApp, selector: #selector(NSApplication.terminate(_:)), name: Notification.Name("terminateApp"), object: mainAppIdentifier)
             
             let path = Bundle.main.bundlePath as NSString
             var components = path.pathComponents
@@ -51,12 +50,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let newPath = NSString.path(withComponents: components)
             NSWorkspace.shared.launchApplication(newPath)
         } else {
-            self.terminate()
+            NSApp.terminate(self)
         }
-    }
-    
-    @objc func terminate() {
-        NSApp.terminate(self)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

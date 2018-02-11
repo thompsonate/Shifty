@@ -21,7 +21,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var statusMenu: NSMenu!
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     var statusItemClicked: (() -> Void)?
-    
+
     lazy var preferenceWindowController: PrefWindowController = {
         return PrefWindowController(
             viewControllers: [
@@ -30,12 +30,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 PrefAboutViewController()],
             title: NSLocalizedString("prefs.title", comment: "Preferences"))
     }()
-    
+
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         UserDefaults.standard.register(defaults: ["NSApplicationCrashOnExceptions": true])
         Fabric.with([Crashlytics.self])
         Event.appLaunched.record()
-                
+
         if !ProcessInfo().isOperatingSystemAtLeast(OperatingSystemVersion(majorVersion: 10, minorVersion: 12, patchVersion: 4)) {
             Event.oldMacOSVersion(version: ProcessInfo().operatingSystemVersionString).record()
             let alert: NSAlert = NSAlert()
@@ -44,11 +44,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             alert.alertStyle = NSAlert.Style.warning
             alert.addButton(withTitle: NSLocalizedString("general.ok", comment: "OK"))
             alert.runModal()
-            
+
             NSApplication.shared.terminate(self)
         }
-        
-        if !CBBlueLightClient.supportsBlueLightReduction() {
+
+        if !NightShiftManager.supportsNightShift {
             Event.unsupportedHardware.record()
             let alert: NSAlert = NSAlert()
             alert.messageText = NSLocalizedString("alert.hardware_message", comment: "Your Mac does not support Night Shift")
@@ -56,30 +56,27 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             alert.alertStyle = NSAlert.Style.warning
             alert.addButton(withTitle: NSLocalizedString("general.ok", comment: "OK"))
             alert.runModal()
-            
+
             NSApplication.shared.terminate(self)
         }
-        
+
         let launcherAppIdentifier = "io.natethompson.ShiftyHelper"
-        
-        var startedAtLogin = false
-        for app in NSWorkspace.shared.runningApplications {
-            if app.bundleIdentifier == launcherAppIdentifier {
-                startedAtLogin = true
-            }
+
+        let startedAtLogin = NSWorkspace.shared.runningApplications.contains {
+            $0.bundleIdentifier == launcherAppIdentifier
         }
-        
+
         if startedAtLogin {
-            DistributedNotificationCenter.default().post(name: Notification.Name("killme"), object: Bundle.main.bundleIdentifier!)
+            DistributedNotificationCenter.default().post(name: .terminateApp, object: Bundle.main.bundleIdentifier!)
         }
-        
+
         //Show alert if accessibility permissions have been revoked while app is not running
         if UserDefaults.standard.bool(forKey: Keys.isWebsiteControlEnabled) &&
             !UIElement.isProcessTrusted(withPrompt: false) {
             let alert: NSAlert = NSAlert()
             alert.messageText = NSLocalizedString("alert.accessibility_disabled_message", comment: "Accessibility permissions for Shifty have been disabled")
             alert.informativeText = NSLocalizedString("alert.accessibility_informative", comment: "Grant access to Shifty in Security & Privacy preferences, located in System Preferences.")
-            alert.alertStyle = NSAlert.Style.warning
+            alert.alertStyle = .warning
             alert.addButton(withTitle: NSLocalizedString("alert.open_preferences", comment: "Open System Preferences"))
             alert.addButton(withTitle: NSLocalizedString("alert.not_now", comment: "Not now"))
             if alert.runModal() == .alertFirstButtonReturn {
@@ -88,23 +85,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 UserDefaults.standard.set(false, forKey: Keys.isWebsiteControlEnabled)
             }
         }
-        
+
         Log.logger.directory = "~/Library/Logs/Shifty"
         Log.logger.name = "Shifty"
         logw("log file created")
-    
-        setMenuBarIcon()
+
+        updateMenuBarIcon()
         setStatusToggle()
     }
-    
-    func setMenuBarIcon() {
+
+    func updateMenuBarIcon() {
         var icon: NSImage
-        if UserDefaults.standard.bool(forKey: Keys.isIconSwitchingEnabled) {
-            if !BLClient.isNightShiftEnabled {
-                icon = #imageLiteral(resourceName: "sunOpenIcon")
-            } else {
-                icon = #imageLiteral(resourceName: "shiftyMenuIcon")
-            }
+        if UserDefaults.standard.bool(forKey: Keys.isIconSwitchingEnabled),
+            !NightShiftManager.isNightShiftEnabled {
+            icon = #imageLiteral(resourceName: "sunOpenIcon")
         } else {
             icon = #imageLiteral(resourceName: "shiftyMenuIcon")
         }
@@ -113,23 +107,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             self.statusItem.button?.image = icon
         }
     }
-    
+
     func setStatusToggle() {
         if prefs.bool(forKey: Keys.isStatusToggleEnabled) {
             statusItem.menu = nil
             if let button = statusItem.button {
-                button.action = #selector(self.statusBarButtonClicked(sender:))
+                button.action = #selector(statusBarButtonClicked)
                 button.sendAction(on: [.leftMouseUp, .rightMouseUp])
             }
         } else {
             statusItem.menu = statusMenu
         }
     }
-    
+
     @objc func statusBarButtonClicked(sender: NSStatusBarButton) {
         let event = NSApp.currentEvent!
-        
-        if event.type == NSEvent.EventType.rightMouseUp || event.modifierFlags.contains(.control)  {
+
+        if event.type == NSEvent.EventType.rightMouseUp || event.modifierFlags.contains(.control) {
             statusItem.menu = statusMenu
             statusItem.popUpMenu(statusMenu)
             statusItem.menu = nil
