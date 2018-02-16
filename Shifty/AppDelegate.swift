@@ -31,13 +31,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             title: NSLocalizedString("prefs.title", comment: "Preferences"))
     }()
 
+    var setupWindow: NSWindow!
+
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         UserDefaults.standard.register(defaults: ["NSApplicationCrashOnExceptions": true])
         Fabric.with([Crashlytics.self])
         Event.appLaunched.record()
 
+        logw("")
+        logw("App launched")
+        logw("macOS \(ProcessInfo().operatingSystemVersionString)")
+        logw("Shifty Version \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")")
+
         if !ProcessInfo().isOperatingSystemAtLeast(OperatingSystemVersion(majorVersion: 10, minorVersion: 12, patchVersion: 4)) {
             Event.oldMacOSVersion(version: ProcessInfo().operatingSystemVersionString).record()
+            logw("Operating system version not supported")
+            NSApplication.shared.activate(ignoringOtherApps: true)
+
             let alert: NSAlert = NSAlert()
             alert.messageText = NSLocalizedString("alert.version_message", comment: "This version of macOS does not support Night Shift")
             alert.informativeText = NSLocalizedString("alert.version_informative", comment: "Update your Mac to version 10.12.4 or higher to use Shifty.")
@@ -50,6 +60,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         if !NightShiftManager.supportsNightShift {
             Event.unsupportedHardware.record()
+            logw("System does not support Night Shift")
+            NSApplication.shared.activate(ignoringOtherApps: true)
+
             let alert: NSAlert = NSAlert()
             alert.messageText = NSLocalizedString("alert.hardware_message", comment: "Your Mac does not support Night Shift")
             alert.informativeText = NSLocalizedString("alert.hardware_informative", comment: "A newer Mac is required to use Shifty.")
@@ -71,27 +84,34 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
 
         //Show alert if accessibility permissions have been revoked while app is not running
-        if UserDefaults.standard.bool(forKey: Keys.isWebsiteControlEnabled) &&
-            !UIElement.isProcessTrusted(withPrompt: false) {
-            let alert: NSAlert = NSAlert()
-            alert.messageText = NSLocalizedString("alert.accessibility_disabled_message", comment: "Accessibility permissions for Shifty have been disabled")
-            alert.informativeText = NSLocalizedString("alert.accessibility_informative", comment: "Grant access to Shifty in Security & Privacy preferences, located in System Preferences.")
-            alert.alertStyle = .warning
-            alert.addButton(withTitle: NSLocalizedString("alert.open_preferences", comment: "Open System Preferences"))
-            alert.addButton(withTitle: NSLocalizedString("alert.not_now", comment: "Not now"))
-            if alert.runModal() == .alertFirstButtonReturn {
-                NSWorkspace.shared.open(URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility")!)
-            } else {
-                UserDefaults.standard.set(false, forKey: Keys.isWebsiteControlEnabled)
-            }
+        if UserDefaults.standard.bool(forKey: Keys.isWebsiteControlEnabled) && !UIElement.isProcessTrusted() {
+            logw("Accessibility permissions revoked while app was not running")
+            showAccessibilityDeniedAlert()
+            UserDefaults.standard.set(false, forKey: Keys.isWebsiteControlEnabled)
         }
 
-        Log.logger.directory = "~/Library/Logs/Shifty"
-        Log.logger.name = "Shifty"
-        logw("log file created")
+        logw("Night Shift state: \(BLClient.isNightShiftEnabled)")
+        logw("Schedule: \(BLClient.schedule)")
+        if BLClient.isSunSchedule {
+            logw("sunrise: \(String(describing: BSClient.sunrise))")
+            logw("sunset: \(String(describing: BSClient.sunset))")
+        }
+        logw("")
 
         updateMenuBarIcon()
         setStatusToggle()
+
+        if (!UserDefaults.standard.bool(forKey: Keys.hasSetupWindowShown) && !UIElement.isProcessTrusted()) || ProcessInfo.processInfo.environment["show_setup"] == "true" {
+            let storyboard = NSStoryboard(name: .init("Setup"), bundle: nil)
+            let controller = storyboard.instantiateInitialController() as! NSWindowController
+            setupWindow = controller.window
+
+            NSApplication.shared.activate(ignoringOtherApps: true)
+            controller.showWindow(self)
+            setupWindow.makeMain()
+
+            UserDefaults.standard.set(true, forKey: Keys.hasSetupWindowShown)
+        }
     }
 
     func updateMenuBarIcon() {
@@ -132,10 +152,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
+    func showAccessibilityDeniedAlert() {
+        NSApplication.shared.activate(ignoringOtherApps: true)
+
+        let alert: NSAlert = NSAlert()
+        alert.messageText = NSLocalizedString("alert.accessibility_disabled_message", comment: "Accessibility permissions for Shifty have been disabled")
+        alert.informativeText = NSLocalizedString("alert.accessibility_disabled_informative", comment: "Accessibility must be allowed to enable website shifting. Grant access to Shifty in Security & Privacy preferences, located in System Preferences.")
+        alert.alertStyle = NSAlert.Style.warning
+        alert.addButton(withTitle: NSLocalizedString("alert.open_preferences", comment: "Open System Preferences"))
+        alert.addButton(withTitle: NSLocalizedString("alert.not_now", comment: "Not now"))
+        if alert.runModal() == .alertFirstButtonReturn {
+            NSWorkspace.shared.open(URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility")!)
+            logw("Open System Preferences button clicked")
+        } else {
+            logw("Not now button clicked")
+        }
+    }
+
     func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
+        logw("App terminated")
     }
 
 
 }
-

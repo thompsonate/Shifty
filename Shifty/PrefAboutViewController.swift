@@ -21,7 +21,7 @@ class PrefAboutViewController: NSViewController, MASPreferencesViewController {
     var viewIdentifier: String = "PrefAboutViewController"
 
     var toolbarItemImage: NSImage? {
-        get { return #imageLiteral(resourceName: "shiftyColorIcon") }
+        get { return #imageLiteral(resourceName: "shiftyCircleIcon") }
     }
 
     var toolbarItemLabel: String? {
@@ -39,6 +39,11 @@ class PrefAboutViewController: NSViewController, MASPreferencesViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        //Fix layer-backing issues in 10.12 that cause window corners to not be rounded.
+        if !ProcessInfo().isOperatingSystemAtLeast(OperatingSystemVersion(majorVersion: 10, minorVersion: 13, patchVersion: 0)) {
+            view.wantsLayer = false
+        }
 
         let bundleDisplayName = Bundle.main.localizedInfoDictionary?["CFBundleDisplayName"]
         nameLabel.stringValue = bundleDisplayName as? String ?? ""
@@ -64,6 +69,12 @@ class PrefAboutViewController: NSViewController, MASPreferencesViewController {
         Event.feedbackButtonClicked.record()
     }
 
+    @IBAction func translateButtonClicked(_ sender: NSButton) {
+        guard let url = URL(string: "http://translate.shifty.natethompson.io") else { return }
+        NSWorkspace.shared.open(url)
+        Event.translateButtonClicked.record()
+    }
+
     @IBAction func donateButtonClicked(_ sender: NSButton) {
         guard let url = URL(string: "http://shifty.natethompson.io/donate") else { return }
         NSWorkspace.shared.open(url)
@@ -71,7 +82,7 @@ class PrefAboutViewController: NSViewController, MASPreferencesViewController {
     }
 
     @IBAction func creditsButtonClicked(_ sender: Any) {
-        guard let path = Bundle.main.path(forResource: "credits", ofType: "rtf") else { return }
+        guard let path = Bundle.main.path(forResource: "credits", ofType: "rtfd") else { return }
         NSWorkspace.shared.openFile(path)
     }
 }
@@ -86,4 +97,3 @@ class LinkButton: NSButton {
         addCursorRect(self.bounds, cursor: .pointingHand)
     }
 }
-

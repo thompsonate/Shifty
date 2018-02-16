@@ -9,6 +9,7 @@
 import Cocoa
 import MASShortcut
 import AXSwift
+import SwiftLog
 
 class StatusMenuController: NSObject, NSMenuDelegate {
 
@@ -39,13 +40,21 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     var prefGeneral: PrefGeneralViewController!
     var prefShortcuts: PrefShortcutsViewController!
     var customTimeWindow: CustomTimeWindow!
-    var accessibilityPromptWindow: AccessibilityPromptWindow!
 
     let calendar = NSCalendar(identifier: .gregorian)!
 
     //MARK: Menu life cycle
 
     override func awakeFromNib() {
+        Log.logger.directory = "~/Library/Logs/Shifty"
+        #if DEBUG
+            Log.logger.name = "Shifty-debug"
+        #else
+            Log.logger.name = "Shifty"
+        #endif
+        //Edit printToConsole parameter in Edit Scheme > Run > Arguments > Environment Variables
+        Log.logger.printToConsole = ProcessInfo.processInfo.environment["print_log"] == "true"
+
         statusMenu.delegate = self
         customTimeWindow = CustomTimeWindow()
 
@@ -60,6 +69,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         descriptionMenuItem.isEnabled = false
         sliderMenuItem.view = sliderView
 
+        disableHourMenuItem.title = NSLocalizedString("menu.disable_hour", comment: "Disable for an hour")
+        disableCustomMenuItem.title = NSLocalizedString("menu.disable_custom", comment: "Disable for custom time...")
+        preferencesMenuItem.title = NSLocalizedString("menu.preferences", comment: "Preferences...")
+        quitMenuItem.title = NSLocalizedString("menu.quit", comment: "Quit Shifty")
+
         sliderView.sliderValueChanged = { (sliderValue) in
 
         }
@@ -73,6 +87,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         }
 
         DistributedNotificationCenter.default().addObserver(forName: NSNotification.Name("com.apple.accessibility.api"), object: nil, queue: nil) { _ in
+            logw("Accessibility permissions changed: \(UIElement.isProcessTrusted(withPrompt: false))")
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
                     if UIElement.isProcessTrusted(withPrompt: false) {
                         UserDefaults.standard.set(true, forKey: Keys.isWebsiteControlEnabled)
@@ -88,19 +103,12 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     func menuWillOpen(_: NSMenu) {
         assignKeyboardShortcutToMenuItem(powerMenuItem, userDefaultsKey: Keys.toggleNightShiftShortcut)
         assignKeyboardShortcutToMenuItem(disableAppMenuItem, userDefaultsKey: Keys.disableAppShortcut)
+        assignKeyboardShortcutToMenuItem(disableDomainMenuItem, userDefaultsKey: Keys.disableDomainShortcut)
+        assignKeyboardShortcutToMenuItem(disableSubdomainMenuItem, userDefaultsKey: Keys.disableSubdomainShortcut)
         assignKeyboardShortcutToMenuItem(disableHourMenuItem, userDefaultsKey: Keys.disableHourShortcut)
         assignKeyboardShortcutToMenuItem(disableCustomMenuItem, userDefaultsKey: Keys.disableCustomShortcut)
 
         Event.menuOpened.record()
-
-        //Show accessibility permission prompt on second menu open
-        let count = UserDefaults.standard.integer(forKey: Keys.menuLaunchCount)
-        UserDefaults.standard.set(count + 1, forKey: Keys.menuLaunchCount)
-        if count == 1 && !UIElement.isProcessTrusted(withPrompt: false) {
-            NSApplication.shared.activate(ignoringOtherApps: true)
-            accessibilityPromptWindow = AccessibilityPromptWindow()
-            accessibilityPromptWindow.showWindow(nil)
-        }
     }
 
     func assignKeyboardShortcutToMenuItem(_ menuItem: NSMenuItem, userDefaultsKey: String) {
@@ -166,7 +174,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     @IBAction func quitClicked(_ sender: NSMenuItem) {
 //        NightShiftManager.respond(to: .nightShiftDisableTimerEnded)
 //        NightShiftManager.respond(to: .nightShiftDisableRuleDeactivated)
-        
+
         Event.quitShifty.record()
         NotificationCenter.default.post(name: .terminateApp, object: self)
     }
@@ -174,4 +182,3 @@ class StatusMenuController: NSObject, NSMenuDelegate {
 
     //MARK: Helper functions
 }
-

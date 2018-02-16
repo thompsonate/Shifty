@@ -200,16 +200,6 @@ static NSString * PreferencesKeyForViewBounds (NSString *identifier)
 
 #pragma mark -
 
-//Declare global variable so getNewWindowFrame() can access it
-NSRect newFrame;
-
-+ (NSRect)newFrame { return newFrame; }
-
-//Returns newFrame so it can be mutated by a subclass
-- (NSRect)getNewWindowFrame { return newFrame; }
-
-#pragma mark -
-
 - (void)setSelectedViewController:(NSViewController <MASPreferencesViewController> *)controller
 {
     if (_selectedViewController == controller)
@@ -250,7 +240,6 @@ NSRect newFrame;
     NSView *controllerView = controller.view;
 
     // Retrieve current and minimum frame size for the view
-    NSString *oldViewRectString = [[NSUserDefaults standardUserDefaults] stringForKey:PreferencesKeyForViewBounds(controller.viewIdentifier)];
     NSString *minViewRectString = [_minimumViewRects objectForKey:controller.viewIdentifier];
     if (!minViewRectString)
         [_minimumViewRects setObject:NSStringFromRect(controllerView.bounds) forKey:controller.viewIdentifier];
@@ -262,16 +251,17 @@ NSRect newFrame;
                           ? controller.hasResizableHeight
                           : controllerView.autoresizingMask & NSViewHeightSizable);
     
-    NSRect oldViewRect = oldViewRectString ? NSRectFromString(oldViewRectString) : controllerView.bounds;
+    //oldViewRect is kind of a misnnomer now. In vanilla MASPreferences, it is the size saved in UserDefaults. Here, we're calculating it based on the contstraints.
+    NSRect oldViewRect = NSMakeRect(0.0, 0.0, controllerView.fittingSize.width, controllerView.fittingSize.height);
+    //minViewRect seems to come from the size of the view in Interface Builder
     NSRect minViewRect = minViewRectString ? NSRectFromString(minViewRectString) : controllerView.bounds;
-    oldViewRect.size.width  = NSWidth(oldViewRect)  < NSWidth(minViewRect)  || !sizableWidth  ? NSWidth(minViewRect)  : NSWidth(oldViewRect);
-    oldViewRect.size.height = NSHeight(oldViewRect) < NSHeight(minViewRect) || !sizableHeight ? NSHeight(minViewRect) : NSHeight(oldViewRect);
+    oldViewRect.size.width = NSWidth(oldViewRect) < NSWidth(minViewRect) || !sizableWidth ? NSWidth(minViewRect) : NSWidth(oldViewRect);
 
     [controllerView setFrame:oldViewRect];
 
     // Calculate new window size and position
     NSRect oldFrame = [self.window frame];
-    newFrame = [self.window frameRectForContentRect:oldViewRect];
+    NSRect newFrame = [self.window frameRectForContentRect:oldViewRect];
     newFrame = NSOffsetRect(newFrame, NSMinX(oldFrame), NSMaxY(oldFrame) - NSMaxY(newFrame));
 
     // Setup min/max sizes and show/hide resize indicator
@@ -280,22 +270,12 @@ NSRect newFrame;
     [self.window setShowsResizeIndicator:sizableWidth || sizableHeight];
     [[self.window standardWindowButton:NSWindowZoomButton] setEnabled:sizableWidth || sizableHeight];
 
-    //Check if the selected controller is the general view and let newFrame be mutated if true. Super janky I know.
-    if ([controller.nibName  isEqual: @"PrefGeneralViewController"]) {
-        [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
-            [context setDuration:0.2];
-            [self.window.animator setFrame:[self getNewWindowFrame] display:YES animate:[self.window isVisible]];
-            [controller.view.animator setAlphaValue:1];
-            [_selectedViewController.view.animator setAlphaValue:0];
-        } completionHandler:nil];
-    } else {
-        [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
-            [context setDuration:0.2];
-            [self.window.animator setFrame:newFrame display:YES animate:[self.window isVisible]];
-            [controller.view.animator setAlphaValue:1];
-            [_selectedViewController.view.animator setAlphaValue:0];
-        } completionHandler:nil];
-    }
+    [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
+        [context setDuration:0.2];
+        [self.window.animator setFrame:newFrame display:YES animate:[self.window isVisible]];
+        [controller.view.animator setAlphaValue:1];
+        [_selectedViewController.view.animator setAlphaValue:0];
+    } completionHandler:nil];
 
     _selectedViewController = controller;
 

@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="dg9-4W-042">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
+        <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="4Np-T9-e84">
+            <objects>
+                <windowController storyboardIdentifier="Setup" id="dg9-4W-042" customClass="SetupWindowController" customModule="Shifty" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="Shifty Setup" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="TIE-Pp-ufx" customClass="SetupWindow" customModule="Shifty" customModuleProvider="target">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="196" y="240" width="231" height="100"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+                        <connections>
+                            <outlet property="delegate" destination="dg9-4W-042" id="Xh2-lm-oAc"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="a4b-ZL-dun" kind="relationship" relationship="window.shadowedContentViewController" id="EDq-Zn-zuJ"/>
+                    </connections>
+                </windowController>
+                <customObject id="seq-fT-TF7" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-29" y="172"/>
+        </scene>
+        <!--Container View Controller-->
+        <scene sceneID="gsL-YJ-Z14">
+            <objects>
+                <viewController storyboardIdentifier="containerViewController" id="a4b-ZL-dun" customClass="ContainerViewController" customModule="Shifty" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="1zB-8V-gUh">
+                        <rect key="frame" x="0.0" y="0.0" width="153" height="113"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="FOg-Xr-Avh" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="280.5" y="165.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="hcT-Gd-mHU">
+            <objects>
+                <viewController storyboardIdentifier="sourceViewController" id="O2N-Tr-VDU" sceneMemberID="viewController">
+                    <view key="view" id="vpL-89-GYZ" customClass="SetupView" customModule="Shifty" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="425"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zqM-VP-MKT">
+                                <rect key="frame" x="193" y="361" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="C38-De-3i5"/>
+                                    <constraint firstAttribute="width" secondItem="zqM-VP-MKT" secondAttribute="height" multiplier="1:1" id="VTn-Ih-aLU"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="shiftyColorIcon" id="Csb-ai-sDK"/>
+                            </imageView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="mxU-q0-bpJ">
+                                <rect key="frame" x="93" y="317" width="265" height="36"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Welcome to Shifty!" id="9wQ-sP-igZ">
+                                    <font key="font" metaFont="systemSemibold" size="30"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="6jJ-c5-oIY">
+                                <rect key="frame" x="109" y="290" width="232" height="17"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Shifty is now running in the menu bar." id="WcY-uu-0Eu">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="ldh-Qb-ijW">
+                                <rect key="frame" x="18" y="71" width="315" height="17"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Click Next to continue setup. It'll just take a minute." id="J4B-E9-KIZ">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="15C-Gh-udT">
+                                <rect key="frame" x="354" y="13" width="82" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="QTp-dQ-ljg"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Next" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TnF-o1-sgY">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <segue destination="92U-Sh-UpN" kind="custom" customClass="SlideForwardSegue" customModule="Shifty" customModuleProvider="target" id="Ibe-5u-Fbi"/>
+                                </connections>
+                            </button>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="jn8-mZ-J20">
+                                <rect key="frame" x="44" y="124" width="362" height="151"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="jn8-mZ-J20" secondAttribute="height" multiplier="125:52" id="dfB-ry-RTz"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="menuBarScreenshot" id="bWW-qv-Hho"/>
+                            </imageView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="mxU-q0-bpJ" firstAttribute="top" secondItem="zqM-VP-MKT" secondAttribute="bottom" constant="8" id="1kK-Ur-CBB"/>
+                            <constraint firstItem="mxU-q0-bpJ" firstAttribute="centerX" secondItem="vpL-89-GYZ" secondAttribute="centerX" id="4h2-RS-iPZ"/>
+                            <constraint firstItem="zqM-VP-MKT" firstAttribute="centerX" secondItem="vpL-89-GYZ" secondAttribute="centerX" id="5N7-5b-FtK"/>
+                            <constraint firstItem="mxU-q0-bpJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vpL-89-GYZ" secondAttribute="leading" constant="20" id="Alr-RY-Fuv"/>
+                            <constraint firstItem="ldh-Qb-ijW" firstAttribute="top" relation="greaterThanOrEqual" secondItem="jn8-mZ-J20" secondAttribute="bottom" constant="20" id="D51-j9-054"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mxU-q0-bpJ" secondAttribute="trailing" constant="20" id="Dtm-ry-O5F"/>
+                            <constraint firstItem="ldh-Qb-ijW" firstAttribute="leading" secondItem="vpL-89-GYZ" secondAttribute="leading" constant="20" id="E3P-HT-i7l"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="6jJ-c5-oIY" secondAttribute="trailing" constant="20" id="FhB-5c-D9c"/>
+                            <constraint firstItem="15C-Gh-udT" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vpL-89-GYZ" secondAttribute="leading" constant="20" id="Gxx-pd-csi"/>
+                            <constraint firstAttribute="trailing" secondItem="15C-Gh-udT" secondAttribute="trailing" constant="20" id="SbX-de-8dk"/>
+                            <constraint firstAttribute="bottom" secondItem="15C-Gh-udT" secondAttribute="bottom" constant="20" id="WgK-EX-DtX"/>
+                            <constraint firstItem="6jJ-c5-oIY" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vpL-89-GYZ" secondAttribute="leading" constant="20" id="YSY-WJ-IpY"/>
+                            <constraint firstItem="6jJ-c5-oIY" firstAttribute="centerX" secondItem="vpL-89-GYZ" secondAttribute="centerX" id="brD-Wv-bwl"/>
+                            <constraint firstItem="jn8-mZ-J20" firstAttribute="centerX" secondItem="vpL-89-GYZ" secondAttribute="centerX" id="fGI-zJ-dh8"/>
+                            <constraint firstItem="zqM-VP-MKT" firstAttribute="top" secondItem="vpL-89-GYZ" secondAttribute="top" id="iZx-Rp-eIi"/>
+                            <constraint firstItem="jn8-mZ-J20" firstAttribute="top" secondItem="6jJ-c5-oIY" secondAttribute="bottom" constant="15" id="jFM-SF-SrF"/>
+                            <constraint firstItem="15C-Gh-udT" firstAttribute="top" secondItem="ldh-Qb-ijW" secondAttribute="bottom" constant="30" id="kof-3B-rAh"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jn8-mZ-J20" secondAttribute="trailing" constant="20" id="p2J-W9-lZl"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ldh-Qb-ijW" secondAttribute="trailing" constant="20" id="qHB-fg-hzS"/>
+                            <constraint firstItem="jn8-mZ-J20" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vpL-89-GYZ" secondAttribute="leading" constant="20" id="sx6-n7-FJ3"/>
+                            <constraint firstItem="6jJ-c5-oIY" firstAttribute="top" secondItem="mxU-q0-bpJ" secondAttribute="bottom" constant="10" id="zTk-KF-Yv3"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="hxG-4G-Y0b" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="75" y="577.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="4dx-09-CxY">
+            <objects>
+                <viewController storyboardIdentifier="destinationViewController" id="92U-Sh-UpN" sceneMemberID="viewController">
+                    <view key="view" id="NqW-NI-dEn" customClass="SetupView" customModule="Shifty" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="425"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="mxV-uh-tNL">
+                                <rect key="frame" x="61" y="172" width="329" height="167"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="mxV-uh-tNL" secondAttribute="height" multiplier="329:167" id="Bs4-1k-lsH"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="websiteFeatureScreenshot" id="lih-8C-3IP"/>
+                            </imageView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="500" translatesAutoresizingMaskIntoConstraints="NO" id="sJ8-k4-SBk">
+                                <rect key="frame" x="18" y="347" width="414" height="34"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Would you like to let Shifty automatically disable Night Shift when you visit certain websites?" id="hcb-Lm-Zmy">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tfl-ez-xrs">
+                                <rect key="frame" x="18" y="389" width="339" height="36"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Enable website shifting?" id="yjk-M4-AOM">
+                                    <font key="font" metaFont="systemSemibold" size="30"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xfN-to-t5F">
+                                <rect key="frame" x="354" y="13" width="82" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="dVc-ZM-CoK"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Yes" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hNr-Ak-j8a">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <segue destination="PlF-rh-bvd" kind="custom" customClass="SlideForwardSegue" customModule="Shifty" customModuleProvider="target" id="RBK-ii-duJ"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="j4y-h2-U3X">
+                                <rect key="frame" x="263" y="13" width="91" height="32"/>
+                                <buttonCell key="cell" type="push" title="Not now" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="y40-o0-ueU">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="closeButtonClicked:" target="NqW-NI-dEn" id="xEh-sp-RqX"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oJ6-zk-aYq">
+                                <rect key="frame" x="14" y="13" width="52" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="4Uh-U4-1SL"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSLeftFacingTriangleTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yYu-Hy-TQe">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent"></string>
+                                </buttonCell>
+                                <connections>
+                                    <segue destination="O2N-Tr-VDU" kind="custom" customClass="SlideBackwardSegue" customModule="Shifty" customModuleProvider="target" id="za5-mC-13N"/>
+                                </connections>
+                            </button>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C1T-Yo-Rmw">
+                                <rect key="frame" x="20" y="68" width="160" height="89"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fxw-jc-XI4">
+                                        <rect key="frame" x="-2" y="72" width="164" height="17"/>
+                                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Website shifting supports:" id="bNv-dv-CBp">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IYO-zU-rWM">
+                                        <rect key="frame" x="0.0" y="48" width="160" height="20"/>
+                                        <subviews>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fC7-e4-xgu">
+                                                <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="mIg-xi-ma3"/>
+                                                    <constraint firstAttribute="width" constant="20" id="qJN-Xj-XDb"/>
+                                                </constraints>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="safariIcon" id="ZFb-5U-9xA"/>
+                                            </imageView>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WWn-Pc-9SO">
+                                                <rect key="frame" x="26" y="2" width="136" height="17"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Safari" id="4ft-mI-wIN">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="WWn-Pc-9SO" firstAttribute="centerY" secondItem="fC7-e4-xgu" secondAttribute="centerY" id="HVh-ke-1Vz"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9NB-FN-bPk">
+                                        <rect key="frame" x="0.0" y="24" width="160" height="20"/>
+                                        <subviews>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p8L-eK-sfO">
+                                                <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="JdX-Cx-CvM"/>
+                                                    <constraint firstAttribute="width" constant="20" id="Prr-UA-zrY"/>
+                                                </constraints>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="chromeIcon" id="pZL-lW-eR3"/>
+                                            </imageView>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MmC-i0-VFp">
+                                                <rect key="frame" x="26" y="2" width="136" height="17"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Chrome" id="shv-ze-VLi">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="MmC-i0-VFp" firstAttribute="centerY" secondItem="p8L-eK-sfO" secondAttribute="centerY" id="YXE-0q-kND"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xdg-mR-Qlo">
+                                        <rect key="frame" x="0.0" y="0.0" width="160" height="20"/>
+                                        <subviews>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Hr-jL-37D">
+                                                <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="20" id="7Ir-Rs-edV"/>
+                                                    <constraint firstAttribute="height" constant="20" id="ecg-r8-dk4"/>
+                                                </constraints>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="vivaldiIcon" id="GYy-uD-kEC"/>
+                                            </imageView>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="df5-Zs-JT5">
+                                                <rect key="frame" x="26" y="2" width="136" height="17"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Vivaldi" id="cXQ-bL-QlF">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="df5-Zs-JT5" firstAttribute="centerY" secondItem="5Hr-jL-37D" secondAttribute="centerY" id="rpu-Lv-Taj"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="9NB-FN-bPk" secondAttribute="trailing" id="0f5-Of-8pZ"/>
+                                    <constraint firstItem="9NB-FN-bPk" firstAttribute="leading" secondItem="C1T-Yo-Rmw" secondAttribute="leading" id="2Ur-lJ-bj5"/>
+                                    <constraint firstItem="IYO-zU-rWM" firstAttribute="leading" secondItem="C1T-Yo-Rmw" secondAttribute="leading" id="gCm-T3-jL3"/>
+                                    <constraint firstAttribute="trailing" secondItem="xdg-mR-Qlo" secondAttribute="trailing" id="uNi-qa-AMV"/>
+                                    <constraint firstItem="xdg-mR-Qlo" firstAttribute="leading" secondItem="C1T-Yo-Rmw" secondAttribute="leading" id="wyE-WE-ZFK"/>
+                                    <constraint firstAttribute="trailing" secondItem="IYO-zU-rWM" secondAttribute="trailing" id="xjG-B3-lYC"/>
+                                </constraints>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="mxV-uh-tNL" firstAttribute="top" secondItem="sJ8-k4-SBk" secondAttribute="bottom" constant="8" id="2a6-RP-Sqm"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tfl-ez-xrs" secondAttribute="trailing" constant="20" id="2ef-rQ-UOT"/>
+                            <constraint firstItem="sJ8-k4-SBk" firstAttribute="leading" secondItem="NqW-NI-dEn" secondAttribute="leading" constant="20" id="5i1-dQ-HcI"/>
+                            <constraint firstAttribute="bottom" secondItem="j4y-h2-U3X" secondAttribute="bottom" constant="20" id="8mh-4g-IVL"/>
+                            <constraint firstItem="mxV-uh-tNL" firstAttribute="centerX" secondItem="NqW-NI-dEn" secondAttribute="centerX" id="DD7-bC-gzS"/>
+                            <constraint firstItem="tfl-ez-xrs" firstAttribute="top" secondItem="NqW-NI-dEn" secondAttribute="top" id="FCt-7d-E6r"/>
+                            <constraint firstAttribute="bottom" secondItem="xfN-to-t5F" secondAttribute="bottom" constant="20" id="Fhy-8K-WLZ"/>
+                            <constraint firstItem="tfl-ez-xrs" firstAttribute="leading" secondItem="NqW-NI-dEn" secondAttribute="leading" constant="20" id="KLQ-tt-LUv"/>
+                            <constraint firstItem="xfN-to-t5F" firstAttribute="leading" secondItem="j4y-h2-U3X" secondAttribute="trailing" constant="12" id="LNB-tU-DXX"/>
+                            <constraint firstAttribute="bottom" secondItem="oJ6-zk-aYq" secondAttribute="bottom" constant="20" id="Lol-yx-aFr"/>
+                            <constraint firstItem="C1T-Yo-Rmw" firstAttribute="leading" secondItem="NqW-NI-dEn" secondAttribute="leading" constant="20" id="MHX-Av-d4e"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="C1T-Yo-Rmw" secondAttribute="trailing" constant="20" id="Nw6-fj-ezl"/>
+                            <constraint firstItem="C1T-Yo-Rmw" firstAttribute="top" secondItem="mxV-uh-tNL" secondAttribute="bottom" constant="15" id="Q8a-7C-Cbo"/>
+                            <constraint firstItem="sJ8-k4-SBk" firstAttribute="top" secondItem="tfl-ez-xrs" secondAttribute="bottom" constant="8" id="Sk9-6E-c2D"/>
+                            <constraint firstItem="oJ6-zk-aYq" firstAttribute="leading" secondItem="NqW-NI-dEn" secondAttribute="leading" constant="20" id="fX4-II-rWF"/>
+                            <constraint firstAttribute="trailing" secondItem="sJ8-k4-SBk" secondAttribute="trailing" constant="20" id="iQV-Y9-fnX"/>
+                            <constraint firstAttribute="trailing" secondItem="xfN-to-t5F" secondAttribute="trailing" constant="20" id="nk1-v1-GfS"/>
+                            <constraint firstItem="j4y-h2-U3X" firstAttribute="top" relation="greaterThanOrEqual" secondItem="C1T-Yo-Rmw" secondAttribute="bottom" constant="20" id="uI6-Po-5et"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="hac-oa-XUY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="623" y="577.5"/>
+        </scene>
+        <!--Accessibility View Controller-->
+        <scene sceneID="1wS-7b-mSm">
+            <objects>
+                <viewController storyboardIdentifier="accessibilityViewController" id="PlF-rh-bvd" customClass="AccessibilityViewController" customModule="Shifty" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="a2t-LO-CJe" customClass="SetupView" customModule="Shifty" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="425"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2a5-C1-Dyc">
+                                <rect key="frame" x="238" y="13" width="198" height="32"/>
+                                <buttonCell key="cell" type="push" title="Open System Preferences" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lqU-rF-E5t">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="openSystemPrefsClicked:" target="a2t-LO-CJe" id="R5K-nv-CCD"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CLB-OS-6L8">
+                                <rect key="frame" x="158" y="13" width="82" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="BrV-W5-n3I"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Skip" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0wv-vs-acj">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent"></string>
+                                </buttonCell>
+                                <connections>
+                                    <segue destination="j1O-j4-Iou" kind="custom" identifier="showCompleteView" customClass="SlideForwardSegue" customModule="Shifty" customModuleProvider="target" id="7yX-3s-HfZ"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HyY-Eu-arg">
+                                <rect key="frame" x="62" y="10" width="39" height="38"/>
+                                <buttonCell key="cell" type="round" title="?" bezelStyle="circular" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hnI-7M-qBT">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="accessibilityHelp:" target="a2t-LO-CJe" id="ihi-P6-6NQ"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WXS-J3-zgH">
+                                <rect key="frame" x="14" y="13" width="52" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="qYL-7n-j51"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSGoLeftTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Uyi-J6-pvR">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent"></string>
+                                </buttonCell>
+                                <connections>
+                                    <segue destination="92U-Sh-UpN" kind="custom" customClass="SlideBackwardSegue" customModule="Shifty" customModuleProvider="target" id="OTp-Xx-YUK"/>
+                                </connections>
+                            </button>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="2Gt-ut-hn7" customClass="AccessibilityView" customModule="Shifty" customModuleProvider="target">
+                                <rect key="frame" x="20" y="61" width="410" height="364"/>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="2a5-C1-Dyc" firstAttribute="leading" secondItem="CLB-OS-6L8" secondAttribute="trailing" constant="10" id="3PK-Ci-jyl"/>
+                            <constraint firstAttribute="bottom" secondItem="WXS-J3-zgH" secondAttribute="bottom" constant="20" id="8Q4-eA-vLX"/>
+                            <constraint firstItem="CLB-OS-6L8" firstAttribute="baseline" secondItem="HyY-Eu-arg" secondAttribute="baseline" id="Cl7-NN-A6n"/>
+                            <constraint firstAttribute="trailing" secondItem="2a5-C1-Dyc" secondAttribute="trailing" constant="20" id="H7O-zE-wrv"/>
+                            <constraint firstAttribute="trailing" secondItem="2Gt-ut-hn7" secondAttribute="trailing" constant="20" id="MNH-HL-mv3"/>
+                            <constraint firstItem="2a5-C1-Dyc" firstAttribute="top" secondItem="2Gt-ut-hn7" secondAttribute="bottom" constant="20" id="NbZ-NK-IBP"/>
+                            <constraint firstItem="2Gt-ut-hn7" firstAttribute="top" secondItem="a2t-LO-CJe" secondAttribute="top" id="OFJ-h2-fKe"/>
+                            <constraint firstItem="WXS-J3-zgH" firstAttribute="leading" secondItem="a2t-LO-CJe" secondAttribute="leading" constant="20" id="S9r-u5-TFe"/>
+                            <constraint firstItem="2a5-C1-Dyc" firstAttribute="centerY" secondItem="CLB-OS-6L8" secondAttribute="centerY" id="eO5-Fq-jL6"/>
+                            <constraint firstItem="2Gt-ut-hn7" firstAttribute="leading" secondItem="a2t-LO-CJe" secondAttribute="leading" constant="20" id="j6l-4Q-H4P"/>
+                            <constraint firstAttribute="bottom" secondItem="2a5-C1-Dyc" secondAttribute="bottom" constant="20" id="lgC-eY-Uju"/>
+                            <constraint firstItem="HyY-Eu-arg" firstAttribute="leading" secondItem="WXS-J3-zgH" secondAttribute="trailing" constant="8" id="rqu-Jy-OtT"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="accessibilitySetupView" destination="2Gt-ut-hn7" id="TjZ-Nw-not"/>
+                    </connections>
+                </viewController>
+                <customObject id="YJL-cy-XNo" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1148" y="576.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="EL0-es-9Lf">
+            <objects>
+                <viewController id="j1O-j4-Iou" sceneMemberID="viewController">
+                    <view key="view" id="lIO-UQ-KPf" customClass="SetupView" customModule="Shifty" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="425"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="r6Q-C0-71a">
+                                <rect key="frame" x="354" y="13" width="82" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="KZf-Ha-bvK"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="s21-gu-5OC">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="closeButtonClicked:" target="lIO-UQ-KPf" id="AsD-9h-gMI"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="22i-XU-Ifo">
+                                <rect key="frame" x="14" y="13" width="52" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="xdj-hT-apc"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSGoLeftTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dJy-3p-fnG">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent"></string>
+                                </buttonCell>
+                                <connections>
+                                    <segue destination="PlF-rh-bvd" kind="custom" customClass="SlideBackwardSegue" customModule="Shifty" customModuleProvider="target" id="cdz-pS-K8F"/>
+                                </connections>
+                            </button>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="BGI-WD-n0c">
+                                <rect key="frame" x="20" y="61" width="410" height="364"/>
+                                <subviews>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="8NH-cV-yLc">
+                                        <rect key="frame" x="0.0" y="104" width="410" height="156"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HOk-mq-u4U">
+                                                <rect key="frame" x="178" y="76" width="54" height="80"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="🎉" id="FhS-Jt-Qvm">
+                                                    <font key="font" size="50" name="AppleColorEmoji"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YeC-1H-Dey">
+                                                <rect key="frame" x="79" y="32" width="253" height="36"/>
+                                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="You're good to go!" id="uHP-lQ-mpf">
+                                                    <font key="font" metaFont="systemSemibold" size="30"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qrq-NZ-lPw">
+                                                <rect key="frame" x="121" y="0.0" width="168" height="17"/>
+                                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Thanks for installing Shifty." id="E7p-5d-X2C">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="qrq-NZ-lPw" secondAttribute="bottom" id="1td-98-ifI"/>
+                                            <constraint firstItem="YeC-1H-Dey" firstAttribute="top" secondItem="HOk-mq-u4U" secondAttribute="bottom" constant="8" id="27n-Bf-P7F"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qrq-NZ-lPw" secondAttribute="trailing" id="3NJ-4D-nns"/>
+                                            <constraint firstItem="HOk-mq-u4U" firstAttribute="centerX" secondItem="8NH-cV-yLc" secondAttribute="centerX" id="6tG-0E-3Pg"/>
+                                            <constraint firstItem="qrq-NZ-lPw" firstAttribute="top" secondItem="YeC-1H-Dey" secondAttribute="bottom" constant="15" id="Btb-qf-ZHY"/>
+                                            <constraint firstItem="YeC-1H-Dey" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8NH-cV-yLc" secondAttribute="leading" id="GIi-nH-qdr"/>
+                                            <constraint firstItem="YeC-1H-Dey" firstAttribute="centerX" secondItem="8NH-cV-yLc" secondAttribute="centerX" id="Lcd-2b-rkc"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="YeC-1H-Dey" secondAttribute="trailing" id="Rbx-6R-187"/>
+                                            <constraint firstItem="qrq-NZ-lPw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8NH-cV-yLc" secondAttribute="leading" id="dNb-rb-QfE"/>
+                                            <constraint firstItem="HOk-mq-u4U" firstAttribute="top" secondItem="8NH-cV-yLc" secondAttribute="top" id="oUR-sY-5eD"/>
+                                            <constraint firstItem="qrq-NZ-lPw" firstAttribute="centerX" secondItem="8NH-cV-yLc" secondAttribute="centerX" id="wws-dX-0Sj"/>
+                                        </constraints>
+                                    </customView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="8NH-cV-yLc" firstAttribute="centerY" secondItem="BGI-WD-n0c" secondAttribute="centerY" id="A65-mg-bB0"/>
+                                    <constraint firstItem="8NH-cV-yLc" firstAttribute="leading" secondItem="BGI-WD-n0c" secondAttribute="leading" id="dfd-NL-Loe"/>
+                                    <constraint firstAttribute="trailing" secondItem="8NH-cV-yLc" secondAttribute="trailing" id="wYc-PN-18G"/>
+                                </constraints>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="r6Q-C0-71a" firstAttribute="top" secondItem="BGI-WD-n0c" secondAttribute="bottom" constant="20" id="242-Mg-JI8"/>
+                            <constraint firstItem="22i-XU-Ifo" firstAttribute="leading" secondItem="lIO-UQ-KPf" secondAttribute="leading" constant="20" id="EdZ-qf-UaG"/>
+                            <constraint firstAttribute="trailing" secondItem="BGI-WD-n0c" secondAttribute="trailing" constant="20" id="HeB-OH-Ew9"/>
+                            <constraint firstItem="BGI-WD-n0c" firstAttribute="leading" secondItem="lIO-UQ-KPf" secondAttribute="leading" constant="20" id="Mr1-ue-C1g"/>
+                            <constraint firstAttribute="bottom" secondItem="r6Q-C0-71a" secondAttribute="bottom" constant="20" id="d5v-PD-J6s"/>
+                            <constraint firstItem="BGI-WD-n0c" firstAttribute="top" secondItem="lIO-UQ-KPf" secondAttribute="top" id="hvF-Rj-WOz"/>
+                            <constraint firstAttribute="bottom" secondItem="22i-XU-Ifo" secondAttribute="bottom" constant="20" id="vYO-58-ogE"/>
+                            <constraint firstAttribute="trailing" secondItem="r6Q-C0-71a" secondAttribute="trailing" constant="20" id="voS-U5-Y7n"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="sJx-Mk-SiO" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1662" y="577.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="NSGoLeftTemplate" width="9" height="12"/>
+        <image name="NSLeftFacingTriangleTemplate" width="9" height="12"/>
+        <image name="chromeIcon" width="32" height="32"/>
+        <image name="menuBarScreenshot" width="362" height="155.5"/>
+        <image name="safariIcon" width="32" height="32"/>
+        <image name="shiftyColorIcon" width="245.75999450683594" height="245.75999450683594"/>
+        <image name="vivaldiIcon" width="32" height="32"/>
+        <image name="websiteFeatureScreenshot" width="329" height="167"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="RBK-ii-duJ"/>
+        <segue reference="OTp-Xx-YUK"/>
+    </inferredMetricsTieBreakers>
+</document>

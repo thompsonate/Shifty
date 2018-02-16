@@ -33,12 +33,20 @@ class CustomTimeWindow: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
 
-        self.window?.center()
-        self.window?.styleMask.remove(.resizable)
-        self.window?.level = .floating
-        self.window?.standardWindowButton(.closeButton)?.isHidden = true
-        self.window?.standardWindowButton(.miniaturizeButton)?.isHidden = true
-        self.window?.standardWindowButton(.zoomButton)?.isHidden = true
+        if UserDefaults.standard.value(forKey: "customTimeWindowFrame") == nil {
+            window?.center()
+        }
+
+        let saveName = NSWindow.FrameAutosaveName.init("customTimeWindowFrame")
+
+        window?.setFrameUsingName(saveName)
+
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("NSWindowWillCloseNotification"), object: nil, queue: nil) { _ in
+            self.window?.saveFrame(usingName: saveName)
+        }
+
+        window?.level = .floating
+        window?.titleVisibility = .hidden
 
         hoursTextField.formatter = onlyIntValueFormatter
         minutesTextField.formatter = onlyIntValueFormatter

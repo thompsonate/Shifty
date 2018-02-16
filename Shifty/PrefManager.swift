@@ -14,7 +14,6 @@ struct Keys {
     static let isIconSwitchingEnabled = "isIconSwitchingEnabled"
     static let isDarkModeSyncEnabled = "isDarkModeSyncEnabled"
     static let isWebsiteControlEnabled = "isWebsiteControlEnabled"
-    static let lastKnownLocation = "lastKnownLocation"
     static let disabledApps = "disabledApps"
     static let browserRules = "browserRules"
 
@@ -22,10 +21,11 @@ struct Keys {
     static let incrementColorTempShortcut = "incrementColorTempShortcut"
     static let decrementColorTempShortcut = "decrementColorTempShortcut"
     static let disableAppShortcut = "disableAppShortcut"
+    static let disableDomainShortcut = "disableDomainShortcut"
+    static let disableSubdomainShortcut = "disableSubdomainShortcut"
     static let disableHourShortcut = "disableHourShortcut"
     static let disableCustomShortcut = "disableCustomShortcut"
-
-    static let menuLaunchCount = "menuLaunchCount"
+    static let hasSetupWindowShown = "hasSetupWindowShown"
 }
 
 
@@ -47,8 +47,8 @@ class PrefManager {
             Keys.isWebsiteControlEnabled: NSNumber(value: false),
             Keys.disabledApps: [String](),
             Keys.browserRules: NSData(),
-            Keys.menuLaunchCount: NSNumber(value: 0)
-        ] as [String: Any]
+            Keys.hasSetupWindowShown: NSNumber(value: false)
+            ] as [String : Any]
 
         userDefaults.register(defaults: factoryDefaults)
     }
@@ -63,19 +63,18 @@ class PrefManager {
         userDefaults.removeObject(forKey: Keys.isIconSwitchingEnabled)
         userDefaults.removeObject(forKey: Keys.isDarkModeSyncEnabled)
         userDefaults.removeObject(forKey: Keys.isWebsiteControlEnabled)
-        userDefaults.removeObject(forKey: Keys.lastKnownLocation)
         userDefaults.removeObject(forKey: Keys.disabledApps)
         userDefaults.removeObject(forKey: Keys.browserRules)
         userDefaults.removeObject(forKey: Keys.toggleNightShiftShortcut)
         userDefaults.removeObject(forKey: Keys.incrementColorTempShortcut)
         userDefaults.removeObject(forKey: Keys.decrementColorTempShortcut)
         userDefaults.removeObject(forKey: Keys.disableAppShortcut)
+        userDefaults.removeObject(forKey: Keys.disableDomainShortcut)
+        userDefaults.removeObject(forKey: Keys.disableSubdomainShortcut)
         userDefaults.removeObject(forKey: Keys.disableHourShortcut)
         userDefaults.removeObject(forKey: Keys.disableCustomShortcut)
-        userDefaults.removeObject(forKey: Keys.menuLaunchCount)
-
+        userDefaults.removeObject(forKey: Keys.hasSetupWindowShown)
+        
         synchronize()
     }
 }
-
-

@@ -9,9 +9,8 @@ import Cocoa
 import MASPreferences_Shifty
 import ServiceManagement
 import AXSwift
+import SwiftLog
 
-///The height difference between the custom schedule controls being shown and hidden
-let PREF_GENERAL_HEIGHT_ADJUSTMENT = CGFloat(33.0)
 
 @objcMembers
 class PrefGeneralViewController: NSViewController, MASPreferencesViewController {
@@ -38,6 +37,7 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
     @IBOutlet weak var toggleStatusItem: NSButton!
     @IBOutlet weak var setIconSwitching: NSButton!
     @IBOutlet weak var darkModeSync: NSButton!
+    @IBOutlet weak var websiteShifting: NSButton!
 
     @IBOutlet weak var schedulePopup: NSPopUpButton!
     @IBOutlet weak var offMenuItem: NSMenuItem!
@@ -63,6 +63,11 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
 
         appDelegate = NSApplication.shared.delegate as! AppDelegate
         prefWindow = appDelegate.preferenceWindowController.window
+
+        //Fix layer-backing issues in 10.12 that cause window corners to not be rounded.
+        if !ProcessInfo().isOperatingSystemAtLeast(OperatingSystemVersion(majorVersion: 10, minorVersion: 13, patchVersion: 0)) {
+            view.wantsLayer = false
+        }
 
         updateSchedule = {
             switch NightShiftManager.schedule {
@@ -95,16 +100,19 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
     @IBAction func setAutoLaunch(_ sender: NSButtonCell) {
         let launcherAppIdentifier = "io.natethompson.ShiftyHelper"
         SMLoginItemSetEnabled(launcherAppIdentifier as CFString, setAutoLaunch.state == .on)
+        logw("Auto launch on login set to \(sender.state.rawValue)")
     }
 
     @IBAction func quickToggle(_ sender: NSButtonCell) {
         let appDelegate = NSApplication.shared.delegate as! AppDelegate
         appDelegate.setStatusToggle()
+        logw("Quick Toggle set to \(sender.state.rawValue)")
     }
 
-    @IBAction func setIconSwitching(_ sender: Any) {
+    @IBAction func setIconSwitching(_ sender: NSButtonCell) {
         let appDelegate = NSApplication.shared.delegate as! AppDelegate
         appDelegate.updateMenuBarIcon()
+        logw("Icon switching set to \(sender.state.rawValue)")
     }
 
     @IBAction func syncDarkMode(_ sender: NSButtonCell) {
@@ -113,28 +121,25 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
         } else {
             SLSSetAppearanceThemeLegacy(false)
         }
+        logw("Dark mode sync preference set to \(sender.state.rawValue)")
     }
 
     @IBAction func setWebsiteControl(_ sender: NSButtonCell) {
+        logw("Website control preference clicked")
         if sender.state == .on {
-            if !UIElement.isProcessTrusted(withPrompt: false) {
-                UserDefaults.standard.set(false, forKey: Keys.isWebsiteControlEnabled)
-                let alert: NSAlert = NSAlert()
-                alert.messageText = NSLocalizedString("alert.enable_accessibility_message", comment: "This feature requires accessibility permissions.")
-                alert.informativeText = NSLocalizedString("alert.accessibility_informative", comment: "Grant access to Shifty in Security & Privacy preferences, located in System Preferences.")
-                alert.alertStyle = NSAlert.Style.warning
-                alert.addButton(withTitle: NSLocalizedString("alert.open_preferences", comment: "Open System Preferences"))
-                alert.addButton(withTitle: NSLocalizedString("general.cancel", comment: "Cancel"))
-                if alert.runModal() == .alertFirstButtonReturn {
-                    NSWorkspace.shared.open(URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility")!)
-                }
+            if !UIElement.isProcessTrusted() {
+                logw("Accessibility permissions alert shown")
+
+                prefs.set(false, forKey: Keys.isWebsiteControlEnabled)
+                NSApp.runModal(for: AccessibilityWindow().window!)
             }
         } else {
             stopBrowserWatcher()
+            logw("Website control disabled")
         }
     }
 
-    @IBAction func schedulePopup(_ sender: Any) {
+    @IBAction func schedulePopup(_ sender: NSPopUpButton) {
         if schedulePopup.selectedItem == offMenuItem {
             NightShiftManager.schedule = .off
             setCustomControlVisibility(false, animate: true)
@@ -144,7 +149,6 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
         } else if schedulePopup.selectedItem == sunMenuItem {
             NightShiftManager.schedule = .solar
             setCustomControlVisibility(false, animate: true)
-
         }
     }
 
@@ -157,12 +161,16 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
     }
 
     override func viewWillDisappear() {
-        Event.preferences(autoLaunch: setAutoLaunch.state == .on, quickToggle: toggleStatusItem.state == .on, iconSwitching: setIconSwitching.state == .on, syncDarkMode: darkModeSync.state == .on, schedule: NightShiftManager.schedule).record()
+        Event.preferences(autoLaunch: setAutoLaunch.state == .on,
+                          quickToggle: toggleStatusItem.state == .on,
+                          iconSwitching: setIconSwitching.state == .on,
+                          syncDarkMode: darkModeSync.state == .on,
+                          websiteShifting: websiteShifting.state == .on,
+                          schedule: BLClient.schedule).record()
     }
 
     func setCustomControlVisibility(_ visible: Bool, animate: Bool) {
-        var adjustment = PREF_GENERAL_HEIGHT_ADJUSTMENT
-        if customTimeStackView.isHidden == visible || (!visible && !animate) {
+        if customTimeStackView.isHidden == visible || (!visible && !animate)  {
             if let frame = prefWindow?.frame {
                 if visible {
                     //Keep elements hidden until after animation is completed
@@ -170,12 +178,16 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
                     fromTimePicker.isHidden = true
                     toLabel.isHidden = true
                     toTimePicker.isHidden = true
-                } else {
-                    adjustment *= -1
                 }
 
+                let prevHeight = view.fittingSize.height
+
                 customTimeStackView.isHidden = !visible
-                let newFrame = NSMakeRect(frame.origin.x, frame.origin.y - adjustment, frame.width, frame.height + adjustment)
+
+                let adjustment = prevHeight - view.fittingSize.height
+
+                let newContentRect = NSMakeRect(frame.origin.x, frame.origin.y + adjustment, frame.width, view.fittingSize.height)
+                let newFrame = prefWindow.frameRect(forContentRect: newContentRect)
                 prefWindow.setFrame(newFrame, display: true, animate: animate)
 
                 if visible {
@@ -191,19 +203,9 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
 
 
 class PrefWindowController: MASPreferencesWindowController {
-    override func keyDown(with theEvent: NSEvent) {
-        if theEvent.keyCode == 13 {
+    override func keyDown(with event: NSEvent) {
+        if event.keyCode == 13 && event.modifierFlags.contains(.command) {
             window?.close()
-        }
-    }
-
-    //Decreases window frame height if custom schedule controls are not shown
-    override func getNewWindowFrame() -> NSRect {
-        if NightShiftManager.schedule == ScheduleType.off || NightShiftManager.schedule == .solar {
-            let newFrame = super.getNewWindowFrame()
-            return NSMakeRect(newFrame.origin.x, newFrame.origin.y + PREF_GENERAL_HEIGHT_ADJUSTMENT, newFrame.width, newFrame.height - PREF_GENERAL_HEIGHT_ADJUSTMENT)
-        } else {
-            return super.getNewWindowFrame()
         }
     }
 }

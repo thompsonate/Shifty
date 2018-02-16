@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="AccessibilityView" customModule="Shifty">
+            <connections>
+                <outlet property="view" destination="Lvz-Kt-Jk2" id="qgR-Ma-HXT"/>
+            </connections>
+        </customObject>
+        <customView id="Lvz-Kt-Jk2">
+            <rect key="frame" x="0.0" y="0.0" width="410" height="364"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="AXm-yv-KZx">
+                    <rect key="frame" x="-2" y="328" width="357" height="36"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Allow accessibility control" id="6h1-n5-3Va">
+                        <font key="font" metaFont="systemSemibold" size="30"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="500" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OBb-gx-Ctx">
+                    <rect key="frame" x="-2" y="269" width="414" height="51"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="R57-iU-qAv">
+                        <font key="font" metaFont="system"/>
+                        <string key="title">Website shifting requires accessibility permissions. Grant access to Shifty in Security &amp; Privacy preferences, located in System Preferences.</string>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="lyS-ih-FQw">
+                    <rect key="frame" x="9" y="0.0" width="392" height="261"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="lyS-ih-FQw" secondAttribute="height" multiplier="6:4" id="bdy-C9-RYO"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="accessibilityPrefsScreenshot" id="gI5-yS-xYh"/>
+                </imageView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="AXm-yv-KZx" firstAttribute="leading" secondItem="Lvz-Kt-Jk2" secondAttribute="leading" id="3Bf-g2-hpv"/>
+                <constraint firstItem="lyS-ih-FQw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Lvz-Kt-Jk2" secondAttribute="leading" id="A4U-Jf-USl"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lyS-ih-FQw" secondAttribute="trailing" id="Iks-tF-0Qa"/>
+                <constraint firstItem="AXm-yv-KZx" firstAttribute="top" secondItem="Lvz-Kt-Jk2" secondAttribute="top" id="R33-20-FLm"/>
+                <constraint firstItem="lyS-ih-FQw" firstAttribute="top" secondItem="OBb-gx-Ctx" secondAttribute="bottom" constant="8" id="TIe-Cp-XXV"/>
+                <constraint firstItem="OBb-gx-Ctx" firstAttribute="top" secondItem="AXm-yv-KZx" secondAttribute="bottom" constant="8" id="TNG-JP-FcY"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="lyS-ih-FQw" secondAttribute="bottom" id="Wfk-Nm-L0W"/>
+                <constraint firstItem="lyS-ih-FQw" firstAttribute="centerX" secondItem="Lvz-Kt-Jk2" secondAttribute="centerX" id="eme-EJ-0xd"/>
+                <constraint firstItem="OBb-gx-Ctx" firstAttribute="leading" secondItem="Lvz-Kt-Jk2" secondAttribute="leading" id="jSA-zk-BtZ"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="OBb-gx-Ctx" secondAttribute="trailing" id="kRb-I3-YDw"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="AXm-yv-KZx" secondAttribute="trailing" id="lfE-7f-a2T"/>
+            </constraints>
+        </customView>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+    </objects>
+    <resources>
+        <image name="accessibilityPrefsScreenshot" width="545.5" height="371"/>
+    </resources>
+</document>
