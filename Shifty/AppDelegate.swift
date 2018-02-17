@@ -90,12 +90,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             UserDefaults.standard.set(false, forKey: Keys.isWebsiteControlEnabled)
         }
 
-        logw("Night Shift state: \(BLClient.isNightShiftEnabled)")
-        logw("Schedule: \(BLClient.schedule)")
-        if BLClient.isSunSchedule {
-            logw("sunrise: \(String(describing: BSClient.sunrise))")
-            logw("sunset: \(String(describing: BSClient.sunset))")
-        }
+        logw("Night Shift state: \(NightShiftManager.isNightShiftEnabled)")
+        logw("Schedule: \(NightShiftManager.schedule)")
         logw("")
 
         updateMenuBarIcon()

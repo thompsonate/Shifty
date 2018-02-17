@@ -166,7 +166,7 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
                           iconSwitching: setIconSwitching.state == .on,
                           syncDarkMode: darkModeSync.state == .on,
                           websiteShifting: websiteShifting.state == .on,
-                          schedule: BLClient.schedule).record()
+                          schedule: NightShiftManager.schedule).record()
     }
 
     func setCustomControlVisibility(_ visible: Bool, animate: Bool) {
