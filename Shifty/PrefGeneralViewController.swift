@@ -76,11 +76,11 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
                 self.setCustomControlVisibility(false, animate: true)
             case .custom(start: let startTime, end: let endTime):
                 self.schedulePopup.select(self.customMenuItem)
-                if let startDate = Date(startTime),
-                    let endDate = Date(endTime) {
-                    self.fromTimePicker.dateValue = startDate
-                    self.toTimePicker.dateValue = endDate
-                }
+                let startDate = Date(startTime)
+                let endDate = Date(endTime)
+                
+                self.fromTimePicker.dateValue = startDate
+                self.toTimePicker.dateValue = endDate
                 self.setCustomControlVisibility(true, animate: true)
             case .solar:
                 self.schedulePopup.select(self.sunMenuItem)
@@ -153,10 +153,8 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
     }
 
     @IBAction func scheduleTimePickers(_ sender: Any) {
-        guard let fromTime = Time(fromTimePicker.dateValue),
-            let toTime = Time(toTimePicker.dateValue) else {
-                return
-        }
+        let fromTime = Time(fromTimePicker.dateValue)
+        let toTime = Time(toTimePicker.dateValue)
         NightShiftManager.schedule = .custom(start: fromTime, end: toTime)
     }
 

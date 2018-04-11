@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>BuildAliasOf</key>
+	<string>SkyLight</string>
+	<key>BuildVersion</key>
+	<string>10</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.600.0</string>
+	<key>ProjectName</key>
+	<string>SkyLight</string>
+	<key>SourceVersion</key>
+	<string>312023004000000</string>
+</dict>
+</plist>

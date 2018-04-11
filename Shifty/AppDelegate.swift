@@ -89,6 +89,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             showAccessibilityDeniedAlert()
             UserDefaults.standard.set(false, forKey: Keys.isWebsiteControlEnabled)
         }
+        
+        NightShiftManager.initialize()
 
         logw("Night Shift state: \(NightShiftManager.isNightShiftEnabled)")
         logw("Schedule: \(NightShiftManager.schedule)")

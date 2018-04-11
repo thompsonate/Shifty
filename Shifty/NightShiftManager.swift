@@ -5,33 +5,48 @@
 //  Created by Saagar Jha on 1/13/18.
 //
 
-import Foundation
+import Cocoa
 
-extension Time: Equatable {
-    init?(_ date: Date) {
+let BSClient = BrightnessSystemClient()
+
+extension Time: Equatable, Comparable {
+    init(_ date: Date) {
         let components = Calendar.current.dateComponents([.hour, .minute], from: date)
         guard let hour = components.hour,
             let minute = components.minute else {
-                return nil
+                fatalError("Could not instantiate Time object")
         }
+        self.init()
         self.hour = Int32(hour)
         self.minute = Int32(minute)
+    }
+    
+    static var now: Time {
+        return Time(Date())
     }
     
     public static func ==(lhs: Time, rhs: Time) -> Bool {
         return lhs.hour == rhs.hour && lhs.minute == rhs.minute
     }
+    
+    public static func < (lhs: Time, rhs: Time) -> Bool {
+        if lhs.hour == rhs.hour {
+            return lhs.minute < rhs.minute
+        } else {
+            return lhs.hour < rhs.hour
+        }
+    }
 }
 
 extension Date {
-    init?(_ time: Time) {
+    init(_ time: Time) {
         var components = Calendar.current.dateComponents([.hour, .minute], from: Date())
         components.hour = Int(time.hour)
         components.minute = Int(time.minute)
         if let date = Calendar.current.date(from: components) {
             self = date
         } else {
-            return nil
+            fatalError("Could not instantiate Date object")
         }
     }
 }
@@ -69,6 +84,7 @@ enum NightShiftManager {
 
     static var isCurrentlyInNightShiftSchedule: Bool = false
     static var nightShiftDisableTimer: Timer?
+    static var userSet: Bool? = false
 
     private static var blueLightStatus: Status {
         var status: Status = Status()
@@ -129,19 +145,57 @@ enum NightShiftManager {
             }
         }
     }
+    
+    static var scheduledState: Bool {
+        switch schedule {
+        case .off:
+            return false
+        case .custom(start: let startTime, end: let endTime):
+            let now = Time(Date())
+            if endTime > startTime {
+                //startTime and endTime are on the same day
+                return now > startTime && now < endTime
+            } else {
+                //endTime is on the day following startTime
+                return now > startTime || now < endTime
+            }
+        case .solar:
+            guard let isDaylight = BSClient?.isDaylight else { return false }
+            //Should be false between sunrise and sunset
+            return !isDaylight
+        }
+    }
+    
+    private static var disabledTimer: Bool {
+        guard let timer = NightShiftManager.nightShiftDisableTimer else { return false }
+        return timer.isValid
+    }
+    
+    private static var disabledApp: Bool {
+        guard let currentAppBundleIdentifier = RuleManager.currentApp?.bundleIdentifier else { return false }
+        return RuleManager.disabledApps.contains(currentAppBundleIdentifier)
+    }
 
-    private static let initialize: Void = {
+    public static func initialize() {
         NightShiftManager.isCurrentlyInNightShiftSchedule = false
         NightShiftManager.nightShiftDisableTimer = nil
         // @convention block
         client.setStatusNotificationBlock {
             respond(to: isNightShiftEnabled ? .enteredScheduledNightShift : .exitedScheduledNightShift)
         }
-    }()
+    }
+
 
     static func respond(to event: NightShiftEvent) {
-//		switch event {
-//
-//		}
+        switch event {
+        case .enteredScheduledNightShift: break
+        case .exitedScheduledNightShift: break
+        case .nightShiftDisableRuleActivated: break
+        case .nightShiftDisableRuleDeactivated: break
+        case .nightShiftDisableTimerStarted: break
+        case .nightShiftDisableTimerEnded: break
+        case .userEnabledNightShift: break
+        case .userDisabledNightShift: break
+        }
     }
 }

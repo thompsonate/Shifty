@@ -7,5 +7,6 @@
 //
 
 #import "CBBlueLightClient.h"
+#import "BrightnessSystemClient.h"
 
 void SLSSetAppearanceThemeLegacy(BOOL);

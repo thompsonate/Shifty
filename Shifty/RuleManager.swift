@@ -79,6 +79,17 @@ enum RuleManager {
         }
         return urlFor(browser, app)
     }
+    
+    static var disabledForAppOrSite: Bool {
+        guard let currentApp = currentApp, let bundleIdentifier = currentApp.bundleIdentifier else {
+            return false
+        }
+        return disabledApps.contains(bundleIdentifier) || disabledForSite
+    }
+    
+    private static var disabledForSite: Bool {
+        return false
+    }
 
     private static let initalize: Void = {
         NSWorkspace.shared.notificationCenter.addObserver(forName: NSWorkspace.didActivateApplicationNotification, object: nil, queue: nil) {
@@ -103,7 +114,7 @@ enum RuleManager {
                 return
         }
         if disabledApps.contains(bundleIdentier) {
-
+            NightShiftManager.respond(to: .nightShiftDisableRuleActivated)
         } else if SupportedBrowser(application) != nil {
             var observer = AXObserver?.none
             AXObserverCreate(processIdentifier, {
@@ -117,6 +128,8 @@ enum RuleManager {
                     registerWindow(window, forNotificationsUsing: $0, userInfo: userInfo)
                 }
             }
+        } else {
+            NightShiftManager.respond(to: .nightShiftDisableRuleDeactivated)
         }
     }
 
