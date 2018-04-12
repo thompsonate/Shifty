@@ -6,6 +6,7 @@
 //
 
 import Cocoa
+import SwiftLog
 import ScriptingBridge
 
 typealias BundleIdentifier = String
@@ -61,14 +62,36 @@ enum RuleManager {
 
         }
     }
+    
+    static var currentApp: NSRunningApplication? {
+        return NSWorkspace.shared.frontmostApplication
+    }
+    
+    static var disabledForApp: Bool {
+        get {
+            guard let bundleIdentifier = currentApp?.bundleIdentifier else {
+                logw("Could not obtain bundle identifier of current application")
+                return false
+            }
+            return disabledApps.contains(bundleIdentifier)
+        }
+        set(newValue) {
+            guard let bundleIdentifier = currentApp?.bundleIdentifier else {
+                logw("Could not obtain bundle identifier of current application")
+                return
+            }
+            if newValue {
+                disabledApps.insert(bundleIdentifier)
+            } else {
+                disabledApps.remove(bundleIdentifier)
+            }
+        }
+    }
+    
     static var browserRules = Set<BrowserRule>() {
         didSet {
 
         }
-    }
-
-    static var currentApp: NSRunningApplication? {
-        return NSWorkspace.shared.frontmostApplication
     }
 
     static var currentURL: URL? {
@@ -80,15 +103,40 @@ enum RuleManager {
         return urlFor(browser, app)
     }
     
-    static var disabledForAppOrSite: Bool {
-        guard let currentApp = currentApp, let bundleIdentifier = currentApp.bundleIdentifier else {
+    static var disabledForDomain: Bool {
+        get {
             return false
         }
-        return disabledApps.contains(bundleIdentifier) || disabledForSite
+        set(newValue) {
+            if newValue {
+                
+            } else {
+                
+            }
+        }
     }
     
-    private static var disabledForSite: Bool {
-        return false
+    static var disabledForSubdomain: Bool {
+        get {
+            return false
+        }
+        set(newValue) {
+            if newValue {
+                
+            } else {
+                
+            }
+        }
+    }
+    
+    static var disableRuleIsActive: Bool {
+        return disabledForApp || disabledForDomain || disabledForSubdomain
+    }
+    
+    static func removeRulesForCurrentState() {
+        disabledForApp = false
+        disabledForDomain = false
+        disabledForSubdomain = false
     }
 
     private static let initalize: Void = {
