@@ -16,7 +16,8 @@ class SliderView: NSView {
     var sliderEnabled: (() -> Void)?
 
     @IBAction func shiftSliderMoved(_ sender: NSSlider) {
-        sliderValueChanged?(sender.floatValue)
+        NightShiftManager.blueLightReductionAmount = sender.floatValue / 100
+        
         let event = NSApplication.shared.currentEvent
         if event?.type == .leftMouseUp {
             sender.superview?.enclosingMenuItem?.menu?.cancelTracking()
@@ -26,6 +27,7 @@ class SliderView: NSView {
     }
 
     @IBAction func clickEnableSlider(_ sender: Any) {
+        NightShiftManager.respond(to: .userEnabledNightShift)
         shiftSlider.isEnabled = true
         sliderEnabled?()
         Event.enableSlider.record()

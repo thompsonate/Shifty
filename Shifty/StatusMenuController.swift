@@ -76,14 +76,6 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         preferencesMenuItem.title = NSLocalizedString("menu.preferences", comment: "Preferences...")
         quitMenuItem.title = NSLocalizedString("menu.quit", comment: "Quit Shifty")
 
-        sliderView.sliderValueChanged = { (sliderValue) in
-
-        }
-
-        sliderView.sliderEnabled = {
-
-        }
-
         (NSApp.delegate as? AppDelegate)?.statusItemClicked = {
 
         }
@@ -121,8 +113,10 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         
         if NightShiftManager.isNightShiftEnabled {
             powerMenuItem.title = NSLocalizedString("menu.toggle_off", comment: "Turn off Night Shift")
+            sliderView.shiftSlider.isEnabled = true
         } else {
             powerMenuItem.title = NSLocalizedString("menu.toggle_on", comment: "Turn on Night Shift")
+            sliderView.shiftSlider.isEnabled = false
         }
         if RuleManager.disabledForApp {
             disableAppMenuItem.state = .on
