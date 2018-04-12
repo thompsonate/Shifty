@@ -26,6 +26,10 @@ class SliderView: NSView {
 
     @IBAction func clickEnableSlider(_ sender: Any) {
         NightShiftManager.respond(to: .userEnabledNightShift)
+        
+        let statusMenuController = (NSApplication.shared.delegate as! AppDelegate).statusMenu.delegate as! StatusMenuController
+        statusMenuController.configureMenuItems()
+        
         shiftSlider.isEnabled = true
         Event.enableSlider.record()
         logw("Enable slider button clicked")

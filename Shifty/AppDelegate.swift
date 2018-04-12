@@ -91,6 +91,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         NightShiftManager.initialize()
+        RuleManager.initialize()
 
         logw("Night Shift state: \(NightShiftManager.isNightShiftEnabled)")
         logw("Schedule: \(NightShiftManager.schedule)")

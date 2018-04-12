@@ -115,6 +115,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     func configureMenuItems() {
         let currentAppName = RuleManager.currentApp?.localizedName ?? ""
         
+        sliderView.shiftSlider.floatValue = NightShiftManager.blueLightReductionAmount * 100
+        
         if NightShiftManager.isNightShiftEnabled {
             powerMenuItem.title = NSLocalizedString("menu.toggle_off", comment: "Turn off Night Shift")
             sliderView.shiftSlider.isEnabled = true

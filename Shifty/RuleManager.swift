@@ -139,7 +139,7 @@ enum RuleManager {
         disabledForSubdomain = false
     }
 
-    private static let initalize: Void = {
+    public static func initialize() {
         NSWorkspace.shared.notificationCenter.addObserver(forName: NSWorkspace.didActivateApplicationNotification, object: nil, queue: nil) {
             RuleManager.appSwitched(notification: $0)
         }
@@ -153,7 +153,7 @@ enum RuleManager {
         } catch let error {
             NSLog("Error: \(error.localizedDescription)")
         }
-    }()
+    }
 
     private static func appSwitched(notification: Notification) {
         guard let application = (notification.userInfo?[NSWorkspace.applicationUserInfoKey] as? NSRunningApplication),
