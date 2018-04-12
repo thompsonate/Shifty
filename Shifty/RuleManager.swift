@@ -64,7 +64,7 @@ enum RuleManager {
     }
     
     static var currentApp: NSRunningApplication? {
-        return NSWorkspace.shared.frontmostApplication
+        return NSWorkspace.shared.menuBarOwningApplication
     }
     
     static var disabledForApp: Bool {

@@ -40,6 +40,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     var prefGeneral: PrefGeneralViewController!
     var prefShortcuts: PrefShortcutsViewController!
     var customTimeWindow: CustomTimeWindow!
+    
+    var disabledUntilDate: Date?
 
     let calendar = NSCalendar(identifier: .gregorian)!
 
@@ -101,6 +103,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     }
 
     func menuWillOpen(_: NSMenu) {
+        configureMenuItems()
+        
         assignKeyboardShortcutToMenuItem(powerMenuItem, userDefaultsKey: Keys.toggleNightShiftShortcut)
         assignKeyboardShortcutToMenuItem(disableAppMenuItem, userDefaultsKey: Keys.disableAppShortcut)
         assignKeyboardShortcutToMenuItem(disableDomainMenuItem, userDefaultsKey: Keys.disableDomainShortcut)
@@ -109,6 +113,50 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         assignKeyboardShortcutToMenuItem(disableCustomMenuItem, userDefaultsKey: Keys.disableCustomShortcut)
 
         Event.menuOpened.record()
+    }
+    
+    func configureMenuItems() {
+        let currentAppName = RuleManager.currentApp?.localizedName ?? ""
+        
+        if NightShiftManager.isNightShiftEnabled {
+            powerMenuItem.title = NSLocalizedString("menu.toggle_off", comment: "Turn off Night Shift")
+        } else {
+            powerMenuItem.title = NSLocalizedString("menu.toggle_on", comment: "Turn on Night Shift")
+        }
+        if RuleManager.disabledForApp {
+            disableAppMenuItem.state = .on
+            disableAppMenuItem.title = String(format: NSLocalizedString("menu.disabled_for", comment: "Disabled for %@"), currentAppName)
+        } else {
+            disableAppMenuItem.state = .off
+            disableAppMenuItem.title = String(format: NSLocalizedString("menu.disable_for", comment: "Disable for %@"), currentAppName)
+        }
+        
+        switch NightShiftManager.nightShiftDisableTimer {
+        case .off:
+            disableHourMenuItem.state = .off
+            disableHourMenuItem.isEnabled = true
+            disableHourMenuItem.title = NSLocalizedString("menu.disable_hour", comment: "Disable for an hour")
+            
+            disableCustomMenuItem.state = .off
+            disableCustomMenuItem.isEnabled = true
+            disableCustomMenuItem.title = NSLocalizedString("menu.disable_custom", comment: "Disable for custom time...")
+        case .hour(timer: _):
+            disableHourMenuItem.state = .on
+            disableHourMenuItem.isEnabled = true
+            disableHourMenuItem.title = NSLocalizedString("menu.disabled_hour", comment: "Disabled for an hour")
+            
+            disableCustomMenuItem.state = .off
+            disableCustomMenuItem.isEnabled = false
+            disableCustomMenuItem.title = NSLocalizedString("menu.disable_custom", comment: "Disable for custom time...")
+        case .custom(timer: _):
+            disableHourMenuItem.state = .off
+            disableHourMenuItem.isEnabled = false
+            disableHourMenuItem.title = NSLocalizedString("menu.disable_hour", comment: "Disable for an hour")
+            
+            disableCustomMenuItem.state = .on
+            disableCustomMenuItem.isEnabled = true
+            disableCustomMenuItem.title = NSLocalizedString("menu.disabled_custom", comment: "Disabled for custom time")
+        }
     }
 
     func assignKeyboardShortcutToMenuItem(_ menuItem: NSMenuItem, userDefaultsKey: String) {
@@ -137,15 +185,14 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     }
 
     @IBAction func disableForApp(_ sender: Any) {
-        guard let currentAppBundleIdentifier = RuleManager.currentApp?.bundleIdentifier else {
-            return
+        if RuleManager.disabledForApp {
+            RuleManager.disabledForApp = false
+            NightShiftManager.respond(to: .nightShiftDisableRuleDeactivated)
+        } else {
+            RuleManager.disabledForApp = true
+            NightShiftManager.respond(to: .nightShiftDisableRuleActivated)
         }
-        // If we're adding a new app to the disabled list
-        if !RuleManager.disabledApps.contains(currentAppBundleIdentifier) {
-            RuleManager.disabledApps.insert(currentAppBundleIdentifier)
-        } else { // We're removing an app from the disabled list
-            RuleManager.disabledApps.remove(currentAppBundleIdentifier)
-        }
+        Event.disableForCurrentApp(state: (sender as? NSMenuItem)?.state == .on).record()
     }
 
     @IBAction func disableForDomain(_ sender: Any) {
@@ -153,15 +200,52 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     }
 
     @IBAction func disableForSubdomain(_ sender: Any) {
-
+        
     }
-
+    
     @IBAction func disableHour(_ sender: Any) {
-
+        if disableHourMenuItem.state == .off {
+            let disableTimer = Timer(timeInterval: 3600, repeats: false) { _ in
+                NightShiftManager.respond(to: .nightShiftDisableTimerEnded)
+            }
+            disableTimer.tolerance = 60
+            
+            let currentDate = Date()
+            var addComponents = DateComponents()
+            addComponents.hour = 1
+            disabledUntilDate = calendar.date(byAdding: addComponents, to: currentDate, options: [])!
+            
+            NightShiftManager.nightShiftDisableTimer = .hour(timer: disableTimer)
+            NightShiftManager.respond(to: .nightShiftDisableTimerStarted)
+        } else {
+            NightShiftManager.respond(to: .nightShiftDisableTimerEnded)
+        }
     }
 
     @IBAction func disableCustomTime(_ sender: Any) {
-
+        if disableCustomMenuItem.state == .off {
+            NSApplication.shared.activate(ignoringOtherApps: true)
+            
+            customTimeWindow.showWindow(nil)
+            customTimeWindow.window?.orderFrontRegardless()
+            
+            customTimeWindow.disableCustomTime = { (timeIntervalInSeconds) in
+                let disableTimer = Timer(timeInterval: TimeInterval(timeIntervalInSeconds), repeats: false) { _ in
+                    NightShiftManager.respond(to: .nightShiftDisableTimerEnded)
+                }
+                disableTimer.tolerance = 60
+                
+                let currentDate = Date()
+                var addComponents = DateComponents()
+                addComponents.second = timeIntervalInSeconds
+                self.disabledUntilDate = self.calendar.date(byAdding: addComponents, to: currentDate, options: [])!
+                
+                NightShiftManager.nightShiftDisableTimer = .custom(timer: disableTimer)
+                NightShiftManager.respond(to: .nightShiftDisableTimerStarted)
+            }
+        } else {
+            NightShiftManager.respond(to: .nightShiftDisableTimerEnded)
+        }
     }
 
     @IBAction func preferencesClicked(_ sender: NSMenuItem) {
@@ -172,11 +256,13 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     }
 
     @IBAction func quitClicked(_ sender: NSMenuItem) {
-//        NightShiftManager.respond(to: .nightShiftDisableTimerEnded)
-//        NightShiftManager.respond(to: .nightShiftDisableRuleDeactivated)
+        NightShiftManager.respond(to: .nightShiftDisableTimerEnded)
+        NightShiftManager.respond(to: .nightShiftDisableRuleDeactivated)
 
         Event.quitShifty.record()
         NotificationCenter.default.post(name: .terminateApp, object: self)
+        
+        NSApplication.shared.terminate(self)
     }
 
 

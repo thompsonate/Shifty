@@ -62,12 +62,29 @@ enum NightShiftEvent {
     case nightShiftDisableRuleDeactivated
 }
 
+enum DisableTimer: Equatable {
+    case off
+    case hour(timer: Timer)
+    case custom(timer: Timer)
+    
+    static func == (lhs: DisableTimer, rhs: DisableTimer) -> Bool {
+        switch (lhs, rhs) {
+        case (.off, .off):
+            return true
+        case (let .hour(leftTimer), let .hour(rightTimer)), (let .custom(leftTimer), let .custom(rightTimer)):
+            return leftTimer == rightTimer
+        default:
+            return false
+        }
+    }
+}
+
 enum ScheduleType: Equatable {
     case off
     case solar
     case custom(start: Time, end: Time)
     
-    static func ==(lhs: ScheduleType, rhs: ScheduleType) -> Bool {
+    static func == (lhs: ScheduleType, rhs: ScheduleType) -> Bool {
         switch (lhs, rhs) {
         case (.off, .off), (.solar, .solar):
             return true
@@ -83,9 +100,8 @@ enum NightShiftManager {
     private static let client = CBBlueLightClient()
 
     static var isCurrentlyInNightShiftSchedule: Bool = false
-    static var nightShiftDisableTimer: Timer?
     static var userSet: Bool? = false
-
+ 
     private static var blueLightStatus: Status {
         var status: Status = Status()
         client.getBlueLightStatus(&status)
@@ -181,9 +197,18 @@ enum NightShiftManager {
     
     private static var userOverridden: Bool?
     
-    private static var disabledTimer: Bool {
-        guard let timer = NightShiftManager.nightShiftDisableTimer else { return false }
-        return timer.isValid
+    static var nightShiftDisableTimer = DisableTimer.off {
+        willSet {
+            switch nightShiftDisableTimer {
+            case .hour(let timer), .custom(let timer):
+                timer.invalidate()
+            default: break
+            }
+        }
+    }
+    
+    static var disabledTimer: Bool {
+        return NightShiftManager.nightShiftDisableTimer != .off
     }
     
     private static var disableRuleIsActive: Bool {
@@ -192,7 +217,6 @@ enum NightShiftManager {
 
     public static func initialize() {
         NightShiftManager.isCurrentlyInNightShiftSchedule = false
-        NightShiftManager.nightShiftDisableTimer = nil
         // @convention block
         client.setStatusNotificationBlock {
             respond(to: isNightShiftEnabled ? .enteredScheduledNightShift : .exitedScheduledNightShift)
@@ -210,9 +234,8 @@ enum NightShiftManager {
             userOverridden = nil
         case .userEnabledNightShift:
             userOverridden = true
-            if disabledTimer {
-                nightShiftDisableTimer?.invalidate()
-            }
+            nightShiftDisableTimer = .off
+            
             if disableRuleIsActive {
                 RuleManager.removeRulesForCurrentState()
             }
@@ -233,6 +256,7 @@ enum NightShiftManager {
             isNightShiftEnabled = false
         case .nightShiftDisableTimerEnded:
             userOverridden = nil
+            nightShiftDisableTimer = .off
             if !disableRuleIsActive {
                 setToSchedule()
             }
