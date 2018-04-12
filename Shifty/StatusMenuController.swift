@@ -104,6 +104,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
 
     func menuWillOpen(_: NSMenu) {
         configureMenuItems()
+        setDescriptionText()
         
         assignKeyboardShortcutToMenuItem(powerMenuItem, userDefaultsKey: Keys.toggleNightShiftShortcut)
         assignKeyboardShortcutToMenuItem(disableAppMenuItem, userDefaultsKey: Keys.disableAppShortcut)
@@ -158,6 +159,70 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             disableCustomMenuItem.title = NSLocalizedString("menu.disabled_custom", comment: "Disabled for custom time")
         }
     }
+    
+    func setDescriptionText(keepVisible: Bool = false) {
+        if NightShiftManager.disabledTimer {
+            guard let disabledUntilDate = disabledUntilDate else { return }
+            
+            let nowDate = Date()
+            let dateComponentsFormatter = DateComponentsFormatter()
+            dateComponentsFormatter.allowedUnits = [.second]
+            let disabledTimeLeftComponents = calendar.components([.second], from: nowDate, to: disabledUntilDate, options: [])
+            var disabledHoursLeft = (Double(disabledTimeLeftComponents.second!) / 3600.0).rounded(.down)
+            var disabledMinutesLeft = (Double(disabledTimeLeftComponents.second!) / 60.0).truncatingRemainder(dividingBy: 60.0).rounded(.toNearestOrEven)
+            
+            if disabledMinutesLeft == 60.0 {
+                disabledMinutesLeft = 0.0
+                disabledHoursLeft += 1.0
+            }
+            
+            if disabledHoursLeft > 0 {
+                descriptionMenuItem.title = String(format: NSLocalizedString("description.disabled_hours_minutes", comment: "Disabled for %02d:%02d"), Int(disabledHoursLeft), Int(disabledMinutesLeft))
+            } else {
+                descriptionMenuItem.title = localizedPlural("menu.disabled_time", count: Int(disabledMinutesLeft), comment: "The number of minutes left when disabled for a set amount of time.")
+            }
+            descriptionMenuItem.isHidden = false
+            return
+        }
+        
+        switch NightShiftManager.schedule {
+        case .off:
+            if keepVisible {
+                descriptionMenuItem.title = NSLocalizedString("description.enabled", comment: "Enabled")
+            } else {
+                descriptionMenuItem.isHidden = true
+            }
+        case .solar:
+            if !keepVisible {
+                descriptionMenuItem.isHidden = !NightShiftManager.isNightShiftEnabled
+            }
+            if NightShiftManager.isNightShiftEnabled {
+                descriptionMenuItem.title = NSLocalizedString("description.enabled_sunrise", comment: "Enabled until sunrise")
+            } else {
+                descriptionMenuItem.title = NSLocalizedString("description.disabled", comment: "Disabled")
+            }
+        case .custom(_, let endTime):
+            if !keepVisible {
+                descriptionMenuItem.isHidden = !NightShiftManager.isNightShiftEnabled
+            }
+            if NightShiftManager.isNightShiftEnabled {
+                let dateFormatter = DateFormatter()
+                
+                if Bundle.main.preferredLocalizations.first == "zh-Hans" {
+                    dateFormatter.dateFormat = "a hh:mm "
+                } else {
+                    dateFormatter.dateStyle = .none
+                    dateFormatter.timeStyle = .short
+                }
+                
+                let date = dateFormatter.string(from: Date(endTime))
+                
+                descriptionMenuItem.title = String(format: NSLocalizedString("description.enabled_time", comment: "Enabled until %@"), date)
+            } else {
+                descriptionMenuItem.title = NSLocalizedString("description.disabled", comment: "Disabled")
+            }
+        }
+    }
 
     func assignKeyboardShortcutToMenuItem(_ menuItem: NSMenuItem, userDefaultsKey: String) {
         if let data = UserDefaults.standard.value(forKey: userDefaultsKey),
@@ -170,9 +235,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             menuItem.keyEquivalent = ""
         }
     }
-
-
-    //MARK: Handle states
+    
+    func localizedPlural(_ key: String, count: Int, comment: String) -> String {
+        let format = NSLocalizedString(key, comment: comment)
+        return String(format: format, locale: .current, arguments: [count])
+    }
 
     //MARK: User Interaction
 
@@ -205,7 +272,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     
     @IBAction func disableHour(_ sender: Any) {
         if disableHourMenuItem.state == .off {
-            let disableTimer = Timer(timeInterval: 3600, repeats: false) { _ in
+            let disableTimer = Timer.scheduledTimer(withTimeInterval: 3600, repeats: false) { _ in
                 NightShiftManager.respond(to: .nightShiftDisableTimerEnded)
             }
             disableTimer.tolerance = 60
@@ -230,9 +297,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             customTimeWindow.window?.orderFrontRegardless()
             
             customTimeWindow.disableCustomTime = { (timeIntervalInSeconds) in
-                let disableTimer = Timer(timeInterval: TimeInterval(timeIntervalInSeconds), repeats: false) { _ in
+                let disableTimer = Timer.scheduledTimer(withTimeInterval: TimeInterval(timeIntervalInSeconds),
+                                                        repeats: false,
+                                                        block: { _ in
                     NightShiftManager.respond(to: .nightShiftDisableTimerEnded)
-                }
+                })
                 disableTimer.tolerance = 60
                 
                 let currentDate = Date()
