@@ -6,6 +6,7 @@
 //
 
 import Cocoa
+import SwiftLog
 
 let BSClient = BrightnessSystemClient()
 
@@ -162,25 +163,25 @@ enum NightShiftManager {
         }
     }
     
-//    static var scheduledState: Bool {
-//        switch schedule {
-//        case .off:
-//            return false
-//        case .custom(start: let startTime, end: let endTime):
-//            let now = Time(Date())
-//            if endTime > startTime {
-//                //startTime and endTime are on the same day
-//                return now > startTime && now < endTime
-//            } else {
-//                //endTime is on the day following startTime
-//                return now > startTime || now < endTime
-//            }
-//        case .solar:
-//            guard let isDaylight = BSClient?.isDaylight else { return false }
-//            //Should be false between sunrise and sunset
-//            return !isDaylight
-//        }
-//    }
+    static var scheduledState: Bool {
+        switch schedule {
+        case .off:
+            return false
+        case .custom(start: let startTime, end: let endTime):
+            let now = Time(Date())
+            if endTime > startTime {
+                //startTime and endTime are on the same day
+                return now > startTime && now < endTime
+            } else {
+                //endTime is on the day following startTime
+                return now > startTime || now < endTime
+            }
+        case .solar:
+            guard let isDaylight = BSClient?.isDaylight else { return false }
+            //Should be false between sunrise and sunset
+            return !isDaylight
+        }
+    }
     
     public static func setToSchedule() {
         switch schedule {
@@ -220,6 +221,36 @@ enum NightShiftManager {
         // @convention block
         client.setStatusNotificationBlock {
             respond(to: isNightShiftEnabled ? .enteredScheduledNightShift : .exitedScheduledNightShift)
+            
+            let appDelegate = NSApplication.shared.delegate as! AppDelegate
+            appDelegate.updateMenuBarIcon()
+            
+            let prefWindow = (NSApplication.shared.delegate as? AppDelegate)?.preferenceWindowController
+            let prefGeneral = prefWindow?.viewControllers.compactMap { childViewController in
+                return childViewController as? PrefGeneralViewController
+                }.first
+            DispatchQueue.main.async {
+                prefGeneral?.updateSchedule?()
+            }
+            
+            updateDarkMode()
+        }
+    }
+    
+    static func updateDarkMode() {
+        if UserDefaults.standard.bool(forKey: Keys.isDarkModeSyncEnabled) {
+            switch schedule {
+            case .off:
+                let darkModeState = isNightShiftEnabled || disableRuleIsActive || disabledTimer || userOverridden == false
+                SLSSetAppearanceThemeLegacy(darkModeState)
+                logw("Dark mode set to \(darkModeState)")
+            case .solar:
+                SLSSetAppearanceThemeLegacy(scheduledState)
+                logw("Dark mode set to \(scheduledState)")
+            case .custom(start: _, end: _):
+                SLSSetAppearanceThemeLegacy(scheduledState)
+                logw("Dark mode set to \(scheduledState)")
+            }
         }
     }
 

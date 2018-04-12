@@ -12,8 +12,6 @@ import SwiftLog
 class SliderView: NSView {
 
     @IBOutlet weak var shiftSlider: NSSlider!
-    var sliderValueChanged: ((Float) -> Void)?
-    var sliderEnabled: (() -> Void)?
 
     @IBAction func shiftSliderMoved(_ sender: NSSlider) {
         NightShiftManager.blueLightReductionAmount = sender.floatValue / 100
@@ -29,7 +27,6 @@ class SliderView: NSView {
     @IBAction func clickEnableSlider(_ sender: Any) {
         NightShiftManager.respond(to: .userEnabledNightShift)
         shiftSlider.isEnabled = true
-        sliderEnabled?()
         Event.enableSlider.record()
         logw("Enable slider button clicked")
     }

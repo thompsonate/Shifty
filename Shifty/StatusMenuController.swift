@@ -77,7 +77,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         quitMenuItem.title = NSLocalizedString("menu.quit", comment: "Quit Shifty")
 
         (NSApp.delegate as? AppDelegate)?.statusItemClicked = {
-
+            if NightShiftManager.isNightShiftEnabled {
+                NightShiftManager.respond(to: .userDisabledNightShift)
+            } else {
+                NightShiftManager.respond(to: .userEnabledNightShift)
+            }
         }
 
         DistributedNotificationCenter.default().addObserver(forName: NSNotification.Name("com.apple.accessibility.api"), object: nil, queue: nil) { _ in

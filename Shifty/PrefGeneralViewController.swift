@@ -117,7 +117,7 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
 
     @IBAction func syncDarkMode(_ sender: NSButtonCell) {
         if sender.state == .on {
-            updateDarkMode?()
+            NightShiftManager.updateDarkMode()
         } else {
             SLSSetAppearanceThemeLegacy(false)
         }
