@@ -141,19 +141,28 @@ enum RuleManager {
                 NightShiftManager.respond(to: .nightShiftEnableRuleActivated)
             case .none:
                 var rule: BrowserRule
+                let prevValue = ruleForSubdomain
                 
-                switch ruleForSubdomain {
+                //Remove rule from set before triggering NightShiftEvent
+                switch prevValue {
                 case .disabled:
                     rule = BrowserRule(type: .subdomainDisabled, host: currentSubdomain)
-                    NightShiftManager.respond(to: .nightShiftDisableRuleDeactivated)
                 case .enabled:
                     rule = BrowserRule(type: .subdomainEnabled, host: currentSubdomain)
-                    NightShiftManager.respond(to: .nightShiftEnableRuleDeactivated)
                 case .none:
                     return
                 }
                 guard let index = browserRules.index(of: rule) else { return }
                 browserRules.remove(at: index)
+                
+                switch prevValue {
+                case .disabled:
+                    NightShiftManager.respond(to: .nightShiftDisableRuleDeactivated)
+                case .enabled:
+                    NightShiftManager.respond(to: .nightShiftEnableRuleDeactivated)
+                case .none:
+                    break
+                }
             }
         }
     }

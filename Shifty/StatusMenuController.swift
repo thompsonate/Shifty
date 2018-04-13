@@ -321,6 +321,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     @IBAction func disableHour(_ sender: Any) {
         if disableHourMenuItem.state == .off {
             let disableTimer = Timer.scheduledTimer(withTimeInterval: 3600, repeats: false) { _ in
+                NightShiftManager.nightShiftDisableTimer = .off
                 NightShiftManager.respond(to: .nightShiftDisableTimerEnded)
             }
             disableTimer.tolerance = 60
@@ -333,6 +334,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             NightShiftManager.nightShiftDisableTimer = .hour(timer: disableTimer, endDate: disabledUntilDate)
             NightShiftManager.respond(to: .nightShiftDisableTimerStarted)
         } else {
+            NightShiftManager.nightShiftDisableTimer = .off
             NightShiftManager.respond(to: .nightShiftDisableTimerEnded)
         }
     }
@@ -348,6 +350,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
                 let disableTimer = Timer.scheduledTimer(withTimeInterval: TimeInterval(timeIntervalInSeconds),
                                                         repeats: false,
                                                         block: { _ in
+                    NightShiftManager.nightShiftDisableTimer = .off
                     NightShiftManager.respond(to: .nightShiftDisableTimerEnded)
                 })
                 disableTimer.tolerance = 60
@@ -361,6 +364,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
                 NightShiftManager.respond(to: .nightShiftDisableTimerStarted)
             }
         } else {
+            NightShiftManager.nightShiftDisableTimer = .off
             NightShiftManager.respond(to: .nightShiftDisableTimerEnded)
         }
     }

@@ -29,6 +29,7 @@ class SliderView: NSView {
         
         let statusMenuController = (NSApplication.shared.delegate as! AppDelegate).statusMenu.delegate as! StatusMenuController
         statusMenuController.configureMenuItems()
+        statusMenuController.setDescriptionText(keepVisible: true)
         
         shiftSlider.isEnabled = true
         Event.enableSlider.record()

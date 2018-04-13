@@ -100,11 +100,16 @@ enum ScheduleType: Equatable {
     }
 }
 
+
+
+
+
 enum NightShiftManager {
     private static let client = CBBlueLightClient()
 
-    static var isCurrentlyInNightShiftSchedule: Bool = false
+    static var isCurrentlyInNightShiftSchedule = false
     static var userSet: Bool? = false
+    static var userInitiatedShift = false
  
     private static var blueLightStatus: Status {
         var status: Status = Status()
@@ -187,19 +192,10 @@ enum NightShiftManager {
     }
     
     public static func setToSchedule() {
-        switch schedule {
-        case .off:
-            isNightShiftEnabled = false
-        case .custom(start: let startTime, end: let endTime):
-            schedule = .off
-            schedule = .custom(start: startTime, end: endTime)
-        case .solar:
-            schedule = .off
-            schedule = .solar
+        if isNightShiftEnabled != scheduledState {
+            isNightShiftEnabled = scheduledState
         }
     }
-    
-    private static var userOverridden: Bool?
     
     static var nightShiftDisableTimer = DisableTimer.off {
         willSet {
@@ -244,7 +240,7 @@ enum NightShiftManager {
         if UserDefaults.standard.bool(forKey: Keys.isDarkModeSyncEnabled) {
             switch schedule {
             case .off:
-                let darkModeState = isNightShiftEnabled || disableRuleIsActive || disabledTimer || userOverridden == false
+                let darkModeState = isNightShiftEnabled || disableRuleIsActive || disabledTimer || userSet == false
                 SLSSetAppearanceThemeLegacy(darkModeState)
                 logw("Dark mode set to \(darkModeState)")
             case .solar:
@@ -258,16 +254,28 @@ enum NightShiftManager {
     }
 
     static func respond(to event: NightShiftEvent) {
+        //Prevent BlueLightNotification from triggering one of these two events after every event
+        if event == .enteredScheduledNightShift || event == .exitedScheduledNightShift {
+            if userInitiatedShift {
+                userInitiatedShift = false
+                return
+            } else {
+                userInitiatedShift = false
+            }
+        } else {
+            userInitiatedShift = true
+        }
+        
         switch event {
         case .enteredScheduledNightShift:
-            userOverridden = nil
+            userSet = nil
             if disabledTimer || disableRuleIsActive {
                 isNightShiftEnabled = false
             }
         case .exitedScheduledNightShift:
-            userOverridden = nil
+            userSet = nil
         case .userEnabledNightShift:
-            userOverridden = true
+            userSet = true
             nightShiftDisableTimer = .off
             
             if disableRuleIsActive {
@@ -276,31 +284,35 @@ enum NightShiftManager {
             isNightShiftEnabled = true
         case .userDisabledNightShift:
             isNightShiftEnabled = false
-            userOverridden = false
+            userSet = false
         case .nightShiftDisableRuleActivated:
-            userOverridden = nil
             isNightShiftEnabled = false
         case .nightShiftDisableRuleDeactivated:
-            userOverridden = nil
             if !disabledTimer && !disableRuleIsActive {
-                setToSchedule()
+                if userSet != nil {
+                    isNightShiftEnabled = userSet!
+                } else {
+                    setToSchedule()
+                }
             }
         case .nightShiftEnableRuleActivated:
-            isNightShiftEnabled = true
+            isNightShiftEnabled = userSet ?? true
         case .nightShiftEnableRuleDeactivated:
             if disabledTimer || disableRuleIsActive {
                 isNightShiftEnabled = false
             } else {
                 setToSchedule()
             }
+            print(RuleManager.ruleForSubdomain)
         case .nightShiftDisableTimerStarted:
-            userOverridden = nil
             isNightShiftEnabled = false
         case .nightShiftDisableTimerEnded:
-            userOverridden = nil
-            nightShiftDisableTimer = .off
             if !disableRuleIsActive {
-                setToSchedule()
+                if userSet != nil {
+                    isNightShiftEnabled = userSet!
+                } else {
+                    setToSchedule()
+                }
             }
         }
     }
