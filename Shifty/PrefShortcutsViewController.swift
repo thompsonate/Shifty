@@ -11,29 +11,27 @@ import MASShortcut
 
 @objcMembers
 class PrefShortcutsViewController: NSViewController, MASPreferencesViewController {
-    
+
     let statusMenuController = (NSApplication.shared.delegate as? AppDelegate)?.statusMenu.delegate as? StatusMenuController
-    
+
     override var nibName: NSNib.Name {
-        get { return NSNib.Name("PrefShortcutsViewController") }
+        return NSNib.Name("PrefShortcutsViewController")
     }
-    
+
     var viewIdentifier: String = "PrefShortcutsViewController"
-    
+
     var toolbarItemImage: NSImage? {
-        get { return #imageLiteral(resourceName: "shortcutsIcon") }
+        return #imageLiteral(resourceName: "shortcutsIcon")
     }
-    
+
     var toolbarItemLabel: String? {
-        get {
-            view.layoutSubtreeIfNeeded()
-            return NSLocalizedString("prefs.shortcuts", comment: "Shortcuts")
-        }
+        view.layoutSubtreeIfNeeded()
+        return NSLocalizedString("prefs.shortcuts", comment: "Shortcuts")
     }
-    
+
     var hasResizableWidth = false
     var hasResizableHeight = false
-    
+
     @IBOutlet weak var toggleNightShiftShortcut: MASShortcutView!
     @IBOutlet weak var incrementColorTempShortcut: MASShortcutView!
     @IBOutlet weak var decrementColorTempShortcut: MASShortcutView!
@@ -42,15 +40,15 @@ class PrefShortcutsViewController: NSViewController, MASPreferencesViewControlle
     @IBOutlet weak var disableSubdomainShortcut: MASShortcutView!
     @IBOutlet weak var disableHourShortcut: MASShortcutView!
     @IBOutlet weak var disableCustomShortcut: MASShortcutView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         //Fix layer-backing issues in 10.12 that cause window corners to not be rounded.
         if !ProcessInfo().isOperatingSystemAtLeast(OperatingSystemVersion(majorVersion: 10, minorVersion: 13, patchVersion: 0)) {
             view.wantsLayer = false
         }
-        
+
         toggleNightShiftShortcut.associatedUserDefaultsKey = Keys.toggleNightShiftShortcut
         incrementColorTempShortcut.associatedUserDefaultsKey = Keys.incrementColorTempShortcut
         decrementColorTempShortcut.associatedUserDefaultsKey = Keys.decrementColorTempShortcut
@@ -60,11 +58,11 @@ class PrefShortcutsViewController: NSViewController, MASPreferencesViewControlle
         disableHourShortcut.associatedUserDefaultsKey = Keys.disableHourShortcut
         disableCustomShortcut.associatedUserDefaultsKey = Keys.disableCustomShortcut
     }
-    
+
     override func viewWillDisappear() {
         Event.shortcuts(toggleNightShift: toggleNightShiftShortcut.shortcutValue != nil, increaseColorTemp: incrementColorTempShortcut.shortcutValue != nil, decreaseColorTemp: decrementColorTempShortcut.shortcutValue != nil, disableApp: disableAppShortcut.shortcutValue != nil, disableDomain: disableDomainShortcut.shortcutValue != nil, disableSubdomain: disableSubdomainShortcut.shortcutValue != nil, disableHour: disableHourShortcut.shortcutValue != nil, disableCustom: disableCustomShortcut.shortcutValue != nil).record()
     }
-    
+
     func bindShortcuts() {
         MASShortcutBinder.shared().bindShortcut(withDefaultsKey: Keys.toggleNightShiftShortcut) {
             guard let menu = self.statusMenuController else { return }
@@ -74,34 +72,34 @@ class PrefShortcutsViewController: NSViewController, MASPreferencesViewControlle
                 NSSound.beep()
             }
         }
-        
+
         MASShortcutBinder.shared().bindShortcut(withDefaultsKey: Keys.incrementColorTempShortcut) {
-            if BLClient.isNightShiftEnabled {
-                if BLClient.strength == 1.0 {
+            if NightShiftManager.isNightShiftEnabled {
+                if NightShiftManager.blueLightReductionAmount == 1.0 {
                     NSSound.beep()
                 }
-                BLClient.setStrength(BLClient.strength + 0.1, commit: true)
+                NightShiftManager.blueLightReductionAmount += 0.1
             } else {
-                BLClient.setEnabled(true)
-                BLClient.setStrength(0.1, commit: true)
-                self.statusMenuController?.disableDisableTimer()
-                if self.statusMenuController?.isDisabledForApp ?? false {
-                    NSSound.beep()
-                }
+                NightShiftManager.respond(to: .userEnabledNightShift)
+                NightShiftManager.blueLightReductionAmount = 0.1
+//                self.statusMenuController?.disableDisableTimer()
+//                if self.statusMenuController?.isDisabledForApp ?? false {
+//                    NSSound.beep()
+//                }
             }
         }
-        
+
         MASShortcutBinder.shared().bindShortcut(withDefaultsKey: Keys.decrementColorTempShortcut) {
-            if BLClient.isNightShiftEnabled {
-                BLClient.setStrength(BLClient.strength - 0.1, commit: true)
-                if BLClient.strength == 0.0 {
-                    BLClient.setEnabled(false)
+            if NightShiftManager.isNightShiftEnabled {
+                NightShiftManager.blueLightReductionAmount -= 0.1
+                if NightShiftManager.blueLightReductionAmount == 0.0 {
+//                    BLClient.setEnabled(false)
                 }
             } else {
                 NSSound.beep()
             }
         }
-        
+
         MASShortcutBinder.shared().bindShortcut(withDefaultsKey: Keys.disableAppShortcut) {
             guard let menu = self.statusMenuController else { return }
             if !menu.disableAppMenuItem.isHidden && menu.disableAppMenuItem.isEnabled {
@@ -110,7 +108,7 @@ class PrefShortcutsViewController: NSViewController, MASPreferencesViewControlle
                 NSSound.beep()
             }
         }
-        
+
         MASShortcutBinder.shared().bindShortcut(withDefaultsKey: Keys.disableDomainShortcut) {
             guard let menu = self.statusMenuController else { return }
             if !menu.disableDomainMenuItem.isHidden && menu.disableDomainMenuItem.isEnabled {
@@ -119,7 +117,7 @@ class PrefShortcutsViewController: NSViewController, MASPreferencesViewControlle
                 NSSound.beep()
             }
         }
-        
+
         MASShortcutBinder.shared().bindShortcut(withDefaultsKey: Keys.disableSubdomainShortcut) {
             guard let menu = self.statusMenuController else { return }
             if !menu.disableSubdomainMenuItem.isHidden && menu.disableSubdomainMenuItem.isEnabled {
@@ -128,7 +126,7 @@ class PrefShortcutsViewController: NSViewController, MASPreferencesViewControlle
                 NSSound.beep()
             }
         }
-        
+
         MASShortcutBinder.shared().bindShortcut(withDefaultsKey: Keys.disableHourShortcut) {
             guard let menu = self.statusMenuController else { return }
             if !menu.disableHourMenuItem.isHidden && menu.disableHourMenuItem.isEnabled {
@@ -137,7 +135,7 @@ class PrefShortcutsViewController: NSViewController, MASPreferencesViewControlle
                 NSSound.beep()
             }
         }
-        
+
         MASShortcutBinder.shared().bindShortcut(withDefaultsKey: Keys.disableCustomShortcut) {
             guard let menu = self.statusMenuController else { return }
             if !menu.disableCustomMenuItem.isHidden && menu.disableCustomMenuItem.isEnabled {

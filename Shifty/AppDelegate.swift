@@ -21,7 +21,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var statusMenu: NSMenu!
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     var statusItemClicked: (() -> Void)?
-    
+
     lazy var preferenceWindowController: PrefWindowController = {
         return PrefWindowController(
             viewControllers: [
@@ -30,24 +30,66 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 PrefAboutViewController()],
             title: NSLocalizedString("prefs.title", comment: "Preferences"))
     }()
-    
+
     var setupWindow: NSWindow!
-    
+
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         UserDefaults.standard.register(defaults: ["NSApplicationCrashOnExceptions": true])
         Fabric.with([Crashlytics.self])
         Event.appLaunched.record()
-        
+
         logw("")
         logw("App launched")
         logw("macOS \(ProcessInfo().operatingSystemVersionString)")
         logw("Shifty Version \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")")
-                
+
+        verifyOperatingSystemVersion()
+        verifySupportsNightShift()
+
+        let launcherAppIdentifier = "io.natethompson.ShiftyHelper"
+
+        let startedAtLogin = NSWorkspace.shared.runningApplications.contains {
+            $0.bundleIdentifier == launcherAppIdentifier
+        }
+
+        if startedAtLogin {
+            DistributedNotificationCenter.default().post(name: .terminateApp, object: Bundle.main.bundleIdentifier!)
+        }
+
+        //Show alert if accessibility permissions have been revoked while app is not running
+        if UserDefaults.standard.bool(forKey: Keys.isWebsiteControlEnabled) && !UIElement.isProcessTrusted() {
+            logw("Accessibility permissions revoked while app was not running")
+            showAccessibilityDeniedAlert()
+            UserDefaults.standard.set(false, forKey: Keys.isWebsiteControlEnabled)
+        }
+        
+        observeAccessibilityApiNotifications()
+        
+        NightShiftManager.initialize()
+        RuleManager.initialize()
+
+        logw("Night Shift state: \(NightShiftManager.isNightShiftEnabled)")
+        logw("Schedule: \(NightShiftManager.schedule)")
+        logw("")
+
+        updateMenuBarIcon()
+        setStatusToggle()
+
+        if (!UserDefaults.standard.bool(forKey: Keys.hasSetupWindowShown) && !UIElement.isProcessTrusted()) || ProcessInfo.processInfo.environment["show_setup"] == "true" {
+            showSetupWindow()
+        }
+    }
+    
+    
+    
+    //MARK: Called after application launch
+    
+    func verifyOperatingSystemVersion() {
         if !ProcessInfo().isOperatingSystemAtLeast(OperatingSystemVersion(majorVersion: 10, minorVersion: 12, patchVersion: 4)) {
             Event.oldMacOSVersion(version: ProcessInfo().operatingSystemVersionString).record()
             logw("Operating system version not supported")
             NSApplication.shared.activate(ignoringOtherApps: true)
-
+            
             let alert: NSAlert = NSAlert()
             alert.messageText = NSLocalizedString("alert.version_message", comment: "This version of macOS does not support Night Shift")
             alert.informativeText = NSLocalizedString("alert.version_informative", comment: "Update your Mac to version 10.12.4 or higher to use Shifty.")
@@ -57,8 +99,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             
             NSApplication.shared.terminate(self)
         }
-        
-        if !CBBlueLightClient.supportsBlueLightReduction() {
+    }
+    
+    func verifySupportsNightShift() {
+        if !NightShiftManager.supportsNightShift {
             Event.unsupportedHardware.record()
             logw("System does not support Night Shift")
             NSApplication.shared.activate(ignoringOtherApps: true)
@@ -71,91 +115,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             alert.runModal()
             
             NSApplication.shared.terminate(self)
-        }
-        
-        let launcherAppIdentifier = "io.natethompson.ShiftyHelper"
-        
-        var startedAtLogin = false
-        for app in NSWorkspace.shared.runningApplications {
-            if app.bundleIdentifier == launcherAppIdentifier {
-                startedAtLogin = true
-            }
-        }
-        
-        if startedAtLogin {
-            logw("Started at login")
-            DistributedNotificationCenter.default().post(name: Notification.Name("killme"), object: Bundle.main.bundleIdentifier!)
-        }
-        
-        //Show alert if accessibility permissions have been revoked while app is not running
-        if UserDefaults.standard.bool(forKey: Keys.isWebsiteControlEnabled) && !UIElement.isProcessTrusted() {
-            logw("Accessibility permissions revoked while app was not running")
-            showAccessibilityDeniedAlert()
-            UserDefaults.standard.set(false, forKey: Keys.isWebsiteControlEnabled)
-        }
-        
-        logw("Night Shift state: \(BLClient.isNightShiftEnabled)")
-        logw("Schedule: \(BLClient.schedule)")
-        if BLClient.isSunSchedule {
-            logw("sunrise: \(String(describing: BSClient.sunrise))")
-            logw("sunset: \(String(describing: BSClient.sunset))")
-        }
-        logw("")
-        
-        setMenuBarIcon()
-        setStatusToggle()
-        
-        if (!UserDefaults.standard.bool(forKey: Keys.hasSetupWindowShown) && !UIElement.isProcessTrusted()) || ProcessInfo.processInfo.environment["show_setup"] == "true" {
-            let storyboard = NSStoryboard(name: .init("Setup"), bundle: nil)
-            let controller = storyboard.instantiateInitialController() as! NSWindowController
-            setupWindow = controller.window
-            
-            NSApplication.shared.activate(ignoringOtherApps: true)
-            controller.showWindow(self)
-            setupWindow.makeMain()
-            
-            UserDefaults.standard.set(true, forKey: Keys.hasSetupWindowShown)
-        }
-    }
-    
-    func setMenuBarIcon() {
-        var icon: NSImage
-        if UserDefaults.standard.bool(forKey: Keys.isIconSwitchingEnabled) {
-            if !BLClient.isNightShiftEnabled {
-                icon = #imageLiteral(resourceName: "sunOpenIcon")
-            } else {
-                icon = #imageLiteral(resourceName: "shiftyMenuIcon")
-            }
-        } else {
-            icon = #imageLiteral(resourceName: "shiftyMenuIcon")
-        }
-        icon.isTemplate = true
-        DispatchQueue.main.async {
-            self.statusItem.button?.image = icon
-        }
-    }
-    
-    func setStatusToggle() {
-        if prefs.bool(forKey: Keys.isStatusToggleEnabled) {
-            statusItem.menu = nil
-            if let button = statusItem.button {
-                button.action = #selector(self.statusBarButtonClicked(sender:))
-                button.sendAction(on: [.leftMouseUp, .rightMouseUp])
-            }
-        } else {
-            statusItem.menu = statusMenu
-        }
-    }
-    
-    @objc func statusBarButtonClicked(sender: NSStatusBarButton) {
-        let event = NSApp.currentEvent!
-        
-        if event.type == NSEvent.EventType.rightMouseUp || event.modifierFlags.contains(.control)  {
-            statusItem.menu = statusMenu
-            statusItem.popUpMenu(statusMenu)
-            statusItem.menu = nil
-        } else {
-            statusItemClicked?()
         }
     }
     
@@ -175,6 +134,73 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             logw("Not now button clicked")
         }
     }
+    
+    func showSetupWindow() {
+        let storyboard = NSStoryboard(name: .init("Setup"), bundle: nil)
+        let controller = storyboard.instantiateInitialController() as! NSWindowController
+        setupWindow = controller.window
+        
+        NSApplication.shared.activate(ignoringOtherApps: true)
+        controller.showWindow(self)
+        setupWindow.makeMain()
+        
+        UserDefaults.standard.set(true, forKey: Keys.hasSetupWindowShown)
+    }
+    
+    func observeAccessibilityApiNotifications() {
+        DistributedNotificationCenter.default().addObserver(forName: NSNotification.Name("com.apple.accessibility.api"), object: nil, queue: nil) { _ in
+            logw("Accessibility permissions changed: \(UIElement.isProcessTrusted(withPrompt: false))")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+                if UIElement.isProcessTrusted(withPrompt: false) {
+                    UserDefaults.standard.set(true, forKey: Keys.isWebsiteControlEnabled)
+                } else {
+                    UserDefaults.standard.set(false, forKey: Keys.isWebsiteControlEnabled)
+                }
+            })
+        }
+    }
+    
+    
+    
+    //MARK: Status menu item
+
+    func updateMenuBarIcon() {
+        var icon: NSImage
+        if UserDefaults.standard.bool(forKey: Keys.isIconSwitchingEnabled),
+            !NightShiftManager.isNightShiftEnabled {
+            icon = #imageLiteral(resourceName: "sunOpenIcon")
+        } else {
+            icon = #imageLiteral(resourceName: "shiftyMenuIcon")
+        }
+        icon.isTemplate = true
+        DispatchQueue.main.async {
+            self.statusItem.button?.image = icon
+        }
+    }
+
+    func setStatusToggle() {
+        if prefs.bool(forKey: Keys.isStatusToggleEnabled) {
+            statusItem.menu = nil
+            if let button = statusItem.button {
+                button.action = #selector(statusBarButtonClicked)
+                button.sendAction(on: [.leftMouseUp, .rightMouseUp])
+            }
+        } else {
+            statusItem.menu = statusMenu
+        }
+    }
+
+    @objc func statusBarButtonClicked(sender: NSStatusBarButton) {
+        let event = NSApp.currentEvent!
+
+        if event.type == NSEvent.EventType.rightMouseUp || event.modifierFlags.contains(.control) {
+            statusItem.menu = statusMenu
+            statusItem.popUpMenu(statusMenu)
+            statusItem.menu = nil
+        } else {
+            statusItemClicked?()
+        }
+    }
 
     func applicationWillTerminate(_ aNotification: Notification) {
         logw("App terminated")
@@ -182,4 +208,3 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 
 }
-

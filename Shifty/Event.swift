@@ -25,11 +25,11 @@ enum Event {
     case disableForSubdomain(state: Bool)
     case preferencesWindowOpened
     case quitShifty
-    
+
     //SliderView
     case enableSlider
     case sliderMoved(value: Float)
-    
+
     //Preferences
     case preferences(autoLaunch: Bool, quickToggle: Bool, iconSwitching: Bool, syncDarkMode: Bool, websiteShifting: Bool, schedule: ScheduleType)
     case shortcuts(toggleNightShift: Bool, increaseColorTemp: Bool, decreaseColorTemp: Bool, disableApp: Bool, disableDomain: Bool, disableSubdomain: Bool, disableHour: Bool, disableCustom: Bool)
@@ -39,20 +39,20 @@ enum Event {
     case donateButtonClicked
     case checkForUpdatesClicked
     case creditsClicked
-    
+
     //Errors
     case accessibilityRevokedAlertShown
 }
 
 
 extension Event {
-    
+
     func record() {
         #if !DEBUG
             Answers.logCustomEvent(withName: eventName, customAttributes: customAttributes)
         #endif
     }
-    
+
     private var eventName: String {
         switch(self) {
         case .appLaunched: return "App Launched"
@@ -80,7 +80,7 @@ extension Event {
         case .accessibilityRevokedAlertShown: return "Accessibility permissions revoked alert shown"
         }
     }
-    
+
     private var customAttributes: [String: Any]? {
         switch(self) {
         case .oldMacOSVersion(let version):
@@ -97,7 +97,7 @@ extension Event {
             return ["State": state ? "true" : "false"]
         case .disableForCustomTime(let state, let timeInterval):
             return ["State": state ? "true" : "false",
-                    "Time interval in minutes": String(describing: timeInterval)]
+                "Time interval in minutes": String(describing: timeInterval)]
         case .sliderMoved(let value):
             return ["Slider value": value]
         case .shortcuts(let toggleNightShift, let increaseColorTemp, let decreaseColorTemp, let disableApp, let disableDomain, let disableSubdomain, let disableHour, let disableCustom):
@@ -113,8 +113,8 @@ extension Event {
             var scheduleString: String
             switch schedule {
             case .off: scheduleString = "off"
-            case .sunSchedule: scheduleString = "sunset to sunrise"
-            case .timedSchedule(_, _): scheduleString = "custom"
+            case .solar: scheduleString = "sunset to sunrise"
+            case .custom(_, _): scheduleString = "custom"
             }
             return ["Auto Launch": autoLaunch ? "true" : "false",
                     "Quick Toggle": quickToggle ? "true" : "false",

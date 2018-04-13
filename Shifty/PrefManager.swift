@@ -16,7 +16,7 @@ struct Keys {
     static let isWebsiteControlEnabled = "isWebsiteControlEnabled"
     static let disabledApps = "disabledApps"
     static let browserRules = "browserRules"
-    
+
     static let toggleNightShiftShortcut = "toggleNightShiftShortcut"
     static let incrementColorTempShortcut = "incrementColorTempShortcut"
     static let decrementColorTempShortcut = "decrementColorTempShortcut"
@@ -25,20 +25,19 @@ struct Keys {
     static let disableSubdomainShortcut = "disableSubdomainShortcut"
     static let disableHourShortcut = "disableHourShortcut"
     static let disableCustomShortcut = "disableCustomShortcut"
-    
     static let hasSetupWindowShown = "hasSetupWindowShown"
 }
 
 
 class PrefManager {
-    static let sharedInstance = PrefManager()
-    
+    static let shared = PrefManager()
+
     private init() {
         registerFactoryDefaults()
     }
-    
+
     let userDefaults = UserDefaults.standard
-    
+
     private func registerFactoryDefaults() {
         let factoryDefaults = [
             Keys.isAutoLaunchEnabled: NSNumber(value: false),
@@ -46,18 +45,18 @@ class PrefManager {
             Keys.isIconSwitchingEnabled: NSNumber(value: false),
             Keys.isDarkModeSyncEnabled: NSNumber(value: false),
             Keys.isWebsiteControlEnabled: NSNumber(value: false),
-            Keys.disabledApps: [String](),
+            Keys.disabledApps: NSData(),
             Keys.browserRules: NSData(),
             Keys.hasSetupWindowShown: NSNumber(value: false)
             ] as [String : Any]
-        
+
         userDefaults.register(defaults: factoryDefaults)
     }
-    
+
     func synchronize() {
         userDefaults.synchronize()
     }
-    
+
     func reset() {
         userDefaults.removeObject(forKey: Keys.isAutoLaunchEnabled)
         userDefaults.removeObject(forKey: Keys.isStatusToggleEnabled)
@@ -79,5 +78,3 @@ class PrefManager {
         synchronize()
     }
 }
-
-

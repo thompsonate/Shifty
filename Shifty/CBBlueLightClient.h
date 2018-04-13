@@ -28,15 +28,14 @@ typedef struct {
     int mode;
     Schedule schedule;
     unsigned long long disableFlags;
-} StatusData;
+} Status;
 
 - (BOOL)setStrength:(float)strength commit:(BOOL)commit;
 - (BOOL)setEnabled:(BOOL)enabled;
 - (BOOL)setMode:(int)mode;
-- (BOOL)setSchedule:(Schedule *)arg1;
-- (BOOL)getStrength:(float*)strength;
-- (BOOL)getCCT:(float*)arg1;
-- (BOOL)getBlueLightStatus:(StatusData *)arg1;
-- (void)setStatusNotificationBlock:(id /* block */)arg1;
+- (BOOL)setSchedule:(Schedule *)schedule;
+- (BOOL)getStrength:(float *)strength;
+- (BOOL)getBlueLightStatus:(Status *)status;
+- (void)setStatusNotificationBlock:(void (^)(void))block;
 + (BOOL)supportsBlueLightReduction;
 @end
