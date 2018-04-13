@@ -191,7 +191,7 @@ enum RuleManager {
         }
         if disabledApps.contains(bundleIdentier) {
             NightShiftManager.respond(to: .nightShiftDisableRuleActivated)
-        } else if SupportedBrowser(application) != nil {
+        } else if BrowserManager.currrentAppIsSupportedBrowser {
             BrowserManager.updateForSupportedBrowser()
         } else {
             NightShiftManager.respond(to: .nightShiftDisableRuleDeactivated)

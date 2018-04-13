@@ -40,6 +40,10 @@ enum SupportedBrowser: BundleIdentifier {
 
 enum BrowserManager {
     static var currentURL: URL? {
+        if !UserDefaults.standard.bool(forKey: Keys.isWebsiteControlEnabled) {
+            return nil
+        }
+        
         guard let application = RuleManager.currentApp,
             let browser = SupportedBrowser(application),
             let app: Browser = SBApplication(application) else {
@@ -57,6 +61,10 @@ enum BrowserManager {
     }
     
     static var currrentAppIsSupportedBrowser: Bool {
+        if !UserDefaults.standard.bool(forKey: Keys.isWebsiteControlEnabled) {
+            return false
+        }
+        
         guard let currentApp = RuleManager.currentApp else { return false }
         return SupportedBrowser(currentApp) != nil
     }
