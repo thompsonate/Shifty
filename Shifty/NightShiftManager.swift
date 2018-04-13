@@ -67,15 +67,16 @@ enum NightShiftEvent {
 
 enum DisableTimer: Equatable {
     case off
-    case hour(timer: Timer)
-    case custom(timer: Timer)
+    case hour(timer: Timer, endDate: Date)
+    case custom(timer: Timer, endDate: Date)
     
     static func == (lhs: DisableTimer, rhs: DisableTimer) -> Bool {
         switch (lhs, rhs) {
         case (.off, .off):
             return true
-        case (let .hour(leftTimer), let .hour(rightTimer)), (let .custom(leftTimer), let .custom(rightTimer)):
-            return leftTimer == rightTimer
+        case (let .hour(leftTimer, leftDate), let .hour(rightTimer, rightDate)),
+             (let .custom(leftTimer, leftDate), let .custom(rightTimer, rightDate)):
+            return leftTimer == rightTimer && leftDate == rightDate
         default:
             return false
         }
@@ -203,7 +204,7 @@ enum NightShiftManager {
     static var nightShiftDisableTimer = DisableTimer.off {
         willSet {
             switch nightShiftDisableTimer {
-            case .hour(let timer), .custom(let timer):
+            case .hour(let timer, _), .custom(let timer, _):
                 timer.invalidate()
             default: break
             }

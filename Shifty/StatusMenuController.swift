@@ -41,8 +41,6 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     var prefShortcuts: PrefShortcutsViewController!
     var customTimeWindow: CustomTimeWindow!
     
-    var disabledUntilDate: Date?
-
     let calendar = NSCalendar(identifier: .gregorian)!
 
     //MARK: Menu life cycle
@@ -195,7 +193,14 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     
     func setDescriptionText(keepVisible: Bool = false) {
         if NightShiftManager.disabledTimer {
-            guard let disabledUntilDate = disabledUntilDate else { return }
+            var disabledUntilDate: Date
+            
+            switch NightShiftManager.nightShiftDisableTimer {
+            case .hour(timer: _, endDate: let date), .custom(timer: _, endDate: let date):
+                disabledUntilDate = date
+            case .off:
+                return
+            }
             
             let nowDate = Date()
             let dateComponentsFormatter = DateComponentsFormatter()
@@ -323,9 +328,9 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             let currentDate = Date()
             var addComponents = DateComponents()
             addComponents.hour = 1
-            disabledUntilDate = calendar.date(byAdding: addComponents, to: currentDate, options: [])!
+            let disabledUntilDate = calendar.date(byAdding: addComponents, to: currentDate, options: [])!
             
-            NightShiftManager.nightShiftDisableTimer = .hour(timer: disableTimer)
+            NightShiftManager.nightShiftDisableTimer = .hour(timer: disableTimer, endDate: disabledUntilDate)
             NightShiftManager.respond(to: .nightShiftDisableTimerStarted)
         } else {
             NightShiftManager.respond(to: .nightShiftDisableTimerEnded)
@@ -350,9 +355,9 @@ class StatusMenuController: NSObject, NSMenuDelegate {
                 let currentDate = Date()
                 var addComponents = DateComponents()
                 addComponents.second = timeIntervalInSeconds
-                self.disabledUntilDate = self.calendar.date(byAdding: addComponents, to: currentDate, options: [])!
+                let disabledUntilDate = self.calendar.date(byAdding: addComponents, to: currentDate, options: [])!
                 
-                NightShiftManager.nightShiftDisableTimer = .custom(timer: disableTimer)
+                NightShiftManager.nightShiftDisableTimer = .custom(timer: disableTimer, endDate: disabledUntilDate)
                 NightShiftManager.respond(to: .nightShiftDisableTimerStarted)
             }
         } else {
