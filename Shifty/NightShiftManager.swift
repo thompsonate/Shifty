@@ -61,6 +61,8 @@ enum NightShiftEvent {
     case nightShiftDisableTimerEnded
     case nightShiftDisableRuleActivated
     case nightShiftDisableRuleDeactivated
+    case nightShiftEnableRuleActivated
+    case nightShiftEnableRuleDeactivated
 }
 
 enum DisableTimer: Equatable {
@@ -280,6 +282,14 @@ enum NightShiftManager {
         case .nightShiftDisableRuleDeactivated:
             userOverridden = nil
             if !disabledTimer && !disableRuleIsActive {
+                setToSchedule()
+            }
+        case .nightShiftEnableRuleActivated:
+            isNightShiftEnabled = true
+        case .nightShiftEnableRuleDeactivated:
+            if disabledTimer || disableRuleIsActive {
+                isNightShiftEnabled = false
+            } else {
                 setToSchedule()
             }
         case .nightShiftDisableTimerStarted:

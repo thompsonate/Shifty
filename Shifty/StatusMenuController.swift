@@ -124,12 +124,45 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             powerMenuItem.title = NSLocalizedString("menu.toggle_on", comment: "Turn on Night Shift")
             sliderView.shiftSlider.isEnabled = false
         }
+        
         if RuleManager.disabledForApp {
             disableAppMenuItem.state = .on
             disableAppMenuItem.title = String(format: NSLocalizedString("menu.disabled_for", comment: "Disabled for %@"), currentAppName)
         } else {
             disableAppMenuItem.state = .off
             disableAppMenuItem.title = String(format: NSLocalizedString("menu.disable_for", comment: "Disable for %@"), currentAppName)
+        }
+        
+        if BrowserManager.hasValidDomain {
+            disableDomainMenuItem.isHidden = false
+            if RuleManager.disabledForDomain {
+                disableDomainMenuItem.state = .on
+                disableDomainMenuItem.title = String(format: NSLocalizedString("menu.disabled_for", comment: "Disabled for %@"), BrowserManager.currentDomain ?? "")
+            } else {
+                disableDomainMenuItem.state = .off
+                disableDomainMenuItem.title = String(format: NSLocalizedString("menu.disable_for", comment: "Disable for %@"), BrowserManager.currentDomain ?? "")
+            }
+        } else {
+            disableDomainMenuItem.isHidden = true
+        }
+        
+        if BrowserManager.hasValidSubdomain {
+            disableSubdomainMenuItem.isHidden = false
+            if RuleManager.ruleForSubdomain == .enabled {
+                disableSubdomainMenuItem.state = .on
+                disableSubdomainMenuItem.title = String(format: NSLocalizedString("menu.enabled_for", comment: "Enabled for %@"), BrowserManager.currentSubdomain ?? "")
+            } else if RuleManager.ruleForSubdomain == .disabled {
+                disableSubdomainMenuItem.state = .on
+                disableSubdomainMenuItem.title = String(format: NSLocalizedString("menu.disabled_for", comment: "Disabled for %@"), BrowserManager.currentSubdomain ?? "")
+            } else if RuleManager.disabledForDomain {
+                disableSubdomainMenuItem.state = .off
+                disableSubdomainMenuItem.title = String(format: NSLocalizedString("menu.enable_for", comment: "Enable for %@"), BrowserManager.currentSubdomain ?? "")
+            } else {
+                disableSubdomainMenuItem.state = .off
+                disableSubdomainMenuItem.title = String(format: NSLocalizedString("menu.disable_for", comment: "Disable for %@"), BrowserManager.currentSubdomain ?? "")
+            }
+        } else {
+            disableSubdomainMenuItem.isHidden = true
         }
         
         switch NightShiftManager.nightShiftDisableTimer {
@@ -254,20 +287,30 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     @IBAction func disableForApp(_ sender: Any) {
         if RuleManager.disabledForApp {
             RuleManager.disabledForApp = false
-            NightShiftManager.respond(to: .nightShiftDisableRuleDeactivated)
         } else {
             RuleManager.disabledForApp = true
-            NightShiftManager.respond(to: .nightShiftDisableRuleActivated)
         }
         Event.disableForCurrentApp(state: (sender as? NSMenuItem)?.state == .on).record()
     }
 
     @IBAction func disableForDomain(_ sender: Any) {
-
+        if RuleManager.disabledForDomain {
+            RuleManager.disabledForDomain = false
+        } else {
+            RuleManager.disabledForDomain = true
+        }
     }
 
     @IBAction func disableForSubdomain(_ sender: Any) {
-        
+        if RuleManager.ruleForSubdomain == .none {
+            if RuleManager.disabledForDomain {
+                RuleManager.ruleForSubdomain = .enabled
+            } else {
+                RuleManager.ruleForSubdomain = .disabled
+            }
+        } else {
+            RuleManager.ruleForSubdomain = .none
+        }
     }
     
     @IBAction func disableHour(_ sender: Any) {

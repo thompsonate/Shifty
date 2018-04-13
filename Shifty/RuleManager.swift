@@ -9,50 +9,34 @@ import Cocoa
 import SwiftLog
 import ScriptingBridge
 
-typealias BundleIdentifier = String
-enum SupportedBrowser: BundleIdentifier {
-    case safari = "com.apple.Safari"
-    case safariTechnologyPreview = "com.apple.SafariTechnologyPreview"
-
-    case chrome = "com.google.Chrome"
-    case chromeCanary = "com.google.Chrome.canary"
-    case chromium = "org.chromium.Chromium"
-
-    init?(_ rawValue: String) {
-        self.init(rawValue: rawValue)
-    }
-    
-    init?(_ application: NSRunningApplication) {
-        if let bundleIdentifier = application.bundleIdentifier {
-            self.init(bundleIdentifier)
-        } else {
-            return nil
-        }
-    }
-}
 
 enum RuleType: String, Codable {
     case domain
-    case subdomain
+    case subdomainDisabled
+    case subdomainEnabled
+}
+
+enum SubdomainRuleType: String, Codable {
+    case none
+    case disabled
+    case enabled
 }
 
 struct BrowserRule: CustomStringConvertible, Hashable, Codable {
     var type: RuleType
     var host: String
-    var enableNightShift: Bool
 
     var description: String {
-        return "Rule type; \(type) for host: \(host) enables NightSift: \(enableNightShift)"
+        return "Rule type: \(type) for host: \(host)"
     }
 
     var hashValue: Int {
-        return type.hashValue ^ host.hashValue ^ enableNightShift.hashValue
+        return type.hashValue ^ host.hashValue
     }
 
     static func == (lhs: BrowserRule, rhs: BrowserRule) -> Bool {
         return lhs.type == rhs.type
             && lhs.host == rhs.host
-            && lhs.enableNightShift == rhs.enableNightShift
     }
 }
 
@@ -82,61 +66,106 @@ enum RuleManager {
             }
             if newValue {
                 disabledApps.insert(bundleIdentifier)
+                NightShiftManager.respond(to: .nightShiftDisableRuleActivated)
             } else {
                 disabledApps.remove(bundleIdentifier)
+                NightShiftManager.respond(to: .nightShiftDisableRuleDeactivated)
             }
         }
     }
     
     static var browserRules = Set<BrowserRule>() {
-        didSet {
-
+        didSet(newValue) {
         }
-    }
-
-    static var currentURL: URL? {
-        guard let application = currentApp,
-            let browser = SupportedBrowser(application),
-            let app: Browser = SBApplication(application) else {
-                return nil
-        }
-        return urlFor(browser, app)
     }
     
     static var disabledForDomain: Bool {
         get {
-            return false
+            guard let currentDomain = BrowserManager.currentDomain else { return false }
+            let disabledDomain = browserRules.filter {
+                $0.type == .domain && $0.host == currentDomain }.count > 0
+            return disabledDomain
         }
         set(newValue) {
+            guard let currentDomain = BrowserManager.currentDomain else { return }
+            let rule = BrowserRule(type: .domain, host: currentDomain)
             if newValue {
-                
+                browserRules.insert(rule)
+                NightShiftManager.respond(to: .nightShiftDisableRuleActivated)
             } else {
+                guard let index = browserRules.index(of: rule) else { return }
                 
+                if ruleForSubdomain == .enabled {
+                    ruleForSubdomain = .none
+                }
+                browserRules.remove(at: index)
+                NightShiftManager.respond(to: .nightShiftDisableRuleDeactivated)
             }
         }
     }
     
-    static var disabledForSubdomain: Bool {
+    static var ruleForSubdomain: SubdomainRuleType {
         get {
-            return false
+            guard let currentSubdomain = BrowserManager.currentSubdomain else { return .none }
+            
+            if disabledForDomain {
+                let isEnabled = (browserRules.filter {
+                    $0.type == .subdomainEnabled
+                        && $0.host == currentSubdomain
+                    }.count > 0)
+                if isEnabled {
+                    return .enabled
+                }
+            } else {
+                let isDisabled = (browserRules.filter {
+                    $0.type == .subdomainDisabled
+                        && $0.host == currentSubdomain
+                    }.count > 0)
+                if isDisabled {
+                    return .disabled
+                }
+            }
+            return .none
         }
         set(newValue) {
-            if newValue {
+            guard let currentSubdomain = BrowserManager.currentSubdomain else { return }
+            
+            switch newValue {
+            case .disabled:
+                let rule = BrowserRule(type: .subdomainDisabled, host: currentSubdomain)
+                browserRules.insert(rule)
+                NightShiftManager.respond(to: .nightShiftDisableRuleActivated)
+            case .enabled:
+                let rule = BrowserRule(type: .subdomainEnabled, host: currentSubdomain)
+                browserRules.insert(rule)
+                NightShiftManager.respond(to: .nightShiftEnableRuleActivated)
+            case .none:
+                var rule: BrowserRule
                 
-            } else {
-                
+                switch ruleForSubdomain {
+                case .disabled:
+                    rule = BrowserRule(type: .subdomainDisabled, host: currentSubdomain)
+                    NightShiftManager.respond(to: .nightShiftDisableRuleDeactivated)
+                case .enabled:
+                    rule = BrowserRule(type: .subdomainEnabled, host: currentSubdomain)
+                    NightShiftManager.respond(to: .nightShiftEnableRuleDeactivated)
+                case .none:
+                    return
+                }
+                guard let index = browserRules.index(of: rule) else { return }
+                browserRules.remove(at: index)
             }
         }
     }
     
     static var disableRuleIsActive: Bool {
-        return disabledForApp || disabledForDomain || disabledForSubdomain
+        return disabledForApp || (disabledForDomain && ruleForSubdomain != .enabled) || ruleForSubdomain == .disabled
     }
     
     static func removeRulesForCurrentState() {
         disabledForApp = false
         disabledForDomain = false
-        disabledForSubdomain = false
+        ruleForSubdomain = .none
     }
 
     public static func initialize() {
@@ -157,69 +186,17 @@ enum RuleManager {
 
     private static func appSwitched(notification: Notification) {
         guard let application = (notification.userInfo?[NSWorkspace.applicationUserInfoKey] as? NSRunningApplication),
-            let bundleIdentier = application.bundleIdentifier,
-            let processIdentifier = Optional.some(application.processIdentifier) else {
+            let bundleIdentier = application.bundleIdentifier else {
                 return
         }
         if disabledApps.contains(bundleIdentier) {
             NightShiftManager.respond(to: .nightShiftDisableRuleActivated)
         } else if SupportedBrowser(application) != nil {
-            var observer = AXObserver?.none
-            AXObserverCreate(processIdentifier, {
-                RuleManager.browserSwitchedURL(observer: $0, element: $1, notification: $2, userInfo: $3)
-            }, &observer)
-            var windows = CFTypeRef?.none
-            AXUIElementCopyAttributeValue(AXUIElementCreateApplication(processIdentifier), "AXWindows" as CFString, &windows)
-            for window in windows as? [AXUIElement] ?? [] {
-                _ = observer.flatMap {
-                    let userInfo = UnsafeMutableRawPointer(Unmanaged.passUnretained(application).toOpaque())
-                    registerWindow(window, forNotificationsUsing: $0, userInfo: userInfo)
-                }
-            }
+            BrowserManager.updateForSupportedBrowser()
         } else {
             NightShiftManager.respond(to: .nightShiftDisableRuleDeactivated)
         }
     }
 
-    private static func browserSwitchedURL(observer: AXObserver, element: AXUIElement, notification: CFString, userInfo: UnsafeMutableRawPointer?) {
-        switch notification as String {
-        case kAXWindowCreatedNotification:
-            registerWindow(element, forNotificationsUsing: observer, userInfo: userInfo)
-        case kAXTitleChangedNotification,
-             kAXFocusedWindowChangedNotification:
-            guard let userInfo = userInfo,
-                let application = Optional.some(Unmanaged<NSRunningApplication>.fromOpaque(userInfo).takeUnretainedValue()),
-                let browser = SupportedBrowser(application),
-                let app: Browser = SBApplication(application) else {
-                    assertionFailure("Could not extract browser")
-                    return
-            }
-            let _ = urlFor(browser, app)
-        default:
-            assertionFailure("Invalid AXNotification")
-            return
-        }
-    }
-
-    private static func urlFor(_ browser: SupportedBrowser, _ application: Browser) -> URL? {
-        guard let window = (application.windows as? [Window])?.first else {
-            assertionFailure("Could not extract browser window")
-            return nil
-        }
-        let tab: Tab?
-        switch browser {
-        case .safari, .safariTechnologyPreview:
-            tab = window.currentTab
-        case .chrome, .chromeCanary, .chromium:
-            tab = window.activeTab
-        }
-        return tab?.URL.flatMap(URL.init(string:))
-    }
-
-    private static func registerWindow(_ window: AXUIElement, forNotificationsUsing observer: AXObserver, userInfo: UnsafeMutableRawPointer?) {
-        AXObserverAddNotification(observer, window, kAXWindowCreatedNotification as CFString, userInfo)
-        AXObserverAddNotification(observer, window, kAXTitleChangedNotification as CFString, userInfo)
-        AXObserverAddNotification(observer, window, kAXFocusedWindowChangedNotification as CFString, userInfo)
-        CFRunLoopAddSource(CFRunLoopGetCurrent(), AXObserverGetRunLoopSource(observer), .defaultMode)
-    }
+    
 }
