@@ -45,7 +45,7 @@ class PrefManager {
             Keys.isIconSwitchingEnabled: NSNumber(value: false),
             Keys.isDarkModeSyncEnabled: NSNumber(value: false),
             Keys.isWebsiteControlEnabled: NSNumber(value: false),
-            Keys.disabledApps: [String](),
+            Keys.disabledApps: NSData(),
             Keys.browserRules: NSData(),
             Keys.hasSetupWindowShown: NSNumber(value: false)
             ] as [String : Any]

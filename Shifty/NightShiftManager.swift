@@ -108,7 +108,7 @@ enum NightShiftManager {
     private static let client = CBBlueLightClient()
 
     static var isCurrentlyInNightShiftSchedule = false
-    static var userSet: Bool? = false
+    static var userSet: Bool?
     static var userInitiatedShift = false
  
     private static var blueLightStatus: Status {

@@ -22,6 +22,24 @@ enum SubdomainRuleType: String, Codable {
     case enabled
 }
 
+struct AppRule: CustomStringConvertible, Hashable, Codable {
+    var bundleIdentifier: BundleIdentifier
+    var fullScreenOnly: Bool
+    
+    var description: String {
+        return "Rule for \(bundleIdentifier); full screen only: \(fullScreenOnly)"
+    }
+    
+    var hashValue: Int {
+        return bundleIdentifier.hashValue ^ fullScreenOnly.hashValue
+    }
+    
+    static func == (lhs: AppRule, rhs: AppRule) -> Bool {
+        return lhs.bundleIdentifier == rhs.bundleIdentifier
+            && lhs.fullScreenOnly == rhs.fullScreenOnly
+    }
+}
+
 struct BrowserRule: CustomStringConvertible, Hashable, Codable {
     var type: RuleType
     var host: String
@@ -41,9 +59,16 @@ struct BrowserRule: CustomStringConvertible, Hashable, Codable {
 }
 
 enum RuleManager {
-    static var disabledApps = Set<BundleIdentifier>() {
+    static var disabledApps = Set<AppRule>() {
         didSet {
-
+            PrefManager.shared.userDefaults.set(try? PropertyListEncoder().encode(disabledApps), forKey: Keys.disabledApps)
+        }
+    }
+    
+    
+    static var browserRules = Set<BrowserRule>() {
+        didSet(newValue) {
+            PrefManager.shared.userDefaults.set(try? PropertyListEncoder().encode(browserRules), forKey: Keys.browserRules)
         }
     }
     
@@ -57,25 +82,23 @@ enum RuleManager {
                 logw("Could not obtain bundle identifier of current application")
                 return false
             }
-            return disabledApps.contains(bundleIdentifier)
+            return disabledApps.filter {
+                $0.bundleIdentifier == bundleIdentifier }.count > 0
         }
         set(newValue) {
             guard let bundleIdentifier = currentApp?.bundleIdentifier else {
                 logw("Could not obtain bundle identifier of current application")
                 return
             }
+            let rule = AppRule(bundleIdentifier: bundleIdentifier, fullScreenOnly: false)
             if newValue {
-                disabledApps.insert(bundleIdentifier)
+                disabledApps.insert(rule)
                 NightShiftManager.respond(to: .nightShiftDisableRuleActivated)
             } else {
-                disabledApps.remove(bundleIdentifier)
+                guard let index = disabledApps.index(of: rule) else { return }
+                disabledApps.remove(at: index)
                 NightShiftManager.respond(to: .nightShiftDisableRuleDeactivated)
             }
-        }
-    }
-    
-    static var browserRules = Set<BrowserRule>() {
-        didSet(newValue) {
         }
     }
     
@@ -182,23 +205,26 @@ enum RuleManager {
             RuleManager.appSwitched(notification: $0)
         }
 
-        disabledApps = PrefManager.shared.userDefaults.value(forKey: Keys.disabledApps) as? Set<String> ?? []
-        guard let data = PrefManager.shared.userDefaults.value(forKey: Keys.browserRules) as? Data else {
-            return
-        }
+//        disabledApps = PrefManager.shared.userDefaults.value(forKey: Keys.disabledApps) as? Set<String> ?? []
+        
+        guard let appData = PrefManager.shared.userDefaults.value(forKey: Keys.disabledApps) as? Data,
+            let browserData = PrefManager.shared.userDefaults.value(forKey: Keys.browserRules) as? Data else { return }
+        
         do {
-            browserRules = try PropertyListDecoder().decode(Set<BrowserRule>.self, from: data)
+            disabledApps = try PropertyListDecoder().decode(Set<AppRule>.self, from: appData)
         } catch let error {
-            NSLog("Error: \(error.localizedDescription)")
+            logw("Error: \(error.localizedDescription)")
+        }
+        
+        do {
+            browserRules = try PropertyListDecoder().decode(Set<BrowserRule>.self, from: browserData)
+        } catch let error {
+            logw("Error: \(error.localizedDescription)")
         }
     }
 
     private static func appSwitched(notification: Notification) {
-        guard let application = (notification.userInfo?[NSWorkspace.applicationUserInfoKey] as? NSRunningApplication),
-            let bundleIdentier = application.bundleIdentifier else {
-                return
-        }
-        if disabledApps.contains(bundleIdentier) {
+        if disabledForApp {
             NightShiftManager.respond(to: .nightShiftDisableRuleActivated)
         } else if BrowserManager.currrentAppIsSupportedBrowser {
             BrowserManager.updateForSupportedBrowser()
