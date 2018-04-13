@@ -42,6 +42,10 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     var customTimeWindow: CustomTimeWindow!
     
     let calendar = NSCalendar(identifier: .gregorian)!
+    
+    
+    
+    
 
     //MARK: Menu life cycle
 
@@ -55,16 +59,22 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         //Edit printToConsole parameter in Edit Scheme > Run > Arguments > Environment Variables
         Log.logger.printToConsole = ProcessInfo.processInfo.environment["print_log"] == "true"
 
+        
+        
         statusMenu.delegate = self
         customTimeWindow = CustomTimeWindow()
+        
+        
 
         let prefWindow = (NSApplication.shared.delegate as? AppDelegate)?.preferenceWindowController
-        prefGeneral = prefWindow?.viewControllers.flatMap { childViewController in
+        prefGeneral = prefWindow?.viewControllers.compactMap { childViewController in
             return childViewController as? PrefGeneralViewController
         }.first
-        prefShortcuts = prefWindow?.viewControllers.flatMap { childViewController in
+        prefShortcuts = prefWindow?.viewControllers.compactMap { childViewController in
             return childViewController as? PrefShortcutsViewController
         }.first
+        
+        
 
         descriptionMenuItem.isEnabled = false
         sliderMenuItem.view = sliderView
@@ -73,6 +83,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         disableCustomMenuItem.title = NSLocalizedString("menu.disable_custom", comment: "Disable for custom time...")
         preferencesMenuItem.title = NSLocalizedString("menu.preferences", comment: "Preferences...")
         quitMenuItem.title = NSLocalizedString("menu.quit", comment: "Quit Shifty")
+        
+        
 
         (NSApp.delegate as? AppDelegate)?.statusItemClicked = {
             if NightShiftManager.isNightShiftEnabled {
@@ -82,19 +94,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             }
         }
 
-        DistributedNotificationCenter.default().addObserver(forName: NSNotification.Name("com.apple.accessibility.api"), object: nil, queue: nil) { _ in
-            logw("Accessibility permissions changed: \(UIElement.isProcessTrusted(withPrompt: false))")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
-                    if UIElement.isProcessTrusted(withPrompt: false) {
-                        UserDefaults.standard.set(true, forKey: Keys.isWebsiteControlEnabled)
-                    } else {
-                        UserDefaults.standard.set(false, forKey: Keys.isWebsiteControlEnabled)
-                    }
-                })
-        }
-
         prefShortcuts.bindShortcuts()
     }
+    
+    
+    
 
     func menuWillOpen(_: NSMenu) {
         configureMenuItems()
@@ -109,6 +113,9 @@ class StatusMenuController: NSObject, NSMenuDelegate {
 
         Event.menuOpened.record()
     }
+    
+    
+    
     
     func configureMenuItems() {
         let currentAppName = RuleManager.currentApp?.localizedName ?? ""
@@ -191,6 +198,9 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         }
     }
     
+    
+    
+    
     func setDescriptionText(keepVisible: Bool = false) {
         if NightShiftManager.disabledTimer {
             var disabledUntilDate: Date
@@ -261,7 +271,14 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             }
         }
     }
-
+    
+    
+    
+    func localizedPlural(_ key: String, count: Int, comment: String) -> String {
+        let format = NSLocalizedString(key, comment: comment)
+        return String(format: format, locale: .current, arguments: [count])
+    }
+    
     func assignKeyboardShortcutToMenuItem(_ menuItem: NSMenuItem, userDefaultsKey: String) {
         if let data = UserDefaults.standard.value(forKey: userDefaultsKey),
             let shortcut = NSKeyedUnarchiver.unarchiveObject(with: data as! Data) as? MASShortcut {
@@ -274,10 +291,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         }
     }
     
-    func localizedPlural(_ key: String, count: Int, comment: String) -> String {
-        let format = NSLocalizedString(key, comment: comment)
-        return String(format: format, locale: .current, arguments: [count])
-    }
+    
 
     //MARK: User Interaction
 
@@ -341,7 +355,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
 
     @IBAction func disableCustomTime(_ sender: Any) {
         if disableCustomMenuItem.state == .off {
-            NSApplication.shared.activate(ignoringOtherApps: true)
+            NSApp.activate(ignoringOtherApps: true)
             
             customTimeWindow.showWindow(nil)
             customTimeWindow.window?.orderFrontRegardless()
@@ -383,9 +397,6 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         Event.quitShifty.record()
         NotificationCenter.default.post(name: .terminateApp, object: self)
         
-        NSApplication.shared.terminate(self)
+        NSApp.terminate(self)
     }
-
-
-    //MARK: Helper functions
 }
