@@ -14,4 +14,4 @@ Shifty is customizable! Make it easier to toggle Night Shift with Quick Toggle o
 <br>
 Shifty is free and open source, licensed under GPLv3. Feel free to make a pull request!
 
-If you'd like to help translate Shifty into other languages, you can contribute [here](http://translate.shifty.natethompson.io).
+If you'd like to help translate Shifty into other languages, you can contribute [here](https://shifty.natethompson.io/translate).

@@ -29,4 +29,4 @@ If you love Shifty, consider [donating]({{ site.donate_link_usd }}) to help me m
 
 Shifty is free and open source, licensed under [GPLv3]({{ site.license_link }}). [Contribute on GitHub]({{ site.repository_link }})
 
-If you would like to help translate Shifty into other languages, you can contribute [here](http://translate.shifty.natethompson.io).
+If you would like to help translate Shifty into other languages, you can contribute [here]({{ site.translate_link }}).

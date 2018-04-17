@@ -25,12 +25,16 @@ github_acct_link: http://github.com/thompsonate
 mailto_link: mailto:feedback@natethompson.io?subject=Shifty%20feedback
 license_link: https://www.gnu.org/licenses/gpl.html
 donate_link_usd: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=L5MAQKH9V6DXW
+translate_link: https://crowdin.com/project/shifty
 
 # Build settings
 markdown: kramdown
 theme: jekyll-theme-cayman
 plugins:
   - jekyll-feed
+  - jekyll-redirect-from
+whitelist:
+  - jekyll-redirect-from
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
