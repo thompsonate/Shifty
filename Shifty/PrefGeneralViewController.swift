@@ -6,7 +6,7 @@
 //
 
 import Cocoa
-import MASPreferences_Shifty
+import MASPreferences
 import ServiceManagement
 import AXSwift
 import SwiftLog

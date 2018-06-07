@@ -7,7 +7,7 @@
 
 import Cocoa
 import Sparkle
-import MASPreferences_Shifty
+import MASPreferences
 
 let ShiftyUpdater = SUUpdater()
 

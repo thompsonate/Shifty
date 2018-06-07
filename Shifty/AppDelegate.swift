@@ -10,7 +10,7 @@ import Cocoa
 import ServiceManagement
 import Fabric
 import Crashlytics
-import MASPreferences_Shifty
+import MASPreferences
 import AXSwift
 import SwiftLog
 

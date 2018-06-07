@@ -1,6 +1,0 @@
-framework module MASPreferences_Shifty {
-  umbrella header "MASPreferences+Shifty-umbrella.h"
-
-  export *
-  module * { export * }
-}

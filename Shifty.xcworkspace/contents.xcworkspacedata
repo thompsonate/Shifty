@@ -5,6 +5,21 @@
       location = "group:Shifty.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Pods/Pods.xcodeproj">
+      location = "group:Carthage/Checkouts/AXSwift/AXSwift.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Carthage/Checkouts/MASPreferences/MASPreferences+Shifty.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Carthage/Checkouts/MASShortcut/MASShortcut.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Carthage/Checkouts/PSLSwift/PublicSuffix.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Carthage/Checkouts/Sparkle/Sparkle.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Carthage/Checkouts/SwiftLog/SwiftLog.xcodeproj">
    </FileRef>
 </Workspace>
