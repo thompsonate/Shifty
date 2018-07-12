@@ -21,7 +21,8 @@ url: "http://shifty.natethompson.io" # the base hostname & protocol for your sit
 github_username:  thompsonate
 
 repository_link: https://github.com/thompsonate/Shifty
-github_acct_link: http://github.com/thompsonate
+github_acct_link: https://github.com/thompsonate
+mainsite_link: https://www.natethompson.io
 mailto_link: mailto:feedback@natethompson.io?subject=Shifty%20feedback
 license_link: https://www.gnu.org/licenses/gpl.html
 donate_link_usd: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=L5MAQKH9V6DXW
