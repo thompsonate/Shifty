@@ -294,16 +294,16 @@
 		43CC9E3A1EBAB19300983528 = {
 			isa = PBXGroup;
 			children = (
+				4394DDA11EBE375300F22908 /* Shifty */,
+				43C7A4861F19F2CB00A697C0 /* ShiftyHelper */,
+				43CC9E441EBAB19300983528 /* Products */,
+				433EE8501EBD8ECA007EA870 /* Frameworks */,
 				4392D8B720C8C4C800557EA9 /* AXSwift.framework */,
 				4392D8AF20C8C07E00557EA9 /* MASPreferences.framework */,
 				4392D8AC20C8C07900557EA9 /* MASShortcut.framework */,
 				4392D8A920C8C07300557EA9 /* PublicSuffix.framework */,
 				4392D8A620C8C06C00557EA9 /* Sparkle.framework */,
 				4392D8A220C8C06400557EA9 /* SwiftLog.framework */,
-				4394DDA11EBE375300F22908 /* Shifty */,
-				43C7A4861F19F2CB00A697C0 /* ShiftyHelper */,
-				43CC9E441EBAB19300983528 /* Products */,
-				433EE8501EBD8ECA007EA870 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 			usesTabs = 0;

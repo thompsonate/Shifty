@@ -12,6 +12,10 @@ import SwiftLog
 
 var browserObserver: Observer!
 
+enum BrowserError: Error {
+    case noWindow
+}
+
 typealias BundleIdentifier = String
 enum SupportedBrowser: BundleIdentifier {
     typealias RawValue = String
@@ -49,7 +53,18 @@ enum BrowserManager {
             let app: Browser = SBApplication(application) else {
                 return nil
         }
-        return urlFor(browser, app)
+        
+        do {
+            let url = try urlFor(browser, app)
+            return url
+        } catch {
+            do {
+                let url = try urlFor(browser, app)
+                return url
+            } catch {
+                return nil
+            }
+        }
     }
     
     static var currentDomain: String? {
@@ -152,30 +167,9 @@ enum BrowserManager {
         }
     }
     
-    private static func browserSwitchedURL(observer: AXObserver, element: AXUIElement, notification: CFString, userInfo: UnsafeMutableRawPointer?) {
-        switch notification as String {
-        case kAXWindowCreatedNotification:
-            registerWindow(element, forNotificationsUsing: observer, userInfo: userInfo)
-        case kAXTitleChangedNotification,
-             kAXFocusedWindowChangedNotification:
-            guard let userInfo = userInfo,
-                let application = Optional.some(Unmanaged<NSRunningApplication>.fromOpaque(userInfo).takeUnretainedValue()),
-                let browser = SupportedBrowser(application),
-                let app: Browser = SBApplication(application) else {
-                    assertionFailure("Could not extract browser")
-                    return
-            }
-            let _ = urlFor(browser, app)
-        default:
-            assertionFailure("Invalid AXNotification")
-            return
-        }
-    }
-    
-    private static func urlFor(_ browser: SupportedBrowser, _ application: Browser) -> URL? {
+    private static func urlFor(_ browser: SupportedBrowser, _ application: Browser) throws -> URL? {
         guard let window = (application.windows as? [Window])?.first else {
-            assertionFailure("Could not extract browser window")
-            return nil
+            throw BrowserError.noWindow
         }
         let tab: Tab?
         switch browser {
