@@ -5,6 +5,25 @@
         <description>Most recent changes with links to updates.</description>
         <language>en</language>
         <item>
+            <title>Version 0.5.2</title>
+            <description><![CDATA[
+                <p>This version includes a significant rewrite of the core logic. Finally!</p>
+                <p>What this means:</p>
+                <ul style="list-style-type:disc">
+                <li>Some bugs related to how Shifty controls Night Shift are fixed. Most notably:</li>
+                    <ul style="list-style-type:disc">
+                    <li>manually overriding the Night Shift schedule now works as intended</li>
+                    <li>fixed instances where disabling for apps doesn't work</li>
+                    </ul>
+                <li>Since it's a major rewrite, new bugs may have been introduced that I didn't catch. If you experience problems, please email me at feedback@natethompson.io</li>
+                </ul>
+            ]]>
+            </description>
+            <pubDate>Thur, 2 Jan 2018 03:15:00 -0500</pubDate>
+            <enclosure url="https://github.com/thompsonate/Shifty/releases/download/0.5.2/Shifty-0.5.2.dmg" sparkle:version="39" sparkle:shortVersionString="0.5.2" length="1623481" type="application/octet-stream" sparkle:dsaSignature="MC0CFQC4+/6zqZ5EbnHVNBqpOhKVGr2a+AIUC+lBJGqGUzK70PGYX14dJtf1dj0=" />
+            <sparkle:minimumSystemVersion>10.12.4</sparkle:minimumSystemVersion>
+        </item>
+        <item>
             <title>Version 0.5.1</title>
             <description><![CDATA[
                 <ul style="list-style-type:disc">
