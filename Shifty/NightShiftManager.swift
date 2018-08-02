@@ -315,5 +315,6 @@ enum NightShiftManager {
                 }
             }
         }
+        logw("Responded to event: \(event)")
     }
 }
