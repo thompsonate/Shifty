@@ -63,6 +63,7 @@ enum NightShiftEvent {
     case nightShiftDisableRuleDeactivated
     case nightShiftEnableRuleActivated
     case nightShiftEnableRuleDeactivated
+    case scheduleChanged
 }
 
 enum DisableTimer: Equatable {
@@ -107,7 +108,7 @@ enum ScheduleType: Equatable {
 enum NightShiftManager {
     private static let client = CBBlueLightClient()
 
-    static var isCurrentlyInNightShiftSchedule = false
+    /// Nil if not set; true or false for the state the user has set it to
     static var userSet: Bool?
     static var userInitiatedShift = false
  
@@ -216,10 +217,16 @@ enum NightShiftManager {
     }
 
     public static func initialize() {
-        NightShiftManager.isCurrentlyInNightShiftSchedule = false
+        var prevSchedule = schedule
+        
         // @convention block
         client.setStatusNotificationBlock {
-            respond(to: isNightShiftEnabled ? .enteredScheduledNightShift : .exitedScheduledNightShift)
+            if schedule == prevSchedule {
+                respond(to: isNightShiftEnabled ? .enteredScheduledNightShift : .exitedScheduledNightShift)
+            } else {
+                respond(to: .scheduleChanged)
+                prevSchedule = schedule
+            }
             
             let appDelegate = NSApplication.shared.delegate as! AppDelegate
             appDelegate.updateMenuBarIcon()
@@ -233,6 +240,13 @@ enum NightShiftManager {
             }
             
             updateDarkMode()
+        }
+        
+        NSWorkspace.shared.notificationCenter.addObserver(forName: NSWorkspace.didWakeNotification, object: nil, queue: nil) { _ in
+            logw("Wake from sleep notification posted")
+            if scheduledState != isNightShiftEnabled {
+                respond(to: scheduledState ? .enteredScheduledNightShift : .exitedScheduledNightShift)
+            }
         }
     }
     
@@ -314,6 +328,9 @@ enum NightShiftManager {
                     setToSchedule()
                 }
             }
+        case .scheduleChanged:
+            userSet = nil
+            setToSchedule()
         }
         logw("Responded to event: \(event)")
     }
