@@ -14,7 +14,7 @@ class AccessibilityView: NSView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        guard let nib = NSNib(nibNamed: .init("AccessibilityView"), bundle: Bundle(for: type(of: self))) else { return }
+        guard let nib = NSNib(nibNamed: "AccessibilityView", bundle: Bundle(for: type(of: self))) else { return }
         nib.instantiate(withOwner: self, topLevelObjects: nil)
         
         var newConstraints: [NSLayoutConstraint] = []

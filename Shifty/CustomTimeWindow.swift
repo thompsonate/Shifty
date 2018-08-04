@@ -27,7 +27,7 @@ class CustomTimeWindow: NSWindowController {
     let onlyIntValueFormatter = OnlyIntValueFormatter()
 
     override var windowNibName: NSNib.Name {
-        return NSNib.Name("CustomTimeWindow")
+        return "CustomTimeWindow"
     }
 
     override func windowDidLoad() {
@@ -37,7 +37,7 @@ class CustomTimeWindow: NSWindowController {
             window?.center()
         }
 
-        let saveName = NSWindow.FrameAutosaveName.init("customTimeWindowFrame")
+        let saveName = "customTimeWindowFrame"
 
         window?.setFrameUsingName(saveName)
 

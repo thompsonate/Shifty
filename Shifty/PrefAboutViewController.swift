@@ -15,7 +15,7 @@ let ShiftyUpdater = SUUpdater()
 class PrefAboutViewController: NSViewController, MASPreferencesViewController {
 
     override var nibName: NSNib.Name {
-        get { return NSNib.Name("PrefAboutViewController") }
+        get { return "PrefAboutViewController" }
     }
 
     var viewIdentifier: String = "PrefAboutViewController"

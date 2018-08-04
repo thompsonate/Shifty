@@ -11,7 +11,7 @@ import SwiftLog
 
 class SetupWindowController: NSWindowController {    
     override var storyboard: NSStoryboard {
-        return NSStoryboard(name: .init("Setup"), bundle: nil)
+        return NSStoryboard(name: "Setup", bundle: nil)
     }
     
     override func windowDidLoad() {
@@ -77,7 +77,7 @@ class AccessibilityViewController: NSViewController {
     }
     
     func showNextView() {
-        performSegue(withIdentifier: NSStoryboardSegue.Identifier("showCompleteView"), sender: self)
+        performSegue(withIdentifier: "showCompleteView", sender: self)
     }
 }
 
@@ -87,9 +87,9 @@ class ContainerViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let setupStoryboard = NSStoryboard(name: .init("Setup"), bundle: nil)
-        sourceViewController = setupStoryboard.instantiateController(withIdentifier: .init("sourceViewController")) as! NSViewController
-        self.insertChildViewController(sourceViewController, at: 0)
+        let setupStoryboard = NSStoryboard(name: "Setup", bundle: nil)
+        sourceViewController = setupStoryboard.instantiateController(withIdentifier: "sourceViewController") as! NSViewController
+        self.insertChild(sourceViewController, at: 0)
         self.view.addSubview(sourceViewController.view)
         self.view.frame = sourceViewController.view.frame
         

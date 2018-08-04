@@ -13,7 +13,7 @@ class AccessibilityWindow: NSWindowController {
     @IBOutlet weak var openSysPrefsButton: NSButton!
     
     override var windowNibName: NSNib.Name {
-        get { return NSNib.Name("AccessibilityWindow") }
+        get { return "AccessibilityWindow" }
     }
     
     override func windowDidLoad() {

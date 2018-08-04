@@ -16,13 +16,13 @@ import SwiftLog
 class PrefGeneralViewController: NSViewController, MASPreferencesViewController {
 
     override var nibName: NSNib.Name {
-        return NSNib.Name("PrefGeneralViewController")
+        return "PrefGeneralViewController"
     }
 
     var viewIdentifier: String = "PrefGeneralViewController"
 
     var toolbarItemImage: NSImage? {
-        return NSImage(named: .preferencesGeneral)
+        return NSImage(named: NSImage.preferencesGeneralName)
     }
 
     var toolbarItemLabel: String? {

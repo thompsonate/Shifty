@@ -136,7 +136,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func showSetupWindow() {
-        let storyboard = NSStoryboard(name: .init("Setup"), bundle: nil)
+        let storyboard = NSStoryboard(name: "Setup", bundle: nil)
         let controller = storyboard.instantiateInitialController() as! NSWindowController
         setupWindow = controller.window
         

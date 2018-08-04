@@ -15,7 +15,7 @@ class PrefShortcutsViewController: NSViewController, MASPreferencesViewControlle
     let statusMenuController = (NSApplication.shared.delegate as? AppDelegate)?.statusMenu.delegate as? StatusMenuController
 
     override var nibName: NSNib.Name {
-        return NSNib.Name("PrefShortcutsViewController")
+        return "PrefShortcutsViewController"
     }
 
     var viewIdentifier: String = "PrefShortcutsViewController"
