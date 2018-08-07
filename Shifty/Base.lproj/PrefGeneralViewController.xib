@@ -30,7 +30,7 @@
             <rect key="frame" x="0.0" y="0.0" width="359" height="300"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="150" placeholderIntrinsicHeight="infinite" translatesAutoresizingMaskIntoConstraints="NO" id="JqG-nx-58t">
+                <button horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" placeholderIntrinsicWidth="150" placeholderIntrinsicHeight="infinite" translatesAutoresizingMaskIntoConstraints="NO" id="JqG-nx-58t">
                     <rect key="frame" x="18" y="273" width="323" height="9"/>
                     <buttonCell key="cell" type="check" title="Launch Shifty at login" bezelStyle="regularSquare" imagePosition="left" inset="2" id="bxC-lM-Pei">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -43,7 +43,7 @@
                         <binding destination="HAt-Ds-MVV" name="value" keyPath="values.isAutoLaunchEnabled" id="uBI-xn-JbJ"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Gdr-ZW-5aK">
+                <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gdr-ZW-5aK">
                     <rect key="frame" x="18" y="171" width="323" height="18"/>
                     <buttonCell key="cell" type="check" title="Scheduled dark mode" bezelStyle="regularSquare" imagePosition="left" inset="2" id="5s5-Y5-5b9">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -56,7 +56,7 @@
                         <binding destination="HAt-Ds-MVV" name="value" keyPath="values.isDarkModeSyncEnabled" id="YbA-gX-gH0"/>
                     </connections>
                 </button>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="xjO-vb-Nxv">
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xjO-vb-Nxv">
                     <rect key="frame" x="38" y="137" width="303" height="30"/>
                     <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" title="If enabled, macOS dark mode will be automatically set based on the Night Shift schedule." id="ZdB-dN-hiO">
                         <font key="font" metaFont="smallSystem"/>
@@ -64,7 +64,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KNx-x5-o3g">
+                <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KNx-x5-o3g">
                     <rect key="frame" x="18" y="251" width="323" height="18"/>
                     <buttonCell key="cell" type="check" title="Quick Toggle" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Foo-g6-6iX">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -77,7 +77,7 @@
                         <binding destination="HAt-Ds-MVV" name="value" keyPath="values.isStatusToggleEnabled" id="Yvn-Z5-iFl"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Iuc-Pc-Qb3">
+                <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iuc-Pc-Qb3">
                     <rect key="frame" x="18" y="193" width="323" height="18"/>
                     <buttonCell key="cell" type="check" title="Change icon according to Night Shift" bezelStyle="regularSquare" imagePosition="left" inset="2" id="4io-9H-HXp">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -91,7 +91,7 @@
                         <binding destination="HAt-Ds-MVV" name="value" keyPath="values.isIconSwitchingEnabled" id="bXC-4S-zX0"/>
                     </connections>
                 </button>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="6yx-Be-Jx5">
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6yx-Be-Jx5">
                     <rect key="frame" x="38" y="217" width="303" height="30"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="If enabled, click the Menu Bar icon to toggle Night Shift. Right click to open the menu." id="MXt-WM-cMR">
                         <font key="font" metaFont="smallSystem"/>
@@ -99,7 +99,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="I5d-cF-2Wh">
+                <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I5d-cF-2Wh">
                     <rect key="frame" x="18" y="113" width="323" height="18"/>
                     <buttonCell key="cell" type="check" title="Enable website shifting" bezelStyle="regularSquare" imagePosition="left" inset="2" id="HRq-mZ-FxG">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -112,27 +112,27 @@
                         <binding destination="HAt-Ds-MVV" name="value" keyPath="values.isWebsiteControlEnabled" id="dpJ-If-rbe"/>
                     </connections>
                 </button>
-                <box horizontalHuggingPriority="1000" verticalHuggingPriority="1000" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Xwu-c8-3l2">
+                <box horizontalHuggingPriority="1000" verticalHuggingPriority="1000" ambiguous="YES" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Xwu-c8-3l2">
                     <rect key="frame" x="17" y="16" width="325" height="81"/>
-                    <view key="contentView" id="M39-xI-Ibk">
+                    <view key="contentView" ambiguous="YES" id="M39-xI-Ibk">
                         <rect key="frame" x="3" y="3" width="319" height="75"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RlH-eS-o9O">
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="750" ambiguous="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RlH-eS-o9O">
                                 <rect key="frame" x="0.0" y="10" width="319" height="55"/>
                                 <subviews>
-                                    <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DwA-jT-rcV">
+                                    <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="750" ambiguous="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DwA-jT-rcV">
                                         <rect key="frame" x="10" y="34" width="299" height="21"/>
                                         <subviews>
-                                            <textField horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="cgx-4b-v1c">
-                                                <rect key="frame" x="-2" y="1" width="65" height="18"/>
+                                            <textField horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cgx-4b-v1c">
+                                                <rect key="frame" x="-2" y="1" width="65" height="20"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Schedule:" id="UGI-RO-ff6">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vul-m7-WVn">
+                                            <popUpButton verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vul-m7-WVn">
                                                 <rect key="frame" x="67" y="-3" width="235" height="26"/>
                                                 <popUpButtonCell key="cell" type="push" title="Off" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="lkN-xJ-pf3" id="kHG-4E-c49">
                                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -162,7 +162,7 @@
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
                                     </stackView>
-                                    <stackView distribution="fillProportionally" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SyV-fO-WK6">
+                                    <stackView distribution="fillProportionally" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="750" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SyV-fO-WK6">
                                         <rect key="frame" x="0.0" y="0.0" width="309" height="24"/>
                                         <subviews>
                                             <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d8y-sn-Tbn">
