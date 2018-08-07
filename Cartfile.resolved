@@ -1,6 +1,6 @@
 github "Sparkle-Project/Sparkle" "1.20.0"
 github "choco/PSLSwift" "v0.1"
 github "daltoniam/SwiftLog" "1.0.0"
+github "shpakovski/MASPreferences" "1.3"
 github "shpakovski/MASShortcut" "2.3.6"
-github "thompsonate/MASPreferences" "1.3.4"
 github "tmandry/AXSwift" "0.2.1"
