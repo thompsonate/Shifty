@@ -8,7 +8,7 @@
       location = "group:Carthage/Checkouts/AXSwift/AXSwift.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Carthage/Checkouts/MASPreferences/MASPreferences+Shifty.xcodeproj">
+      location = "group:Carthage/Checkouts/MASPreferences/MASPreferences.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Carthage/Checkouts/MASShortcut/MASShortcut.xcodeproj">
