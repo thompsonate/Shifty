@@ -73,7 +73,7 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
             switch NightShiftManager.schedule {
             case .off:
                 self.schedulePopup.select(self.offMenuItem)
-                self.setCustomControlVisibility(false, animate: true)
+                self.customTimeStackView.isHidden = true
             case .custom(start: let startTime, end: let endTime):
                 self.schedulePopup.select(self.customMenuItem)
                 let startDate = Date(startTime)
@@ -81,10 +81,10 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
                 
                 self.fromTimePicker.dateValue = startDate
                 self.toTimePicker.dateValue = endDate
-                self.setCustomControlVisibility(true, animate: true)
+                self.customTimeStackView.isHidden = false
             case .solar:
                 self.schedulePopup.select(self.sunMenuItem)
-                self.setCustomControlVisibility(false, animate: true)
+                self.customTimeStackView.isHidden = true
             }
         }
     }
@@ -142,13 +142,13 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
     @IBAction func schedulePopup(_ sender: NSPopUpButton) {
         if schedulePopup.selectedItem == offMenuItem {
             NightShiftManager.schedule = .off
-            setCustomControlVisibility(false, animate: true)
+            customTimeStackView.isHidden = true
         } else if schedulePopup.selectedItem == customMenuItem {
             scheduleTimePickers(self)
-            setCustomControlVisibility(true, animate: true)
+            customTimeStackView.isHidden = false
         } else if schedulePopup.selectedItem == sunMenuItem {
             NightShiftManager.schedule = .solar
-            setCustomControlVisibility(false, animate: true)
+            customTimeStackView.isHidden = true
         }
     }
 
@@ -165,37 +165,6 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
                           syncDarkMode: darkModeSync.state == .on,
                           websiteShifting: websiteShifting.state == .on,
                           schedule: NightShiftManager.schedule).record()
-    }
-
-    func setCustomControlVisibility(_ visible: Bool, animate: Bool) {
-        if customTimeStackView.isHidden == visible || (!visible && !animate)  {
-            if let frame = prefWindow?.frame {
-                if visible {
-                    //Keep elements hidden until after animation is completed
-                    fromLabel.isHidden = true
-                    fromTimePicker.isHidden = true
-                    toLabel.isHidden = true
-                    toTimePicker.isHidden = true
-                }
-
-                let prevHeight = view.fittingSize.height
-
-                customTimeStackView.isHidden = !visible
-
-                let adjustment = prevHeight - view.fittingSize.height
-
-                let newContentRect = NSMakeRect(frame.origin.x, frame.origin.y + adjustment, frame.width, view.fittingSize.height)
-                let newFrame = prefWindow.frameRect(forContentRect: newContentRect)
-                prefWindow.setFrame(newFrame, display: true, animate: animate)
-
-                if visible {
-                    fromLabel.isHidden = false
-                    fromTimePicker.isHidden = false
-                    toLabel.isHidden = false
-                    toTimePicker.isHidden = false
-                }
-            }
-        }
     }
 }
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -33,7 +33,7 @@
             <rect key="frame" x="0.0" y="0.0" width="359" height="300"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="150" placeholderIntrinsicHeight="infinite" translatesAutoresizingMaskIntoConstraints="NO" id="JqG-nx-58t">
+                <button horizontalHuggingPriority="251" verticalHuggingPriority="1000" placeholderIntrinsicWidth="150" placeholderIntrinsicHeight="infinite" translatesAutoresizingMaskIntoConstraints="NO" id="JqG-nx-58t">
                     <rect key="frame" x="18" y="266" width="323" height="16"/>
                     <buttonCell key="cell" type="check" title="Launch Shifty at login" bezelStyle="regularSquare" imagePosition="left" inset="2" id="bxC-lM-Pei">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -46,7 +46,7 @@
                         <binding destination="HAt-Ds-MVV" name="value" keyPath="values.isAutoLaunchEnabled" id="uBI-xn-JbJ"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Gdr-ZW-5aK">
+                <button verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Gdr-ZW-5aK">
                     <rect key="frame" x="18" y="166" width="323" height="18"/>
                     <buttonCell key="cell" type="check" title="Scheduled dark mode" bezelStyle="regularSquare" imagePosition="left" inset="2" id="5s5-Y5-5b9">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -59,7 +59,7 @@
                         <binding destination="HAt-Ds-MVV" name="value" keyPath="values.isDarkModeSyncEnabled" id="YbA-gX-gH0"/>
                     </connections>
                 </button>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="xjO-vb-Nxv">
+                <textField verticalHuggingPriority="1000" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="xjO-vb-Nxv">
                     <rect key="frame" x="38" y="134" width="303" height="28"/>
                     <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" title="If enabled, macOS dark mode will be automatically set based on the Night Shift schedule." id="ZdB-dN-hiO">
                         <font key="font" metaFont="smallSystem"/>
@@ -67,7 +67,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KNx-x5-o3g">
+                <button verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="KNx-x5-o3g">
                     <rect key="frame" x="18" y="244" width="323" height="18"/>
                     <buttonCell key="cell" type="check" title="Quick Toggle" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Foo-g6-6iX">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -80,7 +80,7 @@
                         <binding destination="HAt-Ds-MVV" name="value" keyPath="values.isStatusToggleEnabled" id="Yvn-Z5-iFl"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Iuc-Pc-Qb3">
+                <button verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Iuc-Pc-Qb3">
                     <rect key="frame" x="18" y="188" width="323" height="18"/>
                     <buttonCell key="cell" type="check" title="Change icon according to Night Shift" bezelStyle="regularSquare" imagePosition="left" inset="2" id="4io-9H-HXp">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -94,7 +94,7 @@
                         <binding destination="HAt-Ds-MVV" name="value" keyPath="values.isIconSwitchingEnabled" id="bXC-4S-zX0"/>
                     </connections>
                 </button>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="6yx-Be-Jx5">
+                <textField verticalHuggingPriority="1000" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="6yx-Be-Jx5">
                     <rect key="frame" x="38" y="212" width="303" height="28"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="If enabled, click the Menu Bar icon to toggle Night Shift. Right click to open the menu." id="MXt-WM-cMR">
                         <font key="font" metaFont="smallSystem"/>
@@ -102,7 +102,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="I5d-cF-2Wh">
+                <button verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="I5d-cF-2Wh">
                     <rect key="frame" x="18" y="110" width="323" height="18"/>
                     <buttonCell key="cell" type="check" title="Enable website shifting" bezelStyle="regularSquare" imagePosition="left" inset="2" id="HRq-mZ-FxG">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -121,10 +121,10 @@
                         <rect key="frame" x="2" y="2" width="321" height="74"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RlH-eS-o9O">
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="600" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RlH-eS-o9O">
                                 <rect key="frame" x="0.0" y="10" width="321" height="54"/>
                                 <subviews>
-                                    <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DwA-jT-rcV">
+                                    <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="600" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DwA-jT-rcV">
                                         <rect key="frame" x="10" y="33" width="301" height="21"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="cgx-4b-v1c">
@@ -165,7 +165,7 @@
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
                                     </stackView>
-                                    <stackView distribution="fillProportionally" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SyV-fO-WK6">
+                                    <stackView distribution="fillProportionally" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="600" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SyV-fO-WK6">
                                         <rect key="frame" x="0.0" y="0.0" width="311" height="23"/>
                                         <subviews>
                                             <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d8y-sn-Tbn">
