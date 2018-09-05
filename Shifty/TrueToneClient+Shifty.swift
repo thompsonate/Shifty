@@ -7,14 +7,21 @@
 
 import Foundation
 
+enum State {
+    case unsupported
+    case unavailable
+    case enabled
+    case disabled
+}
+
 extension CBTrueToneClient {
     static var shared = CBTrueToneClient()
     
-    var isTrueToneSupported: Bool {
+    private var isTrueToneSupported: Bool {
         return CBTrueToneClient.shared.supported()
     }
     
-    var isTrueToneAvailable: Bool {
+    private var isTrueToneAvailable: Bool {
         return CBTrueToneClient.shared.available()
     }
     
@@ -25,5 +32,12 @@ extension CBTrueToneClient {
         set {
             CBTrueToneClient.shared.setEnabled(newValue)
         }
+    }
+    
+    var state: State {
+        if !isTrueToneSupported { return .unsupported }
+        else if !isTrueToneAvailable { return .unavailable }
+        else if isTrueToneEnabled { return .enabled }
+        else { return .disabled }
     }
 }

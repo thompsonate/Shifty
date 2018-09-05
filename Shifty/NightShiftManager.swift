@@ -212,7 +212,8 @@ enum NightShiftManager {
         return NightShiftManager.nightShiftDisableTimer != .off
     }
     
-    private static var disableRuleIsActive: Bool {
+    ///When true, app or website rule has disabled Night Shift
+    static var disableRuleIsActive: Bool {
         return RuleManager.disableRuleIsActive
     }
 
