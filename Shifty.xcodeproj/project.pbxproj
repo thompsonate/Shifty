@@ -57,6 +57,7 @@
 		43D5C2211FC2CACF00AF88E0 /* CustomTimeWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43D5C2231FC2CACF00AF88E0 /* CustomTimeWindow.xib */; };
 		43D5C2301FC2CECC00AF88E0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43D5C2321FC2CECC00AF88E0 /* Localizable.strings */; };
 		43D5C2391FC35FB500AF88E0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43D5C2381FC35FB500AF88E0 /* MainMenu.xib */; };
+		43F71DB2213F49DD004F7E2B /* TrueToneClient+Shifty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F71DB1213F49DD004F7E2B /* TrueToneClient+Shifty.swift */; };
 		43FC498C1FF8936F00CD3196 /* credits.rtfd in Resources */ = {isa = PBXBuildFile; fileRef = 43FC498B1FF8936E00CD3196 /* credits.rtfd */; };
 		4960957E200EB9CD00D966CA /* RuleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4960957D200EB9CD00D966CA /* RuleManager.swift */; };
 		497B2395200B576700669DDE /* NightShiftManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497B2392200B576700669DDE /* NightShiftManager.swift */; };
@@ -154,6 +155,8 @@
 		43D5C2311FC2CECC00AF88E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		43D5C2381FC35FB500AF88E0 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = Shifty/MainMenu.xib; sourceTree = "<group>"; };
 		43D5C2441FC3A9A100AF88E0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Shifty/Info.plist; sourceTree = "<group>"; };
+		43F71DB0213F48DA004F7E2B /* CBTrueToneClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CBTrueToneClient.h; path = Shifty/CBTrueToneClient.h; sourceTree = "<group>"; };
+		43F71DB1213F49DD004F7E2B /* TrueToneClient+Shifty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TrueToneClient+Shifty.swift"; path = "Shifty/TrueToneClient+Shifty.swift"; sourceTree = "<group>"; };
 		43FC498B1FF8936E00CD3196 /* credits.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = credits.rtfd; sourceTree = "<group>"; };
 		4960957D200EB9CD00D966CA /* RuleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RuleManager.swift; path = Shifty/RuleManager.swift; sourceTree = "<group>"; };
 		497B2392200B576700669DDE /* NightShiftManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NightShiftManager.swift; path = Shifty/NightShiftManager.swift; sourceTree = "<group>"; };
@@ -220,8 +223,10 @@
 				43C0838D1F19BA6900E73B84 /* Shifty.entitlements */,
 				4394DDAE1EBE379900F22908 /* Shifty-Bridging-Header.h */,
 				4394DDA41EBE376F00F22908 /* CBBlueLightClient.h */,
+				43F71DB0213F48DA004F7E2B /* CBTrueToneClient.h */,
 				433E60EB207D9995007BB55F /* BrightnessSystemClient.h */,
 				433E60EA207D9994007BB55F /* BrightnessSystemClient+Shifty.swift */,
+				43F71DB1213F49DD004F7E2B /* TrueToneClient+Shifty.swift */,
 				497B2393200B576700669DDE /* NotificationName+Shifty.swift */,
 				43CE525920379A16002EBF61 /* Event.swift */,
 				437556B51FF746BD001951AB /* SlideSegue.swift */,
@@ -472,6 +477,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				433E60EC207D9995007BB55F /* BrightnessSystemClient+Shifty.swift in Sources */,
+				43F71DB2213F49DD004F7E2B /* TrueToneClient+Shifty.swift in Sources */,
 				497B2396200B576700669DDE /* NotificationName+Shifty.swift in Sources */,
 				43AA23C71FFABCD2001DDF5A /* AccessibilityView.swift in Sources */,
 				437556B61FF746BD001951AB /* SlideSegue.swift in Sources */,
