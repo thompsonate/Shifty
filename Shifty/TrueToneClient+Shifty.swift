@@ -11,6 +11,10 @@ extension CBTrueToneClient {
     static var shared = CBTrueToneClient()
     
     var isTrueToneSupported: Bool {
+        return CBTrueToneClient.shared.supported()
+    }
+    
+    var isTrueToneAvailable: Bool {
         return CBTrueToneClient.shared.available()
     }
     

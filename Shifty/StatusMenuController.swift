@@ -91,6 +91,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             } else {
                 trueToneMenuItem.title = "Turn on True Tone"
             }
+            trueToneMenuItem.isEnabled = CBTrueToneClient.shared.isTrueToneAvailable
         } else {
             trueToneMenuItem.isHidden = true
         }
