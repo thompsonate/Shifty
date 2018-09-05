@@ -138,7 +138,18 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
             logw("Website control disabled")
         }
     }
-
+    
+    @IBAction func setTrueToneControl(_ sender: NSButtonCell) {
+        if sender.state == .on {
+            if NightShiftManager.disableRuleIsActive {
+                CBTrueToneClient.shared.isTrueToneEnabled = false
+            }
+        } else {
+            CBTrueToneClient.shared.isTrueToneEnabled = true
+        }
+        logw("True Tone control set to \(sender.state.rawValue)")
+    }
+    
     @IBAction func schedulePopup(_ sender: NSPopUpButton) {
         if schedulePopup.selectedItem == offMenuItem {
             NightShiftManager.schedule = .off

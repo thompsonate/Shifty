@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftLog
 
 enum State {
     case unsupported
@@ -31,6 +32,7 @@ extension CBTrueToneClient {
         }
         set {
             CBTrueToneClient.shared.setEnabled(newValue)
+            logw("True Tone set to \(newValue)")
         }
     }
     

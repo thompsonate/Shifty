@@ -27,11 +27,11 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <view wantsLayer="YES" id="bXz-rK-jao">
-            <rect key="frame" x="0.0" y="0.0" width="359" height="300"/>
+            <rect key="frame" x="0.0" y="0.0" width="359" height="361"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" placeholderIntrinsicWidth="150" placeholderIntrinsicHeight="infinite" translatesAutoresizingMaskIntoConstraints="NO" id="JqG-nx-58t">
-                    <rect key="frame" x="18" y="273" width="323" height="9"/>
+                    <rect key="frame" x="18" y="334" width="323" height="9"/>
                     <buttonCell key="cell" type="check" title="Launch Shifty at login" bezelStyle="regularSquare" imagePosition="left" inset="2" id="bxC-lM-Pei">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -44,7 +44,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gdr-ZW-5aK">
-                    <rect key="frame" x="18" y="171" width="323" height="18"/>
+                    <rect key="frame" x="18" y="232" width="323" height="18"/>
                     <buttonCell key="cell" type="check" title="Scheduled dark mode" bezelStyle="regularSquare" imagePosition="left" inset="2" id="5s5-Y5-5b9">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -57,15 +57,23 @@
                     </connections>
                 </button>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xjO-vb-Nxv">
-                    <rect key="frame" x="38" y="137" width="303" height="30"/>
+                    <rect key="frame" x="38" y="198" width="303" height="30"/>
                     <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" title="If enabled, macOS dark mode will be automatically set based on the Night Shift schedule." id="ZdB-dN-hiO">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rBh-ga-k2v">
+                    <rect key="frame" x="38" y="113" width="303" height="30"/>
+                    <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" title="If enabled, Night Shift rules for apps and websites will also affect True Tone." id="SKw-93-vs8">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
                 <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KNx-x5-o3g">
-                    <rect key="frame" x="18" y="251" width="323" height="18"/>
+                    <rect key="frame" x="18" y="312" width="323" height="18"/>
                     <buttonCell key="cell" type="check" title="Quick Toggle" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Foo-g6-6iX">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -78,7 +86,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iuc-Pc-Qb3">
-                    <rect key="frame" x="18" y="193" width="323" height="18"/>
+                    <rect key="frame" x="18" y="254" width="323" height="18"/>
                     <buttonCell key="cell" type="check" title="Change icon according to Night Shift" bezelStyle="regularSquare" imagePosition="left" inset="2" id="4io-9H-HXp">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -92,7 +100,7 @@
                     </connections>
                 </button>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6yx-Be-Jx5">
-                    <rect key="frame" x="38" y="217" width="303" height="30"/>
+                    <rect key="frame" x="38" y="278" width="303" height="30"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="If enabled, click the Menu Bar icon to toggle Night Shift. Right click to open the menu." id="MXt-WM-cMR">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -100,7 +108,7 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I5d-cF-2Wh">
-                    <rect key="frame" x="18" y="113" width="323" height="18"/>
+                    <rect key="frame" x="18" y="174" width="323" height="18"/>
                     <buttonCell key="cell" type="check" title="Enable website shifting" bezelStyle="regularSquare" imagePosition="left" inset="2" id="HRq-mZ-FxG">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -110,6 +118,17 @@
                     </buttonCell>
                     <connections>
                         <binding destination="HAt-Ds-MVV" name="value" keyPath="values.isWebsiteControlEnabled" id="dpJ-If-rbe"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PoP-Y1-MHi">
+                    <rect key="frame" x="18" y="149" width="323" height="18"/>
+                    <buttonCell key="cell" type="check" title="True Tone control" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="4SC-bL-79S">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="setTrueToneControl:" target="-2" id="f85-HN-CXb"/>
+                        <binding destination="HAt-Ds-MVV" name="value" keyPath="values.trueToneControl" id="f6d-Dx-kZ7"/>
                     </connections>
                 </button>
                 <box horizontalHuggingPriority="1000" verticalHuggingPriority="1000" ambiguous="YES" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Xwu-c8-3l2">
@@ -290,18 +309,22 @@
             </subviews>
             <constraints>
                 <constraint firstItem="JqG-nx-58t" firstAttribute="top" secondItem="bXz-rK-jao" secondAttribute="top" constant="20" id="0BF-uj-67A"/>
+                <constraint firstAttribute="trailing" secondItem="PoP-Y1-MHi" secondAttribute="trailing" constant="20" id="4IF-2s-eAI"/>
+                <constraint firstAttribute="trailing" secondItem="rBh-ga-k2v" secondAttribute="trailing" constant="20" id="4cn-SP-adh"/>
                 <constraint firstAttribute="bottom" secondItem="Xwu-c8-3l2" secondAttribute="bottom" constant="20" id="84T-Sd-Scm"/>
                 <constraint firstItem="xjO-vb-Nxv" firstAttribute="leading" secondItem="bXz-rK-jao" secondAttribute="leading" constant="40" id="9AJ-vB-jDa"/>
                 <constraint firstItem="I5d-cF-2Wh" firstAttribute="top" secondItem="xjO-vb-Nxv" secondAttribute="bottom" constant="8" id="9AP-l2-28O"/>
                 <constraint firstAttribute="trailing" secondItem="Xwu-c8-3l2" secondAttribute="trailing" constant="20" id="Afh-Im-1Sf"/>
                 <constraint firstItem="6yx-Be-Jx5" firstAttribute="top" secondItem="KNx-x5-o3g" secondAttribute="bottom" constant="6" id="B4e-oG-p4i"/>
                 <constraint firstAttribute="trailing" secondItem="Iuc-Pc-Qb3" secondAttribute="trailing" constant="20" id="D3A-v2-l31"/>
-                <constraint firstItem="Xwu-c8-3l2" firstAttribute="top" secondItem="I5d-cF-2Wh" secondAttribute="bottom" constant="20" id="HtD-cz-CQA"/>
+                <constraint firstItem="rBh-ga-k2v" firstAttribute="leading" secondItem="bXz-rK-jao" secondAttribute="leading" constant="40" id="KhB-Mi-y3W"/>
                 <constraint firstItem="xjO-vb-Nxv" firstAttribute="top" secondItem="Gdr-ZW-5aK" secondAttribute="bottom" constant="6" id="MEH-bQ-Ytn"/>
                 <constraint firstItem="Gdr-ZW-5aK" firstAttribute="top" secondItem="Iuc-Pc-Qb3" secondAttribute="bottom" constant="8" id="NSt-Zr-WM3"/>
                 <constraint firstAttribute="trailing" secondItem="I5d-cF-2Wh" secondAttribute="trailing" constant="20" id="NUX-8M-dy9"/>
+                <constraint firstItem="rBh-ga-k2v" firstAttribute="top" secondItem="PoP-Y1-MHi" secondAttribute="bottom" constant="6" id="Oug-UL-6oV"/>
                 <constraint firstItem="I5d-cF-2Wh" firstAttribute="leading" secondItem="bXz-rK-jao" secondAttribute="leading" constant="20" id="T7v-83-GYk"/>
                 <constraint firstItem="Gdr-ZW-5aK" firstAttribute="leading" secondItem="bXz-rK-jao" secondAttribute="leading" constant="20" id="TTF-BF-7oo"/>
+                <constraint firstItem="Xwu-c8-3l2" firstAttribute="top" secondItem="rBh-ga-k2v" secondAttribute="bottom" constant="20" id="X7q-Vz-iqg"/>
                 <constraint firstItem="KNx-x5-o3g" firstAttribute="top" secondItem="JqG-nx-58t" secondAttribute="bottom" constant="8" id="awx-j7-4OT"/>
                 <constraint firstAttribute="trailing" secondItem="6yx-Be-Jx5" secondAttribute="trailing" constant="20" id="dEU-wC-Hnr"/>
                 <constraint firstItem="Iuc-Pc-Qb3" firstAttribute="leading" secondItem="bXz-rK-jao" secondAttribute="leading" constant="20" id="hy6-OW-13o"/>
@@ -309,13 +332,15 @@
                 <constraint firstItem="JqG-nx-58t" firstAttribute="leading" secondItem="bXz-rK-jao" secondAttribute="leading" constant="20" id="is9-R2-giw"/>
                 <constraint firstItem="6yx-Be-Jx5" firstAttribute="leading" secondItem="bXz-rK-jao" secondAttribute="leading" constant="40" id="jxi-c3-PhF"/>
                 <constraint firstAttribute="trailing" secondItem="KNx-x5-o3g" secondAttribute="trailing" constant="20" id="lbG-tu-AO3"/>
+                <constraint firstItem="PoP-Y1-MHi" firstAttribute="top" secondItem="I5d-cF-2Wh" secondAttribute="bottom" constant="8" id="mZB-CH-cwd"/>
                 <constraint firstItem="Xwu-c8-3l2" firstAttribute="leading" secondItem="bXz-rK-jao" secondAttribute="leading" constant="20" id="oOd-4Y-2n6"/>
                 <constraint firstAttribute="trailing" secondItem="xjO-vb-Nxv" secondAttribute="trailing" constant="20" id="qOv-Ly-8fE"/>
                 <constraint firstItem="Iuc-Pc-Qb3" firstAttribute="top" secondItem="6yx-Be-Jx5" secondAttribute="bottom" constant="8" id="rWc-ML-0TX"/>
+                <constraint firstItem="PoP-Y1-MHi" firstAttribute="leading" secondItem="bXz-rK-jao" secondAttribute="leading" constant="20" id="tUg-n7-xkI"/>
                 <constraint firstItem="KNx-x5-o3g" firstAttribute="leading" secondItem="bXz-rK-jao" secondAttribute="leading" constant="20" id="trZ-rl-vhU"/>
                 <constraint firstAttribute="trailing" secondItem="JqG-nx-58t" secondAttribute="trailing" constant="20" id="xQn-Pg-3H7"/>
             </constraints>
-            <point key="canvasLocation" x="48.5" y="323"/>
+            <point key="canvasLocation" x="48.5" y="353.5"/>
         </view>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <userDefaultsController representsSharedInstance="YES" id="HAt-Ds-MVV"/>
