@@ -15,6 +15,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
 
     @IBOutlet weak var statusMenu: NSMenu!
     @IBOutlet weak var powerMenuItem: NSMenuItem!
+    @IBOutlet weak var trueToneMenuItem: NSMenuItem!
     @IBOutlet weak var sliderMenuItem: NSMenuItem!
     @IBOutlet weak var descriptionMenuItem: NSMenuItem!
     @IBOutlet weak var disableAppMenuItem: NSMenuItem!
@@ -83,6 +84,16 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         disableCustomMenuItem.title = NSLocalizedString("menu.disable_custom", comment: "Disable for custom time...")
         preferencesMenuItem.title = NSLocalizedString("menu.preferences", comment: "Preferences...")
         quitMenuItem.title = NSLocalizedString("menu.quit", comment: "Quit Shifty")
+        
+        if CBTrueToneClient.shared.isTrueToneSupported {
+            if CBTrueToneClient.shared.isTrueToneEnabled {
+                trueToneMenuItem.title = "Turn off True Tone"
+            } else {
+                trueToneMenuItem.title = "Turn on True Tone"
+            }
+        } else {
+            trueToneMenuItem.isHidden = true
+        }
         
         
 
@@ -303,6 +314,16 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         }
     }
 
+    @IBAction func toggleTrueTone(_ sender: NSMenuItem) {
+        if CBTrueToneClient.shared.isTrueToneEnabled {
+            sender.title = "Turn off True Tone"
+        } else {
+            sender.title = "Turn on True Tone"
+        }
+        
+        CBTrueToneClient.shared.isTrueToneEnabled = !CBTrueToneClient.shared.isTrueToneEnabled
+    }
+    
     @IBAction func disableForApp(_ sender: Any) {
         if RuleManager.disabledForApp {
             RuleManager.disabledForApp = false
