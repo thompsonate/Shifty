@@ -31,7 +31,7 @@ enum Event {
     case sliderMoved(value: Float)
 
     //Preferences
-    case preferences(autoLaunch: Bool, quickToggle: Bool, iconSwitching: Bool, syncDarkMode: Bool, websiteShifting: Bool, schedule: ScheduleType)
+    case preferences(autoLaunch: Bool, quickToggle: Bool, iconSwitching: Bool, syncDarkMode: Bool, websiteShifting: Bool, trueToneControl: Bool, schedule: ScheduleType)
     case shortcuts(toggleNightShift: Bool, increaseColorTemp: Bool, decreaseColorTemp: Bool, disableApp: Bool, disableDomain: Bool, disableSubdomain: Bool, disableHour: Bool, disableCustom: Bool)
     case websiteButtonClicked
     case feedbackButtonClicked
@@ -109,7 +109,7 @@ extension Event {
                     "Disable for subdomain": disableSubdomain ? "true" : "false",
                     "Disable for an hour": disableHour ? "true" : "false",
                     "Disable for custom time": disableCustom ? "true" : "false"]
-        case .preferences(let autoLaunch, let quickToggle, let iconSwitching, let syncDarkMode, let websiteShifting, let schedule):
+        case .preferences(let autoLaunch, let quickToggle, let iconSwitching, let syncDarkMode, let websiteShifting, let trueToneControl, let schedule):
             var scheduleString: String
             switch schedule {
             case .off: scheduleString = "off"
@@ -121,6 +121,7 @@ extension Event {
                     "Icon Switching": iconSwitching ? "true" : "false",
                     "Sync Dark Mode": syncDarkMode ? "true" : "false",
                     "Website shifting" : websiteShifting ? "true" : "false",
+                    "True Tone control" : trueToneControl ? "true" : "false",
                     "Schedule": scheduleString]
         default:
             return nil

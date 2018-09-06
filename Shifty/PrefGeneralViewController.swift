@@ -33,12 +33,15 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
     var hasResizableWidth = false
     var hasResizableHeight = false
 
-    @IBOutlet weak var setAutoLaunch: NSButton!
-    @IBOutlet weak var toggleStatusItem: NSButton!
-    @IBOutlet weak var setIconSwitching: NSButton!
-    @IBOutlet weak var darkModeSync: NSButton!
-    @IBOutlet weak var websiteShifting: NSButton!
-
+    @IBOutlet weak var autoLaunchButton: NSButton!
+    @IBOutlet weak var quickToggleButton: NSButton!
+    @IBOutlet weak var iconSwitchingButton: NSButton!
+    @IBOutlet weak var darkModeSyncButton: NSButton!
+    @IBOutlet weak var websiteShiftingButton: NSButton!
+    @IBOutlet weak var trueToneControlButton: NSButton!
+    
+    @IBOutlet weak var trueToneStackView: NSStackView!
+    
     @IBOutlet weak var schedulePopup: NSPopUpButton!
     @IBOutlet weak var offMenuItem: NSMenuItem!
     @IBOutlet weak var customMenuItem: NSMenuItem!
@@ -63,6 +66,9 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
 
         appDelegate = NSApplication.shared.delegate as! AppDelegate
         prefWindow = appDelegate.preferenceWindowController.window
+
+        //Hide True Tone settings on unsupported computers
+        trueToneStackView.isHidden = CBTrueToneClient.shared.state == .unsupported
 
         //Fix layer-backing issues in 10.12 that cause window corners to not be rounded.
         if !ProcessInfo().isOperatingSystemAtLeast(OperatingSystemVersion(majorVersion: 10, minorVersion: 13, patchVersion: 0)) {
@@ -99,7 +105,7 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
 
     @IBAction func setAutoLaunch(_ sender: NSButtonCell) {
         let launcherAppIdentifier = "io.natethompson.ShiftyHelper"
-        SMLoginItemSetEnabled(launcherAppIdentifier as CFString, setAutoLaunch.state == .on)
+        SMLoginItemSetEnabled(launcherAppIdentifier as CFString, sender.state == .on)
         logw("Auto launch on login set to \(sender.state.rawValue)")
     }
 
@@ -170,11 +176,12 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
     }
 
     override func viewWillDisappear() {
-        Event.preferences(autoLaunch: setAutoLaunch.state == .on,
-                          quickToggle: toggleStatusItem.state == .on,
-                          iconSwitching: setIconSwitching.state == .on,
-                          syncDarkMode: darkModeSync.state == .on,
-                          websiteShifting: websiteShifting.state == .on,
+        Event.preferences(autoLaunch: autoLaunchButton.state == .on,
+                          quickToggle: quickToggleButton.state == .on,
+                          iconSwitching: iconSwitchingButton.state == .on,
+                          syncDarkMode: darkModeSyncButton.state == .on,
+                          websiteShifting: websiteShiftingButton.state == .on,
+                          trueToneControl: trueToneControlButton.state == .on,
                           schedule: NightShiftManager.schedule).record()
     }
 }
