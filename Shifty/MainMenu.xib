@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.3.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.3.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -36,6 +35,7 @@
                 <outlet property="sliderView" destination="xRd-3s-8Ep" id="5v2-aR-QE3"/>
                 <outlet property="statusMenu" destination="YaK-8p-dol" id="uua-tx-AWw"/>
                 <outlet property="sunIcon" destination="Dky-H2-15i" id="AXj-lL-QbW"/>
+                <outlet property="trueToneMenuItem" destination="fW8-W0-ja9" id="idL-jg-jCv"/>
             </connections>
         </customObject>
         <menu autoenablesItems="NO" id="YaK-8p-dol" userLabel="StatusMenu">
@@ -53,7 +53,7 @@
                 <menuItem title="Slider" id="NRb-4W-jcc">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
-                <menuItem isSeparatorItem="YES" id="W1o-NM-zpi"/>
+                <menuItem isSeparatorItem="YES" id="9KJ-0B-A9w"/>
                 <menuItem title="Disable for app" id="ycw-C3-JG6">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
@@ -84,6 +84,13 @@
                         <action selector="disableCustomTime:" target="YHE-ZD-Fjn" id="tHA-tu-det"/>
                     </connections>
                 </menuItem>
+                <menuItem isSeparatorItem="YES" id="Myq-mS-cHa"/>
+                <menuItem title="Turn off True Tone" id="fW8-W0-ja9">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="toggleTrueTone:" target="YHE-ZD-Fjn" id="fLs-gG-LhC"/>
+                    </connections>
+                </menuItem>
                 <menuItem isSeparatorItem="YES" id="OE0-tz-FKo"/>
                 <menuItem title="Preferences..." id="GJi-nB-WzR">
                     <modifierMask key="keyEquivalentModifierMask"/>
@@ -98,7 +105,7 @@
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="144.5" y="137.5"/>
+            <point key="canvasLocation" x="144" y="120"/>
         </menu>
         <customView id="xRd-3s-8Ep" customClass="SliderView" customModule="Shifty" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="247" height="21"/>

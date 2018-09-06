@@ -212,7 +212,8 @@ enum NightShiftManager {
         return NightShiftManager.nightShiftDisableTimer != .off
     }
     
-    private static var disableRuleIsActive: Bool {
+    ///When true, app or website rule has disabled Night Shift
+    static var disableRuleIsActive: Bool {
         return RuleManager.disableRuleIsActive
     }
 
@@ -301,6 +302,9 @@ enum NightShiftManager {
             userSet = false
         case .nightShiftDisableRuleActivated:
             isNightShiftEnabled = false
+            if PrefManager.shared.userDefaults.bool(forKey: Keys.trueToneControl) {
+                CBTrueToneClient.shared.isTrueToneEnabled = false
+            }
         case .nightShiftDisableRuleDeactivated:
             if !disabledTimer && !disableRuleIsActive {
                 if userSet != nil {
@@ -308,6 +312,10 @@ enum NightShiftManager {
                 } else {
                     setToSchedule()
                 }
+            }
+            
+            if !disableRuleIsActive && PrefManager.shared.userDefaults.bool(forKey: Keys.trueToneControl) {
+                CBTrueToneClient.shared.isTrueToneEnabled = true
             }
         case .nightShiftEnableRuleActivated:
             isNightShiftEnabled = userSet ?? true

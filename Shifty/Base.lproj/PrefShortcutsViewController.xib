@@ -1,80 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.3.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.3.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PrefShortcutsViewController" customModule="Shifty" customModuleProvider="target">
             <connections>
                 <outlet property="decrementColorTempShortcut" destination="prk-eR-y7H" id="B5c-dF-qDh"/>
                 <outlet property="disableAppShortcut" destination="FEZ-yH-t0z" id="Tlx-uF-Z38"/>
-                <outlet property="disableCustomShortcut" destination="fnv-Tz-F86" id="9jN-7t-ZLf"/>
+                <outlet property="disableCustomShortcut" destination="fnv-Tz-F86" id="knK-7L-4q4"/>
                 <outlet property="disableDomainShortcut" destination="Bsb-rz-hZe" id="la8-77-i4i"/>
                 <outlet property="disableHourShortcut" destination="B2X-co-zm1" id="XA4-km-X8u"/>
                 <outlet property="disableSubdomainShortcut" destination="Lvc-Xg-apa" id="ejo-92-3Yf"/>
                 <outlet property="incrementColorTempShortcut" destination="5rk-Cc-1Rq" id="YHU-5H-JfQ"/>
                 <outlet property="toggleNightShiftShortcut" destination="Z1x-3b-aX3" id="hvi-xq-4jg"/>
+                <outlet property="toggleTrueToneLabel" destination="WaZ-Zn-96R" id="ui3-8N-ES6"/>
+                <outlet property="toggleTrueToneShortcut" destination="29Z-EF-N11" id="YRd-bj-poQ"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="346" height="248"/>
+            <rect key="frame" x="0.0" y="0.0" width="346" height="275"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ufu-z4-tzp">
-                    <rect key="frame" x="176" y="20" width="150" height="208"/>
+                    <rect key="frame" x="176" y="20" width="150" height="235"/>
                     <subviews>
                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="Z1x-3b-aX3" customClass="MASShortcutView">
-                            <rect key="frame" x="0.0" y="189" width="150" height="19"/>
+                            <rect key="frame" x="0.0" y="216" width="150" height="19"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="19" id="ipY-CP-VVe"/>
                             </constraints>
                         </customView>
                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="5rk-Cc-1Rq" customClass="MASShortcutView">
-                            <rect key="frame" x="0.0" y="162" width="150" height="19"/>
+                            <rect key="frame" x="0.0" y="189" width="150" height="19"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="19" id="aLn-2F-D8B"/>
                             </constraints>
                         </customView>
                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="prk-eR-y7H" customClass="MASShortcutView">
-                            <rect key="frame" x="0.0" y="135" width="150" height="19"/>
+                            <rect key="frame" x="0.0" y="162" width="150" height="19"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="19" id="5IW-1g-0Hr"/>
                             </constraints>
                         </customView>
                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="FEZ-yH-t0z" customClass="MASShortcutView">
-                            <rect key="frame" x="0.0" y="108" width="150" height="19"/>
+                            <rect key="frame" x="0.0" y="135" width="150" height="19"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="19" id="bVg-kd-a9Z"/>
                             </constraints>
                         </customView>
                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="Bsb-rz-hZe" customClass="MASShortcutView">
-                            <rect key="frame" x="0.0" y="81" width="150" height="19"/>
+                            <rect key="frame" x="0.0" y="108" width="150" height="19"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="19" id="OwC-qh-yyP"/>
                             </constraints>
                         </customView>
                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="Lvc-Xg-apa" customClass="MASShortcutView">
-                            <rect key="frame" x="0.0" y="54" width="150" height="19"/>
+                            <rect key="frame" x="0.0" y="81" width="150" height="19"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="19" id="rYy-mY-NcV"/>
                             </constraints>
                         </customView>
                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="B2X-co-zm1" customClass="MASShortcutView">
-                            <rect key="frame" x="0.0" y="27" width="150" height="19"/>
+                            <rect key="frame" x="0.0" y="54" width="150" height="19"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="19" id="xek-cb-Hih"/>
                             </constraints>
                         </customView>
                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="fnv-Tz-F86" customClass="MASShortcutView">
-                            <rect key="frame" x="0.0" y="0.0" width="150" height="19"/>
+                            <rect key="frame" x="0.0" y="27" width="150" height="19"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="19" id="Iyb-ch-9Uu"/>
+                            </constraints>
+                        </customView>
+                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="29Z-EF-N11" customClass="MASShortcutView">
+                            <rect key="frame" x="0.0" y="0.0" width="150" height="19"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="19" id="4n3-FM-zHn"/>
                             </constraints>
                         </customView>
                     </subviews>
@@ -96,8 +103,10 @@
                         <integer value="1000"/>
                         <integer value="1000"/>
                         <integer value="1000"/>
+                        <integer value="1000"/>
                     </visibilityPriorities>
                     <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
                         <real value="3.4028234663852886e+38"/>
                         <real value="3.4028234663852886e+38"/>
                         <real value="3.4028234663852886e+38"/>
@@ -109,10 +118,10 @@
                     </customSpacing>
                 </stackView>
                 <stackView distribution="fillEqually" orientation="vertical" alignment="trailing" horizontalStackHuggingPriority="1000" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4P5-aP-O4n">
-                    <rect key="frame" x="20" y="20" width="148" height="208"/>
+                    <rect key="frame" x="20" y="20" width="148" height="235"/>
                     <subviews>
                         <textField horizontalHuggingPriority="999" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="sOE-bC-gJi">
-                            <rect key="frame" x="-2" y="189" width="152" height="19"/>
+                            <rect key="frame" x="-2" y="216" width="152" height="19"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Toggle Night Shift:" id="IdZ-nb-iqg">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -120,7 +129,7 @@
                             </textFieldCell>
                         </textField>
                         <textField horizontalHuggingPriority="999" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="mpq-v8-eTF">
-                            <rect key="frame" x="-2" y="162" width="152" height="19"/>
+                            <rect key="frame" x="-2" y="189" width="152" height="19"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Increase color temp:" id="FfB-x2-5QK">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -128,7 +137,7 @@
                             </textFieldCell>
                         </textField>
                         <textField horizontalHuggingPriority="999" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="6If-nR-PWL">
-                            <rect key="frame" x="-2" y="135" width="152" height="19"/>
+                            <rect key="frame" x="-2" y="162" width="152" height="19"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Decrease color temp:" id="qba-Ra-lrp">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -136,7 +145,7 @@
                             </textFieldCell>
                         </textField>
                         <textField horizontalHuggingPriority="999" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="1L6-AR-JLC">
-                            <rect key="frame" x="-2" y="108" width="152" height="19"/>
+                            <rect key="frame" x="-2" y="135" width="152" height="19"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Disable for current app:" id="Wqh-KU-7V9">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -144,7 +153,7 @@
                             </textFieldCell>
                         </textField>
                         <textField horizontalHuggingPriority="999" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="ZBq-1q-S0e">
-                            <rect key="frame" x="-2" y="81" width="152" height="19"/>
+                            <rect key="frame" x="-2" y="108" width="152" height="19"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Disable for domain:" id="mgw-oE-8Cc">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -152,7 +161,7 @@
                             </textFieldCell>
                         </textField>
                         <textField horizontalHuggingPriority="999" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Oic-Ot-Qer">
-                            <rect key="frame" x="-2" y="54" width="152" height="19"/>
+                            <rect key="frame" x="-2" y="81" width="152" height="19"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Disable for subdomain:" id="Fd8-nI-wLG">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -160,7 +169,7 @@
                             </textFieldCell>
                         </textField>
                         <textField horizontalHuggingPriority="999" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="u31-Kz-pyN">
-                            <rect key="frame" x="-2" y="27" width="152" height="19"/>
+                            <rect key="frame" x="-2" y="54" width="152" height="19"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Disable for an hour:" id="Kfd-ZQ-sGn">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -168,8 +177,16 @@
                             </textFieldCell>
                         </textField>
                         <textField horizontalHuggingPriority="999" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="8K4-to-DsX">
-                            <rect key="frame" x="-2" y="0.0" width="152" height="19"/>
+                            <rect key="frame" x="-2" y="27" width="152" height="19"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Disable for custom time:" id="oMJ-PL-YWn">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField horizontalHuggingPriority="999" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="WaZ-Zn-96R">
+                            <rect key="frame" x="-2" y="0.0" width="152" height="19"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Toggle True Tone:" id="m9D-jW-JGk">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -185,8 +202,10 @@
                         <integer value="1000"/>
                         <integer value="1000"/>
                         <integer value="1000"/>
+                        <integer value="1000"/>
                     </visibilityPriorities>
                     <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
                         <real value="3.4028234663852886e+38"/>
                         <real value="3.4028234663852886e+38"/>
                         <real value="3.4028234663852886e+38"/>
