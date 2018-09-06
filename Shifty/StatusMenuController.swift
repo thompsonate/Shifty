@@ -411,7 +411,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         }
     }
     
-    @IBAction func toggleTrueTone(_ sender: NSMenuItem) {
+    @IBAction func toggleTrueTone(_ sender: Any) {
         CBTrueToneClient.shared.isTrueToneEnabled = !CBTrueToneClient.shared.isTrueToneEnabled
     }
 

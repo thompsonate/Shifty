@@ -26,6 +26,8 @@ struct Keys {
     static let disableSubdomainShortcut = "disableSubdomainShortcut"
     static let disableHourShortcut = "disableHourShortcut"
     static let disableCustomShortcut = "disableCustomShortcut"
+    static let toggleTrueToneShortcut = "toggleTrueToneShortcut"
+    
     static let hasSetupWindowShown = "hasSetupWindowShown"
 }
 
@@ -76,6 +78,7 @@ class PrefManager {
         userDefaults.removeObject(forKey: Keys.disableSubdomainShortcut)
         userDefaults.removeObject(forKey: Keys.disableHourShortcut)
         userDefaults.removeObject(forKey: Keys.disableCustomShortcut)
+        userDefaults.removeObject(forKey: Keys.toggleTrueToneShortcut)
         userDefaults.removeObject(forKey: Keys.hasSetupWindowShown)
         
         synchronize()
