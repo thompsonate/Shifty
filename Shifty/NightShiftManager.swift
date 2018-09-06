@@ -180,13 +180,16 @@ enum NightShiftManager {
             let now = Time(Date())
             if endTime > startTime {
                 //startTime and endTime are on the same day
-                return now > startTime && now < endTime
+                return now >= startTime && now <= endTime
             } else {
                 //endTime is on the day following startTime
-                return now > startTime || now < endTime
+                return now >= startTime || now <= endTime
             }
         case .solar:
-            guard let isDaylight = BSClient?.isDaylight else { return false }
+            guard let isDaylight = BSClient?.isDaylight else {
+                logw("Found nil for object BSClient. Returning false for scheduledState.")
+                return false
+            }
             //Should be false between sunrise and sunset
             return !isDaylight
         }
@@ -255,7 +258,7 @@ enum NightShiftManager {
         if UserDefaults.standard.bool(forKey: Keys.isDarkModeSyncEnabled) {
             switch schedule {
             case .off:
-                let darkModeState = isNightShiftEnabled || disableRuleIsActive || disabledTimer || userSet == false
+                let darkModeState = isNightShiftEnabled || disableRuleIsActive || disabledTimer || userSet == true
                 SLSSetAppearanceThemeLegacy(darkModeState)
                 logw("Dark mode set to \(darkModeState)")
             case .solar:
