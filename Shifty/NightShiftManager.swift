@@ -8,7 +8,6 @@
 import Cocoa
 import SwiftLog
 
-let BSClient = BrightnessSystemClient()
 
 extension Time: Equatable, Comparable {
     init(_ date: Date) {
@@ -186,8 +185,8 @@ enum NightShiftManager {
                 return now >= startTime || now <= endTime
             }
         case .solar:
-            guard let isDaylight = BSClient?.isDaylight else {
-                logw("Found nil for object BSClient. Returning false for scheduledState.")
+            guard let isDaylight = BrightnessSystemClient.shared?.isDaylight else {
+                logw("Found nil for object BrightnessSystemClient. Returning false for scheduledState.")
                 return false
             }
             //Should be false between sunrise and sunset
