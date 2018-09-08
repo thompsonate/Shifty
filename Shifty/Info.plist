@@ -56,5 +56,7 @@
 	<string>https://shifty.natethompson.io/ShiftyAppcast.xml</string>
 	<key>SUPublicDSAKeyFile</key>
 	<string>dsa_pub.pem</string>
+	<key>NSAppleEventsUsageDescription</key>
+	<string>Shifty needs access to your current web address to let you disable Night Shift for the sites you choose.</string>
 </dict>
 </plist>
