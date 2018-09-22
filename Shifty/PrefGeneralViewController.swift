@@ -156,6 +156,10 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
         logw("True Tone control set to \(sender.state.rawValue)")
     }
     
+    @IBAction func analyticsDetailClicked(_ sender: Any) {
+        self.presentAsSheet(AnalyticsDetailViewController())
+    }
+    
     @IBAction func schedulePopup(_ sender: NSPopUpButton) {
         if schedulePopup.selectedItem == offMenuItem {
             NightShiftManager.schedule = .off

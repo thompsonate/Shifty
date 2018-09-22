@@ -21,6 +21,13 @@ class SetupWindowController: NSWindowController {
     }
 }
 
+
+
+
+
+
+
+
 class SetupWindow: NSWindow {
     override func keyDown(with event: NSEvent) {
         super.keyDown(with: event)
@@ -31,6 +38,13 @@ class SetupWindow: NSWindow {
         }
     }
 }
+
+
+
+
+
+
+
 
 class SetupView: NSView {
     @IBAction func accessibilityHelp(_ sender: Any) {
@@ -46,6 +60,13 @@ class SetupView: NSView {
         window?.close()
     }
 }
+
+
+
+
+
+
+
 
 class AccessibilityViewController: NSViewController {
     var observer: NSObjectProtocol!
@@ -79,6 +100,25 @@ class AccessibilityViewController: NSViewController {
         performSegue(withIdentifier: "showCompleteView", sender: self)
     }
 }
+
+
+
+
+
+
+
+class FinalViewController: NSViewController {
+    @IBAction func analyticsDetailClicked(_ sender: Any) {
+        presentAsSheet(AnalyticsDetailViewController())
+    }
+}
+
+
+
+
+
+
+
 
 class ContainerViewController: NSViewController {
     var sourceViewController: NSViewController!

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="AnalyticsDetailViewController" customModule="Shifty" customModuleProvider="target">
+            <connections>
+                <outlet property="label" destination="ztU-d8-vK8" id="hrm-1A-by6"/>
+                <outlet property="view" destination="oOs-Qf-IlZ" id="83C-Fx-DTB"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <view id="oOs-Qf-IlZ">
+            <rect key="frame" x="0.0" y="0.0" width="390" height="78"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ztU-d8-vK8">
+                    <rect key="frame" x="18" y="41" width="354" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="350" id="s5X-Ar-y2X"/>
+                    </constraints>
+                    <textFieldCell key="cell" title="text" id="lYN-D0-Md7">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="huP-sl-rPZ">
+                    <rect key="frame" x="294" y="13" width="82" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="mrW-gU-Hra"/>
+                    </constraints>
+                    <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="iCg-2X-0KE">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                        <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                    </buttonCell>
+                    <connections>
+                        <action selector="closePressed:" target="-2" id="tST-HP-6DA"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DUK-Ga-JA3">
+                    <rect key="frame" x="14" y="13" width="62" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="esc" bezelStyle="rounded" alignment="center" borderStyle="border" transparent="YES" imageScaling="proportionallyDown" inset="2" id="aXl-qW-A03">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                        <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                    </buttonCell>
+                    <connections>
+                        <action selector="closePressed:" target="-2" id="q2y-jx-m0g"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="huP-sl-rPZ" secondAttribute="bottom" constant="20" id="GQr-ge-60d"/>
+                <constraint firstItem="huP-sl-rPZ" firstAttribute="top" secondItem="ztU-d8-vK8" secondAttribute="bottom" id="LwX-DW-9b6"/>
+                <constraint firstAttribute="trailing" secondItem="ztU-d8-vK8" secondAttribute="trailing" constant="20" id="PhM-KC-CjT"/>
+                <constraint firstItem="ztU-d8-vK8" firstAttribute="leading" secondItem="oOs-Qf-IlZ" secondAttribute="leading" constant="20" id="Y8b-4Q-x2I"/>
+                <constraint firstItem="ztU-d8-vK8" firstAttribute="top" secondItem="oOs-Qf-IlZ" secondAttribute="top" constant="20" id="frB-F2-CCe"/>
+                <constraint firstAttribute="trailing" secondItem="huP-sl-rPZ" secondAttribute="trailing" constant="20" id="xYh-ro-I4n"/>
+            </constraints>
+        </view>
+    </objects>
+</document>
