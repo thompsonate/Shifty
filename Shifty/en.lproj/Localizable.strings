@@ -69,6 +69,6 @@
 "analytics.doesnt_include_list_2" = "Any device IDs or personally identifiable information";
 
 "analytics.data_usage_list_title" = "What happens to the data?";
-"analytics.data_usage_list_1" = "All data collected is anonymous and aggregated, so it cannot be traced back to individual users";
-"analytics.data_usage_list_2" = "None of this data is sold to anyone (and nobody would want to buy it anyways)";
+"analytics.data_usage_list_1" = "None of this data is sold to anyone (and nobody would want to buy it anyways)";
+"analytics.data_usage_list_2" = "Helps to resolve problems and make Shifty better";
 

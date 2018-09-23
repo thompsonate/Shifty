@@ -28,8 +28,8 @@ class AnalyticsDetailViewController: NSViewController {
         ]
         
         let dataUsageList = [
-            NSLocalizedString("analytics.data_usage_list_1", comment: "All data collected is anonymous and aggregated, so it cannot be traced back to individual users"),
-            NSLocalizedString("analytics.data_usage_list_2", comment: "None of this data is sold to anyone (and nobody would want to buy it anyways)")
+            NSLocalizedString("analytics.data_usage_list_1", comment: "None of this data is sold to anyone (and nobody would want to buy it anyways)"),
+            NSLocalizedString("analytics.data_usage_list_2", comment: "Helps to resolve problems and make Shifty better")
         ]
         
         let mutableString = NSMutableAttributedString()
