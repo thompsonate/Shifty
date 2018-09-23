@@ -53,3 +53,18 @@
 "alert.open_preferences" = "Open System Preferences";
 "alert.not_now" = "Not now";
 
+
+
+"analytics.includes_list_title" = "What data is collected?";
+"analytics.includes_list_1" = "Information about what caused a crash";
+"analytics.includes_list_2" = "Data about the usage of various features in Shifty";
+"analytics.includes_list_3" = "Useful information about issues that don’t cause the app to crash";
+
+"analytics.doesnt_include_list_title" = "What data isn't collected?";
+"analytics.doesnt_include_list_1" = "Sensitive data Shifty is granted permission to access (e.g. web addresses used for Website Shifting)";
+"analytics.doesnt_include_list_2" = "Any device IDs or personally identifiable information";
+
+"analytics.data_usage_list_title" = "What happens to the data?";
+"analytics.data_usage_list_1" = "All data collected is anonymous and aggregated, so it cannot be traced back to individual users";
+"analytics.data_usage_list_2" = "None of this data is sold to anyone (and nobody would want to buy it anyways)";
+
