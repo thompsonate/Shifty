@@ -86,8 +86,8 @@
                             </customSpacing>
                         </stackView>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Iuc-Pc-Qb3">
-                            <rect key="frame" x="-2" y="156" width="246" height="18"/>
-                            <buttonCell key="cell" type="check" title="Change icon according to Night Shift" bezelStyle="regularSquare" imagePosition="left" inset="2" id="4io-9H-HXp">
+                            <rect key="frame" x="-2" y="156" width="280" height="18"/>
+                            <buttonCell key="cell" type="check" title="Set menu bar icon according to Night Shift" bezelStyle="regularSquare" imagePosition="left" inset="2" id="4io-9H-HXp">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
                                 <connections>
@@ -137,8 +137,8 @@
                             </customSpacing>
                         </stackView>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="I5d-cF-2Wh">
-                            <rect key="frame" x="-2" y="80" width="162" height="18"/>
-                            <buttonCell key="cell" type="check" title="Enable website shifting" bezelStyle="regularSquare" imagePosition="left" inset="2" id="HRq-mZ-FxG">
+                            <rect key="frame" x="-2" y="80" width="122" height="18"/>
+                            <buttonCell key="cell" type="check" title="Website Shifting" bezelStyle="regularSquare" imagePosition="left" inset="2" id="HRq-mZ-FxG">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
                                 <connections>
