@@ -193,6 +193,9 @@
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
+                                    <connections>
+                                        <binding destination="HAt-Ds-MVV" name="value" keyPath="values.fabricCrashlyticsPermission" id="xsS-fj-boS"/>
+                                    </connections>
                                 </button>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="X5z-4y-ROF">
                                     <rect key="frame" x="279" y="-7" width="32" height="31"/>
@@ -414,7 +417,6 @@
                             <constraint firstItem="RlH-eS-o9O" firstAttribute="leading" secondItem="M39-xI-Ibk" secondAttribute="leading" id="gaj-Aa-G8w"/>
                         </constraints>
                     </view>
-                    <font key="titleFont" metaFont="smallSystem"/>
                 </box>
             </subviews>
             <constraints>

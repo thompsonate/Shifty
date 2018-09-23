@@ -32,10 +32,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }()
 
     var setupWindow: NSWindow!
+    var setupWindowController: NSWindowController!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         UserDefaults.standard.register(defaults: ["NSApplicationCrashOnExceptions": true])
-        Fabric.with([Crashlytics.self])
+        
+        let userDefaults = PrefManager.shared.userDefaults
+        
+        if userDefaults.bool(forKey: Keys.fabricCrashlyticsPermission) {
+            Fabric.with([Crashlytics.self])
+        } else if userDefaults.bool(forKey: Keys.hasSetupWindowShown) && userDefaults.value(forKey: Keys.lastInstalledShiftyVersion) == nil {
+            // If updated from beta version
+            userDefaults.set(true, forKey: Keys.fabricCrashlyticsPermission)
+        }
+        
+        
+        let versionObject = Bundle.main.infoDictionary?["CFBundleShortVersionString"]
+        userDefaults.set(versionObject as? String ?? "", forKey: Keys.lastInstalledShiftyVersion)
+        
+        
         Event.appLaunched.record()
 
         logw("")
@@ -137,11 +152,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func showSetupWindow() {
         let storyboard = NSStoryboard(name: "Setup", bundle: nil)
-        let controller = storyboard.instantiateInitialController() as! NSWindowController
-        setupWindow = controller.window
+        setupWindowController = storyboard.instantiateInitialController() as? NSWindowController
+        setupWindow = setupWindowController.window
         
         NSApplication.shared.activate(ignoringOtherApps: true)
-        controller.showWindow(self)
+        setupWindowController.showWindow(self)
         setupWindow.makeMain()
         
         UserDefaults.standard.set(true, forKey: Keys.hasSetupWindowShown)

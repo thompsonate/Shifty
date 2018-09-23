@@ -16,7 +16,7 @@
                         <rect key="contentRect" x="196" y="240" width="231" height="100"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
                         <connections>
-                            <outlet property="delegate" destination="dg9-4W-042" id="Xh2-lm-oAc"/>
+                            <outlet property="delegate" destination="dg9-4W-042" id="TH7-a4-AFK"/>
                         </connections>
                     </window>
                     <connections>
@@ -25,7 +25,7 @@
                 </windowController>
                 <customObject id="seq-fT-TF7" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-29" y="172"/>
+            <point key="canvasLocation" x="-29.5" y="172"/>
         </scene>
         <!--Container View Controller-->
         <scene sceneID="gsL-YJ-Z14">
@@ -449,7 +449,7 @@ DQ
         <!--Final View Controller-->
         <scene sceneID="EL0-es-9Lf">
             <objects>
-                <viewController id="j1O-j4-Iou" customClass="FinalViewController" customModule="Shifty" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="finalViewController" id="j1O-j4-Iou" customClass="FinalViewController" customModule="Shifty" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="lIO-UQ-KPf" customClass="SetupView" customModule="Shifty" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="425"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -576,8 +576,12 @@ DQ
                             <constraint firstItem="22i-XU-Ifo" firstAttribute="top" secondItem="xvQ-7Q-Jp7" secondAttribute="bottom" constant="20" id="xV4-Fn-Ziu"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="analyticsPermissionButton" destination="RjY-FG-DwV" id="3gO-e7-d4O"/>
+                    </connections>
                 </viewController>
                 <customObject id="sJx-Mk-SiO" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController representsSharedInstance="YES" id="ct8-NV-t6V"/>
             </objects>
             <point key="canvasLocation" x="1662" y="577.5"/>
         </scene>
@@ -593,7 +597,7 @@ DQ
         <image name="websiteFeatureScreenshot" width="329" height="167"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cdz-pS-K8F"/>
-        <segue reference="Ibe-5u-Fbi"/>
+        <segue reference="RBK-ii-duJ"/>
+        <segue reference="OTp-Xx-YUK"/>
     </inferredMetricsTieBreakers>
 </document>

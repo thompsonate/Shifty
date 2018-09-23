@@ -9,12 +9,13 @@ import Cocoa
 import AXSwift
 import SwiftLog
 
-class SetupWindowController: NSWindowController {    
+class SetupWindowController: NSWindowController {
     override var storyboard: NSStoryboard {
         return NSStoryboard(name: "Setup", bundle: nil)
     }
     
     override func windowDidLoad() {
+        super.windowDidLoad()
         window?.titleVisibility = .hidden
         window?.titlebarAppearsTransparent = true
         window?.isMovableByWindowBackground = true
@@ -108,8 +109,15 @@ class AccessibilityViewController: NSViewController {
 
 
 class FinalViewController: NSViewController {
+    @IBOutlet weak var analyticsPermissionButton: NSButton!
+    
     @IBAction func analyticsDetailClicked(_ sender: Any) {
         presentAsSheet(AnalyticsDetailViewController())
+    }
+    
+    override func viewWillDisappear() {
+        PrefManager.shared.userDefaults.set(analyticsPermissionButton.state == .on,
+                                            forKey: Keys.fabricCrashlyticsPermission)
     }
 }
 

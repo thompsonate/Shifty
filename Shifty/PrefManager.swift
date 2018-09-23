@@ -15,6 +15,7 @@ struct Keys {
     static let isDarkModeSyncEnabled = "isDarkModeSyncEnabled"
     static let isWebsiteControlEnabled = "isWebsiteControlEnabled"
     static let trueToneControl = "trueToneControl"
+    static let fabricCrashlyticsPermission = "fabricCrashlyticsPermission"
     static let disabledApps = "disabledApps"
     static let browserRules = "browserRules"
 
@@ -28,6 +29,7 @@ struct Keys {
     static let disableCustomShortcut = "disableCustomShortcut"
     static let toggleTrueToneShortcut = "toggleTrueToneShortcut"
     
+    static let lastInstalledShiftyVersion = "lastInstalledShiftyVersion"
     static let hasSetupWindowShown = "hasSetupWindowShown"
 }
 
@@ -49,6 +51,7 @@ class PrefManager {
             Keys.isDarkModeSyncEnabled: NSNumber(value: false),
             Keys.isWebsiteControlEnabled: NSNumber(value: false),
             Keys.trueToneControl: NSNumber(value: false),
+            Keys.fabricCrashlyticsPermission: NSNumber(value: false),
             Keys.disabledApps: NSData(),
             Keys.browserRules: NSData(),
             Keys.hasSetupWindowShown: NSNumber(value: false)
@@ -79,6 +82,7 @@ class PrefManager {
         userDefaults.removeObject(forKey: Keys.disableHourShortcut)
         userDefaults.removeObject(forKey: Keys.disableCustomShortcut)
         userDefaults.removeObject(forKey: Keys.toggleTrueToneShortcut)
+        userDefaults.removeObject(forKey: Keys.fabricCrashlyticsPermission)
         userDefaults.removeObject(forKey: Keys.hasSetupWindowShown)
         
         synchronize()

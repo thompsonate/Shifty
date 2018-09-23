@@ -48,9 +48,11 @@ enum Event {
 extension Event {
 
     func record() {
-        #if !DEBUG
-            Answers.logCustomEvent(withName: eventName, customAttributes: customAttributes)
-        #endif
+        if PrefManager.shared.userDefaults.bool(forKey: Keys.fabricCrashlyticsPermission) {
+            #if !DEBUG
+                Answers.logCustomEvent(withName: eventName, customAttributes: customAttributes)
+            #endif
+        }
     }
 
     private var eventName: String {
