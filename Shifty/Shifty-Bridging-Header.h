@@ -11,3 +11,4 @@
 #import "CBTrueToneClient.h"
 
 void SLSSetAppearanceThemeLegacy(BOOL);
+BOOL SLSGetAppearanceThemeLegacy();

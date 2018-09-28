@@ -43,6 +43,7 @@ class PrefShortcutsViewController: NSViewController, MASPreferencesViewControlle
     @IBOutlet weak var disableHourShortcut: MASShortcutView!
     @IBOutlet weak var disableCustomShortcut: MASShortcutView!
     @IBOutlet weak var toggleTrueToneShortcut: MASShortcutView!
+    @IBOutlet weak var toggleDarkModeShortcut: MASShortcutView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,10 +67,20 @@ class PrefShortcutsViewController: NSViewController, MASPreferencesViewControlle
         disableHourShortcut.associatedUserDefaultsKey = Keys.disableHourShortcut
         disableCustomShortcut.associatedUserDefaultsKey = Keys.disableCustomShortcut
         toggleTrueToneShortcut.associatedUserDefaultsKey = Keys.toggleTrueToneShortcut
+        toggleDarkModeShortcut.associatedUserDefaultsKey = Keys.toggleDarkModeShortcut
     }
 
     override func viewWillDisappear() {
-        Event.shortcuts(toggleNightShift: toggleNightShiftShortcut.shortcutValue != nil, increaseColorTemp: incrementColorTempShortcut.shortcutValue != nil, decreaseColorTemp: decrementColorTempShortcut.shortcutValue != nil, disableApp: disableAppShortcut.shortcutValue != nil, disableDomain: disableDomainShortcut.shortcutValue != nil, disableSubdomain: disableSubdomainShortcut.shortcutValue != nil, disableHour: disableHourShortcut.shortcutValue != nil, disableCustom: disableCustomShortcut.shortcutValue != nil).record()
+        Event.shortcuts(toggleNightShift: toggleNightShiftShortcut.shortcutValue != nil,
+                        increaseColorTemp: incrementColorTempShortcut.shortcutValue != nil,
+                        decreaseColorTemp: decrementColorTempShortcut.shortcutValue != nil,
+                        disableApp: disableAppShortcut.shortcutValue != nil,
+                        disableDomain: disableDomainShortcut.shortcutValue != nil,
+                        disableSubdomain: disableSubdomainShortcut.shortcutValue != nil,
+                        disableHour: disableHourShortcut.shortcutValue != nil,
+                        disableCustom: disableCustomShortcut.shortcutValue != nil,
+                        toggleTrueTone: toggleTrueToneShortcut.shortcutValue != nil,
+                        toggleDarkMode: toggleDarkModeShortcut.shortcutValue != nil).record()
     }
 
     func bindShortcuts() {
@@ -158,5 +169,9 @@ class PrefShortcutsViewController: NSViewController, MASPreferencesViewControlle
                 NSSound.beep()
             }
         }
+        
+        MASShortcutBinder.shared().bindShortcut(withDefaultsKey: Keys.toggleDarkModeShortcut, toAction: {
+            SLSSetAppearanceThemeLegacy(!SLSGetAppearanceThemeLegacy())
+        })
     }
 }

@@ -28,6 +28,7 @@ struct Keys {
     static let disableHourShortcut = "disableHourShortcut"
     static let disableCustomShortcut = "disableCustomShortcut"
     static let toggleTrueToneShortcut = "toggleTrueToneShortcut"
+    static let toggleDarkModeShortcut = "toggleDarkModeShortcut"
     
     static let lastInstalledShiftyVersion = "lastInstalledShiftyVersion"
     static let hasSetupWindowShown = "hasSetupWindowShown"
@@ -82,6 +83,7 @@ class PrefManager {
         userDefaults.removeObject(forKey: Keys.disableHourShortcut)
         userDefaults.removeObject(forKey: Keys.disableCustomShortcut)
         userDefaults.removeObject(forKey: Keys.toggleTrueToneShortcut)
+        userDefaults.removeObject(forKey: Keys.toggleDarkModeShortcut)
         userDefaults.removeObject(forKey: Keys.fabricCrashlyticsPermission)
         userDefaults.removeObject(forKey: Keys.hasSetupWindowShown)
         
