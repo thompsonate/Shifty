@@ -9,18 +9,25 @@ import Cocoa
 import AXSwift
 import SwiftLog
 
-class SetupWindowController: NSWindowController {    
+class SetupWindowController: NSWindowController {
     override var storyboard: NSStoryboard {
-        return NSStoryboard(name: .init("Setup"), bundle: nil)
+        return NSStoryboard(name: "Setup", bundle: nil)
     }
     
     override func windowDidLoad() {
-        window?.backgroundColor = NSColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
+        super.windowDidLoad()
         window?.titleVisibility = .hidden
         window?.titlebarAppearsTransparent = true
         window?.isMovableByWindowBackground = true
     }
 }
+
+
+
+
+
+
+
 
 class SetupWindow: NSWindow {
     override func keyDown(with event: NSEvent) {
@@ -32,6 +39,13 @@ class SetupWindow: NSWindow {
         }
     }
 }
+
+
+
+
+
+
+
 
 class SetupView: NSView {
     @IBAction func accessibilityHelp(_ sender: Any) {
@@ -47,6 +61,13 @@ class SetupView: NSView {
         window?.close()
     }
 }
+
+
+
+
+
+
+
 
 class AccessibilityViewController: NSViewController {
     var observer: NSObjectProtocol!
@@ -77,9 +98,35 @@ class AccessibilityViewController: NSViewController {
     }
     
     func showNextView() {
-        performSegue(withIdentifier: NSStoryboardSegue.Identifier("showCompleteView"), sender: self)
+        performSegue(withIdentifier: "showCompleteView", sender: self)
     }
 }
+
+
+
+
+
+
+
+class FinalViewController: NSViewController {
+    @IBOutlet weak var analyticsPermissionButton: NSButton!
+    
+    @IBAction func analyticsDetailClicked(_ sender: Any) {
+        presentAsSheet(AnalyticsDetailViewController())
+    }
+    
+    override func viewWillDisappear() {
+        PrefManager.shared.userDefaults.set(analyticsPermissionButton.state == .on,
+                                            forKey: Keys.fabricCrashlyticsPermission)
+    }
+}
+
+
+
+
+
+
+
 
 class ContainerViewController: NSViewController {
     var sourceViewController: NSViewController!
@@ -87,9 +134,9 @@ class ContainerViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let setupStoryboard = NSStoryboard(name: .init("Setup"), bundle: nil)
-        sourceViewController = setupStoryboard.instantiateController(withIdentifier: .init("sourceViewController")) as! NSViewController
-        self.insertChildViewController(sourceViewController, at: 0)
+        let setupStoryboard = NSStoryboard(name: "Setup", bundle: nil)
+        sourceViewController = setupStoryboard.instantiateController(withIdentifier: "sourceViewController") as! NSViewController
+        self.insertChild(sourceViewController, at: 0)
         self.view.addSubview(sourceViewController.view)
         self.view.frame = sourceViewController.view.frame
         

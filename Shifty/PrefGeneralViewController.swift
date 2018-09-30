@@ -16,13 +16,13 @@ import SwiftLog
 class PrefGeneralViewController: NSViewController, MASPreferencesViewController {
 
     override var nibName: NSNib.Name {
-        return NSNib.Name("PrefGeneralViewController")
+        return "PrefGeneralViewController"
     }
 
     var viewIdentifier: String = "PrefGeneralViewController"
 
     var toolbarItemImage: NSImage? {
-        return NSImage(named: .preferencesGeneral)
+        return NSImage(named: NSImage.preferencesGeneralName)
     }
 
     var toolbarItemLabel: String? {
@@ -33,12 +33,15 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
     var hasResizableWidth = false
     var hasResizableHeight = false
 
-    @IBOutlet weak var setAutoLaunch: NSButton!
-    @IBOutlet weak var toggleStatusItem: NSButton!
-    @IBOutlet weak var setIconSwitching: NSButton!
-    @IBOutlet weak var darkModeSync: NSButton!
-    @IBOutlet weak var websiteShifting: NSButton!
-
+    @IBOutlet weak var autoLaunchButton: NSButton!
+    @IBOutlet weak var quickToggleButton: NSButton!
+    @IBOutlet weak var iconSwitchingButton: NSButton!
+    @IBOutlet weak var darkModeSyncButton: NSButton!
+    @IBOutlet weak var websiteShiftingButton: NSButton!
+    @IBOutlet weak var trueToneControlButton: NSButton!
+    
+    @IBOutlet weak var trueToneStackView: NSStackView!
+    
     @IBOutlet weak var schedulePopup: NSPopUpButton!
     @IBOutlet weak var offMenuItem: NSMenuItem!
     @IBOutlet weak var customMenuItem: NSMenuItem!
@@ -57,12 +60,19 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
 
     var appDelegate: AppDelegate!
     var prefWindow: NSWindow!
+    
+    var defaultDarkModeState: Bool!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        appDelegate = NSApplication.shared.delegate as! AppDelegate
+        appDelegate = NSApplication.shared.delegate as? AppDelegate
         prefWindow = appDelegate.preferenceWindowController.window
+
+        //Hide True Tone settings on unsupported computers
+        trueToneStackView.isHidden = CBTrueToneClient.shared.state == .unsupported
+        
+        defaultDarkModeState = SLSGetAppearanceThemeLegacy()
 
         //Fix layer-backing issues in 10.12 that cause window corners to not be rounded.
         if !ProcessInfo().isOperatingSystemAtLeast(OperatingSystemVersion(majorVersion: 10, minorVersion: 13, patchVersion: 0)) {
@@ -99,7 +109,7 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
 
     @IBAction func setAutoLaunch(_ sender: NSButtonCell) {
         let launcherAppIdentifier = "io.natethompson.ShiftyHelper"
-        SMLoginItemSetEnabled(launcherAppIdentifier as CFString, setAutoLaunch.state == .on)
+        SMLoginItemSetEnabled(launcherAppIdentifier as CFString, sender.state == .on)
         logw("Auto launch on login set to \(sender.state.rawValue)")
     }
 
@@ -117,9 +127,10 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
 
     @IBAction func syncDarkMode(_ sender: NSButtonCell) {
         if sender.state == .on {
+            defaultDarkModeState = SLSGetAppearanceThemeLegacy()
             NightShiftManager.updateDarkMode()
         } else {
-            SLSSetAppearanceThemeLegacy(false)
+            SLSSetAppearanceThemeLegacy(defaultDarkModeState)
         }
         logw("Dark mode sync preference set to \(sender.state.rawValue)")
     }
@@ -138,7 +149,22 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
             logw("Website control disabled")
         }
     }
-
+    
+    @IBAction func setTrueToneControl(_ sender: NSButtonCell) {
+        if sender.state == .on {
+            if NightShiftManager.disableRuleIsActive {
+                CBTrueToneClient.shared.isTrueToneEnabled = false
+            }
+        } else {
+            CBTrueToneClient.shared.isTrueToneEnabled = true
+        }
+        logw("True Tone control set to \(sender.state.rawValue)")
+    }
+    
+    @IBAction func analyticsDetailClicked(_ sender: Any) {
+        self.presentAsSheet(AnalyticsDetailViewController())
+    }
+    
     @IBAction func schedulePopup(_ sender: NSPopUpButton) {
         if schedulePopup.selectedItem == offMenuItem {
             NightShiftManager.schedule = .off
@@ -159,11 +185,12 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
     }
 
     override func viewWillDisappear() {
-        Event.preferences(autoLaunch: setAutoLaunch.state == .on,
-                          quickToggle: toggleStatusItem.state == .on,
-                          iconSwitching: setIconSwitching.state == .on,
-                          syncDarkMode: darkModeSync.state == .on,
-                          websiteShifting: websiteShifting.state == .on,
+        Event.preferences(autoLaunch: autoLaunchButton.state == .on,
+                          quickToggle: quickToggleButton.state == .on,
+                          iconSwitching: iconSwitchingButton.state == .on,
+                          syncDarkMode: darkModeSyncButton.state == .on,
+                          websiteShifting: websiteShiftingButton.state == .on,
+                          trueToneControl: trueToneControlButton.state == .on,
                           schedule: NightShiftManager.schedule).record()
     }
 }

@@ -15,7 +15,7 @@ class PrefShortcutsViewController: NSViewController, MASPreferencesViewControlle
     let statusMenuController = (NSApplication.shared.delegate as? AppDelegate)?.statusMenu.delegate as? StatusMenuController
 
     override var nibName: NSNib.Name {
-        return NSNib.Name("PrefShortcutsViewController")
+        return "PrefShortcutsViewController"
     }
 
     var viewIdentifier: String = "PrefShortcutsViewController"
@@ -31,7 +31,9 @@ class PrefShortcutsViewController: NSViewController, MASPreferencesViewControlle
 
     var hasResizableWidth = false
     var hasResizableHeight = false
-
+    
+    @IBOutlet weak var toggleTrueToneLabel: NSTextField!
+    
     @IBOutlet weak var toggleNightShiftShortcut: MASShortcutView!
     @IBOutlet weak var incrementColorTempShortcut: MASShortcutView!
     @IBOutlet weak var decrementColorTempShortcut: MASShortcutView!
@@ -40,7 +42,9 @@ class PrefShortcutsViewController: NSViewController, MASPreferencesViewControlle
     @IBOutlet weak var disableSubdomainShortcut: MASShortcutView!
     @IBOutlet weak var disableHourShortcut: MASShortcutView!
     @IBOutlet weak var disableCustomShortcut: MASShortcutView!
-
+    @IBOutlet weak var toggleTrueToneShortcut: MASShortcutView!
+    @IBOutlet weak var toggleDarkModeShortcut: MASShortcutView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -48,6 +52,11 @@ class PrefShortcutsViewController: NSViewController, MASPreferencesViewControlle
         if !ProcessInfo().isOperatingSystemAtLeast(OperatingSystemVersion(majorVersion: 10, minorVersion: 13, patchVersion: 0)) {
             view.wantsLayer = false
         }
+        
+        //Hide True Tone settings on unsupported computers
+        let trueToneUnsupported = CBTrueToneClient.shared.state == .unsupported
+        toggleTrueToneLabel.isHidden = trueToneUnsupported
+        toggleTrueToneShortcut.isHidden = trueToneUnsupported
 
         toggleNightShiftShortcut.associatedUserDefaultsKey = Keys.toggleNightShiftShortcut
         incrementColorTempShortcut.associatedUserDefaultsKey = Keys.incrementColorTempShortcut
@@ -57,10 +66,21 @@ class PrefShortcutsViewController: NSViewController, MASPreferencesViewControlle
         disableSubdomainShortcut.associatedUserDefaultsKey = Keys.disableSubdomainShortcut
         disableHourShortcut.associatedUserDefaultsKey = Keys.disableHourShortcut
         disableCustomShortcut.associatedUserDefaultsKey = Keys.disableCustomShortcut
+        toggleTrueToneShortcut.associatedUserDefaultsKey = Keys.toggleTrueToneShortcut
+        toggleDarkModeShortcut.associatedUserDefaultsKey = Keys.toggleDarkModeShortcut
     }
 
     override func viewWillDisappear() {
-        Event.shortcuts(toggleNightShift: toggleNightShiftShortcut.shortcutValue != nil, increaseColorTemp: incrementColorTempShortcut.shortcutValue != nil, decreaseColorTemp: decrementColorTempShortcut.shortcutValue != nil, disableApp: disableAppShortcut.shortcutValue != nil, disableDomain: disableDomainShortcut.shortcutValue != nil, disableSubdomain: disableSubdomainShortcut.shortcutValue != nil, disableHour: disableHourShortcut.shortcutValue != nil, disableCustom: disableCustomShortcut.shortcutValue != nil).record()
+        Event.shortcuts(toggleNightShift: toggleNightShiftShortcut.shortcutValue != nil,
+                        increaseColorTemp: incrementColorTempShortcut.shortcutValue != nil,
+                        decreaseColorTemp: decrementColorTempShortcut.shortcutValue != nil,
+                        disableApp: disableAppShortcut.shortcutValue != nil,
+                        disableDomain: disableDomainShortcut.shortcutValue != nil,
+                        disableSubdomain: disableSubdomainShortcut.shortcutValue != nil,
+                        disableHour: disableHourShortcut.shortcutValue != nil,
+                        disableCustom: disableCustomShortcut.shortcutValue != nil,
+                        toggleTrueTone: toggleTrueToneShortcut.shortcutValue != nil,
+                        toggleDarkMode: toggleDarkModeShortcut.shortcutValue != nil).record()
     }
 
     func bindShortcuts() {
@@ -82,10 +102,6 @@ class PrefShortcutsViewController: NSViewController, MASPreferencesViewControlle
             } else {
                 NightShiftManager.respond(to: .userEnabledNightShift)
                 NightShiftManager.blueLightReductionAmount = 0.1
-//                self.statusMenuController?.disableDisableTimer()
-//                if self.statusMenuController?.isDisabledForApp ?? false {
-//                    NSSound.beep()
-//                }
             }
         }
 
@@ -93,7 +109,7 @@ class PrefShortcutsViewController: NSViewController, MASPreferencesViewControlle
             if NightShiftManager.isNightShiftEnabled {
                 NightShiftManager.blueLightReductionAmount -= 0.1
                 if NightShiftManager.blueLightReductionAmount == 0.0 {
-//                    BLClient.setEnabled(false)
+                    NSSound.beep()
                 }
             } else {
                 NSSound.beep()
@@ -144,5 +160,18 @@ class PrefShortcutsViewController: NSViewController, MASPreferencesViewControlle
                 NSSound.beep()
             }
         }
+        
+        MASShortcutBinder.shared().bindShortcut(withDefaultsKey: Keys.toggleTrueToneShortcut) {
+            guard let menu = self.statusMenuController else { return }
+            if !menu.trueToneMenuItem.isHidden && menu.trueToneMenuItem.isEnabled {
+                self.statusMenuController?.toggleTrueTone(self)
+            } else {
+                NSSound.beep()
+            }
+        }
+        
+        MASShortcutBinder.shared().bindShortcut(withDefaultsKey: Keys.toggleDarkModeShortcut, toAction: {
+            SLSSetAppearanceThemeLegacy(!SLSGetAppearanceThemeLegacy())
+        })
     }
 }

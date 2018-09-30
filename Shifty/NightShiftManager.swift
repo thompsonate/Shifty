@@ -8,7 +8,6 @@
 import Cocoa
 import SwiftLog
 
-let BSClient = BrightnessSystemClient()
 
 extension Time: Equatable, Comparable {
     init(_ date: Date) {
@@ -180,15 +179,32 @@ enum NightShiftManager {
             let now = Time(Date())
             if endTime > startTime {
                 //startTime and endTime are on the same day
-                return now > startTime && now < endTime
+                let scheduledState = now >= startTime && now < endTime
+                logw("scheduled state: \(scheduledState)")
+                return scheduledState
             } else {
                 //endTime is on the day following startTime
-                return now > startTime || now < endTime
+                let scheduledState = now >= startTime || now < endTime
+                logw("scheduled state: \(scheduledState)")
+                return scheduledState
             }
         case .solar:
-            guard let isDaylight = BSClient?.isDaylight else { return false }
-            //Should be false between sunrise and sunset
-            return !isDaylight
+            guard let sunrise = BrightnessSystemClient.shared?.sunrise,
+                let sunset = BrightnessSystemClient.shared?.sunset else {
+                logw("Found nil for object BrightnessSystemClient. Returning false for scheduledState.")
+                return false
+            }
+            let now = Date()
+            logw("sunset: \(sunset)")
+            logw("sunrise: \(sunrise)")
+            
+            // For some reason, BrightnessSystemClient.isDaylight doesn't track perfectly with sunrise and sunset
+            // When daylight, sunset time is previous occurence
+            // When not daylight, sunset time is next occurence
+            // Should return true when not daylight
+            let scheduledState = now >= sunset
+            logw("scheduled state: \(scheduledState)")
+            return scheduledState
         }
     }
     
@@ -212,7 +228,8 @@ enum NightShiftManager {
         return NightShiftManager.nightShiftDisableTimer != .off
     }
     
-    private static var disableRuleIsActive: Bool {
+    ///When true, app or website rule has disabled Night Shift
+    static var disableRuleIsActive: Bool {
         return RuleManager.disableRuleIsActive
     }
 
@@ -244,9 +261,12 @@ enum NightShiftManager {
         
         NSWorkspace.shared.notificationCenter.addObserver(forName: NSWorkspace.didWakeNotification, object: nil, queue: nil) { _ in
             logw("Wake from sleep notification posted")
+            
             if scheduledState != isNightShiftEnabled {
                 respond(to: scheduledState ? .enteredScheduledNightShift : .exitedScheduledNightShift)
             }
+            
+            updateDarkMode()
         }
     }
     
@@ -254,7 +274,7 @@ enum NightShiftManager {
         if UserDefaults.standard.bool(forKey: Keys.isDarkModeSyncEnabled) {
             switch schedule {
             case .off:
-                let darkModeState = isNightShiftEnabled || disableRuleIsActive || disabledTimer || userSet == false
+                let darkModeState = isNightShiftEnabled || disableRuleIsActive || disabledTimer || userSet == true
                 SLSSetAppearanceThemeLegacy(darkModeState)
                 logw("Dark mode set to \(darkModeState)")
             case .solar:
@@ -301,6 +321,9 @@ enum NightShiftManager {
             userSet = false
         case .nightShiftDisableRuleActivated:
             isNightShiftEnabled = false
+            if PrefManager.shared.userDefaults.bool(forKey: Keys.trueToneControl) {
+                CBTrueToneClient.shared.isTrueToneEnabled = false
+            }
         case .nightShiftDisableRuleDeactivated:
             if !disabledTimer && !disableRuleIsActive {
                 if userSet != nil {
@@ -308,6 +331,10 @@ enum NightShiftManager {
                 } else {
                     setToSchedule()
                 }
+            }
+            
+            if !disableRuleIsActive && PrefManager.shared.userDefaults.bool(forKey: Keys.trueToneControl) {
+                CBTrueToneClient.shared.isTrueToneEnabled = true
             }
         case .nightShiftEnableRuleActivated:
             isNightShiftEnabled = userSet ?? true

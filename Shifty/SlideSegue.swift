@@ -37,7 +37,7 @@ class SlideSegue: NSStoryboardSegue {
         let destinationViewController = self.destinationController as! NSViewController
         let containerViewController = sourceViewController.parent
         
-        containerViewController?.insertChildViewController(destinationViewController, at: 1)
+        containerViewController?.insertChild(destinationViewController, at: 1)
         
         let targetSize = destinationViewController.view.frame.size
         
@@ -54,6 +54,6 @@ class SlideSegue: NSStoryboardSegue {
             containerViewController?.view.topAnchor.constraint(equalTo: destinationViewController.view.topAnchor).isActive = true
         })
         
-        containerViewController?.removeChildViewController(at: 0)
+        containerViewController?.removeChild(at: 0)
     }
 }

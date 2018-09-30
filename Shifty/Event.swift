@@ -31,10 +31,11 @@ enum Event {
     case sliderMoved(value: Float)
 
     //Preferences
-    case preferences(autoLaunch: Bool, quickToggle: Bool, iconSwitching: Bool, syncDarkMode: Bool, websiteShifting: Bool, schedule: ScheduleType)
-    case shortcuts(toggleNightShift: Bool, increaseColorTemp: Bool, decreaseColorTemp: Bool, disableApp: Bool, disableDomain: Bool, disableSubdomain: Bool, disableHour: Bool, disableCustom: Bool)
+    case preferences(autoLaunch: Bool, quickToggle: Bool, iconSwitching: Bool, syncDarkMode: Bool, websiteShifting: Bool, trueToneControl: Bool, schedule: ScheduleType)
+    case shortcuts(toggleNightShift: Bool, increaseColorTemp: Bool, decreaseColorTemp: Bool, disableApp: Bool, disableDomain: Bool, disableSubdomain: Bool, disableHour: Bool, disableCustom: Bool, toggleTrueTone: Bool, toggleDarkMode: Bool)
     case websiteButtonClicked
     case feedbackButtonClicked
+    case twitterButtonClicked
     case translateButtonClicked
     case donateButtonClicked
     case checkForUpdatesClicked
@@ -48,9 +49,11 @@ enum Event {
 extension Event {
 
     func record() {
-        #if !DEBUG
-            Answers.logCustomEvent(withName: eventName, customAttributes: customAttributes)
-        #endif
+        if PrefManager.shared.userDefaults.bool(forKey: Keys.fabricCrashlyticsPermission) {
+            #if !DEBUG
+                Answers.logCustomEvent(withName: eventName, customAttributes: customAttributes)
+            #endif
+        }
     }
 
     private var eventName: String {
@@ -73,6 +76,7 @@ extension Event {
         case .shortcuts: return "Shortcuts"
         case .websiteButtonClicked: return "Website button clicked"
         case .feedbackButtonClicked: return "Feedback button clicked"
+        case .twitterButtonClicked: return "Twitter button clicked"
         case .translateButtonClicked: return "Translate button clicked"
         case .donateButtonClicked: return "Donate button clicked"
         case .checkForUpdatesClicked: return "Check for updates button clicked"
@@ -100,7 +104,7 @@ extension Event {
                 "Time interval in minutes": String(describing: timeInterval)]
         case .sliderMoved(let value):
             return ["Slider value": value]
-        case .shortcuts(let toggleNightShift, let increaseColorTemp, let decreaseColorTemp, let disableApp, let disableDomain, let disableSubdomain, let disableHour, let disableCustom):
+        case .shortcuts(let toggleNightShift, let increaseColorTemp, let decreaseColorTemp, let disableApp, let disableDomain, let disableSubdomain, let disableHour, let disableCustom, let toggleTrueTone, let toggleDarkMode):
             return ["Toggle Night Shift": toggleNightShift ? "true" : "false",
                     "Increase color temp": increaseColorTemp ? "true" : "false",
                     "Decrease color temp": decreaseColorTemp ? "true" : "false",
@@ -108,8 +112,10 @@ extension Event {
                     "Disable for domain": disableDomain ? "true" : "false",
                     "Disable for subdomain": disableSubdomain ? "true" : "false",
                     "Disable for an hour": disableHour ? "true" : "false",
-                    "Disable for custom time": disableCustom ? "true" : "false"]
-        case .preferences(let autoLaunch, let quickToggle, let iconSwitching, let syncDarkMode, let websiteShifting, let schedule):
+                    "Disable for custom time": disableCustom ? "true" : "false",
+                    "Toggle True Tone": toggleTrueTone ? "true" : "false",
+                    "Toggle dark mode": toggleDarkMode ? "true" : "false"]
+        case .preferences(let autoLaunch, let quickToggle, let iconSwitching, let syncDarkMode, let websiteShifting, let trueToneControl, let schedule):
             var scheduleString: String
             switch schedule {
             case .off: scheduleString = "off"
@@ -121,6 +127,7 @@ extension Event {
                     "Icon Switching": iconSwitching ? "true" : "false",
                     "Sync Dark Mode": syncDarkMode ? "true" : "false",
                     "Website shifting" : websiteShifting ? "true" : "false",
+                    "True Tone control" : trueToneControl ? "true" : "false",
                     "Schedule": scheduleString]
         default:
             return nil

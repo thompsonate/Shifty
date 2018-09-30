@@ -16,10 +16,20 @@
 "menu.enable_for" = "Enable for %@";
 "menu.enabled_for" = "Enabled for %@";
 
+"menu.disable_running_app" = "Disable when %@ is running";
+"menu.disabled_running_app" = "Disabled when %@ is running";
+"menu.disable_fullscreen" = "Only in full screen";
+
 "menu.disable_hour" = "Disable for an hour";
 "menu.disabled_hour" = "Disabled for an hour";
 "menu.disable_custom" = "Disable for custom time...";
 "menu.disabled_custom" = "Disabled for custom time";
+
+"menu.true_tone_on" = "Turn on True Tone";
+"menu.true_tone_off" = "Turn off True Tone";
+"menu.true_tone_unavailable" = "True Tone is not available";
+"menu.true_tone_disabled_for" = "True Tone is disabled for %@";
+
 "menu.preferences" = "Preferences...";
 "menu.quit" = "Quit Shifty";
 
@@ -41,9 +51,24 @@
 "alert.hardware_informative" = "A newer Mac is required to use Shifty.";
 
 "alert.accessibility_disabled_message" = "Accessibility permissions for Shifty have been disabled";
-"alert.accessibility_disabled_informative" = "Accessibility must be allowed to enable website shifting. Grant access to Shifty in Security & Privacy preferences, located in System Preferences.";
+"alert.accessibility_disabled_informative" = "Accessibility control must be allowed to enable Website Shifting. Grant access to Shifty in Security & Privacy preferences, located in System Preferences.";
 
 
 "alert.open_preferences" = "Open System Preferences";
 "alert.not_now" = "Not now";
+
+
+
+"analytics.includes_list_title" = "What data is collected?";
+"analytics.includes_list_1" = "Information about what caused a crash";
+"analytics.includes_list_2" = "Data about the usage of various features in Shifty";
+"analytics.includes_list_3" = "Useful information about issues that don’t cause the app to crash";
+
+"analytics.doesnt_include_list_title" = "What data isn't collected?";
+"analytics.doesnt_include_list_1" = "Sensitive data Shifty is granted permission to access (e.g. web addresses used for Website Shifting)";
+"analytics.doesnt_include_list_2" = "Any device IDs or personally identifiable information";
+
+"analytics.data_usage_list_title" = "What happens to the data?";
+"analytics.data_usage_list_1" = "None of this data is sold to anyone (and nobody would want to buy it anyways)";
+"analytics.data_usage_list_2" = "Helps to resolve problems and make Shifty better";
 

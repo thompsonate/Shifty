@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
-        <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PrefAboutViewController" customModule="Shifty" customModuleProvider="target">
@@ -18,11 +16,11 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <view wantsLayer="YES" id="FgB-wr-6em">
-            <rect key="frame" x="0.0" y="0.0" width="300" height="214"/>
+            <rect key="frame" x="0.0" y="0.0" width="300" height="239"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8q5-Sw-Dbf">
-                    <rect key="frame" x="18" y="182" width="53" height="22"/>
+                    <rect key="frame" x="18" y="207" width="53" height="22"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Shifty" id="bnR-vg-kNb">
                         <font key="font" metaFont="systemMedium" size="18"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -30,15 +28,15 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mbK-0c-d8c">
-                    <rect key="frame" x="75" y="182" width="30" height="22"/>
+                    <rect key="frame" x="75" y="207" width="30" height="22"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="0.0" id="C2N-lz-GkC">
                         <font key="font" metaFont="system" size="18"/>
-                        <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2D8-mL-05b">
-                    <rect key="frame" x="18" y="147" width="28" height="31"/>
+                    <rect key="frame" x="18" y="172" width="28" height="31"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="🌍" id="lQn-mG-tDV">
                         <font key="font" size="15" name="AppleColorEmoji"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -46,7 +44,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="M0d-pj-5gB">
-                    <rect key="frame" x="45" y="150" width="55" height="17"/>
+                    <rect key="frame" x="45" y="175" width="55" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="website:" id="pAL-H2-Wch">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -54,16 +52,16 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Hm-zf-Nhs">
-                    <rect key="frame" x="100" y="150" width="151" height="17"/>
+                    <rect key="frame" x="100" y="175" width="151" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="shifty.natethompson.io" id="Gbt-lh-vi5">
                         <font key="font" metaFont="systemMedium" size="13"/>
                         <color key="textColor" red="0.29728435901470579" green="0.53554502905236256" blue="0.8769965320069173" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="3WI-wA-JOM" customClass="LinkButton" customModule="Shifty" customModuleProvider="target">
-                    <rect key="frame" x="102" y="150" width="147" height="17"/>
-                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" alignment="center" transparent="YES" imageScaling="proportionallyDown" inset="2" id="EFj-8i-FPx">
+                <button verticalHuggingPriority="749" verticalCompressionResistancePriority="748" translatesAutoresizingMaskIntoConstraints="NO" id="3WI-wA-JOM" customClass="LinkButton" customModule="Shifty" customModuleProvider="target">
+                    <rect key="frame" x="102" y="175" width="147" height="17"/>
+                    <buttonCell key="cell" type="bevel" title="shifty.natethompson.io" bezelStyle="rounded" alignment="center" transparent="YES" imageScaling="proportionallyDown" inset="2" id="EFj-8i-FPx">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -72,7 +70,7 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9E0-LF-GKp">
-                    <rect key="frame" x="18" y="122" width="28" height="31"/>
+                    <rect key="frame" x="18" y="147" width="28" height="31"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="📬" id="L2z-Z9-XAa">
                         <font key="font" size="15" name="AppleColorEmoji"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -80,23 +78,23 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="81a-rm-YA4">
-                    <rect key="frame" x="45" y="125" width="54" height="17"/>
+                    <rect key="frame" x="45" y="150" width="54" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="contact:" id="Rp7-VG-IbF">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dqK-Z7-jwa">
-                    <rect key="frame" x="99" y="125" width="183" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="748" translatesAutoresizingMaskIntoConstraints="NO" id="dqK-Z7-jwa">
+                    <rect key="frame" x="99" y="150" width="183" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="feedback@natethompson.io" id="Thi-Pp-iy3">
                         <font key="font" metaFont="systemMedium" size="13"/>
                         <color key="textColor" red="0.297284359" green="0.53554502910000001" blue="0.87699653200000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="Bg0-7b-gjc" customClass="LinkButton" customModule="Shifty" customModuleProvider="target">
-                    <rect key="frame" x="101" y="125" width="179" height="17"/>
+                <button verticalHuggingPriority="747" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="Bg0-7b-gjc" customClass="LinkButton" customModule="Shifty" customModuleProvider="target">
+                    <rect key="frame" x="101" y="150" width="179" height="17"/>
                     <buttonCell key="cell" type="bevel" bezelStyle="rounded" alignment="center" transparent="YES" imageScaling="proportionallyDown" inset="2" id="p8E-4P-zcT">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -129,7 +127,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="9NT-7L-0cE" customClass="LinkButton" customModule="Shifty" customModuleProvider="target">
+                <button verticalHuggingPriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="9NT-7L-0cE" customClass="LinkButton" customModule="Shifty" customModuleProvider="target">
                     <rect key="frame" x="108" y="100" width="55" height="17"/>
                     <buttonCell key="cell" type="bevel" bezelStyle="rounded" alignment="center" transparent="YES" imageScaling="proportionallyDown" inset="2" id="YYV-Cv-A8f">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -155,7 +153,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GxQ-2k-2oL">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="GxQ-2k-2oL">
                     <rect key="frame" x="95" y="75" width="50" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="PayPal" id="qD1-X6-taU">
                         <font key="font" metaFont="systemMedium" size="13"/>
@@ -213,32 +211,72 @@
                     <rect key="frame" x="68" y="10" width="164" height="14"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="© 2017-2018 Nate Thompson" id="yZ7-c6-8tC">
                         <font key="font" metaFont="smallSystem"/>
-                        <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="textColor" name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fd9-bn-KfN">
+                    <rect key="frame" x="18" y="122" width="28" height="31"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="🐦" id="F8D-y7-OYR">
+                        <font key="font" size="15" name="AppleColorEmoji"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hT3-pU-c1N">
+                    <rect key="frame" x="45" y="125" width="44" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="follow:" id="tYb-0z-KHh">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="E8i-Ys-1Ph">
+                    <rect key="frame" x="89" y="125" width="111" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="@natethomps0n" id="Gdh-rQ-6X2">
+                        <font key="font" metaFont="systemMedium" size="13"/>
+                        <color key="textColor" red="0.297284359" green="0.53554502910000001" blue="0.87699653200000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="nvj-FG-RHD" customClass="LinkButton" customModule="Shifty" customModuleProvider="target">
+                    <rect key="frame" x="91" y="125" width="107" height="17"/>
+                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" alignment="center" transparent="YES" imageScaling="proportionallyDown" inset="2" id="Llc-Sa-vw3">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="twitterButtonClicked:" target="-2" id="ZP0-Rl-99f"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
+                <constraint firstItem="nvj-FG-RHD" firstAttribute="trailing" secondItem="E8i-Ys-1Ph" secondAttribute="trailing" id="1eZ-or-DOS"/>
+                <constraint firstItem="hT3-pU-c1N" firstAttribute="leading" secondItem="fd9-bn-KfN" secondAttribute="trailing" constant="3" id="1yx-AW-fKx"/>
                 <constraint firstItem="RsW-ZP-AV3" firstAttribute="baseline" secondItem="psb-Tr-aQI" secondAttribute="baseline" id="5Co-LS-Qxu"/>
                 <constraint firstItem="3WI-wA-JOM" firstAttribute="leading" secondItem="5Hm-zf-Nhs" secondAttribute="leading" id="5h3-L0-zV6"/>
                 <constraint firstItem="3WI-wA-JOM" firstAttribute="trailing" secondItem="5Hm-zf-Nhs" secondAttribute="trailing" id="5mc-ME-hTn"/>
                 <constraint firstItem="5Hm-zf-Nhs" firstAttribute="baseline" secondItem="M0d-pj-5gB" secondAttribute="baseline" id="6Pq-Sv-NMK"/>
                 <constraint firstItem="81a-rm-YA4" firstAttribute="leading" secondItem="9E0-LF-GKp" secondAttribute="trailing" constant="3" id="83x-5g-O80"/>
-                <constraint firstItem="psb-Tr-aQI" firstAttribute="top" secondItem="81a-rm-YA4" secondAttribute="bottom" constant="8" id="8EG-UD-qor"/>
+                <constraint firstItem="nvj-FG-RHD" firstAttribute="bottom" secondItem="E8i-Ys-1Ph" secondAttribute="bottom" id="8c6-m5-7hd"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="GxQ-2k-2oL" secondAttribute="trailing" constant="20" id="9BM-IV-Ypd"/>
                 <constraint firstItem="dqK-Z7-jwa" firstAttribute="baseline" secondItem="81a-rm-YA4" secondAttribute="baseline" id="9hx-kR-Bqf"/>
                 <constraint firstItem="bah-ot-VkZ" firstAttribute="leading" secondItem="FgB-wr-6em" secondAttribute="leading" constant="20" id="BRn-fe-xBT"/>
+                <constraint firstItem="nvj-FG-RHD" firstAttribute="top" secondItem="E8i-Ys-1Ph" secondAttribute="top" id="DQQ-rU-Wee"/>
                 <constraint firstItem="SK7-sc-iOS" firstAttribute="baseline" secondItem="psb-Tr-aQI" secondAttribute="baseline" id="DaP-ek-1vy"/>
                 <constraint firstItem="mbK-0c-d8c" firstAttribute="leading" secondItem="8q5-Sw-Dbf" secondAttribute="trailing" constant="8" id="Dth-hn-fwr"/>
+                <constraint firstItem="fd9-bn-KfN" firstAttribute="leading" secondItem="FgB-wr-6em" secondAttribute="leading" constant="20" id="E9A-Yd-s4O"/>
                 <constraint firstItem="psb-Tr-aQI" firstAttribute="leading" secondItem="RsW-ZP-AV3" secondAttribute="trailing" constant="3" id="FGw-S5-Knn"/>
                 <constraint firstItem="bah-ot-VkZ" firstAttribute="baseline" secondItem="DH8-VK-RRk" secondAttribute="baseline" id="FcD-gx-Nvb"/>
                 <constraint firstItem="Bg0-7b-gjc" firstAttribute="leading" secondItem="dqK-Z7-jwa" secondAttribute="leading" id="Fja-UC-FkO"/>
+                <constraint firstItem="nvj-FG-RHD" firstAttribute="leading" secondItem="E8i-Ys-1Ph" secondAttribute="leading" id="J4W-sq-lYC"/>
                 <constraint firstItem="GxQ-2k-2oL" firstAttribute="leading" secondItem="DH8-VK-RRk" secondAttribute="trailing" constant="4" id="JVl-gM-sac"/>
                 <constraint firstItem="8q5-Sw-Dbf" firstAttribute="leading" secondItem="FgB-wr-6em" secondAttribute="leading" constant="20" id="L0I-Df-su7"/>
                 <constraint firstItem="YDq-t8-djd" firstAttribute="top" secondItem="GxQ-2k-2oL" secondAttribute="top" id="LrR-e1-s2J"/>
-                <constraint firstItem="1HH-lX-oxw" firstAttribute="top" secondItem="DH8-VK-RRk" secondAttribute="bottom" constant="20" id="Mbr-GI-HG2"/>
                 <constraint firstItem="9NT-7L-0cE" firstAttribute="top" secondItem="SK7-sc-iOS" secondAttribute="top" id="MjO-c9-8at"/>
+                <constraint firstItem="1HH-lX-oxw" firstAttribute="top" secondItem="DH8-VK-RRk" secondAttribute="bottom" constant="20" id="NVw-h1-aOH"/>
                 <constraint firstItem="RsW-ZP-AV3" firstAttribute="leading" secondItem="FgB-wr-6em" secondAttribute="leading" constant="20" id="NjU-P5-34n"/>
+                <constraint firstItem="psb-Tr-aQI" firstAttribute="top" secondItem="hT3-pU-c1N" secondAttribute="bottom" constant="8" id="QVP-Vk-7MN"/>
                 <constraint firstItem="8q5-Sw-Dbf" firstAttribute="top" secondItem="FgB-wr-6em" secondAttribute="top" constant="10" id="QkX-60-jmC"/>
                 <constraint firstItem="9NT-7L-0cE" firstAttribute="bottom" secondItem="SK7-sc-iOS" secondAttribute="bottom" id="R98-b7-uUP"/>
                 <constraint firstItem="9NT-7L-0cE" firstAttribute="leading" secondItem="SK7-sc-iOS" secondAttribute="leading" id="RC2-u6-KdG"/>
@@ -250,6 +288,7 @@
                 <constraint firstItem="YDq-t8-djd" firstAttribute="trailing" secondItem="GxQ-2k-2oL" secondAttribute="trailing" id="ZLR-Xp-tVo"/>
                 <constraint firstItem="SK7-sc-iOS" firstAttribute="leading" secondItem="psb-Tr-aQI" secondAttribute="trailing" constant="4" id="ZYS-9F-o4W"/>
                 <constraint firstItem="DH8-VK-RRk" firstAttribute="leading" secondItem="bah-ot-VkZ" secondAttribute="trailing" constant="3" id="Zd0-9B-qvo"/>
+                <constraint firstItem="E8i-Ys-1Ph" firstAttribute="leading" secondItem="hT3-pU-c1N" secondAttribute="trailing" constant="4" id="aOe-8x-yYU"/>
                 <constraint firstItem="M0d-pj-5gB" firstAttribute="top" secondItem="8q5-Sw-Dbf" secondAttribute="bottom" constant="15" id="bFt-XC-C7p"/>
                 <constraint firstItem="2D8-mL-05b" firstAttribute="leading" secondItem="FgB-wr-6em" secondAttribute="leading" constant="20" id="bIc-Zq-cNK"/>
                 <constraint firstItem="81a-rm-YA4" firstAttribute="top" secondItem="5Hm-zf-Nhs" secondAttribute="bottom" constant="8" id="d3O-yH-yGv"/>
@@ -264,6 +303,8 @@
                 <constraint firstItem="3WI-wA-JOM" firstAttribute="bottom" secondItem="5Hm-zf-Nhs" secondAttribute="bottom" id="kgN-cl-qcD"/>
                 <constraint firstItem="YDq-t8-djd" firstAttribute="bottom" secondItem="GxQ-2k-2oL" secondAttribute="bottom" id="lNz-8A-fNQ"/>
                 <constraint firstItem="1HH-lX-oxw" firstAttribute="leading" secondItem="FgB-wr-6em" secondAttribute="leading" constant="20" id="lTx-cI-kav"/>
+                <constraint firstItem="hT3-pU-c1N" firstAttribute="top" secondItem="81a-rm-YA4" secondAttribute="bottom" constant="8" id="lgM-UT-48M"/>
+                <constraint firstItem="E8i-Ys-1Ph" firstAttribute="baseline" secondItem="hT3-pU-c1N" secondAttribute="baseline" id="mvf-vh-RCL"/>
                 <constraint firstItem="DH8-VK-RRk" firstAttribute="top" secondItem="psb-Tr-aQI" secondAttribute="bottom" constant="8" id="oDg-tq-lW7"/>
                 <constraint firstItem="3WI-wA-JOM" firstAttribute="top" secondItem="5Hm-zf-Nhs" secondAttribute="top" id="r63-Fx-eKK"/>
                 <constraint firstItem="aMY-R4-Ypv" firstAttribute="top" secondItem="1HH-lX-oxw" secondAttribute="bottom" constant="10" id="ut1-ED-wFN"/>
@@ -272,10 +313,11 @@
                 <constraint firstItem="M0d-pj-5gB" firstAttribute="leading" secondItem="2D8-mL-05b" secondAttribute="trailing" constant="3" id="wuU-iP-ibc"/>
                 <constraint firstItem="dqK-Z7-jwa" firstAttribute="leading" secondItem="81a-rm-YA4" secondAttribute="trailing" constant="4" id="x27-62-ffU"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dqK-Z7-jwa" secondAttribute="trailing" constant="20" id="xoe-4v-SSx"/>
+                <constraint firstItem="fd9-bn-KfN" firstAttribute="baseline" secondItem="hT3-pU-c1N" secondAttribute="baseline" id="zD3-mc-B1P"/>
                 <constraint firstItem="Bg0-7b-gjc" firstAttribute="top" secondItem="dqK-Z7-jwa" secondAttribute="top" id="zSy-xm-mEz"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5Hm-zf-Nhs" secondAttribute="trailing" constant="20" id="zsM-I0-hD8"/>
             </constraints>
-            <point key="canvasLocation" x="146" y="70"/>
+            <point key="canvasLocation" x="146" y="80"/>
         </view>
     </objects>
 </document>

@@ -14,6 +14,8 @@ struct Keys {
     static let isIconSwitchingEnabled = "isIconSwitchingEnabled"
     static let isDarkModeSyncEnabled = "isDarkModeSyncEnabled"
     static let isWebsiteControlEnabled = "isWebsiteControlEnabled"
+    static let trueToneControl = "trueToneControl"
+    static let fabricCrashlyticsPermission = "fabricCrashlyticsPermission"
     static let disabledApps = "disabledApps"
     static let browserRules = "browserRules"
 
@@ -25,6 +27,10 @@ struct Keys {
     static let disableSubdomainShortcut = "disableSubdomainShortcut"
     static let disableHourShortcut = "disableHourShortcut"
     static let disableCustomShortcut = "disableCustomShortcut"
+    static let toggleTrueToneShortcut = "toggleTrueToneShortcut"
+    static let toggleDarkModeShortcut = "toggleDarkModeShortcut"
+    
+    static let lastInstalledShiftyVersion = "lastInstalledShiftyVersion"
     static let hasSetupWindowShown = "hasSetupWindowShown"
 }
 
@@ -45,6 +51,8 @@ class PrefManager {
             Keys.isIconSwitchingEnabled: NSNumber(value: false),
             Keys.isDarkModeSyncEnabled: NSNumber(value: false),
             Keys.isWebsiteControlEnabled: NSNumber(value: false),
+            Keys.trueToneControl: NSNumber(value: false),
+            Keys.fabricCrashlyticsPermission: NSNumber(value: false),
             Keys.disabledApps: NSData(),
             Keys.browserRules: NSData(),
             Keys.hasSetupWindowShown: NSNumber(value: false)
@@ -63,6 +71,7 @@ class PrefManager {
         userDefaults.removeObject(forKey: Keys.isIconSwitchingEnabled)
         userDefaults.removeObject(forKey: Keys.isDarkModeSyncEnabled)
         userDefaults.removeObject(forKey: Keys.isWebsiteControlEnabled)
+        userDefaults.removeObject(forKey: Keys.trueToneControl)
         userDefaults.removeObject(forKey: Keys.disabledApps)
         userDefaults.removeObject(forKey: Keys.browserRules)
         userDefaults.removeObject(forKey: Keys.toggleNightShiftShortcut)
@@ -73,6 +82,9 @@ class PrefManager {
         userDefaults.removeObject(forKey: Keys.disableSubdomainShortcut)
         userDefaults.removeObject(forKey: Keys.disableHourShortcut)
         userDefaults.removeObject(forKey: Keys.disableCustomShortcut)
+        userDefaults.removeObject(forKey: Keys.toggleTrueToneShortcut)
+        userDefaults.removeObject(forKey: Keys.toggleDarkModeShortcut)
+        userDefaults.removeObject(forKey: Keys.fabricCrashlyticsPermission)
         userDefaults.removeObject(forKey: Keys.hasSetupWindowShown)
         
         synchronize()
