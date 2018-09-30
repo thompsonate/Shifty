@@ -179,10 +179,14 @@ enum NightShiftManager {
             let now = Time(Date())
             if endTime > startTime {
                 //startTime and endTime are on the same day
-                return now >= startTime && now <= endTime
+                let scheduledState = now >= startTime && now < endTime
+                logw("scheduled state: \(scheduledState)")
+                return scheduledState
             } else {
                 //endTime is on the day following startTime
-                return now >= startTime || now <= endTime
+                let scheduledState = now >= startTime || now < endTime
+                logw("scheduled state: \(scheduledState)")
+                return scheduledState
             }
         case .solar:
             guard let sunrise = BrightnessSystemClient.shared?.sunrise,
@@ -257,9 +261,12 @@ enum NightShiftManager {
         
         NSWorkspace.shared.notificationCenter.addObserver(forName: NSWorkspace.didWakeNotification, object: nil, queue: nil) { _ in
             logw("Wake from sleep notification posted")
+            
             if scheduledState != isNightShiftEnabled {
                 respond(to: scheduledState ? .enteredScheduledNightShift : .exitedScheduledNightShift)
             }
+            
+            updateDarkMode()
         }
     }
     
