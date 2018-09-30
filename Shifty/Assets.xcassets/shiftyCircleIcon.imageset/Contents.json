@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "shifty-icon-small.png",
+      "filename" : "Shifty Icon 256.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Shifty Icon 512.png",
       "scale" : "2x"
     },
     {
