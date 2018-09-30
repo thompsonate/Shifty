@@ -54,9 +54,15 @@ class PrefShortcutsViewController: NSViewController, MASPreferencesViewControlle
         }
         
         //Hide True Tone settings on unsupported computers
-        let trueToneUnsupported = CBTrueToneClient.shared.state == .unsupported
-        toggleTrueToneLabel.isHidden = trueToneUnsupported
-        toggleTrueToneShortcut.isHidden = trueToneUnsupported
+        if #available(macOS 10.14, *) {
+            let trueToneUnsupported = CBTrueToneClient.shared.state == .unsupported
+            toggleTrueToneLabel.isHidden = trueToneUnsupported
+            toggleTrueToneShortcut.isHidden = trueToneUnsupported
+        } else {
+            toggleTrueToneLabel.isHidden = true
+            toggleTrueToneShortcut.isHidden = true
+        }
+
 
         toggleNightShiftShortcut.associatedUserDefaultsKey = Keys.toggleNightShiftShortcut
         incrementColorTempShortcut.associatedUserDefaultsKey = Keys.incrementColorTempShortcut

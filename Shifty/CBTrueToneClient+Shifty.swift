@@ -15,6 +15,7 @@ enum State {
     case disabled
 }
 
+@available(macOS 10.14, *)
 extension CBTrueToneClient {
     static var shared = CBTrueToneClient()
     

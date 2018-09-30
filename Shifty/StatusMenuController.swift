@@ -220,30 +220,34 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         
         
         
-        trueToneMenuItem.isHidden = false
-        trueToneMenuItem.isEnabled = true
-
-        switch CBTrueToneClient.shared.state {
-        case .unsupported:
-            trueToneMenuItem.isHidden = true
-        case .unavailable:
-            trueToneMenuItem.isEnabled = false
-            trueToneMenuItem.title = NSLocalizedString("menu.true_tone_unavailable", comment: "True Tone is not available")
-        case .enabled:
-            trueToneMenuItem.title = NSLocalizedString("menu.true_tone_off", comment: "Turn off True Tone")
-        case .disabled:
-            if NightShiftManager.disableRuleIsActive {
+        if #available(macOS 10.14, *) {
+            trueToneMenuItem.isHidden = false
+            trueToneMenuItem.isEnabled = true
+            
+            switch CBTrueToneClient.shared.state {
+            case .unsupported:
+                trueToneMenuItem.isHidden = true
+            case .unavailable:
                 trueToneMenuItem.isEnabled = false
-                if RuleManager.disabledForDomain {
-                    trueToneMenuItem.title = String(format: NSLocalizedString("menu.true_tone_disabled_for", comment: "True Tone is disabled for %@"), currentDomain ?? "")
-                } else if RuleManager.ruleForSubdomain == .disabled {
-                    trueToneMenuItem.title = String(format: NSLocalizedString("menu.true_tone_disabled_for", comment: "True Tone is disabled for %@"), currentSubdomain ?? "")
+                trueToneMenuItem.title = NSLocalizedString("menu.true_tone_unavailable", comment: "True Tone is not available")
+            case .enabled:
+                trueToneMenuItem.title = NSLocalizedString("menu.true_tone_off", comment: "Turn off True Tone")
+            case .disabled:
+                if NightShiftManager.disableRuleIsActive {
+                    trueToneMenuItem.isEnabled = false
+                    if RuleManager.disabledForDomain {
+                        trueToneMenuItem.title = String(format: NSLocalizedString("menu.true_tone_disabled_for", comment: "True Tone is disabled for %@"), currentDomain ?? "")
+                    } else if RuleManager.ruleForSubdomain == .disabled {
+                        trueToneMenuItem.title = String(format: NSLocalizedString("menu.true_tone_disabled_for", comment: "True Tone is disabled for %@"), currentSubdomain ?? "")
+                    } else {
+                        trueToneMenuItem.title = String(format: NSLocalizedString("menu.true_tone_disabled_for", comment: "True Tone is disabled for %@"), currentAppName)
+                    }
                 } else {
-                    trueToneMenuItem.title = String(format: NSLocalizedString("menu.true_tone_disabled_for", comment: "True Tone is disabled for %@"), currentAppName)
+                    trueToneMenuItem.title = NSLocalizedString("menu.true_tone_on", comment: "Turn on True Tone")
                 }
-            } else {
-                trueToneMenuItem.title = NSLocalizedString("menu.true_tone_on", comment: "Turn on True Tone")
             }
+        } else {
+            trueToneMenuItem.isHidden = true
         }
     }
     
@@ -433,7 +437,9 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     }
     
     @IBAction func toggleTrueTone(_ sender: Any) {
-        CBTrueToneClient.shared.isTrueToneEnabled = !CBTrueToneClient.shared.isTrueToneEnabled
+        if #available(macOS 10.14, *) {
+            CBTrueToneClient.shared.isTrueToneEnabled = !CBTrueToneClient.shared.isTrueToneEnabled
+        }
     }
 
     @IBAction func preferencesClicked(_ sender: NSMenuItem) {

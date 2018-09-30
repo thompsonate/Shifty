@@ -70,7 +70,11 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
         prefWindow = appDelegate.preferenceWindowController.window
 
         //Hide True Tone settings on unsupported computers
-        trueToneStackView.isHidden = CBTrueToneClient.shared.state == .unsupported
+        if #available(macOS 10.14, *) {
+            trueToneStackView.isHidden = CBTrueToneClient.shared.state == .unsupported
+        } else {
+            trueToneStackView.isHidden = true
+        }
         
         defaultDarkModeState = SLSGetAppearanceThemeLegacy()
 
@@ -151,14 +155,16 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
     }
     
     @IBAction func setTrueToneControl(_ sender: NSButtonCell) {
-        if sender.state == .on {
-            if NightShiftManager.disableRuleIsActive {
-                CBTrueToneClient.shared.isTrueToneEnabled = false
+        if #available(macOS 10.14, *) {
+            if sender.state == .on {
+                if NightShiftManager.disableRuleIsActive {
+                    CBTrueToneClient.shared.isTrueToneEnabled = false
+                }
+            } else {
+                CBTrueToneClient.shared.isTrueToneEnabled = true
             }
-        } else {
-            CBTrueToneClient.shared.isTrueToneEnabled = true
+            logw("True Tone control set to \(sender.state.rawValue)")
         }
-        logw("True Tone control set to \(sender.state.rawValue)")
     }
     
     @IBAction func analyticsDetailClicked(_ sender: Any) {

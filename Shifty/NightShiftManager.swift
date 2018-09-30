@@ -322,7 +322,9 @@ enum NightShiftManager {
         case .nightShiftDisableRuleActivated:
             isNightShiftEnabled = false
             if PrefManager.shared.userDefaults.bool(forKey: Keys.trueToneControl) {
-                CBTrueToneClient.shared.isTrueToneEnabled = false
+                if #available(macOS 10.14, *) {
+                    CBTrueToneClient.shared.isTrueToneEnabled = false
+                }
             }
         case .nightShiftDisableRuleDeactivated:
             if !disabledTimer && !disableRuleIsActive {
@@ -334,7 +336,9 @@ enum NightShiftManager {
             }
             
             if !disableRuleIsActive && PrefManager.shared.userDefaults.bool(forKey: Keys.trueToneControl) {
-                CBTrueToneClient.shared.isTrueToneEnabled = true
+                if #available(macOS 10.14, *) {
+                    CBTrueToneClient.shared.isTrueToneEnabled = true
+                }
             }
         case .nightShiftEnableRuleActivated:
             isNightShiftEnabled = userSet ?? true
