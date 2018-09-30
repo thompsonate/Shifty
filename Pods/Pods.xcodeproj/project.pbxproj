@@ -137,12 +137,12 @@
 		08260E484B0776CF314B672F78F228BE /* MASPreferences+Shifty.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "MASPreferences+Shifty.modulemap"; sourceTree = "<group>"; };
 		084458981AE77DEDCDA9378E5C380452 /* MASPreferences+Shifty-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MASPreferences+Shifty-prefix.pch"; sourceTree = "<group>"; };
 		0872C08F398076B04EDEF0D20D51B60F /* Pods-Shifty-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Shifty-acknowledgements.markdown"; sourceTree = "<group>"; };
-		0B4090DE1F5D200EDAD13FCBE96C2BED /* Pods_Shifty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Shifty.framework; path = "Pods-Shifty.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B4090DE1F5D200EDAD13FCBE96C2BED /* Pods_Shifty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shifty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C624E08934A4EBEC3BDF35712EC2536 /* AXSwift.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AXSwift.h; path = Sources/AXSwift.h; sourceTree = "<group>"; };
 		0FE313F34C125064501E281A67135F28 /* Pods-ShiftyHelper-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ShiftyHelper-frameworks.sh"; sourceTree = "<group>"; };
 		0FE7A5E70B66263493BF6E7F363D5401 /* PublicSuffix-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PublicSuffix-dummy.m"; sourceTree = "<group>"; };
 		1162AA3AD63F821E68009163F50FCB43 /* MASShortcutValidator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASShortcutValidator.h; path = Framework/MASShortcutValidator.h; sourceTree = "<group>"; };
-		173A7C21945A353895D8F4E94CBEA7AB /* de.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = de.lproj; sourceTree = "<group>"; };
+		173A7C21945A353895D8F4E94CBEA7AB /* de.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = de.lproj; sourceTree = "<group>"; };
 		1AD48B1D24027378C73A9DB774F0ABB8 /* MASLocalization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASLocalization.m; path = Framework/MASLocalization.m; sourceTree = "<group>"; };
 		1E644BFF3835667AB00261395615C47D /* MASShortcut-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MASShortcut-prefix.pch"; sourceTree = "<group>"; };
 		20287FD4C56F8AFAFBB40EF777BE5F6D /* MASShortcut.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MASShortcut.modulemap; sourceTree = "<group>"; };
@@ -153,17 +153,17 @@
 		2D54ADE6F2B3EA78644DCCD643993906 /* MASPreferencesViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASPreferencesViewController.h; path = Framework/MASPreferencesViewController.h; sourceTree = "<group>"; };
 		2FFD5252F022A90AF2AAF9338C3F6AE6 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Carbon.framework; sourceTree = DEVELOPER_DIR; };
 		35C9229AC3DE9745E71AB652C70F3C17 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		37AFE3B1EE6880EEEB106DEEB8606FD0 /* MASShortcut.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MASShortcut.framework; path = MASShortcut.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		37AFE3B1EE6880EEEB106DEEB8606FD0 /* MASShortcut.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MASShortcut.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39F74012E015C2295CFD9DF7FC669514 /* Pods-Shifty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Shifty.release.xcconfig"; sourceTree = "<group>"; };
-		3A8D926FC5F626447126C9BD590CB9CC /* pl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = pl.lproj; sourceTree = "<group>"; };
-		3AD1F9DE58317B065BDD21605625E0B1 /* SwiftLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftLog.framework; path = SwiftLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A8D926FC5F626447126C9BD590CB9CC /* pl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = pl.lproj; sourceTree = "<group>"; };
+		3AD1F9DE58317B065BDD21605625E0B1 /* SwiftLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BCA490EE40951D93AF6958B8CF786E6 /* Constants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Sources/Constants.swift; sourceTree = "<group>"; };
-		3CD31D2FAA91362240B1F54DD25C680F /* fr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = fr.lproj; sourceTree = "<group>"; };
+		3CD31D2FAA91362240B1F54DD25C680F /* fr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = fr.lproj; sourceTree = "<group>"; };
 		3D2240231AEA1152A4F26EDDB16CDA5B /* MASLocalization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASLocalization.h; path = Framework/MASLocalization.h; sourceTree = "<group>"; };
 		3EC88A70CF929E8D3B384DA34EE73083 /* MASShortcut-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MASShortcut-umbrella.h"; sourceTree = "<group>"; };
 		3F19C1470801A9FF8E2263CE57C456F6 /* Pods-Shifty-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Shifty-acknowledgements.plist"; sourceTree = "<group>"; };
-		3F6BFF27E1D4CA05F24C535387D29345 /* PublicSuffix.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PublicSuffix.framework; path = PublicSuffix.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4032A2380B5CCDDEB2734A9185D5BCDA /* nl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = nl.lproj; sourceTree = "<group>"; };
+		3F6BFF27E1D4CA05F24C535387D29345 /* PublicSuffix.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PublicSuffix.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4032A2380B5CCDDEB2734A9185D5BCDA /* nl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = nl.lproj; sourceTree = "<group>"; };
 		43701BA798A955CD28A7F6350636009B /* SPUDownloader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUDownloader.h; path = Sparkle.framework/Versions/A/Headers/SPUDownloader.h; sourceTree = "<group>"; };
 		437FF5DF01B08C0C5886A57E6E51CB32 /* MASPreferencesWindowController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASPreferencesWindowController.h; path = Framework/MASPreferencesWindowController.h; sourceTree = "<group>"; };
 		439EB77C480685F731EC11138D202E0B /* Pods-ShiftyHelper-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ShiftyHelper-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -177,9 +177,9 @@
 		58132A793E026B1FFAA0D772C8782895 /* Pods-Shifty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Shifty.debug.xcconfig"; sourceTree = "<group>"; };
 		589711A11588630ACE651F8D3ACE2AEB /* MASShortcutMonitor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASShortcutMonitor.h; path = Framework/MASShortcutMonitor.h; sourceTree = "<group>"; };
 		5AC7E2E95F175DBD65C65FA0FDE83B96 /* MASShortcutView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASShortcutView.m; path = Framework/MASShortcutView.m; sourceTree = "<group>"; };
-		5AF36C9F3DDB038DCB50E82772B14380 /* es.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = es.lproj; sourceTree = "<group>"; };
-		5BACE6DD6BD93369E2BA2112D14055DB /* zh-Hans.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = "zh-Hans.lproj"; sourceTree = "<group>"; };
-		5E5BC151C52FF03336573D48481734A2 /* ja.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = ja.lproj; sourceTree = "<group>"; };
+		5AF36C9F3DDB038DCB50E82772B14380 /* es.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = es.lproj; sourceTree = "<group>"; };
+		5BACE6DD6BD93369E2BA2112D14055DB /* zh-Hans.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = "zh-Hans.lproj"; sourceTree = "<group>"; };
+		5E5BC151C52FF03336573D48481734A2 /* ja.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = ja.lproj; sourceTree = "<group>"; };
 		5E8D3F00BB8C2314C782BD2E4F551140 /* Pods-Shifty-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Shifty-frameworks.sh"; sourceTree = "<group>"; };
 		64AB3ECED70C9506C968F4FD91F9BD06 /* etld.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = etld.plist; path = PublicSuffix/etld.plist; sourceTree = "<group>"; };
 		65A983DF8B6FB311D15076B83BB52FAC /* MASPreferences+Shifty-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MASPreferences+Shifty-dummy.m"; sourceTree = "<group>"; };
@@ -193,7 +193,7 @@
 		6CDF07E03AFAC8F6C767555E8154D891 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		76E7F603016D260E2D9A4630B737CD1D /* SPUDownloaderDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUDownloaderDelegate.h; path = Sparkle.framework/Versions/A/Headers/SPUDownloaderDelegate.h; sourceTree = "<group>"; };
 		77E4C68BBFBAC99DC66C72FE4B3A9043 /* MASShortcut.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASShortcut.h; path = Framework/MASShortcut.h; sourceTree = "<group>"; };
-		789AD90BB2E5B136763B6BDF33C46000 /* ru.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = ru.lproj; sourceTree = "<group>"; };
+		789AD90BB2E5B136763B6BDF33C46000 /* ru.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = ru.lproj; sourceTree = "<group>"; };
 		7A1CAE716457384E821452B5C0EAAE9F /* Shortcut.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Shortcut.h; path = Framework/Shortcut.h; sourceTree = "<group>"; };
 		7A9F796FA9BB3B0FC592CB4471B298B1 /* SystemWideElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SystemWideElement.swift; path = Sources/SystemWideElement.swift; sourceTree = "<group>"; };
 		7C3DFD06D8AE88E4356F0A02E5EC5DBB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -204,15 +204,15 @@
 		839EF7EC9E35F1C76D3C378E28A41ED1 /* SUExport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUExport.h; path = Sparkle.framework/Versions/A/Headers/SUExport.h; sourceTree = "<group>"; };
 		853B9F9E27E67C7C03BABB7A7C355073 /* Pods-ShiftyHelper.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ShiftyHelper.modulemap"; sourceTree = "<group>"; };
 		86B86780309805345A216EE21A355FC6 /* Pods-Shifty-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Shifty-umbrella.h"; sourceTree = "<group>"; };
-		889CE265C9864AB719E6F30F52A9F5C0 /* Pods_ShiftyHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ShiftyHelper.framework; path = "Pods-ShiftyHelper.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		889CE265C9864AB719E6F30F52A9F5C0 /* Pods_ShiftyHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShiftyHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88C27A57B649B42359D427E9FDE29E7D /* SwiftLog.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftLog.modulemap; sourceTree = "<group>"; };
-		904E3F0BA7986EDE825CA6DE0FFA861B /* zh-Hant.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = "zh-Hant.lproj"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		904E3F0BA7986EDE825CA6DE0FFA861B /* zh-Hant.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = "zh-Hant.lproj"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		94DD6C8B73C210AB9A3B1D02B3448824 /* SUVersionDisplayProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUVersionDisplayProtocol.h; path = Sparkle.framework/Versions/A/Headers/SUVersionDisplayProtocol.h; sourceTree = "<group>"; };
-		9582CEBB5970187DA05722F24E1ADBF2 /* AXSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AXSwift.framework; path = AXSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9582CEBB5970187DA05722F24E1ADBF2 /* AXSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AXSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9706E90E7D15953A03F8A6EDC52A9CC6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		998DC7664C926A99ACF43B7DBC0EDFBC /* Log.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
-		9E08EA86FE1677D35FBC0ABFD03154A0 /* en.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = en.lproj; sourceTree = "<group>"; };
+		9E08EA86FE1677D35FBC0ABFD03154A0 /* en.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = en.lproj; sourceTree = "<group>"; };
 		9E17CDF806EB6A356DCD5B9E8951217E /* SwiftLog-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftLog-dummy.m"; sourceTree = "<group>"; };
 		9EC0697BCA67DBA52366B47DD2F5388B /* SPUURLRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUURLRequest.h; path = Sparkle.framework/Versions/A/Headers/SPUURLRequest.h; sourceTree = "<group>"; };
 		9ED68623DD02298A209DC7483E0DE97C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -229,9 +229,9 @@
 		B5178F37D714049EA7909A2F001B1ECD /* Pods-ShiftyHelper-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ShiftyHelper-acknowledgements.markdown"; sourceTree = "<group>"; };
 		B52916333EFAF80A5A5E564584F96D42 /* AXSwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AXSwift.xcconfig; sourceTree = "<group>"; };
 		B58A97FF42450A2338CB99AF5F3C5D64 /* MASHotKey.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASHotKey.h; path = Framework/MASHotKey.h; sourceTree = "<group>"; };
-		B6000F0C05E851E2E45ABE572FB5FF64 /* ko.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = ko.lproj; sourceTree = "<group>"; };
+		B6000F0C05E851E2E45ABE572FB5FF64 /* ko.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = ko.lproj; sourceTree = "<group>"; };
 		B95A85BF43294E7FB122A7C25F07A7E3 /* SUStandardVersionComparator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUStandardVersionComparator.h; path = Sparkle.framework/Versions/A/Headers/SUStandardVersionComparator.h; sourceTree = "<group>"; };
-		BF624A6838784C60115BAC0B620536F5 /* MASPreferences_Shifty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MASPreferences_Shifty.framework; path = "MASPreferences+Shifty.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF624A6838784C60115BAC0B620536F5 /* MASPreferences_Shifty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MASPreferences_Shifty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFA1434D1C9642FDD48F6FCC3A94977F /* SUCodeSigningVerifier.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUCodeSigningVerifier.h; path = Sparkle.framework/Versions/A/Headers/SUCodeSigningVerifier.h; sourceTree = "<group>"; };
 		BFCFFC4B8D5D5157B427ACAA92E3DA50 /* MASShortcutView+Bindings.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MASShortcutView+Bindings.h"; path = "Framework/MASShortcutView+Bindings.h"; sourceTree = "<group>"; };
 		C03DCA5F25F2D350E39D39111252C7BE /* SPUDownloaderSession.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUDownloaderSession.h; path = Sparkle.framework/Versions/A/Headers/SPUDownloaderSession.h; sourceTree = "<group>"; };
@@ -249,9 +249,9 @@
 		DBA3F65BC44EE10D32AB8A2FB188EE73 /* MASHotKey.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASHotKey.m; path = Framework/MASHotKey.m; sourceTree = "<group>"; };
 		E574202FD2173534D422AA49AE4D3242 /* AXSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AXSwift-prefix.pch"; sourceTree = "<group>"; };
 		E57FBCC9C8EDACE254CC67F631C80E80 /* PublicSuffix.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PublicSuffix.h; path = PublicSuffix/PublicSuffix.h; sourceTree = "<group>"; };
-		E6BBB193E2B09970976AF22D5AD3D213 /* cs.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = cs.lproj; sourceTree = "<group>"; };
-		E9DFF61A41D86DF6100C480F75245600 /* it.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = it.lproj; sourceTree = "<group>"; };
-		EAFA2BD555831AE8B3B7269710899202 /* MASShortcut.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MASShortcut.bundle; path = "MASShortcut-MASShortcut.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6BBB193E2B09970976AF22D5AD3D213 /* cs.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = cs.lproj; sourceTree = "<group>"; };
+		E9DFF61A41D86DF6100C480F75245600 /* it.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = it.lproj; sourceTree = "<group>"; };
+		EAFA2BD555831AE8B3B7269710899202 /* MASShortcut.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MASShortcut.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB62E5527146525762560FF0A927D5F0 /* MASShortcut.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASShortcut.m; path = Framework/MASShortcut.m; sourceTree = "<group>"; };
 		EE2F8C300EF6092B57883A1C7EF8C305 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/AppKit.framework; sourceTree = DEVELOPER_DIR; };
 		F10759CDEDB59DF5BA2C5935FF836BE2 /* PublicSuffix-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PublicSuffix-umbrella.h"; sourceTree = "<group>"; };
@@ -369,7 +369,6 @@
 				62BEE2B1903E041C536B3B5E5F8FC85A /* Resources */,
 				BAF007D199714A499E6D539C84E4ABE3 /* Support Files */,
 			);
-			name = MASShortcut;
 			path = MASShortcut;
 			sourceTree = "<group>";
 		};
@@ -421,7 +420,6 @@
 				022ADAA80CD7AF1ABDA5EEA02D89E71F /* Resources */,
 				484AD412F5F8763D3AA1DE62D4B640C2 /* Support Files */,
 			);
-			name = "MASPreferences+Shifty";
 			path = "MASPreferences+Shifty";
 			sourceTree = "<group>";
 		};
@@ -518,7 +516,6 @@
 				94DD6C8B73C210AB9A3B1D02B3448824 /* SUVersionDisplayProtocol.h */,
 				6A08845B76D8CAF902ACDC78C54A5DF7 /* Frameworks */,
 			);
-			name = Sparkle;
 			path = Sparkle;
 			sourceTree = "<group>";
 		};
@@ -528,7 +525,6 @@
 				998DC7664C926A99ACF43B7DBC0EDFBC /* Log.swift */,
 				3850D906FDDD895BAC15AC15F7A66F07 /* Support Files */,
 			);
-			name = SwiftLog;
 			path = SwiftLog;
 			sourceTree = "<group>";
 		};
@@ -545,7 +541,6 @@
 				211B5EF3DD067F1803B9D8BED4A2197C /* UIElement.swift */,
 				9681AE088B771C5A94D1729430818C37 /* Support Files */,
 			);
-			name = AXSwift;
 			path = AXSwift;
 			sourceTree = "<group>";
 		};
@@ -643,7 +638,6 @@
 				E01C34693CD12986F86B2E2D67C694F9 /* Resources */,
 				BFC0F59A3EFD39C1DDB1FFF0AD19BF83 /* Support Files */,
 			);
-			name = PublicSuffix;
 			path = PublicSuffix;
 			sourceTree = "<group>";
 		};
@@ -893,7 +887,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1000;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1628,6 +1622,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;

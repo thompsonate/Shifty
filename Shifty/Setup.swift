@@ -135,7 +135,7 @@ class ContainerViewController: NSViewController {
         super.viewDidLoad()
         
         let setupStoryboard = NSStoryboard(name: "Setup", bundle: nil)
-        sourceViewController = setupStoryboard.instantiateController(withIdentifier: "sourceViewController") as! NSViewController
+        sourceViewController = setupStoryboard.instantiateController(withIdentifier: "sourceViewController") as? NSViewController
         self.insertChild(sourceViewController, at: 0)
         self.view.addSubview(sourceViewController.view)
         self.view.frame = sourceViewController.view.frame
