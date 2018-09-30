@@ -238,7 +238,7 @@
             </subviews>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="4P5-aP-O4n" secondAttribute="bottom" constant="20" id="8kJ-YA-4hi"/>
-                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ufu-z4-tzp" secondAttribute="trailing" constant="20" id="H2R-E8-ntH"/>
+                <constraint firstAttribute="trailing" secondItem="ufu-z4-tzp" secondAttribute="trailing" constant="20" id="H2R-E8-ntH"/>
                 <constraint firstItem="ufu-z4-tzp" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="Oer-c0-fYH"/>
                 <constraint firstItem="4P5-aP-O4n" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="Z1T-ag-0wg"/>
                 <constraint firstAttribute="bottom" secondItem="ufu-z4-tzp" secondAttribute="bottom" constant="20" id="ZiG-1V-IgM"/>

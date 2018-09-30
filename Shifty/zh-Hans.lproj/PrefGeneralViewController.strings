@@ -1,20 +1,29 @@
-/* Class = "NSButtonCell"; title = "Change icon according to Night Shift"; ObjectID = "4io-9H-HXp"; */
-"4io-9H-HXp.title" = "根据是否启用夜览模式更改菜单栏图标";
+/* Class = "NSButtonCell"; title = "True Tone control"; ObjectID = "4SC-bL-79S"; */
+"4SC-bL-79S.title" = "控制“原彩显示”";
+
+/* Class = "NSButtonCell"; title = "Set menu bar icon according to Night Shift"; ObjectID = "4io-9H-HXp"; */
+"4io-9H-HXp.title" = "随“夜览”模式的开关状态更新菜单栏图标";
 
 /* Class = "NSButtonCell"; title = "Scheduled dark mode"; ObjectID = "5s5-Y5-5b9"; */
-"5s5-Y5-5b9.title" = "自动启用暗色菜单栏和程序坞";
+"5s5-Y5-5b9.title" = "定时启用暗色菜单栏和程序坞";
 
 /* Class = "NSMenuItem"; title = "Custom"; ObjectID = "Cum-ew-Bk2"; */
-"Cum-ew-Bk2.title" = "自定";
+"Cum-ew-Bk2.title" = "自定义";
 
 /* Class = "NSButtonCell"; title = "Quick Toggle"; ObjectID = "Foo-g6-6iX"; */
-"Foo-g6-6iX.title" = "快速切换夜览模式";
+"Foo-g6-6iX.title" = "快速切换";
+
+/* Class = "NSButtonCell"; title = "Website Shifting"; ObjectID = "HRq-mZ-FxG"; */
+"HRq-mZ-FxG.title" = "网站色温调节";
 
 /* Class = "NSTextFieldCell"; title = "If enabled, click the Menu Bar icon to toggle Night Shift. Right click to open the menu."; ObjectID = "MXt-WM-cMR"; */
-"MXt-WM-cMR.title" = "启用后，点按菜单栏图标以切换夜览模式。辅助点按以打开菜单。";
+"MXt-WM-cMR.title" = "启用后，单击菜单栏图标以切换“夜览”模式。辅助点按以打开菜单。";
 
 /* Class = "NSTextFieldCell"; title = "From:"; ObjectID = "PbT-Ky-Re6"; */
 "PbT-Ky-Re6.title" = "从:";
+
+/* Class = "NSTextFieldCell"; title = "If enabled, Night Shift rules for apps and websites will also affect True Tone."; ObjectID = "SKw-93-vs8"; */
+"SKw-93-vs8.title" = "开启后，“夜览”模式对应的应用程序和网站规则将同时适用于“原彩显示”。";
 
 /* Class = "NSMenuItem"; title = "Sunset to Sunrise"; ObjectID = "TwI-wC-vyX"; */
 "TwI-wC-vyX.title" = "日落到日出";
@@ -23,13 +32,19 @@
 "UGI-RO-ff6.title" = "设定时间:";
 
 /* Class = "NSTextFieldCell"; title = "If enabled, macOS dark mode will be automatically set based on the Night Shift schedule."; ObjectID = "ZdB-dN-hiO"; */
-"ZdB-dN-hiO.title" = "启用后，macOS 将自动根据夜览模式的设定时间启用或停用暗色菜单栏和程序坞。";
+"ZdB-dN-hiO.title" = "启用后，macOS 将自动根据“夜览”模式的设定时间启用或停用暗色菜单栏和程序坞。";
 
 /* Class = "NSTextFieldCell"; title = "to:"; ObjectID = "aNq-H7-I2m"; */
 "aNq-H7-I2m.title" = "到:";
 
+/* Class = "NSButtonCell"; title = "Share anonymous crash data and analytics"; ObjectID = "ar0-8I-WmN"; */
+"ar0-8I-WmN.title" = "匿名共享崩溃数据和用量分析";
+
 /* Class = "NSButtonCell"; title = "Launch Shifty at login"; ObjectID = "bxC-lM-Pei"; */
 "bxC-lM-Pei.title" = "随登录自动打开 Shifty 夜览管家";
+
+/* Class = "NSButtonCell"; title = "i"; ObjectID = "jjX-rt-8G1"; */
+"jjX-rt-8G1.title" = "i";
 
 /* Class = "NSMenuItem"; title = "Off"; ObjectID = "lkN-xJ-pf3"; */
 "lkN-xJ-pf3.title" = "关闭";

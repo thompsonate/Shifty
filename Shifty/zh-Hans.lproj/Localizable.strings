@@ -7,15 +7,29 @@
 */
 
 "general.ok" = "好";
+"general.cancel" = "取消";
 
-"menu.toggle_on" = "打开夜览模式";
-"menu.toggle_off" = "关闭夜览模式";
-"menu.disable_app" = "在开启%@时关闭夜览模式";
-"menu.disabled_app" = "已在开启%@时关闭夜览模式";
-"menu.disable_hour" = "暂时关闭夜览模式一个小时";
-"menu.disabled_hour" = "已暂时关闭夜览模式一个小时";
-"menu.disable_custom" = "在自定义时间段内关闭夜览模式...";
-"menu.disabled_custom" = "已在自定义时间段内关闭夜览模式";
+"menu.toggle_on" = "打开“夜览”模式";
+"menu.toggle_off" = "关闭“夜览”模式";
+"menu.disable_for" = "为%@关闭“夜览”模式";
+"menu.disabled_for" = "已为%@关闭“夜览”模式";
+"menu.enable_for" = "为%@开启“夜览”模式";
+"menu.enabled_for" = "已为%@开启“夜览”模式";
+
+"menu.disable_running_app" = "当运行%@时禁用";
+"menu.disabled_running_app" = "已在运行%@时禁用";
+"menu.disable_fullscreen" = "仅在全屏模式下禁用";
+
+"menu.disable_hour" = "关闭一个小时";
+"menu.disabled_hour" = "已关闭一个小时";
+"menu.disable_custom" = "在自定义时间段内关闭“夜览”模式...";
+"menu.disabled_custom" = "在自定义时间段内关闭“夜览”模式";
+
+"menu.true_tone_on" = "开启“原彩显示”";
+"menu.true_tone_off" = "关闭“原彩显示”";
+"menu.true_tone_unavailable" = "“原彩显示”不可用";
+"menu.true_tone_disabled_for" = "已为%@禁用“原彩显示”";
+
 "menu.preferences" = "偏好设置...";
 "menu.quit" = "退出 Shifty 夜览管家";
 
@@ -24,16 +38,37 @@
 "description.enabled_time" = "已在%@前启用";
 "description.disabled" = "已关闭";
 "description.disabled_hours_minutes" = "已在 %02d:%02d 内关闭";
-"description.disabled_minutes" = "已多禁用 %d 分钟";
-"description.disabled_1_minute" = "已多禁用 1 分钟";
 
 "prefs.title" = "偏好设置";
 "prefs.general" = "通用";
-"prefs.shortcuts" = "快捷鍵";
+"prefs.shortcuts" = "快捷键";
 "prefs.about" = "关于";
 
-"alert.version_message" = "夜览模式不能与此版本的 macOS 配合使用。";
-"alert.version_informative" = "夜览模式要求 macOS 10.12.4 或更高版本。将你的 Mac 更新到 macOS 10.12.4 或更高版本以使用 Shifty 夜览管家。";
+"alert.version_message" = "“夜览”模式不能与此版本的 macOS 配合使用。";
+"alert.version_informative" = "“夜览”模式要求 macOS 10.12.4 或更高版本。更新你的 Mac 到 macOS 10.12.4 或更高版本以使用 Shifty 夜览管家。";
 
-"alert.hardware_message" = "你的 Mac 不支持夜览模式。";
-"alert.hardware_informative" = "需要新款 Mac 才能启用夜览模式与 Shifty 夜览管家。";
+"alert.hardware_message" = "你的 Mac 不支持“夜览”模式。";
+"alert.hardware_informative" = "需要新款 Mac，才能启用“夜览”模式与 Shifty 夜览管家。";
+
+"alert.accessibility_disabled_message" = "已禁用 Shifty 夜览管家的辅助功能权限";
+"alert.accessibility_disabled_informative" = "您必须先授权 Shifty 夜览管家通过“辅助功能”控制您的电脑，才能调节网站色温。您可在系统偏好设置的安全性与隐私面板中提供授权。";
+
+
+"alert.open_preferences" = "打开系统偏好设置";
+"alert.not_now" = "以后再说";
+"alert.close" = "关闭";
+
+
+
+"analytics.includes_list_title" = "哪些数据会被收集？";
+"analytics.includes_list_1" = "包含崩溃原因的诊断信息";
+"analytics.includes_list_2" = "Shifty 夜览管家中各个功能的用量数据";
+"analytics.includes_list_3" = "不导致应用程序崩溃的其他问题的相关信息";
+
+"analytics.doesnt_include_list_title" = "哪些数据不会被收集？";
+"analytics.doesnt_include_list_1" = "您授权 Shifty 夜览管家访问的敏感信息（例如网站色温调节的相应网址）";
+"analytics.doesnt_include_list_2" = "设备 ID 等一系列能被用于回溯个人身份的信息";
+
+"analytics.data_usage_list_title" = "收集的数据将有哪些用途？";
+"analytics.data_usage_list_1" = "任何数据都不会被出售至第三方（况且也不会有第三方想要购买）";
+"analytics.data_usage_list_2" = "帮助解决问题并完善 Shifty 夜览管家";

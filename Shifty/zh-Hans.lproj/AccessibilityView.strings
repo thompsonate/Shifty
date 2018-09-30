@@ -1,6 +1,5 @@
-
 /* Class = "NSTextFieldCell"; title = "Allow accessibility control"; ObjectID = "6h1-n5-3Va"; */
-"6h1-n5-3Va.title" = "Allow accessibility control";
+"6h1-n5-3Va.title" = "允许辅助功能控制权限";
 
-/* Class = "NSTextFieldCell"; title = "Website shifting requires accessibility permissions. Grant access to Shifty in Security & Privacy preferences, located in System Preferences."; ObjectID = "R57-iU-qAv"; */
-"R57-iU-qAv.title" = "Website shifting requires accessibility permissions. Grant access to Shifty in Security & Privacy preferences, located in System Preferences.";
+/* Class = "NSTextFieldCell"; title = "Website Shifting requires accessibility permissions. Grant access to Shifty in Security & Privacy preferences, located in System Preferences."; ObjectID = "R57-iU-qAv"; */
+"R57-iU-qAv.title" = "您必须先授权 Shifty 夜览管家通过“辅助功能”控制您的电脑，才能调节网站色温。您可在系统偏好设置的安全性与隐私面板中提供授权。";

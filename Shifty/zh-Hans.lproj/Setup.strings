@@ -1,66 +1,65 @@
-
 /* Class = "NSButtonCell"; title = "Skip"; ObjectID = "0wv-vs-acj"; */
-"0wv-vs-acj.title" = "Skip";
+"0wv-vs-acj.title" = "跳过";
 
 /* Class = "NSTextFieldCell"; title = "Safari"; ObjectID = "4ft-mI-wIN"; */
-"4ft-mI-wIN.title" = "Safari";
+"4ft-mI-wIN.title" = "Safari 浏览器";
 
 /* Class = "NSTextFieldCell"; title = "Welcome to Shifty!"; ObjectID = "9wQ-sP-igZ"; */
-"9wQ-sP-igZ.title" = "Welcome to Shifty!";
+"9wQ-sP-igZ.title" = "欢迎使用 Shifty 夜览管家！";
 
 /* Class = "NSTextFieldCell"; title = "Thanks for installing Shifty."; ObjectID = "E7p-5d-X2C"; */
-"E7p-5d-X2C.title" = "Thanks for installing Shifty.";
+"E7p-5d-X2C.title" = "感谢安装 Shifty 夜览管家。";
 
 /* Class = "NSTextFieldCell"; title = "🎉"; ObjectID = "FhS-Jt-Qvm"; */
 "FhS-Jt-Qvm.title" = "🎉";
 
 /* Class = "NSTextFieldCell"; title = "Click Next to continue setup. It'll just take a minute."; ObjectID = "J4B-E9-KIZ"; */
-"J4B-E9-KIZ.title" = "Click Next to continue setup. It'll just take a minute.";
+"J4B-E9-KIZ.title" = "点击“下一步”继续设置，设置过程仅需一分钟。";
 
 /* Class = "NSWindow"; title = "Shifty Setup"; ObjectID = "TIE-Pp-ufx"; */
-"TIE-Pp-ufx.title" = "Shifty Setup";
+"TIE-Pp-ufx.title" = "设置 Shifty 夜览管家";
 
 /* Class = "NSButtonCell"; title = "Next"; ObjectID = "TnF-o1-sgY"; */
-"TnF-o1-sgY.title" = "Next";
-
-/* Class = "NSButtonCell"; title = "Back"; ObjectID = "Uyi-J6-pvR"; */
-"Uyi-J6-pvR.title" = "Back";
+"TnF-o1-sgY.title" = "下一步";
 
 /* Class = "NSTextFieldCell"; title = "Shifty is now running in the menu bar."; ObjectID = "WcY-uu-0Eu"; */
-"WcY-uu-0Eu.title" = "Shifty is now running in the menu bar.";
+"WcY-uu-0Eu.title" = "已在菜单栏中运行 Shifty 夜览管家。";
 
-/* Class = "NSTextFieldCell"; title = "Website shifting supports:"; ObjectID = "bNv-dv-CBp"; */
-"bNv-dv-CBp.title" = "Website shifting supports:";
+/* Class = "NSTextFieldCell"; title = "Website Shifting supports:"; ObjectID = "bNv-dv-CBp"; */
+"bNv-dv-CBp.title" = "网站色温调节支持下列浏览器：";
 
 /* Class = "NSTextFieldCell"; title = "Vivaldi"; ObjectID = "cXQ-bL-QlF"; */
 "cXQ-bL-QlF.title" = "Vivaldi";
 
-/* Class = "NSButtonCell"; title = "Back"; ObjectID = "dJy-3p-fnG"; */
-"dJy-3p-fnG.title" = "Back";
+/* Class = "NSButtonCell"; title = "Share anonymous crash data and analytics with developer"; ObjectID = "fkJ-8D-Xr2"; */
+"fkJ-8D-Xr2.title" = "匿名向开发者分享崩溃数据和诊断信息";
 
 /* Class = "NSButtonCell"; title = "Yes"; ObjectID = "hNr-Ak-j8a"; */
-"hNr-Ak-j8a.title" = "Yes";
+"hNr-Ak-j8a.title" = "开启";
 
 /* Class = "NSTextFieldCell"; title = "Would you like to let Shifty automatically disable Night Shift when you visit certain websites?"; ObjectID = "hcb-Lm-Zmy"; */
-"hcb-Lm-Zmy.title" = "Would you like to let Shifty automatically disable Night Shift when you visit certain websites?";
+"hcb-Lm-Zmy.title" = "是否希望 Shifty 夜览管家在访问特定网站时自动停用“夜览”模式？";
 
 /* Class = "NSButtonCell"; title = "?"; ObjectID = "hnI-7M-qBT"; */
 "hnI-7M-qBT.title" = "?";
 
 /* Class = "NSButtonCell"; title = "Open System Preferences"; ObjectID = "lqU-rF-E5t"; */
-"lqU-rF-E5t.title" = "Open System Preferences";
+"lqU-rF-E5t.title" = "打开系统偏好设置";
+
+/* Class = "NSButtonCell"; title = "More info..."; ObjectID = "njq-rZ-B3n"; */
+"njq-rZ-B3n.title" = "更多信息...";
 
 /* Class = "NSButtonCell"; title = "Close"; ObjectID = "s21-gu-5OC"; */
-"s21-gu-5OC.title" = "Close";
+"s21-gu-5OC.title" = "关闭";
 
 /* Class = "NSTextFieldCell"; title = "Chrome"; ObjectID = "shv-ze-VLi"; */
 "shv-ze-VLi.title" = "Chrome";
 
 /* Class = "NSTextFieldCell"; title = "You're good to go!"; ObjectID = "uHP-lQ-mpf"; */
-"uHP-lQ-mpf.title" = "You're good to go!";
+"uHP-lQ-mpf.title" = "已设置完成，欢迎使用！";
 
 /* Class = "NSButtonCell"; title = "Not now"; ObjectID = "y40-o0-ueU"; */
-"y40-o0-ueU.title" = "Not now";
+"y40-o0-ueU.title" = "以后再说";
 
-/* Class = "NSTextFieldCell"; title = "Enable website shifting?"; ObjectID = "yjk-M4-AOM"; */
-"yjk-M4-AOM.title" = "Enable website shifting?";
+/* Class = "NSTextFieldCell"; title = "Enable Website Shifting?"; ObjectID = "yjk-M4-AOM"; */
+"yjk-M4-AOM.title" = "开启网站色温调节？";

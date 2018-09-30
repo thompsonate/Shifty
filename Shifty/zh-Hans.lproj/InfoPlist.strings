@@ -7,4 +7,5 @@
 */
 
 "CFBundleDisplayName" = "Shifty 夜览管家";
-"NSHumanReadableCopyright" = "© 2017-2018 Nate Thompson 保留所有权，应用程序遵循 GPLv3 许可协议。";
+"NSHumanReadableCopyright" = "© 2017-2018 Nate Thompson 版权所有，应用程序遵循 GPLv3 许可协议。";
+"NSAppleEventsUsageDescription" = "Shifty 夜览管家需要访问您当前正在浏览网页的相应地址，方可让您针对特定网站禁用“夜览”模式。";
