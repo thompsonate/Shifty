@@ -60,15 +60,19 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
 
     var appDelegate: AppDelegate!
     var prefWindow: NSWindow!
+    
+    var defaultDarkModeState: Bool!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        appDelegate = NSApplication.shared.delegate as! AppDelegate
+        appDelegate = NSApplication.shared.delegate as? AppDelegate
         prefWindow = appDelegate.preferenceWindowController.window
 
         //Hide True Tone settings on unsupported computers
         trueToneStackView.isHidden = CBTrueToneClient.shared.state == .unsupported
+        
+        defaultDarkModeState = SLSGetAppearanceThemeLegacy()
 
         //Fix layer-backing issues in 10.12 that cause window corners to not be rounded.
         if !ProcessInfo().isOperatingSystemAtLeast(OperatingSystemVersion(majorVersion: 10, minorVersion: 13, patchVersion: 0)) {
@@ -123,9 +127,10 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
 
     @IBAction func syncDarkMode(_ sender: NSButtonCell) {
         if sender.state == .on {
+            defaultDarkModeState = SLSGetAppearanceThemeLegacy()
             NightShiftManager.updateDarkMode()
         } else {
-            SLSSetAppearanceThemeLegacy(false)
+            SLSSetAppearanceThemeLegacy(defaultDarkModeState)
         }
         logw("Dark mode sync preference set to \(sender.state.rawValue)")
     }

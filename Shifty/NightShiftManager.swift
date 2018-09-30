@@ -185,12 +185,22 @@ enum NightShiftManager {
                 return now >= startTime || now <= endTime
             }
         case .solar:
-            guard let isDaylight = BrightnessSystemClient.shared?.isDaylight else {
+            guard let sunrise = BrightnessSystemClient.shared?.sunrise,
+                let sunset = BrightnessSystemClient.shared?.sunset else {
                 logw("Found nil for object BrightnessSystemClient. Returning false for scheduledState.")
                 return false
             }
-            //Should be false between sunrise and sunset
-            return !isDaylight
+            let now = Date()
+            logw("sunset: \(sunset)")
+            logw("sunrise: \(sunrise)")
+            
+            // For some reason, BrightnessSystemClient.isDaylight doesn't track perfectly with sunrise and sunset
+            // When daylight, sunset time is previous occurence
+            // When not daylight, sunset time is next occurence
+            // Should return true when not daylight
+            let scheduledState = now >= sunset
+            logw("scheduled state: \(scheduledState)")
+            return scheduledState
         }
     }
     
