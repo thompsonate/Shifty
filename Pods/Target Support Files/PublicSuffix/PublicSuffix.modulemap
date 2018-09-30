@@ -1,0 +1,6 @@
+framework module PublicSuffix {
+  umbrella header "PublicSuffix-umbrella.h"
+
+  export *
+  module * { export * }
+}

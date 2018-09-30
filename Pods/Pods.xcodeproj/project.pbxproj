@@ -1,0 +1,1825 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		02F3BD265C04BAFE96F10A704A9C1473 /* MASPreferences.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D91DA34EEB158639E60287E52AC018C /* MASPreferences.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		12149EA10608B7DE38879E6242D2826C /* ko.lproj in Resources */ = {isa = PBXBuildFile; fileRef = B6000F0C05E851E2E45ABE572FB5FF64 /* ko.lproj */; };
+		13A66503A37E83E661C3F3CDBEDF7DFC /* SwiftLog-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CF1657B88945CE1572FF48566FCA0BC8 /* SwiftLog-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		157AE1FBA8F6C3B710CDE90F86492010 /* MASShortcut.m in Sources */ = {isa = PBXBuildFile; fileRef = EB62E5527146525762560FF0A927D5F0 /* MASShortcut.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		1BA604656F9E3E91FF5439DC1ED66CDE /* Pods-ShiftyHelper-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F29E2665094FBC87BADA727BEDE12A7 /* Pods-ShiftyHelper-dummy.m */; };
+		20887597017160017549465EBFB7E977 /* zh-Hant.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 904E3F0BA7986EDE825CA6DE0FFA861B /* zh-Hant.lproj */; };
+		26219E3B4FC53D7057E7BB33CD0CCF60 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCA490EE40951D93AF6958B8CF786E6 /* Constants.swift */; };
+		3076DFAD05E4F7F0356153478F071D74 /* MASShortcut-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EC88A70CF929E8D3B384DA34EE73083 /* MASShortcut-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3764AE2ED09CA046B215639F281BE218 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CDF07E03AFAC8F6C767555E8154D891 /* Cocoa.framework */; };
+		4012A24401B7C8C1B69E74D2242AE097 /* MASPreferencesWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 437FF5DF01B08C0C5886A57E6E51CB32 /* MASPreferencesWindowController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		402207B616EE80A77CF4C4DE4425CD6C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CDF07E03AFAC8F6C767555E8154D891 /* Cocoa.framework */; };
+		4818C1BB29E7C2BF255D9941737665EA /* MASShortcut.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EAFA2BD555831AE8B3B7269710899202 /* MASShortcut.bundle */; };
+		4A6AF0A712D4C473177BE88389D15D2A /* MASDictionaryTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A490D56189F5B617EC300EBD4A82330 /* MASDictionaryTransformer.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		4C7B2DD3C60E95AA96278F7323105F56 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CDF07E03AFAC8F6C767555E8154D891 /* Cocoa.framework */; };
+		4C8BA4D002BA02048738DF16195D7B94 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CDF07E03AFAC8F6C767555E8154D891 /* Cocoa.framework */; };
+		4E050CDD1E6ACCE1611B053B9DF80333 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29223442B1A0EF683E98624D11624B0 /* Application.swift */; };
+		4F20DD25E50239EF16DB55D8622A5C93 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CDF07E03AFAC8F6C767555E8154D891 /* Cocoa.framework */; };
+		51358F3E24AC8F1A4172E388769FF1FA /* MASShortcutView.h in Headers */ = {isa = PBXBuildFile; fileRef = 67F041361959738970011E0F6CDBFB13 /* MASShortcutView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		51784DB41876535069CFE994F49DB559 /* SystemWideElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9F796FA9BB3B0FC592CB4471B298B1 /* SystemWideElement.swift */; };
+		55121978073551A8D7BC77A39DE1942D /* PublicSuffix-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F10759CDEDB59DF5BA2C5935FF836BE2 /* PublicSuffix-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		58CE04D9C6CAC7243825ABF4AB20EF32 /* MASShortcutValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A9894B83373D0D514828CA97D6203D5 /* MASShortcutValidator.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		59F93F03B8E7C9BFFD3015874670283C /* PublicSuffix-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7A5E70B66263493BF6E7F363D5401 /* PublicSuffix-dummy.m */; };
+		5A30DAB76BB1814664FA7DC30939DA24 /* MASShortcutBinder.m in Sources */ = {isa = PBXBuildFile; fileRef = FE1907877B144FFE5CAE7048D4935BA6 /* MASShortcutBinder.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		5F1FA9D431587CD257C703AF16134030 /* ja.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 5E5BC151C52FF03336573D48481734A2 /* ja.lproj */; };
+		5FF7D42F51FEAEB192E61355AAEAC6DE /* MASShortcutMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 589711A11588630ACE651F8D3ACE2AEB /* MASShortcutMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		60E7A47466343A9BE2BB4E3CFA703AA1 /* PublicSuffix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2976F9FBB3FD2069A26293EFC33FF2B7 /* PublicSuffix.swift */; };
+		66DEB394C39F5DCCD70A27ECEF274983 /* de.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 173A7C21945A353895D8F4E94CBEA7AB /* de.lproj */; };
+		6B4361F5ADC6268E7953732371174FE9 /* MASShortcut-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A0EB4A84542AE776A661ED9DF91251B1 /* MASShortcut-dummy.m */; };
+		6C46CD2C85970F61B86FFEFC697D885C /* MASPreferencesViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D54ADE6F2B3EA78644DCCD643993906 /* MASPreferencesViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7079926E4C0D6F6F9E9733AFE7AE46AB /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998DC7664C926A99ACF43B7DBC0EDFBC /* Log.swift */; };
+		71DE8C8BA0C00EFA53C3F7756A42CDC9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CDF07E03AFAC8F6C767555E8154D891 /* Cocoa.framework */; };
+		72618F8FF851AC23862BFB3A4EB160BC /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D65D95E06A5EF3E642673271ACF785 /* Error.swift */; };
+		72FC268C3DEB4922F62CD2E17340690B /* AXSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 0C624E08934A4EBEC3BDF35712EC2536 /* AXSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		74EFCC6DC65CEBCF60B106F7FBB14EA2 /* MASShortcutMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = B075D710AB66D398B75A9EA00EA6CE7C /* MASShortcutMonitor.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		751AC207B038ADC338015FD80AA54B76 /* MASLocalization.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D2240231AEA1152A4F26EDDB16CDA5B /* MASLocalization.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		76537FCDFF46E2EAA84E9632DB6A21ED /* MASKeyMasks.h in Headers */ = {isa = PBXBuildFile; fileRef = 67282903FD27C003B6A338665B64BFE1 /* MASKeyMasks.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		785ABEAAB6208B1289F75AB22917996E /* PublicSuffix.h in Headers */ = {isa = PBXBuildFile; fileRef = E57FBCC9C8EDACE254CC67F631C80E80 /* PublicSuffix.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7E20F5346ADC8F4F5C069EDDE10897FD /* MASShortcut.h in Headers */ = {isa = PBXBuildFile; fileRef = 77E4C68BBFBAC99DC66C72FE4B3A9043 /* MASShortcut.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		81B6397FECC803695902CEDB37CB4DFA /* MASShortcutBinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BC4EA2CF78928B0BC5C27E506446C97 /* MASShortcutBinder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8B6D1DEFC373D489C5887C333A8F0BF0 /* UIElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211B5EF3DD067F1803B9D8BED4A2197C /* UIElement.swift */; };
+		8C5EA18EEE22A60BF10955E38F0D3A75 /* MASShortcutValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = 1162AA3AD63F821E68009163F50FCB43 /* MASShortcutValidator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FFA3A6A77962B3A36B009A49634D081 /* MASHotKey.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA3F65BC44EE10D32AB8A2FB188EE73 /* MASHotKey.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		90616AF4CE8215DF6AFFC588C53AB3F2 /* Pods-Shifty-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 86B86780309805345A216EE21A355FC6 /* Pods-Shifty-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		946F1C8199DCEA1FD10CFFCEF5C61E81 /* etld.plist in Resources */ = {isa = PBXBuildFile; fileRef = 64AB3ECED70C9506C968F4FD91F9BD06 /* etld.plist */; };
+		94AE072B624CA3EF86E19454C7F763B5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CDF07E03AFAC8F6C767555E8154D891 /* Cocoa.framework */; };
+		97B374490F695A6ECB06271EF080EB6C /* nl.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 4032A2380B5CCDDEB2734A9185D5BCDA /* nl.lproj */; };
+		9B932F90422A8139A5C827EEF6A648F3 /* MASPreferences+Shifty-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A983DF8B6FB311D15076B83BB52FAC /* MASPreferences+Shifty-dummy.m */; };
+		9BC75EFB8882D8E8D6C888E54880884A /* AXSwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D300F4FDA3CDFD2451B03671991B5F32 /* AXSwift-dummy.m */; };
+		A1A83DD4E9ABFF2291FFD664FD4620BF /* MASPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65AFBAB32BCEFC07B6F8C2B0D79A7591 /* MASPreferencesWindowController.m */; };
+		A4DBF0AB2E88B1A9D1078042F47618B0 /* ru.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 789AD90BB2E5B136763B6BDF33C46000 /* ru.lproj */; };
+		AA7CDF00DFA1EAFF7F28CAF33FE5BC37 /* MASHotKey.h in Headers */ = {isa = PBXBuildFile; fileRef = B58A97FF42450A2338CB99AF5F3C5D64 /* MASHotKey.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ACBE29C4BF8BAEA483D6EEA940FE5314 /* MASShortcutView+Bindings.m in Sources */ = {isa = PBXBuildFile; fileRef = B2DF70AFC3EC26D93483DE37B789D5CC /* MASShortcutView+Bindings.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		AFD762F28F810723E11C21DB89ECA9CC /* MASPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CF54393426B0523A527A9E2C9A040B7 /* MASPreferencesWindow.xib */; };
+		BE0ECACEBBD3F8E211072520C6C2C2C8 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE2F8C300EF6092B57883A1C7EF8C305 /* AppKit.framework */; };
+		BE3692A8ABABF64091ACD410720837F2 /* Pods-Shifty-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D60AF53E9DEBF8251A0C0860B854D87B /* Pods-Shifty-dummy.m */; };
+		C06EE84D23391E9FA94864DEDE34F548 /* fr.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 3CD31D2FAA91362240B1F54DD25C680F /* fr.lproj */; };
+		C50FA5B211B8916770FBE55623B83DA4 /* MASLocalization.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD48B1D24027378C73A9DB774F0ABB8 /* MASLocalization.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		C74A0639C29093B79FA23EB0CC348ADF /* Pods-ShiftyHelper-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A619E04CC7EE52012DD5AB63C96EBD26 /* Pods-ShiftyHelper-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CDAD6942107A336A9B284AF6894C9536 /* SwiftLog-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E17CDF806EB6A356DCD5B9E8951217E /* SwiftLog-dummy.m */; };
+		CE6EDD1DC8D07BBB4E1B43F910C4A935 /* AXSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FECEC40C2935E8812A01A7DCF4D673BE /* AXSwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D6EA93219364CDC135BAFE63084F6361 /* es.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 5AF36C9F3DDB038DCB50E82772B14380 /* es.lproj */; };
+		DE24C629B3DB152EE4924B56E3CC59F5 /* pl.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 3A8D926FC5F626447126C9BD590CB9CC /* pl.lproj */; };
+		DFA6E4455415B3EB3BB38A9F48EEB044 /* Shortcut.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A1CAE716457384E821452B5C0EAAE9F /* Shortcut.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E5312C0FED7C61135F252D3A7A112990 /* MASShortcutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC7E2E95F175DBD65C65FA0FDE83B96 /* MASShortcutView.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		E560A21728B29AF234BD0F37AFE16F36 /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 9E08EA86FE1677D35FBC0ABFD03154A0 /* en.lproj */; };
+		E66F7AFACFC665B23022A09E46815B5C /* it.lproj in Resources */ = {isa = PBXBuildFile; fileRef = E9DFF61A41D86DF6100C480F75245600 /* it.lproj */; };
+		E97573A653DE3A4CB8BAC26FB7B3E9A9 /* MASShortcutView+Bindings.h in Headers */ = {isa = PBXBuildFile; fileRef = BFCFFC4B8D5D5157B427ACAA92E3DA50 /* MASShortcutView+Bindings.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EB5E815B20CB3507FA35257B0256E696 /* MASPreferences+Shifty-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CE9577D8E6A13B075B23E925CE9D2338 /* MASPreferences+Shifty-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EE3A79FAA60A198321767854B60B772F /* MASDictionaryTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 03E93378AFA2DBC966506033C3C1EC19 /* MASDictionaryTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EFFA4247C90B98FD9160F30905A64569 /* cs.lproj in Resources */ = {isa = PBXBuildFile; fileRef = E6BBB193E2B09970976AF22D5AD3D213 /* cs.lproj */; };
+		F34073784679A92927DA4E21FA541DA6 /* AXSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028436CB07A5992C718FD1A7F4DB7813 /* AXSwift.swift */; };
+		F44386819D44846A436139CEF3D372A5 /* zh-Hans.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 5BACE6DD6BD93369E2BA2112D14055DB /* zh-Hans.lproj */; };
+		F94ACA6AA0DD416E5BF05E2425E5F2A6 /* MASKeyCodes.h in Headers */ = {isa = PBXBuildFile; fileRef = 66C0CB9544F5814D74587475F6AC02E3 /* MASKeyCodes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F99228932945D5B44DDC229DB9427496 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A26006074D239EA72F4E7882840527 /* Observer.swift */; };
+		F9926AA8DBB4EDA6BF283A256FE77A47 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FFD5252F022A90AF2AAF9338C3F6AE6 /* Carbon.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3970267716949FF3AEF8D140BA0021EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F37047B5283131217E36C4D068CDC2D6;
+			remoteInfo = AXSwift;
+		};
+		5C6767348F8666DA91F8A2085F0E0EEF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5FD65D8CD2842F60B0BB0AECA5B2AD18;
+			remoteInfo = "MASPreferences+Shifty";
+		};
+		A7708F6CFFF6E4FD2E6FDB5109CDF5E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D6E5ED8DAF7CA937C8F68F342C48B26E;
+			remoteInfo = "MASShortcut-MASShortcut";
+		};
+		C959BB6B7C7D8FFE3E6E1DB1576CF9AF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2E6AEEEDDB61755F415EF0E050AF9A30;
+			remoteInfo = PublicSuffix;
+		};
+		E1DC2B63841B8490A5622E913A719F35 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 00C94ED0B49A44FBF0C4E2F6C875CFFC;
+			remoteInfo = MASShortcut;
+		};
+		F29B59E30AB3E613EE09EA65F6431041 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 865676AA01F724C48513F2437E15E01C;
+			remoteInfo = SwiftLog;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		00A0D6B1157889B121FA26BABB572124 /* SPUDownloaderDeprecated.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUDownloaderDeprecated.h; path = Sparkle.framework/Versions/A/Headers/SPUDownloaderDeprecated.h; sourceTree = "<group>"; };
+		028436CB07A5992C718FD1A7F4DB7813 /* AXSwift.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AXSwift.swift; path = Sources/AXSwift.swift; sourceTree = "<group>"; };
+		031D39402E694B8EC376D14A1210C7CB /* MASPreferences+Shifty.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "MASPreferences+Shifty.xcconfig"; sourceTree = "<group>"; };
+		03E93378AFA2DBC966506033C3C1EC19 /* MASDictionaryTransformer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASDictionaryTransformer.h; path = Framework/MASDictionaryTransformer.h; sourceTree = "<group>"; };
+		08260E484B0776CF314B672F78F228BE /* MASPreferences+Shifty.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "MASPreferences+Shifty.modulemap"; sourceTree = "<group>"; };
+		084458981AE77DEDCDA9378E5C380452 /* MASPreferences+Shifty-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MASPreferences+Shifty-prefix.pch"; sourceTree = "<group>"; };
+		0872C08F398076B04EDEF0D20D51B60F /* Pods-Shifty-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Shifty-acknowledgements.markdown"; sourceTree = "<group>"; };
+		0B4090DE1F5D200EDAD13FCBE96C2BED /* Pods_Shifty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Shifty.framework; path = "Pods-Shifty.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C624E08934A4EBEC3BDF35712EC2536 /* AXSwift.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AXSwift.h; path = Sources/AXSwift.h; sourceTree = "<group>"; };
+		0FE313F34C125064501E281A67135F28 /* Pods-ShiftyHelper-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ShiftyHelper-frameworks.sh"; sourceTree = "<group>"; };
+		0FE7A5E70B66263493BF6E7F363D5401 /* PublicSuffix-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PublicSuffix-dummy.m"; sourceTree = "<group>"; };
+		1162AA3AD63F821E68009163F50FCB43 /* MASShortcutValidator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASShortcutValidator.h; path = Framework/MASShortcutValidator.h; sourceTree = "<group>"; };
+		173A7C21945A353895D8F4E94CBEA7AB /* de.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = de.lproj; sourceTree = "<group>"; };
+		1AD48B1D24027378C73A9DB774F0ABB8 /* MASLocalization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASLocalization.m; path = Framework/MASLocalization.m; sourceTree = "<group>"; };
+		1E644BFF3835667AB00261395615C47D /* MASShortcut-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MASShortcut-prefix.pch"; sourceTree = "<group>"; };
+		20287FD4C56F8AFAFBB40EF777BE5F6D /* MASShortcut.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MASShortcut.modulemap; sourceTree = "<group>"; };
+		211B5EF3DD067F1803B9D8BED4A2197C /* UIElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIElement.swift; path = Sources/UIElement.swift; sourceTree = "<group>"; };
+		257FD409C74BD8306A8331876145D40F /* AXSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = AXSwift.modulemap; sourceTree = "<group>"; };
+		2976F9FBB3FD2069A26293EFC33FF2B7 /* PublicSuffix.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PublicSuffix.swift; path = PublicSuffix/PublicSuffix.swift; sourceTree = "<group>"; };
+		2BC4EA2CF78928B0BC5C27E506446C97 /* MASShortcutBinder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASShortcutBinder.h; path = Framework/MASShortcutBinder.h; sourceTree = "<group>"; };
+		2D54ADE6F2B3EA78644DCCD643993906 /* MASPreferencesViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASPreferencesViewController.h; path = Framework/MASPreferencesViewController.h; sourceTree = "<group>"; };
+		2FFD5252F022A90AF2AAF9338C3F6AE6 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Carbon.framework; sourceTree = DEVELOPER_DIR; };
+		35C9229AC3DE9745E71AB652C70F3C17 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		37AFE3B1EE6880EEEB106DEEB8606FD0 /* MASShortcut.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MASShortcut.framework; path = MASShortcut.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		39F74012E015C2295CFD9DF7FC669514 /* Pods-Shifty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Shifty.release.xcconfig"; sourceTree = "<group>"; };
+		3A8D926FC5F626447126C9BD590CB9CC /* pl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = pl.lproj; sourceTree = "<group>"; };
+		3AD1F9DE58317B065BDD21605625E0B1 /* SwiftLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftLog.framework; path = SwiftLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3BCA490EE40951D93AF6958B8CF786E6 /* Constants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Sources/Constants.swift; sourceTree = "<group>"; };
+		3CD31D2FAA91362240B1F54DD25C680F /* fr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = fr.lproj; sourceTree = "<group>"; };
+		3D2240231AEA1152A4F26EDDB16CDA5B /* MASLocalization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASLocalization.h; path = Framework/MASLocalization.h; sourceTree = "<group>"; };
+		3EC88A70CF929E8D3B384DA34EE73083 /* MASShortcut-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MASShortcut-umbrella.h"; sourceTree = "<group>"; };
+		3F19C1470801A9FF8E2263CE57C456F6 /* Pods-Shifty-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Shifty-acknowledgements.plist"; sourceTree = "<group>"; };
+		3F6BFF27E1D4CA05F24C535387D29345 /* PublicSuffix.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PublicSuffix.framework; path = PublicSuffix.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4032A2380B5CCDDEB2734A9185D5BCDA /* nl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = nl.lproj; sourceTree = "<group>"; };
+		43701BA798A955CD28A7F6350636009B /* SPUDownloader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUDownloader.h; path = Sparkle.framework/Versions/A/Headers/SPUDownloader.h; sourceTree = "<group>"; };
+		437FF5DF01B08C0C5886A57E6E51CB32 /* MASPreferencesWindowController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASPreferencesWindowController.h; path = Framework/MASPreferencesWindowController.h; sourceTree = "<group>"; };
+		439EB77C480685F731EC11138D202E0B /* Pods-ShiftyHelper-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ShiftyHelper-acknowledgements.plist"; sourceTree = "<group>"; };
+		43DD905E89F4953BA2ADC7DD51E8A060 /* SUErrors.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUErrors.h; path = Sparkle.framework/Versions/A/Headers/SUErrors.h; sourceTree = "<group>"; };
+		47574129FE1004FD6405DAFF81F41161 /* SUUpdater.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUUpdater.h; path = Sparkle.framework/Versions/A/Headers/SUUpdater.h; sourceTree = "<group>"; };
+		4D79618771EFEC2544A880E916D04CBD /* ResourceBundle-MASShortcut-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-MASShortcut-Info.plist"; sourceTree = "<group>"; };
+		4D91DA34EEB158639E60287E52AC018C /* MASPreferences.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASPreferences.h; path = Framework/MASPreferences.h; sourceTree = "<group>"; };
+		4F11558767A8F1FB933DB1116DBCEE0A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50A26006074D239EA72F4E7882840527 /* Observer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Observer.swift; path = Sources/Observer.swift; sourceTree = "<group>"; };
+		542E3A1EADAFE83D0FF91C86A0BCF147 /* Pods-ShiftyHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ShiftyHelper.debug.xcconfig"; sourceTree = "<group>"; };
+		58132A793E026B1FFAA0D772C8782895 /* Pods-Shifty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Shifty.debug.xcconfig"; sourceTree = "<group>"; };
+		589711A11588630ACE651F8D3ACE2AEB /* MASShortcutMonitor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASShortcutMonitor.h; path = Framework/MASShortcutMonitor.h; sourceTree = "<group>"; };
+		5AC7E2E95F175DBD65C65FA0FDE83B96 /* MASShortcutView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASShortcutView.m; path = Framework/MASShortcutView.m; sourceTree = "<group>"; };
+		5AF36C9F3DDB038DCB50E82772B14380 /* es.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = es.lproj; sourceTree = "<group>"; };
+		5BACE6DD6BD93369E2BA2112D14055DB /* zh-Hans.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = "zh-Hans.lproj"; sourceTree = "<group>"; };
+		5E5BC151C52FF03336573D48481734A2 /* ja.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = ja.lproj; sourceTree = "<group>"; };
+		5E8D3F00BB8C2314C782BD2E4F551140 /* Pods-Shifty-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Shifty-frameworks.sh"; sourceTree = "<group>"; };
+		64AB3ECED70C9506C968F4FD91F9BD06 /* etld.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = etld.plist; path = PublicSuffix/etld.plist; sourceTree = "<group>"; };
+		65A983DF8B6FB311D15076B83BB52FAC /* MASPreferences+Shifty-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MASPreferences+Shifty-dummy.m"; sourceTree = "<group>"; };
+		65AFBAB32BCEFC07B6F8C2B0D79A7591 /* MASPreferencesWindowController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASPreferencesWindowController.m; path = Framework/MASPreferencesWindowController.m; sourceTree = "<group>"; };
+		66C0CB9544F5814D74587475F6AC02E3 /* MASKeyCodes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASKeyCodes.h; path = Framework/MASKeyCodes.h; sourceTree = "<group>"; };
+		67282903FD27C003B6A338665B64BFE1 /* MASKeyMasks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASKeyMasks.h; path = Framework/MASKeyMasks.h; sourceTree = "<group>"; };
+		67F041361959738970011E0F6CDBFB13 /* MASShortcutView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASShortcutView.h; path = Framework/MASShortcutView.h; sourceTree = "<group>"; };
+		6A490D56189F5B617EC300EBD4A82330 /* MASDictionaryTransformer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASDictionaryTransformer.m; path = Framework/MASDictionaryTransformer.m; sourceTree = "<group>"; };
+		6A9894B83373D0D514828CA97D6203D5 /* MASShortcutValidator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASShortcutValidator.m; path = Framework/MASShortcutValidator.m; sourceTree = "<group>"; };
+		6C8A4FC00ECAF521601D7A29476770D1 /* MASPreferencesWindow.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = MASPreferencesWindow.xib; path = en.lproj/MASPreferencesWindow.xib; sourceTree = "<group>"; };
+		6CDF07E03AFAC8F6C767555E8154D891 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		76E7F603016D260E2D9A4630B737CD1D /* SPUDownloaderDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUDownloaderDelegate.h; path = Sparkle.framework/Versions/A/Headers/SPUDownloaderDelegate.h; sourceTree = "<group>"; };
+		77E4C68BBFBAC99DC66C72FE4B3A9043 /* MASShortcut.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASShortcut.h; path = Framework/MASShortcut.h; sourceTree = "<group>"; };
+		789AD90BB2E5B136763B6BDF33C46000 /* ru.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = ru.lproj; sourceTree = "<group>"; };
+		7A1CAE716457384E821452B5C0EAAE9F /* Shortcut.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Shortcut.h; path = Framework/Shortcut.h; sourceTree = "<group>"; };
+		7A9F796FA9BB3B0FC592CB4471B298B1 /* SystemWideElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SystemWideElement.swift; path = Sources/SystemWideElement.swift; sourceTree = "<group>"; };
+		7C3DFD06D8AE88E4356F0A02E5EC5DBB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7DA3C7971E32FE59E6D74CBB778593D5 /* SwiftLog.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLog.xcconfig; sourceTree = "<group>"; };
+		7F29E2665094FBC87BADA727BEDE12A7 /* Pods-ShiftyHelper-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ShiftyHelper-dummy.m"; sourceTree = "<group>"; };
+		81B5258BAC5E3AC43816215DC8A060A5 /* MASShortcut.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MASShortcut.xcconfig; sourceTree = "<group>"; };
+		81B55C44B81AF8010A4FFA226D6FF379 /* SPUDownloadData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUDownloadData.h; path = Sparkle.framework/Versions/A/Headers/SPUDownloadData.h; sourceTree = "<group>"; };
+		839EF7EC9E35F1C76D3C378E28A41ED1 /* SUExport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUExport.h; path = Sparkle.framework/Versions/A/Headers/SUExport.h; sourceTree = "<group>"; };
+		853B9F9E27E67C7C03BABB7A7C355073 /* Pods-ShiftyHelper.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ShiftyHelper.modulemap"; sourceTree = "<group>"; };
+		86B86780309805345A216EE21A355FC6 /* Pods-Shifty-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Shifty-umbrella.h"; sourceTree = "<group>"; };
+		889CE265C9864AB719E6F30F52A9F5C0 /* Pods_ShiftyHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ShiftyHelper.framework; path = "Pods-ShiftyHelper.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		88C27A57B649B42359D427E9FDE29E7D /* SwiftLog.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftLog.modulemap; sourceTree = "<group>"; };
+		904E3F0BA7986EDE825CA6DE0FFA861B /* zh-Hant.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = "zh-Hant.lproj"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		94DD6C8B73C210AB9A3B1D02B3448824 /* SUVersionDisplayProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUVersionDisplayProtocol.h; path = Sparkle.framework/Versions/A/Headers/SUVersionDisplayProtocol.h; sourceTree = "<group>"; };
+		9582CEBB5970187DA05722F24E1ADBF2 /* AXSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AXSwift.framework; path = AXSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9706E90E7D15953A03F8A6EDC52A9CC6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		998DC7664C926A99ACF43B7DBC0EDFBC /* Log.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		9E08EA86FE1677D35FBC0ABFD03154A0 /* en.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = en.lproj; sourceTree = "<group>"; };
+		9E17CDF806EB6A356DCD5B9E8951217E /* SwiftLog-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftLog-dummy.m"; sourceTree = "<group>"; };
+		9EC0697BCA67DBA52366B47DD2F5388B /* SPUURLRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUURLRequest.h; path = Sparkle.framework/Versions/A/Headers/SPUURLRequest.h; sourceTree = "<group>"; };
+		9ED68623DD02298A209DC7483E0DE97C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9F054EB903F8723C8B0D0DF84A782E12 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		A0EB4A84542AE776A661ED9DF91251B1 /* MASShortcut-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MASShortcut-dummy.m"; sourceTree = "<group>"; };
+		A619E04CC7EE52012DD5AB63C96EBD26 /* Pods-ShiftyHelper-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ShiftyHelper-umbrella.h"; sourceTree = "<group>"; };
+		A6BC4E2D934F6C81DAFB2DB7CB0E899D /* PublicSuffix.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PublicSuffix.xcconfig; sourceTree = "<group>"; };
+		ABC51603EA28BD90F9B8B190FDA83E16 /* Pods-Shifty-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Shifty-resources.sh"; sourceTree = "<group>"; };
+		AE757C2F85D0EA375E95A8C166788F26 /* SwiftLog-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftLog-prefix.pch"; sourceTree = "<group>"; };
+		AF2F4E026C852E9C65B369125D497360 /* PublicSuffix.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = PublicSuffix.modulemap; sourceTree = "<group>"; };
+		B075D710AB66D398B75A9EA00EA6CE7C /* MASShortcutMonitor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASShortcutMonitor.m; path = Framework/MASShortcutMonitor.m; sourceTree = "<group>"; };
+		B1AE7FBC2614DAD49469C68EF1E3C424 /* SPUDownloaderProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUDownloaderProtocol.h; path = Sparkle.framework/Versions/A/Headers/SPUDownloaderProtocol.h; sourceTree = "<group>"; };
+		B2DF70AFC3EC26D93483DE37B789D5CC /* MASShortcutView+Bindings.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "MASShortcutView+Bindings.m"; path = "Framework/MASShortcutView+Bindings.m"; sourceTree = "<group>"; };
+		B5178F37D714049EA7909A2F001B1ECD /* Pods-ShiftyHelper-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ShiftyHelper-acknowledgements.markdown"; sourceTree = "<group>"; };
+		B52916333EFAF80A5A5E564584F96D42 /* AXSwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AXSwift.xcconfig; sourceTree = "<group>"; };
+		B58A97FF42450A2338CB99AF5F3C5D64 /* MASHotKey.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASHotKey.h; path = Framework/MASHotKey.h; sourceTree = "<group>"; };
+		B6000F0C05E851E2E45ABE572FB5FF64 /* ko.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = ko.lproj; sourceTree = "<group>"; };
+		B95A85BF43294E7FB122A7C25F07A7E3 /* SUStandardVersionComparator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUStandardVersionComparator.h; path = Sparkle.framework/Versions/A/Headers/SUStandardVersionComparator.h; sourceTree = "<group>"; };
+		BF624A6838784C60115BAC0B620536F5 /* MASPreferences_Shifty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MASPreferences_Shifty.framework; path = "MASPreferences+Shifty.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFA1434D1C9642FDD48F6FCC3A94977F /* SUCodeSigningVerifier.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUCodeSigningVerifier.h; path = Sparkle.framework/Versions/A/Headers/SUCodeSigningVerifier.h; sourceTree = "<group>"; };
+		BFCFFC4B8D5D5157B427ACAA92E3DA50 /* MASShortcutView+Bindings.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MASShortcutView+Bindings.h"; path = "Framework/MASShortcutView+Bindings.h"; sourceTree = "<group>"; };
+		C03DCA5F25F2D350E39D39111252C7BE /* SPUDownloaderSession.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUDownloaderSession.h; path = Sparkle.framework/Versions/A/Headers/SPUDownloaderSession.h; sourceTree = "<group>"; };
+		C29223442B1A0EF683E98624D11624B0 /* Application.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Application.swift; path = Sources/Application.swift; sourceTree = "<group>"; };
+		C6F56FF6D6D99642A26D3C349567F003 /* SUAppcastItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUAppcastItem.h; path = Sparkle.framework/Versions/A/Headers/SUAppcastItem.h; sourceTree = "<group>"; };
+		C753F5E93A4BA21E2C442BDC9F68654F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE744A3A0320F47CE3F09F6A80ABCD4C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE9577D8E6A13B075B23E925CE9D2338 /* MASPreferences+Shifty-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MASPreferences+Shifty-umbrella.h"; sourceTree = "<group>"; };
+		CF1657B88945CE1572FF48566FCA0BC8 /* SwiftLog-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftLog-umbrella.h"; sourceTree = "<group>"; };
+		CF384C7E7CA5060D1ABCD37A0ECB0620 /* Sparkle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Sparkle.h; path = Sparkle.framework/Versions/A/Headers/Sparkle.h; sourceTree = "<group>"; };
+		D300F4FDA3CDFD2451B03671991B5F32 /* AXSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AXSwift-dummy.m"; sourceTree = "<group>"; };
+		D60AF53E9DEBF8251A0C0860B854D87B /* Pods-Shifty-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Shifty-dummy.m"; sourceTree = "<group>"; };
+		D8DD09E960A0781ADE6E52245B4026BC /* SUAppcast.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUAppcast.h; path = Sparkle.framework/Versions/A/Headers/SUAppcast.h; sourceTree = "<group>"; };
+		D97475DAFF0F4960F46330BE69C47E4C /* Pods-ShiftyHelper-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ShiftyHelper-resources.sh"; sourceTree = "<group>"; };
+		DBA3F65BC44EE10D32AB8A2FB188EE73 /* MASHotKey.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASHotKey.m; path = Framework/MASHotKey.m; sourceTree = "<group>"; };
+		E574202FD2173534D422AA49AE4D3242 /* AXSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AXSwift-prefix.pch"; sourceTree = "<group>"; };
+		E57FBCC9C8EDACE254CC67F631C80E80 /* PublicSuffix.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PublicSuffix.h; path = PublicSuffix/PublicSuffix.h; sourceTree = "<group>"; };
+		E6BBB193E2B09970976AF22D5AD3D213 /* cs.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = cs.lproj; sourceTree = "<group>"; };
+		E9DFF61A41D86DF6100C480F75245600 /* it.lproj */ = {isa = PBXFileReference; includeInIndex = 1; path = it.lproj; sourceTree = "<group>"; };
+		EAFA2BD555831AE8B3B7269710899202 /* MASShortcut.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MASShortcut.bundle; path = "MASShortcut-MASShortcut.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB62E5527146525762560FF0A927D5F0 /* MASShortcut.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASShortcut.m; path = Framework/MASShortcut.m; sourceTree = "<group>"; };
+		EE2F8C300EF6092B57883A1C7EF8C305 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/AppKit.framework; sourceTree = DEVELOPER_DIR; };
+		F10759CDEDB59DF5BA2C5935FF836BE2 /* PublicSuffix-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PublicSuffix-umbrella.h"; sourceTree = "<group>"; };
+		F266D684BFFAFBDFC6DF599CFCB3E56C /* SUVersionComparisonProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUVersionComparisonProtocol.h; path = Sparkle.framework/Versions/A/Headers/SUVersionComparisonProtocol.h; sourceTree = "<group>"; };
+		F3D65D95E06A5EF3E642673271ACF785 /* Error.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Error.swift; path = Sources/Error.swift; sourceTree = "<group>"; };
+		F48026D7D4D0CAF783853BC73EA32740 /* Pods-Shifty.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Shifty.modulemap"; sourceTree = "<group>"; };
+		F48E8C0398190EE2E03D199A857DC059 /* PublicSuffix-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PublicSuffix-prefix.pch"; sourceTree = "<group>"; };
+		F9D4FA3003DD4F89B2AFC307F5D6C7CB /* Pods-ShiftyHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ShiftyHelper.release.xcconfig"; sourceTree = "<group>"; };
+		FB93B0561218C068E7EC32CB54BF3918 /* SUUpdaterDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUUpdaterDelegate.h; path = Sparkle.framework/Versions/A/Headers/SUUpdaterDelegate.h; sourceTree = "<group>"; };
+		FE1907877B144FFE5CAE7048D4935BA6 /* MASShortcutBinder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASShortcutBinder.m; path = Framework/MASShortcutBinder.m; sourceTree = "<group>"; };
+		FECEC40C2935E8812A01A7DCF4D673BE /* AXSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AXSwift-umbrella.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		06DB63E0064B15C5B39BFF16CDD7970E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		08982CB96A6EFFBFA4FBD421F44A1C13 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71DE8C8BA0C00EFA53C3F7756A42CDC9 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B77FA63F6FD68C9699946ECDD04F501 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C7B2DD3C60E95AA96278F7323105F56 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52D931DDDC655138FC5D6A48F598972B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3764AE2ED09CA046B215639F281BE218 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ABC0A1373491835608E86660DBBB9792 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				402207B616EE80A77CF4C4DE4425CD6C /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B7B680201E9B5EB7C669020F90924A35 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C8BA4D002BA02048738DF16195D7B94 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDE6AA439381DD5665018F889D1E5A6B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE0ECACEBBD3F8E211072520C6C2C2C8 /* AppKit.framework in Frameworks */,
+				F9926AA8DBB4EDA6BF283A256FE77A47 /* Carbon.framework in Frameworks */,
+				94AE072B624CA3EF86E19454C7F763B5 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB76404B608E6B819A0A9DC14BA4869E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F20DD25E50239EF16DB55D8622A5C93 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		022ADAA80CD7AF1ABDA5EEA02D89E71F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5CF54393426B0523A527A9E2C9A040B7 /* MASPreferencesWindow.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		03F76AC4904CDE3D4EB3C246F4B1FA7F /* MASShortcut */ = {
+			isa = PBXGroup;
+			children = (
+				03E93378AFA2DBC966506033C3C1EC19 /* MASDictionaryTransformer.h */,
+				6A490D56189F5B617EC300EBD4A82330 /* MASDictionaryTransformer.m */,
+				B58A97FF42450A2338CB99AF5F3C5D64 /* MASHotKey.h */,
+				DBA3F65BC44EE10D32AB8A2FB188EE73 /* MASHotKey.m */,
+				66C0CB9544F5814D74587475F6AC02E3 /* MASKeyCodes.h */,
+				67282903FD27C003B6A338665B64BFE1 /* MASKeyMasks.h */,
+				3D2240231AEA1152A4F26EDDB16CDA5B /* MASLocalization.h */,
+				1AD48B1D24027378C73A9DB774F0ABB8 /* MASLocalization.m */,
+				77E4C68BBFBAC99DC66C72FE4B3A9043 /* MASShortcut.h */,
+				EB62E5527146525762560FF0A927D5F0 /* MASShortcut.m */,
+				2BC4EA2CF78928B0BC5C27E506446C97 /* MASShortcutBinder.h */,
+				FE1907877B144FFE5CAE7048D4935BA6 /* MASShortcutBinder.m */,
+				589711A11588630ACE651F8D3ACE2AEB /* MASShortcutMonitor.h */,
+				B075D710AB66D398B75A9EA00EA6CE7C /* MASShortcutMonitor.m */,
+				1162AA3AD63F821E68009163F50FCB43 /* MASShortcutValidator.h */,
+				6A9894B83373D0D514828CA97D6203D5 /* MASShortcutValidator.m */,
+				67F041361959738970011E0F6CDBFB13 /* MASShortcutView.h */,
+				5AC7E2E95F175DBD65C65FA0FDE83B96 /* MASShortcutView.m */,
+				BFCFFC4B8D5D5157B427ACAA92E3DA50 /* MASShortcutView+Bindings.h */,
+				B2DF70AFC3EC26D93483DE37B789D5CC /* MASShortcutView+Bindings.m */,
+				7A1CAE716457384E821452B5C0EAAE9F /* Shortcut.h */,
+				62BEE2B1903E041C536B3B5E5F8FC85A /* Resources */,
+				BAF007D199714A499E6D539C84E4ABE3 /* Support Files */,
+			);
+			name = MASShortcut;
+			path = MASShortcut;
+			sourceTree = "<group>";
+		};
+		3850D906FDDD895BAC15AC15F7A66F07 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				7C3DFD06D8AE88E4356F0A02E5EC5DBB /* Info.plist */,
+				88C27A57B649B42359D427E9FDE29E7D /* SwiftLog.modulemap */,
+				7DA3C7971E32FE59E6D74CBB778593D5 /* SwiftLog.xcconfig */,
+				9E17CDF806EB6A356DCD5B9E8951217E /* SwiftLog-dummy.m */,
+				AE757C2F85D0EA375E95A8C166788F26 /* SwiftLog-prefix.pch */,
+				CF1657B88945CE1572FF48566FCA0BC8 /* SwiftLog-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftLog";
+			sourceTree = "<group>";
+		};
+		484AD412F5F8763D3AA1DE62D4B640C2 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				CE744A3A0320F47CE3F09F6A80ABCD4C /* Info.plist */,
+				08260E484B0776CF314B672F78F228BE /* MASPreferences+Shifty.modulemap */,
+				031D39402E694B8EC376D14A1210C7CB /* MASPreferences+Shifty.xcconfig */,
+				65A983DF8B6FB311D15076B83BB52FAC /* MASPreferences+Shifty-dummy.m */,
+				084458981AE77DEDCDA9378E5C380452 /* MASPreferences+Shifty-prefix.pch */,
+				CE9577D8E6A13B075B23E925CE9D2338 /* MASPreferences+Shifty-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/MASPreferences+Shifty";
+			sourceTree = "<group>";
+		};
+		4C62A5451104A602B7EA823FEC3E97C3 /* OS X */ = {
+			isa = PBXGroup;
+			children = (
+				EE2F8C300EF6092B57883A1C7EF8C305 /* AppKit.framework */,
+				2FFD5252F022A90AF2AAF9338C3F6AE6 /* Carbon.framework */,
+				6CDF07E03AFAC8F6C767555E8154D891 /* Cocoa.framework */,
+			);
+			name = "OS X";
+			sourceTree = "<group>";
+		};
+		6018829E182CB29CBF5EDC751A3A9224 /* MASPreferences+Shifty */ = {
+			isa = PBXGroup;
+			children = (
+				4D91DA34EEB158639E60287E52AC018C /* MASPreferences.h */,
+				2D54ADE6F2B3EA78644DCCD643993906 /* MASPreferencesViewController.h */,
+				437FF5DF01B08C0C5886A57E6E51CB32 /* MASPreferencesWindowController.h */,
+				65AFBAB32BCEFC07B6F8C2B0D79A7591 /* MASPreferencesWindowController.m */,
+				022ADAA80CD7AF1ABDA5EEA02D89E71F /* Resources */,
+				484AD412F5F8763D3AA1DE62D4B640C2 /* Support Files */,
+			);
+			name = "MASPreferences+Shifty";
+			path = "MASPreferences+Shifty";
+			sourceTree = "<group>";
+		};
+		62BEE2B1903E041C536B3B5E5F8FC85A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E6BBB193E2B09970976AF22D5AD3D213 /* cs.lproj */,
+				173A7C21945A353895D8F4E94CBEA7AB /* de.lproj */,
+				9E08EA86FE1677D35FBC0ABFD03154A0 /* en.lproj */,
+				5AF36C9F3DDB038DCB50E82772B14380 /* es.lproj */,
+				3CD31D2FAA91362240B1F54DD25C680F /* fr.lproj */,
+				E9DFF61A41D86DF6100C480F75245600 /* it.lproj */,
+				5E5BC151C52FF03336573D48481734A2 /* ja.lproj */,
+				B6000F0C05E851E2E45ABE572FB5FF64 /* ko.lproj */,
+				4032A2380B5CCDDEB2734A9185D5BCDA /* nl.lproj */,
+				3A8D926FC5F626447126C9BD590CB9CC /* pl.lproj */,
+				789AD90BB2E5B136763B6BDF33C46000 /* ru.lproj */,
+				5BACE6DD6BD93369E2BA2112D14055DB /* zh-Hans.lproj */,
+				904E3F0BA7986EDE825CA6DE0FFA861B /* zh-Hant.lproj */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		6A08845B76D8CAF902ACDC78C54A5DF7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9F054EB903F8723C8B0D0DF84A782E12 /* Sparkle.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				96D996393384F21972E2DD81788EE22C /* Frameworks */,
+				C7A467904EF53A046E50AF2AD7CE9075 /* Pods */,
+				FCCBFAF79E948A04A9A60F405D391D7D /* Products */,
+				8FDFE907BA22FFADD3A3199EDB303F8A /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		8FDFE907BA22FFADD3A3199EDB303F8A /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				CA16C0F84054BB55A41BA3A3EA5A3DA8 /* Pods-Shifty */,
+				C2320100FE0E0C2AF01187601A8AD363 /* Pods-ShiftyHelper */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		9681AE088B771C5A94D1729430818C37 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				257FD409C74BD8306A8331876145D40F /* AXSwift.modulemap */,
+				B52916333EFAF80A5A5E564584F96D42 /* AXSwift.xcconfig */,
+				D300F4FDA3CDFD2451B03671991B5F32 /* AXSwift-dummy.m */,
+				E574202FD2173534D422AA49AE4D3242 /* AXSwift-prefix.pch */,
+				FECEC40C2935E8812A01A7DCF4D673BE /* AXSwift-umbrella.h */,
+				4F11558767A8F1FB933DB1116DBCEE0A /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/AXSwift";
+			sourceTree = "<group>";
+		};
+		96D996393384F21972E2DD81788EE22C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4C62A5451104A602B7EA823FEC3E97C3 /* OS X */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A7DBA10913A2D60CB591224807B7457C /* Sparkle */ = {
+			isa = PBXGroup;
+			children = (
+				CF384C7E7CA5060D1ABCD37A0ECB0620 /* Sparkle.h */,
+				81B55C44B81AF8010A4FFA226D6FF379 /* SPUDownloadData.h */,
+				43701BA798A955CD28A7F6350636009B /* SPUDownloader.h */,
+				76E7F603016D260E2D9A4630B737CD1D /* SPUDownloaderDelegate.h */,
+				00A0D6B1157889B121FA26BABB572124 /* SPUDownloaderDeprecated.h */,
+				B1AE7FBC2614DAD49469C68EF1E3C424 /* SPUDownloaderProtocol.h */,
+				C03DCA5F25F2D350E39D39111252C7BE /* SPUDownloaderSession.h */,
+				9EC0697BCA67DBA52366B47DD2F5388B /* SPUURLRequest.h */,
+				D8DD09E960A0781ADE6E52245B4026BC /* SUAppcast.h */,
+				C6F56FF6D6D99642A26D3C349567F003 /* SUAppcastItem.h */,
+				BFA1434D1C9642FDD48F6FCC3A94977F /* SUCodeSigningVerifier.h */,
+				43DD905E89F4953BA2ADC7DD51E8A060 /* SUErrors.h */,
+				839EF7EC9E35F1C76D3C378E28A41ED1 /* SUExport.h */,
+				B95A85BF43294E7FB122A7C25F07A7E3 /* SUStandardVersionComparator.h */,
+				47574129FE1004FD6405DAFF81F41161 /* SUUpdater.h */,
+				FB93B0561218C068E7EC32CB54BF3918 /* SUUpdaterDelegate.h */,
+				F266D684BFFAFBDFC6DF599CFCB3E56C /* SUVersionComparisonProtocol.h */,
+				94DD6C8B73C210AB9A3B1D02B3448824 /* SUVersionDisplayProtocol.h */,
+				6A08845B76D8CAF902ACDC78C54A5DF7 /* Frameworks */,
+			);
+			name = Sparkle;
+			path = Sparkle;
+			sourceTree = "<group>";
+		};
+		ABF445D714B77E01C12374E18BBF7DF6 /* SwiftLog */ = {
+			isa = PBXGroup;
+			children = (
+				998DC7664C926A99ACF43B7DBC0EDFBC /* Log.swift */,
+				3850D906FDDD895BAC15AC15F7A66F07 /* Support Files */,
+			);
+			name = SwiftLog;
+			path = SwiftLog;
+			sourceTree = "<group>";
+		};
+		B66C0E68B087BB8A94067A81230DF136 /* AXSwift */ = {
+			isa = PBXGroup;
+			children = (
+				C29223442B1A0EF683E98624D11624B0 /* Application.swift */,
+				0C624E08934A4EBEC3BDF35712EC2536 /* AXSwift.h */,
+				028436CB07A5992C718FD1A7F4DB7813 /* AXSwift.swift */,
+				3BCA490EE40951D93AF6958B8CF786E6 /* Constants.swift */,
+				F3D65D95E06A5EF3E642673271ACF785 /* Error.swift */,
+				50A26006074D239EA72F4E7882840527 /* Observer.swift */,
+				7A9F796FA9BB3B0FC592CB4471B298B1 /* SystemWideElement.swift */,
+				211B5EF3DD067F1803B9D8BED4A2197C /* UIElement.swift */,
+				9681AE088B771C5A94D1729430818C37 /* Support Files */,
+			);
+			name = AXSwift;
+			path = AXSwift;
+			sourceTree = "<group>";
+		};
+		BAF007D199714A499E6D539C84E4ABE3 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				9ED68623DD02298A209DC7483E0DE97C /* Info.plist */,
+				20287FD4C56F8AFAFBB40EF777BE5F6D /* MASShortcut.modulemap */,
+				81B5258BAC5E3AC43816215DC8A060A5 /* MASShortcut.xcconfig */,
+				A0EB4A84542AE776A661ED9DF91251B1 /* MASShortcut-dummy.m */,
+				1E644BFF3835667AB00261395615C47D /* MASShortcut-prefix.pch */,
+				3EC88A70CF929E8D3B384DA34EE73083 /* MASShortcut-umbrella.h */,
+				4D79618771EFEC2544A880E916D04CBD /* ResourceBundle-MASShortcut-Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/MASShortcut";
+			sourceTree = "<group>";
+		};
+		BFC0F59A3EFD39C1DDB1FFF0AD19BF83 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				C753F5E93A4BA21E2C442BDC9F68654F /* Info.plist */,
+				AF2F4E026C852E9C65B369125D497360 /* PublicSuffix.modulemap */,
+				A6BC4E2D934F6C81DAFB2DB7CB0E899D /* PublicSuffix.xcconfig */,
+				0FE7A5E70B66263493BF6E7F363D5401 /* PublicSuffix-dummy.m */,
+				F48E8C0398190EE2E03D199A857DC059 /* PublicSuffix-prefix.pch */,
+				F10759CDEDB59DF5BA2C5935FF836BE2 /* PublicSuffix-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/PublicSuffix";
+			sourceTree = "<group>";
+		};
+		C2320100FE0E0C2AF01187601A8AD363 /* Pods-ShiftyHelper */ = {
+			isa = PBXGroup;
+			children = (
+				9706E90E7D15953A03F8A6EDC52A9CC6 /* Info.plist */,
+				853B9F9E27E67C7C03BABB7A7C355073 /* Pods-ShiftyHelper.modulemap */,
+				B5178F37D714049EA7909A2F001B1ECD /* Pods-ShiftyHelper-acknowledgements.markdown */,
+				439EB77C480685F731EC11138D202E0B /* Pods-ShiftyHelper-acknowledgements.plist */,
+				7F29E2665094FBC87BADA727BEDE12A7 /* Pods-ShiftyHelper-dummy.m */,
+				0FE313F34C125064501E281A67135F28 /* Pods-ShiftyHelper-frameworks.sh */,
+				D97475DAFF0F4960F46330BE69C47E4C /* Pods-ShiftyHelper-resources.sh */,
+				A619E04CC7EE52012DD5AB63C96EBD26 /* Pods-ShiftyHelper-umbrella.h */,
+				542E3A1EADAFE83D0FF91C86A0BCF147 /* Pods-ShiftyHelper.debug.xcconfig */,
+				F9D4FA3003DD4F89B2AFC307F5D6C7CB /* Pods-ShiftyHelper.release.xcconfig */,
+			);
+			name = "Pods-ShiftyHelper";
+			path = "Target Support Files/Pods-ShiftyHelper";
+			sourceTree = "<group>";
+		};
+		C7A467904EF53A046E50AF2AD7CE9075 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B66C0E68B087BB8A94067A81230DF136 /* AXSwift */,
+				6018829E182CB29CBF5EDC751A3A9224 /* MASPreferences+Shifty */,
+				03F76AC4904CDE3D4EB3C246F4B1FA7F /* MASShortcut */,
+				EF7B08E480544A1EFAE46D7F82E26E18 /* PublicSuffix */,
+				A7DBA10913A2D60CB591224807B7457C /* Sparkle */,
+				ABF445D714B77E01C12374E18BBF7DF6 /* SwiftLog */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		CA16C0F84054BB55A41BA3A3EA5A3DA8 /* Pods-Shifty */ = {
+			isa = PBXGroup;
+			children = (
+				35C9229AC3DE9745E71AB652C70F3C17 /* Info.plist */,
+				F48026D7D4D0CAF783853BC73EA32740 /* Pods-Shifty.modulemap */,
+				0872C08F398076B04EDEF0D20D51B60F /* Pods-Shifty-acknowledgements.markdown */,
+				3F19C1470801A9FF8E2263CE57C456F6 /* Pods-Shifty-acknowledgements.plist */,
+				D60AF53E9DEBF8251A0C0860B854D87B /* Pods-Shifty-dummy.m */,
+				5E8D3F00BB8C2314C782BD2E4F551140 /* Pods-Shifty-frameworks.sh */,
+				ABC51603EA28BD90F9B8B190FDA83E16 /* Pods-Shifty-resources.sh */,
+				86B86780309805345A216EE21A355FC6 /* Pods-Shifty-umbrella.h */,
+				58132A793E026B1FFAA0D772C8782895 /* Pods-Shifty.debug.xcconfig */,
+				39F74012E015C2295CFD9DF7FC669514 /* Pods-Shifty.release.xcconfig */,
+			);
+			name = "Pods-Shifty";
+			path = "Target Support Files/Pods-Shifty";
+			sourceTree = "<group>";
+		};
+		E01C34693CD12986F86B2E2D67C694F9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				64AB3ECED70C9506C968F4FD91F9BD06 /* etld.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		EF7B08E480544A1EFAE46D7F82E26E18 /* PublicSuffix */ = {
+			isa = PBXGroup;
+			children = (
+				E57FBCC9C8EDACE254CC67F631C80E80 /* PublicSuffix.h */,
+				2976F9FBB3FD2069A26293EFC33FF2B7 /* PublicSuffix.swift */,
+				E01C34693CD12986F86B2E2D67C694F9 /* Resources */,
+				BFC0F59A3EFD39C1DDB1FFF0AD19BF83 /* Support Files */,
+			);
+			name = PublicSuffix;
+			path = PublicSuffix;
+			sourceTree = "<group>";
+		};
+		FCCBFAF79E948A04A9A60F405D391D7D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9582CEBB5970187DA05722F24E1ADBF2 /* AXSwift.framework */,
+				BF624A6838784C60115BAC0B620536F5 /* MASPreferences_Shifty.framework */,
+				EAFA2BD555831AE8B3B7269710899202 /* MASShortcut.bundle */,
+				37AFE3B1EE6880EEEB106DEEB8606FD0 /* MASShortcut.framework */,
+				0B4090DE1F5D200EDAD13FCBE96C2BED /* Pods_Shifty.framework */,
+				889CE265C9864AB719E6F30F52A9F5C0 /* Pods_ShiftyHelper.framework */,
+				3F6BFF27E1D4CA05F24C535387D29345 /* PublicSuffix.framework */,
+				3AD1F9DE58317B065BDD21605625E0B1 /* SwiftLog.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		0C2C438A1E14F9DB7C70A35F899A72DA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE6EDD1DC8D07BBB4E1B43F910C4A935 /* AXSwift-umbrella.h in Headers */,
+				72FC268C3DEB4922F62CD2E17340690B /* AXSwift.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		68FE8321E00587BF5072825A5E9B4704 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE3A79FAA60A198321767854B60B772F /* MASDictionaryTransformer.h in Headers */,
+				AA7CDF00DFA1EAFF7F28CAF33FE5BC37 /* MASHotKey.h in Headers */,
+				F94ACA6AA0DD416E5BF05E2425E5F2A6 /* MASKeyCodes.h in Headers */,
+				76537FCDFF46E2EAA84E9632DB6A21ED /* MASKeyMasks.h in Headers */,
+				751AC207B038ADC338015FD80AA54B76 /* MASLocalization.h in Headers */,
+				3076DFAD05E4F7F0356153478F071D74 /* MASShortcut-umbrella.h in Headers */,
+				7E20F5346ADC8F4F5C069EDDE10897FD /* MASShortcut.h in Headers */,
+				81B6397FECC803695902CEDB37CB4DFA /* MASShortcutBinder.h in Headers */,
+				5FF7D42F51FEAEB192E61355AAEAC6DE /* MASShortcutMonitor.h in Headers */,
+				8C5EA18EEE22A60BF10955E38F0D3A75 /* MASShortcutValidator.h in Headers */,
+				E97573A653DE3A4CB8BAC26FB7B3E9A9 /* MASShortcutView+Bindings.h in Headers */,
+				51358F3E24AC8F1A4172E388769FF1FA /* MASShortcutView.h in Headers */,
+				DFA6E4455415B3EB3BB38A9F48EEB044 /* Shortcut.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B00E677C58FC0FA1E919F1791C328BC5 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13A66503A37E83E661C3F3CDBEDF7DFC /* SwiftLog-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B219EAC2F8735CF8B8E8AA3AA225F941 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90616AF4CE8215DF6AFFC588C53AB3F2 /* Pods-Shifty-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCA9BBA41562A115ACAB06AF4D7B9FCD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB5E815B20CB3507FA35257B0256E696 /* MASPreferences+Shifty-umbrella.h in Headers */,
+				02F3BD265C04BAFE96F10A704A9C1473 /* MASPreferences.h in Headers */,
+				6C46CD2C85970F61B86FFEFC697D885C /* MASPreferencesViewController.h in Headers */,
+				4012A24401B7C8C1B69E74D2242AE097 /* MASPreferencesWindowController.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D51D740E547D5284DD652EE9321C07BE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55121978073551A8D7BC77A39DE1942D /* PublicSuffix-umbrella.h in Headers */,
+				785ABEAAB6208B1289F75AB22917996E /* PublicSuffix.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D740053FC3150CCAE99E84F6CC6E8E05 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C74A0639C29093B79FA23EB0CC348ADF /* Pods-ShiftyHelper-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		00C94ED0B49A44FBF0C4E2F6C875CFFC /* MASShortcut */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F916C3627231C409340EF9C88C37F7E /* Build configuration list for PBXNativeTarget "MASShortcut" */;
+			buildPhases = (
+				2A63CAAD91A284BB01FE7A2D488ADAC4 /* Sources */,
+				CDE6AA439381DD5665018F889D1E5A6B /* Frameworks */,
+				BDD1FBDDF5D87D58DCD6110D44F7737E /* Resources */,
+				68FE8321E00587BF5072825A5E9B4704 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6D8935AB78317EC6C1ABBB09EA86C5FB /* PBXTargetDependency */,
+			);
+			name = MASShortcut;
+			productName = MASShortcut;
+			productReference = 37AFE3B1EE6880EEEB106DEEB8606FD0 /* MASShortcut.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		2E6AEEEDDB61755F415EF0E050AF9A30 /* PublicSuffix */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 007D277FD5DF2A6B0E6C76AEAB39B332 /* Build configuration list for PBXNativeTarget "PublicSuffix" */;
+			buildPhases = (
+				412EC04A4019B40655A0F558181C3069 /* Sources */,
+				3B77FA63F6FD68C9699946ECDD04F501 /* Frameworks */,
+				D51D740E547D5284DD652EE9321C07BE /* Headers */,
+				A7660436CC4642180F0A36E54AB3150B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PublicSuffix;
+			productName = PublicSuffix;
+			productReference = 3F6BFF27E1D4CA05F24C535387D29345 /* PublicSuffix.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		5FD65D8CD2842F60B0BB0AECA5B2AD18 /* MASPreferences+Shifty */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3A83C19030F6F02DBC34088CBC6CA94F /* Build configuration list for PBXNativeTarget "MASPreferences+Shifty" */;
+			buildPhases = (
+				3A850B5E44AAEF4F49FD95DA39F82CAE /* Sources */,
+				FB76404B608E6B819A0A9DC14BA4869E /* Frameworks */,
+				BCA9BBA41562A115ACAB06AF4D7B9FCD /* Headers */,
+				1A0EDB9EA9F82703532BB3C23E586591 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MASPreferences+Shifty";
+			productName = "MASPreferences+Shifty";
+			productReference = BF624A6838784C60115BAC0B620536F5 /* MASPreferences_Shifty.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		6880D6C625EA6D2CECEE88358AB97713 /* Pods-Shifty */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00568237BC3B086795A8E506F849434D /* Build configuration list for PBXNativeTarget "Pods-Shifty" */;
+			buildPhases = (
+				A7EB0E7F15978CF58B5A0DF0FD798095 /* Sources */,
+				B7B680201E9B5EB7C669020F90924A35 /* Frameworks */,
+				B219EAC2F8735CF8B8E8AA3AA225F941 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A2CE3F074182AB5AEB414C5404D436CE /* PBXTargetDependency */,
+				E9D66F2C7631074AEBD486CA82442278 /* PBXTargetDependency */,
+				BE0ED89FD1BFC16208453213D62F7D23 /* PBXTargetDependency */,
+				4BB04624DD104413B4FDFF5EF97D6474 /* PBXTargetDependency */,
+				774CE5852D284478E53D9E649D621B27 /* PBXTargetDependency */,
+			);
+			name = "Pods-Shifty";
+			productName = "Pods-Shifty";
+			productReference = 0B4090DE1F5D200EDAD13FCBE96C2BED /* Pods_Shifty.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		7B483B38EAFC6BF90C56DA12C9834D18 /* Pods-ShiftyHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA1B73D99B06D86A8AA7F66D896C1BEE /* Build configuration list for PBXNativeTarget "Pods-ShiftyHelper" */;
+			buildPhases = (
+				CABC99B55B52079808C0C3F2D6D9E669 /* Sources */,
+				52D931DDDC655138FC5D6A48F598972B /* Frameworks */,
+				D740053FC3150CCAE99E84F6CC6E8E05 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-ShiftyHelper";
+			productName = "Pods-ShiftyHelper";
+			productReference = 889CE265C9864AB719E6F30F52A9F5C0 /* Pods_ShiftyHelper.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		865676AA01F724C48513F2437E15E01C /* SwiftLog */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0D4480D851DC67B5491F74387749C791 /* Build configuration list for PBXNativeTarget "SwiftLog" */;
+			buildPhases = (
+				E13FD9D6E9F42EEAC62C2BF343401D77 /* Sources */,
+				08982CB96A6EFFBFA4FBD421F44A1C13 /* Frameworks */,
+				B00E677C58FC0FA1E919F1791C328BC5 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftLog;
+			productName = SwiftLog;
+			productReference = 3AD1F9DE58317B065BDD21605625E0B1 /* SwiftLog.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		D6E5ED8DAF7CA937C8F68F342C48B26E /* MASShortcut-MASShortcut */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B2542ED88CE98D477B8D38769095CE5E /* Build configuration list for PBXNativeTarget "MASShortcut-MASShortcut" */;
+			buildPhases = (
+				C85081056E3DF73EFBB147D8F01CDE65 /* Sources */,
+				06DB63E0064B15C5B39BFF16CDD7970E /* Frameworks */,
+				B7977A817BCC9300C280AC3762FC58AB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MASShortcut-MASShortcut";
+			productName = "MASShortcut-MASShortcut";
+			productReference = EAFA2BD555831AE8B3B7269710899202 /* MASShortcut.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		F37047B5283131217E36C4D068CDC2D6 /* AXSwift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE31CF5292C195D725843AC3DCE7F4AA /* Build configuration list for PBXNativeTarget "AXSwift" */;
+			buildPhases = (
+				297BE7DD9CB331685036DCDC90D0CF5D /* Sources */,
+				ABC0A1373491835608E86660DBBB9792 /* Frameworks */,
+				0C2C438A1E14F9DB7C70A35F899A72DA /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AXSwift;
+			productName = AXSwift;
+			productReference = 9582CEBB5970187DA05722F24E1ADBF2 /* AXSwift.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = FCCBFAF79E948A04A9A60F405D391D7D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F37047B5283131217E36C4D068CDC2D6 /* AXSwift */,
+				5FD65D8CD2842F60B0BB0AECA5B2AD18 /* MASPreferences+Shifty */,
+				00C94ED0B49A44FBF0C4E2F6C875CFFC /* MASShortcut */,
+				D6E5ED8DAF7CA937C8F68F342C48B26E /* MASShortcut-MASShortcut */,
+				6880D6C625EA6D2CECEE88358AB97713 /* Pods-Shifty */,
+				7B483B38EAFC6BF90C56DA12C9834D18 /* Pods-ShiftyHelper */,
+				2E6AEEEDDB61755F415EF0E050AF9A30 /* PublicSuffix */,
+				865676AA01F724C48513F2437E15E01C /* SwiftLog */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1A0EDB9EA9F82703532BB3C23E586591 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFD762F28F810723E11C21DB89ECA9CC /* MASPreferencesWindow.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7660436CC4642180F0A36E54AB3150B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				946F1C8199DCEA1FD10CFFCEF5C61E81 /* etld.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B7977A817BCC9300C280AC3762FC58AB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFFA4247C90B98FD9160F30905A64569 /* cs.lproj in Resources */,
+				66DEB394C39F5DCCD70A27ECEF274983 /* de.lproj in Resources */,
+				E560A21728B29AF234BD0F37AFE16F36 /* en.lproj in Resources */,
+				D6EA93219364CDC135BAFE63084F6361 /* es.lproj in Resources */,
+				C06EE84D23391E9FA94864DEDE34F548 /* fr.lproj in Resources */,
+				E66F7AFACFC665B23022A09E46815B5C /* it.lproj in Resources */,
+				5F1FA9D431587CD257C703AF16134030 /* ja.lproj in Resources */,
+				12149EA10608B7DE38879E6242D2826C /* ko.lproj in Resources */,
+				97B374490F695A6ECB06271EF080EB6C /* nl.lproj in Resources */,
+				DE24C629B3DB152EE4924B56E3CC59F5 /* pl.lproj in Resources */,
+				A4DBF0AB2E88B1A9D1078042F47618B0 /* ru.lproj in Resources */,
+				F44386819D44846A436139CEF3D372A5 /* zh-Hans.lproj in Resources */,
+				20887597017160017549465EBFB7E977 /* zh-Hant.lproj in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BDD1FBDDF5D87D58DCD6110D44F7737E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4818C1BB29E7C2BF255D9941737665EA /* MASShortcut.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		297BE7DD9CB331685036DCDC90D0CF5D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E050CDD1E6ACCE1611B053B9DF80333 /* Application.swift in Sources */,
+				9BC75EFB8882D8E8D6C888E54880884A /* AXSwift-dummy.m in Sources */,
+				F34073784679A92927DA4E21FA541DA6 /* AXSwift.swift in Sources */,
+				26219E3B4FC53D7057E7BB33CD0CCF60 /* Constants.swift in Sources */,
+				72618F8FF851AC23862BFB3A4EB160BC /* Error.swift in Sources */,
+				F99228932945D5B44DDC229DB9427496 /* Observer.swift in Sources */,
+				51784DB41876535069CFE994F49DB559 /* SystemWideElement.swift in Sources */,
+				8B6D1DEFC373D489C5887C333A8F0BF0 /* UIElement.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A63CAAD91A284BB01FE7A2D488ADAC4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A6AF0A712D4C473177BE88389D15D2A /* MASDictionaryTransformer.m in Sources */,
+				8FFA3A6A77962B3A36B009A49634D081 /* MASHotKey.m in Sources */,
+				C50FA5B211B8916770FBE55623B83DA4 /* MASLocalization.m in Sources */,
+				6B4361F5ADC6268E7953732371174FE9 /* MASShortcut-dummy.m in Sources */,
+				157AE1FBA8F6C3B710CDE90F86492010 /* MASShortcut.m in Sources */,
+				5A30DAB76BB1814664FA7DC30939DA24 /* MASShortcutBinder.m in Sources */,
+				74EFCC6DC65CEBCF60B106F7FBB14EA2 /* MASShortcutMonitor.m in Sources */,
+				58CE04D9C6CAC7243825ABF4AB20EF32 /* MASShortcutValidator.m in Sources */,
+				ACBE29C4BF8BAEA483D6EEA940FE5314 /* MASShortcutView+Bindings.m in Sources */,
+				E5312C0FED7C61135F252D3A7A112990 /* MASShortcutView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A850B5E44AAEF4F49FD95DA39F82CAE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B932F90422A8139A5C827EEF6A648F3 /* MASPreferences+Shifty-dummy.m in Sources */,
+				A1A83DD4E9ABFF2291FFD664FD4620BF /* MASPreferencesWindowController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		412EC04A4019B40655A0F558181C3069 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59F93F03B8E7C9BFFD3015874670283C /* PublicSuffix-dummy.m in Sources */,
+				60E7A47466343A9BE2BB4E3CFA703AA1 /* PublicSuffix.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7EB0E7F15978CF58B5A0DF0FD798095 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE3692A8ABABF64091ACD410720837F2 /* Pods-Shifty-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C85081056E3DF73EFBB147D8F01CDE65 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CABC99B55B52079808C0C3F2D6D9E669 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BA604656F9E3E91FF5439DC1ED66CDE /* Pods-ShiftyHelper-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E13FD9D6E9F42EEAC62C2BF343401D77 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7079926E4C0D6F6F9E9733AFE7AE46AB /* Log.swift in Sources */,
+				CDAD6942107A336A9B284AF6894C9536 /* SwiftLog-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4BB04624DD104413B4FDFF5EF97D6474 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PublicSuffix;
+			target = 2E6AEEEDDB61755F415EF0E050AF9A30 /* PublicSuffix */;
+			targetProxy = C959BB6B7C7D8FFE3E6E1DB1576CF9AF /* PBXContainerItemProxy */;
+		};
+		6D8935AB78317EC6C1ABBB09EA86C5FB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "MASShortcut-MASShortcut";
+			target = D6E5ED8DAF7CA937C8F68F342C48B26E /* MASShortcut-MASShortcut */;
+			targetProxy = A7708F6CFFF6E4FD2E6FDB5109CDF5E7 /* PBXContainerItemProxy */;
+		};
+		774CE5852D284478E53D9E649D621B27 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftLog;
+			target = 865676AA01F724C48513F2437E15E01C /* SwiftLog */;
+			targetProxy = F29B59E30AB3E613EE09EA65F6431041 /* PBXContainerItemProxy */;
+		};
+		A2CE3F074182AB5AEB414C5404D436CE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AXSwift;
+			target = F37047B5283131217E36C4D068CDC2D6 /* AXSwift */;
+			targetProxy = 3970267716949FF3AEF8D140BA0021EB /* PBXContainerItemProxy */;
+		};
+		BE0ED89FD1BFC16208453213D62F7D23 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MASShortcut;
+			target = 00C94ED0B49A44FBF0C4E2F6C875CFFC /* MASShortcut */;
+			targetProxy = E1DC2B63841B8490A5622E913A719F35 /* PBXContainerItemProxy */;
+		};
+		E9D66F2C7631074AEBD486CA82442278 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "MASPreferences+Shifty";
+			target = 5FD65D8CD2842F60B0BB0AECA5B2AD18 /* MASPreferences+Shifty */;
+			targetProxy = 5C6767348F8666DA91F8A2085F0E0EEF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5CF54393426B0523A527A9E2C9A040B7 /* MASPreferencesWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6C8A4FC00ECAF521601D7A29476770D1 /* MASPreferencesWindow.xib */,
+			);
+			name = MASPreferencesWindow.xib;
+			path = Framework;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		295F69244941CC01CBBE84233654683B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 58132A793E026B1FFAA0D772C8782895 /* Pods-Shifty.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "Target Support Files/Pods-Shifty/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MODULEMAP_FILE = "Target Support Files/Pods-Shifty/Pods-Shifty.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		312ACE5D8CB6F9064A5725F7C4CF9B12 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81B5258BAC5E3AC43816215DC8A060A5 /* MASShortcut.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/MASShortcut";
+				INFOPLIST_FILE = "Target Support Files/MASShortcut/ResourceBundle-MASShortcut-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = MASShortcut;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		347355BE288C860C78B579440B13057E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B52916333EFAF80A5A5E564584F96D42 /* AXSwift.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_PREFIX_HEADER = "Target Support Files/AXSwift/AXSwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/AXSwift/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/AXSwift/AXSwift.modulemap";
+				PRODUCT_MODULE_NAME = AXSwift;
+				PRODUCT_NAME = AXSwift;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		413A60394227F2AB5994363B90B04EBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A6BC4E2D934F6C81DAFB2DB7CB0E899D /* PublicSuffix.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_PREFIX_HEADER = "Target Support Files/PublicSuffix/PublicSuffix-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/PublicSuffix/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/PublicSuffix/PublicSuffix.modulemap";
+				PRODUCT_MODULE_NAME = PublicSuffix;
+				PRODUCT_NAME = PublicSuffix;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		4CD10A7627452B96F54967F8F5486A16 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81B5258BAC5E3AC43816215DC8A060A5 /* MASShortcut.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_PREFIX_HEADER = "Target Support Files/MASShortcut/MASShortcut-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MASShortcut/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MODULEMAP_FILE = "Target Support Files/MASShortcut/MASShortcut.modulemap";
+				PRODUCT_MODULE_NAME = MASShortcut;
+				PRODUCT_NAME = MASShortcut;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		70C5B4C00BCBEDCCCD8BEF497F890DEA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7DA3C7971E32FE59E6D74CBB778593D5 /* SwiftLog.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftLog/SwiftLog-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftLog/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MODULEMAP_FILE = "Target Support Files/SwiftLog/SwiftLog.modulemap";
+				PRODUCT_MODULE_NAME = SwiftLog;
+				PRODUCT_NAME = SwiftLog;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		7151C9D1D14BE52F826D2B90829BC4FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7DA3C7971E32FE59E6D74CBB778593D5 /* SwiftLog.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftLog/SwiftLog-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftLog/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MODULEMAP_FILE = "Target Support Files/SwiftLog/SwiftLog.modulemap";
+				PRODUCT_MODULE_NAME = SwiftLog;
+				PRODUCT_NAME = SwiftLog;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		73C6D71AD1580C87130823CA09BF2C0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A6BC4E2D934F6C81DAFB2DB7CB0E899D /* PublicSuffix.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_PREFIX_HEADER = "Target Support Files/PublicSuffix/PublicSuffix-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/PublicSuffix/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/PublicSuffix/PublicSuffix.modulemap";
+				PRODUCT_MODULE_NAME = PublicSuffix;
+				PRODUCT_NAME = PublicSuffix;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		7DDA088AC519B45C54DE31DD7B6A497F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81B5258BAC5E3AC43816215DC8A060A5 /* MASShortcut.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/MASShortcut";
+				INFOPLIST_FILE = "Target Support Files/MASShortcut/ResourceBundle-MASShortcut-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = MASShortcut;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		93BCC79DC368A7DA26FCF6513B755743 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		A3B8479F7D45A39D544AF28854208FF6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 542E3A1EADAFE83D0FF91C86A0BCF147 /* Pods-ShiftyHelper.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "Target Support Files/Pods-ShiftyHelper/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MODULEMAP_FILE = "Target Support Files/Pods-ShiftyHelper/Pods-ShiftyHelper.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B0466D273FECC6F201C599282E9BCC1D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 031D39402E694B8EC376D14A1210C7CB /* MASPreferences+Shifty.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_PREFIX_HEADER = "Target Support Files/MASPreferences+Shifty/MASPreferences+Shifty-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MASPreferences+Shifty/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/MASPreferences+Shifty/MASPreferences+Shifty.modulemap";
+				PRODUCT_MODULE_NAME = MASPreferences_Shifty;
+				PRODUCT_NAME = MASPreferences_Shifty;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		BC24368668311C22101FBEA500F58596 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 031D39402E694B8EC376D14A1210C7CB /* MASPreferences+Shifty.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_PREFIX_HEADER = "Target Support Files/MASPreferences+Shifty/MASPreferences+Shifty-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MASPreferences+Shifty/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/MASPreferences+Shifty/MASPreferences+Shifty.modulemap";
+				PRODUCT_MODULE_NAME = MASPreferences_Shifty;
+				PRODUCT_NAME = MASPreferences_Shifty;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		CABE59C68373E07414CAD72517D69228 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F9D4FA3003DD4F89B2AFC307F5D6C7CB /* Pods-ShiftyHelper.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "Target Support Files/Pods-ShiftyHelper/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MODULEMAP_FILE = "Target Support Files/Pods-ShiftyHelper/Pods-ShiftyHelper.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D1E193C2924C5ADCC07F3637C3202DA6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		D4F06AB90F51F0151239F59C0298B3E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 39F74012E015C2295CFD9DF7FC669514 /* Pods-Shifty.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "Target Support Files/Pods-Shifty/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MODULEMAP_FILE = "Target Support Files/Pods-Shifty/Pods-Shifty.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		ED880C1EF10616A4055143A950251E49 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B52916333EFAF80A5A5E564584F96D42 /* AXSwift.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_PREFIX_HEADER = "Target Support Files/AXSwift/AXSwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/AXSwift/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/AXSwift/AXSwift.modulemap";
+				PRODUCT_MODULE_NAME = AXSwift;
+				PRODUCT_NAME = AXSwift;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		FFA3D63325426DF33DA71A1B9B924A1D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81B5258BAC5E3AC43816215DC8A060A5 /* MASShortcut.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_PREFIX_HEADER = "Target Support Files/MASShortcut/MASShortcut-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MASShortcut/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MODULEMAP_FILE = "Target Support Files/MASShortcut/MASShortcut.modulemap";
+				PRODUCT_MODULE_NAME = MASShortcut;
+				PRODUCT_NAME = MASShortcut;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		00568237BC3B086795A8E506F849434D /* Build configuration list for PBXNativeTarget "Pods-Shifty" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				295F69244941CC01CBBE84233654683B /* Debug */,
+				D4F06AB90F51F0151239F59C0298B3E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		007D277FD5DF2A6B0E6C76AEAB39B332 /* Build configuration list for PBXNativeTarget "PublicSuffix" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				73C6D71AD1580C87130823CA09BF2C0E /* Debug */,
+				413A60394227F2AB5994363B90B04EBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0D4480D851DC67B5491F74387749C791 /* Build configuration list for PBXNativeTarget "SwiftLog" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				70C5B4C00BCBEDCCCD8BEF497F890DEA /* Debug */,
+				7151C9D1D14BE52F826D2B90829BC4FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				93BCC79DC368A7DA26FCF6513B755743 /* Debug */,
+				D1E193C2924C5ADCC07F3637C3202DA6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3A83C19030F6F02DBC34088CBC6CA94F /* Build configuration list for PBXNativeTarget "MASPreferences+Shifty" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B0466D273FECC6F201C599282E9BCC1D /* Debug */,
+				BC24368668311C22101FBEA500F58596 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3F916C3627231C409340EF9C88C37F7E /* Build configuration list for PBXNativeTarget "MASShortcut" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFA3D63325426DF33DA71A1B9B924A1D /* Debug */,
+				4CD10A7627452B96F54967F8F5486A16 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B2542ED88CE98D477B8D38769095CE5E /* Build configuration list for PBXNativeTarget "MASShortcut-MASShortcut" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				312ACE5D8CB6F9064A5725F7C4CF9B12 /* Debug */,
+				7DDA088AC519B45C54DE31DD7B6A497F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BA1B73D99B06D86A8AA7F66D896C1BEE /* Build configuration list for PBXNativeTarget "Pods-ShiftyHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A3B8479F7D45A39D544AF28854208FF6 /* Debug */,
+				CABE59C68373E07414CAD72517D69228 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE31CF5292C195D725843AC3DCE7F4AA /* Build configuration list for PBXNativeTarget "AXSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED880C1EF10616A4055143A950251E49 /* Debug */,
+				347355BE288C860C78B579440B13057E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

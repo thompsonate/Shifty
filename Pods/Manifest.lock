@@ -1,0 +1,36 @@
+PODS:
+  - AXSwift (0.2.2)
+  - "MASPreferences+Shifty (1.3.4)"
+  - MASShortcut (2.3.6)
+  - PublicSuffix (0.1)
+  - Sparkle (1.20.0)
+  - SwiftLog (1.0.0)
+
+DEPENDENCIES:
+  - AXSwift
+  - "MASPreferences+Shifty"
+  - MASShortcut
+  - PublicSuffix
+  - Sparkle
+  - SwiftLog
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AXSwift
+    - "MASPreferences+Shifty"
+    - MASShortcut
+    - PublicSuffix
+    - Sparkle
+    - SwiftLog
+
+SPEC CHECKSUMS:
+  AXSwift: 495d2ae44b4351f98b94c63337d69989fa4a7978
+  "MASPreferences+Shifty": 0270936bfce4fc7c1857eea8b14aaeae568b377a
+  MASShortcut: 9c215e8a8a78f3d01ce56da48e2730ab66b538fa
+  PublicSuffix: fb6147cd2400ff7a04f4173df07b73e55af29b65
+  Sparkle: 48999e7ee032f05ca05e28451eadf4af8ede6b44
+  SwiftLog: f6c4f9a4ade06263555ab34b2c0f72025ffcda9e
+
+PODFILE CHECKSUM: 98ac0525810e9c6789543575297340eb67cee2db
+
+COCOAPODS: 1.5.3

@@ -1,0 +1,6 @@
+framework module Pods_Shifty {
+  umbrella header "Pods-Shifty-umbrella.h"
+
+  export *
+  module * { export * }
+}
