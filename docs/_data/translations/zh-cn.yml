@@ -1,13 +1,12 @@
+---
 lang: zh-cn
 lang_name: 简体中文
 lang_name_eng: Chinese, Simplified
-
 shifty: Shifty 夜览管家
-tagline: Shifty 夜览管家是一款 macOS 菜单栏应用程序，为夜览模式赋予更多便捷与自定义控制选项。
-download_beta: 下载测试版
-view_github: 在 Github 查看源码
-
+description: 一款为“夜览”模式赋予更多自定义控制权的 macOS 菜单栏应用程序。有了 Shifty 夜览管家，“夜览”模式成为了专业用户的绝佳拍档。免费下载
+tagline: 一款 macOS 菜单栏应用程序，为“夜览”模式赋予更多便捷与自定义控制选项。
+download: 下载
+view_github: 在 Github 查看源代码
 made_by: 由 [Nate Thompson](MAINSITE_LINK) 开发 ☀️
 feedback: 有问题、评价或建议？[向我发邮件](MAILTO_LINK)。
-license: Shifty 夜览管家免费且开源，应用程序遵循 [GPLv3 许可协议](LICENSE_LINK).
-language: '语言：'
+language: '语言:'
