@@ -8,6 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="AnalyticsDetailViewController" customModule="Shifty" customModuleProvider="target">
             <connections>
+                <outlet property="closeButton" destination="huP-sl-rPZ" id="SCu-5o-KHW"/>
                 <outlet property="label" destination="ztU-d8-vK8" id="hrm-1A-by6"/>
                 <outlet property="view" destination="oOs-Qf-IlZ" id="83C-Fx-DTB"/>
             </connections>

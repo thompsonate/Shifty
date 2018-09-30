@@ -10,12 +10,15 @@ import Cocoa
 class AnalyticsDetailViewController: NSViewController {
     
     @IBOutlet weak var label: NSTextField!
+    @IBOutlet weak var closeButton: NSButton!
     
     override var nibName: NSNib.Name {
         return "AnalyticsDetailView"
     }
     
     override func viewDidLoad() {
+        closeButton.title = NSLocalizedString("alert.close", comment: "Close")
+        
         let dataIncludesList = [
             NSLocalizedString("analytics.includes_list_1", comment: "Information about what caused a crash"),
             NSLocalizedString("analytics.includes_list_2", comment: "Data about the usage of various features in Shifty"),
