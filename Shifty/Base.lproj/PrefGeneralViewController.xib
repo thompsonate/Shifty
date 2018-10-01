@@ -103,8 +103,8 @@
                             <rect key="frame" x="0.0" y="98" width="309" height="46"/>
                             <subviews>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Gdr-ZW-5aK">
-                                    <rect key="frame" x="-2" y="30" width="155" height="18"/>
-                                    <buttonCell key="cell" type="check" title="Scheduled dark mode" bezelStyle="regularSquare" imagePosition="left" inset="2" id="5s5-Y5-5b9">
+                                    <rect key="frame" x="-2" y="30" width="156" height="18"/>
+                                    <buttonCell key="cell" type="check" title="Scheduled Dark Mode" bezelStyle="regularSquare" imagePosition="left" inset="2" id="5s5-Y5-5b9">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="system"/>
                                         <connections>
@@ -117,7 +117,7 @@
                                 </button>
                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="xjO-vb-Nxv">
                                     <rect key="frame" x="18" y="0.0" width="293" height="28"/>
-                                    <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" title="If enabled, macOS dark mode will be automatically set based on the Night Shift schedule." id="ZdB-dN-hiO">
+                                    <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" title="If enabled, macOS Dark Mode will be automatically set based on the Night Shift schedule." id="ZdB-dN-hiO">
                                         <font key="font" metaFont="smallSystem"/>
                                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>

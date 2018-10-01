@@ -203,7 +203,7 @@
                         </textField>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="u51-Pd-8ZO">
                             <rect key="frame" x="-2" y="0.0" width="152" height="19"/>
-                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Toggle dark mode:" id="G2J-38-dRB">
+                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Toggle Dark Mode:" id="G2J-38-dRB">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
