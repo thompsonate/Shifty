@@ -144,6 +144,7 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/AXSwift/AXSwift.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/LetsMove/LetsMove.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MASPreferences+Shifty/MASPreferences_Shifty.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MASShortcut/MASShortcut.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PublicSuffix/PublicSuffix.framework"
@@ -152,6 +153,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/AXSwift/AXSwift.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/LetsMove/LetsMove.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MASPreferences+Shifty/MASPreferences_Shifty.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MASShortcut/MASShortcut.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PublicSuffix/PublicSuffix.framework"

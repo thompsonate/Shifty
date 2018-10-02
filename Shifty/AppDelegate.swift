@@ -8,6 +8,7 @@
 
 import Cocoa
 import ServiceManagement
+import LetsMove
 import Fabric
 import Crashlytics
 import MASPreferences_Shifty
@@ -35,6 +36,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var setupWindowController: NSWindowController!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        #if !DEBUG
+            PFMoveToApplicationsFolderIfNecessary()
+        #endif
+        
         UserDefaults.standard.register(defaults: ["NSApplicationCrashOnExceptions": true])
         
         let userDefaults = PrefManager.shared.userDefaults
