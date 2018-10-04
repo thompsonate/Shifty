@@ -103,26 +103,34 @@ enum BrowserManager {
         guard let pid = NSWorkspace.shared.menuBarOwningApplication?.processIdentifier else { return }
         
         if UserDefaults.standard.bool(forKey: Keys.isWebsiteControlEnabled) {
-            do {
-                try startBrowserWatcher(pid) {
-                    if RuleManager.ruleForSubdomain == .enabled {
-                        NightShiftManager.respond(to: .nightShiftEnableRuleActivated)
-                    } else if RuleManager.disabledForDomain || RuleManager.ruleForSubdomain == .disabled {
-                        NightShiftManager.respond(to: .nightShiftDisableRuleActivated)
-                    } else {
-                        NightShiftManager.respond(to: .nightShiftDisableRuleDeactivated)
-                    }
+            tryStartBrowserWatcher(repeatCount: 0, processIdentifier: pid, callback: fireNightShiftEvent)
+            fireNightShiftEvent()
+        }
+    }
+    
+    private static func fireNightShiftEvent() {
+        if RuleManager.ruleForSubdomain == .enabled {
+            NightShiftManager.respond(to: .nightShiftEnableRuleActivated)
+        } else if RuleManager.disabledForDomain || RuleManager.ruleForSubdomain == .disabled {
+            NightShiftManager.respond(to: .nightShiftDisableRuleActivated)
+        } else {
+            NightShiftManager.respond(to: .nightShiftDisableRuleDeactivated)
+        }
+    }
+    
+    // When browser is launching, we're not able to add a notification right away, so we need to try again.
+    private static func tryStartBrowserWatcher(repeatCount: Int, processIdentifier: pid_t, callback: @escaping () -> Void) {
+        let maxTries = 10
+        
+        do {
+            try startBrowserWatcher(processIdentifier, callback: callback)
+        } catch let error {
+            if repeatCount < maxTries {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    tryStartBrowserWatcher(repeatCount: repeatCount + 1, processIdentifier: processIdentifier, callback: callback)
                 }
-            } catch let error {
-                NSLog("Error: Could not watch app [\(pid)]: \(error)")
-                logw("Error: Could not watch app [\(pid)]: \(error)")
-            }
-            if RuleManager.ruleForSubdomain == .enabled {
-                NightShiftManager.respond(to: .nightShiftEnableRuleActivated)
-            } else if RuleManager.disabledForDomain || RuleManager.ruleForSubdomain == .disabled {
-                NightShiftManager.respond(to: .nightShiftDisableRuleActivated)
             } else {
-                NightShiftManager.respond(to: .nightShiftDisableRuleDeactivated)
+                logw("Error: Could not watch app [\(processIdentifier)]: \(error)")
             }
         }
     }
