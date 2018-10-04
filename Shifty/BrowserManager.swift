@@ -140,8 +140,7 @@ enum BrowserManager {
             browserObserver = app.createObserver { (observer: Observer, element: UIElement, event: AXNotification, info: [String: AnyObject]?) in
                 switch event {
                 case .valueChanged:
-                    if let role = try? element.role(), role == .staticText
-                    {
+                    if let role = try? element.role(), role == .staticText {
                         fallthrough
                     }
                 case .focusedWindowChanged:
@@ -170,6 +169,8 @@ enum BrowserManager {
         }
         let tab: Tab?
         switch browser {
+        case .chrome, .chromeCanary, .chromium, .vivaldi:
+            tab = window.activeTab
         case .safari, .safariTechnologyPreview:
             if let app = RuleManager.currentApp,
                 let axapp = Application(app) {
@@ -231,26 +232,7 @@ enum BrowserManager {
             } else {
                 tab = window.currentTab
             }
-        case .chrome, .chromeCanary, .chromium, .vivaldi:
-            tab = window.activeTab
         }
         return tab?.URL.flatMap(URL.init(string:))
-    }
-    
-    private static func isSubdomainOfDomain(subdomain: String, domain: String) -> Bool {
-        var subdomainComponents = subdomain.components(separatedBy: ".")
-        var domainComponents = domain.components(separatedBy: ".")
-        let subdomainComponentsCount = subdomainComponents.count
-        let domainComponentsCount = domainComponents.count
-        let offset = subdomainComponentsCount - domainComponentsCount
-        if offset < 0 {
-            return false
-        }
-        for i in offset..<subdomainComponentsCount {
-            if !(subdomainComponents[i] == domainComponents[i - offset]) {
-                return false
-            }
-        }
-        return true
     }
 }

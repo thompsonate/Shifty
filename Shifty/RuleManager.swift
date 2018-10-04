@@ -204,8 +204,6 @@ enum RuleManager {
         NSWorkspace.shared.notificationCenter.addObserver(forName: NSWorkspace.didActivateApplicationNotification, object: nil, queue: nil) {
             RuleManager.appSwitched(notification: $0)
         }
-
-//        disabledApps = PrefManager.shared.userDefaults.value(forKey: Keys.disabledApps) as? Set<String> ?? []
         
         guard let appData = PrefManager.shared.userDefaults.value(forKey: Keys.disabledApps) as? Data,
             let browserData = PrefManager.shared.userDefaults.value(forKey: Keys.browserRules) as? Data else { return }
