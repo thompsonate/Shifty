@@ -14,6 +14,7 @@ var browserObserver: Observer!
 
 enum BrowserError: Error {
     case noWindow
+    case axError
 }
 
 typealias BundleIdentifier = String
@@ -129,34 +130,22 @@ enum BrowserManager {
     private static func startBrowserWatcher(_ processIdentifier: pid_t, callback: @escaping () -> Void) throws {
         if let app = Application(forProcessID: processIdentifier) {
             browserObserver = app.createObserver { (observer: Observer, element: UIElement, event: AXNotification, info: [String: AnyObject]?) in
-                if event == .windowCreated {
-                    do {
-                        try browserObserver.addNotification(.titleChanged, forElement: element)
-                    } catch let error {
-                        NSLog("Error: Could not watch [\(element)]: \(error)")
+                switch event {
+                case .valueChanged:
+                    if let role = try? element.role(), role == .staticText
+                    {
+                        fallthrough
                     }
-                }
-                if event == .titleChanged || event == .focusedWindowChanged {
+                case .focusedWindowChanged:
                     DispatchQueue.main.async {
                         callback()
                     }
+                default:
+                    logw("Error: Unexpected notification \(event) received")
                 }
             }
-            
-            do {
-                let windows = try app.windows()!
-                for window in windows {
-                    do {
-                        try browserObserver.addNotification(.titleChanged, forElement: window)
-                    } catch let error {
-                        NSLog("Error: Could not watch [\(window)]: \(error)")
-                    }
-                }
-            } catch let error {
-                NSLog("Error: Could not get windows for \(app): \(error)")
-            }
+            try browserObserver.addNotification(.valueChanged, forElement: app)
             try browserObserver.addNotification(.focusedWindowChanged, forElement: app)
-            try browserObserver.addNotification(.windowCreated, forElement: app)
         }
     }
     
@@ -174,18 +163,70 @@ enum BrowserManager {
         let tab: Tab?
         switch browser {
         case .safari, .safariTechnologyPreview:
-            tab = window.currentTab
+            if let app = RuleManager.currentApp,
+                let axapp = Application(app) {
+                do {
+                    // Special fullscreen win
+                    guard let axwin: UIElement = try axapp.attribute(.focusedWindow) else { throw BrowserError.axError }
+                    guard let axwin_children: [UIElement] = try axwin.arrayAttribute(.children) else { throw BrowserError.axError }
+                    switch axwin_children.count {
+                    case 1:
+                        var axchild = axwin_children[0]
+                        for _ in 1...3 {
+                            guard let children: [UIElement] = try axchild.arrayAttribute(.children) else { throw BrowserError.axError }
+                            if !children.isEmpty {
+                                axchild = children[0]
+                            }
+                        }
+                        return try axchild.attribute("AXURL")
+                    case 2...7:
+                        // Standard win
+                        var filtered = try axwin_children.filter {
+                            let role = try $0.role()
+                            return role == .splitGroup
+                        }
+                        
+                        if filtered.count == 1 {
+                            let child_lvl1 = filtered[0]
+                            guard let children_lvl1: [UIElement] =
+                                try child_lvl1.arrayAttribute(.children) else { throw BrowserError.axError }
+                            filtered = try children_lvl1.filter {
+                                let role = try $0.role()
+                                return role == .tabGroup
+                            }
+                            if filtered.count == 1 {
+                                var axchild = filtered[0]
+                                for _ in 1...3 {
+                                    guard let children: [UIElement] = try axchild.arrayAttribute(.children) else { throw BrowserError.axError }
+                                    if !children.isEmpty {
+                                        axchild = children[0]
+                                    }
+                                }
+                                guard let children_lvl2: [UIElement] =
+                                    try axchild.arrayAttribute(.children) else { throw BrowserError.axError }
+                                filtered = try children_lvl2.filter {
+                                    let role = try $0.role()
+                                    return role == Role.init(rawValue: "AXWebArea")
+                                }
+                                if filtered.count == 1 {
+                                    return try filtered[0].attribute("AXURL")
+                                }
+                            }
+                        }
+                        fallthrough
+                    default:
+                        throw BrowserError.axError
+                    }
+                } catch {
+                    tab = window.currentTab
+                }
+            } else {
+                tab = window.currentTab
+            }
         case .chrome, .chromeCanary, .chromium, .vivaldi:
             tab = window.activeTab
         }
         return tab?.URL.flatMap(URL.init(string:))
-    }
-    
-    private static func registerWindow(_ window: AXUIElement, forNotificationsUsing observer: AXObserver, userInfo: UnsafeMutableRawPointer?) {
-        AXObserverAddNotification(observer, window, kAXWindowCreatedNotification as CFString, userInfo)
-        AXObserverAddNotification(observer, window, kAXTitleChangedNotification as CFString, userInfo)
-        AXObserverAddNotification(observer, window, kAXFocusedWindowChangedNotification as CFString, userInfo)
-        CFRunLoopAddSource(CFRunLoopGetCurrent(), AXObserverGetRunLoopSource(observer), .defaultMode)
     }
     
     private static func isSubdomainOfDomain(subdomain: String, domain: String) -> Bool {

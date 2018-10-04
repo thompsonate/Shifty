@@ -136,10 +136,10 @@ enum NightShiftManager {
             client.setEnabled(newValue)
             
             // Set to appropriate strength when in schedule transition by resetting schedule
-            if newValue && scheduledState {
-                let savedMode = blueLightStatus.mode
-                client.setMode(0)
-                client.setMode(savedMode)
+            if (newValue && scheduledState) {
+                let savedSchedule = schedule
+                schedule = .off
+                schedule = savedSchedule
             }
         }
     }
@@ -209,7 +209,14 @@ enum NightShiftManager {
             // When daylight, sunset time is previous occurence
             // When not daylight, sunset time is next occurence
             // Should return true when not daylight
-            let scheduledState = now >= sunset
+            let scheduledState : Bool
+            let order = NSCalendar.current.compare(sunrise, to: sunset, toGranularity: .day)
+            switch order {
+                case .orderedSame, .orderedAscending:
+                    scheduledState = now >= sunset || now <= sunrise
+                case .orderedDescending:
+                    scheduledState = now >= sunset && now <= sunrise
+            }
             logw("scheduled state: \(scheduledState)")
             return scheduledState
         }
