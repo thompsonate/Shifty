@@ -56,7 +56,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         userDefaults.set(versionObject as? String ?? "", forKey: Keys.lastInstalledShiftyVersion)
         
         
-        Event.appLaunched.record()
+        Event.appLaunched(preferredLocalization: Bundle.main.preferredLocalizations.first ?? "").record()
 
         logw("")
         logw("App launched")

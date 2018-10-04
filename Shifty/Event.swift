@@ -11,7 +11,7 @@ import Fabric
 import Crashlytics
 
 enum Event {
-    case appLaunched
+    case appLaunched(preferredLocalization: String)
     case oldMacOSVersion(version: String)
     case unsupportedHardware
 
@@ -87,6 +87,8 @@ extension Event {
 
     private var customAttributes: [String: Any]? {
         switch(self) {
+        case .appLaunched(preferredLocalization: let localization):
+            return ["Preferred localization": localization]
         case .oldMacOSVersion(let version):
             return ["Version": version]
         case .toggleNightShift(let state):
@@ -114,7 +116,7 @@ extension Event {
                     "Disable for an hour": disableHour ? "true" : "false",
                     "Disable for custom time": disableCustom ? "true" : "false",
                     "Toggle True Tone": toggleTrueTone ? "true" : "false",
-                    "Toggle dark mode": toggleDarkMode ? "true" : "false"]
+                    "Toggle Dark Mode": toggleDarkMode ? "true" : "false"]
         case .preferences(let autoLaunch, let quickToggle, let iconSwitching, let syncDarkMode, let websiteShifting, let trueToneControl, let schedule):
             var scheduleString: String
             switch schedule {
