@@ -136,7 +136,7 @@ enum NightShiftManager {
             client.setEnabled(newValue)
             
             // Set to appropriate strength when in schedule transition by resetting schedule
-            if (newValue && (blueLightStatus.mode != 0)) {
+            if newValue && scheduledState {
                 let savedMode = blueLightStatus.mode
                 client.setMode(0)
                 client.setMode(savedMode)
