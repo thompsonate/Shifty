@@ -18,7 +18,7 @@
         <key>one</key>
         <string>Für %d weitere Minute deaktiviert</string>
         <key>other</key>
-        <string>Für %d weitere Minute deaktiviert</string>
+        <string>Für %d weitere Minuten deaktiviert</string>
       </dict>
     </dict>
   </dict>
