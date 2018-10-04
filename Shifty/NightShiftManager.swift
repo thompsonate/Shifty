@@ -136,7 +136,7 @@ enum NightShiftManager {
             client.setEnabled(newValue)
             
             // Set to appropriate strength when in schedule transition by resetting schedule
-            if (newValue && scheduledState) {
+            if newValue && scheduledState {
                 let savedSchedule = schedule
                 schedule = .off
                 schedule = savedSchedule
@@ -206,8 +206,6 @@ enum NightShiftManager {
             logw("sunrise: \(sunrise)")
             
             // For some reason, BrightnessSystemClient.isDaylight doesn't track perfectly with sunrise and sunset
-            // When daylight, sunset time is previous occurence
-            // When not daylight, sunset time is next occurence
             // Should return true when not daylight
             let scheduledState : Bool
             let order = NSCalendar.current.compare(sunrise, to: sunset, toGranularity: .day)
