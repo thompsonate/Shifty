@@ -1,50 +1,50 @@
 /* Class = "NSButtonCell"; title = "True Tone control"; ObjectID = "4SC-bL-79S"; */
-"4SC-bL-79S.title" = "控制“原彩显示”";
+"4SC-bL-79S.title" = "True Tone Kontrolle";
 
 /* Class = "NSButtonCell"; title = "Set menu bar icon according to Night Shift"; ObjectID = "4io-9H-HXp"; */
-"4io-9H-HXp.title" = "随“夜览”模式的开关状态更新菜单栏图标";
+"4io-9H-HXp.title" = "Symbol in der Menüleiste mit Night Shift ändern";
 
 /* Class = "NSButtonCell"; title = "Scheduled Dark Mode"; ObjectID = "5s5-Y5-5b9"; */
-"5s5-Y5-5b9.title" = "定时启用深色模式";
+"5s5-Y5-5b9.title" = "Planmäßiger Dunkelmodus";
 
 /* Class = "NSMenuItem"; title = "Custom"; ObjectID = "Cum-ew-Bk2"; */
-"Cum-ew-Bk2.title" = "自定义";
+"Cum-ew-Bk2.title" = "Eigene";
 
 /* Class = "NSButtonCell"; title = "Quick Toggle"; ObjectID = "Foo-g6-6iX"; */
-"Foo-g6-6iX.title" = "快速切换";
+"Foo-g6-6iX.title" = "Schnelles Umschalten";
 
 /* Class = "NSButtonCell"; title = "Website Shifting"; ObjectID = "HRq-mZ-FxG"; */
-"HRq-mZ-FxG.title" = "网站色温调节";
+"HRq-mZ-FxG.title" = "Webseiten-Shift";
 
 /* Class = "NSTextFieldCell"; title = "If enabled, click the Menu Bar icon to toggle Night Shift. Right click to open the menu."; ObjectID = "MXt-WM-cMR"; */
-"MXt-WM-cMR.title" = "启用后，单击菜单栏图标以切换“夜览”模式。辅助点按以打开菜单。";
+"MXt-WM-cMR.title" = "Wenn aktiviert kann Night Shift bei Klick auf das Menüleisten-Symbol schnell umgeschaltet werden. Ein Rechtsklick auf das Symbol öffnet das Menü.";
 
 /* Class = "NSTextFieldCell"; title = "From:"; ObjectID = "PbT-Ky-Re6"; */
-"PbT-Ky-Re6.title" = "从:";
+"PbT-Ky-Re6.title" = "Von:";
 
 /* Class = "NSTextFieldCell"; title = "If enabled, Night Shift rules for apps and websites will also affect True Tone."; ObjectID = "SKw-93-vs8"; */
-"SKw-93-vs8.title" = "开启后，“夜览”模式对应的应用程序和网站规则将同时适用于“原彩显示”。";
+"SKw-93-vs8.title" = "Wenn aktiviert, gelten die Night Shift-Regeln für Apps und Webseiten auch für True Tone.";
 
 /* Class = "NSMenuItem"; title = "Sunset to Sunrise"; ObjectID = "TwI-wC-vyX"; */
-"TwI-wC-vyX.title" = "日落到日出";
+"TwI-wC-vyX.title" = "Sonnenuntergang bis Sonnenaufgang";
 
 /* Class = "NSTextFieldCell"; title = "Schedule:"; ObjectID = "UGI-RO-ff6"; */
-"UGI-RO-ff6.title" = "设定时间:";
+"UGI-RO-ff6.title" = "Zeitplan:";
 
 /* Class = "NSTextFieldCell"; title = "If enabled, macOS Dark Mode will be automatically set based on the Night Shift schedule."; ObjectID = "ZdB-dN-hiO"; */
-"ZdB-dN-hiO.title" = "启用后，macOS 将自动根据“夜览”模式的设定时间启用或停用深色模式。";
+"ZdB-dN-hiO.title" = "Wenn aktiviert wird macOS den Dunkelmodus basierend auf dem Night-Shift-Zeitplan automatisch umschalten.";
 
 /* Class = "NSTextFieldCell"; title = "to:"; ObjectID = "aNq-H7-I2m"; */
-"aNq-H7-I2m.title" = "到:";
+"aNq-H7-I2m.title" = "bis:";
 
 /* Class = "NSButtonCell"; title = "Share anonymous crash data and analytics"; ObjectID = "ar0-8I-WmN"; */
-"ar0-8I-WmN.title" = "匿名共享崩溃数据和用量分析";
+"ar0-8I-WmN.title" = "Anonyme Absturz- und Analysedaten teilen";
 
 /* Class = "NSButtonCell"; title = "Launch Shifty at login"; ObjectID = "bxC-lM-Pei"; */
-"bxC-lM-Pei.title" = "随登录自动打开 Shifty 夜览管家";
+"bxC-lM-Pei.title" = "Shifty beim Anmelden starten";
 
 /* Class = "NSButtonCell"; title = "i"; ObjectID = "jjX-rt-8G1"; */
 "jjX-rt-8G1.title" = "i";
 
 /* Class = "NSMenuItem"; title = "Off"; ObjectID = "lkN-xJ-pf3"; */
-"lkN-xJ-pf3.title" = "关闭";
+"lkN-xJ-pf3.title" = "Aus";

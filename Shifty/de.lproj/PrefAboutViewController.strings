@@ -1,0 +1,62 @@
+/* Class = "NSTextFieldCell"; title = "💬"; ObjectID = "2XF-Nq-pjN"; */
+"2XF-Nq-pjN.title" = "💬";
+
+/* Class = "NSButtonCell"; title = "Credits..."; ObjectID = "8Qq-tv-01n"; */
+"8Qq-tv-01n.title" = "Danksagung...";
+
+/* Class = "NSTextFieldCell"; title = "0.0"; ObjectID = "C2N-lz-GkC"; */
+"C2N-lz-GkC.title" = "0.0";
+
+/* Class = "NSButtonCell"; title = "shifty.natethompson.io"; ObjectID = "EFj-8i-FPx"; */
+"EFj-8i-FPx.title" = "shifty.natethompson.io";
+
+/* Class = "NSTextFieldCell"; title = "🐦"; ObjectID = "F8D-y7-OYR"; */
+"F8D-y7-OYR.title" = "🐦";
+
+/* Class = "NSTextFieldCell"; title = "shifty.natethompson.io"; ObjectID = "Gbt-lh-vi5"; */
+"Gbt-lh-vi5.title" = "shifty.natethompson.io";
+
+/* Class = "NSTextFieldCell"; title = "@natethomps0n"; ObjectID = "Gdh-rQ-6X2"; */
+"Gdh-rQ-6X2.title" = "@natethomps0n";
+
+/* Class = "NSTextFieldCell"; title = "📬"; ObjectID = "L2z-Z9-XAa"; */
+"L2z-Z9-XAa.title" = "📬";
+
+/* Class = "NSButtonCell"; title = "Check for Updates..."; ObjectID = "LHX-7G-HlA"; */
+"LHX-7G-HlA.title" = "Nach Updates suchen...";
+
+/* Class = "NSTextFieldCell"; title = "💸"; ObjectID = "PPr-9L-fc3"; */
+"PPr-9L-fc3.title" = "💸";
+
+/* Class = "NSTextFieldCell"; title = "contact:"; ObjectID = "Rp7-VG-IbF"; */
+"Rp7-VG-IbF.title" = "Kontakt:";
+
+/* Class = "NSTextFieldCell"; title = "feedback@natethompson.io"; ObjectID = "Thi-Pp-iy3"; */
+"Thi-Pp-iy3.title" = "feedback@natethompson.io";
+
+/* Class = "NSTextFieldCell"; title = "Shifty"; ObjectID = "bnR-vg-kNb"; */
+"bnR-vg-kNb.title" = "Shifty";
+
+/* Class = "NSTextFieldCell"; title = "translate:"; ObjectID = "ep8-vk-jac"; */
+"ep8-vk-jac.title" = "Übersetzen:";
+
+/* Class = "NSTextFieldCell"; title = "donate:"; ObjectID = "fUX-vR-OmZ"; */
+"fUX-vR-OmZ.title" = "Spenden:";
+
+/* Class = "NSTextFieldCell"; title = "🌍"; ObjectID = "lQn-mG-tDV"; */
+"lQn-mG-tDV.title" = "🌍";
+
+/* Class = "NSTextFieldCell"; title = "website:"; ObjectID = "pAL-H2-Wch"; */
+"pAL-H2-Wch.title" = "Webseite:";
+
+/* Class = "NSTextFieldCell"; title = "PayPal"; ObjectID = "qD1-X6-taU"; */
+"qD1-X6-taU.title" = "PayPal";
+
+/* Class = "NSTextFieldCell"; title = "follow:"; ObjectID = "tYb-0z-KHh"; */
+"tYb-0z-KHh.title" = "Folgen:";
+
+/* Class = "NSTextFieldCell"; title = "© 2017-2018 Nate Thompson"; ObjectID = "yZ7-c6-8tC"; */
+"yZ7-c6-8tC.title" = "© 2017-2018 Nate Thompson";
+
+/* Class = "NSTextFieldCell"; title = "Crowdin"; ObjectID = "yuk-MM-qf1"; */
+"yuk-MM-qf1.title" = "Crowdin";

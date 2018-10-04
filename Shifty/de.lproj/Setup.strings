@@ -1,0 +1,65 @@
+/* Class = "NSButtonCell"; title = "Skip"; ObjectID = "0wv-vs-acj"; */
+"0wv-vs-acj.title" = "Überspringen";
+
+/* Class = "NSTextFieldCell"; title = "Safari"; ObjectID = "4ft-mI-wIN"; */
+"4ft-mI-wIN.title" = "Safari";
+
+/* Class = "NSTextFieldCell"; title = "Welcome to Shifty!"; ObjectID = "9wQ-sP-igZ"; */
+"9wQ-sP-igZ.title" = "Willkommen bei Shifty!";
+
+/* Class = "NSTextFieldCell"; title = "Thanks for installing Shifty."; ObjectID = "E7p-5d-X2C"; */
+"E7p-5d-X2C.title" = "Danke fürs Installieren von Shifty.";
+
+/* Class = "NSTextFieldCell"; title = "🎉"; ObjectID = "FhS-Jt-Qvm"; */
+"FhS-Jt-Qvm.title" = "🎉";
+
+/* Class = "NSTextFieldCell"; title = "Click Next to continue setup. It'll just take a minute."; ObjectID = "J4B-E9-KIZ"; */
+"J4B-E9-KIZ.title" = "Zum Fortsetzen des Setups auf Weiter klicken. Dauert nur eine Minute.";
+
+/* Class = "NSWindow"; title = "Shifty Setup"; ObjectID = "TIE-Pp-ufx"; */
+"TIE-Pp-ufx.title" = "Shifty Konfiguration";
+
+/* Class = "NSButtonCell"; title = "Next"; ObjectID = "TnF-o1-sgY"; */
+"TnF-o1-sgY.title" = "Weiter";
+
+/* Class = "NSTextFieldCell"; title = "Shifty is now running in the menu bar."; ObjectID = "WcY-uu-0Eu"; */
+"WcY-uu-0Eu.title" = "Shifty läuft jetzt in der Menüleiste.";
+
+/* Class = "NSTextFieldCell"; title = "Website Shifting supports:"; ObjectID = "bNv-dv-CBp"; */
+"bNv-dv-CBp.title" = "Webseiten-Shift unterstützt:";
+
+/* Class = "NSTextFieldCell"; title = "Vivaldi"; ObjectID = "cXQ-bL-QlF"; */
+"cXQ-bL-QlF.title" = "Vivaldi";
+
+/* Class = "NSButtonCell"; title = "Share anonymous crash data and analytics with developer"; ObjectID = "fkJ-8D-Xr2"; */
+"fkJ-8D-Xr2.title" = "Anonyme Absturz- und Analysedaten mit dem Entwickler teilen";
+
+/* Class = "NSButtonCell"; title = "Yes"; ObjectID = "hNr-Ak-j8a"; */
+"hNr-Ak-j8a.title" = "Ja";
+
+/* Class = "NSTextFieldCell"; title = "Would you like to let Shifty automatically disable Night Shift when you visit certain websites?"; ObjectID = "hcb-Lm-Zmy"; */
+"hcb-Lm-Zmy.title" = "Soll Shifty Night Shift automatisch deaktivieren, wenn bestimmte Webseiten besucht werden?";
+
+/* Class = "NSButtonCell"; title = "?"; ObjectID = "hnI-7M-qBT"; */
+"hnI-7M-qBT.title" = "?";
+
+/* Class = "NSButtonCell"; title = "Open System Preferences"; ObjectID = "lqU-rF-E5t"; */
+"lqU-rF-E5t.title" = "Systemeinstellungen öffnen";
+
+/* Class = "NSButtonCell"; title = "More info..."; ObjectID = "njq-rZ-B3n"; */
+"njq-rZ-B3n.title" = "Mehr Informationen...";
+
+/* Class = "NSButtonCell"; title = "Close"; ObjectID = "s21-gu-5OC"; */
+"s21-gu-5OC.title" = "Schließen";
+
+/* Class = "NSTextFieldCell"; title = "Chrome"; ObjectID = "shv-ze-VLi"; */
+"shv-ze-VLi.title" = "Chrome";
+
+/* Class = "NSTextFieldCell"; title = "You're good to go!"; ObjectID = "uHP-lQ-mpf"; */
+"uHP-lQ-mpf.title" = "Alles startklar!";
+
+/* Class = "NSButtonCell"; title = "Not now"; ObjectID = "y40-o0-ueU"; */
+"y40-o0-ueU.title" = "Nicht jetzt";
+
+/* Class = "NSTextFieldCell"; title = "Enable Website Shifting?"; ObjectID = "yjk-M4-AOM"; */
+"yjk-M4-AOM.title" = "Webseiten-Shift aktivieren?";
