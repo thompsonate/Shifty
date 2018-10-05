@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		41A3780894178C5C601604C7 /* Pods_ShiftyHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 060A0A5282083B67EEC6C05D /* Pods_ShiftyHelper.framework */; };
 		43041CB4207DB3440076E75C /* SkyLight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43041CB3207DB3440076E75C /* SkyLight.framework */; };
-		43041CB6207DB39A0076E75C /* SkyLight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43041CB3207DB3440076E75C /* SkyLight.framework */; };
-		43041CC5207DB9FF0076E75C /* CoreBrightness.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43041CC4207DB9FF0076E75C /* CoreBrightness.framework */; };
+		43041CC5207DB9FF0076E75C /* CoreBrightness.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43041CC4207DB9FF0076E75C /* CoreBrightness.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		431B7B5D2167C8740039D085 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43A934002164019300AFB708 /* Security.framework */; };
 		433AD3011F2CED1F0003FBCD /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 433AD3001F2CED1F0003FBCD /* dsa_pub.pem */; };
 		433AD3081F2D00BD0003FBCD /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433AD3061F2D00BD0003FBCD /* Crashlytics.framework */; };
 		433AD3091F2D00BD0003FBCD /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433AD3071F2D00BD0003FBCD /* Fabric.framework */; };
@@ -27,7 +27,6 @@
 		4394DDAD1EBE376F00F22908 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4394DDA81EBE376F00F22908 /* StatusMenuController.swift */; };
 		43965AC31FC68A19001A076D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43965AC51FC68A19001A076D /* InfoPlist.strings */; };
 		43A8E69C2141DF7C00BD3870 /* CBTrueToneClient+Shifty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A8E69B2141DF7C00BD3870 /* CBTrueToneClient+Shifty.swift */; };
-		43A934012164019300AFB708 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43A934002164019300AFB708 /* Security.framework */; };
 		43AA23C71FFABCD2001DDF5A /* AccessibilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AA23C61FFABCD2001DDF5A /* AccessibilityView.swift */; };
 		43AA23CE1FFAC69A001DDF5A /* AccessibilityWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AA23CC1FFAC69A001DDF5A /* AccessibilityWindow.swift */; };
 		43AA23CF1FFAC69A001DDF5A /* AccessibilityWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43AA23CD1FFAC69A001DDF5A /* AccessibilityWindow.xib */; };
@@ -163,8 +162,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43A934012164019300AFB708 /* Security.framework in Frameworks */,
-				43041CB6207DB39A0076E75C /* SkyLight.framework in Frameworks */,
 				41A3780894178C5C601604C7 /* Pods_ShiftyHelper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -173,6 +170,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				431B7B5D2167C8740039D085 /* Security.framework in Frameworks */,
 				43C0838C1F19AEF900E73B84 /* ServiceManagement.framework in Frameworks */,
 				433AD3091F2D00BD0003FBCD /* Fabric.framework in Frameworks */,
 				433AD3081F2D00BD0003FBCD /* Crashlytics.framework in Frameworks */,
