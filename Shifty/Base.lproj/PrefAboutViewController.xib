@@ -61,7 +61,7 @@
                 </textField>
                 <button verticalHuggingPriority="749" verticalCompressionResistancePriority="748" translatesAutoresizingMaskIntoConstraints="NO" id="3WI-wA-JOM" customClass="LinkButton" customModule="Shifty" customModuleProvider="target">
                     <rect key="frame" x="102" y="175" width="147" height="17"/>
-                    <buttonCell key="cell" type="bevel" title="shifty.natethompson.io" bezelStyle="rounded" alignment="center" transparent="YES" imageScaling="proportionallyDown" inset="2" id="EFj-8i-FPx">
+                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" alignment="center" transparent="YES" imageScaling="proportionallyDown" inset="2" id="EFj-8i-FPx">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
