@@ -7,9 +7,20 @@
 {% include langhead.html %}
 </head>
 
+{% assign pages=site.pages | where:"ref", 'home' | sort: 'lang' %}
+
 <body>
 <script>
-var supported = ['en'];
+var supported = [
+{% assign supportedLangs = pages | map: 'lang' %}
+{% for lang in supportedLangs %}
+  {% if lang == supportedLangs.last %}
+    '{{ lang }}'
+  {% else %}
+    '{{ lang }}',
+  {% endif %}
+{% endfor %}
+];
 var languages = getLangs();
 redirect();
 
@@ -33,8 +44,6 @@ function getLangs(){
 
 <p>If you are not automatically redirected, choose a language:</p>
 <ul>
-  {% assign pages=site.pages | where:"ref", 'home' | sort: 'lang' %}
-
   {% for p in pages %}
   {% assign p_translation = site.data.translations[p.lang] %}
 
