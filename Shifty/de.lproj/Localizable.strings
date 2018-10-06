@@ -25,8 +25,8 @@
 "menu.disable_custom" = "Für bestimmte Zeit deaktivieren…";
 "menu.disabled_custom" = "Für bestimmte Zeit deaktiviert";
 
-"menu.true_tone_on" = "True Tone einschalten";
-"menu.true_tone_off" = "True Tone ausschalten";
+"menu.true_tone_on" = "True Tone aktivieren";
+"menu.true_tone_off" = "True Tone deaktivieren";
 "menu.true_tone_unavailable" = "True Tone ist nicht verfügbar";
 "menu.true_tone_disabled_for" = "True Tone ist deaktiviert für %@";
 
