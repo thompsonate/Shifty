@@ -8,6 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="AccessibilityView" customModule="Shifty">
             <connections>
+                <outlet property="preferencesImageView" destination="lyS-ih-FQw" id="A7z-N4-Oo2"/>
                 <outlet property="view" destination="Lvz-Kt-Jk2" id="qgR-Ma-HXT"/>
             </connections>
         </customObject>
@@ -37,7 +38,7 @@
                     <constraints>
                         <constraint firstAttribute="width" secondItem="lyS-ih-FQw" secondAttribute="height" multiplier="6:4" id="bdy-C9-RYO"/>
                     </constraints>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="accessibilityPrefsScreenshot" id="gI5-yS-xYh"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="accessibilityScreenshot-en" id="gI5-yS-xYh"/>
                 </imageView>
             </subviews>
             <constraints>
@@ -58,6 +59,6 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
     </objects>
     <resources>
-        <image name="accessibilityPrefsScreenshot" width="545.5" height="371"/>
+        <image name="accessibilityScreenshot-en" width="1091" height="742"/>
     </resources>
 </document>

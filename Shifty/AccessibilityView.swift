@@ -10,6 +10,7 @@ import Cocoa
 class AccessibilityView: NSView {
 
     @IBOutlet var view: NSView!
+    @IBOutlet weak var preferencesImageView: NSImageView!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -29,5 +30,20 @@ class AccessibilityView: NSView {
         }
         
         self.addConstraints(newConstraints)
+        
+        
+        var imageName: String
+        
+        if let language = NSLocale.current.languageCode {
+            imageName = "accessibilityScreenshot-\(language)"
+            
+            if let script = NSLocale.current.scriptCode {
+                imageName.append("-\(script)")
+            }
+        } else {
+            imageName = "accessibilityScreenshot-en"
+        }
+        
+        preferencesImageView.image = NSImage(named: imageName)
     }
 }

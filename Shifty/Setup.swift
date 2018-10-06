@@ -61,6 +61,32 @@ class SetupView: NSView {
         window?.close()
     }
 }
+    
+    
+    
+    
+    
+    
+
+class WebsiteShiftingSetupViewController: NSViewController {
+    @IBOutlet weak var websiteShiftingScreenshotView: NSImageView!
+    
+    override func viewDidLoad() {
+        var imageName: String
+        
+        if let language = NSLocale.current.languageCode {
+            imageName = "websiteShiftingScreenshot-\(language)"
+            
+            if let script = NSLocale.current.scriptCode {
+                imageName.append("-\(script)")
+            }
+        } else {
+            imageName = "websiteShiftingScreenshot-en"
+        }
+        
+        websiteShiftingScreenshotView.image = NSImage(named: imageName)
+    }
+}
 
 
 
