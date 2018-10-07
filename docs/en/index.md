@@ -12,7 +12,13 @@ Shifty was made to expand the capabilities of the built in Night Shift feature i
 
 <div class="row prefs-columns">
   <div class="col-sm-6 prefs-text">
-    Shifty is customizable! Make it easier to toggle Night Shift with Quick Toggle or set dark mode based on the schedule. For common Shifty actions, you can set global keyboard shortcuts.
+    Shifty is customizable!
+    <ul>
+      <li>Make it easier to toggle Night Shift with Quick Toggle</li>
+      <li>Set dark mode to follow the Night Shift schedule</li>
+      <li>Make Night Shift rules also affect True Tone</li>
+      <li>For common Shifty actions, set global keyboard shortcuts</li>
+    </ul>
   </div>
   <div class="col-sm-6">
     <img id="prefs-general" src="images/prefs-general-screenshot.png">
@@ -22,7 +28,8 @@ Shifty was made to expand the capabilities of the built in Night Shift feature i
 ##### System requirements:
 * macOS 10.12.4 or later
 * System meets the [requirements for Night Shift](https://support.apple.com/HT207513#requirements)
-* Website shifting supports Safari, Chrome, and Vivaldi.
+* Website Shifting supports Safari, Chrome, and Vivaldi
+* True Tone features require a [supported Mac](https://support.apple.com/HT208909) and macOS 10.14 or later
 
 <br>
 If you love Shifty, consider [donating]({{ site.donate_link_usd }}) to help me make it better.
