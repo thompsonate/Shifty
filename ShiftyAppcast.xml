@@ -5,6 +5,31 @@
         <description>Most recent changes with links to updates.</description>
         <language>en</language>
         <item>
+            <title>Version 1.0</title>
+            <description><![CDATA[
+                <ul style="list-style-type:disc">
+                <li>Adds support for German and Chinese (Simplified)</li>
+                <li>Adds preference to disable True Tone when Night Shift is disabled for apps and websites</li>
+                  <ul style="list-style-type:disc">
+                  <li>Requires a Mac that supports True Tone</li>
+                  <li>Adds menu item for toggling True Tone</li>
+                  </ul>
+                <li>Adds keyboard shortcuts that toggle Dark Mode and True Tone</li>
+                <li>Adds keyboard shortcuts that toggle Dark Mode and True Tone</li>
+                <li>Adds support for the Dark Mode interface in macOS Mojave</li>
+                <li>Fixes an issue that caused scheduled Dark Mode to not toggle Dark Mode</li>
+                <li>Reintroduces Website Shifting support for full screen videos in Safari</li>
+                <li>Improves the reliability of Website Shifting</li>
+                <li>Adds preference to disable app analytics</li>
+                <li>Updated app icon to celebrate leaving beta!</li>
+                </ul>
+            ]]>
+            </description>
+            <pubDate>Sun, 7 Oct 2018 02:30:00 -0500</pubDate>
+            <enclosure url="https://github.com/thompsonate/Shifty/releases/download/1.0/Shifty-1.0.zip" sparkle:version="53" sparkle:shortVersionString="1.0" length="1623481" type="application/octet-stream" sparkle:dsaSignature="MCwCFBsUbazSjyYY+8sm45myRvjduysGAhQodTxyIDa85cdvo6ypdUM9y4WPdA==" />
+            <sparkle:minimumSystemVersion>10.12.4</sparkle:minimumSystemVersion>
+        </item>
+        <item>
             <title>Version 0.5.2</title>
             <description><![CDATA[
                 <p>This version includes a significant rewrite of the core logic. Finally!</p>
