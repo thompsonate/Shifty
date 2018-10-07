@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "websiteMenu-zh-hans.png",
+      "filename" : "websiteMenu-zh-Hans-1x.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "websiteMenu-zh-hans.png",
       "scale" : "2x"
     },
     {

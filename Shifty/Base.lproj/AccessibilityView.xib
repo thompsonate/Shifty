@@ -34,22 +34,19 @@
                     </textFieldCell>
                 </textField>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="lyS-ih-FQw">
-                    <rect key="frame" x="9" y="0.0" width="392" height="261"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="lyS-ih-FQw" secondAttribute="height" multiplier="6:4" id="bdy-C9-RYO"/>
-                    </constraints>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="accessibilityScreenshot-en" id="gI5-yS-xYh"/>
+                    <rect key="frame" x="14" y="1" width="383" height="260"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="accessibilityScreenshot-en" id="gI5-yS-xYh"/>
                 </imageView>
             </subviews>
             <constraints>
                 <constraint firstItem="AXm-yv-KZx" firstAttribute="leading" secondItem="Lvz-Kt-Jk2" secondAttribute="leading" id="3Bf-g2-hpv"/>
-                <constraint firstItem="lyS-ih-FQw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Lvz-Kt-Jk2" secondAttribute="leading" id="A4U-Jf-USl"/>
-                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lyS-ih-FQw" secondAttribute="trailing" id="Iks-tF-0Qa"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lyS-ih-FQw" secondAttribute="trailing" id="PZv-lu-LdY"/>
                 <constraint firstItem="AXm-yv-KZx" firstAttribute="top" secondItem="Lvz-Kt-Jk2" secondAttribute="top" id="R33-20-FLm"/>
                 <constraint firstItem="lyS-ih-FQw" firstAttribute="top" secondItem="OBb-gx-Ctx" secondAttribute="bottom" constant="8" id="TIe-Cp-XXV"/>
                 <constraint firstItem="OBb-gx-Ctx" firstAttribute="top" secondItem="AXm-yv-KZx" secondAttribute="bottom" constant="8" id="TNG-JP-FcY"/>
                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="lyS-ih-FQw" secondAttribute="bottom" id="Wfk-Nm-L0W"/>
                 <constraint firstItem="lyS-ih-FQw" firstAttribute="centerX" secondItem="Lvz-Kt-Jk2" secondAttribute="centerX" id="eme-EJ-0xd"/>
+                <constraint firstItem="lyS-ih-FQw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Lvz-Kt-Jk2" secondAttribute="leading" id="fid-AF-Rrb"/>
                 <constraint firstItem="OBb-gx-Ctx" firstAttribute="leading" secondItem="Lvz-Kt-Jk2" secondAttribute="leading" id="jSA-zk-BtZ"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="OBb-gx-Ctx" secondAttribute="trailing" id="kRb-I3-YDw"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="AXm-yv-KZx" secondAttribute="trailing" id="lfE-7f-a2T"/>

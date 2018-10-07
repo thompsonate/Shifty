@@ -97,11 +97,11 @@ DQ
                                 </connections>
                             </button>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="jn8-mZ-J20">
-                                <rect key="frame" x="24" y="108" width="402" height="167"/>
+                                <rect key="frame" x="20" y="191" width="410" height="84"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="jn8-mZ-J20" secondAttribute="height" multiplier="125:52" id="dfB-ry-RTz"/>
+                                    <constraint firstAttribute="width" constant="410" id="kBb-Cu-wf7"/>
                                 </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="menuBarScreenshot" id="bWW-qv-Hho"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="menuBarScreenshot" id="bWW-qv-Hho"/>
                             </imageView>
                         </subviews>
                         <constraints>
@@ -142,11 +142,11 @@ DQ
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mxV-uh-tNL">
-                                <rect key="frame" x="0.0" y="160" width="450" height="179"/>
+                                <rect key="frame" x="0.0" y="166" width="450" height="173"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="mxV-uh-tNL" secondAttribute="height" multiplier="329:167" id="Bs4-1k-lsH"/>
+                                    <constraint firstAttribute="width" constant="410" id="Qfh-DZ-xJw"/>
                                 </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="websiteShiftingScreenshot-en" id="lih-8C-3IP"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="websiteShiftingScreenshot-en" id="lih-8C-3IP"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="500" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sJ8-k4-SBk">
                                 <rect key="frame" x="18" y="347" width="414" height="34"/>
@@ -205,7 +205,7 @@ DQ
                                 </connections>
                             </button>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C1T-Yo-Rmw">
-                                <rect key="frame" x="20" y="61" width="161" height="89"/>
+                                <rect key="frame" x="20" y="67" width="161" height="89"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fxw-jc-XI4">
                                         <rect key="frame" x="-2" y="72" width="165" height="17"/>
@@ -335,7 +335,7 @@ DQ
                             </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mxV-uh-tNL" secondAttribute="trailing" id="2HQ-I4-ztv"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mxV-uh-tNL" secondAttribute="trailing" constant="20" id="2HQ-I4-ztv"/>
                             <constraint firstItem="mxV-uh-tNL" firstAttribute="top" secondItem="sJ8-k4-SBk" secondAttribute="bottom" constant="8" id="2a6-RP-Sqm"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tfl-ez-xrs" secondAttribute="trailing" constant="20" id="2ef-rQ-UOT"/>
                             <constraint firstItem="sJ8-k4-SBk" firstAttribute="leading" secondItem="NqW-NI-dEn" secondAttribute="leading" constant="20" id="5i1-dQ-HcI"/>
@@ -350,7 +350,7 @@ DQ
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="C1T-Yo-Rmw" secondAttribute="trailing" constant="20" id="Nw6-fj-ezl"/>
                             <constraint firstItem="C1T-Yo-Rmw" firstAttribute="top" secondItem="mxV-uh-tNL" secondAttribute="bottom" constant="10" id="Q8a-7C-Cbo"/>
                             <constraint firstItem="sJ8-k4-SBk" firstAttribute="top" secondItem="tfl-ez-xrs" secondAttribute="bottom" constant="8" id="Sk9-6E-c2D"/>
-                            <constraint firstItem="mxV-uh-tNL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="NqW-NI-dEn" secondAttribute="leading" id="WfU-Nk-o9B"/>
+                            <constraint firstItem="mxV-uh-tNL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="NqW-NI-dEn" secondAttribute="leading" constant="20" id="WfU-Nk-o9B"/>
                             <constraint firstItem="oJ6-zk-aYq" firstAttribute="leading" secondItem="NqW-NI-dEn" secondAttribute="leading" constant="20" id="fX4-II-rWF"/>
                             <constraint firstAttribute="trailing" secondItem="sJ8-k4-SBk" secondAttribute="trailing" constant="20" id="iQV-Y9-fnX"/>
                             <constraint firstAttribute="trailing" secondItem="xfN-to-t5F" secondAttribute="trailing" constant="20" id="nk1-v1-GfS"/>
@@ -602,7 +602,6 @@ DQ
         <image name="websiteShiftingScreenshot-en" width="680" height="334"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="za5-mC-13N"/>
         <segue reference="RBK-ii-duJ"/>
         <segue reference="Ibe-5u-Fbi"/>
     </inferredMetricsTieBreakers>

@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "accessibility-en.png",
+      "filename" : "accessibilityPrefs-en-1x.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "accessibility-en.png",
       "scale" : "2x"
     },
     {

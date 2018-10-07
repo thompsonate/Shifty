@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "websiteMenu-en.png",
+      "filename" : "websiteMenu-en-1x.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "websiteMenu-en.png",
       "scale" : "2x"
     },
     {

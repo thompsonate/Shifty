@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "accessibility-zh-Hans.png",
+      "filename" : "accessibilityPrefs-zh-Hans-1x.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "accessibility-zh-Hans.png",
       "scale" : "2x"
     },
     {
