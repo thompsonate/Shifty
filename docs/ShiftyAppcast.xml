@@ -15,7 +15,6 @@
                   <li>Adds menu item for toggling True Tone</li>
                   </ul>
                 <li>Adds keyboard shortcuts that toggle Dark Mode and True Tone</li>
-                <li>Adds keyboard shortcuts that toggle Dark Mode and True Tone</li>
                 <li>Adds support for the Dark Mode interface in macOS Mojave</li>
                 <li>Fixes an issue that caused scheduled Dark Mode to not toggle Dark Mode</li>
                 <li>Reintroduces Website Shifting support for full screen videos in Safari</li>
