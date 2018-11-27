@@ -21,9 +21,5 @@ import ScriptingBridge
 	@objc optional var URL: String { get }
 }
 
-extension SBApplication: Browser {
-    convenience init?(_ application: NSRunningApplication) {
-        self.init(processIdentifier: application.processIdentifier)
-    }
-}
+extension SBApplication: Browser { }
 extension SBObject: Window, Tab { }

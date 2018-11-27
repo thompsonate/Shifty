@@ -42,6 +42,7 @@ enum SupportedBrowser: BundleIdentifier {
     }
 }
 
+var cachedBrowsers: [SupportedBrowser: Browser] = [:]
 
 enum BrowserManager {
     static var currentURL: URL? {
@@ -50,10 +51,18 @@ enum BrowserManager {
         }
         
         guard let application = RuleManager.currentApp,
-            let browser = SupportedBrowser(application),
-            let app: Browser = SBApplication(application) else {
+            let browser = SupportedBrowser(application) else {
                 return nil
         }
+        if cachedBrowsers[browser] == nil {
+            guard let bundleID: String = application.bundleIdentifier,
+                  let app: Browser = SBApplication(bundleIdentifier: bundleID) else {
+                return nil
+            }
+            cachedBrowsers[browser] = app
+        }
+        
+        let app = cachedBrowsers[browser]!;
         
         do {
             let url = try urlFor(browser, app)
