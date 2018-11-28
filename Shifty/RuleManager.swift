@@ -222,6 +222,7 @@ enum RuleManager {
     }
 
     private static func appSwitched(notification: Notification) {
+        BrowserManager.stopBrowserWatcher()
         if disabledForApp {
             NightShiftManager.respond(to: .nightShiftDisableRuleActivated)
         } else if BrowserManager.currrentAppIsSupportedBrowser {
