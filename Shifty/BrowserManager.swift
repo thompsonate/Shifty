@@ -173,7 +173,7 @@ enum BrowserManager {
     }
     
     private static func urlFor(_ browser: SupportedBrowser, _ application: Browser) throws -> URL? {
-        guard let window = (application.windows as? [Window])?.first else {
+        guard let window = (application.windows!() as? [Window])?.first else {
             throw BrowserError.noWindow
         }
         let tab: Tab?
