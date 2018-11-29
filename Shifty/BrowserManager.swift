@@ -11,6 +11,8 @@ import PublicSuffix
 import SwiftLog
 
 var browserObserver: Observer!
+var observedApp: Application!
+var focusedWindow: UIElement!
 
 enum BrowserError: Error {
     case noWindow
@@ -145,14 +147,23 @@ enum BrowserManager {
     }
     
     private static func startBrowserWatcher(_ processIdentifier: pid_t, callback: @escaping () -> Void) throws {
-        if let app = Application(forProcessID: processIdentifier) {
-            browserObserver = app.createObserver { (observer: Observer, element: UIElement, event: AXNotification, info: [String: AnyObject]?) in
+        observedApp = Application(forProcessID: processIdentifier)
+        if observedApp != nil {
+            browserObserver = observedApp.createObserver { (observer: Observer, element: UIElement, event: AXNotification, info: [String: AnyObject]?) in
                 switch event {
-                case .valueChanged:
+                case .valueChanged, .uiElementDestroyed:
+                    if element == focusedWindow {
+                        fallthrough
+                    }
                     if let role = try? element.role(), role == .staticText {
                         fallthrough
                     }
                 case .focusedWindowChanged:
+                    do {
+                        focusedWindow  = try observedApp.attribute(.focusedWindow)
+                    } catch let error {
+                        logw("Error: Unable to obtain focused window: \(error)")
+                    }
                     DispatchQueue.main.async {
                         callback()
                     }
@@ -160,20 +171,35 @@ enum BrowserManager {
                     logw("Error: Unexpected notification \(event) received")
                 }
             }
-            try browserObserver.addNotification(.valueChanged, forElement: app)
-            try browserObserver.addNotification(.focusedWindowChanged, forElement: app)
+            try browserObserver.addNotification(.valueChanged, forElement: observedApp)
+            try browserObserver.addNotification(.focusedWindowChanged, forElement: observedApp)
+            try browserObserver.addNotification(.uiElementDestroyed, forElement: observedApp)
+            focusedWindow = try observedApp.attribute(.focusedWindow)
         }
     }
     
     static func stopBrowserWatcher() {
         if browserObserver != nil {
+            if observedApp != nil {
+                do {
+                    try browserObserver.removeNotification(.valueChanged, forElement: observedApp)
+                    try browserObserver.removeNotification(.focusedWindowChanged, forElement: observedApp)
+                    try browserObserver.removeNotification(.uiElementDestroyed, forElement: observedApp)
+                } catch let error {
+                    logw("Error: Couldn't remove notifications: \(error)")
+                }
+                observedApp = nil
+            }
+            if focusedWindow != nil {
+                focusedWindow = nil
+            }
             browserObserver.stop()
             browserObserver = nil
         }
     }
     
     private static func urlFor(_ browser: SupportedBrowser, _ application: Browser) throws -> URL? {
-        guard let window = (application.windows as? [Window])?.first else {
+        guard let window = (application.windows!() as? [Window])?.first else {
             throw BrowserError.noWindow
         }
         let tab: Tab?

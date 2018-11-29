@@ -8,16 +8,26 @@
 import Cocoa
 import ScriptingBridge
 
-@objc protocol Browser {
-	@objc optional var windows: SBElementArray { get }
+@objc public protocol SBObjectProtocol: NSObjectProtocol {
+    func get() -> Any!
 }
 
-@objc protocol Window {
+@objc public protocol SBApplicationProtocol: SBObjectProtocol {
+    func activate()
+    var delegate: SBApplicationDelegate! { get set }
+    var isRunning: Bool { get }
+}
+
+@objc protocol Browser : SBApplicationProtocol {
+    @objc optional func windows() -> SBElementArray
+}
+
+@objc protocol Window : SBObjectProtocol {
 	@objc optional var currentTab: Tab { get }
 	@objc optional var activeTab: Tab { get }
 }
 
-@objc protocol Tab {
+@objc protocol Tab : SBObjectProtocol {
 	@objc optional var URL: String { get }
 }
 
