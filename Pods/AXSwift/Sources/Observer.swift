@@ -63,6 +63,10 @@ public final class Observer {
         start()
     }
 
+    deinit {
+        stop()
+    }
+
     /// Starts watching for events. You don't need to call this method unless you use `stop()`.
     ///
     /// If the observer has already been started, this method does nothing.

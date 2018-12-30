@@ -39,7 +39,7 @@ import Foundation
 ///
 /// - seeAlso: [AXUIElement.h reference](https://developer.apple.com/library/mac/documentation/ApplicationServices/Reference/AXUIElement_header_reference/)
 open class UIElement {
-    open let element: AXUIElement
+    public let element: AXUIElement
 
     /// Create a UIElement from a raw AXUIElement object.
     ///

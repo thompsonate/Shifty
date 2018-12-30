@@ -5,6 +5,19 @@
         <description>Most recent changes with links to updates.</description>
         <language>en</language>
         <item>
+            <title>Version 1.0.1</title>
+            <description><![CDATA[
+                <ul style="list-style-type:disc">
+                <li>Fixes an issue that caused Shifty to use more memory than it should</li>
+                <li>Fixes an issue that caused the app to crash in some instances</li>
+                </ul>
+            ]]>
+            </description>
+            <pubDate>Sun, 30 Dec 2018 02:00:00 -0500</pubDate>
+            <enclosure url="https://github.com/thompsonate/Shifty/releases/download/v1.0.1/Shifty-1.0.1.zip" sparkle:version="55" sparkle:shortVersionString="1.0.1" length="1623481" type="application/octet-stream" sparkle:dsaSignature="MCwCFA5Od5ANcFNY7PsYzoYMOQFymwgVAhQCZ5PSI1UxAYJsHMvKRDz/ujSZ+A==" />
+            <sparkle:minimumSystemVersion>10.12.4</sparkle:minimumSystemVersion>
+        </item>
+        <item>
             <title>Version 1.0</title>
             <description><![CDATA[
                 <ul style="list-style-type:disc">
