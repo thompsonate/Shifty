@@ -360,7 +360,6 @@ enum NightShiftManager {
             } else {
                 setToSchedule()
             }
-            print(RuleManager.ruleForSubdomain)
         case .nightShiftDisableTimerStarted:
             isNightShiftEnabled = false
         case .nightShiftDisableTimerEnded:

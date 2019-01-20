@@ -15,6 +15,7 @@ var observedApp: Application!
 var focusedWindow: UIElement!
 
 enum BrowserError: Error {
+    case closedApp
     case noWindow
     case axError
 }
@@ -64,19 +65,26 @@ enum BrowserManager {
             cachedBrowsers[browser] = app
         }
         
-        let app = cachedBrowsers[browser]!;
+        let app = cachedBrowsers[browser]!
+        var url : URL? = nil
         
         do {
-            let url = try urlFor(browser, app)
-            return url
-        } catch {
+            url = try urlFor(browser, app, UserDefaults.standard.bool(forKey: Keys.isWebsiteControlEnabled))
+        } catch BrowserError.axError {
+            logw("Error: Could not get url using AX API")
             do {
-                let url = try urlFor(browser, app)
-                return url
+                url = try urlFor(browser, app, false)
             } catch {
-                return nil
+                logw("Error: backup methods failed")
             }
+        } catch BrowserError.closedApp {
+            logw("Error: Could not get url, app already closed")
+        } catch BrowserError.noWindow {
+            logw("Error: Could not get url, there are no windows")
+        } catch {
+            logw("Error: Could not get url, unknown error")
         }
+        return url
     }
     
     static var currentDomain: String? {
@@ -198,7 +206,10 @@ enum BrowserManager {
         }
     }
     
-    private static func urlFor(_ browser: SupportedBrowser, _ application: Browser) throws -> URL? {
+    private static func urlFor(_ browser: SupportedBrowser, _ application: Browser, _ ax_api: Bool) throws -> URL? {
+        if !application.isRunning {
+            throw BrowserError.closedApp
+        }
         guard let window = (application.windows!() as? [Window])?.first else {
             throw BrowserError.noWindow
         }
@@ -207,62 +218,59 @@ enum BrowserManager {
         case .chrome, .chromeCanary, .chromium, .vivaldi:
             tab = window.activeTab
         case .safari, .safariTechnologyPreview:
-            if let app = RuleManager.currentApp,
-                let axapp = Application(app) {
-                do {
+            if ax_api {
+                guard let app = RuleManager.currentApp else { throw BrowserError.axError }
+                guard let axapp = Application(app) else { throw BrowserError.axError }
+                guard let axwin: UIElement = try axapp.attribute(.focusedWindow) else { throw BrowserError.axError }
+                guard let axwin_children: [UIElement] = try axwin.arrayAttribute(.children) else { throw BrowserError.axError }
+                switch axwin_children.count {
+                case 1:
                     // Special fullscreen win
-                    guard let axwin: UIElement = try axapp.attribute(.focusedWindow) else { throw BrowserError.axError }
-                    guard let axwin_children: [UIElement] = try axwin.arrayAttribute(.children) else { throw BrowserError.axError }
-                    switch axwin_children.count {
-                    case 1:
-                        var axchild = axwin_children[0]
-                        for _ in 1...3 {
-                            guard let children: [UIElement] = try axchild.arrayAttribute(.children) else { throw BrowserError.axError }
-                            if !children.isEmpty {
-                                axchild = children[0]
-                            }
+                    var axchild = axwin_children[0]
+                    for _ in 1...3 {
+                        guard let children: [UIElement] = try axchild.arrayAttribute(.children) else { throw BrowserError.axError }
+                        if !children.isEmpty {
+                            axchild = children[0]
                         }
-                        return try axchild.attribute("AXURL")
-                    case 2...7:
-                        // Standard win
-                        var filtered = try axwin_children.filter {
+                    }
+                    return try axchild.attribute("AXURL")
+                case 2...7:
+                    // Standard win
+                    var filtered = try axwin_children.filter {
+                        let role = try $0.role()
+                        return role == .splitGroup
+                    }
+                    
+                    if filtered.count == 1 {
+                        let child_lvl1 = filtered[0]
+                        guard let children_lvl1: [UIElement] =
+                            try child_lvl1.arrayAttribute(.children) else { throw BrowserError.axError }
+                        filtered = try children_lvl1.filter {
                             let role = try $0.role()
-                            return role == .splitGroup
+                            return role == .tabGroup
                         }
-                        
                         if filtered.count == 1 {
-                            let child_lvl1 = filtered[0]
-                            guard let children_lvl1: [UIElement] =
-                                try child_lvl1.arrayAttribute(.children) else { throw BrowserError.axError }
-                            filtered = try children_lvl1.filter {
+                            var axchild = filtered[0]
+                            for _ in 1...3 {
+                                guard let children: [UIElement] = try axchild.arrayAttribute(.children) else { throw BrowserError.axError }
+                                if !children.isEmpty {
+                                    axchild = children[0]
+                                }
+                            }
+                            guard let children_lvl2: [UIElement] =
+                                try axchild.arrayAttribute(.children) else { throw BrowserError.axError }
+                            filtered = try children_lvl2.filter {
                                 let role = try $0.role()
-                                return role == .tabGroup
+                                return role == Role.init(rawValue: "AXWebArea")
                             }
                             if filtered.count == 1 {
-                                var axchild = filtered[0]
-                                for _ in 1...3 {
-                                    guard let children: [UIElement] = try axchild.arrayAttribute(.children) else { throw BrowserError.axError }
-                                    if !children.isEmpty {
-                                        axchild = children[0]
-                                    }
-                                }
-                                guard let children_lvl2: [UIElement] =
-                                    try axchild.arrayAttribute(.children) else { throw BrowserError.axError }
-                                filtered = try children_lvl2.filter {
-                                    let role = try $0.role()
-                                    return role == Role.init(rawValue: "AXWebArea")
-                                }
-                                if filtered.count == 1 {
-                                    return try filtered[0].attribute("AXURL")
-                                }
+                                return try filtered[0].attribute("AXURL")
                             }
                         }
-                        fallthrough
-                    default:
-                        throw BrowserError.axError
                     }
-                } catch {
-                    tab = window.currentTab
+                    fallthrough
+                default:
+                    throw BrowserError.axError
                 }
             } else {
                 tab = window.currentTab
