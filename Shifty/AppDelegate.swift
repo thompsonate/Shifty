@@ -14,6 +14,7 @@ import Crashlytics
 import MASPreferences_Shifty
 import AXSwift
 import SwiftLog
+import Sparkle
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -94,8 +95,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         updateMenuBarIcon()
         setStatusToggle()
+        
+        let hasSetupWindowShown = userDefaults.bool(forKey: Keys.hasSetupWindowShown)
+        
+        if hasSetupWindowShown {
+            checkForUpdatesInBackground()
+        }
 
-        if (!UserDefaults.standard.bool(forKey: Keys.hasSetupWindowShown) && !UIElement.isProcessTrusted()) || ProcessInfo.processInfo.environment["show_setup"] == "true" {
+        if (!hasSetupWindowShown && !UIElement.isProcessTrusted()) || ProcessInfo.processInfo.environment["show_setup"] == "true" {
             showSetupWindow()
         }
     }
@@ -152,6 +159,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             logw("Open System Preferences button clicked")
         } else {
             logw("Not now button clicked")
+        }
+    }
+    
+    /// Checks for updates and only notifies user if there is an update available. Limited to once every 24 hours.
+    func checkForUpdatesInBackground() {
+        // For some reason, Sparkle isn't doing this on its own.
+        // Called on app launch and menu close
+        
+        guard let dateLastChecked = UserDefaults.standard.value(forKey: Keys.dateLastCheckedForUpdates) as? Date,
+            let dayBeforeTimeInterval = TimeInterval(exactly: -86400) else { return }
+        
+        let date24HoursAgo = Date(timeIntervalSinceNow: dayBeforeTimeInterval)
+        
+        if dateLastChecked < date24HoursAgo {
+            SUUpdater.shared()?.checkForUpdatesInBackground()
+            UserDefaults.standard.set(Date(), forKey: Keys.dateLastCheckedForUpdates)
         }
     }
     
