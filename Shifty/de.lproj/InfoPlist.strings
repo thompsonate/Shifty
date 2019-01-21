@@ -7,5 +7,5 @@
 */
 
 "CFBundleDisplayName" = "Shifty";
-"NSHumanReadableCopyright" = "© 2017-2018 Nate Thompson. GPLv3-Lizenz.";
+"NSHumanReadableCopyright" = "© 2017-2019 Nate Thompson. GPLv3-Lizenz.";
 "NSAppleEventsUsageDescription" = "Shifty benötigt Zugriff auf Ihre aktuelle Web-Adresse, um Night Shift für von Ihnen gewählte Adressen zu deaktivieren.";
