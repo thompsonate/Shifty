@@ -8,9 +8,10 @@
 
 import Cocoa
 import ServiceManagement
+import AppCenter
+import AppCenterAnalytics
+import AppCenterCrashes
 import LetsMove
-import Fabric
-import Crashlytics
 import MASPreferences_Shifty
 import AXSwift
 import SwiftLog
@@ -38,18 +39,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         #if !DEBUG
-            PFMoveToApplicationsFolderIfNecessary()
+        PFMoveToApplicationsFolderIfNecessary()
         #endif
         
         UserDefaults.standard.register(defaults: ["NSApplicationCrashOnExceptions": true])
         
         let userDefaults = UserDefaults.standard
         
-        if userDefaults.bool(forKey: Keys.fabricCrashlyticsPermission) {
-            Fabric.with([Crashlytics.self])
-        } else if userDefaults.bool(forKey: Keys.hasSetupWindowShown) && userDefaults.value(forKey: Keys.lastInstalledShiftyVersion) == nil {
+        if userDefaults.bool(forKey: Keys.analyticsPermission) {
+            #if !DEBUG
+            MSAppCenter.start("d5dd5002-16ad-4ba5-be9d-7297b85399d7", withServices:[MSAnalytics.self, MSCrashes.self])
+            #endif
+        } else if userDefaults.bool(forKey: Keys.hasSetupWindowShown)
+            && userDefaults.value(forKey: Keys.lastInstalledShiftyVersion) == nil {
             // If updated from beta version
-            userDefaults.set(true, forKey: Keys.fabricCrashlyticsPermission)
+            userDefaults.set(true, forKey: Keys.analyticsPermission)
         }
         
         

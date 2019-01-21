@@ -7,8 +7,7 @@
 //
 
 import Foundation
-import Fabric
-import Crashlytics
+import AppCenterAnalytics
 
 enum Event {
     case appLaunched(preferredLocalization: String)
@@ -49,9 +48,9 @@ enum Event {
 extension Event {
 
     func record() {
-        if UserDefaults.standard.bool(forKey: Keys.fabricCrashlyticsPermission) {
+        if UserDefaults.standard.bool(forKey: Keys.analyticsPermission) {
             #if !DEBUG
-                Answers.logCustomEvent(withName: eventName, customAttributes: customAttributes)
+            MSAnalytics.trackEvent(eventName, withProperties: customAttributes)
             #endif
         }
     }
@@ -85,7 +84,7 @@ extension Event {
         }
     }
 
-    private var customAttributes: [String: Any]? {
+    private var customAttributes: [String: String]? {
         switch(self) {
         case .appLaunched(preferredLocalization: let localization):
             return ["Preferred localization": localization]
@@ -105,7 +104,7 @@ extension Event {
             return ["State": state ? "true" : "false",
                 "Time interval in minutes": String(describing: timeInterval)]
         case .sliderMoved(let value):
-            return ["Slider value": value]
+            return ["Slider value": String(format: "%.f", value)]
         case .shortcuts(let toggleNightShift, let increaseColorTemp, let decreaseColorTemp, let disableApp, let disableDomain, let disableSubdomain, let disableHour, let disableCustom, let toggleTrueTone, let toggleDarkMode):
             return ["Toggle Night Shift": toggleNightShift ? "true" : "false",
                     "Increase color temp": increaseColorTemp ? "true" : "false",

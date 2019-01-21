@@ -12,8 +12,6 @@
 		43041CC5207DB9FF0076E75C /* CoreBrightness.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43041CC4207DB9FF0076E75C /* CoreBrightness.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		431B7B5D2167C8740039D085 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43A934002164019300AFB708 /* Security.framework */; };
 		433AD3011F2CED1F0003FBCD /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 433AD3001F2CED1F0003FBCD /* dsa_pub.pem */; };
-		433AD3081F2D00BD0003FBCD /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433AD3061F2D00BD0003FBCD /* Crashlytics.framework */; };
-		433AD3091F2D00BD0003FBCD /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433AD3071F2D00BD0003FBCD /* Fabric.framework */; };
 		433E60EC207D9995007BB55F /* BrightnessSystemClient+Shifty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433E60EA207D9994007BB55F /* BrightnessSystemClient+Shifty.swift */; };
 		4350191D1F21E99F0001324F /* CustomTimeWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4350191C1F21E99F0001324F /* CustomTimeWindow.swift */; };
 		4351C7811FB5737900788CC9 /* PrefGeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4351C7801FB5737900788CC9 /* PrefGeneralViewController.swift */; };
@@ -80,8 +78,6 @@
 		43099BAB1FC67B5100A0720B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/PrefAboutViewController.strings"; sourceTree = "<group>"; };
 		43099BAD1FC67B5C00A0720B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		433AD3001F2CED1F0003FBCD /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_pub.pem; path = Shifty/dsa_pub.pem; sourceTree = "<group>"; };
-		433AD3061F2D00BD0003FBCD /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		433AD3071F2D00BD0003FBCD /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		433E60EA207D9994007BB55F /* BrightnessSystemClient+Shifty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BrightnessSystemClient+Shifty.swift"; path = "Shifty/BrightnessSystemClient+Shifty.swift"; sourceTree = "<group>"; };
 		433E60EB207D9995007BB55F /* BrightnessSystemClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BrightnessSystemClient.h; path = Shifty/BrightnessSystemClient.h; sourceTree = "<group>"; };
 		4345ABA32165DB1600E2B7C7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/CustomTimeWindow.strings; sourceTree = "<group>"; };
@@ -172,8 +168,6 @@
 			files = (
 				431B7B5D2167C8740039D085 /* Security.framework in Frameworks */,
 				43C0838C1F19AEF900E73B84 /* ServiceManagement.framework in Frameworks */,
-				433AD3091F2D00BD0003FBCD /* Fabric.framework in Frameworks */,
-				433AD3081F2D00BD0003FBCD /* Crashlytics.framework in Frameworks */,
 				43041CC5207DB9FF0076E75C /* CoreBrightness.framework in Frameworks */,
 				43041CB4207DB3440076E75C /* SkyLight.framework in Frameworks */,
 				B2FB1D17C62BCFBF11038F46 /* Pods_Shifty.framework in Frameworks */,
@@ -280,8 +274,6 @@
 				43D5C2321FC2CECC00AF88E0 /* Localizable.strings */,
 				43B6126A1FFC413A00724DAE /* Localizable.stringsdict */,
 				436A0F3C1FBE913600E77D41 /* ShiftyAppcast.xml */,
-				433AD3061F2D00BD0003FBCD /* Crashlytics.framework */,
-				433AD3071F2D00BD0003FBCD /* Fabric.framework */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -359,7 +351,6 @@
 				43CC9E401EBAB19300983528 /* Frameworks */,
 				43CC9E411EBAB19300983528 /* Resources */,
 				43C083891F19AEA600E73B84 /* CopyFiles */,
-				43B547EB1F299A950034E779 /* ShellScript */,
 				9A4D576B732E974148CA96C9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -483,19 +474,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		43B547EB1F299A950034E779 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run 57ca2a767468cd93801f5cea46dd15311882575b 5ae8e76d8456bfa8e4d60a077b103e6aca3a565f01f02a9f500d7f1fd0173b96\n";
-		};
 		9A4D576B732E974148CA96C9 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -509,7 +487,6 @@
 				"${BUILT_PRODUCTS_DIR}/MASShortcut/MASShortcut.framework",
 				"${BUILT_PRODUCTS_DIR}/PublicSuffix/PublicSuffix.framework",
 				"${PODS_ROOT}/Sparkle/Sparkle.framework",
-				"${PODS_ROOT}/Sparkle/Sparkle.framework.dSYM",
 				"${BUILT_PRODUCTS_DIR}/SwiftLog/SwiftLog.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -520,7 +497,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MASShortcut.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PublicSuffix.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sparkle.framework",
-				"${DWARF_DSYM_FOLDER_PATH}/Sparkle.framework.dSYM",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftLog.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
