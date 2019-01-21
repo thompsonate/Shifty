@@ -43,8 +43,10 @@ class PrefManager {
         registerFactoryDefaults()
     }
 
-    let userDefaults = UserDefaults.standard
-
+    private var userDefaults: UserDefaults {
+        return UserDefaults.standard
+    }
+        
     private func registerFactoryDefaults() {
         let factoryDefaults = [
             Keys.isAutoLaunchEnabled: NSNumber(value: false),

@@ -43,7 +43,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         UserDefaults.standard.register(defaults: ["NSApplicationCrashOnExceptions": true])
         
-        let userDefaults = PrefManager.shared.userDefaults
+        let userDefaults = UserDefaults.standard
         
         if userDefaults.bool(forKey: Keys.fabricCrashlyticsPermission) {
             Fabric.with([Crashlytics.self])

@@ -142,7 +142,7 @@ class FinalViewController: NSViewController {
     }
     
     override func viewWillDisappear() {
-        PrefManager.shared.userDefaults.set(analyticsPermissionButton.state == .on,
+        UserDefaults.standard.set(analyticsPermissionButton.state == .on,
                                             forKey: Keys.fabricCrashlyticsPermission)
     }
 }

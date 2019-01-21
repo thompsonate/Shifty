@@ -61,14 +61,14 @@ struct BrowserRule: CustomStringConvertible, Hashable, Codable {
 enum RuleManager {
     static var disabledApps = Set<AppRule>() {
         didSet {
-            PrefManager.shared.userDefaults.set(try? PropertyListEncoder().encode(disabledApps), forKey: Keys.disabledApps)
+            UserDefaults.standard.set(try? PropertyListEncoder().encode(disabledApps), forKey: Keys.disabledApps)
         }
     }
     
     
     static var browserRules = Set<BrowserRule>() {
         didSet(newValue) {
-            PrefManager.shared.userDefaults.set(try? PropertyListEncoder().encode(browserRules), forKey: Keys.browserRules)
+            UserDefaults.standard.set(try? PropertyListEncoder().encode(browserRules), forKey: Keys.browserRules)
         }
     }
     
@@ -205,8 +205,8 @@ enum RuleManager {
             RuleManager.appSwitched(notification: $0)
         }
         
-        guard let appData = PrefManager.shared.userDefaults.value(forKey: Keys.disabledApps) as? Data,
-            let browserData = PrefManager.shared.userDefaults.value(forKey: Keys.browserRules) as? Data else { return }
+        guard let appData = UserDefaults.standard.value(forKey: Keys.disabledApps) as? Data,
+            let browserData = UserDefaults.standard.value(forKey: Keys.browserRules) as? Data else { return }
         
         do {
             disabledApps = try PropertyListDecoder().decode(Set<AppRule>.self, from: appData)
