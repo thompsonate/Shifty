@@ -5,6 +5,18 @@
         <description>Most recent changes with links to updates.</description>
         <language>en</language>
         <item>
+            <title>Version 1.0.2</title>
+            <description><![CDATA[
+                <ul style="list-style-type:disc">
+                <li>Fixes an issue with Website Shifting that caused Google Chrome to reopen when quit</li>
+                </ul>
+            ]]>
+            </description>
+            <pubDate>Sun, 21 Jan 2019 23:00:00 -0500</pubDate>
+            <enclosure url="https://github.com/thompsonate/Shifty/releases/download/v1.0.2/Shifty-1.0.2.zip" sparkle:version="58" sparkle:shortVersionString="1.0.2" length="1623481" type="application/octet-stream" sparkle:dsaSignature="MC4CFQCA7ceRG4/gFp4YV25FbRkvBsog5gIVAJk/ZjWYKs3G9lFJX1WRXSxl88is" />
+            <sparkle:minimumSystemVersion>10.12.4</sparkle:minimumSystemVersion>
+        </item>
+        <item>
             <title>Version 1.0.1</title>
             <description><![CDATA[
                 <ul style="list-style-type:disc">
