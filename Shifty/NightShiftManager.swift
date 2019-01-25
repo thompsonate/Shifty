@@ -248,7 +248,9 @@ enum NightShiftManager {
     public static func initialize() {
         var prevSchedule = schedule
         
-        // @convention block
+        updateDarkMode()
+        
+        // @convention block called by CoreBrightness
         client.setStatusNotificationBlock {
             if schedule == prevSchedule {
                 respond(to: isNightShiftEnabled ? .enteredScheduledNightShift : .exitedScheduledNightShift)
