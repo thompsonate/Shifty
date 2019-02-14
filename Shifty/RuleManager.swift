@@ -16,11 +16,15 @@ enum RuleType: String, Codable {
     case subdomainEnabled
 }
 
+
+
 enum SubdomainRuleType: String, Codable {
     case none
     case disabled
     case enabled
 }
+
+
 
 struct AppRule: CustomStringConvertible, Hashable, Codable {
     var bundleIdentifier: BundleIdentifier
@@ -40,6 +44,8 @@ struct AppRule: CustomStringConvertible, Hashable, Codable {
     }
 }
 
+
+
 struct BrowserRule: CustomStringConvertible, Hashable, Codable {
     var type: RuleType
     var host: String
@@ -58,12 +64,18 @@ struct BrowserRule: CustomStringConvertible, Hashable, Codable {
     }
 }
 
+
+
+
+
 enum RuleManager {
+    
     static var disabledApps = Set<AppRule>() {
         didSet {
             UserDefaults.standard.set(try? PropertyListEncoder().encode(disabledApps), forKey: Keys.disabledApps)
         }
     }
+    
     
     
     static var browserRules = Set<BrowserRule>() {
@@ -72,9 +84,13 @@ enum RuleManager {
         }
     }
     
+    
+    
     static var currentApp: NSRunningApplication? {
         return NSWorkspace.shared.menuBarOwningApplication
     }
+    
+    
     
     static var disabledForApp: Bool {
         get {
@@ -102,6 +118,8 @@ enum RuleManager {
         }
     }
     
+    
+    
     static var disabledForDomain: Bool {
         get {
             guard let currentDomain = BrowserManager.currentDomain else { return false }
@@ -126,6 +144,8 @@ enum RuleManager {
             }
         }
     }
+    
+    
     
     static var ruleForSubdomain: SubdomainRuleType {
         get {
@@ -190,15 +210,21 @@ enum RuleManager {
         }
     }
     
+    
+    
     static var disableRuleIsActive: Bool {
         return disabledForApp || (disabledForDomain && ruleForSubdomain != .enabled) || ruleForSubdomain == .disabled
     }
+    
+    
     
     static func removeRulesForCurrentState() {
         disabledForApp = false
         disabledForDomain = false
         ruleForSubdomain = .none
     }
+    
+    
 
     public static func initialize() {
         NSWorkspace.shared.notificationCenter.addObserver(forName: NSWorkspace.didActivateApplicationNotification, object: nil, queue: nil) {
@@ -220,12 +246,14 @@ enum RuleManager {
             logw("Error: \(error.localizedDescription)")
         }
     }
+    
+    
 
     private static func appSwitched(notification: Notification) {
         BrowserManager.stopBrowserWatcher()
         if disabledForApp {
             NightShiftManager.respond(to: .nightShiftDisableRuleActivated)
-        } else if BrowserManager.currrentAppIsSupportedBrowser {
+        } else if BrowserManager.currentAppIsSupportedBrowser {
             BrowserManager.updateForSupportedBrowser()
         } else {
             NightShiftManager.respond(to: .nightShiftDisableRuleDeactivated)

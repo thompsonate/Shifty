@@ -131,6 +131,9 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         var currentDomain = BrowserManager.currentDomain
         var currentSubdomain = BrowserManager.currentSubdomain
         
+        
+        // In languages that don't use spaces, we need to add spaces around app name if it's in Latin-script letters.
+        // These languages should not include spaces around the "%@" in its Localizable.strings file.
         if Bundle.main.preferredLocalizations.first == "zh-Hans" {
             var normalizedName = currentAppName as NSString
             if normalizedName.length > 0 {
@@ -151,6 +154,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         
         sliderView.shiftSlider.floatValue = NightShiftManager.blueLightReductionAmount * 100
         
+        
+        // MARK: toggle Night Shift
         if NightShiftManager.isNightShiftEnabled {
             powerMenuItem.title = NSLocalizedString("menu.toggle_off", comment: "Turn off Night Shift")
             sliderView.shiftSlider.isEnabled = true
@@ -159,6 +164,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             sliderView.shiftSlider.isEnabled = false
         }
         
+        
+        //MARK: disable for app
         if RuleManager.disabledForApp {
             disableAppMenuItem.state = .on
             disableAppMenuItem.title = String(format: NSLocalizedString("menu.disabled_for", comment: "Disabled for %@"), currentAppName)
@@ -167,6 +174,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             disableAppMenuItem.title = String(format: NSLocalizedString("menu.disable_for", comment: "Disable for %@"), currentAppName)
         }
         
+        
+        // MARK: disable for domain
         if BrowserManager.hasValidDomain {
             disableDomainMenuItem.isHidden = false
             if RuleManager.disabledForDomain {
@@ -180,6 +189,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             disableDomainMenuItem.isHidden = true
         }
         
+        
+        // MARK: disable for subdomain
         if BrowserManager.hasValidSubdomain {
             disableSubdomainMenuItem.isHidden = false
             if RuleManager.ruleForSubdomain == .enabled {
@@ -199,7 +210,9 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             disableSubdomainMenuItem.isHidden = true
         }
         
-        if BrowserManager.currrentAppIsSupportedBrowser &&
+        
+        // MARK: enable browser automation
+        if BrowserManager.currentAppIsSupportedBrowser &&
             BrowserManager.permissionToAutomateCurrentApp == .denied,
             let appName = RuleManager.currentApp?.localizedName {
             
@@ -210,6 +223,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             enableBrowserAutomationMenuItem.isHidden = true
         }
         
+        
+        // MARK: disable timer
         switch NightShiftManager.nightShiftDisableTimer {
         case .off:
             disableHourMenuItem.state = .off
@@ -238,7 +253,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         }
         
         
-        
+        // MARK: toggle True Tone
         if #available(macOS 10.14, *) {
             trueToneMenuItem.isHidden = false
             trueToneMenuItem.isEnabled = true
@@ -346,10 +361,16 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     
     
     
+    
+    
     func localizedPlural(_ key: String, count: Int, comment: String) -> String {
         let format = NSLocalizedString(key, comment: comment)
         return String(format: format, locale: .current, arguments: [count])
     }
+    
+    
+    
+    
     
     func assignKeyboardShortcutToMenuItem(_ menuItem: NSMenuItem, userDefaultsKey: String) {
         if let data = UserDefaults.standard.value(forKey: userDefaultsKey),
@@ -365,7 +386,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     
     
 
-    //MARK: User Interaction
+    // MARK: User Interaction
 
     @IBAction func power(_ sender: Any) {
         if NightShiftManager.isNightShiftEnabled {
@@ -375,6 +396,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         }
     }
     
+    
+    
     @IBAction func disableForApp(_ sender: Any) {
         if RuleManager.disabledForApp {
             RuleManager.disabledForApp = false
@@ -383,6 +406,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         }
         Event.disableForCurrentApp(state: (sender as? NSMenuItem)?.state == .on).record()
     }
+    
+    
 
     @IBAction func disableForDomain(_ sender: Any) {
         if RuleManager.disabledForDomain {
@@ -391,6 +416,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             RuleManager.disabledForDomain = true
         }
     }
+    
+    
 
     @IBAction func disableForSubdomain(_ sender: Any) {
         if RuleManager.ruleForSubdomain == .none {
@@ -404,9 +431,13 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         }
     }
     
+    
+    
     @IBAction func enableBrowserAutomation(_ sender: Any) {
         NSWorkspace.shared.open(URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Automation")!)
     }
+    
+    
     
     @IBAction func disableHour(_ sender: Any) {
         if disableHourMenuItem.state == .off {
@@ -428,6 +459,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             NightShiftManager.respond(to: .nightShiftDisableTimerEnded)
         }
     }
+    
+    
 
     @IBAction func disableCustomTime(_ sender: Any) {
         if disableCustomMenuItem.state == .off {
@@ -459,11 +492,15 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         }
     }
     
+    
+    
     @IBAction func toggleTrueTone(_ sender: Any) {
         if #available(macOS 10.14, *) {
             CBTrueToneClient.shared.isTrueToneEnabled = !CBTrueToneClient.shared.isTrueToneEnabled
         }
     }
+    
+    
 
     @IBAction func preferencesClicked(_ sender: NSMenuItem) {
         NSApp.activate(ignoringOtherApps: true)
@@ -471,6 +508,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
 
         Event.preferencesWindowOpened.record()
     }
+    
+    
 
     @IBAction func quitClicked(_ sender: NSMenuItem) {
         NightShiftManager.respond(to: .nightShiftDisableTimerEnded)

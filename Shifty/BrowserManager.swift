@@ -48,6 +48,7 @@ enum SupportedBrowser: BundleIdentifier {
 var cachedBrowsers: [SupportedBrowser: Browser] = [:]
 
 enum BrowserManager {
+    
     static var currentURL: URL? {
         if !UserDefaults.standard.bool(forKey: Keys.isWebsiteControlEnabled) {
             return nil
@@ -87,6 +88,8 @@ enum BrowserManager {
         return url
     }
     
+    
+    
     static var currentDomain: String? {
         return currentURL?.registeredDomain
     }
@@ -95,7 +98,9 @@ enum BrowserManager {
         return currentURL?.host
     }
     
-    static var currrentAppIsSupportedBrowser: Bool {
+    
+    
+    static var currentAppIsSupportedBrowser: Bool {
         if !UserDefaults.standard.bool(forKey: Keys.isWebsiteControlEnabled) {
             return false
         }
@@ -103,6 +108,8 @@ enum BrowserManager {
         guard let currentApp = RuleManager.currentApp else { return false }
         return SupportedBrowser(currentApp) != nil
     }
+    
+    
     
     /// Returns the AppleEvent Automation permission state of the current app.
     /// Blocks main thread if user is prompted for consent.
@@ -113,9 +120,13 @@ enum BrowserManager {
         return AppleEventsManager.automationConsent(forBundleIdentifier: bundleID)
     }
     
+    
+    
     static var hasValidDomain: Bool {
         return currentDomain != nil
     }
+    
+    
     
     static var hasValidSubdomain: Bool {
         if let currentDomain = currentDomain {
@@ -127,6 +138,7 @@ enum BrowserManager {
     }
     
     
+    
     static func updateForSupportedBrowser() {
         guard let pid = NSWorkspace.shared.menuBarOwningApplication?.processIdentifier else { return }
         
@@ -135,6 +147,8 @@ enum BrowserManager {
             fireNightShiftEvent()
         }
     }
+    
+    
     
     private static func fireNightShiftEvent() {
         if RuleManager.ruleForSubdomain == .enabled {
@@ -145,6 +159,8 @@ enum BrowserManager {
             NightShiftManager.respond(to: .nightShiftDisableRuleDeactivated)
         }
     }
+    
+    
     
     // When browser is launching, we're not able to add a notification right away, so we need to try again.
     private static func tryStartBrowserWatcher(repeatCount: Int, processIdentifier: pid_t, callback: @escaping () -> Void) {
@@ -162,6 +178,8 @@ enum BrowserManager {
             }
         }
     }
+    
+    
     
     private static func startBrowserWatcher(_ processIdentifier: pid_t, callback: @escaping () -> Void) throws {
         observedApp = Application(forProcessID: processIdentifier)
@@ -195,6 +213,8 @@ enum BrowserManager {
         }
     }
     
+    
+    
     static func stopBrowserWatcher() {
         if browserObserver != nil {
             if observedApp != nil {
@@ -214,6 +234,8 @@ enum BrowserManager {
             browserObserver = nil
         }
     }
+    
+    
     
     private static func urlFor(_ browser: SupportedBrowser, _ application: Browser, _ ax_api: Bool) throws -> URL? {
         if !application.isRunning {

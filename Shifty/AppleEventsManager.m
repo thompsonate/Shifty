@@ -21,9 +21,10 @@ enum {
 
 @implementation AppleEventsManager : NSObject
 
-+ (PrivacyConsentState)automationConsentForBundleIdentifier:(NSString *)bundleIdentifier    {
++ (PrivacyConsentState)automationConsentForBundleIdentifier:(NSString *)bundleIdentifier {
     
     PrivacyConsentState result;
+    
     if (@available(macOS 10.14, *)) {
         AEAddressDesc addressDesc;
         // We need a C string here, not an NSString
