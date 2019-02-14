@@ -21,6 +21,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     @IBOutlet weak var disableAppMenuItem: NSMenuItem!
     @IBOutlet weak var disableDomainMenuItem: NSMenuItem!
     @IBOutlet weak var disableSubdomainMenuItem: NSMenuItem!
+    @IBOutlet weak var enableBrowserAutomationMenuItem: NSMenuItem!
     @IBOutlet weak var disableHourMenuItem: NSMenuItem!
     @IBOutlet weak var disableCustomMenuItem: NSMenuItem!
     @IBOutlet weak var preferencesMenuItem: NSMenuItem!
@@ -196,6 +197,17 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             }
         } else {
             disableSubdomainMenuItem.isHidden = true
+        }
+        
+        if BrowserManager.currrentAppIsSupportedBrowser &&
+            BrowserManager.permissionToAutomateCurrentApp == .denied,
+            let appName = RuleManager.currentApp?.localizedName {
+            
+            enableBrowserAutomationMenuItem.isHidden = false
+            enableBrowserAutomationMenuItem.title = String(format: NSLocalizedString("menu.allow_browser_automation",
+                                                                                     comment: "Allow Website Shifting with Browser"), appName)
+        } else {
+            enableBrowserAutomationMenuItem.isHidden = true
         }
         
         switch NightShiftManager.nightShiftDisableTimer {
@@ -390,6 +402,10 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         } else {
             RuleManager.ruleForSubdomain = .none
         }
+    }
+    
+    @IBAction func enableBrowserAutomation(_ sender: Any) {
+        NSWorkspace.shared.open(URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Automation")!)
     }
     
     @IBAction func disableHour(_ sender: Any) {

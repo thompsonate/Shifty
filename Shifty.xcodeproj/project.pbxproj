@@ -15,6 +15,7 @@
 		433E60EC207D9995007BB55F /* BrightnessSystemClient+Shifty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433E60EA207D9994007BB55F /* BrightnessSystemClient+Shifty.swift */; };
 		4350191D1F21E99F0001324F /* CustomTimeWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4350191C1F21E99F0001324F /* CustomTimeWindow.swift */; };
 		4351C7811FB5737900788CC9 /* PrefGeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4351C7801FB5737900788CC9 /* PrefGeneralViewController.swift */; };
+		4353E56422136937008A26C4 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4353E56322136937008A26C4 /* CoreServices.framework */; };
 		435F0384208027C600ABA2EB /* BrowserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435F0383208027C600ABA2EB /* BrowserManager.swift */; };
 		4368E3031EBEBA6C00D53310 /* PrefManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4368E3021EBEBA6C00D53310 /* PrefManager.swift */; };
 		437556B41FF745A6001951AB /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437556B31FF745A6001951AB /* Setup.swift */; };
@@ -47,6 +48,7 @@
 		43D5C2391FC35FB500AF88E0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43D5C2381FC35FB500AF88E0 /* MainMenu.xib */; };
 		43F971B62156CA80001DBD45 /* AnalyticsDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43F971B52156CA80001DBD45 /* AnalyticsDetailView.xib */; };
 		43F971B82156DD24001DBD45 /* AnalyticsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F971B72156DD24001DBD45 /* AnalyticsDetailViewController.swift */; };
+		43F974E72213D9D200224CF4 /* AppleEventsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F974E62213D9D200224CF4 /* AppleEventsManager.m */; };
 		43FC498C1FF8936F00CD3196 /* credits.rtfd in Resources */ = {isa = PBXBuildFile; fileRef = 43FC498B1FF8936E00CD3196 /* credits.rtfd */; };
 		4960957E200EB9CD00D966CA /* RuleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4960957D200EB9CD00D966CA /* RuleManager.swift */; };
 		497B2395200B576700669DDE /* NightShiftManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497B2392200B576700669DDE /* NightShiftManager.swift */; };
@@ -96,6 +98,7 @@
 		434DE5CA21614984002AB147 /* SwiftLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4350191C1F21E99F0001324F /* CustomTimeWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTimeWindow.swift; path = Shifty/CustomTimeWindow.swift; sourceTree = "<group>"; };
 		4351C7801FB5737900788CC9 /* PrefGeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PrefGeneralViewController.swift; path = Shifty/PrefGeneralViewController.swift; sourceTree = "<group>"; };
+		4353E56322136937008A26C4 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		435F0383208027C600ABA2EB /* BrowserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BrowserManager.swift; path = Shifty/BrowserManager.swift; sourceTree = "<group>"; };
 		4368E3021EBEBA6C00D53310 /* PrefManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrefManager.swift; path = Shifty/PrefManager.swift; sourceTree = "<group>"; };
 		436A0F3C1FBE913600E77D41 /* ShiftyAppcast.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ShiftyAppcast.xml; sourceTree = "<group>"; };
@@ -142,6 +145,8 @@
 		43F71DB0213F48DA004F7E2B /* CBTrueToneClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CBTrueToneClient.h; path = Shifty/CBTrueToneClient.h; sourceTree = "<group>"; };
 		43F971B52156CA80001DBD45 /* AnalyticsDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AnalyticsDetailView.xib; path = Shifty/AnalyticsDetailView.xib; sourceTree = "<group>"; };
 		43F971B72156DD24001DBD45 /* AnalyticsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnalyticsDetailViewController.swift; path = Shifty/AnalyticsDetailViewController.swift; sourceTree = "<group>"; };
+		43F974E62213D9D200224CF4 /* AppleEventsManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppleEventsManager.m; path = Shifty/AppleEventsManager.m; sourceTree = "<group>"; };
+		43F974EB221463C700224CF4 /* AppleEventsManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppleEventsManager.h; path = Shifty/AppleEventsManager.h; sourceTree = "<group>"; };
 		43FC498B1FF8936E00CD3196 /* credits.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = credits.rtfd; sourceTree = "<group>"; };
 		43FFD9402161655000DD6C83 /* AXSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AXSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4960957D200EB9CD00D966CA /* RuleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RuleManager.swift; path = Shifty/RuleManager.swift; sourceTree = "<group>"; };
@@ -166,6 +171,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4353E56422136937008A26C4 /* CoreServices.framework in Frameworks */,
 				431B7B5D2167C8740039D085 /* Security.framework in Frameworks */,
 				43C0838C1F19AEF900E73B84 /* ServiceManagement.framework in Frameworks */,
 				43041CC5207DB9FF0076E75C /* CoreBrightness.framework in Frameworks */,
@@ -191,6 +197,7 @@
 		433EE8501EBD8ECA007EA870 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4353E56322136937008A26C4 /* CoreServices.framework */,
 				43A934002164019300AFB708 /* Security.framework */,
 				434DE5C621614969002AB147 /* PublicSuffix.framework */,
 				43041CC4207DB9FF0076E75C /* CoreBrightness.framework */,
@@ -231,6 +238,8 @@
 				43A8E69B2141DF7C00BD3870 /* CBTrueToneClient+Shifty.swift */,
 				433E60EB207D9995007BB55F /* BrightnessSystemClient.h */,
 				433E60EA207D9994007BB55F /* BrightnessSystemClient+Shifty.swift */,
+				43F974EB221463C700224CF4 /* AppleEventsManager.h */,
+				43F974E62213D9D200224CF4 /* AppleEventsManager.m */,
 				497B2393200B576700669DDE /* NotificationName+Shifty.swift */,
 				43CE525920379A16002EBF61 /* Event.swift */,
 				437556B51FF746BD001951AB /* SlideSegue.swift */,
@@ -552,6 +561,7 @@
 				4394DDAD1EBE376F00F22908 /* StatusMenuController.swift in Sources */,
 				43CE525A20379A16002EBF61 /* Event.swift in Sources */,
 				43B9DE1B1FB592AE002C4C29 /* PrefAboutViewController.swift in Sources */,
+				43F974E72213D9D200224CF4 /* AppleEventsManager.m in Sources */,
 				4350191D1F21E99F0001324F /* CustomTimeWindow.swift in Sources */,
 				43F971B82156DD24001DBD45 /* AnalyticsDetailViewController.swift in Sources */,
 				43B9DE151FB5924F002C4C29 /* PrefShortcutsViewController.swift in Sources */,

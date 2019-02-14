@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.3.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.3.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -27,6 +27,7 @@
                 <outlet property="disableDomainMenuItem" destination="JPo-kA-2ad" id="apR-hI-2G1"/>
                 <outlet property="disableHourMenuItem" destination="lLZ-zs-A2J" id="JBY-cw-D9b"/>
                 <outlet property="disableSubdomainMenuItem" destination="VgG-sQ-dcu" id="1hP-t7-xvX"/>
+                <outlet property="enableBrowserAutomationMenuItem" destination="Anz-oa-3rV" id="5yd-Qd-JzE"/>
                 <outlet property="moonIcon" destination="QFo-Gz-iR8" id="bkD-8o-fbd"/>
                 <outlet property="powerMenuItem" destination="3QK-Yf-KEO" id="Ndx-D9-T04"/>
                 <outlet property="preferencesMenuItem" destination="GJi-nB-WzR" id="0Ga-17-Xdo"/>
@@ -70,6 +71,12 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="disableForSubdomain:" target="YHE-ZD-Fjn" id="gcy-bV-Y1z"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Enable Browser Automation" hidden="YES" indentationLevel="1" id="Anz-oa-3rV">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="enableBrowserAutomation:" target="YHE-ZD-Fjn" id="KGQ-H9-T8g"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Disable for an hour" id="lLZ-zs-A2J">

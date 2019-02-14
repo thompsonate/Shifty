@@ -9,6 +9,7 @@
 #import "CBBlueLightClient.h"
 #import "BrightnessSystemClient.h"
 #import "CBTrueToneClient.h"
+#import "AppleEventsManager.h"
 
 void SLSSetAppearanceThemeLegacy(BOOL);
 BOOL SLSGetAppearanceThemeLegacy();

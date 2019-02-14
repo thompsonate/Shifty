@@ -104,6 +104,15 @@ enum BrowserManager {
         return SupportedBrowser(currentApp) != nil
     }
     
+    /// Returns the AppleEvent Automation permission state of the current app.
+    /// Blocks main thread if user is prompted for consent.
+    /// I don't think this is currently an issue since the prompt will appear when the browser becomes the current app.
+    static var permissionToAutomateCurrentApp: PrivacyConsentState {
+        guard let bundleID = RuleManager.currentApp?.bundleIdentifier else { return .undetermined }
+
+        return AppleEventsManager.automationConsent(forBundleIdentifier: bundleID)
+    }
+    
     static var hasValidDomain: Bool {
         return currentDomain != nil
     }

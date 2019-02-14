@@ -24,6 +24,7 @@
 "menu.disabled_hour" = "Disabled for an hour";
 "menu.disable_custom" = "Disable for custom time...";
 "menu.disabled_custom" = "Disabled for custom time";
+"menu.allow_browser_automation" = "Allow Website Shifting with %@";
 
 "menu.true_tone_on" = "Turn on True Tone";
 "menu.true_tone_off" = "Turn off True Tone";
