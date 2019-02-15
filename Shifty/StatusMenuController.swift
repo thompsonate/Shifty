@@ -213,12 +213,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         
         // MARK: enable browser automation
         if BrowserManager.currentAppIsSupportedBrowser &&
-            BrowserManager.permissionToAutomateCurrentApp == .denied,
-            let appName = RuleManager.currentApp?.localizedName {
+            BrowserManager.permissionToAutomateCurrentApp == .denied {
             
             enableBrowserAutomationMenuItem.isHidden = false
             enableBrowserAutomationMenuItem.title = String(format: NSLocalizedString("menu.allow_browser_automation",
-                                                                                     comment: "Allow Website Shifting with Browser"), appName)
+                                                                                     comment: "Allow Website Shifting with Browser"), currentAppName)
         } else {
             enableBrowserAutomationMenuItem.isHidden = true
         }
