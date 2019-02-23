@@ -100,6 +100,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         updateMenuBarIcon()
         setStatusToggle()
         
+        statusItem.behavior = .terminationOnRemoval
+        statusItem.isVisible = true
+        
         let hasSetupWindowShown = userDefaults.bool(forKey: Keys.hasSetupWindowShown)
         
         if hasSetupWindowShown {
