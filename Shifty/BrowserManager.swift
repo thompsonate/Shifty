@@ -21,15 +21,19 @@ enum BrowserError: Error {
 }
 
 typealias BundleIdentifier = String
+
 enum SupportedBrowser: BundleIdentifier {
-    typealias RawValue = String
-    
     case safari = "com.apple.Safari"
     case safariTechnologyPreview = "com.apple.SafariTechnologyPreview"
     
     case chrome = "com.google.Chrome"
     case chromeCanary = "com.google.Chrome.canary"
     case chromium = "org.chromium.Chromium"
+    
+    case opera = "com.operasoftware.Opera"
+    case operaBeta = "com.operasoftware.OperaNext"
+    case operaDeveloper = "com.operasoftware.OperaDeveloper"
+    
     case vivaldi = "com.vivaldi.Vivaldi"
     
     init?(_ rawValue: String) {
@@ -241,12 +245,12 @@ enum BrowserManager {
         if !application.isRunning {
             throw BrowserError.closedApp
         }
-        guard let window = (application.windows!() as? [Window])?.first else {
+        guard let window = (application.windows?() as? [Window])?.first else {
             throw BrowserError.noWindow
         }
         let tab: Tab?
         switch browser {
-        case .chrome, .chromeCanary, .chromium, .vivaldi:
+        case .chrome, .chromeCanary, .chromium, .opera, .operaBeta, .operaDeveloper, .vivaldi:
             tab = window.activeTab
         case .safari, .safariTechnologyPreview:
             if ax_api {
