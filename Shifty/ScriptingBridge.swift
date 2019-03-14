@@ -18,18 +18,18 @@ import ScriptingBridge
     var isRunning: Bool { get }
 }
 
-@objc protocol Browser : SBApplicationProtocol {
+@objc protocol BrowserProtocol: SBApplicationProtocol {
     @objc optional func windows() -> SBElementArray
 }
 
-@objc protocol Window : SBObjectProtocol {
+@objc protocol Window: SBObjectProtocol {
 	@objc optional var currentTab: Tab { get }
 	@objc optional var activeTab: Tab { get }
 }
 
-@objc protocol Tab : SBObjectProtocol {
+@objc protocol Tab: SBObjectProtocol {
 	@objc optional var URL: String { get }
 }
 
-extension SBApplication: Browser { }
+extension SBApplication: BrowserProtocol { }
 extension SBObject: Window, Tab { }
