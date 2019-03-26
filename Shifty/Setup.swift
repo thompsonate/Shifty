@@ -120,7 +120,7 @@ class AccessibilityViewController: NSViewController {
     
     override func viewWillDisappear() {
         super.viewWillDisappear()
-        DistributedNotificationCenter.default().removeObserver(observer, name: NSNotification.Name("com.apple.accessibility.api"), object: nil)
+        DistributedNotificationCenter.default().removeObserver(observer as Any, name: NSNotification.Name("com.apple.accessibility.api"), object: nil)
     }
     
     func showNextView() {

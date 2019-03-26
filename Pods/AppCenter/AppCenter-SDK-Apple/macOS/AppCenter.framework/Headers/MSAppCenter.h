@@ -83,6 +83,7 @@
 
 /**
  * Enable or disable the SDK as a whole. In addition to AppCenter resources, it will also enable or disable all registered services.
+ * The state is persisted in the device's storage across application launches.
  *
  * @param isEnabled YES to enable, NO to disable.
  *
@@ -196,13 +197,17 @@
  * @discussion Set the user identifier for logs sent for the default target token when the secret passed in @c
  * MSAppCenter:start:withServices: contains "target={targetToken}".
  *
- * The App Center backend currently do not yet use the user identifier so this API doesn't have a use case yet when the secret passed to @c
- * MSAppCenter:start:withServices: contains an App Center application secret.
- *
  * For App Center backend the user identifier maximum length is 256 characters.
  *
  * AppCenter must be configured or started before this API can be used.
  */
 + (void)setUserId:(NSString *)userId;
+
+/**
+ * Set country code to use when building device properties.
+ *
+ * @param countryCode The two-letter ISO country code. @see https://www.iso.org/obp/ui/#search for more information.
+ */
++ (void)setCountryCode:(NSString *)countryCode;
 
 @end

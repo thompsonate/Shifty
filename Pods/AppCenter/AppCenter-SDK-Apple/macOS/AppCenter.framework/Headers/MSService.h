@@ -6,20 +6,21 @@
 @protocol MSService <NSObject>
 
 /**
- *  Enable/disable this service.
+ * Enable or disable this service.
+ * The state is persisted in the device's storage across application launches.
  *
- *  @param isEnabled whether this service is enabled or not.
+ * @param isEnabled Whether this service is enabled or not.
  *
- *  @see isEnabled
+ * @see isEnabled
  */
 + (void)setEnabled:(BOOL)isEnabled;
 
 /**
- *  Is this service enabled.
+ * Indicates whether this service is enabled.
  *
- *  @return a boolean whether this service is enabled or not.
+ * @return `YES` if this service is enabled, `NO` if it is not.
  *
- *  @see setEnabled:
+ * @see setEnabled:
  */
 + (BOOL)isEnabled;
 

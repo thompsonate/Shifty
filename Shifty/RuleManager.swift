@@ -34,10 +34,6 @@ struct AppRule: CustomStringConvertible, Hashable, Codable {
         return "Rule for \(bundleIdentifier); full screen only: \(fullScreenOnly)"
     }
     
-    var hashValue: Int {
-        return bundleIdentifier.hashValue ^ fullScreenOnly.hashValue
-    }
-    
     static func == (lhs: AppRule, rhs: AppRule) -> Bool {
         return lhs.bundleIdentifier == rhs.bundleIdentifier
             && lhs.fullScreenOnly == rhs.fullScreenOnly
@@ -52,10 +48,6 @@ struct BrowserRule: CustomStringConvertible, Hashable, Codable {
 
     var description: String {
         return "Rule type: \(type) for host: \(host)"
-    }
-
-    var hashValue: Int {
-        return type.hashValue ^ host.hashValue
     }
 
     static func == (lhs: BrowserRule, rhs: BrowserRule) -> Bool {
@@ -111,7 +103,7 @@ enum RuleManager {
                 disabledApps.insert(rule)
                 NightShiftManager.respond(to: .nightShiftDisableRuleActivated)
             } else {
-                guard let index = disabledApps.index(of: rule) else { return }
+                guard let index = disabledApps.firstIndex(of: rule) else { return }
                 disabledApps.remove(at: index)
                 NightShiftManager.respond(to: .nightShiftDisableRuleDeactivated)
             }
@@ -134,7 +126,7 @@ enum RuleManager {
                 browserRules.insert(rule)
                 NightShiftManager.respond(to: .nightShiftDisableRuleActivated)
             } else {
-                guard let index = browserRules.index(of: rule) else { return }
+                guard let index = browserRules.firstIndex(of: rule) else { return }
                 
                 if ruleForSubdomain == .enabled {
                     ruleForSubdomain = .none
@@ -195,7 +187,7 @@ enum RuleManager {
                 case .none:
                     return
                 }
-                guard let index = browserRules.index(of: rule) else { return }
+                guard let index = browserRules.firstIndex(of: rule) else { return }
                 browserRules.remove(at: index)
                 
                 switch prevValue {
