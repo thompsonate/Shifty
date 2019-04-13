@@ -219,23 +219,26 @@ enum RuleManager {
     
 
     public static func initialize() {
-        NSWorkspace.shared.notificationCenter.addObserver(forName: NSWorkspace.didActivateApplicationNotification, object: nil, queue: nil) {
+        NSWorkspace.shared.notificationCenter.addObserver(forName: NSWorkspace.didActivateApplicationNotification,
+                                                          object: nil,
+                                                          queue: nil) {
             RuleManager.appSwitched(notification: $0)
         }
         
-        guard let appData = UserDefaults.standard.value(forKey: Keys.disabledApps) as? Data,
-            let browserData = UserDefaults.standard.value(forKey: Keys.browserRules) as? Data else { return }
-        
-        do {
-            disabledApps = try PropertyListDecoder().decode(Set<AppRule>.self, from: appData)
-        } catch let error {
-            logw("Error: \(error.localizedDescription)")
+        if let appData = UserDefaults.standard.value(forKey: Keys.disabledApps) as? Data {
+            do {
+                disabledApps = try PropertyListDecoder().decode(Set<AppRule>.self, from: appData)
+            } catch let error {
+                logw("Error: \(error.localizedDescription)")
+            }
         }
         
-        do {
-            browserRules = try PropertyListDecoder().decode(Set<BrowserRule>.self, from: browserData)
-        } catch let error {
-            logw("Error: \(error.localizedDescription)")
+        if let browserData = UserDefaults.standard.value(forKey: Keys.browserRules) as? Data {
+            do {
+                browserRules = try PropertyListDecoder().decode(Set<BrowserRule>.self, from: browserData)
+            } catch let error {
+                logw("Error: \(error.localizedDescription)")
+            }
         }
     }
     
