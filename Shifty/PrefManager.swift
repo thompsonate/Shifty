@@ -31,7 +31,6 @@ enum Keys {
     static let toggleDarkModeShortcut = "toggleDarkModeShortcut"
     
     static let lastInstalledShiftyVersion = "lastInstalledShiftyVersion"
-    static let dateLastCheckedForUpdates = "dateLastCheckedForUpdates"
     static let hasSetupWindowShown = "hasSetupWindowShown"
 }
 
@@ -58,7 +57,6 @@ class PrefManager {
             Keys.analyticsPermission: NSNumber(value: false),
             Keys.disabledApps: NSData(),
             Keys.browserRules: NSData(),
-            Keys.dateLastCheckedForUpdates: Date.distantPast,
             Keys.hasSetupWindowShown: NSNumber(value: false)
             ] as [String : Any]
 
@@ -89,7 +87,6 @@ class PrefManager {
         userDefaults.removeObject(forKey: Keys.toggleTrueToneShortcut)
         userDefaults.removeObject(forKey: Keys.toggleDarkModeShortcut)
         userDefaults.removeObject(forKey: Keys.analyticsPermission)
-        userDefaults.removeObject(forKey: Keys.dateLastCheckedForUpdates)
         userDefaults.removeObject(forKey: Keys.hasSetupWindowShown)
         
         synchronize()

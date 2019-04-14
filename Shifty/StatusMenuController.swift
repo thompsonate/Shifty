@@ -119,13 +119,6 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     
     
     
-    func menuDidClose(_ menu: NSMenu) {
-        (NSApp.delegate as? AppDelegate)?.checkForUpdatesInBackground()
-    }
-    
-    
-    
-    
     func configureMenuItems() {
         var currentAppName = RuleManager.currentApp?.localizedName ?? ""
         var currentDomain = BrowserManager.currentDomain

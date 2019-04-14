@@ -56,6 +56,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             userDefaults.set(true, forKey: Keys.analyticsPermission)
         }
         
+        // Initialize Sparkle
+        SUUpdater.shared()
+        
         
         let versionObject = Bundle.main.infoDictionary?["CFBundleShortVersionString"]
         userDefaults.set(versionObject as? String ?? "", forKey: Keys.lastInstalledShiftyVersion)
@@ -104,10 +107,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem.isVisible = true
         
         let hasSetupWindowShown = userDefaults.bool(forKey: Keys.hasSetupWindowShown)
-        
-        if hasSetupWindowShown {
-            checkForUpdatesInBackground()
-        }
 
         if (!hasSetupWindowShown && !UIElement.isProcessTrusted()) || ProcessInfo.processInfo.environment["show_setup"] == "true" {
             showSetupWindow()
@@ -166,22 +165,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             logw("Open System Preferences button clicked")
         } else {
             logw("Not now button clicked")
-        }
-    }
-    
-    /// Checks for updates and only notifies user if there is an update available. Limited to once every 24 hours.
-    func checkForUpdatesInBackground() {
-        // For some reason, Sparkle isn't doing this on its own.
-        // Called on app launch and menu close
-        
-        guard let dateLastChecked = UserDefaults.standard.value(forKey: Keys.dateLastCheckedForUpdates) as? Date,
-            let dayBeforeTimeInterval = TimeInterval(exactly: -86400) else { return }
-        
-        let date24HoursAgo = Date(timeIntervalSinceNow: dayBeforeTimeInterval)
-        
-        if dateLastChecked < date24HoursAgo {
-            SUUpdater.shared()?.checkForUpdatesInBackground()
-            UserDefaults.standard.set(Date(), forKey: Keys.dateLastCheckedForUpdates)
         }
     }
     
