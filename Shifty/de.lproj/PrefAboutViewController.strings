@@ -7,9 +7,6 @@
 /* Class = "NSTextFieldCell"; title = "0.0"; ObjectID = "C2N-lz-GkC"; */
 "C2N-lz-GkC.title" = "0.0";
 
-/* Class = "NSButtonCell"; title = "shifty.natethompson.io"; ObjectID = "EFj-8i-FPx"; */
-"EFj-8i-FPx.title" = "shifty.natethompson.io";
-
 /* Class = "NSTextFieldCell"; title = "🐦"; ObjectID = "F8D-y7-OYR"; */
 "F8D-y7-OYR.title" = "🐦";
 
@@ -55,7 +52,7 @@
 /* Class = "NSTextFieldCell"; title = "follow:"; ObjectID = "tYb-0z-KHh"; */
 "tYb-0z-KHh.title" = "Folgen:";
 
-/* Class = "NSTextFieldCell"; title = "© 2017-2018 Nate Thompson"; ObjectID = "yZ7-c6-8tC"; */
+/* Class = "NSTextFieldCell"; title = "© 2017-2019 Nate Thompson"; ObjectID = "yZ7-c6-8tC"; */
 "yZ7-c6-8tC.title" = "© 2017-2019 Nate Thompson";
 
 /* Class = "NSTextFieldCell"; title = "Crowdin"; ObjectID = "yuk-MM-qf1"; */

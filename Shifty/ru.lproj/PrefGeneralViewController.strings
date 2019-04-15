@@ -1,53 +1,53 @@
 /* Class = "NSButtonCell"; title = "True Tone control"; ObjectID = "4SC-bL-79S"; */
-"4SC-bL-79S.title" = "True Tone Kontrolle";
+"4SC-bL-79S.title" = "Контроль True Tone";
 
 /* Class = "NSButtonCell"; title = "Set menu bar icon according to Night Shift"; ObjectID = "4io-9H-HXp"; */
-"4io-9H-HXp.title" = "Symbol in der Menüleiste mit Night Shift ändern";
+"4io-9H-HXp.title" = "Установить значок в боковом меню в соответствии с Night Shift";
 
 /* Class = "NSButtonCell"; title = "Scheduled Dark Mode"; ObjectID = "5s5-Y5-5b9"; */
-"5s5-Y5-5b9.title" = "Planmäßiger Dunkelmodus";
+"5s5-Y5-5b9.title" = "Тёмный режим по расписанию";
 
 /* Class = "NSMenuItem"; title = "Custom"; ObjectID = "Cum-ew-Bk2"; */
-"Cum-ew-Bk2.title" = "Eigene";
+"Cum-ew-Bk2.title" = "Своё";
 
 /* Class = "NSButtonCell"; title = "Quick Toggle"; ObjectID = "Foo-g6-6iX"; */
-"Foo-g6-6iX.title" = "Schnelles Umschalten";
+"Foo-g6-6iX.title" = "Быстрое переключение";
 
 /* Class = "NSButtonCell"; title = "Website Shifting"; ObjectID = "HRq-mZ-FxG"; */
-"HRq-mZ-FxG.title" = "Webseiten-Shift";
+"HRq-mZ-FxG.title" = "Переключение на сайтах";
 
 /* Class = "NSTextFieldCell"; title = "If enabled, click the Menu Bar icon to toggle Night Shift. Right click to open the menu."; ObjectID = "MXt-WM-cMR"; */
-"MXt-WM-cMR.title" = "Wenn aktiviert kann Night Shift bei Klick auf das Menüleisten-Symbol schnell umgeschaltet werden. Ein Rechtsklick auf das Symbol öffnet das Menü.";
+"MXt-WM-cMR.title" = "Если включено, то нажмите на иконку в боковом меню, чтобы включить Night Shift. Нажмите правой кнопкой мыши, чтобы открыть меню.";
 
 /* Class = "NSTextFieldCell"; title = "From:"; ObjectID = "PbT-Ky-Re6"; */
-"PbT-Ky-Re6.title" = "Von:";
+"PbT-Ky-Re6.title" = "С:";
 
 /* Class = "NSTextFieldCell"; title = "If enabled, Night Shift rules for apps and websites will also affect True Tone."; ObjectID = "SKw-93-vs8"; */
-"SKw-93-vs8.title" = "Wenn aktiviert, gelten die Night Shift-Regeln für Apps und Webseiten auch für True Tone.";
+"SKw-93-vs8.title" = "Если включено, то правила Night Shift для приложений и сайтов затронут и True Tone.";
 
 /* Class = "NSMenuItem"; title = "Sunset to Sunrise"; ObjectID = "TwI-wC-vyX"; */
-"TwI-wC-vyX.title" = "Sonnenuntergang bis Sonnenaufgang";
+"TwI-wC-vyX.title" = "От Заката до Рассвета";
 
 /* Class = "NSTextFieldCell"; title = "Schedule:"; ObjectID = "UGI-RO-ff6"; */
-"UGI-RO-ff6.title" = "Zeitplan:";
+"UGI-RO-ff6.title" = "Расписание:";
 
 /* Class = "NSTextFieldCell"; title = "If enabled, macOS Dark Mode will be automatically set based on the Night Shift schedule."; ObjectID = "ZdB-dN-hiO"; */
-"ZdB-dN-hiO.title" = "Wenn aktiviert wird macOS den Dunkelmodus basierend auf dem Night-Shift-Zeitplan automatisch umschalten.";
+"ZdB-dN-hiO.title" = "Если включено, то запуск Тёмного режима macOS будет автоматически совмещен с расписанием Night Shift.";
 
 /* Class = "NSTextFieldCell"; title = "to:"; ObjectID = "aNq-H7-I2m"; */
-"aNq-H7-I2m.title" = "bis:";
+"aNq-H7-I2m.title" = "до:";
 
 /* Class = "NSButtonCell"; title = "Share anonymous crash data and analytics"; ObjectID = "ar0-8I-WmN"; */
-"ar0-8I-WmN.title" = "Anonyme Absturz- und Analysedaten teilen";
+"ar0-8I-WmN.title" = "Делиться данными и аналитикой анонимно";
 
 /* Class = "NSButtonCell"; title = "Launch Shifty at login"; ObjectID = "bxC-lM-Pei"; */
-"bxC-lM-Pei.title" = "Shifty beim Anmelden starten";
+"bxC-lM-Pei.title" = "Запускать Shifty при старте";
 
 /* Class = "NSTextFieldCell"; title = "If enabled, you can set Night Shift to automatically disable when you visit certain websites."; ObjectID = "dvg-gw-YMI"; */
-"dvg-gw-YMI.title" = "Wenn aktiviert, können Sie Night Shift aktivieren, um automatisch zu deaktivieren, wenn Sie bestimmte Websites besuchen.";
+"dvg-gw-YMI.title" = "Если включено, вы можете указать Night Shift автоматически отключаться при посещении определенных сайтов.";
 
 /* Class = "NSButtonCell"; title = "i"; ObjectID = "jjX-rt-8G1"; */
 "jjX-rt-8G1.title" = "i";
 
 /* Class = "NSMenuItem"; title = "Off"; ObjectID = "lkN-xJ-pf3"; */
-"lkN-xJ-pf3.title" = "Aus";
+"lkN-xJ-pf3.title" = "Выключено";

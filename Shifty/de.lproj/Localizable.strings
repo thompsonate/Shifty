@@ -24,6 +24,7 @@
 "menu.disabled_hour" = "Für eine Stunde deaktiviert";
 "menu.disable_custom" = "Für bestimmte Zeit deaktivieren…";
 "menu.disabled_custom" = "Für bestimmte Zeit deaktiviert";
+"menu.allow_browser_automation" = "Webseiten-Shift mit %@ erlauben";
 
 "menu.true_tone_on" = "True Tone aktivieren";
 "menu.true_tone_off" = "True Tone deaktivieren";

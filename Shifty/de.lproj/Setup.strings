@@ -1,6 +1,9 @@
 /* Class = "NSButtonCell"; title = "Skip"; ObjectID = "0wv-vs-acj"; */
 "0wv-vs-acj.title" = "Überspringen";
 
+/* Class = "NSTextFieldCell"; title = "Opera"; ObjectID = "1Y8-bn-63E"; */
+"1Y8-bn-63E.title" = "Opera";
+
 /* Class = "NSTextFieldCell"; title = "Safari"; ObjectID = "4ft-mI-wIN"; */
 "4ft-mI-wIN.title" = "Safari";
 

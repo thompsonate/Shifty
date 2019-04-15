@@ -1,0 +1,75 @@
+/* 
+  Localizable.strings
+  
+
+  Created by Nate Thompson on 11/20/17.
+  
+*/
+
+"general.ok" = "OK";
+"general.cancel" = "Annuler";
+
+"menu.toggle_on" = "Activer Night Shift";
+"menu.toggle_off" = "Désactiver Night Shift";
+"menu.disable_for" = "Désactiver pendant %@";
+"menu.disabled_for" = "Désactivé pendant %@";
+"menu.enable_for" = "Activer pendant %@";
+"menu.enabled_for" = "Activé pendant %@";
+
+"menu.disable_running_app" = "Désactiver pour %@";
+"menu.disabled_running_app" = "Désactivé pour %@";
+"menu.disable_fullscreen" = "Uniquement en mode plein écran";
+
+"menu.disable_hour" = "Désactiver pendant une heure";
+"menu.disabled_hour" = "Désactiver pendant une heure";
+"menu.disable_custom" = "Personnaliser le temps de désactivation...";
+"menu.disabled_custom" = "Désactivation personnalisée";
+"menu.allow_browser_automation" = "Permettre permutation des sites web avec %@";
+
+"menu.true_tone_on" = "Activer True Tone";
+"menu.true_tone_off" = "Désactiver True Tone";
+"menu.true_tone_unavailable" = "True Tone n'est pas disponible";
+"menu.true_tone_disabled_for" = "True Tone est désactivé pour %@";
+
+"menu.preferences" = "Préférences...";
+"menu.quit" = "Quitter Shifty";
+
+"description.enabled" = "Activé";
+"description.enabled_sunrise" = "Activé jusqu’au lever du soleil";
+"description.enabled_time" = "Activer jusque %@";
+"description.disabled" = "Désactivé";
+"description.disabled_hours_minutes" = "Désactivé pendant %02d:%02d";
+
+"prefs.title" = "Préférences";
+"prefs.general" = "Général";
+"prefs.shortcuts" = "Raccourcis";
+"prefs.about" = "À propos";
+
+"alert.version_message" = "Cette version de macOS ne supporte pas Night Shift";
+"alert.version_informative" = "Mettez votre Mac à jour vers la version 10.12.4 ou supérieure pour utiliser Shifty.";
+
+"alert.hardware_message" = "Votre Mac ne supporte pas Night Shift";
+"alert.hardware_informative" = "Un Mac plus récent est requis pour utiliser Shifty.";
+
+"alert.accessibility_disabled_message" = "Les autorisations d’accessibilité ont été désactivées";
+"alert.accessibility_disabled_informative" = "Les autorisations d’accessibilité doivent être données pour activer la permutation des sites web. Veuillez autoriser Shifty dans les Préférences Système, onglet « Sécurité & Confidentialité ».";
+
+
+"alert.open_preferences" = "Ouvrir les Préférences Système";
+"alert.not_now" = "Plus tard";
+"alert.close" = "Fermer";
+
+
+
+"analytics.includes_list_title" = "Quelles données recueillons-nous ?";
+"analytics.includes_list_1" = "Données sur les causes d'un crash";
+"analytics.includes_list_2" = "Données sur l'utilisation de diverses fonctionnalités de Shifty";
+"analytics.includes_list_3" = "Informations utiles sur ce qui ne provoque pas le crash de l'app";
+
+"analytics.doesnt_include_list_title" = "Quelles données ne recueillons-nous pas ?";
+"analytics.doesnt_include_list_1" = "Données sensibles auxquelles Shifty a la permission d'accéder (par ex. les adresses web utilisées pour la permutation des sites web)";
+"analytics.doesnt_include_list_2" = "Identifiants de matériel ou données permettant de vous identifier";
+
+"analytics.data_usage_list_title" = "Qu'arrive-t-il aux données ?";
+"analytics.data_usage_list_1" = "Aucune de ces données n'est vendue (et personne ne voudrait les acheter de toute façon)";
+"analytics.data_usage_list_2" = "Aide à résoudre les problème et à améliorer Shifty";

@@ -1,0 +1,29 @@
+/* Class = "NSTextFieldCell"; title = "Disable for subdomain:"; ObjectID = "Fd8-nI-wLG"; */
+"Fd8-nI-wLG.title" = "Выключить для субдоменов:";
+
+/* Class = "NSTextFieldCell"; title = "Increase color temp:"; ObjectID = "FfB-x2-5QK"; */
+"FfB-x2-5QK.title" = "Повысить температуру цвета:";
+
+/* Class = "NSTextFieldCell"; title = "Toggle Dark Mode:"; ObjectID = "G2J-38-dRB"; */
+"G2J-38-dRB.title" = "Переключить Тёмный режим:";
+
+/* Class = "NSTextFieldCell"; title = "Toggle Night Shift:"; ObjectID = "IdZ-nb-iqg"; */
+"IdZ-nb-iqg.title" = "Переключить Night Shift:";
+
+/* Class = "NSTextFieldCell"; title = "Disable for an hour:"; ObjectID = "Kfd-ZQ-sGn"; */
+"Kfd-ZQ-sGn.title" = "Выключить на час:";
+
+/* Class = "NSTextFieldCell"; title = "Disable for current app:"; ObjectID = "Wqh-KU-7V9"; */
+"Wqh-KU-7V9.title" = "Выключить для данного приложения:";
+
+/* Class = "NSTextFieldCell"; title = "Toggle True Tone:"; ObjectID = "m9D-jW-JGk"; */
+"m9D-jW-JGk.title" = "Переключить True Tone:";
+
+/* Class = "NSTextFieldCell"; title = "Disable for domain:"; ObjectID = "mgw-oE-8Cc"; */
+"mgw-oE-8Cc.title" = "Выключить для домена:";
+
+/* Class = "NSTextFieldCell"; title = "Disable for custom time:"; ObjectID = "oMJ-PL-YWn"; */
+"oMJ-PL-YWn.title" = "Выключить на своё время:";
+
+/* Class = "NSTextFieldCell"; title = "Decrease color temp:"; ObjectID = "qba-Ra-lrp"; */
+"qba-Ra-lrp.title" = "Понизить температуру цвета:";

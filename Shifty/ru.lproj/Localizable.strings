@@ -1,0 +1,75 @@
+/* 
+  Localizable.strings
+  
+
+  Created by Nate Thompson on 11/20/17.
+  
+*/
+
+"general.ok" = "ОК";
+"general.cancel" = "Отмена";
+
+"menu.toggle_on" = "Включить Night Shift";
+"menu.toggle_off" = "Выключить Night Shift";
+"menu.disable_for" = "Выключить для %@";
+"menu.disabled_for" = "Выключено для %@";
+"menu.enable_for" = "Включить для %@";
+"menu.enabled_for" = "Включено для %@";
+
+"menu.disable_running_app" = "Выключить, когда %@ работает";
+"menu.disabled_running_app" = "Выключено, когда %@ работает";
+"menu.disable_fullscreen" = "Только на полном экране";
+
+"menu.disable_hour" = "Выключить на час";
+"menu.disabled_hour" = "Выключено на час";
+"menu.disable_custom" = "Выключить на своё время...";
+"menu.disabled_custom" = "Выключено на своё время";
+"menu.allow_browser_automation" = "Разрешить переключение на сайте %@";
+
+"menu.true_tone_on" = "Включить True Tone";
+"menu.true_tone_off" = "Выключить True Tone";
+"menu.true_tone_unavailable" = "True Tone не доступен";
+"menu.true_tone_disabled_for" = "True Tone выключен для %@";
+
+"menu.preferences" = "Персональные настройки...";
+"menu.quit" = "Выключить Shifty";
+
+"description.enabled" = "Включено";
+"description.enabled_sunrise" = "Включено до восхода солнца";
+"description.enabled_time" = "Включено до %@";
+"description.disabled" = "Выключено";
+"description.disabled_hours_minutes" = "Выключено на %02d:%02d";
+
+"prefs.title" = "Персональные настройки";
+"prefs.general" = "Главное";
+"prefs.shortcuts" = "Сокращения";
+"prefs.about" = "О программе";
+
+"alert.version_message" = "Эта версия macOS не поддерживает Night Shift";
+"alert.version_informative" = "Обновите свой Мак до версии 10.12.4 или выше для пользования Shifty.";
+
+"alert.hardware_message" = "Ваш Мак не поддерживает Night Shift";
+"alert.hardware_informative" = "Для использования Shifty нужен Мак новее.";
+
+"alert.accessibility_disabled_message" = "Универсальный доступ для Shifty не предоставлен";
+"alert.accessibility_disabled_informative" = "Универсальный доступ должен быть предоставлен для использования переключения на сайтах. Обеспечьте Shifty доступ в настройках Защиты и безопасности, расположенных в Системных настройках.";
+
+
+"alert.open_preferences" = "Откройте Системные настройки";
+"alert.not_now" = "Не сейчас";
+"alert.close" = "Закрыть";
+
+
+
+"analytics.includes_list_title" = "Какие данные собираются?";
+"analytics.includes_list_1" = "Информация о том, почему приложение сломалось";
+"analytics.includes_list_2" = "Данные об использовании разных функций в Shifty";
+"analytics.includes_list_3" = "Полезная информация о случаях, которые не приводят к поломке приложения";
+
+"analytics.doesnt_include_list_title" = "Какие данные не собираются?";
+"analytics.doesnt_include_list_1" = "Деликатные данные, к которым Shifty получает доступ (например сайты, для которых Вы переключаете режим)";
+"analytics.doesnt_include_list_2" = "Любые серийные номера или персональная информация";
+
+"analytics.data_usage_list_title" = "Что происходит с данными?";
+"analytics.data_usage_list_1" = "Ничто из этих данных не будет передано третьей стороне (да никому они и не интересны в любом случае)";
+"analytics.data_usage_list_2" = "Помогает решать проблемы и делать Shifty лучше";

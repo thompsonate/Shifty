@@ -1,0 +1,5 @@
+/* Class = "NSTextFieldCell"; title = "Allow accessibility control"; ObjectID = "6h1-n5-3Va"; */
+"6h1-n5-3Va.title" = "Contrôle d’Accessibilité";
+
+/* Class = "NSTextFieldCell"; title = "Website Shifting requires accessibility permissions. Grant access to Shifty in Security & Privacy preferences, located in System Preferences."; ObjectID = "R57-iU-qAv"; */
+"R57-iU-qAv.title" = "La permutation des sites web nécessite les autorisations d’accessibilité. Activez-les pour Shifty dans vos Préférences Système, onglet « Sécurité & Confidentialité ».";

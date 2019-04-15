@@ -1,0 +1,29 @@
+/* Class = "NSTextFieldCell"; title = "Disable for subdomain:"; ObjectID = "Fd8-nI-wLG"; */
+"Fd8-nI-wLG.title" = "Désactiver pour le sous-domaine :";
+
+/* Class = "NSTextFieldCell"; title = "Increase color temp:"; ObjectID = "FfB-x2-5QK"; */
+"FfB-x2-5QK.title" = "Augmenter la chaleur :";
+
+/* Class = "NSTextFieldCell"; title = "Toggle Dark Mode:"; ObjectID = "G2J-38-dRB"; */
+"G2J-38-dRB.title" = "Activer/désactiver le mode sombre :";
+
+/* Class = "NSTextFieldCell"; title = "Toggle Night Shift:"; ObjectID = "IdZ-nb-iqg"; */
+"IdZ-nb-iqg.title" = "Activer/désactiver Night Shift :";
+
+/* Class = "NSTextFieldCell"; title = "Disable for an hour:"; ObjectID = "Kfd-ZQ-sGn"; */
+"Kfd-ZQ-sGn.title" = "Désactiver pendant une heure :";
+
+/* Class = "NSTextFieldCell"; title = "Disable for current app:"; ObjectID = "Wqh-KU-7V9"; */
+"Wqh-KU-7V9.title" = "Désactiver pour l’app en cours :";
+
+/* Class = "NSTextFieldCell"; title = "Toggle True Tone:"; ObjectID = "m9D-jW-JGk"; */
+"m9D-jW-JGk.title" = "Activer/désactiver True Tone:";
+
+/* Class = "NSTextFieldCell"; title = "Disable for domain:"; ObjectID = "mgw-oE-8Cc"; */
+"mgw-oE-8Cc.title" = "Désactiver pour le domaine :";
+
+/* Class = "NSTextFieldCell"; title = "Disable for custom time:"; ObjectID = "oMJ-PL-YWn"; */
+"oMJ-PL-YWn.title" = "Personnaliser la désactivation :";
+
+/* Class = "NSTextFieldCell"; title = "Decrease color temp:"; ObjectID = "qba-Ra-lrp"; */
+"qba-Ra-lrp.title" = "Diminuer la chaleur :";

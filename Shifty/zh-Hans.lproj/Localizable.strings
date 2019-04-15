@@ -24,6 +24,7 @@
 "menu.disabled_hour" = "已关闭一个小时";
 "menu.disable_custom" = "在自定义时间段内关闭“夜览”模式...";
 "menu.disabled_custom" = "在自定义时间段内关闭“夜览”模式";
+"menu.allow_browser_automation" = "允许调节在%@中访问网站的色温";
 
 "menu.true_tone_on" = "开启“原彩显示”";
 "menu.true_tone_off" = "关闭“原彩显示”";

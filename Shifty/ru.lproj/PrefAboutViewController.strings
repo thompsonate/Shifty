@@ -2,7 +2,7 @@
 "2XF-Nq-pjN.title" = "💬";
 
 /* Class = "NSButtonCell"; title = "Credits..."; ObjectID = "8Qq-tv-01n"; */
-"8Qq-tv-01n.title" = "致谢名单…";
+"8Qq-tv-01n.title" = "Сведения об авторах...";
 
 /* Class = "NSTextFieldCell"; title = "0.0"; ObjectID = "C2N-lz-GkC"; */
 "C2N-lz-GkC.title" = "0.0";
@@ -20,40 +20,40 @@
 "L2z-Z9-XAa.title" = "📬";
 
 /* Class = "NSButtonCell"; title = "Check for Updates..."; ObjectID = "LHX-7G-HlA"; */
-"LHX-7G-HlA.title" = "检查更新...";
+"LHX-7G-HlA.title" = "Проверить наличие обновлений...";
 
 /* Class = "NSTextFieldCell"; title = "💸"; ObjectID = "PPr-9L-fc3"; */
 "PPr-9L-fc3.title" = "💸";
 
 /* Class = "NSTextFieldCell"; title = "contact:"; ObjectID = "Rp7-VG-IbF"; */
-"Rp7-VG-IbF.title" = "邮箱:";
+"Rp7-VG-IbF.title" = "связаться:";
 
 /* Class = "NSTextFieldCell"; title = "feedback@natethompson.io"; ObjectID = "Thi-Pp-iy3"; */
 "Thi-Pp-iy3.title" = "feedback@natethompson.io";
 
 /* Class = "NSTextFieldCell"; title = "Shifty"; ObjectID = "bnR-vg-kNb"; */
-"bnR-vg-kNb.title" = "Shifty 夜览管家";
+"bnR-vg-kNb.title" = "Shifty";
 
 /* Class = "NSTextFieldCell"; title = "translate:"; ObjectID = "ep8-vk-jac"; */
-"ep8-vk-jac.title" = "翻译:";
+"ep8-vk-jac.title" = "перевести:";
 
 /* Class = "NSTextFieldCell"; title = "donate:"; ObjectID = "fUX-vR-OmZ"; */
-"fUX-vR-OmZ.title" = "捐赠:";
+"fUX-vR-OmZ.title" = "поддержать:";
 
 /* Class = "NSTextFieldCell"; title = "🌍"; ObjectID = "lQn-mG-tDV"; */
 "lQn-mG-tDV.title" = "🌍";
 
 /* Class = "NSTextFieldCell"; title = "website:"; ObjectID = "pAL-H2-Wch"; */
-"pAL-H2-Wch.title" = "网站:";
+"pAL-H2-Wch.title" = "сайт:";
 
 /* Class = "NSTextFieldCell"; title = "PayPal"; ObjectID = "qD1-X6-taU"; */
 "qD1-X6-taU.title" = "PayPal";
 
 /* Class = "NSTextFieldCell"; title = "follow:"; ObjectID = "tYb-0z-KHh"; */
-"tYb-0z-KHh.title" = "关注:";
+"tYb-0z-KHh.title" = "подписаться:";
 
 /* Class = "NSTextFieldCell"; title = "© 2017-2019 Nate Thompson"; ObjectID = "yZ7-c6-8tC"; */
-"yZ7-c6-8tC.title" = "© 2017-2019 Nate Thompson 版权所有";
+"yZ7-c6-8tC.title" = "© 2017-2019 Нэйт Томпсон";
 
 /* Class = "NSTextFieldCell"; title = "Crowdin"; ObjectID = "yuk-MM-qf1"; */
 "yuk-MM-qf1.title" = "Crowdin";

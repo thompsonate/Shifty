@@ -1,0 +1,11 @@
+/* 
+  InfoPlist.strings
+  
+
+  Created by Nate Thompson on 2017/11/22.
+  
+*/
+
+"CFBundleDisplayName" = "Shifty";
+"NSHumanReadableCopyright" = "© 2017-2019 Nate Thompson. Licence GPLv3.";
+"NSAppleEventsUsageDescription" = "Shifty doit avoir accès à votre adresse web actuelle pour vous permettre de désactiver Night Shift pour les sites que vous choisissez.";
