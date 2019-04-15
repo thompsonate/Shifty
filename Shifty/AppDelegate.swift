@@ -86,6 +86,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         //Show alert if accessibility permissions have been revoked while app is not running
         if UserDefaults.standard.bool(forKey: Keys.isWebsiteControlEnabled) && !UIElement.isProcessTrusted() {
+            Event.accessibilityRevokedAlertShown.record()
             logw("Accessibility permissions revoked while app was not running")
             showAccessibilityDeniedAlert()
             UserDefaults.standard.set(false, forKey: Keys.isWebsiteControlEnabled)
