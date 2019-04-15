@@ -217,7 +217,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             statusItem.menu = nil
             if let button = statusItem.button {
                 button.action = #selector(statusBarButtonClicked)
-                button.sendAction(on: [.leftMouseUp, .rightMouseUp])
+                button.sendAction(on: [.leftMouseUp, .leftMouseDown, .rightMouseUp, .rightMouseDown])
             }
         } else {
             statusItem.menu = statusMenu
@@ -226,12 +226,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @objc func statusBarButtonClicked(sender: NSStatusBarButton) {
         let event = NSApp.currentEvent!
-
-        if event.type == NSEvent.EventType.rightMouseUp || event.modifierFlags.contains(.control) {
+        
+        if event.type == .rightMouseDown
+            || event.type == .rightMouseUp
+            || event.modifierFlags.contains(.control)
+        {
             statusItem.menu = statusMenu
-            statusItem.popUpMenu(statusMenu)
+            statusItem.button?.performClick(self)
             statusItem.menu = nil
-        } else {
+        } else if event.type == .leftMouseUp {
             statusItemClicked?()
         }
     }
