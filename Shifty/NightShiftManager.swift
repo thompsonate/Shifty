@@ -127,6 +127,10 @@ enum NightShiftManager {
             client.setStrength(newValue, commit: true)
         }
     }
+    
+    static func previewBlueLightReductionAmount(_ value: Float) {
+        client.setStrength(value, commit: false)
+    }
 
     static var isNightShiftEnabled: Bool {
         get {

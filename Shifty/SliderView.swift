@@ -14,13 +14,16 @@ class SliderView: NSView {
     @IBOutlet weak var shiftSlider: NSSlider!
 
     @IBAction func shiftSliderMoved(_ sender: NSSlider) {
-        NightShiftManager.blueLightReductionAmount = sender.floatValue / 100
-        
         let event = NSApplication.shared.currentEvent
+        
         if event?.type == .leftMouseUp {
+            NightShiftManager.blueLightReductionAmount = sender.floatValue / 100
+            
             sender.superview?.enclosingMenuItem?.menu?.cancelTracking()
             Event.sliderMoved(value: sender.floatValue).record()
             logw("Slider set to \(sender.floatValue)")
+        } else {
+            NightShiftManager.previewBlueLightReductionAmount(sender.floatValue / 100)
         }
     }
 
