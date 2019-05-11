@@ -27,15 +27,63 @@ enum SubdomainRuleType: String, Codable {
 
 
 struct AppRule: CustomStringConvertible, Hashable, Codable {
-    var bundleIdentifier: BundleIdentifier
+    enum Identifier : CustomStringConvertible, Codable, Hashable {
+        init(bundle: BundleIdentifier) {
+            self = .Bundle(bundle)
+        }
+        
+        init(executableURL: URL) {
+            self = .ExecutableURL(executableURL)
+        }
+        
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            do {
+                let bundle =  try container.decode(BundleIdentifier.self, forKey: .bundle)
+                self = .Bundle(bundle)
+            } catch {
+                let executableURL =  try container.decode(URL.self, forKey: .executableURL)
+                self = .ExecutableURL(executableURL)
+            }
+        }
+        
+        func encode(to encoder: Encoder) throws {
+            var container = encoder.container(keyedBy: CodingKeys.self)
+            switch self {
+            case .Bundle(let value):
+                try container.encode(value, forKey: .bundle)
+            case .ExecutableURL(let value):
+                try container.encode(value, forKey: .executableURL)
+            }
+        }
+        
+        enum CodingKeys: CodingKey {
+            case bundle
+            case executableURL
+        }
+        
+        case Bundle(BundleIdentifier)
+        case ExecutableURL(URL)
+        
+        var description: String {
+            switch self {
+            case .Bundle(let value):
+                return value;
+            case .ExecutableURL(let value):
+                return value.absoluteString;
+            }
+        }
+    }
+    
+    var identifier: Identifier
     var fullScreenOnly: Bool
     
     var description: String {
-        return "Rule for \(bundleIdentifier); full screen only: \(fullScreenOnly)"
+        return "Rule for \(identifier); full screen only: \(fullScreenOnly)"
     }
     
     static func == (lhs: AppRule, rhs: AppRule) -> Bool {
-        return lhs.bundleIdentifier == rhs.bundleIdentifier
+        return lhs.identifier == rhs.identifier
             && lhs.fullScreenOnly == rhs.fullScreenOnly
     }
 }
@@ -86,19 +134,32 @@ enum RuleManager {
     
     static var disabledForApp: Bool {
         get {
-            guard let bundleIdentifier = currentApp?.bundleIdentifier else {
+            if let bundleIdentifier : BundleIdentifier = currentApp?.bundleIdentifier {
+                return disabledApps.filter {
+                    $0.identifier == AppRule.Identifier(bundle: bundleIdentifier) }.count > 0
+            } else {
                 logw("Could not obtain bundle identifier of current application")
-                return false
+                
+                guard let executableURL = currentApp?.executableURL else {
+                    logw("Could not obtain executable url of current application")
+                    return false
+                }
+                return disabledApps.filter {
+                        $0.identifier == AppRule.Identifier(executableURL: executableURL) }.count > 0
             }
-            return disabledApps.filter {
-                $0.bundleIdentifier == bundleIdentifier }.count > 0
         }
         set(newValue) {
-            guard let bundleIdentifier = currentApp?.bundleIdentifier else {
-                logw("Could not obtain bundle identifier of current application")
-                return
+            var rule : AppRule
+            if let bundleIdentifier = currentApp?.bundleIdentifier {
+                rule = AppRule(identifier: AppRule.Identifier(bundle: bundleIdentifier), fullScreenOnly: false)
+            } else {
+                guard let executableURL = currentApp?.executableURL else {
+                    logw("Could not obtain executable url of current application")
+                    return
+                }
+                rule = AppRule(identifier: AppRule.Identifier(executableURL: executableURL), fullScreenOnly: false)
             }
-            let rule = AppRule(bundleIdentifier: bundleIdentifier, fullScreenOnly: false)
+
             if newValue {
                 disabledApps.insert(rule)
                 NightShiftManager.respond(to: .nightShiftDisableRuleActivated)
