@@ -178,7 +178,15 @@ open class UIElement {
             throw error
         }
 
-        return (unpackAXValue(value!) as! T)
+        guard let unwrapped = value else {
+            fatalError("attribute \(attribute) of \(self) was nil")
+        }
+        
+        let unpacked = unpackAXValue(unwrapped)
+        guard let casted = unpacked as? T else {
+            fatalError("attribute \(attribute) of \(self) was unexpected type: \(String(describing: value))")
+        }
+        return casted
     }
 
     /// Sets the value of `attribute` to `value`.
