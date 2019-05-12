@@ -31,8 +31,8 @@
 "menu.true_tone_unavailable" = "True Tone не доступен";
 "menu.true_tone_disabled_for" = "True Tone выключен для %@";
 
-"menu.preferences" = "Персональные настройки...";
-"menu.quit" = "Выключить Shifty";
+"menu.preferences" = "Настройки...";
+"menu.quit" = "Завершить Shifty";
 
 "description.enabled" = "Включено";
 "description.enabled_sunrise" = "Включено до восхода солнца";
@@ -40,7 +40,7 @@
 "description.disabled" = "Выключено";
 "description.disabled_hours_minutes" = "Выключено на %02d:%02d";
 
-"prefs.title" = "Персональные настройки";
+"prefs.title" = "Настройки";
 "prefs.general" = "Главное";
 "prefs.shortcuts" = "Сокращения";
 "prefs.about" = "О программе";

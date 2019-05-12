@@ -26,7 +26,7 @@
 "TnF-o1-sgY.title" = "Далее";
 
 /* Class = "NSTextFieldCell"; title = "Shifty is now running in the menu bar."; ObjectID = "WcY-uu-0Eu"; */
-"WcY-uu-0Eu.title" = "Shifty теперь работает в боковом меню.";
+"WcY-uu-0Eu.title" = "Shifty теперь работает в строку меню.";
 
 /* Class = "NSTextFieldCell"; title = "Website Shifting supports:"; ObjectID = "bNv-dv-CBp"; */
 "bNv-dv-CBp.title" = "Переключение на сайтах поддерживается:";

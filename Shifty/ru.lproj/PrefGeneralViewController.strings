@@ -17,7 +17,7 @@
 "HRq-mZ-FxG.title" = "Переключение на сайтах";
 
 /* Class = "NSTextFieldCell"; title = "If enabled, click the Menu Bar icon to toggle Night Shift. Right click to open the menu."; ObjectID = "MXt-WM-cMR"; */
-"MXt-WM-cMR.title" = "Если включено, то нажмите на иконку в боковом меню, чтобы включить Night Shift. Нажмите правой кнопкой мыши, чтобы открыть меню.";
+"MXt-WM-cMR.title" = "Если включено, то нажмите на иконку в строку меню, чтобы включить Night Shift. Нажмите правой кнопкой мыши, чтобы открыть меню.";
 
 /* Class = "NSTextFieldCell"; title = "From:"; ObjectID = "PbT-Ky-Re6"; */
 "PbT-Ky-Re6.title" = "С:";
