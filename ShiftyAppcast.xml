@@ -5,6 +5,25 @@
         <description>Most recent changes with links to updates.</description>
         <language>en</language>
         <item>
+            <title>Version 1.1</title>
+            <description><![CDATA[
+                <ul style="list-style-type:disc">
+                <li>Adds French and Russian language support</li>
+                <li>Adds support for Website Shifting with Opera</li>
+                <li>Changing the color temperature with the slider is now more responsive</li>
+                <li>Adds support for command-dragging the menu item out of the menu to quit</li>
+                <li>If automation permissions for a browser are not allowed, a menu item will be shown communicating this</li>
+                <li>Fixes an issue that sometimes caused Shifty to not save your disable settings correctly</li>
+                <li>Fixes an issue that caused automatic dark mode to not be set on launch</li>
+                <li>Fixes an issue that caused update prompts to not show</li>
+                </ul>
+            ]]>
+            </description>
+            <pubDate>Sun, 12 May 2019 21:30:00 -0800</pubDate>
+            <enclosure url="https://github.com/thompsonate/Shifty/releases/download/v1.1/Shifty-1.1.zip" sparkle:version="61" sparkle:shortVersionString="1.1" length="1623481" type="application/octet-stream" sparkle:dsaSignature="MCwCFHFk+43Yfg7zP5nA22X9Nv8qeVgvAhRzMq4de324yfDqjCu/DvenB/bt9w==" />
+            <sparkle:minimumSystemVersion>10.12.4</sparkle:minimumSystemVersion>
+        </item>
+        <item>
             <title>Version 1.0.2</title>
             <description><![CDATA[
                 <ul style="list-style-type:disc">
