@@ -44,7 +44,7 @@
 "bxC-lM-Pei.title" = "Shifty beim Anmelden starten";
 
 /* Class = "NSTextFieldCell"; title = "If enabled, you can set Night Shift to automatically disable when you visit certain websites."; ObjectID = "dvg-gw-YMI"; */
-"dvg-gw-YMI.title" = "Wenn aktiviert, können Sie Night Shift aktivieren, um automatisch zu deaktivieren, wenn Sie bestimmte Websites besuchen.";
+"dvg-gw-YMI.title" = "Wenn aktiviert wird Night Shift bei voreingestellten Internetseiten automatisch deaktiviert.";
 
 /* Class = "NSButtonCell"; title = "i"; ObjectID = "jjX-rt-8G1"; */
 "jjX-rt-8G1.title" = "i";

@@ -8,7 +8,7 @@
 "5s5-Y5-5b9.title" = "Тёмный режим по расписанию";
 
 /* Class = "NSMenuItem"; title = "Custom"; ObjectID = "Cum-ew-Bk2"; */
-"Cum-ew-Bk2.title" = "Своё";
+"Cum-ew-Bk2.title" = "Пользовательское";
 
 /* Class = "NSButtonCell"; title = "Quick Toggle"; ObjectID = "Foo-g6-6iX"; */
 "Foo-g6-6iX.title" = "Быстрое переключение";
@@ -26,7 +26,7 @@
 "SKw-93-vs8.title" = "Если включено, то правила Night Shift для приложений и сайтов затронут и True Tone.";
 
 /* Class = "NSMenuItem"; title = "Sunset to Sunrise"; ObjectID = "TwI-wC-vyX"; */
-"TwI-wC-vyX.title" = "От Заката до Рассвета";
+"TwI-wC-vyX.title" = "От эаката до рассвета";
 
 /* Class = "NSTextFieldCell"; title = "Schedule:"; ObjectID = "UGI-RO-ff6"; */
 "UGI-RO-ff6.title" = "Расписание:";
