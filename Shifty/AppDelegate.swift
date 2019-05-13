@@ -48,7 +48,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         if userDefaults.bool(forKey: Keys.analyticsPermission) {
             #if !DEBUG
-            MSAppCenter.start("d5dd5002-16ad-4ba5-be9d-7297b85399d7", withServices:[MSAnalytics.self, MSCrashes.self])
+            MSAppCenter.start("a0d14d8b-fd4d-4512-8901-d5cfe5249548", withServices:[MSAnalytics.self, MSCrashes.self])
             #endif
         } else if userDefaults.bool(forKey: Keys.hasSetupWindowShown)
             && userDefaults.value(forKey: Keys.lastInstalledShiftyVersion) == nil {
