@@ -242,7 +242,7 @@ enum BrowserManager {
             logw("Error: Could not get url, app already closed")
             return nil
         }
-        guard let window = (browser.windows?() as? [Window])?.first else {
+        guard let windows = browser.windows?(), windows.count > 0, let window = windows[0] as? Window else {
             logw("Error: Could not get url, there are no windows")
             return nil
         }
