@@ -5,6 +5,18 @@
         <description>Most recent changes with links to updates.</description>
         <language>en</language>
         <item>
+            <title>Version 1.1.1</title>
+            <description><![CDATA[
+                <ul style="list-style-type:disc">
+                <li>Fixes an issue that may cause Shifty to crash after waking from sleep</li>
+                </ul>
+            ]]>
+            </description>
+            <pubDate>Tue, 21 May 2019 21:50:00 -0800</pubDate>
+            <enclosure url="https://github.com/thompsonate/Shifty/releases/download/1.1.1/Shifty-1.1.1.zip" sparkle:version="62" sparkle:shortVersionString="1.1.1" length="1623481" type="application/octet-stream" sparkle:dsaSignature="MCwCFA6VHiF2nSvKifxmVdzeR/kgt+ymAhQhXIp8XsG9lTPvQE9b5ZuMoRqUfA==" />
+            <sparkle:minimumSystemVersion>10.12.4</sparkle:minimumSystemVersion>
+        </item>
+        <item>
             <title>Version 1.1</title>
             <description><![CDATA[
                 <ul style="list-style-type:disc">
