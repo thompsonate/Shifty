@@ -28,6 +28,7 @@ typedef struct {
     int mode;
     Schedule schedule;
     unsigned long long disableFlags;
+    BOOL available;
 } Status;
 
 - (BOOL)setStrength:(float)strength commit:(BOOL)commit;
