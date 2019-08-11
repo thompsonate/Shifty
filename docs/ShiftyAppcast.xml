@@ -13,7 +13,7 @@
             ]]>
             </description>
             <pubDate>Sun, 11 Aug 2019 12:30:00 -0400</pubDate>
-            <enclosure url="https://github.com/thompsonate/Shifty/releases/download/1.1.2/Shifty-1.1.2.zip" sparkle:version="63" sparkle:shortVersionString="1.1.2" length="1623481" type="application/octet-stream" sparkle:dsaSignature="MC4CFQCjNjT0/Aeu3fPeTlg2MVL6TgB+awIVAMXUin6ui6ewssERYxvBT7pB3gcU" />
+            <enclosure url="https://github.com/thompsonate/Shifty/releases/download/v1.1.2/Shifty-1.1.2.zip" sparkle:version="63" sparkle:shortVersionString="1.1.2" length="1623481" type="application/octet-stream" sparkle:dsaSignature="MC4CFQCjNjT0/Aeu3fPeTlg2MVL6TgB+awIVAMXUin6ui6ewssERYxvBT7pB3gcU" />
             <sparkle:minimumSystemVersion>10.12.4</sparkle:minimumSystemVersion>
         </item>
         <item>
