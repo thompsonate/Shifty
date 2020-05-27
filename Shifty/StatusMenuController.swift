@@ -82,6 +82,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         descriptionMenuItem.isEnabled = false
         sliderMenuItem.view = sliderView
 
+        toggleDarkModeMenuItem.title = NSLocalizedString("menu.toggle_dark_mode", comment: "Toggle Dark Mode")
         disableHourMenuItem.title = NSLocalizedString("menu.disable_hour", comment: "Disable for an hour")
         disableCustomMenuItem.title = NSLocalizedString("menu.disable_custom", comment: "Disable for custom time...")
         preferencesMenuItem.title = NSLocalizedString("menu.preferences", comment: "Preferences...")
