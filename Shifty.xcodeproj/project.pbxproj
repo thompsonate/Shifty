@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		41A3780894178C5C601604C7 /* Pods_ShiftyHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 060A0A5282083B67EEC6C05D /* Pods_ShiftyHelper.framework */; };
-		43041CB4207DB3440076E75C /* SkyLight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43041CB3207DB3440076E75C /* SkyLight.framework */; };
 		43041CC5207DB9FF0076E75C /* CoreBrightness.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43041CC4207DB9FF0076E75C /* CoreBrightness.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		431B7B5D2167C8740039D085 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43A934002164019300AFB708 /* Security.framework */; };
 		433AD3011F2CED1F0003FBCD /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 433AD3001F2CED1F0003FBCD /* dsa_pub.pem */; };
@@ -39,6 +38,7 @@
 		43C7A4881F19F2CB00A697C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C7A4871F19F2CB00A697C0 /* AppDelegate.swift */; };
 		43C7A48C1F19F2CB00A697C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43C7A48B1F19F2CB00A697C0 /* Assets.xcassets */; };
 		43C7A4941F19FA9600A697C0 /* ShiftyHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 43C7A4851F19F2CB00A697C0 /* ShiftyHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		43CA44E126DB292F00537DED /* SkyLight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43CA44E026DB292F00537DED /* SkyLight.framework */; };
 		43CE525A20379A16002EBF61 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CE525920379A16002EBF61 /* Event.swift */; };
 		43CE525C2037B720002EBF61 /* ScriptingBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CE525B2037B720002EBF61 /* ScriptingBridge.swift */; };
 		43D5C2161FC2CA1300AF88E0 /* PrefGeneralViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43D5C2181FC2CA1300AF88E0 /* PrefGeneralViewController.xib */; };
@@ -149,6 +149,7 @@
 		43C7A48B1F19F2CB00A697C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		43C7A4901F19F2CB00A697C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43C7A4951F19FE1A00A697C0 /* ShiftyHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShiftyHelper.entitlements; sourceTree = "<group>"; };
+		43CA44E026DB292F00537DED /* SkyLight.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SkyLight.framework; path = ../../../../System/Library/PrivateFrameworks/SkyLight.framework; sourceTree = "<group>"; };
 		43CC9E431EBAB19300983528 /* Shifty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shifty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43CE525920379A16002EBF61 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = Shifty/Event.swift; sourceTree = "<group>"; };
 		43CE525B2037B720002EBF61 /* ScriptingBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScriptingBridge.swift; path = Shifty/ScriptingBridge.swift; sourceTree = "<group>"; };
@@ -197,8 +198,8 @@
 				431B7B5D2167C8740039D085 /* Security.framework in Frameworks */,
 				43C0838C1F19AEF900E73B84 /* ServiceManagement.framework in Frameworks */,
 				43041CC5207DB9FF0076E75C /* CoreBrightness.framework in Frameworks */,
-				43041CB4207DB3440076E75C /* SkyLight.framework in Frameworks */,
 				B2FB1D17C62BCFBF11038F46 /* Pods_Shifty.framework in Frameworks */,
+				43CA44E126DB292F00537DED /* SkyLight.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +220,7 @@
 		433EE8501EBD8ECA007EA870 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				43CA44E026DB292F00537DED /* SkyLight.framework */,
 				4353E56322136937008A26C4 /* CoreServices.framework */,
 				43A934002164019300AFB708 /* Security.framework */,
 				434DE5C621614969002AB147 /* PublicSuffix.framework */,
@@ -402,7 +404,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1300;
 				TargetAttributes = {
 					43C7A4841F19F2CB00A697C0 = {
 						CreatedOnToolsVersion = 8.3.2;
@@ -515,7 +517,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Shifty/Pods-Shifty-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Shifty/Pods-Shifty-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AXSwift/AXSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/LetsMove/LetsMove.framework",
 				"${BUILT_PRODUCTS_DIR}/MASPreferences+Shifty/MASPreferences_Shifty.framework",
@@ -536,7 +538,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Shifty/Pods-Shifty-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Shifty/Pods-Shifty-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F2E31D5662768A6309520DCF /* [CP] Check Pods Manifest.lock */ = {
@@ -795,6 +797,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -854,6 +857,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

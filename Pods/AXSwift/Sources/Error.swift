@@ -38,6 +38,8 @@ extension AXError: CustomStringConvertible {
             return "ParameterizedAttributeUnsupported"
         case .notEnoughPrecision:
             return "NotEnoughPrecision"
+        @unknown default:
+            return "<Unknown>"
         }
     }
 
