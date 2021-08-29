@@ -16,6 +16,7 @@ import MASPreferences_Shifty
 import AXSwift
 import SwiftLog
 import Sparkle
+import Intents
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -242,6 +243,31 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillTerminate(_ aNotification: Notification) {
         logw("App terminated")
     }
-
-
+    
+    
+    @available(macOS 12.0, *)
+    func application(_ application: NSApplication, handlerFor intent: INIntent) -> Any? {
+        if intent is GetNightShiftStateIntent {
+            return GetNightShiftStateIntentHandler()
+        }
+        if intent is SetNightShiftStateIntent {
+            return SetNightShiftStateIntentHandler()
+        }
+        if intent is GetColorTemperatureIntent {
+            return GetColorTemperatureIntentHandler()
+        }
+        if intent is SetColorTemperatureIntent {
+            return SetColorTemperatureIntentHandler()
+        }
+        if intent is SetDisableTimerIntent {
+            return SetDisableTimerIntentHandler()
+        }
+        if intent is GetTrueToneStateIntent {
+            return GetTrueToneStateIntentHandler()
+        }
+        if intent is SetTrueToneStateIntent {
+            return SetTrueToneStateIntentHandler()
+        }
+        return nil
+    }
 }

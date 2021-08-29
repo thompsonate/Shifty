@@ -263,18 +263,18 @@ enum NightShiftManager {
                 prevSchedule = schedule
             }
             
-            let appDelegate = NSApplication.shared.delegate as! AppDelegate
-            appDelegate.updateMenuBarIcon()
-            
-            let prefWindow = (NSApplication.shared.delegate as? AppDelegate)?.preferenceWindowController
-            let prefGeneral = prefWindow?.viewControllers.compactMap { childViewController in
-                return childViewController as? PrefGeneralViewController
-                }.first
+            updateDarkMode()
+
             DispatchQueue.main.async {
+                let appDelegate = NSApplication.shared.delegate as! AppDelegate
+                appDelegate.updateMenuBarIcon()
+                
+                let prefWindow = appDelegate.preferenceWindowController
+                let prefGeneral = prefWindow.viewControllers.compactMap { childViewController in
+                    return childViewController as? PrefGeneralViewController
+                }.first
                 prefGeneral?.updateSchedule?()
             }
-            
-            updateDarkMode()
         }
         
         NSWorkspace.shared.notificationCenter.addObserver(forName: NSWorkspace.didWakeNotification, object: nil, queue: nil) { _ in
@@ -303,6 +303,10 @@ enum NightShiftManager {
                 logw("Dark mode set to \(scheduledState)")
             }
         }
+    }
+    
+    static func setNightShiftEnabled(to state: Bool) {
+        respond(to: state ? .userEnabledNightShift : .userDisabledNightShift)
     }
 
     static func respond(to event: NightShiftEvent) {

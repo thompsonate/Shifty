@@ -36,6 +36,16 @@
 			</dict>
 		</array>
 	</dict>
+	<key>INIntentsSupported</key>
+	<array>
+		<string>GetColorTemperatureIntent</string>
+		<string>GetNightShiftStateIntent</string>
+		<string>GetTrueToneStateIntent</string>
+		<string>SetColorTemperatureIntent</string>
+		<string>SetDisableTimerIntent</string>
+		<string>SetNightShiftStateIntent</string>
+		<string>SetTrueToneStateIntent</string>
+	</array>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.utilities</string>
 	<key>LSHasLocalizedDisplayName</key>
@@ -52,6 +62,16 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>GetColorTemperatureIntent</string>
+		<string>GetNightShiftStateIntent</string>
+		<string>GetTrueToneStateIntent</string>
+		<string>SetColorTemperatureIntent</string>
+		<string>SetDisableTimerIntent</string>
+		<string>SetNightShiftStateIntent</string>
+		<string>SetTrueToneStateIntent</string>
+	</array>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUFeedURL</key>
