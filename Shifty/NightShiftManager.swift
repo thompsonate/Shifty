@@ -222,10 +222,29 @@ class NightShiftManager {
     }
     
     
-    enum UserSet {
-        case notSet
-        case on
-        case off
+    func setDisableTimer(forTimeInterval timeInterval: TimeInterval) {
+        let disableTimer = Timer.scheduledTimer(withTimeInterval: timeInterval,
+                                                repeats: false,
+                                                block: { _ in
+            self.nightShiftDisableTimer = .off
+            self.respond(to: .nightShiftDisableTimerEnded)
+        })
+        disableTimer.tolerance = 60
+        
+        let disabledUntilDate = Date(timeIntervalSinceNow: timeInterval)
+        
+        if timeInterval.rounded() == 3600 {
+            nightShiftDisableTimer = .hour(timer: disableTimer, endDate: disabledUntilDate)
+        } else {
+            nightShiftDisableTimer = .custom(timer: disableTimer, endDate: disabledUntilDate)
+        }
+        respond(to: .nightShiftDisableTimerStarted)
+
+    }
+    
+    func invalidateDisableTimer() {
+        nightShiftDisableTimer = .off
+        respond(to: .nightShiftDisableTimerEnded)
     }
 }
 
@@ -241,6 +260,12 @@ enum NightShiftEvent {
     case nightShiftEnableRuleActivated
     case nightShiftEnableRuleDeactivated
     case scheduleChanged
+}
+
+enum UserSet {
+    case notSet
+    case on
+    case off
 }
 
 enum DisableTimer: Equatable {

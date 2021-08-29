@@ -425,22 +425,9 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     
     @IBAction func disableHour(_ sender: Any) {
         if disableHourMenuItem.state == .off {
-            let disableTimer = Timer.scheduledTimer(withTimeInterval: 3600, repeats: false) { _ in
-                NightShiftManager.shared.nightShiftDisableTimer = .off
-                NightShiftManager.shared.respond(to: .nightShiftDisableTimerEnded)
-            }
-            disableTimer.tolerance = 60
-            
-            let currentDate = Date()
-            var addComponents = DateComponents()
-            addComponents.hour = 1
-            let disabledUntilDate = calendar.date(byAdding: addComponents, to: currentDate, options: [])!
-            
-            NightShiftManager.shared.nightShiftDisableTimer = .hour(timer: disableTimer, endDate: disabledUntilDate)
-            NightShiftManager.shared.respond(to: .nightShiftDisableTimerStarted)
+            NightShiftManager.shared.setDisableTimer(forTimeInterval: 3600)
         } else {
-            NightShiftManager.shared.nightShiftDisableTimer = .off
-            NightShiftManager.shared.respond(to: .nightShiftDisableTimerEnded)
+            NightShiftManager.shared.invalidateDisableTimer()
         }
     }
     
@@ -453,26 +440,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             customTimeWindow.showWindow(nil)
             customTimeWindow.window?.orderFrontRegardless()
             
-            customTimeWindow.disableCustomTime = { (timeIntervalInSeconds) in
-                let disableTimer = Timer.scheduledTimer(withTimeInterval: TimeInterval(timeIntervalInSeconds),
-                                                        repeats: false,
-                                                        block: { _ in
-                    NightShiftManager.shared.nightShiftDisableTimer = .off
-                    NightShiftManager.shared.respond(to: .nightShiftDisableTimerEnded)
-                })
-                disableTimer.tolerance = 60
-                
-                let currentDate = Date()
-                var addComponents = DateComponents()
-                addComponents.second = timeIntervalInSeconds
-                let disabledUntilDate = self.calendar.date(byAdding: addComponents, to: currentDate, options: [])!
-                
-                NightShiftManager.shared.nightShiftDisableTimer = .custom(timer: disableTimer, endDate: disabledUntilDate)
-                NightShiftManager.shared.respond(to: .nightShiftDisableTimerStarted)
+            customTimeWindow.disableCustomTime = { seconds in
+                NightShiftManager.shared.setDisableTimer(forTimeInterval: TimeInterval(seconds))
             }
         } else {
-            NightShiftManager.shared.nightShiftDisableTimer = .off
-            NightShiftManager.shared.respond(to: .nightShiftDisableTimerEnded)
+            NightShiftManager.shared.invalidateDisableTimer()
         }
     }
     
