@@ -67,8 +67,8 @@ class SetColorTemperatureIntentHandler: NSObject, SetColorTemperatureIntentHandl
 @available(macOS 12.0, *)
 class SetDisableTimerIntentHandler: NSObject, SetDisableTimerIntentHandling {
     func handle(intent: SetDisableTimerIntent) async -> SetDisableTimerIntentResponse {
-        let seconds = intent.duration!.intValue
-        NightShiftManager.shared.setDisableTimer(forTimeInterval: TimeInterval(seconds))
+        let seconds = intent.duration!.doubleValue
+        NightShiftManager.shared.setDisableTimer(forTimeInterval: seconds)
         return SetDisableTimerIntentResponse(code: .success, userActivity: nil)
     }
 

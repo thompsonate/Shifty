@@ -229,7 +229,13 @@ class NightShiftManager {
             self.nightShiftDisableTimer = .off
             self.respond(to: .nightShiftDisableTimerEnded)
         })
-        disableTimer.tolerance = 60
+        
+        // For longer timers, increase the tolerance to save resources
+        if timeInterval > 1800 {
+            disableTimer.tolerance = 60
+        } else if timeInterval > 300 {
+            disableTimer.tolerance = 10
+        }
         
         let disabledUntilDate = Date(timeIntervalSinceNow: timeInterval)
         
