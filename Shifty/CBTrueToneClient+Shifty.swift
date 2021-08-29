@@ -20,19 +20,19 @@ extension CBTrueToneClient {
     static var shared = CBTrueToneClient()
     
     var isTrueToneSupported: Bool {
-        CBTrueToneClient.shared.supported()
+        supported()
     }
     
     var isTrueToneAvailable: Bool {
-        CBTrueToneClient.shared.available()
+        available()
     }
     
     var isTrueToneEnabled: Bool {
         get {
-            CBTrueToneClient.shared.enabled()
+            enabled()
         }
         set {
-            CBTrueToneClient.shared.setEnabled(newValue)
+            setEnabled(newValue)
             logw("True Tone set to \(newValue)")
         }
     }
