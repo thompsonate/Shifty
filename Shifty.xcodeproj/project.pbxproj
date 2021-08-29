@@ -269,13 +269,10 @@
 				433E60EA207D9994007BB55F /* BrightnessSystemClient+Shifty.swift */,
 				43F974EB221463C700224CF4 /* AppleEventsManager.h */,
 				43F974E62213D9D200224CF4 /* AppleEventsManager.m */,
-				497B2392200B576700669DDE /* NightShiftManager.swift */,
 				497B2393200B576700669DDE /* NotificationName+Shifty.swift */,
 				43CE525920379A16002EBF61 /* Event.swift */,
 				437556B51FF746BD001951AB /* SlideSegue.swift */,
 				43CE525B2037B720002EBF61 /* ScriptingBridge.swift */,
-				435F0383208027C600ABA2EB /* BrowserManager.swift */,
-				4960957D200EB9CD00D966CA /* RuleManager.swift */,
 				43DE1FC826D8BC8400C8F197 /* Intents.intentdefinition */,
 				4380BDEB26DB0E4700F811D8 /* IntentHandlers.swift */,
 				43CA44E626DB3AE300537DED /* DateTime+Shifty.swift */,
@@ -324,6 +321,7 @@
 			children = (
 				436A0F3B1FBE911200E77D41 /* Assets */,
 				436A0F391FBE90BF00E77D41 /* Utils */,
+				43CA44E826DB450A00537DED /* Managers */,
 				436A0F3A1FBE90F000E77D41 /* Controllers */,
 				4351C77D1FB5731B00788CC9 /* Preferences */,
 			);
@@ -339,6 +337,16 @@
 				43C7A4901F19F2CB00A697C0 /* Info.plist */,
 			);
 			path = ShiftyHelper;
+			sourceTree = "<group>";
+		};
+		43CA44E826DB450A00537DED /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				497B2392200B576700669DDE /* NightShiftManager.swift */,
+				435F0383208027C600ABA2EB /* BrowserManager.swift */,
+				4960957D200EB9CD00D966CA /* RuleManager.swift */,
+			);
+			name = Managers;
 			sourceTree = "<group>";
 		};
 		43CC9E3A1EBAB19300983528 = {

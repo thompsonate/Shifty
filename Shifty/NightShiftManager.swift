@@ -63,7 +63,7 @@ class NightShiftManager {
     
     /// When true, app or website rule has disabled Night Shift
     var isDisableRuleActive: Bool {
-        return RuleManager.disableRuleIsActive
+        return RuleManager.shared.disableRuleIsActive
     }
 
     init() {
@@ -158,7 +158,7 @@ class NightShiftManager {
             nightShiftDisableTimer = .off
             
             if isDisableRuleActive {
-                RuleManager.removeRulesForCurrentState()
+                RuleManager.shared.removeRulesForCurrentState()
             }
             client.setNightShiftEnabled(true)
         case .userDisabledNightShift:

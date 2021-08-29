@@ -95,8 +95,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         observeAccessibilityApiNotifications()
         
-        RuleManager.initialize()
-
         logw("Night Shift state: \(NightShiftManager.shared.isNightShiftEnabled)")
         logw("Schedule: \(NightShiftManager.shared.schedule)")
         logw("")

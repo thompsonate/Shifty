@@ -149,7 +149,7 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
                 NSApp.runModal(for: AccessibilityWindow().window!)
             }
         } else {
-            BrowserManager.stopBrowserWatcher()
+            BrowserManager.shared.stopBrowserWatcher()
             logw("Website control disabled")
         }
     }
