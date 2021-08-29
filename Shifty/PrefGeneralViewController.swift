@@ -84,7 +84,7 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
         }
 
         updateSchedule = {
-            switch NightShiftManager.schedule {
+            switch NightShiftManager.shared.schedule {
             case .off:
                 self.schedulePopup.select(self.offMenuItem)
                 self.customTimeStackView.isHidden = true
@@ -132,7 +132,7 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
     @IBAction func syncDarkMode(_ sender: NSButtonCell) {
         if sender.state == .on {
             defaultDarkModeState = SLSGetAppearanceThemeLegacy()
-            NightShiftManager.updateDarkMode()
+            NightShiftManager.shared.updateDarkMode()
         } else {
             SLSSetAppearanceThemeLegacy(defaultDarkModeState)
         }
@@ -157,7 +157,7 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
     @IBAction func setTrueToneControl(_ sender: NSButtonCell) {
         if #available(macOS 10.14, *) {
             if sender.state == .on {
-                if NightShiftManager.disableRuleIsActive {
+                if NightShiftManager.shared.isDisableRuleActive {
                     CBTrueToneClient.shared.isTrueToneEnabled = false
                 }
             } else {
@@ -173,13 +173,13 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
     
     @IBAction func schedulePopup(_ sender: NSPopUpButton) {
         if schedulePopup.selectedItem == offMenuItem {
-            NightShiftManager.schedule = .off
+            NightShiftManager.shared.schedule = .off
             customTimeStackView.isHidden = true
         } else if schedulePopup.selectedItem == customMenuItem {
             scheduleTimePickers(self)
             customTimeStackView.isHidden = false
         } else if schedulePopup.selectedItem == sunMenuItem {
-            NightShiftManager.schedule = .solar
+            NightShiftManager.shared.schedule = .solar
             customTimeStackView.isHidden = true
         }
     }
@@ -187,7 +187,7 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
     @IBAction func scheduleTimePickers(_ sender: Any) {
         let fromTime = Time(fromTimePicker.dateValue)
         let toTime = Time(toTimePicker.dateValue)
-        NightShiftManager.schedule = .custom(start: fromTime, end: toTime)
+        NightShiftManager.shared.schedule = .custom(start: fromTime, end: toTime)
     }
 
     override func viewWillDisappear() {
@@ -197,7 +197,7 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
                           syncDarkMode: darkModeSyncButton.state == .on,
                           websiteShifting: websiteShiftingButton.state == .on,
                           trueToneControl: trueToneControlButton.state == .on,
-                          schedule: NightShiftManager.schedule).record()
+                          schedule: NightShiftManager.shared.schedule).record()
     }
 }
 

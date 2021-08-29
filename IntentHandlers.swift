@@ -12,7 +12,7 @@ import Intents
 class GetNightShiftStateIntentHandler: NSObject, GetNightShiftStateIntentHandling {
     func handle(intent: GetNightShiftStateIntent) async -> GetNightShiftStateIntentResponse {
         let response = GetNightShiftStateIntentResponse(code: .success, userActivity: nil)
-        response.nightShiftState = NightShiftManager.isNightShiftEnabled as NSNumber
+        response.nightShiftState = NightShiftManager.shared.isNightShiftEnabled as NSNumber
         return response
     }
 }
@@ -21,7 +21,7 @@ class GetNightShiftStateIntentHandler: NSObject, GetNightShiftStateIntentHandlin
 class SetNightShiftStateIntentHandler: NSObject, SetNightShiftStateIntentHandling {
     func handle(intent: SetNightShiftStateIntent) async -> SetNightShiftStateIntentResponse {
         let state = intent.nightShiftState!.boolValue
-        NightShiftManager.setNightShiftEnabled(to: state)
+        NightShiftManager.shared.isNightShiftEnabled = state
         return SetNightShiftStateIntentResponse(code: .success, userActivity: nil)
     }
 
@@ -38,8 +38,8 @@ class GetColorTemperatureIntentHandler: NSObject, GetColorTemperatureIntentHandl
     func handle(intent: GetColorTemperatureIntent) async -> GetColorTemperatureIntentResponse {
         let response = GetColorTemperatureIntentResponse(code: .success, userActivity: nil)
         
-        if NightShiftManager.isNightShiftEnabled {
-            response.colorTemperature = NightShiftManager.blueLightReductionAmount as NSNumber
+        if NightShiftManager.shared.isNightShiftEnabled {
+            response.colorTemperature = NightShiftManager.shared.colorTemperature as NSNumber
         } else {
             response.colorTemperature = 0
         }
@@ -51,8 +51,8 @@ class GetColorTemperatureIntentHandler: NSObject, GetColorTemperatureIntentHandl
 class SetColorTemperatureIntentHandler: NSObject, SetColorTemperatureIntentHandling {
     func handle(intent: SetColorTemperatureIntent) async -> SetColorTemperatureIntentResponse {
         let colorTemp = intent.colorTemperature!.floatValue
-        NightShiftManager.setNightShiftEnabled(to: colorTemp > 0)
-        NightShiftManager.blueLightReductionAmount = colorTemp
+        NightShiftManager.shared.isNightShiftEnabled = colorTemp > 0
+        NightShiftManager.shared.colorTemperature = colorTemp
         return SetColorTemperatureIntentResponse(code: .success, userActivity: nil)
     }
     

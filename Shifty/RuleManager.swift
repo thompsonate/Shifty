@@ -101,11 +101,11 @@ enum RuleManager {
             let rule = AppRule(bundleIdentifier: bundleIdentifier, fullScreenOnly: false)
             if newValue {
                 disabledApps.insert(rule)
-                NightShiftManager.respond(to: .nightShiftDisableRuleActivated)
+                NightShiftManager.shared.respond(to: .nightShiftDisableRuleActivated)
             } else {
                 guard let index = disabledApps.firstIndex(of: rule) else { return }
                 disabledApps.remove(at: index)
-                NightShiftManager.respond(to: .nightShiftDisableRuleDeactivated)
+                NightShiftManager.shared.respond(to: .nightShiftDisableRuleDeactivated)
             }
         }
     }
@@ -124,7 +124,7 @@ enum RuleManager {
             let rule = BrowserRule(type: .domain, host: currentDomain)
             if newValue {
                 browserRules.insert(rule)
-                NightShiftManager.respond(to: .nightShiftDisableRuleActivated)
+                NightShiftManager.shared.respond(to: .nightShiftDisableRuleActivated)
             } else {
                 guard let index = browserRules.firstIndex(of: rule) else { return }
                 
@@ -132,7 +132,7 @@ enum RuleManager {
                     ruleForSubdomain = .none
                 }
                 browserRules.remove(at: index)
-                NightShiftManager.respond(to: .nightShiftDisableRuleDeactivated)
+                NightShiftManager.shared.respond(to: .nightShiftDisableRuleDeactivated)
             }
         }
     }
@@ -169,11 +169,11 @@ enum RuleManager {
             case .disabled:
                 let rule = BrowserRule(type: .subdomainDisabled, host: currentSubdomain)
                 browserRules.insert(rule)
-                NightShiftManager.respond(to: .nightShiftDisableRuleActivated)
+                NightShiftManager.shared.respond(to: .nightShiftDisableRuleActivated)
             case .enabled:
                 let rule = BrowserRule(type: .subdomainEnabled, host: currentSubdomain)
                 browserRules.insert(rule)
-                NightShiftManager.respond(to: .nightShiftEnableRuleActivated)
+                NightShiftManager.shared.respond(to: .nightShiftEnableRuleActivated)
             case .none:
                 var rule: BrowserRule
                 let prevValue = ruleForSubdomain
@@ -192,9 +192,9 @@ enum RuleManager {
                 
                 switch prevValue {
                 case .disabled:
-                    NightShiftManager.respond(to: .nightShiftDisableRuleDeactivated)
+                    NightShiftManager.shared.respond(to: .nightShiftDisableRuleDeactivated)
                 case .enabled:
-                    NightShiftManager.respond(to: .nightShiftEnableRuleDeactivated)
+                    NightShiftManager.shared.respond(to: .nightShiftEnableRuleDeactivated)
                 case .none:
                     break
                 }
@@ -247,11 +247,11 @@ enum RuleManager {
     private static func appSwitched(notification: Notification) {
         BrowserManager.stopBrowserWatcher()
         if disabledForApp {
-            NightShiftManager.respond(to: .nightShiftDisableRuleActivated)
+            NightShiftManager.shared.respond(to: .nightShiftDisableRuleActivated)
         } else if BrowserManager.currentAppIsSupportedBrowser {
             BrowserManager.updateForSupportedBrowser()
         } else {
-            NightShiftManager.respond(to: .nightShiftDisableRuleDeactivated)
+            NightShiftManager.shared.respond(to: .nightShiftDisableRuleDeactivated)
         }
     }
 

@@ -95,11 +95,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         observeAccessibilityApiNotifications()
         
-        NightShiftManager.initialize()
         RuleManager.initialize()
 
-        logw("Night Shift state: \(NightShiftManager.isNightShiftEnabled)")
-        logw("Schedule: \(NightShiftManager.schedule)")
+        logw("Night Shift state: \(NightShiftManager.shared.isNightShiftEnabled)")
+        logw("Schedule: \(NightShiftManager.shared.schedule)")
         logw("")
 
         updateMenuBarIcon()
@@ -202,7 +201,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func updateMenuBarIcon() {
         var icon: NSImage
         if UserDefaults.standard.bool(forKey: Keys.isIconSwitchingEnabled),
-            !NightShiftManager.isNightShiftEnabled {
+           NightShiftManager.shared.isNightShiftEnabled == false
+        {
             icon = #imageLiteral(resourceName: "sunOpenIcon")
         } else {
             icon = #imageLiteral(resourceName: "shiftyMenuIcon")

@@ -88,11 +88,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         
 
         (NSApp.delegate as? AppDelegate)?.statusItemClicked = {
-            if NightShiftManager.isNightShiftEnabled {
-                NightShiftManager.respond(to: .userDisabledNightShift)
-            } else {
-                NightShiftManager.respond(to: .userEnabledNightShift)
-            }
+            NightShiftManager.shared.isNightShiftEnabled.toggle()
         }
 
         prefShortcuts.bindShortcuts()
@@ -145,11 +141,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             currentSubdomain = " \(currentSubdomain ?? "") "
         }
         
-        sliderView.shiftSlider.floatValue = NightShiftManager.blueLightReductionAmount * 100
+        sliderView.shiftSlider.floatValue = NightShiftManager.shared.colorTemperature * 100
         
         
         // MARK: toggle Night Shift
-        if NightShiftManager.isNightShiftEnabled {
+        if NightShiftManager.shared.isNightShiftEnabled {
             powerMenuItem.title = NSLocalizedString("menu.toggle_off", comment: "Turn off Night Shift")
             sliderView.shiftSlider.isEnabled = true
         } else {
@@ -217,7 +213,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         
         
         // MARK: disable timer
-        switch NightShiftManager.nightShiftDisableTimer {
+        switch NightShiftManager.shared.nightShiftDisableTimer {
         case .off:
             disableHourMenuItem.state = .off
             disableHourMenuItem.isEnabled = true
@@ -259,7 +255,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             case .enabled:
                 trueToneMenuItem.title = NSLocalizedString("menu.true_tone_off", comment: "Turn off True Tone")
             case .disabled:
-                if NightShiftManager.disableRuleIsActive {
+                if NightShiftManager.shared.isDisableRuleActive {
                     trueToneMenuItem.isEnabled = false
                     if RuleManager.disabledForDomain {
                         trueToneMenuItem.title = String(format: NSLocalizedString("menu.true_tone_disabled_for", comment: "True Tone is disabled for %@"), currentDomain ?? "")
@@ -281,10 +277,10 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     
     
     func setDescriptionText(keepVisible: Bool = false) {
-        if NightShiftManager.disabledTimer {
+        if NightShiftManager.shared.isDisabledWithTimer {
             var disabledUntilDate: Date
             
-            switch NightShiftManager.nightShiftDisableTimer {
+            switch NightShiftManager.shared.nightShiftDisableTimer {
             case .hour(timer: _, endDate: let date), .custom(timer: _, endDate: let date):
                 disabledUntilDate = date
             case .off:
@@ -312,7 +308,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             return
         }
         
-        switch NightShiftManager.schedule {
+        switch NightShiftManager.shared.schedule {
         case .off:
             if keepVisible {
                 descriptionMenuItem.title = NSLocalizedString("description.enabled", comment: "Enabled")
@@ -321,18 +317,18 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             }
         case .solar:
             if !keepVisible {
-                descriptionMenuItem.isHidden = !NightShiftManager.isNightShiftEnabled
+                descriptionMenuItem.isHidden = !NightShiftManager.shared.isNightShiftEnabled
             }
-            if NightShiftManager.isNightShiftEnabled {
+            if NightShiftManager.shared.isNightShiftEnabled {
                 descriptionMenuItem.title = NSLocalizedString("description.enabled_sunrise", comment: "Enabled until sunrise")
             } else {
                 descriptionMenuItem.title = NSLocalizedString("description.disabled", comment: "Disabled")
             }
         case .custom(_, let endTime):
             if !keepVisible {
-                descriptionMenuItem.isHidden = !NightShiftManager.isNightShiftEnabled
+                descriptionMenuItem.isHidden = !NightShiftManager.shared.isNightShiftEnabled
             }
-            if NightShiftManager.isNightShiftEnabled {
+            if NightShiftManager.shared.isNightShiftEnabled {
                 let dateFormatter = DateFormatter()
                 
                 if Bundle.main.preferredLocalizations.first == "zh-Hans" {
@@ -381,11 +377,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     // MARK: User Interaction
 
     @IBAction func power(_ sender: Any) {
-        if NightShiftManager.isNightShiftEnabled {
-            NightShiftManager.respond(to: .userDisabledNightShift)
-        } else {
-            NightShiftManager.respond(to: .userEnabledNightShift)
-        }
+        NightShiftManager.shared.isNightShiftEnabled.toggle()
     }
     
     
@@ -434,8 +426,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     @IBAction func disableHour(_ sender: Any) {
         if disableHourMenuItem.state == .off {
             let disableTimer = Timer.scheduledTimer(withTimeInterval: 3600, repeats: false) { _ in
-                NightShiftManager.nightShiftDisableTimer = .off
-                NightShiftManager.respond(to: .nightShiftDisableTimerEnded)
+                NightShiftManager.shared.nightShiftDisableTimer = .off
+                NightShiftManager.shared.respond(to: .nightShiftDisableTimerEnded)
             }
             disableTimer.tolerance = 60
             
@@ -444,11 +436,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             addComponents.hour = 1
             let disabledUntilDate = calendar.date(byAdding: addComponents, to: currentDate, options: [])!
             
-            NightShiftManager.nightShiftDisableTimer = .hour(timer: disableTimer, endDate: disabledUntilDate)
-            NightShiftManager.respond(to: .nightShiftDisableTimerStarted)
+            NightShiftManager.shared.nightShiftDisableTimer = .hour(timer: disableTimer, endDate: disabledUntilDate)
+            NightShiftManager.shared.respond(to: .nightShiftDisableTimerStarted)
         } else {
-            NightShiftManager.nightShiftDisableTimer = .off
-            NightShiftManager.respond(to: .nightShiftDisableTimerEnded)
+            NightShiftManager.shared.nightShiftDisableTimer = .off
+            NightShiftManager.shared.respond(to: .nightShiftDisableTimerEnded)
         }
     }
     
@@ -465,8 +457,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
                 let disableTimer = Timer.scheduledTimer(withTimeInterval: TimeInterval(timeIntervalInSeconds),
                                                         repeats: false,
                                                         block: { _ in
-                    NightShiftManager.nightShiftDisableTimer = .off
-                    NightShiftManager.respond(to: .nightShiftDisableTimerEnded)
+                    NightShiftManager.shared.nightShiftDisableTimer = .off
+                    NightShiftManager.shared.respond(to: .nightShiftDisableTimerEnded)
                 })
                 disableTimer.tolerance = 60
                 
@@ -475,12 +467,12 @@ class StatusMenuController: NSObject, NSMenuDelegate {
                 addComponents.second = timeIntervalInSeconds
                 let disabledUntilDate = self.calendar.date(byAdding: addComponents, to: currentDate, options: [])!
                 
-                NightShiftManager.nightShiftDisableTimer = .custom(timer: disableTimer, endDate: disabledUntilDate)
-                NightShiftManager.respond(to: .nightShiftDisableTimerStarted)
+                NightShiftManager.shared.nightShiftDisableTimer = .custom(timer: disableTimer, endDate: disabledUntilDate)
+                NightShiftManager.shared.respond(to: .nightShiftDisableTimerStarted)
             }
         } else {
-            NightShiftManager.nightShiftDisableTimer = .off
-            NightShiftManager.respond(to: .nightShiftDisableTimerEnded)
+            NightShiftManager.shared.nightShiftDisableTimer = .off
+            NightShiftManager.shared.respond(to: .nightShiftDisableTimerEnded)
         }
     }
     
@@ -504,8 +496,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     
 
     @IBAction func quitClicked(_ sender: NSMenuItem) {
-        NightShiftManager.respond(to: .nightShiftDisableTimerEnded)
-        NightShiftManager.respond(to: .nightShiftDisableRuleDeactivated)
+        NightShiftManager.shared.respond(to: .nightShiftDisableTimerEnded)
+        NightShiftManager.shared.respond(to: .nightShiftDisableRuleDeactivated)
 
         Event.quitShifty.record()
         NotificationCenter.default.post(name: .terminateApp, object: self)

@@ -134,11 +134,11 @@ enum BrowserManager {
     
     private static func fireNightShiftEvent() {
         if RuleManager.ruleForSubdomain == .enabled {
-            NightShiftManager.respond(to: .nightShiftEnableRuleActivated)
+            NightShiftManager.shared.respond(to: .nightShiftEnableRuleActivated)
         } else if RuleManager.disabledForDomain || RuleManager.ruleForSubdomain == .disabled {
-            NightShiftManager.respond(to: .nightShiftDisableRuleActivated)
+            NightShiftManager.shared.respond(to: .nightShiftDisableRuleActivated)
         } else {
-            NightShiftManager.respond(to: .nightShiftDisableRuleDeactivated)
+            NightShiftManager.shared.respond(to: .nightShiftDisableRuleDeactivated)
         }
     }
     
