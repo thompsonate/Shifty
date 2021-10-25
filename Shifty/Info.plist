@@ -57,7 +57,7 @@
 	<key>NSAppleEventsUsageDescription</key>
 	<string>Shifty needs access to your current web address to let you disable Night Shift for the sites you choose.</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>© 2017-2019 Nate Thompson. GPLv3 License.</string>
+	<string>© 2017-2021 Nate Thompson. GPLv3 License.</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
