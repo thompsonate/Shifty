@@ -9,6 +9,7 @@
             <description><![CDATA[
                 <ul style="list-style-type:disc">
                 <li>adds support for Shortcuts on macOS Monterey</li>
+                <li>adds native support for Apple Silicon</li>
                 <li>some bug fixes and small UI improvements</li>
                 </ul>
             ]]>
