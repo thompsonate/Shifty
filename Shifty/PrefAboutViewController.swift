@@ -21,7 +21,11 @@ class PrefAboutViewController: NSViewController, MASPreferencesViewController {
     var viewIdentifier: String = "PrefAboutViewController"
 
     var toolbarItemImage: NSImage? {
-        get { return #imageLiteral(resourceName: "shiftyCircleIcon") }
+        if #available(macOS 11.0, *) {
+            return NSImage(systemSymbolName: "info.circle", accessibilityDescription: nil)
+        } else {
+            return #imageLiteral(resourceName: "shiftyCircleIcon")
+        }
     }
 
     var toolbarItemLabel: String? {

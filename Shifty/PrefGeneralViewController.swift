@@ -22,7 +22,11 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
     var viewIdentifier: String = "PrefGeneralViewController"
 
     var toolbarItemImage: NSImage? {
-        return NSImage(named: NSImage.preferencesGeneralName)
+        if #available(macOS 11.0, *) {
+            return NSImage(systemSymbolName: "gearshape", accessibilityDescription: nil)
+        } else {
+            return NSImage(named: NSImage.preferencesGeneralName)
+        }
     }
 
     var toolbarItemLabel: String? {
@@ -206,6 +210,10 @@ class PrefWindowController: MASPreferencesWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
         window?.styleMask = [.titled, .closable]
+        
+        if #available(macOS 11.0, *) {
+            window?.toolbarStyle = .preference
+        }
     }
     
     

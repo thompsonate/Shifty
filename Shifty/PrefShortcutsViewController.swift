@@ -21,7 +21,11 @@ class PrefShortcutsViewController: NSViewController, MASPreferencesViewControlle
     var viewIdentifier: String = "PrefShortcutsViewController"
 
     var toolbarItemImage: NSImage? {
-        return #imageLiteral(resourceName: "shortcutsIcon")
+        if #available(macOS 11.0, *) {
+            return NSImage(systemSymbolName: "command", accessibilityDescription: nil)
+        } else {
+            return #imageLiteral(resourceName: "shortcutsIcon")
+        }
     }
 
     var toolbarItemLabel: String? {
