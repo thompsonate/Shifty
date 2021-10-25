@@ -425,7 +425,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     
     @IBAction func disableHour(_ sender: Any) {
         if disableHourMenuItem.state == .off {
-            NightShiftManager.shared.setDisableTimer(forTimeInterval: 30)
+            NightShiftManager.shared.setDisableTimer(forTimeInterval: 3600)
         } else {
             NightShiftManager.shared.invalidateDisableTimer()
         }
