@@ -232,15 +232,15 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="E8i-Ys-1Ph">
-                    <rect key="frame" x="89" y="122" width="111" height="16"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="@natethomps0n" id="Gdh-rQ-6X2">
+                    <rect key="frame" x="89" y="122" width="114" height="16"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="@NateThompson" id="Gdh-rQ-6X2">
                         <font key="font" metaFont="systemMedium" size="13"/>
                         <color key="textColor" red="0.297284359" green="0.53554502910000001" blue="0.87699653200000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="nvj-FG-RHD" customClass="LinkButton" customModule="Shifty" customModuleProvider="target">
-                    <rect key="frame" x="91" y="122" width="107" height="16"/>
+                    <rect key="frame" x="91" y="122" width="110" height="16"/>
                     <buttonCell key="cell" type="bevel" bezelStyle="rounded" alignment="center" transparent="YES" imageScaling="proportionallyDown" inset="2" id="Llc-Sa-vw3">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
