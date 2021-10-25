@@ -47,18 +47,17 @@ class NightShiftManager {
         }
     }
     
-    var nightShiftDisableTimer = DisableTimer.off {
+    var nightShiftDisableTimerState = DisableTimer.off
+    var nightShiftDisableTimer: Timer? {
         willSet {
-            switch nightShiftDisableTimer {
-            case .hour(let timer, _), .custom(let timer, _):
+            if let timer = nightShiftDisableTimer {
                 timer.invalidate()
-            default: break
             }
         }
     }
     
     var isDisabledWithTimer: Bool {
-        return nightShiftDisableTimer != .off
+        return nightShiftDisableTimerState != .off
     }
     
     /// When true, app or website rule has disabled Night Shift
@@ -155,7 +154,7 @@ class NightShiftManager {
             userSet = .notSet
         case .userEnabledNightShift:
             userSet = .on
-            nightShiftDisableTimer = .off
+            nightShiftDisableTimerState = .off
             
             if isDisableRuleActive {
                 RuleManager.shared.removeRulesForCurrentState()
@@ -223,33 +222,35 @@ class NightShiftManager {
     
     
     func setDisableTimer(forTimeInterval timeInterval: TimeInterval) {
-        let disableTimer = Timer.scheduledTimer(withTimeInterval: timeInterval,
-                                                repeats: false,
-                                                block: { _ in
-            self.nightShiftDisableTimer = .off
-            self.respond(to: .nightShiftDisableTimerEnded)
-        })
-        
-        // For longer timers, increase the tolerance to save resources
-        if timeInterval > 1800 {
-            disableTimer.tolerance = 60
-        } else if timeInterval > 300 {
-            disableTimer.tolerance = 10
+        DispatchQueue.main.async {
+            let disableTimer = Timer.scheduledTimer(
+                withTimeInterval: timeInterval,
+                repeats: false,
+                block: { _ in
+                    self.nightShiftDisableTimerState = .off
+                    self.respond(to: .nightShiftDisableTimerEnded)
+                })
+            
+            // For longer timers, increase the tolerance to save resources
+            if timeInterval > 1800 {
+                disableTimer.tolerance = 60
+            } else if timeInterval > 300 {
+                disableTimer.tolerance = 10
+            }
+            
+            if timeInterval.rounded() == 3600 {
+                self.nightShiftDisableTimerState = .hour(endDate: disableTimer.fireDate)
+            } else {
+                self.nightShiftDisableTimerState = .custom(endDate: disableTimer.fireDate)
+            }
+            
+            self.nightShiftDisableTimer = disableTimer
+            self.respond(to: .nightShiftDisableTimerStarted)
         }
-        
-        let disabledUntilDate = Date(timeIntervalSinceNow: timeInterval)
-        
-        if timeInterval.rounded() == 3600 {
-            nightShiftDisableTimer = .hour(timer: disableTimer, endDate: disabledUntilDate)
-        } else {
-            nightShiftDisableTimer = .custom(timer: disableTimer, endDate: disabledUntilDate)
-        }
-        respond(to: .nightShiftDisableTimerStarted)
-
     }
     
     func invalidateDisableTimer() {
-        nightShiftDisableTimer = .off
+        nightShiftDisableTimerState = .off
         respond(to: .nightShiftDisableTimerEnded)
     }
 }
@@ -276,16 +277,16 @@ enum UserSet {
 
 enum DisableTimer: Equatable {
     case off
-    case hour(timer: Timer, endDate: Date)
-    case custom(timer: Timer, endDate: Date)
+    case hour(endDate: Date)
+    case custom(endDate: Date)
     
     static func == (lhs: DisableTimer, rhs: DisableTimer) -> Bool {
         switch (lhs, rhs) {
         case (.off, .off):
             return true
-        case (let .hour(leftTimer, leftDate), let .hour(rightTimer, rightDate)),
-             (let .custom(leftTimer, leftDate), let .custom(rightTimer, rightDate)):
-            return leftTimer == rightTimer && leftDate == rightDate
+        case (let .hour(leftDate), let .hour(rightDate)),
+             (let .custom(leftDate), let .custom(rightDate)):
+            return leftDate == rightDate
         default:
             return false
         }

@@ -213,7 +213,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         
         
         // MARK: disable timer
-        switch NightShiftManager.shared.nightShiftDisableTimer {
+        switch NightShiftManager.shared.nightShiftDisableTimerState {
         case .off:
             disableHourMenuItem.state = .off
             disableHourMenuItem.isEnabled = true
@@ -222,7 +222,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             disableCustomMenuItem.state = .off
             disableCustomMenuItem.isEnabled = true
             disableCustomMenuItem.title = NSLocalizedString("menu.disable_custom", comment: "Disable for custom time...")
-        case .hour(timer: _):
+        case .hour:
             disableHourMenuItem.state = .on
             disableHourMenuItem.isEnabled = true
             disableHourMenuItem.title = NSLocalizedString("menu.disabled_hour", comment: "Disabled for an hour")
@@ -230,7 +230,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             disableCustomMenuItem.state = .off
             disableCustomMenuItem.isEnabled = false
             disableCustomMenuItem.title = NSLocalizedString("menu.disable_custom", comment: "Disable for custom time...")
-        case .custom(timer: _):
+        case .custom:
             disableHourMenuItem.state = .off
             disableHourMenuItem.isEnabled = false
             disableHourMenuItem.title = NSLocalizedString("menu.disable_hour", comment: "Disable for an hour")
@@ -280,8 +280,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         if NightShiftManager.shared.isDisabledWithTimer {
             var disabledUntilDate: Date
             
-            switch NightShiftManager.shared.nightShiftDisableTimer {
-            case .hour(timer: _, endDate: let date), .custom(timer: _, endDate: let date):
+            switch NightShiftManager.shared.nightShiftDisableTimerState {
+            case .hour(endDate: let date), .custom(endDate: let date):
                 disabledUntilDate = date
             case .off:
                 return
