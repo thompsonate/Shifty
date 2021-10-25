@@ -19,20 +19,20 @@ enum State {
 extension CBTrueToneClient {
     static var shared = CBTrueToneClient()
     
-    private var isTrueToneSupported: Bool {
-        return CBTrueToneClient.shared.supported()
+    var isTrueToneSupported: Bool {
+        supported()
     }
     
-    private var isTrueToneAvailable: Bool {
-        return CBTrueToneClient.shared.available()
+    var isTrueToneAvailable: Bool {
+        available()
     }
     
     var isTrueToneEnabled: Bool {
         get {
-            return CBTrueToneClient.shared.enabled()
+            enabled()
         }
         set {
-            CBTrueToneClient.shared.setEnabled(newValue)
+            setEnabled(newValue)
             logw("True Tone set to \(newValue)")
         }
     }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -96,10 +96,14 @@
                         <constraint firstItem="Z1x-3b-aX3" firstAttribute="width" secondItem="ufu-z4-tzp" secondAttribute="width" id="0bx-f2-1Jh"/>
                         <constraint firstItem="FEZ-yH-t0z" firstAttribute="width" secondItem="ufu-z4-tzp" secondAttribute="width" id="9Bk-R2-q2O"/>
                         <constraint firstItem="fnv-Tz-F86" firstAttribute="width" secondItem="ufu-z4-tzp" secondAttribute="width" id="Fzv-bQ-k6A"/>
+                        <constraint firstItem="GrR-GQ-lJS" firstAttribute="width" secondItem="ufu-z4-tzp" secondAttribute="width" id="Hnh-Tj-avO"/>
+                        <constraint firstItem="Lvc-Xg-apa" firstAttribute="width" secondItem="ufu-z4-tzp" secondAttribute="width" id="V2X-74-q3S"/>
                         <constraint firstItem="B2X-co-zm1" firstAttribute="width" secondItem="ufu-z4-tzp" secondAttribute="width" id="bRu-6c-L2A"/>
                         <constraint firstAttribute="width" constant="150" id="bqe-71-z5x"/>
                         <constraint firstItem="5rk-Cc-1Rq" firstAttribute="width" secondItem="ufu-z4-tzp" secondAttribute="width" id="pPX-Ms-Esq"/>
+                        <constraint firstItem="29Z-EF-N11" firstAttribute="width" secondItem="ufu-z4-tzp" secondAttribute="width" id="pbK-wc-q9Y"/>
                         <constraint firstItem="prk-eR-y7H" firstAttribute="width" secondItem="ufu-z4-tzp" secondAttribute="width" id="s0Z-tk-9hx"/>
+                        <constraint firstItem="Bsb-rz-hZe" firstAttribute="width" secondItem="ufu-z4-tzp" secondAttribute="width" id="ydU-Pk-MWr"/>
                     </constraints>
                     <visibilityPriorities>
                         <integer value="1000"/>

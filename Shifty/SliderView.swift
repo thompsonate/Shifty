@@ -17,18 +17,18 @@ class SliderView: NSView {
         let event = NSApplication.shared.currentEvent
         
         if event?.type == .leftMouseUp {
-            NightShiftManager.blueLightReductionAmount = sender.floatValue / 100
+            CBBlueLightClient.shared.blueLightReductionAmount = sender.floatValue / 100
             
             sender.superview?.enclosingMenuItem?.menu?.cancelTracking()
             Event.sliderMoved(value: sender.floatValue).record()
             logw("Slider set to \(sender.floatValue)")
         } else {
-            NightShiftManager.previewBlueLightReductionAmount(sender.floatValue / 100)
+            CBBlueLightClient.shared.previewBlueLightReductionAmount(sender.floatValue / 100)
         }
     }
 
     @IBAction func clickEnableSlider(_ sender: Any) {
-        NightShiftManager.respond(to: .userEnabledNightShift)
+        NightShiftManager.shared.isNightShiftEnabled = true
         
         let statusMenuController = (NSApplication.shared.delegate as! AppDelegate).statusMenu.delegate as! StatusMenuController
         statusMenuController.configureMenuItems()

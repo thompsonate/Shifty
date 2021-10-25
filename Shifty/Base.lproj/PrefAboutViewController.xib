@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,11 +16,11 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <view wantsLayer="YES" id="FgB-wr-6em">
-            <rect key="frame" x="0.0" y="0.0" width="300" height="239"/>
+            <rect key="frame" x="0.0" y="0.0" width="300" height="232"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8q5-Sw-Dbf">
-                    <rect key="frame" x="18" y="207" width="53" height="22"/>
+                    <rect key="frame" x="18" y="201" width="53" height="21"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Shifty" id="bnR-vg-kNb">
                         <font key="font" metaFont="systemMedium" size="18"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -28,7 +28,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mbK-0c-d8c">
-                    <rect key="frame" x="75" y="207" width="30" height="22"/>
+                    <rect key="frame" x="75" y="201" width="30" height="21"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="0.0" id="C2N-lz-GkC">
                         <font key="font" metaFont="system" size="18"/>
                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -36,7 +36,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2D8-mL-05b">
-                    <rect key="frame" x="18" y="172" width="28" height="31"/>
+                    <rect key="frame" x="18" y="167" width="28" height="25"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="🌍" id="lQn-mG-tDV">
                         <font key="font" size="15" name="AppleColorEmoji"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -44,7 +44,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="M0d-pj-5gB">
-                    <rect key="frame" x="45" y="175" width="55" height="17"/>
+                    <rect key="frame" x="45" y="170" width="55" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="website:" id="pAL-H2-Wch">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -52,7 +52,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Hm-zf-Nhs">
-                    <rect key="frame" x="100" y="175" width="151" height="17"/>
+                    <rect key="frame" x="100" y="170" width="151" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="shifty.natethompson.io" id="Gbt-lh-vi5">
                         <font key="font" metaFont="systemMedium" size="13"/>
                         <color key="textColor" red="0.29728435901470579" green="0.53554502905236256" blue="0.8769965320069173" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -60,7 +60,7 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="749" verticalCompressionResistancePriority="748" translatesAutoresizingMaskIntoConstraints="NO" id="3WI-wA-JOM" customClass="LinkButton" customModule="Shifty" customModuleProvider="target">
-                    <rect key="frame" x="102" y="175" width="147" height="17"/>
+                    <rect key="frame" x="102" y="170" width="147" height="16"/>
                     <buttonCell key="cell" type="bevel" bezelStyle="rounded" alignment="center" transparent="YES" imageScaling="proportionallyDown" inset="2" id="EFj-8i-FPx">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -70,7 +70,7 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9E0-LF-GKp">
-                    <rect key="frame" x="18" y="147" width="28" height="31"/>
+                    <rect key="frame" x="18" y="143" width="28" height="25"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="📬" id="L2z-Z9-XAa">
                         <font key="font" size="15" name="AppleColorEmoji"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -78,7 +78,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="81a-rm-YA4">
-                    <rect key="frame" x="45" y="150" width="54" height="17"/>
+                    <rect key="frame" x="45" y="146" width="54" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="contact:" id="Rp7-VG-IbF">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -86,7 +86,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="748" translatesAutoresizingMaskIntoConstraints="NO" id="dqK-Z7-jwa">
-                    <rect key="frame" x="99" y="150" width="183" height="17"/>
+                    <rect key="frame" x="99" y="146" width="183" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="feedback@natethompson.io" id="Thi-Pp-iy3">
                         <font key="font" metaFont="systemMedium" size="13"/>
                         <color key="textColor" red="0.297284359" green="0.53554502910000001" blue="0.87699653200000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -94,7 +94,7 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="747" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="Bg0-7b-gjc" customClass="LinkButton" customModule="Shifty" customModuleProvider="target">
-                    <rect key="frame" x="101" y="150" width="179" height="17"/>
+                    <rect key="frame" x="101" y="146" width="179" height="16"/>
                     <buttonCell key="cell" type="bevel" bezelStyle="rounded" alignment="center" transparent="YES" imageScaling="proportionallyDown" inset="2" id="p8E-4P-zcT">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -104,7 +104,7 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RsW-ZP-AV3">
-                    <rect key="frame" x="18" y="97" width="28" height="31"/>
+                    <rect key="frame" x="18" y="95" width="28" height="25"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="💬" id="2XF-Nq-pjN">
                         <font key="font" size="15" name="AppleColorEmoji"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -112,7 +112,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="psb-Tr-aQI">
-                    <rect key="frame" x="45" y="100" width="61" height="17"/>
+                    <rect key="frame" x="45" y="98" width="61" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="translate:" id="ep8-vk-jac">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -120,7 +120,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SK7-sc-iOS">
-                    <rect key="frame" x="106" y="100" width="59" height="17"/>
+                    <rect key="frame" x="106" y="98" width="59" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Crowdin" id="yuk-MM-qf1">
                         <font key="font" metaFont="systemMedium" size="13"/>
                         <color key="textColor" red="0.297284359" green="0.53554502910000001" blue="0.87699653200000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -128,7 +128,7 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="9NT-7L-0cE" customClass="LinkButton" customModule="Shifty" customModuleProvider="target">
-                    <rect key="frame" x="108" y="100" width="55" height="17"/>
+                    <rect key="frame" x="108" y="98" width="55" height="16"/>
                     <buttonCell key="cell" type="bevel" bezelStyle="rounded" alignment="center" transparent="YES" imageScaling="proportionallyDown" inset="2" id="YYV-Cv-A8f">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -138,7 +138,7 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bah-ot-VkZ">
-                    <rect key="frame" x="18" y="72" width="28" height="31"/>
+                    <rect key="frame" x="18" y="71" width="28" height="25"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="💸" id="PPr-9L-fc3">
                         <font key="font" size="15" name="AppleColorEmoji"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -146,7 +146,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DH8-VK-RRk">
-                    <rect key="frame" x="45" y="75" width="50" height="17"/>
+                    <rect key="frame" x="45" y="74" width="50" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="donate:" id="fUX-vR-OmZ">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -154,7 +154,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="GxQ-2k-2oL">
-                    <rect key="frame" x="95" y="75" width="50" height="17"/>
+                    <rect key="frame" x="95" y="74" width="50" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="PayPal" id="qD1-X6-taU">
                         <font key="font" metaFont="systemMedium" size="13"/>
                         <color key="textColor" red="0.297284359" green="0.53554502910000001" blue="0.87699653200000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -162,7 +162,7 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="YDq-t8-djd" customClass="LinkButton" customModule="Shifty" customModuleProvider="target">
-                    <rect key="frame" x="97" y="75" width="46" height="17"/>
+                    <rect key="frame" x="97" y="74" width="46" height="16"/>
                     <buttonCell key="cell" type="bevel" bezelStyle="rounded" alignment="center" transparent="YES" imageScaling="proportionallyDown" inset="2" id="ScL-9a-h9C">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -172,10 +172,10 @@
                     </connections>
                 </button>
                 <stackView distribution="fillProportionally" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalCompressionResistancePriority="250" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1HH-lX-oxw">
-                    <rect key="frame" x="20" y="34" width="260" height="21"/>
+                    <rect key="frame" x="20" y="34" width="260" height="20"/>
                     <subviews>
                         <button horizontalHuggingPriority="500" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dIb-5N-Omh">
-                            <rect key="frame" x="-6" y="-7" width="175" height="32"/>
+                            <rect key="frame" x="-7" y="-7" width="180" height="32"/>
                             <buttonCell key="cell" type="push" title="Check for Updates..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LHX-7G-HlA">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -185,7 +185,7 @@
                             </connections>
                         </button>
                         <button horizontalHuggingPriority="500" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="E56-v4-Gla">
-                            <rect key="frame" x="165" y="-7" width="101" height="32"/>
+                            <rect key="frame" x="167" y="-7" width="100" height="32"/>
                             <buttonCell key="cell" type="push" title="Credits..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8Qq-tv-01n">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -209,14 +209,14 @@
                 </stackView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aMY-R4-Ypv">
                     <rect key="frame" x="68" y="10" width="164" height="14"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="© 2017-2019 Nate Thompson" id="yZ7-c6-8tC">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="© 2017-2021 Nate Thompson" id="yZ7-c6-8tC">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fd9-bn-KfN">
-                    <rect key="frame" x="18" y="122" width="28" height="31"/>
+                    <rect key="frame" x="18" y="119" width="28" height="25"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="🐦" id="F8D-y7-OYR">
                         <font key="font" size="15" name="AppleColorEmoji"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -224,7 +224,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hT3-pU-c1N">
-                    <rect key="frame" x="45" y="125" width="44" height="17"/>
+                    <rect key="frame" x="45" y="122" width="44" height="16"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="follow:" id="tYb-0z-KHh">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -232,15 +232,15 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="E8i-Ys-1Ph">
-                    <rect key="frame" x="89" y="125" width="111" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="@natethomps0n" id="Gdh-rQ-6X2">
+                    <rect key="frame" x="89" y="122" width="114" height="16"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="@NateThompson" id="Gdh-rQ-6X2">
                         <font key="font" metaFont="systemMedium" size="13"/>
                         <color key="textColor" red="0.297284359" green="0.53554502910000001" blue="0.87699653200000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="nvj-FG-RHD" customClass="LinkButton" customModule="Shifty" customModuleProvider="target">
-                    <rect key="frame" x="91" y="125" width="107" height="17"/>
+                    <rect key="frame" x="91" y="122" width="110" height="16"/>
                     <buttonCell key="cell" type="bevel" bezelStyle="rounded" alignment="center" transparent="YES" imageScaling="proportionallyDown" inset="2" id="Llc-Sa-vw3">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>

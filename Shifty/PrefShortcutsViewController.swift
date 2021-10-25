@@ -21,7 +21,11 @@ class PrefShortcutsViewController: NSViewController, MASPreferencesViewControlle
     var viewIdentifier: String = "PrefShortcutsViewController"
 
     var toolbarItemImage: NSImage? {
-        return #imageLiteral(resourceName: "shortcutsIcon")
+        if #available(macOS 11.0, *) {
+            return NSImage(systemSymbolName: "command", accessibilityDescription: nil)
+        } else {
+            return #imageLiteral(resourceName: "shortcutsIcon")
+        }
     }
 
     var toolbarItemLabel: String? {
@@ -100,21 +104,21 @@ class PrefShortcutsViewController: NSViewController, MASPreferencesViewControlle
         }
 
         MASShortcutBinder.shared().bindShortcut(withDefaultsKey: Keys.incrementColorTempShortcut) {
-            if NightShiftManager.isNightShiftEnabled {
-                if NightShiftManager.blueLightReductionAmount == 1.0 {
+            if NightShiftManager.shared.isNightShiftEnabled {
+                if NightShiftManager.shared.colorTemperature == 1.0 {
                     NSSound.beep()
                 }
-                NightShiftManager.blueLightReductionAmount += 0.1
+                NightShiftManager.shared.colorTemperature += 0.1
             } else {
-                NightShiftManager.respond(to: .userEnabledNightShift)
-                NightShiftManager.blueLightReductionAmount = 0.1
+                NightShiftManager.shared.respond(to: .userEnabledNightShift)
+                NightShiftManager.shared.colorTemperature = 0.1
             }
         }
 
         MASShortcutBinder.shared().bindShortcut(withDefaultsKey: Keys.decrementColorTempShortcut) {
-            if NightShiftManager.isNightShiftEnabled {
-                NightShiftManager.blueLightReductionAmount -= 0.1
-                if NightShiftManager.blueLightReductionAmount == 0.0 {
+            if NightShiftManager.shared.isNightShiftEnabled {
+                NightShiftManager.shared.colorTemperature -= 0.1
+                if NightShiftManager.shared.colorTemperature == 0.0 {
                     NSSound.beep()
                 }
             } else {

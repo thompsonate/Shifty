@@ -19,9 +19,9 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1.2</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
-	<string>63</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -36,6 +36,16 @@
 			</dict>
 		</array>
 	</dict>
+	<key>INIntentsSupported</key>
+	<array>
+		<string>GetColorTemperatureIntent</string>
+		<string>GetNightShiftStateIntent</string>
+		<string>GetTrueToneStateIntent</string>
+		<string>SetColorTemperatureIntent</string>
+		<string>SetDisableTimerIntent</string>
+		<string>SetNightShiftStateIntent</string>
+		<string>SetTrueToneStateIntent</string>
+	</array>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.utilities</string>
 	<key>LSHasLocalizedDisplayName</key>
@@ -47,11 +57,21 @@
 	<key>NSAppleEventsUsageDescription</key>
 	<string>Shifty needs access to your current web address to let you disable Night Shift for the sites you choose.</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>© 2017-2019 Nate Thompson. GPLv3 License.</string>
+	<string>© 2017-2021 Nate Thompson. GPLv3 License.</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>GetColorTemperatureIntent</string>
+		<string>GetNightShiftStateIntent</string>
+		<string>GetTrueToneStateIntent</string>
+		<string>SetColorTemperatureIntent</string>
+		<string>SetDisableTimerIntent</string>
+		<string>SetNightShiftStateIntent</string>
+		<string>SetTrueToneStateIntent</string>
+	</array>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUFeedURL</key>

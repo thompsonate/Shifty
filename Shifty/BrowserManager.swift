@@ -44,19 +44,21 @@ enum SupportedBrowserID: BundleIdentifier {
 }
 
 
-enum BrowserManager {
-    private static var browserObserver: Observer?
-    private static var observedApp: Application?
-    private static var focusedWindow: UIElement?
+class BrowserManager {
+    static var shared = BrowserManager()
     
-    private static var cachedBrowsers: [SupportedBrowserID: BrowserProtocol] = [:]
+    private var browserObserver: Observer?
+    private var observedApp: Application?
+    private var focusedWindow: UIElement?
+    
+    private var cachedBrowsers: [SupportedBrowserID: BrowserProtocol] = [:]
     
     
-    static var currentURL: URL? {
+    var currentURL: URL? {
         if !UserDefaults.standard.bool(forKey: Keys.isWebsiteControlEnabled) {
             return nil
         }
-        guard let application = RuleManager.currentApp,
+        guard let application = RuleManager.shared.currentApp,
             let browserID = SupportedBrowserID(application) else {
                 return nil
         }
@@ -74,22 +76,22 @@ enum BrowserManager {
     
     
     
-    static var currentDomain: String? {
+    var currentDomain: String? {
         return currentURL?.registeredDomain
     }
     
-    static var currentSubdomain: String? {
+    var currentSubdomain: String? {
         return currentURL?.host
     }
     
     
     
-    static var currentAppIsSupportedBrowser: Bool {
+    var currentAppIsSupportedBrowser: Bool {
         if !UserDefaults.standard.bool(forKey: Keys.isWebsiteControlEnabled) {
             return false
         }
         
-        guard let currentApp = RuleManager.currentApp else { return false }
+        guard let currentApp = RuleManager.shared.currentApp else { return false }
         return SupportedBrowserID(currentApp) != nil
     }
     
@@ -98,21 +100,21 @@ enum BrowserManager {
     /// Returns the AppleEvent Automation permission state of the current app.
     /// Blocks main thread if user is prompted for consent.
     /// I don't think this is currently an issue since the prompt will appear when the browser becomes the current app.
-    static var permissionToAutomateCurrentApp: PrivacyConsentState {
-        guard let bundleID = RuleManager.currentApp?.bundleIdentifier else { return .undetermined }
+    var permissionToAutomateCurrentApp: PrivacyConsentState {
+        guard let bundleID = RuleManager.shared.currentApp?.bundleIdentifier else { return .undetermined }
 
         return AppleEventsManager.automationConsent(forBundleIdentifier: bundleID)
     }
     
     
     
-    static var hasValidDomain: Bool {
+    var hasValidDomain: Bool {
         return currentDomain != nil
     }
     
     
     
-    static var hasValidSubdomain: Bool {
+    var hasValidSubdomain: Bool {
         if let currentDomain = currentDomain {
             if currentDomain == currentSubdomain || currentSubdomain == "www.\(currentDomain)" {
                 return false
@@ -123,7 +125,7 @@ enum BrowserManager {
     
     
     
-    static func updateForSupportedBrowser() {
+    func updateForSupportedBrowser() {
         guard let pid = NSWorkspace.shared.menuBarOwningApplication?.processIdentifier else { return }
         
         if UserDefaults.standard.bool(forKey: Keys.isWebsiteControlEnabled) {
@@ -132,20 +134,20 @@ enum BrowserManager {
         }
     }
     
-    private static func fireNightShiftEvent() {
-        if RuleManager.ruleForSubdomain == .enabled {
-            NightShiftManager.respond(to: .nightShiftEnableRuleActivated)
-        } else if RuleManager.disabledForDomain || RuleManager.ruleForSubdomain == .disabled {
-            NightShiftManager.respond(to: .nightShiftDisableRuleActivated)
+    private func fireNightShiftEvent() {
+        if RuleManager.shared.ruleForSubdomain == .enabled {
+            NightShiftManager.shared.respond(to: .nightShiftEnableRuleActivated)
+        } else if RuleManager.shared.disabledForDomain || RuleManager.shared.ruleForSubdomain == .disabled {
+            NightShiftManager.shared.respond(to: .nightShiftDisableRuleActivated)
         } else {
-            NightShiftManager.respond(to: .nightShiftDisableRuleDeactivated)
+            NightShiftManager.shared.respond(to: .nightShiftDisableRuleDeactivated)
         }
     }
     
     
     
     // When browser is launching, we're not able to add a notification right away, so we need to try again.
-    private static func tryStartBrowserWatcher(
+    private func tryStartBrowserWatcher(
         repeatCount: Int,
         processIdentifier: pid_t,
         callback: @escaping () -> Void)
@@ -157,7 +159,7 @@ enum BrowserManager {
         } catch let error {
             if repeatCount < maxTries {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    tryStartBrowserWatcher(
+                    self.tryStartBrowserWatcher(
                         repeatCount: repeatCount + 1,
                         processIdentifier: processIdentifier,
                         callback: callback)
@@ -170,7 +172,7 @@ enum BrowserManager {
     
     
     
-    private static func startBrowserWatcher(
+    private func startBrowserWatcher(
         _ processIdentifier: pid_t,
         callback: @escaping () -> Void) throws
     {
@@ -184,7 +186,7 @@ enum BrowserManager {
             
             switch event {
             case .valueChanged, .uiElementDestroyed:
-                if element == focusedWindow {
+                if element == self.focusedWindow {
                     fallthrough
                 }
                 if let role = try? element.role(), role == .staticText {
@@ -192,7 +194,7 @@ enum BrowserManager {
                 }
             case .focusedWindowChanged:
                 do {
-                    focusedWindow  = try observedApp.attribute(.focusedWindow)
+                    self.focusedWindow  = try observedApp.attribute(.focusedWindow)
                 } catch {
                     logw("Error: Unable to obtain focused window: \(error)")
                 }
@@ -211,7 +213,7 @@ enum BrowserManager {
     
     
     
-    static func stopBrowserWatcher() {
+    func stopBrowserWatcher() {
         guard let browserObserver = browserObserver else { return }
         
         if let observedApp = observedApp {
@@ -222,11 +224,11 @@ enum BrowserManager {
             } catch let error {
                 logw("Error: Couldn't remove notifications: \(error)")
             }
-            BrowserManager.observedApp = nil
+            self.observedApp = nil
         }
         focusedWindow = nil
         browserObserver.stop()
-        BrowserManager.browserObserver = nil
+        self.browserObserver = nil
     }
     
     
@@ -240,7 +242,7 @@ enum BrowserManager {
     
     
     
-    private static func url(for browser: BrowserProtocol, withBundleID browserID: SupportedBrowserID) -> URL? {
+    private func url(for browser: BrowserProtocol, withBundleID browserID: SupportedBrowserID) -> URL? {
         if !browser.isRunning {
             logw("Error: Could not get url, app already closed")
             return nil
@@ -276,8 +278,8 @@ enum BrowserManager {
     
     
     
-    private static func safariFullScreenURL(for browser: BrowserProtocol) throws -> URL? {
-        guard let app = RuleManager.currentApp,
+    private func safariFullScreenURL(for browser: BrowserProtocol) throws -> URL? {
+        guard let app = RuleManager.shared.currentApp,
             let axapp = Application(app),
             let axwin: UIElement = try axapp.attribute(.focusedWindow),
             let axwin_children: [UIElement] = try axwin.arrayAttribute(.children)
