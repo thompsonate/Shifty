@@ -28,6 +28,9 @@ enum SupportedBrowserID: BundleIdentifier {
     case operaBeta = "com.operasoftware.OperaNext"
     case operaDeveloper = "com.operasoftware.OperaDeveloper"
     
+    case brave = "com.brave.Browser"
+    case braveBeta = "com.brave.Browser.beta"
+    
     case vivaldi = "com.vivaldi.Vivaldi"
     
     init?(_ rawValue: String) {
@@ -254,7 +257,10 @@ class BrowserManager {
         
         let tab: Tab?
         switch browserID {
-        case .chrome, .chromeCanary, .chromium, .edge, .edgeBeta, .opera, .operaBeta, .operaDeveloper, .vivaldi:
+        case .chrome, .chromeCanary, .chromium,
+                .edge, .edgeBeta,
+                .opera, .operaBeta, .operaDeveloper,
+                .brave, .braveBeta, .vivaldi:
             tab = window.activeTab
         case .safari, .safariTechnologyPreview:
             do {
