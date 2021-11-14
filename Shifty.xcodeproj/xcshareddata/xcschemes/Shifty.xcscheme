@@ -62,13 +62,13 @@
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "show_setup"
-            value = "false"
-            isEnabled = "YES">
+            value = "true"
+            isEnabled = "NO">
          </EnvironmentVariable>
          <EnvironmentVariable
             key = "print_log"
-            value = "false"
-            isEnabled = "YES">
+            value = "true"
+            isEnabled = "NO">
          </EnvironmentVariable>
       </EnvironmentVariables>
       <LocationScenarioReference
