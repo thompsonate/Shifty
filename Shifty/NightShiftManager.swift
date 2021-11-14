@@ -12,6 +12,8 @@ import SwiftLog
 class NightShiftManager {
     static let shared = NightShiftManager()
     let client = CBBlueLightClient.shared
+    
+    var nightShiftChangeListeners = [() -> Void]()
 
     var userSet: UserSet = .notSet
     var userInitiatedShift = false
@@ -81,16 +83,11 @@ class NightShiftManager {
             }
             
             self.updateDarkMode()
-
-            DispatchQueue.main.async {
-                let appDelegate = NSApplication.shared.delegate as! AppDelegate
-                appDelegate.updateMenuBarIcon()
-                
-                let prefWindow = appDelegate.preferenceWindowController
-                let prefGeneral = prefWindow.viewControllers.compactMap { childViewController in
-                    return childViewController as? PrefGeneralViewController
-                }.first
-                prefGeneral?.updateSchedule?()
+            
+            for listener in self.nightShiftChangeListeners {
+                DispatchQueue.main.async {
+                    listener()
+                }
             }
         }
         
@@ -106,6 +103,10 @@ class NightShiftManager {
             
             self.updateDarkMode()
         }
+    }
+    
+    func onNightShiftChange(_ listener: @escaping () -> Void) {
+        nightShiftChangeListeners.append(listener)
     }
     
     func updateDarkMode() {

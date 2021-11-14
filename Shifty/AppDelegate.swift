@@ -102,6 +102,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         updateMenuBarIcon()
         setStatusToggle()
         
+        NightShiftManager.shared.onNightShiftChange {
+            self.updateMenuBarIcon()
+        }
+        
         statusItem.behavior = .terminationOnRemoval
         statusItem.isVisible = true
         

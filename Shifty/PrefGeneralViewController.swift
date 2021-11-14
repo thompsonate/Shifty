@@ -57,11 +57,6 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
     @IBOutlet weak var toLabel: NSTextField!
     @IBOutlet weak var customTimeStackView: NSStackView!
 
-    let prefs = UserDefaults.standard
-    var setStatusToggle: (() -> Void)?
-    var updateSchedule: (() -> Void)?
-    var updateDarkMode: (() -> Void)?
-
     var appDelegate: AppDelegate!
     var prefWindow: NSWindow!
     
@@ -72,6 +67,10 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
 
         appDelegate = NSApplication.shared.delegate as? AppDelegate
         prefWindow = appDelegate.preferenceWindowController.window
+        
+        NightShiftManager.shared.onNightShiftChange {
+            self.updateSchedule()
+        }
 
         //Hide True Tone settings on unsupported computers
         if #available(macOS 10.14, *) {
@@ -86,31 +85,31 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
         if !ProcessInfo().isOperatingSystemAtLeast(OperatingSystemVersion(majorVersion: 10, minorVersion: 13, patchVersion: 0)) {
             view.wantsLayer = false
         }
-
-        updateSchedule = {
-            switch NightShiftManager.shared.schedule {
-            case .off:
-                self.schedulePopup.select(self.offMenuItem)
-                self.customTimeStackView.isHidden = true
-            case .custom(start: let startTime, end: let endTime):
-                self.schedulePopup.select(self.customMenuItem)
-                let startDate = Date(startTime)
-                let endDate = Date(endTime)
-                
-                self.fromTimePicker.dateValue = startDate
-                self.toTimePicker.dateValue = endDate
-                self.customTimeStackView.isHidden = false
-            case .solar:
-                self.schedulePopup.select(self.sunMenuItem)
-                self.customTimeStackView.isHidden = true
-            }
-        }
     }
 
     override func viewWillAppear() {
         super.viewWillAppear()
 
-        updateSchedule?()
+        updateSchedule()
+    }
+    
+    func updateSchedule() {
+        switch NightShiftManager.shared.schedule {
+        case .off:
+            self.schedulePopup.select(self.offMenuItem)
+            self.customTimeStackView.isHidden = true
+        case .custom(start: let startTime, end: let endTime):
+            self.schedulePopup.select(self.customMenuItem)
+            let startDate = Date(startTime)
+            let endDate = Date(endTime)
+            
+            self.fromTimePicker.dateValue = startDate
+            self.toTimePicker.dateValue = endDate
+            self.customTimeStackView.isHidden = false
+        case .solar:
+            self.schedulePopup.select(self.sunMenuItem)
+            self.customTimeStackView.isHidden = true
+        }
     }
 
     //MARK: IBActions
@@ -149,7 +148,7 @@ class PrefGeneralViewController: NSViewController, MASPreferencesViewController 
             if !UIElement.isProcessTrusted() {
                 logw("Accessibility permissions alert shown")
 
-                prefs.set(false, forKey: Keys.isWebsiteControlEnabled)
+                UserDefaults.standard.set(false, forKey: Keys.isWebsiteControlEnabled)
                 NSApp.runModal(for: AccessibilityWindow().window!)
             }
         } else {
