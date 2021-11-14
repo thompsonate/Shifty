@@ -43,10 +43,10 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     var prefShortcuts: PrefShortcutsViewController!
     var customTimeWindow: CustomTimeWindow!
     
+    var nightShiftSwitchView: NSView?
+    var trueToneSwitchView: NSView?
+    
     let calendar = NSCalendar(identifier: .gregorian)!
-    
-    
-    
     
 
     //MARK: Menu life cycle
@@ -76,10 +76,33 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             return childViewController as? PrefShortcutsViewController
         }.first
         
-        
-
         descriptionMenuItem.isEnabled = false
         sliderMenuItem.view = sliderView
+        
+        if #available(macOS 11.0, *) {
+            nightShiftSwitchView = SwitchView(title: "Night Shift", onSwitchToggle: { isSwitchEnabled in
+                NightShiftManager.shared.isNightShiftEnabled = isSwitchEnabled
+                self.updateMenuItems()
+            })
+            guard let nightShiftSwitchView = nightShiftSwitchView else { return }
+            
+            nightShiftSwitchView.frame = CGRect(
+                x: 0, y: 0,
+                width: statusMenu.size.width,
+                height: nightShiftSwitchView.fittingSize.height)
+            powerMenuItem.view = nightShiftSwitchView
+            
+            trueToneSwitchView = SwitchView(title: "True Tone", onSwitchToggle: { isSwitchEnabled in
+                CBTrueToneClient.shared.isTrueToneEnabled = isSwitchEnabled
+                self.updateMenuItems()
+            })
+            guard let trueToneSwitchView = trueToneSwitchView else { return }
+            
+            trueToneSwitchView.frame = CGRect(
+                x: 0, y: 0,
+                width: statusMenu.size.width,
+                height: trueToneSwitchView.fittingSize.height)
+        }
 
         disableHourMenuItem.title = NSLocalizedString("menu.disable_hour", comment: "Disable for an hour")
         disableCustomMenuItem.title = NSLocalizedString("menu.disable_custom", comment: "Disable for custom time...")
@@ -98,7 +121,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     
 
     func menuWillOpen(_: NSMenu) {
-        configureMenuItems()
+        updateMenuItems()
         setDescriptionText()
         
         assignKeyboardShortcutToMenuItem(powerMenuItem, userDefaultsKey: Keys.toggleNightShiftShortcut)
@@ -115,11 +138,12 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     
     
     
-    func configureMenuItems() {
+    func updateMenuItems() {
         var currentAppName = RuleManager.shared.currentApp?.localizedName ?? ""
         var currentDomain = BrowserManager.shared.currentDomain
         var currentSubdomain = BrowserManager.shared.currentSubdomain
         
+        setDescriptionText(keepVisible: true)
         
         // In languages that don't use spaces, we need to add spaces around app name if it's in Latin-script letters.
         // These languages should not include spaces around the "%@" in its Localizable.strings file.
@@ -151,6 +175,20 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         } else {
             powerMenuItem.title = NSLocalizedString("menu.toggle_on", comment: "Turn on Night Shift")
             sliderView.shiftSlider.isEnabled = false
+        }
+        
+        if #available(macOS 11.0, *) {
+            if let nightShiftSwitchView = nightShiftSwitchView as? SwitchView {
+                nightShiftSwitchView.switchState = NightShiftManager.shared.isNightShiftEnabled
+            }
+            if CBTrueToneClient.shared.isTrueToneSupported && CBTrueToneClient.shared.isTrueToneAvailable {
+                trueToneMenuItem.view = trueToneSwitchView
+                if let trueToneSwitchView = trueToneSwitchView as? SwitchView {
+                    trueToneSwitchView.switchState = CBTrueToneClient.shared.isTrueToneEnabled
+                }
+            } else {
+                trueToneMenuItem.view = nil
+            }
         }
         
         

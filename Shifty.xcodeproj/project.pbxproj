@@ -19,6 +19,7 @@
 		4368E3031EBEBA6C00D53310 /* PrefManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4368E3021EBEBA6C00D53310 /* PrefManager.swift */; };
 		437556B41FF745A6001951AB /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437556B31FF745A6001951AB /* Setup.swift */; };
 		437556B61FF746BD001951AB /* SlideSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437556B51FF746BD001951AB /* SlideSegue.swift */; };
+		437B7179273E0889006AD485 /* SwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437B7178273E0889006AD485 /* SwitchView.swift */; };
 		437D7E161EC015CB00544FC8 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437D7E151EC015CB00544FC8 /* SliderView.swift */; };
 		4394DDA91EBE376F00F22908 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4394DDA21EBE376F00F22908 /* AppDelegate.swift */; };
 		4394DDAA1EBE376F00F22908 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4394DDA31EBE376F00F22908 /* Assets.xcassets */; };
@@ -122,6 +123,7 @@
 		436A0F3C1FBE913600E77D41 /* ShiftyAppcast.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ShiftyAppcast.xml; sourceTree = "<group>"; };
 		437556B31FF745A6001951AB /* Setup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Setup.swift; path = Shifty/Setup.swift; sourceTree = "<group>"; };
 		437556B51FF746BD001951AB /* SlideSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SlideSegue.swift; path = Shifty/SlideSegue.swift; sourceTree = "<group>"; };
+		437B7178273E0889006AD485 /* SwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchView.swift; sourceTree = "<group>"; };
 		437D7E151EC015CB00544FC8 /* SliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SliderView.swift; path = Shifty/SliderView.swift; sourceTree = "<group>"; };
 		4394DDA21EBE376F00F22908 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Shifty/AppDelegate.swift; sourceTree = "<group>"; };
 		4394DDA31EBE376F00F22908 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Shifty/Assets.xcassets; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 				4394DDA21EBE376F00F22908 /* AppDelegate.swift */,
 				4394DDA81EBE376F00F22908 /* StatusMenuController.swift */,
 				437D7E151EC015CB00544FC8 /* SliderView.swift */,
+				437B7178273E0889006AD485 /* SwitchView.swift */,
 				43D5C2381FC35FB500AF88E0 /* MainMenu.xib */,
 				4350191C1F21E99F0001324F /* CustomTimeWindow.swift */,
 				43D5C2231FC2CACF00AF88E0 /* CustomTimeWindow.xib */,
@@ -605,6 +608,7 @@
 				4394DDAD1EBE376F00F22908 /* StatusMenuController.swift in Sources */,
 				43CE525A20379A16002EBF61 /* Event.swift in Sources */,
 				43B9DE1B1FB592AE002C4C29 /* PrefAboutViewController.swift in Sources */,
+				437B7179273E0889006AD485 /* SwitchView.swift in Sources */,
 				43F974E72213D9D200224CF4 /* AppleEventsManager.m in Sources */,
 				4350191D1F21E99F0001324F /* CustomTimeWindow.swift in Sources */,
 				43F971B82156DD24001DBD45 /* AnalyticsDetailViewController.swift in Sources */,
