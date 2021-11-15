@@ -216,29 +216,40 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func setStatusToggle() {
-        if prefs.bool(forKey: Keys.isStatusToggleEnabled) {
-            statusItem.menu = nil
-            if let button = statusItem.button {
-                button.action = #selector(statusBarButtonClicked)
-                button.sendAction(on: [.leftMouseUp, .leftMouseDown, .rightMouseUp, .rightMouseDown])
-            }
-        } else {
-            statusItem.menu = statusMenu
+        statusItem.menu = nil
+        if let button = statusItem.button {
+            button.action = #selector(statusBarButtonClicked)
+            button.sendAction(on: [.leftMouseUp, .leftMouseDown, .rightMouseUp, .rightMouseDown])
         }
     }
 
     @objc func statusBarButtonClicked(sender: NSStatusBarButton) {
-        let event = NSApp.currentEvent!
+        guard let event = NSApp.currentEvent else { return }
         
-        if event.type == .rightMouseDown
-            || event.type == .rightMouseUp
-            || event.modifierFlags.contains(.control)
-        {
-            statusItem.menu = statusMenu
-            statusItem.button?.performClick(self)
-            statusItem.menu = nil
-        } else if event.type == .leftMouseUp {
-            statusItemClicked?()
+        if UserDefaults.standard.bool(forKey: Keys.isStatusToggleEnabled) {
+            if event.type == .rightMouseDown
+                || event.type == .rightMouseUp
+                || event.modifierFlags.contains(.control)
+            {
+                statusItem.menu = statusMenu
+                statusItem.button?.performClick(sender)
+                statusItem.menu = nil
+            } else if event.type == .leftMouseUp {
+                statusItemClicked?()
+            }
+        } else {
+            if event.type == .rightMouseUp
+                || (event.type == .leftMouseUp
+                    && event.modifierFlags.contains(.control))
+            {
+                statusItemClicked?()
+            } else if event.type == .leftMouseDown
+                && !event.modifierFlags.contains(.control)
+            {
+                statusItem.menu = statusMenu
+                statusItem.button?.performClick(sender)
+                statusItem.menu = nil
+            }
         }
     }
 
