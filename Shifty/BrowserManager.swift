@@ -138,9 +138,9 @@ class BrowserManager {
     }
     
     private func fireNightShiftEvent() {
-        if RuleManager.shared.ruleForSubdomain == .enabled {
+        if RuleManager.shared.ruleForCurrentSubdomain == .enabled {
             NightShiftManager.shared.respond(to: .nightShiftEnableRuleActivated)
-        } else if RuleManager.shared.disabledForDomain || RuleManager.shared.ruleForSubdomain == .disabled {
+        } else if RuleManager.shared.isDisabledForDomain || RuleManager.shared.ruleForCurrentSubdomain == .disabled {
             NightShiftManager.shared.respond(to: .nightShiftDisableRuleActivated)
         } else {
             NightShiftManager.shared.respond(to: .nightShiftDisableRuleDeactivated)

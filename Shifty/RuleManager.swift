@@ -153,104 +153,105 @@ class RuleManager {
         NightShiftManager.shared.respond(to: .nightShiftDisableRuleDeactivated)
     }
     
-    var disabledForDomain: Bool {
-        get {
-            guard let currentDomain = BrowserManager.shared.currentDomain else { return false }
-            let disabledDomain = browserRules.filter {
-                $0.type == .domain && $0.host == currentDomain }.count > 0
-            return disabledDomain
+    
+    var isDisabledForDomain: Bool {
+        guard let currentDomain = BrowserManager.shared.currentDomain else { return false }
+        let disabledDomain = browserRules.filter {
+            $0.type == .domain && $0.host == currentDomain }.count > 0
+        return disabledDomain
+    }
+    
+    func addDomainDisableRule(forDomain domain: String) {
+        let rule = BrowserRule(type: .domain, host: domain)
+        browserRules.insert(rule)
+        
+        NightShiftManager.shared.respond(to: .nightShiftDisableRuleActivated)
+    }
+    
+    func removeDomainDisableRule(forDomain domain: String) {
+        let rule = BrowserRule(type: .domain, host: domain)
+        guard let index = browserRules.firstIndex(of: rule) else { return }
+        browserRules.remove(at: index)
+        
+        if let currentSubdomain = BrowserManager.shared.currentSubdomain,
+           getSubdomainRule(forSubdomain: currentSubdomain) == .enabled
+        {
+            setSubdomainRule(.none, forSubdomain: currentSubdomain)
         }
-        set(newValue) {
-            guard let currentDomain = BrowserManager.shared.currentDomain else { return }
-            let rule = BrowserRule(type: .domain, host: currentDomain)
-            if newValue {
-                browserRules.insert(rule)
-                NightShiftManager.shared.respond(to: .nightShiftDisableRuleActivated)
-            } else {
-                guard let index = browserRules.firstIndex(of: rule) else { return }
-                
-                if ruleForSubdomain == .enabled {
-                    ruleForSubdomain = .none
-                }
-                browserRules.remove(at: index)
-                NightShiftManager.shared.respond(to: .nightShiftDisableRuleDeactivated)
-            }
-        }
+        
+        NightShiftManager.shared.respond(to: .nightShiftDisableRuleDeactivated)
     }
     
     
-    
-    var ruleForSubdomain: SubdomainRuleType {
-        get {
-            guard let currentSubdomain = BrowserManager.shared.currentSubdomain else { return .none }
-            
-            if disabledForDomain {
-                let isEnabled = (browserRules.filter {
-                    $0.type == .subdomainEnabled
-                        && $0.host == currentSubdomain
-                    }.count > 0)
-                if isEnabled {
-                    return .enabled
-                }
-            } else {
-                let isDisabled = (browserRules.filter {
-                    $0.type == .subdomainDisabled
-                        && $0.host == currentSubdomain
-                    }.count > 0)
-                if isDisabled {
-                    return .disabled
-                }
+    func getSubdomainRule(forSubdomain subdomain: String) -> SubdomainRuleType {
+        if isDisabledForDomain {
+            let isEnabled = (browserRules.filter {
+                $0.type == .subdomainEnabled
+                && $0.host == subdomain
+            }.count > 0)
+            if isEnabled {
+                return .enabled
             }
-            return .none
+        } else {
+            let isDisabled = (browserRules.filter {
+                $0.type == .subdomainDisabled
+                && $0.host == subdomain
+            }.count > 0)
+            if isDisabled {
+                return .disabled
+            }
         }
-        set(newValue) {
-            guard let currentSubdomain = BrowserManager.shared.currentSubdomain else { return }
+        return .none
+    }
+    
+    var ruleForCurrentSubdomain: SubdomainRuleType {
+        guard let currentSubdomain = BrowserManager.shared.currentSubdomain else { return .none }
+        return getSubdomainRule(forSubdomain: currentSubdomain)
+    }
+    
+    func setSubdomainRule(_ ruleType: SubdomainRuleType, forSubdomain subdomain: String) {
+        switch ruleType {
+        case .disabled:
+            let rule = BrowserRule(type: .subdomainDisabled, host: subdomain)
+            browserRules.insert(rule)
+            NightShiftManager.shared.respond(to: .nightShiftDisableRuleActivated)
+        case .enabled:
+            let rule = BrowserRule(type: .subdomainEnabled, host: subdomain)
+            browserRules.insert(rule)
+            NightShiftManager.shared.respond(to: .nightShiftEnableRuleActivated)
+        case .none:
+            var rule: BrowserRule
+            let prevValue = getSubdomainRule(forSubdomain: subdomain)
             
-            switch newValue {
+            //Remove rule from set before triggering NightShiftEvent
+            switch prevValue {
             case .disabled:
-                let rule = BrowserRule(type: .subdomainDisabled, host: currentSubdomain)
-                browserRules.insert(rule)
-                NightShiftManager.shared.respond(to: .nightShiftDisableRuleActivated)
+                rule = BrowserRule(type: .subdomainDisabled, host: subdomain)
             case .enabled:
-                let rule = BrowserRule(type: .subdomainEnabled, host: currentSubdomain)
-                browserRules.insert(rule)
-                NightShiftManager.shared.respond(to: .nightShiftEnableRuleActivated)
+                rule = BrowserRule(type: .subdomainEnabled, host: subdomain)
             case .none:
-                var rule: BrowserRule
-                let prevValue = ruleForSubdomain
-                
-                //Remove rule from set before triggering NightShiftEvent
-                switch prevValue {
-                case .disabled:
-                    rule = BrowserRule(type: .subdomainDisabled, host: currentSubdomain)
-                case .enabled:
-                    rule = BrowserRule(type: .subdomainEnabled, host: currentSubdomain)
-                case .none:
-                    return
-                }
-                guard let index = browserRules.firstIndex(of: rule) else { return }
-                browserRules.remove(at: index)
-                
-                switch prevValue {
-                case .disabled:
-                    NightShiftManager.shared.respond(to: .nightShiftDisableRuleDeactivated)
-                case .enabled:
-                    NightShiftManager.shared.respond(to: .nightShiftEnableRuleDeactivated)
-                case .none:
-                    break
-                }
+                return
+            }
+            guard let index = browserRules.firstIndex(of: rule) else { return }
+            browserRules.remove(at: index)
+            
+            switch prevValue {
+            case .disabled:
+                NightShiftManager.shared.respond(to: .nightShiftDisableRuleDeactivated)
+            case .enabled:
+                NightShiftManager.shared.respond(to: .nightShiftEnableRuleDeactivated)
+            case .none:
+                break
             }
         }
     }
-    
     
     
     var disableRuleIsActive: Bool {
         return isDisabledForCurrentApp || isDisabledForRunningApp ||
-        (disabledForDomain && ruleForSubdomain != .enabled) ||
-        ruleForSubdomain == .disabled
+        (isDisabledForDomain && ruleForCurrentSubdomain != .enabled) ||
+        ruleForCurrentSubdomain == .disabled
     }
-    
     
     
     func removeRulesForCurrentState() {
@@ -260,8 +261,12 @@ class RuleManager {
                 removeRunningAppDisableRule(forApp: app)
             }
         }
-        disabledForDomain = false
-        ruleForSubdomain = .none
+        if let currentDomain = BrowserManager.shared.currentDomain {
+            removeDomainDisableRule(forDomain: currentDomain)
+        }
+        if let currentSubdomain = BrowserManager.shared.currentSubdomain {
+            setSubdomainRule(.none, forSubdomain: currentSubdomain)
+        }
     }
     
     
