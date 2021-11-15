@@ -168,10 +168,14 @@ class StatusMenuController: NSObject, NSMenuDelegate {
            RuleManager.shared.isDisabledWhenRunningApp(currentApp)
         {
             disableRunningAppMenuItem.state = .on
-            disableRunningAppMenuItem.title = "Disabled when \(currentAppName) is running"
+            disableRunningAppMenuItem.title = String(format: NSLocalizedString(
+                "menu.disabled_for_running_app",
+                comment: "Disabled when %@ is running"), currentAppName)
         } else {
             disableRunningAppMenuItem.state = .off
-            disableRunningAppMenuItem.title = "Disable when \(currentAppName) is running"
+            disableRunningAppMenuItem.title = String(format: NSLocalizedString(
+                "menu.disable_for_running_app",
+                comment: "Disable when %@ is running"), currentAppName)
         }
         
         
