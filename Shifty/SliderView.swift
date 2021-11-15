@@ -31,8 +31,7 @@ class SliderView: NSView {
         NightShiftManager.shared.isNightShiftEnabled = true
         
         let statusMenuController = (NSApplication.shared.delegate as! AppDelegate).statusMenu.delegate as! StatusMenuController
-        statusMenuController.configureMenuItems()
-        statusMenuController.setDescriptionText(keepVisible: true)
+        statusMenuController.updateMenuItems()
         
         shiftSlider.isEnabled = true
         Event.enableSlider.record()
