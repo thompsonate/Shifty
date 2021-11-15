@@ -18,7 +18,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     @IBOutlet weak var trueToneMenuItem: NSMenuItem!
     @IBOutlet weak var sliderMenuItem: NSMenuItem!
     @IBOutlet weak var descriptionMenuItem: NSMenuItem!
-    @IBOutlet weak var disableAppMenuItem: NSMenuItem!
+    @IBOutlet weak var disableCurrentAppMenuItem: NSMenuItem!
+    @IBOutlet weak var disableRunningAppMenuItem: NSMenuItem!
     @IBOutlet weak var disableDomainMenuItem: NSMenuItem!
     @IBOutlet weak var disableSubdomainMenuItem: NSMenuItem!
     @IBOutlet weak var enableBrowserAutomationMenuItem: NSMenuItem!
@@ -102,7 +103,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         setDescriptionText()
         
         assignKeyboardShortcutToMenuItem(powerMenuItem, userDefaultsKey: Keys.toggleNightShiftShortcut)
-        assignKeyboardShortcutToMenuItem(disableAppMenuItem, userDefaultsKey: Keys.disableAppShortcut)
+        assignKeyboardShortcutToMenuItem(disableCurrentAppMenuItem, userDefaultsKey: Keys.disableAppShortcut)
         assignKeyboardShortcutToMenuItem(disableDomainMenuItem, userDefaultsKey: Keys.disableDomainShortcut)
         assignKeyboardShortcutToMenuItem(disableSubdomainMenuItem, userDefaultsKey: Keys.disableSubdomainShortcut)
         assignKeyboardShortcutToMenuItem(disableHourMenuItem, userDefaultsKey: Keys.disableHourShortcut)
@@ -155,12 +156,22 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         
         
         //MARK: disable for app
-        if RuleManager.shared.disabledForApp {
-            disableAppMenuItem.state = .on
-            disableAppMenuItem.title = String(format: NSLocalizedString("menu.disabled_for", comment: "Disabled for %@"), currentAppName)
+        if RuleManager.shared.isDisabledForCurrentApp {
+            disableCurrentAppMenuItem.state = .on
+            disableCurrentAppMenuItem.title = String(format: NSLocalizedString("menu.disabled_for", comment: "Disabled for %@"), currentAppName)
         } else {
-            disableAppMenuItem.state = .off
-            disableAppMenuItem.title = String(format: NSLocalizedString("menu.disable_for", comment: "Disable for %@"), currentAppName)
+            disableCurrentAppMenuItem.state = .off
+            disableCurrentAppMenuItem.title = String(format: NSLocalizedString("menu.disable_for", comment: "Disable for %@"), currentAppName)
+        }
+        
+        if let currentApp = RuleManager.shared.currentApp,
+           RuleManager.shared.isDisabledWhenRunningApp(currentApp)
+        {
+            disableRunningAppMenuItem.state = .on
+            disableRunningAppMenuItem.title = "Disabled when \(currentAppName) is running"
+        } else {
+            disableRunningAppMenuItem.state = .off
+            disableRunningAppMenuItem.title = "Disable when \(currentAppName) is running"
         }
         
         
@@ -382,16 +393,26 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     
     
     
-    @IBAction func disableForApp(_ sender: Any) {
-        if RuleManager.shared.disabledForApp {
-            RuleManager.shared.disabledForApp = false
+    @IBAction func disableForCurrentApp(_ sender: Any) {
+        guard let currentApp = RuleManager.shared.currentApp else { return }
+        
+        if RuleManager.shared.isDisabledForCurrentApp {
+            RuleManager.shared.removeCurrentAppDisableRule(forApp: currentApp)
         } else {
-            RuleManager.shared.disabledForApp = true
+            RuleManager.shared.addCurrentAppDisableRule(forApp: currentApp)
         }
         Event.disableForCurrentApp(state: (sender as? NSMenuItem)?.state == .on).record()
     }
     
-    
+    @IBAction func disableForRunningApp(_ sender: Any) {
+        guard let currentApp = RuleManager.shared.currentApp else { return }
+        
+        if RuleManager.shared.isDisabledForRunningApp {
+            RuleManager.shared.removeRunningAppDisableRule(forApp: currentApp)
+        } else {
+            RuleManager.shared.addRunningAppDisableRule(forApp: currentApp)
+        }
+    }
 
     @IBAction func disableForDomain(_ sender: Any) {
         if RuleManager.shared.disabledForDomain {

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -22,10 +22,11 @@
         <customObject id="YHE-ZD-Fjn" userLabel="StatusMenuController" customClass="StatusMenuController" customModule="Shifty" customModuleProvider="target">
             <connections>
                 <outlet property="descriptionMenuItem" destination="zi6-lD-Hd5" id="DcD-QI-A3k"/>
-                <outlet property="disableAppMenuItem" destination="ycw-C3-JG6" id="w7g-sV-odc"/>
+                <outlet property="disableCurrentAppMenuItem" destination="ycw-C3-JG6" id="w7g-sV-odc"/>
                 <outlet property="disableCustomMenuItem" destination="VMR-D3-M60" id="Seo-8A-F4I"/>
                 <outlet property="disableDomainMenuItem" destination="JPo-kA-2ad" id="apR-hI-2G1"/>
                 <outlet property="disableHourMenuItem" destination="lLZ-zs-A2J" id="JBY-cw-D9b"/>
+                <outlet property="disableRunningAppMenuItem" destination="Bq2-vW-0D6" id="SiA-oU-QCK"/>
                 <outlet property="disableSubdomainMenuItem" destination="VgG-sQ-dcu" id="1hP-t7-xvX"/>
                 <outlet property="enableBrowserAutomationMenuItem" destination="Anz-oa-3rV" id="5yd-Qd-JzE"/>
                 <outlet property="moonIcon" destination="QFo-Gz-iR8" id="bkD-8o-fbd"/>
@@ -55,10 +56,10 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="9KJ-0B-A9w"/>
-                <menuItem title="Disable for app" id="ycw-C3-JG6">
+                <menuItem title="Disable for current app" id="ycw-C3-JG6">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="disableForApp:" target="YHE-ZD-Fjn" id="Akx-Tu-eBm"/>
+                        <action selector="disableForCurrentApp:" target="YHE-ZD-Fjn" id="5x5-Wn-Thl"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Disable for Domain" hidden="YES" indentationLevel="1" id="JPo-kA-2ad">
@@ -77,6 +78,12 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="enableBrowserAutomation:" target="YHE-ZD-Fjn" id="KGQ-H9-T8g"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Disable when app is running" id="Bq2-vW-0D6">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="disableForRunningApp:" target="YHE-ZD-Fjn" id="fZt-6e-AtZ"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Disable for an hour" id="lLZ-zs-A2J">
@@ -115,11 +122,11 @@
             <point key="canvasLocation" x="144" y="120"/>
         </menu>
         <customView id="xRd-3s-8Ep" customClass="SliderView" customModule="Shifty" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="247" height="21"/>
+            <rect key="frame" x="0.0" y="0.0" width="247" height="20"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JKy-ed-5KM">
-                    <rect key="frame" x="-6" y="-7" width="259" height="32"/>
+                    <rect key="frame" x="-7" y="-7" width="261" height="32"/>
                     <buttonCell key="cell" type="push" bezelStyle="rounded" alignment="center" borderStyle="border" transparent="YES" imageScaling="proportionallyDown" inset="2" id="Eas-n8-yck">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -129,10 +136,10 @@
                     </connections>
                 </button>
                 <stackView distribution="fillProportionally" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qwu-Gq-7IE">
-                    <rect key="frame" x="25" y="0.0" width="197" height="21"/>
+                    <rect key="frame" x="25" y="0.0" width="197" height="20"/>
                     <subviews>
                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dky-H2-15i">
-                            <rect key="frame" x="0.0" y="2" width="18" height="18"/>
+                            <rect key="frame" x="0.0" y="1" width="18" height="18"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="18" id="KQA-UR-LLn"/>
                                 <constraint firstAttribute="height" constant="18" id="wa8-97-0tF"/>
@@ -140,14 +147,14 @@
                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="sunIcon" id="qBk-P2-1HM"/>
                         </imageView>
                         <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qOz-qT-jic" customClass="ScrollableSlider" customModule="Shifty" customModuleProvider="target">
-                            <rect key="frame" x="24" y="1" width="149" height="19"/>
+                            <rect key="frame" x="24" y="-6" width="149" height="28"/>
                             <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="AT9-Xr-w3B"/>
                             <connections>
                                 <action selector="shiftSliderMoved:" target="xRd-3s-8Ep" id="Ijr-EN-eZS"/>
                             </connections>
                         </slider>
                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QFo-Gz-iR8">
-                            <rect key="frame" x="179" y="2" width="18" height="18"/>
+                            <rect key="frame" x="179" y="1" width="18" height="18"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="18" id="UgS-nD-Ct9"/>
                                 <constraint firstAttribute="width" constant="18" id="WHp-Py-ODO"/>
@@ -185,7 +192,7 @@
             <connections>
                 <outlet property="shiftSlider" destination="qOz-qT-jic" id="RJ9-eC-U59"/>
             </connections>
-            <point key="canvasLocation" x="144" y="307"/>
+            <point key="canvasLocation" x="144" y="343"/>
         </customView>
     </objects>
     <resources>
