@@ -18,7 +18,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     @IBOutlet weak var trueToneMenuItem: NSMenuItem!
     @IBOutlet weak var sliderMenuItem: NSMenuItem!
     @IBOutlet weak var descriptionMenuItem: NSMenuItem!
-    @IBOutlet weak var disableAppMenuItem: NSMenuItem!
+    @IBOutlet weak var disableCurrentAppMenuItem: NSMenuItem!
+    @IBOutlet weak var disableRunningAppMenuItem: NSMenuItem!
     @IBOutlet weak var disableDomainMenuItem: NSMenuItem!
     @IBOutlet weak var disableSubdomainMenuItem: NSMenuItem!
     @IBOutlet weak var enableBrowserAutomationMenuItem: NSMenuItem!
@@ -102,7 +103,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         setDescriptionText()
         
         assignKeyboardShortcutToMenuItem(powerMenuItem, userDefaultsKey: Keys.toggleNightShiftShortcut)
-        assignKeyboardShortcutToMenuItem(disableAppMenuItem, userDefaultsKey: Keys.disableAppShortcut)
+        assignKeyboardShortcutToMenuItem(disableCurrentAppMenuItem, userDefaultsKey: Keys.disableAppShortcut)
         assignKeyboardShortcutToMenuItem(disableDomainMenuItem, userDefaultsKey: Keys.disableDomainShortcut)
         assignKeyboardShortcutToMenuItem(disableSubdomainMenuItem, userDefaultsKey: Keys.disableSubdomainShortcut)
         assignKeyboardShortcutToMenuItem(disableHourMenuItem, userDefaultsKey: Keys.disableHourShortcut)
@@ -155,19 +156,33 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         
         
         //MARK: disable for app
-        if RuleManager.shared.disabledForApp {
-            disableAppMenuItem.state = .on
-            disableAppMenuItem.title = String(format: NSLocalizedString("menu.disabled_for", comment: "Disabled for %@"), currentAppName)
+        if RuleManager.shared.isDisabledForCurrentApp {
+            disableCurrentAppMenuItem.state = .on
+            disableCurrentAppMenuItem.title = String(format: NSLocalizedString("menu.disabled_for", comment: "Disabled for %@"), currentAppName)
         } else {
-            disableAppMenuItem.state = .off
-            disableAppMenuItem.title = String(format: NSLocalizedString("menu.disable_for", comment: "Disable for %@"), currentAppName)
+            disableCurrentAppMenuItem.state = .off
+            disableCurrentAppMenuItem.title = String(format: NSLocalizedString("menu.disable_for", comment: "Disable for %@"), currentAppName)
+        }
+        
+        if let currentApp = RuleManager.shared.currentApp,
+           RuleManager.shared.isDisabledWhenRunningApp(currentApp)
+        {
+            disableRunningAppMenuItem.state = .on
+            disableRunningAppMenuItem.title = String(format: NSLocalizedString(
+                "menu.disabled_for_running_app",
+                comment: "Disabled when %@ is running"), currentAppName)
+        } else {
+            disableRunningAppMenuItem.state = .off
+            disableRunningAppMenuItem.title = String(format: NSLocalizedString(
+                "menu.disable_for_running_app",
+                comment: "Disable when %@ is running"), currentAppName)
         }
         
         
         // MARK: disable for domain
         if BrowserManager.shared.hasValidDomain {
             disableDomainMenuItem.isHidden = false
-            if RuleManager.shared.disabledForDomain {
+            if RuleManager.shared.isDisabledForDomain {
                 disableDomainMenuItem.state = .on
                 disableDomainMenuItem.title = String(format: NSLocalizedString("menu.disabled_for", comment: "Disabled for %@"), currentDomain ?? "")
             } else {
@@ -182,13 +197,13 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         // MARK: disable for subdomain
         if BrowserManager.shared.hasValidSubdomain {
             disableSubdomainMenuItem.isHidden = false
-            if RuleManager.shared.ruleForSubdomain == .enabled {
+            if RuleManager.shared.ruleForCurrentSubdomain == .enabled {
                 disableSubdomainMenuItem.state = .on
                 disableSubdomainMenuItem.title = String(format: NSLocalizedString("menu.enabled_for", comment: "Enabled for %@"), currentSubdomain ?? "")
-            } else if RuleManager.shared.ruleForSubdomain == .disabled {
+            } else if RuleManager.shared.ruleForCurrentSubdomain == .disabled {
                 disableSubdomainMenuItem.state = .on
                 disableSubdomainMenuItem.title = String(format: NSLocalizedString("menu.disabled_for", comment: "Disabled for %@"), currentSubdomain ?? "")
-            } else if RuleManager.shared.disabledForDomain {
+            } else if RuleManager.shared.isDisabledForDomain {
                 disableSubdomainMenuItem.state = .off
                 disableSubdomainMenuItem.title = String(format: NSLocalizedString("menu.enable_for", comment: "Enable for %@"), currentSubdomain ?? "")
             } else {
@@ -257,9 +272,9 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             case .disabled:
                 if NightShiftManager.shared.isDisableRuleActive {
                     trueToneMenuItem.isEnabled = false
-                    if RuleManager.shared.disabledForDomain {
+                    if RuleManager.shared.isDisabledForDomain {
                         trueToneMenuItem.title = String(format: NSLocalizedString("menu.true_tone_disabled_for", comment: "True Tone is disabled for %@"), currentDomain ?? "")
-                    } else if RuleManager.shared.ruleForSubdomain == .disabled {
+                    } else if RuleManager.shared.ruleForCurrentSubdomain == .disabled {
                         trueToneMenuItem.title = String(format: NSLocalizedString("menu.true_tone_disabled_for", comment: "True Tone is disabled for %@"), currentSubdomain ?? "")
                     } else {
                         trueToneMenuItem.title = String(format: NSLocalizedString("menu.true_tone_disabled_for", comment: "True Tone is disabled for %@"), currentAppName)
@@ -382,36 +397,50 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     
     
     
-    @IBAction func disableForApp(_ sender: Any) {
-        if RuleManager.shared.disabledForApp {
-            RuleManager.shared.disabledForApp = false
+    @IBAction func disableForCurrentApp(_ sender: Any) {
+        guard let currentApp = RuleManager.shared.currentApp else { return }
+        
+        if RuleManager.shared.isDisabledForCurrentApp {
+            RuleManager.shared.removeCurrentAppDisableRule(forApp: currentApp)
         } else {
-            RuleManager.shared.disabledForApp = true
+            RuleManager.shared.addCurrentAppDisableRule(forApp: currentApp)
         }
         Event.disableForCurrentApp(state: (sender as? NSMenuItem)?.state == .on).record()
     }
     
-    
+    @IBAction func disableForRunningApp(_ sender: Any) {
+        guard let currentApp = RuleManager.shared.currentApp else { return }
+        
+        if RuleManager.shared.isDisabledForRunningApp {
+            RuleManager.shared.removeRunningAppDisableRule(forApp: currentApp)
+        } else {
+            RuleManager.shared.addRunningAppDisableRule(forApp: currentApp)
+        }
+    }
 
     @IBAction func disableForDomain(_ sender: Any) {
-        if RuleManager.shared.disabledForDomain {
-            RuleManager.shared.disabledForDomain = false
+        guard let currentDomain = BrowserManager.shared.currentDomain else { return }
+        
+        if RuleManager.shared.isDisabledForDomain {
+            RuleManager.shared.removeDomainDisableRule(forDomain: currentDomain)
         } else {
-            RuleManager.shared.disabledForDomain = true
+            RuleManager.shared.addDomainDisableRule(forDomain: currentDomain)
         }
     }
     
     
 
     @IBAction func disableForSubdomain(_ sender: Any) {
-        if RuleManager.shared.ruleForSubdomain == .none {
-            if RuleManager.shared.disabledForDomain {
-                RuleManager.shared.ruleForSubdomain = .enabled
+        guard let currentSubdomain = BrowserManager.shared.currentSubdomain else { return }
+        
+        if RuleManager.shared.ruleForCurrentSubdomain == .none {
+            if RuleManager.shared.isDisabledForDomain {
+                RuleManager.shared.setSubdomainRule(.enabled, forSubdomain: currentSubdomain)
             } else {
-                RuleManager.shared.ruleForSubdomain = .disabled
+                RuleManager.shared.setSubdomainRule(.disabled, forSubdomain: currentSubdomain)
             }
         } else {
-            RuleManager.shared.ruleForSubdomain = .none
+            RuleManager.shared.setSubdomainRule(.none, forSubdomain: currentSubdomain)
         }
     }
     

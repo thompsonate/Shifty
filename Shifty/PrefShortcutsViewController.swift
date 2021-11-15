@@ -128,8 +128,8 @@ class PrefShortcutsViewController: NSViewController, MASPreferencesViewControlle
 
         MASShortcutBinder.shared().bindShortcut(withDefaultsKey: Keys.disableAppShortcut) {
             guard let menu = self.statusMenuController else { return }
-            if !menu.disableAppMenuItem.isHidden && menu.disableAppMenuItem.isEnabled {
-                self.statusMenuController?.disableForApp(self)
+            if !menu.disableCurrentAppMenuItem.isHidden && menu.disableCurrentAppMenuItem.isEnabled {
+                self.statusMenuController?.disableForCurrentApp(self)
             } else {
                 NSSound.beep()
             }
