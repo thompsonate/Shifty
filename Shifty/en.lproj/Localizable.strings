@@ -13,6 +13,8 @@
 "menu.toggle_off" = "Turn off Night Shift";
 "menu.disable_for" = "Disable for %@";
 "menu.disabled_for" = "Disabled for %@";
+"menu.disable_for_running_app" = "Disable when %@ is running";
+"menu.disabled_for_running_app" = "Disabled when %@ is running";
 "menu.enable_for" = "Enable for %@";
 "menu.enabled_for" = "Enabled for %@";
 

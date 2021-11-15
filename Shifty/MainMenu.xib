@@ -22,10 +22,11 @@
         <customObject id="YHE-ZD-Fjn" userLabel="StatusMenuController" customClass="StatusMenuController" customModule="Shifty" customModuleProvider="target">
             <connections>
                 <outlet property="descriptionMenuItem" destination="zi6-lD-Hd5" id="DcD-QI-A3k"/>
-                <outlet property="disableAppMenuItem" destination="ycw-C3-JG6" id="w7g-sV-odc"/>
+                <outlet property="disableCurrentAppMenuItem" destination="ycw-C3-JG6" id="w7g-sV-odc"/>
                 <outlet property="disableCustomMenuItem" destination="VMR-D3-M60" id="Seo-8A-F4I"/>
                 <outlet property="disableDomainMenuItem" destination="JPo-kA-2ad" id="apR-hI-2G1"/>
                 <outlet property="disableHourMenuItem" destination="lLZ-zs-A2J" id="JBY-cw-D9b"/>
+                <outlet property="disableRunningAppMenuItem" destination="Bq2-vW-0D6" id="SiA-oU-QCK"/>
                 <outlet property="disableSubdomainMenuItem" destination="VgG-sQ-dcu" id="1hP-t7-xvX"/>
                 <outlet property="enableBrowserAutomationMenuItem" destination="Anz-oa-3rV" id="5yd-Qd-JzE"/>
                 <outlet property="moonIcon" destination="QFo-Gz-iR8" id="bkD-8o-fbd"/>
@@ -55,10 +56,10 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="9KJ-0B-A9w"/>
-                <menuItem title="Disable for app" id="ycw-C3-JG6">
+                <menuItem title="Disable for current app" id="ycw-C3-JG6">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="disableForApp:" target="YHE-ZD-Fjn" id="Akx-Tu-eBm"/>
+                        <action selector="disableForCurrentApp:" target="YHE-ZD-Fjn" id="5x5-Wn-Thl"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Disable for Domain" hidden="YES" indentationLevel="1" id="JPo-kA-2ad">
@@ -77,6 +78,12 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="enableBrowserAutomation:" target="YHE-ZD-Fjn" id="KGQ-H9-T8g"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Disable when app is running" id="Bq2-vW-0D6">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="disableForRunningApp:" target="YHE-ZD-Fjn" id="fZt-6e-AtZ"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Disable for an hour" id="lLZ-zs-A2J">
@@ -185,7 +192,7 @@
             <connections>
                 <outlet property="shiftSlider" destination="qOz-qT-jic" id="RJ9-eC-U59"/>
             </connections>
-            <point key="canvasLocation" x="144" y="324"/>
+            <point key="canvasLocation" x="144" y="343"/>
         </customView>
     </objects>
     <resources>

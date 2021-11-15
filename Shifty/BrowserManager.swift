@@ -28,6 +28,9 @@ enum SupportedBrowserID: BundleIdentifier {
     case operaBeta = "com.operasoftware.OperaNext"
     case operaDeveloper = "com.operasoftware.OperaDeveloper"
     
+    case brave = "com.brave.Browser"
+    case braveBeta = "com.brave.Browser.beta"
+    
     case vivaldi = "com.vivaldi.Vivaldi"
     
     init?(_ rawValue: String) {
@@ -135,9 +138,9 @@ class BrowserManager {
     }
     
     private func fireNightShiftEvent() {
-        if RuleManager.shared.ruleForSubdomain == .enabled {
+        if RuleManager.shared.ruleForCurrentSubdomain == .enabled {
             NightShiftManager.shared.respond(to: .nightShiftEnableRuleActivated)
-        } else if RuleManager.shared.disabledForDomain || RuleManager.shared.ruleForSubdomain == .disabled {
+        } else if RuleManager.shared.isDisabledForDomain || RuleManager.shared.ruleForCurrentSubdomain == .disabled {
             NightShiftManager.shared.respond(to: .nightShiftDisableRuleActivated)
         } else {
             NightShiftManager.shared.respond(to: .nightShiftDisableRuleDeactivated)
@@ -254,7 +257,10 @@ class BrowserManager {
         
         let tab: Tab?
         switch browserID {
-        case .chrome, .chromeCanary, .chromium, .edge, .edgeBeta, .opera, .operaBeta, .operaDeveloper, .vivaldi:
+        case .chrome, .chromeCanary, .chromium,
+                .edge, .edgeBeta,
+                .opera, .operaBeta, .operaDeveloper,
+                .brave, .braveBeta, .vivaldi:
             tab = window.activeTab
         case .safari, .safariTechnologyPreview:
             do {
