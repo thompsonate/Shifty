@@ -129,10 +129,13 @@ class BrowserManager {
     
     
     func updateForSupportedBrowser() {
-        guard let pid = NSWorkspace.shared.menuBarOwningApplication?.processIdentifier else { return }
+        guard let application = RuleManager.shared.currentApp,
+              let id = SupportedBrowserID(application) else {
+                         return
+        }
         
         if UserDefaults.standard.bool(forKey: Keys.isWebsiteControlEnabled) {
-            tryStartBrowserWatcher(repeatCount: 0, processIdentifier: pid, callback: fireNightShiftEvent)
+            tryStartBrowserWatcher(repeatCount: 0, processIdentifier: application.processIdentifier, browserID: id, callback: fireNightShiftEvent)
             fireNightShiftEvent()
         }
     }
@@ -153,18 +156,20 @@ class BrowserManager {
     private func tryStartBrowserWatcher(
         repeatCount: Int,
         processIdentifier: pid_t,
+        browserID: SupportedBrowserID,
         callback: @escaping () -> Void)
     {
         let maxTries = 10
         
         do {
-            try startBrowserWatcher(processIdentifier, callback: callback)
+            try startBrowserWatcher(processIdentifier, browserID, callback: callback)
         } catch let error {
             if repeatCount < maxTries {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     self.tryStartBrowserWatcher(
                         repeatCount: repeatCount + 1,
                         processIdentifier: processIdentifier,
+                        browserID: browserID,
                         callback: callback)
                 }
             } else {
@@ -177,6 +182,7 @@ class BrowserManager {
     
     private func startBrowserWatcher(
         _ processIdentifier: pid_t,
+        _ browserID: SupportedBrowserID,
         callback: @escaping () -> Void) throws
     {
         guard let observedApp = Application(forProcessID: processIdentifier) else { return }
@@ -188,27 +194,35 @@ class BrowserManager {
             info: [String: AnyObject]?) in
             
             switch event {
-            case .valueChanged, .uiElementDestroyed:
-                if element == self.focusedWindow {
-                    fallthrough
-                }
-                if let role = try? element.role(), role == .staticText {
-                    fallthrough
-                }
-            case .focusedWindowChanged:
-                do {
-                    self.focusedWindow  = try observedApp.attribute(.focusedWindow)
-                } catch {
-                    logw("Error: Unable to obtain focused window: \(error)")
-                }
-                DispatchQueue.main.async {
+            case .loadComplete:
+                callback()
+            case .focusedTabChanged:
+                callback()
+            case .valueChanged:
+                if let role = try? element.role(), role == .staticText,
+                   let parent: UIElement = try? element.attribute(.parent),
+                   let parent_role = try? parent.role(), parent_role == .window {
                     callback()
                 }
+            case .focusedWindowChanged:
+                self.focusedWindow = element
+                callback()
+            case .uiElementDestroyed:
+                if element == self.focusedWindow {
+                    self.focusedWindow = nil
+                }
+                callback()
             default:
                 logw("Error: Unexpected notification \(event) received")
             }
         }
-        try browserObserver?.addNotification(.valueChanged, forElement: observedApp)
+        switch browserID {
+        case .chrome, .chromeCanary, .chromium, .opera, .operaBeta, .operaDeveloper, .vivaldi, .edge, .edgeBeta, .brave, .braveBeta:
+            try browserObserver?.addNotification(.valueChanged, forElement: observedApp)
+        case .safari, .safariTechnologyPreview:
+            try browserObserver?.addNotification(.focusedTabChanged, forElement: observedApp)
+            try browserObserver?.addNotification(.loadComplete, forElement: observedApp)
+        }
         try browserObserver?.addNotification(.focusedWindowChanged, forElement: observedApp)
         try browserObserver?.addNotification(.uiElementDestroyed, forElement: observedApp)
         focusedWindow = try observedApp.attribute(.focusedWindow)
@@ -234,46 +248,24 @@ class BrowserManager {
         self.browserObserver = nil
     }
     
-    
-    
     enum BrowserError: Error {
         case closedApp
         case noWindow
         case axError
-        case notFullScreen
     }
     
-    
-    
     private func url(for browser: BrowserProtocol, withBundleID browserID: SupportedBrowserID) -> URL? {
-        if !browser.isRunning {
-            logw("Error: Could not get url, app already closed")
-            return nil
-        }
-        guard let windows = browser.windows?(), let window = windows.firstObject as? Window else {
-            logw("Error: Could not get url, there are no windows")
-            return nil
-        }
-        
         let tab: Tab?
         switch browserID {
         case .chrome, .chromeCanary, .chromium,
                 .edge, .edgeBeta,
                 .opera, .operaBeta, .operaDeveloper,
                 .brave, .braveBeta, .vivaldi:
-            tab = window.activeTab
+            tab = sb_generalWindow(for: browser)?.activeTab
         case .safari, .safariTechnologyPreview:
             do {
-                // Try to get URL from special full screen window (i.e. full screen video)
-                return try safariFullScreenURL(for: browser)
-                
-            } catch BrowserError.notFullScreen {
-                tab = window.currentTab
-                
-            } catch BrowserError.axError {
-                logw("Error: Could not get url using AX API")
-                tab = window.currentTab
-                
+                let url = try ax_safariURL(for: browser)
+                return url;
             } catch {
                 logw("Error: Could not get url, \(error)")
                 return nil
@@ -282,16 +274,24 @@ class BrowserManager {
         return tab?.URL.flatMap(URL.init(string:))
     }
     
+    private func sb_generalWindow(for browser: BrowserProtocol) -> Window? {
+        if !browser.isRunning {
+            logw("Error: Could not get url, app already closed")
+            return nil
+        }
+        guard let windows = browser.windows?(), let window = windows.firstObject as? Window else {
+            logw("Error: Could not get url, there are no windows")
+            return nil
+        }
+        return window
+    }
     
-    
-    private func safariFullScreenURL(for browser: BrowserProtocol) throws -> URL? {
-        guard let app = RuleManager.shared.currentApp,
-            let axapp = Application(app),
-            let axwin: UIElement = try axapp.attribute(.focusedWindow),
-            let axwin_children: [UIElement] = try axwin.arrayAttribute(.children)
-            else { throw BrowserError.axError }
+    private func ax_safariURL(for browser: BrowserProtocol) throws -> URL? {
+        guard let axwin = focusedWindow,
+              let axwin_children: [UIElement] = try axwin.arrayAttribute(.children)
+        else { throw BrowserError.axError }
         
-        if axwin_children.count == 1 {
+        if let win_subrole = try axwin.subrole(), win_subrole == .dialog {
             // Special fullscreen win
             var axchild = axwin_children[0]
             for _ in 1...3 {
@@ -302,7 +302,36 @@ class BrowserManager {
             }
             return try axchild.attribute("AXURL")
         } else {
-            throw BrowserError.notFullScreen
+            let splitGroup = try axwin_children.filter {
+                let role = try $0.role()
+                return role == .splitGroup
+            }
+            guard let splitGroupChildren: [UIElement] = try splitGroup.first?.arrayAttribute(.children)
+            else { throw BrowserError.axError }
+            let tabGroup = try splitGroupChildren.filter {
+                let role = try $0.role()
+                return role == .tabGroup
+            }
+            guard let tabGroupChildren: [UIElement] = try tabGroup.first?.arrayAttribute(.children)
+            else { throw BrowserError.axError }
+            if let maybeGroupElement = tabGroupChildren.first,
+               let role = try maybeGroupElement.role() {
+                if role == .group {
+                    var groupElement = maybeGroupElement;
+                    
+                    for _ in 1...3 {
+                        guard let children: [UIElement] = try groupElement.arrayAttribute(.children)
+                        else { throw BrowserError.axError }
+                        if !children.isEmpty {
+                            groupElement = children[0]
+                        }
+                    }
+                    return try groupElement.attribute("AXURL")
+                } else if role == .scrollArea {
+                    return nil
+                }
+            }
+            throw BrowserError.axError
         }
     }
 }

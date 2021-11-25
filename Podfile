@@ -6,7 +6,7 @@ target 'Shifty' do
   use_frameworks!
 
   pod 'AppCenter'
-  pod 'AXSwift'
+  pod 'AXSwift', :git => 'https://github.com/tmandry/AXSwift.git'
   pod 'LetsMove'
   pod 'MASPreferences+Shifty'
   pod 'MASShortcut'
