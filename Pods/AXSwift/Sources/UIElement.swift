@@ -178,7 +178,11 @@ open class UIElement {
             throw error
         }
 
-        return (unpackAXValue(value!) as! T)
+        guard let unpackedValue = (unpackAXValue(value!) as? T) else {
+            throw AXError.illegalArgument
+        }
+        
+        return unpackedValue
     }
 
     /// Sets the value of `attribute` to `value`.

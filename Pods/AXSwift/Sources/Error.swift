@@ -1,4 +1,5 @@
 import Foundation
+import Cocoa
 
 extension AXError: Swift.Error {}
 

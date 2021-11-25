@@ -19,19 +19,19 @@ That's up to you!
 ### SPM
 In your Package.swift:
 ```
-.package(url: "https://github.com/tmandry/AXSwift", from: 0.2),
+.package(url: "https://github.com/tmandry/AXSwift", from: "0.3.0"),
 ```
 
 ### Carthage
 In your Cartfile:
 ```
-github "tmandry/AXSwift" ~> 0.2
+github "tmandry/AXSwift" ~> 0.3
 ```
 
 ### CocoaPods
 In your Podfile:
 ```
-pod 'AXSwift', '~> 0.2'
+pod 'AXSwift', '~> 0.3'
 ```
 
 See the source of [AXSwiftExample](https://github.com/tmandry/AXSwift/blob/master/AXSwiftExample/AppDelegate.swift)

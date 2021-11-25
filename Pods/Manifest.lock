@@ -7,7 +7,7 @@ PODS:
   - AppCenter/Core (4.2.0)
   - AppCenter/Crashes (4.2.0):
     - AppCenter/Core
-  - AXSwift (0.3.1)
+  - AXSwift (0.3.2)
   - LetsMove (1.25)
   - "MASPreferences+Shifty (1.3.4)"
   - MASShortcut (2.4.0)
@@ -17,7 +17,7 @@ PODS:
 
 DEPENDENCIES:
   - AppCenter
-  - AXSwift
+  - AXSwift (from `https://github.com/tmandry/AXSwift.git`)
   - LetsMove
   - "MASPreferences+Shifty"
   - MASShortcut
@@ -28,7 +28,6 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - AppCenter
-    - AXSwift
     - LetsMove
     - "MASPreferences+Shifty"
     - MASShortcut
@@ -36,9 +35,18 @@ SPEC REPOS:
     - Sparkle
     - SwiftLog
 
+EXTERNAL SOURCES:
+  AXSwift:
+    :git: https://github.com/tmandry/AXSwift.git
+
+CHECKOUT OPTIONS:
+  AXSwift:
+    :commit: e18a18453d135ad45809a384ee5139e05ea52def
+    :git: https://github.com/tmandry/AXSwift.git
+
 SPEC CHECKSUMS:
   AppCenter: 87ef6eefd8ade4df59e88951288587429f3dd2a5
-  AXSwift: 24508e48dd103399d5e495201a8157a663029b92
+  AXSwift: 80e78750bd6e295b57456f664ff63ebf4f1fcfd8
   LetsMove: 7b9fe44737707d984fbd3f47af46609a9a07b461
   "MASPreferences+Shifty": 0270936bfce4fc7c1857eea8b14aaeae568b377a
   MASShortcut: d9e4909e878661cc42877cc9d6efbe638273ab57
@@ -46,6 +54,6 @@ SPEC CHECKSUMS:
   Sparkle: d56d028f4b0c123577825f5d1004f6140d77f90e
   SwiftLog: f6c4f9a4ade06263555ab34b2c0f72025ffcda9e
 
-PODFILE CHECKSUM: 7232af95492538b305e0ee2c8345e71ec7bf8d4a
+PODFILE CHECKSUM: e39f022eca0e16f1a6de4528d381d8ae87ede6eb
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.11.0

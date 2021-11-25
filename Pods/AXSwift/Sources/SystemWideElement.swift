@@ -1,4 +1,5 @@
 import Foundation
+import Cocoa
 
 /// A singleton for the system-wide element.
 public var systemWideElement = SystemWideElement()
