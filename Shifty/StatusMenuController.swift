@@ -293,6 +293,30 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             disableCustomMenuItem.title = NSLocalizedString("menu.disabled_custom", comment: "Disabled for custom time")
         }
         
+        if #available(macOS 11.0, *) {
+            let menuHasOnState = statusMenu.items.filter { menuItem in
+                return menuItem.state == .on
+            }.count > 0
+            
+            var menuOffset = 12.0
+            if menuHasOnState {
+                menuOffset += 10.0
+            }
+
+            if let nightShiftSwitchView = nightShiftSwitchView as? SwitchView {
+                for constraint in nightShiftSwitchView.constraints where (
+                    constraint.firstAttribute == .leading) {
+                    constraint.constant = menuOffset
+                }
+            }
+
+            if let trueToneSwitchView = trueToneSwitchView as? SwitchView {
+                for constraint in trueToneSwitchView.constraints where (
+                    constraint.firstAttribute == .leading) {
+                    constraint.constant = menuOffset
+                }
+            }
+        }
         
         // MARK: toggle True Tone
         if #available(macOS 10.14, *) {
